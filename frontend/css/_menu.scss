@@ -23,6 +23,10 @@
     font-family: Roboto, Helvetica Neue, sans-serif;
   }
 
+  .menu-bar-scrolled {
+    background-color: $bgmenu-scrolled;
+  }
+
   .menu-top {
     @media screen and (max-width: 720px) {
       display: none;
@@ -36,20 +40,31 @@
       content: " ";
       display: table;
     }
-    li > ul {
+    li {
       position: relative;
       display: block;
       list-style: none;
+      padding-left: 0.6em;
+      padding-right: 0.6em;
     }
     a {
       text-decoration: none;
       color: $strongtext;
     }
+    li:hover {
+      background-color: $bgmenu-hover;
+    }
   }
 
   .menu-title {
-    padding-left: 2em;
+    padding-left: 1em;
     color: $titletext;
+  }
+
+  .menu-dropbtn {
+    @media screen and (min-width: 721px) {
+      display: none;
+    }
   }
 
 }

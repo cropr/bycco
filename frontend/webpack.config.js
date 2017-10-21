@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require ('webpack');
 
 module.exports = {
   entry: {
@@ -37,5 +38,11 @@ module.exports = {
 
     ]
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  plugins: [
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+    })
+  ]
 };
