@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+build/
+develop-eggs/
+fe_dist/
+frontend/node_modules/
+dist/
+*.mo
+*.pot
+env/
