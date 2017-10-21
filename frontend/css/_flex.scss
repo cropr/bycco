@@ -1,0 +1,14 @@
+.layout-row {
+  flex-direction: row;
+}
+
+.layout-row > .flex-25 {
+  flex: 1 1 100%;
+  max-width: 25%;
+  max-height: 100%;
+}
+
+.layout-row > flex {
+  flex: 1;
+  min-width: 0;
+}

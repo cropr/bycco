@@ -1,0 +1,56 @@
+{% load cms_tags menu_tags staticfiles sekizai_tags i18n %}
+<!doctype html>
+<html>
+<head>
+<title>{% block title %}Belgian Youth Championships{% endblock title %}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/bycco.css' %}">
+{% render_block "css" %}
+</head>
+<body>
+
+{% cms_toolbar %}
+
+<header class="menu">
+  <div class="menu-bar">
+    <div class="menu-dropbtn button button-icon">
+      <div class="material-icon">menu</div>
+    </div>
+    <div class="menu-title">
+      {% trans "BYC 2018" %}
+    </div>
+    <div class="menu-top">
+      <ul class="nav">
+        {% show_menu 0 100 100 100 %}
+      </ul>
+    </div>
+  </div>
+</header>
+
+
+
+<div class="content">
+  <div class="content-flow">
+    {% block banner %} {% endblock banner %}
+    <div class="content-main">
+      {% block content %}{% endblock content %}
+    </div>
+    {% block footer %}{% endblock footer %}
+  </div>
+</div>
+
+<div class="fixedfooter">
+
+</div>
+
+<div class="sidenav">
+  <ul class="nav">
+    {% show_menu 0 100 100 100 %}
+  </ul>
+</div>
+
+{% render_block "js" %}
+
+</body>
+</html>
