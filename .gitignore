@@ -8,3 +8,4 @@ dist/
 *.mo
 *.pot
 env/
+frontend-old/
