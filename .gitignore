@@ -8,4 +8,3 @@ dist/
 *.mo
 *.pot
 env/
-/requirements-orig.txt

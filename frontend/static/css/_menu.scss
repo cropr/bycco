@@ -1,0 +1,70 @@
+.menu {
+
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  z-index: 10;
+
+  .menu-bar {
+    background-color: $bgmenu;
+    color: $strongtext;
+    vertical-align: middle;
+    font-size: 20px;
+    letter-spacing: .005em;
+    box-sizing: border-box;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 16px;
+    margin: 0;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+  }
+
+  .menu-bar-scrolled {
+    background-color: $bgmenu-scrolled;
+  }
+
+  .menu-top {
+    @media screen and (max-width: 720px) {
+      display: none;
+    }
+    flex-grow: 1;
+    ul {
+      float: right;
+      list-style: none;
+    }
+    ul::after {
+      content: " ";
+      display: table;
+    }
+    li {
+      position: relative;
+      display: inline-block;
+      list-style: none;
+      padding-left: 0.6em;
+      padding-right: 0.6em;
+    }
+    a {
+      text-decoration: none;
+      color: $strongtext;
+    }
+    li:hover {
+      background-color: $bgmenu-hover;
+    }
+  }
+
+  .menu-title {
+    padding-left: 1em;
+    color: $titletext;
+  }
+
+  .menu-dropbtn {
+    @media screen and (min-width: 721px) {
+      display: none;
+    }
+  }
+
+}

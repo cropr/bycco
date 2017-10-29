@@ -1,0 +1,10 @@
+.git*
+assets/
+test/
+docs/
+
+.nodemonignore
+.jshintrc
+.gitignore
+Gruntfile.js
+.travis.yml

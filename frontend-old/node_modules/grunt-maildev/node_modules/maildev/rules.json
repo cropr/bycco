@@ -1,0 +1,5 @@
+[
+	{ "allow": "*@bufferapp.com" },
+	{ "deny":  "dan@bufferapp.com" },
+	{ "allow":  "*@test.com" }
+]

@@ -1,0 +1,6 @@
+# build artifacts
+.dist/
+
+# package managers
+bower_components/
+node_modules/
