@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 develop-eggs/
 fe_dist/
+fe_cms/
 frontend/node_modules/
 dist/
 *.mo
