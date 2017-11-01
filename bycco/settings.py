@@ -200,7 +200,7 @@ SITE_ID = 1
 STATIC_ROOT = cfg.get('static_root')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'fe_dist', 'static'),
+    cfg.get('staticfiles_rdir', os.path.join(BASE_DIR, 'fe_cms', 'static')),
 )
 
 TEMPLATES = [

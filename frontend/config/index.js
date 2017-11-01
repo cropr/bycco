@@ -4,7 +4,7 @@
 const path = require('path');
 
 module.exports = {
-  build: {
+  prod: {
     env: require('./prod.env'),
     assetsRoot: path.resolve(__dirname, '../../fe_prod'),
     assetsSubDirectory: 'static',

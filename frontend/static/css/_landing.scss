@@ -21,7 +21,7 @@
 
 .landing-title {
   position: absolute;
-  top: 60px;
+  top: 80px;
   right: 1em;
   font-size: 200%;
   color: $titletext;
@@ -33,3 +33,6 @@
   }
 }
 
+nav.toolbar.toolbar-landing {
+    background-color: $bgmenu;
+}

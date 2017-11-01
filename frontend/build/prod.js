@@ -1,23 +1,21 @@
 'use strict';
 
 require('./check-versions')();
-
-process.env.NODE_ENV = 'cms';
+process.env.NODE_ENV = 'production';
 
 const rm = require('rimraf');
 const path = require('path');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const config = require('../config/index');
-const webpackConfig = require('./webpack.cms.conf');
+const webpackConfig = require('./webpack.prod.conf');
 
-const spinner = ora('building for cms...');
+console.log('building prod version');
 
 
 rm(path.join(config.prod.assetsRoot, config.prod.assetsSubDirectory), err => {
   if (err) throw err;
   webpack(webpackConfig, function (err, stats) {
-    spinner.stop();
     if (err) throw err;
     process.stdout.write(stats.toString({
       colors: true,

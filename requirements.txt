@@ -1,6 +1,6 @@
 cmsplugin-filer
 dj-database-url
-Django<1.11
+django<1.11
 django-appconf
 django-classy-tags
 django-cms
@@ -22,8 +22,10 @@ djangocms-text-ckeditor
 djangocms-video
 easy-thumbnails
 html5lib==0.9999999
-Pillow
+pillow
+psycopg2
 pytz
 six
 tzlocal
-Unidecode
+unidecode
+yamjam

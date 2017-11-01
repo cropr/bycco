@@ -1,0 +1,6 @@
+include requirements.txt
+include manage.py
+recursive-include i18n *
+recursive-include bycco/templates *
+recursive-include fe_prod/static *
+recursive-include bycco *.py

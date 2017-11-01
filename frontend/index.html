@@ -9,64 +9,63 @@
 
 <div id="app">
 
-<header class="menu">
-  <div class="menu-bar">
-    <div class="menu-dropbtn button button-icon">
-      <div class="material-icon">menu</div>
-    </div>
-    <div class="menu-title">
-      BJK 2018
-    </div>
-    <div class="menu-top">
-      <ul class="nav">
-        <li class="child selected">
-          <a href="/nl/">Home</a>
-        </li>
-        <rd-menu-item text="Info" url="/nl/info"></rd-menu-item>
-      </ul>
-    </div>
-  </div>
-</header>
+  <v-app>
+    <v-navigation-drawer app persistent temporary dark v-model="drawer"
+      class="navmax">
+    <v-toolbar flat dark>
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-title class="title">
+            Menu
+          </v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-toolbar>
+    <v-divider></v-divider>
+      <v-list dense>
+        <v-list-tile @click="clickedMenu('Reglement')">
+          <v-list-tile-content>Reglement</v-list-tile-content>
+        </v-list-tile>
+        <v-list-group >
+          <v-list-tile slot="item" @click="">
+            <v-list-tile-content>Info</v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>keyboard_arrow_down</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+          <v-list-tile @click="clickedMenu('verblijf')">
+            <v-list-tile-content>Verblijf</v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile @click="clickedMenu('huishoud')">
+            <v-list-tile-content>Huishoudelijk reglement</v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar app fixed class="toolbar-landing">
+      <v-toolbar-side-icon @click.stop="toggleMenu()"></v-toolbar-side-icon>
+      <v-toolbar-items>
+        <v-btn flat large>BYC 2018</v-btn>
+      </v-toolbar-items>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn flat large @click="gotoUrl('/nlinfo')">
+          Lodging
+        </v-btn>
+        <v-btn flat large>Registration</v-btn>
+        <v-btn flat large>Rules</v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
 
-<div class="content">
-  <div class="content-flow">
-    <div class="landing-box">
-      <div class="landing-title">
-        Belgisch Jeugdkampioenschap Schaken 2018
-      </div>
-    </div>
-    <div class="content-main">
+    <main>
+      <v-content>
+        <v-container fluid>
+          Hier komt er tekst
+        </v-container>
+      </v-content>
+    </main>
+  </v-app>
 
-      <h1>Belgisch Jeugdkampioenschap Schaken 2018</h1>
-
-      <h2>Van zondag 8 april tot zaterdag 14 april 2018 in Floreal Blankenberge</h2>
-
-      <p>Zoals vorig jaar vindt het Belgisch jeugdkampioenschap plaats in de Floreal in Blankenberge.</p>
-
-      <p>We verwelkomen alle jeugdspelers, ouders, schaaktrainers en sympathisanten tijdens de 2e week van de paasvakantie en hopen op een talrijke opkomst.</p>
-
-      <p>Het kampioenschap wordt , zolas de voorbije jaren georganiseerd door de  vzw. Bycco</p>
-
-      <p>Nadere info volgt</p>
-
-
-    </div>
-
-  </div>
-</div>
-
-<div class="fixedfooter">
-
-</div>
-
-<div class="sidenav">
-  <ul class="nav">
-    <li class="child selected">
-      <a href="/nl/">Home</a>
-    </li>
-    <rd-menu-item text="Info" url="/nl/info"></rd-menu-item>
-  </ul>
-</div>
 
 </div>
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 09:14+0200\n"
+"POT-Creation-Date: 2017-11-01 19:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: bycco/settings.py:26 bycco/settings.py:122
 msgid "en"
 msgstr ""
@@ -33,10 +34,30 @@ msgstr ""
 msgid "de"
 msgstr ""
 
-#: bycco/templates/base.html:21
+#: bycco/templates/base.html:43
+msgid "Categories"
+msgstr ""
+
+#: bycco/templates/base.html:74
+msgid "Subsribe"
+msgstr ""
+
+#: bycco/templates/base.html:84
 msgid "BYC 2018"
 msgstr "CBJ 2018"
 
-#: bycco/templates/landing.html:7
+#: bycco/templates/base.html:89
+msgid "Agenda"
+msgstr ""
+
+#: bycco/templates/base.html:92
+msgid "Lodging"
+msgstr ""
+
+#: bycco/templates/base.html:95
+msgid "Subscribe"
+msgstr ""
+
+#: bycco/templates/landing.html:9
 msgid "Belgian Youth Chess Championships 2018"
 msgstr "Championnats de Belgique d'échecs de la jeunesse"

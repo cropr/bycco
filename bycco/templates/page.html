@@ -3,57 +3,6 @@
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
-{% block banner %}
-<div class="default-banner">
-    {% placeholder "headerbanner" % or %}
-      <img src='{% static "img/backgroundcrowd.png"%}'>
-    {% endplaceholder %}
-</div>
-<div class="default-logo">
-  <img src='{% static "img/iconheader.png"%}'>
-</div>
-{% endblock banner %}
-
-{% block nav %}
-<nav class="header noprint {% block extra_navbar_classes %}{% endblock extra_navbar_classes%}">
-  <div class="navbar navbar-default">
-    <div class="container-fluid">
-
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                 data-target="#talistro-navbar">
-          <span class="fa fa-navicon"></span>
-        </button>
-        <a class="navbar-brand" href="/webclient" style="font-weight: bold; color: darkslategray;">My Talistro</a>
-      </div>
-
-      <div class="collapse navbar-collapse" id="talistro-navbar">
-        <ul class="nav navbar-nav navbar-collapse collapse">
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <span class="fa fa-flag fa-lg"></span>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="/en">EN</a></li>
-              <li><a href="/nl">NL</a></li>
-              <li><a href="/fr">FR</a></li>
-              <li><a href="/fr">DE</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-{#          {% show_menu 0 1 100 100 "menu.html" %}#}
-        </ul>
-      </div>
-
-    </div>
-  </div>
-
-</nav>
-{% endblock nav %}
-
-
 {% block content %}
     {% placeholder "content" %}
 {% endblock content %}
