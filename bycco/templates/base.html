@@ -16,9 +16,8 @@
 
   <v-app>
 
-    <v-navigation-drawer app persistent temporary v-model="drawer"
-
-        class="navmax cyan">
+    <v-navigation-drawer v-cloak temporary v-model="drawer"
+                         class="navmax cyan">
       <v-toolbar flat color="cyan lighten-1">
         <v-list>
           <v-list-tile>
@@ -68,7 +67,7 @@
             <v-btn flat>B20</v-btn><v-btn flat>G20</v-btn>
           </div>
         </v-list-group>
-        <v-list-tile  href="/subscribe">
+        <v-list-tile  href="/info/subscribe">
           <v-list-tile-content>
             <v-list-tile-title>
               {% trans "Subsribe" %}
@@ -78,7 +77,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar app fixed class="{% block toolbar_classes %}{% endblock toolbar_classes %}">
+    <v-toolbar v-cloak app fixed class="{% block toolbar_classes %}{% endblock toolbar_classes %}">
       <v-toolbar-side-icon @click.stop="toggleMenu()"></v-toolbar-side-icon>
       <v-toolbar-items>
         <v-btn flat large>{% trans "BYC 2018" %}</v-btn>
@@ -88,7 +87,7 @@
         <v-btn flat large href="/info/agenda">
           {% trans "Agenda" %}
         </v-btn>
-        <v-btn flat large href="/info/logding">
+        <v-btn flat large href="/info/lodging">
           {% trans "Lodging" %}
         </v-btn>
         <v-btn flat large href="/info/subscribe">

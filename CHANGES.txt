@@ -1,3 +1,7 @@
+v 0.1.2
+=======
+menu improvements
+
 v 0.1.1
 =======
 menu translations
