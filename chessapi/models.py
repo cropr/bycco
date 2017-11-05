@@ -19,7 +19,7 @@ class BelPlayer(Model):
 class FidePlayer(Model):
 
     first_name = CharField("First name", max_length=40)
-    last_name = CharField("Last name", max_length=50)
+    last_name = CharField("Last name", max_length=80)
     gender = CharField("Gender", max_length=1)
     id_fide = CharField("Fide id", max_length=15, primary_key=True)
     chesstitle = CharField("Chess title", max_length=4, blank=True)

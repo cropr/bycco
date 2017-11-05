@@ -20,11 +20,13 @@ djangocms-snippet
 djangocms-style
 djangocms-text-ckeditor
 djangocms-video
+djangorestframework
 easy-thumbnails
 html5lib==0.9999999
 pillow
 psycopg2
 pytz
+requests
 six
 tzlocal
 unidecode
