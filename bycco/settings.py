@@ -6,7 +6,7 @@ _ = lambda s:s
 cfg = yamjam().get('bycco') or {}
 
 
-ALLOWED_HOSTS = cfg.get('allowed_hosts', [])
+ALLOWED_HOSTS = cfg.get('allowed_hosts', ['*'])
 
 APPEND_SLASH = False
 
@@ -60,7 +60,8 @@ CMS_LANGUAGES = {
 
 CMS_TEMPLATES = (
     ('page.html', 'Page'),
-    ('landing.html', 'Landing page')
+    ('landing.html', 'Landing page'),
+    ('clean.html', 'Clean'),
 )
 
 CMS_PERMISSION = True

@@ -7,6 +7,10 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/app.css' %}">
 {% render_block "css" %}
+<script>
+// quick check for IE11 and other older brpwser
+if (!Object.assign) location.href = '/browsernotsupported';
+</script>
 </head>
 <body>
 
@@ -17,56 +21,25 @@
   <v-app>
 
     <v-navigation-drawer v-cloak temporary v-model="drawer"
-                         class="navmax cyan">
-      <v-toolbar flat color="cyan lighten-1">
+                         class="navmax deep-purple">
+      <v-toolbar flat color="deep-purple lighten-1">
         <v-list>
           <v-list-tile>
-            <v-list-tile-title class="title cyan lighten-1">
+            <v-list-tile-title class="title deep-purple lighten-1">
               Menu
             </v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-toolbar>
       <v-divider></v-divider>
-      <div class="btn-language cyan">
+      <div class="btn-language deep-purple">
         <v-btn flat small href="/nl/">NL</v-btn>
         <v-btn flat small href="/fr/">FR</v-btn>
         <v-btn flat small href="/de/">DE</v-btn>
         <v-btn flat small href="/en/">EN</v-btn>
       </div>
-      <v-list dense color="cyan">```
+      <v-list dense color="deep-purple">```
         {% show_menu 0 100 100 100 %}
-        <v-list-group >
-          <v-list-tile slot="item" @click="">
-            <v-list-tile-content>
-              {% trans "Categories" %}
-            </v-list-tile-content>
-            <v-list-tile-action>
-              <v-icon>keyboard_arrow_down</v-icon>
-            </v-list-tile-action>
-          </v-list-tile>
-          <div>
-            <v-btn flat>B8</v-btn><v-btn flat>G8</v-btn>
-          </div>
-          <div>
-            <v-btn flat>B10</v-btn><v-btn flat>G10</v-btn>
-          </div>
-          <div>
-            <v-btn flat>B12</v-btn><v-btn flat>G12</v-btn>
-          </div>
-          <div>
-            <v-btn flat>B14</v-btn><v-btn flat>G14</v-btn>
-          </div>
-          <div>
-            <v-btn flat>B16</v-btn><v-btn flat>G16</v-btn>
-          </div>
-          <div>
-            <v-btn flat>B18</v-btn><v-btn flat>G18</v-btn>
-          </div>
-          <div>
-            <v-btn flat>B20</v-btn><v-btn flat>G20</v-btn>
-          </div>
-        </v-list-group>
         <v-list-tile  href="/info/subscribe">
           <v-list-tile-content>
             <v-list-tile-title>
