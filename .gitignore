@@ -9,3 +9,4 @@ dist/
 *.pot
 env/
 frontend-old/
+.idea
