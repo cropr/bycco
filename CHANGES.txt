@@ -1,3 +1,7 @@
+v 0.2.2
+-------
+update navigation colors
+
 v 0.2.1
 -------
 hack added to redirect IE11 and other old browsers to notsupported page

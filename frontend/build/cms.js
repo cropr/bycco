@@ -11,13 +11,10 @@ const webpack = require('webpack');
 const config = require('../config/index');
 const webpackConfig = require('./webpack.cms.conf');
 
-const spinner = ora('building for cms...');
-
 
 rm(path.join(config.prod.assetsRoot, config.prod.assetsSubDirectory), err => {
   if (err) throw err;
   webpack(webpackConfig, function (err, stats) {
-    spinner.stop();
     if (err) throw err;
     process.stdout.write(stats.toString({
       colors: true,

@@ -20,7 +20,7 @@ if (!Object.assign) location.href = '/browsernotsupported';
 
   <v-app>
 
-    <v-navigation-drawer v-cloak temporary v-model="drawer"
+    <v-navigation-drawer v-cloak dark temporary v-model="drawer"
                          class="navmax deep-purple">
       <v-toolbar flat color="deep-purple lighten-1">
         <v-list>
@@ -38,8 +38,39 @@ if (!Object.assign) location.href = '/browsernotsupported';
         <v-btn flat small href="/de/">DE</v-btn>
         <v-btn flat small href="/en/">EN</v-btn>
       </div>
-      <v-list dense color="deep-purple">```
+      <v-list dense dark color="deep-purple">
         {% show_menu 0 100 100 100 %}
+                <v-list-group >
+          <v-list-tile slot="item" @click="">
+            <v-list-tile-content>
+              {% trans "Categories" %}
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>keyboard_arrow_down</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+          <div>
+            <v-btn class="white--text" flat>B8</v-btn><v-btn class="white--text" flat>G8</v-btn>
+          </div>
+          <div>
+            <v-btn class="white--text" flat>B10</v-btn><v-btn class="white--text" flat>G10</v-btn>
+          </div>
+          <div>
+            <v-btn class="white--text" flat>B12</v-btn><v-btn class="white--text" flat>G12</v-btn>
+          </div>
+          <div>
+            <v-btn class="white--text" flat>B14</v-btn><v-btn class="white--text" flat>G14</v-btn>
+          </div>
+          <div>
+            <v-btn class="white--text" flat>B16</v-btn><v-btn class="white--text" flat>G16</v-btn>
+          </div>
+          <div>
+            <v-btn class="white--text" flat>B18</v-btn><v-btn class="white--text" flat>G18</v-btn>
+          </div>
+          <div>
+            <v-btn class="white--text" flat>B20</v-btn><v-btn class="white--text" flat>G20</v-btn>
+          </div>
+        </v-list-group>
         <v-list-tile  href="/info/subscribe">
           <v-list-tile-content>
             <v-list-tile-title>
