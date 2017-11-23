@@ -23,6 +23,7 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: path.resolve(config.cms.assetsRoot,config.cms.assetsSubDirectory)
   },
+  watch: true,
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.cms.env

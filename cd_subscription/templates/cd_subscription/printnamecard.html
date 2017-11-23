@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="">
+<title>Badges 2017</title>
+<link href="{% static "css/bjk2017.css"%}" rel="stylesheet">
+<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+
+</head>
+<body>
+
+{% for page in pages %}
+  <div class="cardpage">
+    {% for card in page %}
+      <div class="card_1 {{ card.positionclass }}">
+        <div class="cardsponsor1">
+          <img src="/static/img/frame_g4gm.png" class="cardturn">
+        </div>
+        <div class="cardsponsor2">
+          <img src="/static/img/frame_chessconsult.png"  class="cardturn">
+        </div>
+        <div class="cardsponsor3">
+          <img src="/static/img/frame_talistro.png" class="cardturn">
+        </div>
+        <div class="cardtitle">
+          <img src="/static/img/logo_bycco.png" >
+          Blankenberge 2017
+        </div>
+        <div class="cardtext">
+          <p class="cardname">{{ card.fullname }}</p>
+          <p class="cardcategory">{{ card.category }} &nbsp;&nbsp;&nbsp;&nbsp;
+            {{ card.locale }}
+          </p>
+          <p class="cardrating"> N: {{ card.natrating }} &nbsp;&nbsp;&nbsp;&nbsp;
+            F: {{ card.fiderating }}</p>
+        </div>
+        <div class="cardright {{ card.color }}"></div>
+      </div>
+    {% endfor %}
+    <div class="cardline"></div>
+  </div>
+{% endfor %}
+</body>
+</html>

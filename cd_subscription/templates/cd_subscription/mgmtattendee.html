@@ -1,0 +1,451 @@
+{% extends "base.html" %}
+{% load cms_tags i18n sekizai_tags staticfiles %}
+
+{% block title %}Manage Persons{% endblock title %}
+
+{% block content %}
+
+<div ng-app="mgmtattendee" ng-controller="mgmtAttendeeCtrl" class="container">
+
+<h1>Manage Attendees</h1>
+
+<md-tabs md-border-bottom md-autoselect md-dynamic-height md-selected="tab">
+
+  <md-tab>
+    <md-tab-label>Attendees</md-tab-label>
+    <md-tab-body>
+      <div layout="row">
+        <md-input-container flex>
+          <label>Search on name</label>
+          <input ng-model="att.ss" type="text">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Category</label>
+          <md-select ng-model="att.cat">
+            <md-option></md-option>
+            <md-option value="B8">B8</md-option>
+            <md-option value="G8">G8</md-option>
+            <md-option value="B10">B10</md-option>
+            <md-option value="G10">G10</md-option>
+            <md-option value="B12">B12</md-option>
+            <md-option value="G12">G12</md-option>
+            <md-option value="B14">B14</md-option>
+            <md-option value="G14">G14</md-option>
+            <md-option value="B16">B16</md-option>
+            <md-option value="G16">G16</md-option>
+            <md-option value="B18">B18</md-option>
+            <md-option value="G18">G18</md-option>
+            <md-option value="B20">B20</md-option>
+            <md-option value="G20">G20</md-option>
+            <md-option value="ORG">Organiser</md-option>
+            <md-option value="ARB">Arbiter</md-option>
+            <md-option value="SPO">Sponsor or Guest</md-option>
+            <md-option value="EAT">Resident with meals</md-option>
+          </md-select>
+        </md-input-container>
+        <div flex>
+          <md-button ng-click="att.search()" class="md-primary md-raised">
+            Search
+          </md-button>
+          <md-button ng-click="att.open_add()" class="md-primary md-raised"
+                     ng-hide="att.status">
+            Add
+          </md-button>
+        </div>
+      </div>
+      <div  class="cardbox md-whiteframe-4dp" ng-show="att.show_add()">
+        <h4>New attendee</h4>
+        <div layout="row">
+          <div flex layout="column">
+            <md-input-container flex>
+              <label>Name</label>
+              <input ng-model="attendee.name" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>First Name</label>
+              <input ng-model="attendee.firstname" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Chesstitle</label>
+              <md-select ng-model="attendee.chesstitle" type="text">
+                <md-option></md-option>
+                <md-option value="GM">GM</md-option>
+                <md-option value="IM">IM</md-option>
+                <md-option value="FM">FM</md-option>
+                <md-option value="WGM">WGM</md-option>
+                <md-option value="WIM">WIM</md-option>
+                <md-option value="WFM">WFM</md-option>
+                <md-option value="IA">IA</md-option>
+                <md-option value="FA">FA</md-option>
+              </md-select>
+            </md-input-container>
+            <div flex class="pftop">
+              <label>Presence</label>
+              <div>
+                <input ng-model="attendee.present" type="radio" value="YES">
+                 Yes &nbsp;&nbsp;&nbsp;
+                <input ng-model="attendee.present" type="radio" value="NO">
+                 No
+              </div>
+            </div>
+          </div>
+          <div flex layout="column">
+            <md-input-container flex>
+              <label>Category</label>
+              <md-select ng-model="attendee.category" type="text">
+                <md-option></md-option>
+                <md-option value="B8">B8</md-option>
+                <md-option value="G8">G8</md-option>
+                <md-option value="B10">B10</md-option>
+                <md-option value="G10">G10</md-option>
+                <md-option value="B12">B12</md-option>
+                <md-option value="G12">G12</md-option>
+                <md-option value="B14">B14</md-option>
+                <md-option value="G14">G14</md-option>
+                <md-option value="B16">B16</md-option>
+                <md-option value="G16">G16</md-option>
+                <md-option value="B18">B18</md-option>
+                <md-option value="G18">G18</md-option>
+                <md-option value="B20">B20</md-option>
+                <md-option value="G20">G20</md-option>
+                <md-option value="ORG">Organiser</md-option>
+                <md-option value="ARB">Arbiter</md-option>
+                <md-option value="SPO">Sponsor or Guest</md-option>
+                <md-option value="EAT">Resident with meals</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container flex>
+              <label>Meals</label>
+              <md-select ng-model="attendee.meals" type="text">
+                <md-option></md-option>
+                <md-option value="FB">Full boarding</md-option>
+                <md-option value="HB">Half boarding</md-option>
+                <md-option value="BO">Breakfast only</md-option>
+              </md-select>
+            </md-input-container>
+            <div flex class="pftop">
+              <label>Gender</label>
+              <div>
+                <input ng-model="attendee.gender" type="radio" name=gender value="M">
+                 Male &nbsp;&nbsp;&nbsp;
+                <input ng-model="attendee.gender" type="radio" name=gender value="F">
+                Female
+              </div>
+            </div>
+          </div>
+          <div flex>
+            <md-button class="md-primary md-raised"
+                       ng-click="att.save_add()">
+              Save
+            </md-button>
+            <md-button class="md-primary md-raised"
+                       ng-click="att.cancel()">
+              Close
+            </md-button>
+            <md-button ng-click="att.open_photo(attendee)"
+                       class="md-primary md-raised"
+                       ng-show="att.status=='addsaved'">
+              Photo
+            </md-button>
+          </div>
+        </div>
+      </div>
+      <div  class="cardbox md-whiteframe-4dp" ng-show="att.show_edit()">
+        <h4>Modify attendee: <span ng-bind="attendee.id_national"></span></h4>
+        <div layout="row">
+          <div flex layout="column">
+            <md-input-container flex>
+              <label>Name</label>
+              <input ng-model="attendee.name" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>First Name</label>
+              <input ng-model="attendee.firstname" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Chesstitle</label>
+              <md-select ng-model="attendee.chesstitle" type="text">
+                <md-option></md-option>
+                <md-option value="GM">GM</md-option>
+                <md-option value="IM">IM</md-option>
+                <md-option value="FM">FM</md-option>
+                <md-option value="WGM">WGM</md-option>
+                <md-option value="WIM">WIM</md-option>
+                <md-option value="WFM">WFM</md-option>
+                <md-option value="IA">IA</md-option>
+                <md-option value="FA">FA</md-option>
+              </md-select>
+            </md-input-container>
+            <div class="flex bg-danger" ng-show="attendee.payamount>0">
+              Still to pay!!
+            </div>
+            <md-input-container flex>
+              <label>Pay Amount</label>
+              <input ng-model="attendee.payamount" type="number">
+            </md-input-container>
+          </div>
+          <div flex layout="column">
+            <md-input-container flex>
+              <label>Category</label>
+              <md-select ng-model="attendee.category" type="text">
+                <md-option></md-option>
+                <md-option value="B8">B8</md-option>
+                <md-option value="G8">G8</md-option>
+                <md-option value="B10">B10</md-option>
+                <md-option value="G10">G10</md-option>
+                <md-option value="B12">B12</md-option>
+                <md-option value="G12">G12</md-option>
+                <md-option value="B14">B14</md-option>
+                <md-option value="G14">G14</md-option>
+                <md-option value="B16">B16</md-option>
+                <md-option value="G16">G16</md-option>
+                <md-option value="B18">B18</md-option>
+                <md-option value="G18">G18</md-option>
+                <md-option value="B20">B20</md-option>
+                <md-option value="G20">G20</md-option>
+                <md-option value="ORG">Organiser</md-option>
+                <md-option value="ARB">Arbiter</md-option>
+                <md-option value="SPO">Sponsor or Guest</md-option>
+                <md-option value="EAT">Resident with meals</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container flex>
+              <label>Meals</label>
+              <md-select ng-model="attendee.meals" type="text">
+                <md-option></md-option>
+                <md-option value="FB">Full boarding</md-option>
+                <md-option value="HB">Half boarding</md-option>
+                <md-option value="BO">Breakfast only</md-option>
+              </md-select>
+            </md-input-container>
+            <div flex class="pftop">
+              <label>Gender</label>
+              <div>
+                <input ng-model="attendee.gender" type="radio" name=gender value="M">
+                 Male &nbsp;&nbsp;&nbsp;
+                <input ng-model="attendee.gender" type="radio" name=gender value="F">
+                Female
+              </div>
+            </div>
+            <div flex class="pftop">
+              <label>Presence</label>
+              <div>
+                <input ng-model="attendee.present" type="radio" name=present value="YES">
+                Yes &nbsp;&nbsp;&nbsp;
+                <input ng-model="attendee.present" type="radio" name=present value="NO">
+                No
+              </div>
+            </div>
+          </div>
+          <div flex>
+            <md-button class="md-primary md-raised"
+                       ng-click="att.save_edit()">
+              Save
+            </md-button>
+            <md-button class="md-primary md-raised"
+                       ng-click="att.cancel()">
+              Close
+            </md-button>
+            <md-button class="md-primary md-raised"
+                       ng-click="att.open_photo()" >
+              Photo
+            </md-button>
+            <md-button class="md-primary md-raised"
+                       ng-click="att.ask_delete()" >
+              Delete
+            </md-button>
+          </div>
+        </div>
+      </div>
+      <div class="cardbox md-whiteframe-4dp" >
+        <h4>Registered attendees</h4>
+        Showing from <span ng-bind="pager.start +1"></span> to
+        <span ng-bind="pager.end"></span> of <span ng-bind="pager.total"></span>
+        <ul class="pagination" ng-show="pager.show">
+          <li>
+            <a href="#" aria-label="Previous" ng-click="pager.prev()">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li ng-repeat="page in pager.pages" ng-class="{active: page.active}">
+            <a href="#" ng-click="pager.goto($index)" ng-bind="$index+1"></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Next" ng-click="pager.next()">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+        <table class="table">
+            <tr ng-repeat="p in players">
+              <td ng-bind="$index + 1"></td>
+              <td><img width=50
+                       ng-src="{% templatetag openvariable %}photourl(p){% templatetag closevariable %}">
+              </td>
+              <td ng-bind="p.firstname"></td>
+              <td ng-bind="p.name"></td>
+              <td ng-bind="p.category"></td>
+              <td ng-bind="p.present"></td>
+              <td ng-bind="p.payamount"></td>
+              <td>
+                <span class="fa fa-2x fa-pencil" ng-click="att.open_edit(p)"></span>&nbsp;&nbsp;
+                <span class="fa fa-2x fa-photo" ng-click="att.open_photo(p)"></span>
+                <span class="fa fa-2x fa-id-badge" ng-click="att.add_badge(p)"></span>&nbsp;&nbsp;
+                <span class="fa fa-2x fa-id-card" ng-click="att.add_card(p)"></span>&nbsp;&nbsp;
+              </td>
+            </tr>
+          </table>
+      </div>
+    </md-tab-body>
+   </md-tab>
+
+  <md-tab>
+    <md-tab-label>Photos</md-tab-label>
+    <md-tab-body>
+      <h3>Upload photo</h3>
+      <div  class="cardbox md-whiteframe-4dp">
+        <h4>Details attendee</h4>
+        <div layout="row">
+          <div flex="50">
+            <p>Existing photo</p>
+            <img ng-src="{% verbatim %}{{ photourl(attendee) }}{% endverbatim %}">
+          </div>
+          <div flex="50">
+            <div class="phtop">
+              <span>Name</span>:
+              <span ng-bind="attendee.firstname"></span>
+              <span ng-bind="attendee.name"></span>
+            </div>
+            <div class="phtop">
+              <span>National ID</span>:
+              <span ng-bind="attendee.id_national"></span>
+            </div>
+            <div class="phtop">
+              <span>Player</span>:
+              <span ng-bind="attendee.is_player ? 'Yes' : 'No'"></span>
+            </div>
+            <div class="phtop">
+              <span>Meals</span>:
+              <span ng-bind="attendee.meals"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div  class="cardbox md-whiteframe-4dp">
+        <h4>Select photo</h4>
+        <div ngf-drop ngf-select ng-model="photo.data" class="dropbox"
+            ngf-drag-over-class="'dragover'" accept="image/*"
+            ngf-pattern="'image/*'">
+          Photo area.
+        </div>
+        <div class="photosrc">
+            <img-crop image="photo.cropsource" result-image="photo.cropresult" area-type="rectangle"
+                      result-image-size="{w:160,h:200}" area-image-size="{w:80,h:100}"
+                      aspect-ratio="0.8" result-image-format="image/jpeg"></img-crop>
+        </div>
+      </div>
+      <div  class="cardbox md-whiteframe-4dp">
+        <h4>Resulting photo</h4>
+        <div class="photoresult">
+          <img ng-src="{% verbatim %}{{ photo.cropresult }}{% endverbatim %}">
+        </div>
+      </div>
+
+      <div class="pftop pbtop">
+        <md-button ng-click="photo.upload()" class="md-raised md-primary">
+          Upload
+        </md-button>
+      </div>
+
+    </md-tab-body>
+  </md-tab>
+
+  <md-tab>
+    <md-tab-label>Badges</md-tab-label>
+    <md-tab-body>
+      <div class="cardbox md-whiteframe-4dp">
+        <md-button ng-click="bdg.printall()" class="md-raised md-primary">
+          Print All
+        </md-button>
+        <md-button ng-click="bdg.printselected()" class="md-raised md-primary">
+          Print Selected
+        </md-button>
+        <md-button ng-click="bdg.clearselected()" class="md-raised md-primary">
+          Clear Selected
+        </md-button>
+      </div>
+      <div class="cardbox md-whiteframe-4dp">
+        <h4>Selected Attendees</h4>
+        <table class="table">
+          <tr ng-repeat="p in badges">
+            <td ng-bind="$index + 1"></td>
+            <td><img width=50
+                     ng-src="{% templatetag openvariable %}photourl(p){% templatetag closevariable %}">
+            </td>
+            <td ng-bind="p.firstname"></td>
+            <td ng-bind="p.name"></td>
+            <td ng-bind="p.category"></td>
+            <td>
+              <span class="fa fa-2x fa-remove" ng-click="bdg.remove_single(p)"></span>
+            </td>
+          </tr>
+          </table>
+      </div>
+    </md-tab-body>
+  </md-tab>
+
+  <md-tab >
+    <md-tab-label>Name Cards</md-tab-label>
+    <md-tab-body>
+      <div class="cardbox md-whiteframe-4dp">
+        <md-button ng-click="crd.printall()" class="md-raised md-primary">
+          Print All
+        </md-button>
+        <md-button ng-click="crd.printselected()" class="md-raised md-primary">
+          Print Selected
+        </md-button>
+        <md-button ng-click="crd.clearselected()" class="md-raised md-primary">
+          Clear Selected
+        </md-button>
+      </div>
+      <div class="cardbox md-whiteframe-4dp">
+        <h4>Selected Attendees</h4>
+        <table class="table">
+          <tr ng-repeat="p in cards">
+            <td ng-bind="$index + 1"></td>
+            <td><img width=50
+                     ng-src="{% templatetag openvariable %}photourl(p){% templatetag closevariable %}">
+            </td>
+            <td ng-bind="p.firstname"></td>
+            <td ng-bind="p.name"></td>
+            <td ng-bind="p.category"></td>
+            <td>
+              <span class="fa fa-2x fa-remove" ng-click="crd.remove_single(p)"></span>
+            </td>
+          </tr>
+          </table>
+      </div>
+    </md-tab-body>
+  </md-tab>
+
+
+</md-tabs>
+
+</div>
+
+{% addtoblock "css" %}
+<link href="{% static 'css/angular-material.css' %}" rel="stylesheet">
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+<script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-animate/angular-animate.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-aria/angular-aria.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-sanitize/angular-sanitize.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-material/angular-material.min.js' %}"></script>
+<script src="{% static 'bower_components/ng-file-upload/ng-file-upload.js' %}"></script>
+<script src="{% static 'bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.js' %}"></script>
+<script src="{% static 'js/mgmtattendee.js' %}" type="application/javascript"></script>
+{% endaddtoblock %}
+
+{% endblock content %}

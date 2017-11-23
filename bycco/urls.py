@@ -9,19 +9,24 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
-import chessapi.urls
+
+import cd_subscription.apiurls
+import cd_subscription.urls
 
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
-    url(r'^chessapi/', include(chessapi.urls))
+    url(r'^api/subscribe', include(cd_subscription.apiurls)),
 ]
 
 urlpatterns += i18n_patterns(
-    url(r'^admin/', include(admin.site.urls)),  # NOQA
-    url(r'^', include('cms.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^subscribe', include(cd_subscription.urls)),
+    # next url pattern has a negative lookahead pattern
+    # to avoid redirecting 404s in /api/* to /{locale}/api/*
+    url(r'^(?!api)', include('cms.urls')),
 )
 
 # This is only needed when using runserver.

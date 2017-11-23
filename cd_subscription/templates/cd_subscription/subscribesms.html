@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load cms_tags i18n sekizai_tags staticfiles %}
+
+{% block title %}{% trans "Subscribe SMS" %}{% endblock title %}
+
+{% block content %}
+
+<div ng-app="cdp_subscribesms" ng-controller="subscribeCtrl" class="textbox">
+ <div class="cardbox md-whiteframe-4dp">
+   <h3>{% trans "Pairing by SMS texting" %}</h3>
+   <p>
+     {%  blocktrans %}
+     As an exclusivity, we are proud to offer you free of charge the
+     possibility to receive a text message with your personalized pairing of
+     the next round
+     {% endblocktrans %}
+   </p>
+   <p>
+     {%  blocktrans %}
+     All you have to do, is to register your national id and and the mobile
+     number. The mobile number must start with the country code without a
+     + sign or 00 and must mot contain any spaces or punctuation.
+     Example: 32475123456
+     {% endblocktrans %}
+   </p>
+   <p>
+     {%  blocktrans %}
+     Only 1 mobile number can be registered per player.
+     Only numbers from Belgium, the Netherlands, Germany, France and Luxembourg
+     are supported
+     {% endblocktrans %}
+   </p>
+   <md-input-container>
+     <md-input-container>
+       <label>{% trans "Mobile number" %}</label>
+       <input ng-model="sms.mobile" type="text">
+     </md-input-container>
+   </md-input-container><br>
+   <md-input-container>
+     <label>{% trans "ID number" %}</label>
+     <input ng-model="sms.id_national" required type="text" md-maxlength="5">
+   </md-input-container>
+   <div class="pftop pbtop">
+     <md-button ng-click="sms.subscribe()" class="md-raised md-primary">
+       {% trans "Subscribe" %}
+     </md-button>
+   </div>
+ </div>
+  <div class="cardbox md-whiteframe-4dp" ng-show="sms.errorcode==0  && sms.sent">
+    <h3>{% trans "Registration successful" %}</h3>
+    You will receive the pairings of <span ng-bind="sms.fullname"></span>
+    on <span ng-bind="sms.mobile"></span>, when the pairings become available
+  </div>
+  <div class="cardbox md-whiteframe-4dp" ng-show="sms.errorcode>0 && sms.sent">
+    <h3>{% trans "Error" %}</h3>
+    <p ng-show="sms.errorcode == 1">{% trans "Invalid country code" %}</p>
+    <p ng-show="sms.errorcode == 2">{% trans "Not a valid mobile number" %}</p>
+    <p ng-show="sms.errorcode == 3">{% trans "No participant with this national ID" %}</p>
+    <p ng-show="sms.errorcode == 4">{% trans "This player is already registered" %}</p>
+  </div>
+</div>
+
+{% addtoblock "css" %}
+<link href="{% static "bower_components/angular-material/angular-material.min.css"%}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+<script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-animate/angular-animate.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-aria/angular-aria.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-sanitize/angular-sanitize.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-material/angular-material.min.js' %}"></script>
+<script src="{% static 'js/cdp_api.js' %}" type="application/javascript"></script>
+<script src="{% static 'js/subscribesms.js' %}" type="application/javascript"></script>
+
+{% endaddtoblock %}
+
+{% endblock content %}
