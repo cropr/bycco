@@ -10,20 +10,20 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 
-import cd_subscription.apiurls
-import cd_subscription.urls
+import subscription.apiurls
+import subscription.urls
 
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
-    url(r'^api/subscribe', include(cd_subscription.apiurls)),
+    url(r'^api/subscription/', include(subscription.apiurls)),
 ]
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^subscribe', include(cd_subscription.urls)),
+    url(r'^subscribe', include(subscription.urls)),
     # next url pattern has a negative lookahead pattern
     # to avoid redirecting 404s in /api/* to /{locale}/api/*
     url(r'^(?!api)', include('cms.urls')),

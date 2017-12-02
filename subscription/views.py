@@ -8,16 +8,16 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from .models import CdSubscription
+from .models import Subscription
 
 def subscriptionpage(request):
-    return render(request, 'cd_subscription/subscriptionpage.html')
+    return render(request, 'subscription/subscriptionpage.html')
 
 def participantspage(request):
-    return render(request, 'cd_subscription/participants.html')
+    return render(request, 'subscription/participants.html')
 
 def mgmtattendeepage(request):
-    return render(request, 'cd_subscription/mgmtattendee.html')
+    return render(request, 'subscription/mgmtattendee.html')
 
 def printbadges(request):
     """
@@ -30,8 +30,8 @@ def printbadges(request):
     j = 0
     for id in ids:
         try:
-            p = CdSubscription.objects.get(id_national=id)
-        except CdSubscription.DoesNotExist:
+            p = Subscription.objects.get(id_national=id)
+        except Subscription.DoesNotExist:
             continue
         rix = j % 2 + 1
         cix = j // 2 + 1
@@ -67,7 +67,7 @@ def printallbadges(request):
     pages = []
     badges = []
     j = 0
-    for p in CdSubscription.objects.all().order_by('category','name'):
+    for p in Subscription.objects.all().order_by('category','name'):
         rix = j % 2 + 1
         cix = j // 2 + 1
         badge = {
@@ -104,8 +104,8 @@ def printnamecards(request):
     j = 0
     for id in ids:
         try:
-            p = CdSubscription.objects.get(id_national=id)
-        except CdSubscription.DoesNotExist:
+            p = Subscription.objects.get(id_national=id)
+        except Subscription.DoesNotExist:
             continue
         rix = j % 2 + 1
         ct = p.chesstitle + " " if p.chesstitle else ""
@@ -139,7 +139,7 @@ def printallnamecards(request):
     pages = []
     cards = []
     j = 0
-    for p in CdSubscription.objects.all().order_by('category','name'):
+    for p in Subscription.objects.all().order_by('category','name'):
         if not p.category.startswith('B'):
             continue
         rix = j % 2 + 1
@@ -175,7 +175,7 @@ def printallnamecardsgirls(request):
     pages = []
     cards = []
     j = 0
-    for p in CdSubscription.objects.all().order_by('category','name'):
+    for p in Subscription.objects.all().order_by('category','name'):
         if not p.category.startswith('G'):
             continue
         rix = j % 2 + 1
@@ -211,7 +211,7 @@ def printboardnumbers(request):
     page = []
     counters = {}
 
-    for p in CdSubscription.objects.all():
+    for p in Subscription.objects.all():
         cc = counters.get(p.category, 0)
         counters[p.category] = cc + 1
     cats = (
@@ -298,7 +298,7 @@ def csvparticipants(request):
     ]
     writer = csv.writer(response)
     writer.writerow(fields)
-    for s in CdSubscription.objects.all():
+    for s in Subscription.objects.all():
         values = [str(getattr(s, f)) for f in fields]
         writer.writerow(values)
     return response

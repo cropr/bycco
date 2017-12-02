@@ -7,14 +7,14 @@ import logging
 log = logging.getLogger(__name__)
 
 from django.core.management.base import BaseCommand, CommandError
-from ...models import BelPlayer, FidePlayer, CdSubscription
+from ...models import BelPlayer, FidePlayer, Subscription
 
 class Command(BaseCommand):
     help = 'Read the subscription2016.json and create emaillist'
 
     def handle(self, *args, **options):
         print('updating all participants from player.dbf')
-        for s in CdSubscription.objects.all():
+        for s in Subscription.objects.all():
             idn = s.id_national
             bs = BelPlayer.objects.get(id_national=idn)
             gender = bs.gender

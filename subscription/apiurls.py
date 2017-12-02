@@ -1,0 +1,21 @@
+# original Copyright Ruben Decrop
+# modifications by Chessdevil Consulting BVBA
+
+from django.conf.urls import url
+from subscription import apiviews
+
+urlpatterns = [
+
+    # url(r'$', subscription_list),
+    url(r'belplayer/(?P<idbel>[0-9]+)$', apiviews.belplayer),
+    url(r'fideplayer/(?P<idfide>[0-9]+)$', apiviews.fideplayer),
+    url(r'subscriptions$', apiviews.subscriptions),
+    # url(r'/detail/(?P<pk>[0-9]+)/$', subscription_detail),
+    # url(r'/confirmation/(?P<pk>[0-9]+)$', subscription_confirmation),
+    # url(r'/photo/(?P<pk>[0-9]+)$', subscription_photo),
+    # url(r'/participants/(?P<cat>.+)$', participants),
+    # url(r'/attendee$', mgmtattendees),
+    # url(r'/attendee/(?P<id>[0-9]+)$', mgmtattendee_detail),
+    # url(r'/attendee/(?P<id>[0-9]+)/photo$', mgmtattendee_photo),
+]
+

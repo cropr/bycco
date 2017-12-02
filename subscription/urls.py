@@ -6,7 +6,7 @@ from .views import *
 
 urlpatterns = [
 
-    url(r'^page$', subscriptionpage),
+    url(r'^$', subscriptionpage),
     url(r'^participants$', participantspage),
     url(r'^attendee$', mgmtattendeepage),
     url(r'^csv$', csvparticipants),

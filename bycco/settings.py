@@ -12,6 +12,8 @@ APPEND_SLASH = False
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+CHESSAPI_URL = cfg.get('chessapi_url', 'http://localhost:8001/')
+
 CKEDITOR_SETTINGS = {
     'stylesSet': [
         {'name': 'carousel caption', 'element': 'div', 'attributes': {
@@ -114,7 +116,7 @@ INSTALLED_APPS = (
     'djangocms_snippet',
     'djangocms_googlemap',
     'djangocms_video',
-    'cd_subscription',
+    'subscription',
     'bycco'
 )
 

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "non-cms.html" %}
 {% load cms_tags i18n sekizai_tags staticfiles %}
 
 {% block title %}{% trans "Tournament Subscriptions" %}{% endblock title %}
@@ -41,7 +41,7 @@
       <p>{% trans "Please provide your id number of the RBCF" %}</p>
       <md-input-container>
         <label>{% trans "ID number" %}</label>
-        <input ng-model="sub.id_national" required type="text" md-maxlength="5">
+        <input ng-model="sub.idbel" required type="text" md-maxlength="5">
       </md-input-container>
       <p ng-hide="sub.searched && sub.found">
         <md-button class="md-raised md-primary" ng-click="sub.checkIdNational()">
@@ -108,34 +108,34 @@
           </div>
           <div class="phtop">
             <span>{% trans "Birthdate" %}</span>:
-            <span ng-bind="sub.birthdate()"></span>
+            <span ng-bind="sub.birthdateformat()"></span>
           </div>
           <div class="phtop">
             <span>{% trans "ID Club" %}</span>:
-            <span ng-bind="sub.belplayer.id_club"></span>
+            <span ng-bind="sub.idclub"></span>
           </div>
           <div class="phtop">
             <span>{% trans "Nationality" %}</span>:
-            <span ng-bind="sub.belplayer.nationality"></span>
+            <span ng-bind="sub.nationalitybel"></span>
           </div>
           <div class="phtop">
             <span>{% trans "FIDE Nationality" %}</span>:
-            <span ng-bind="sub.fideplayer.fidenation"></span>
+            <span ng-bind="sub.nationalityfide"></span>
           </div>
         </div>
         <div flex="45" layout="column">
           <div class="phtop">
             <span>{% trans "National rating" %}</span>:
-            <span ng-bind="sub.belplayer.natrating"></span>
+            <span ng-bind="sub.currentratingbel"></span>
           </div>
           <div class="phtop">
             <span>{% trans "FIDE rating" %}</span>:
-            <span ng-bind="sub.fideplayer.fiderating"></span>
+            <span ng-bind="sub.currentratingfide"></span>
           </div>
           <div class="phtop">
             <span>{% trans "Gender" %}</span>:
-            <span ng-show="sub.belplayer.gender == 'M'"> {% trans "Male" %}</span>
-            <span ng-hide="sub.belplayer.gender == 'M'"> {% trans "Female" %}</span>
+            <span ng-show="sub.gender == 'M'"> {% trans "Male" %}</span>
+            <span ng-hide="sub.gender == 'M'"> {% trans "Female" %}</span>
           </div>
           <div layout="row" layout-align="start end" class="phtop">
             <div>{% trans "Category" %}</div>: &nbsp;
@@ -154,7 +154,7 @@
         <h4>{% trans "Required information" %}</h4>
         <div class="pftop">
           {% blocktrans with ob="{{" cb="}}" %}
-            {{ ob }} sub.firstname {{ cb }} is an adult at the start of
+            {{ ob }} sub.first_name {{ cb }} is an adult at the start of
             the tournament. For adults we need following information.
           {% endblocktrans %}
         </div>
@@ -195,7 +195,7 @@
         <h4>{% trans "Required information" %}</h4>
         <p>
           {% blocktrans with ob="{{" cb="}}" %}
-            {{ ob }} sub.fullname() {{ cb }} is still a minor at the
+            {{ ob }} sub.first_name {{ cb }} is still a minor at the
             start of the tournament. For minors we need following information.
           {% endblocktrans %}
         </p>
@@ -371,11 +371,11 @@
           </div>
           <div class="phtop">
             <span>{% trans "Birthdate" %}</span>:
-            <span ng-bind="sub.birthdate()"></span>
+            <span ng-bind="sub.birthdateformat()"></span>
           </div>
           <div class="phtop">
             <span>{% trans "ID Club" %}</span>:
-            <span ng-bind="sub.belplayer.id_club"></span>
+            <span ng-bind="sub.belplayer.idclub"></span>
           </div>
           <div class="phtop">
             <span>{% trans "Nationality" %}</span>:
@@ -389,16 +389,16 @@
         <div flex="35" layout="column">
           <div class="phtop">
             <span>{% trans "National rating" %}</span>:
-            <span ng-bind="sub.belplayer.natrating"></span>
+            <span ng-bind="sub.currentratingbel"></span>
           </div>
           <div class="phtop">
             <span>{% trans "FIDE rating" %}</span>:
-            <span ng-bind="sub.fideplayer.fiderating"></span>
+            <span ng-bind="sub.currentratingfide"></span>
           </div>
           <div class="phtop">
             <span>{% trans "Gender" %}</span>:
-            <span ng-show="sub.belplayer.gender == 'M'"> {% trans "Male" %}</span>
-            <span ng-hide="sub.belplayer.gender == 'M'"> {% trans "Female" %}</span>
+            <span ng-show="sub.gender == 'M'"> {% trans "Male" %}</span>
+            <span ng-hide="sub.gender == 'M'"> {% trans "Female" %}</span>
           </div>
           <div class="phtop">
             <span>{% trans "Category" %}</span>:
@@ -440,26 +440,16 @@
     </div>
   </md-tab>
 
+  {% addtoblock "css" %}
+    <link rel="stylesheet" href="{% static 'css/subscription.css' %}">
+  {% endaddtoblock %}
+
 </md-tabs>
 
 </div>
 
-<div class="pftop pfbot">&nbsp;</div>
-
-{% addtoblock "css" %}
-<link href="{% static "bower_components/angular-material/angular-material.min.css"%}" rel="stylesheet">
-<link href="{% static "bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.css"%}" rel="stylesheet">
-{% endaddtoblock %}
-
-{% addtoblock "js" %}
-<script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-animate/angular-animate.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-aria/angular-aria.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-sanitize/angular-sanitize.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-material/angular-material.min.js' %}"></script>
-<script src="{% static 'bower_components/ng-file-upload/ng-file-upload.js' %}"></script>
-<script src="{% static 'bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.js' %}"></script>
-<script src="{% static 'js/subscription.js' %}" type="application/javascript"></script>
-{% endaddtoblock %}
-
 {% endblock content %}
+
+{% block jsapplication %}
+  <script src="{% static 'subscription.js' %}" ></script>
+{% endblock jsapplication %}
