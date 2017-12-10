@@ -2,101 +2,15 @@ angular.module('subscription', [
   'ngAnimate',
   'ngAria',
   'ngFileUpload',
-  'ngImgCrop',
   'ngMaterial',
-  'ngSanitize'
+  'ngSanitize',
+  'uiCropper',
+  'api',
 ])
 
-.controller('subCtrl', function($scope, $http, $q, $log){
+.controller('subCtrl', function($scope, $http, $q, $log, api){
 
-  var subscription = {
-    confirm: function() {
-      var q = $q.defer();
-      $http.post('/cd_subscription/api/subscription/' + subscription.id + '/confirmation').then(
-        (function(ro){
-          this.confirmed = true;
-          q.resolve(ro.data)
-        }).bind(this),
-        function(ro){
-          q.reject(ro.status);
-        }
-      );
-      return q.promise;
-    },
-    init: function(obj){
-      if (obj) angular.extend(this, obj);
-      this.posted = false;
-      this.confirmed = false;
-      this.photouploaded = false;
-    },
-    searchIdFide: function(idfide){
-      var q = $q.defer();
-      $http.get('/api/subscription/fideplayer/' + idfide).then(
-        function(ro){
-          q.resolve(ro.data)
-        },
-        function(ro){
-          q.reject(ro.status);
-        }
-      );
-      return q.promise;
-    },
-    searchIdNational: function(idbel) {
-      var q = $q.defer();
-      $http.get('/api/subscription/belplayer/' + idbel).then(
-        function(ro){
-          q.resolve(ro.data)
-        },
-        function(ro){
-          q.reject(ro.status);
-        }
-      );
-      return q.promise;
-    },
-    subscribe: function() {
-      if (this.id) {
-        return this.updatesubscription();
-      }
-      var q = $q.defer();
-      $http.post('/api/subscription/subscriptions', this).then(
-        (function(ro){
-          q.resolve(ro.data);
-          this.posted = true;
-          this.id = ro.data.id;
-        }).bind(this),
-        function(ro){
-          q.reject(ro.status);
-        }
-      );
-      return q.promise;
-    },
-    updatesubscription: function(){
-      var q = $q.defer();
-      $http.put('/cd_subscription/api/subscription/' + this.id, this).then(
-        (function(ro){
-          q.resolve(ro.data);
-        }).bind(this),
-        function(ro){
-          q.reject(ro.status);
-        }
-      );
-      return q.promise;
-    },
-    uploadPhoto: function(imagedata){
-      var q = $q.defer();
-      $http.post('/cd_subscription/api/subscription/' + subscription.id + '/photo',
-            {imagedata: imagedata}).then(
-        (function(ro){
-          q.resolve(ro.data);
-          this.photouploaded = true;
-        }).bind(this),
-        function(ro){
-          q.reject(ro.status);
-        }
-      );
-      return q.promise;
-    }
-  };
+  let subparam = {};
 
   function invalidField(field) {
     if (!field) return true;
@@ -140,24 +54,34 @@ angular.module('subscription', [
     },
     checkIdNational: function(){
       this.searched = true;
-      subscription.searchIdNational(this.idbel).then(
+      this.errorcode = null;
+      api('searchIdNational', {idbel: this.idbel}).then(
         (function (player){
           if (player.alreadysubscribed) {
-            this.clearPlayer(497);
+            this.errorcode = 'alreadyregistered';
+            this.found = false;
             return;
           }
           this.setPlayer(player);
           if (player.idfide && player.idfide.length) {
-            subscription.searchIdFide(player.idfide).then(
+            api('searchIdFide', {idfide:player.idfide}).then(
               this.setFidePlayer.bind(this), null
             )
           }
         }).bind(this),
-        this.clearPlayer.bind(this)
+        (function(err){
+          console.error('Could not get id national', err, this);
+          if (err.status == 404) {
+            this.errorcode = 'notfound';
+            this.found = false;
+            return
+          }
+          this.errorcode = 'unknown';
+        }).bind(this)
       );
     },
-    checkDetails: function(){
-      var requiredmissing = false;
+    createSubscription: function(){
+      let requiredmissing = false;
       if (!this.adult) {
         if (invalidField(this.fullnameparent)) requiredmissing = true;
         if (invalidField(this.emailparent)) requiredmissing = true;
@@ -176,46 +100,39 @@ angular.module('subscription', [
         $scope.requiredmissing = true;
         return;
       }
-      subscription.init({
-        category: (this.gender == 'M' ? 'B' : 'G') + this.category,
-        emailparent: this.emailparent || '',
-        emailplayer: this.emailplayer || '',
-        fullnameattendant: this.fullnameattendant || '',
-        fullnameparent: this.fullnameparent || '',
-        idbel: this.idbel,
-        mobileattendant: this.mobileattendant || '',
-        mobileparent: this.mobileparent || ''
-      });
-      subscription.subscribe().then(
+      this.setSubparam();
+      api('createSubscription', {subscription: subparam}).then(
         (function(data) {
-          this.error403 = false;
           this.paymessage = data.paymessage;
+          this.idsub = data.id;
           this.gotoTab(3);
         }).bind(this),
         (function(data) {
           console.error('subscription failed', data);
           if (data == 403) {
-            this.error403 = true;
+            this.firewall = true;
           }
         }).bind(this)
       );
     },
-    clearPlayer: function(status){
-      this.init();
-      switch (status){
-        case 0:
-        case 404:
-        case 497:
-        case 498:
-        case 499:
-          this.errorbelplayer = status;
-          break;
-        default:
-          this.errorbelplayer = 498;
-      }
+    clearPlayer: function(){
+      this.found = false;
+      this.errorcode = null;
+      this.confirmationfailed = false;
+      this.idbel =  null;
+      this.subscriptionconfirmed =  false;
+      this.fideplayer = null;
+      this.currentratingbel = 0;
+      this.currentratingfide = 0;
+      this.adult =  false;
+      this.firewall = false;
+      subparam = {};
     },
     confirm: function(){
-      subscription.confirm().then(
+      this.errocode = null;
+      api('confirmSubscription',{
+        idsub: this.idsub
+      }).then(
         function(){
           console.log('sub confirmed', this);
           this.subscriptionconfirmed = true;
@@ -233,16 +150,10 @@ angular.module('subscription', [
       this.max_tabix = Math.max(this.max_tabix, ix);
     },
     init: function(){
-      this.adult =  false;
-      this.confirmationfailed = false;
-      this.idbel =  null;
       this.max_tabix = 0;
-      this.searched = false;
       this.subscriptionconfirmed =  false;
       this.tabix =  0;
-      this.fideplayer = null;
-      this.currentratingbel = 0;
-      this.currentratingfide = 0;
+      this.clearPlayer();
       $scope.photo.init();
     },
     newsubscription: function() {
@@ -253,6 +164,7 @@ angular.module('subscription', [
       this.nationalityfide = player.nationalityfide;
       this.chesstitle = player.chesstitle;
       this.currentratingfide = player.currentrating;
+      this.natstatus =  (player.nationalityfide == 'BEL') ? 'fidebelg': 'nobelg';
     },
     setPlayer: function(player) {
       var rs = [],
@@ -275,6 +187,7 @@ angular.module('subscription', [
       this.birthdate = player.birthdate;
       this.idbel = player._id;
       this.idfide = player.idfide;
+      this.idclub = player.idclub;
       this.found = true;
       this.errorbelplayer = 0;
       this.year = Number(player.birthdate.substr(0,4));
@@ -287,19 +200,40 @@ angular.module('subscription', [
           self.category = v.cat;
         }
       });
+      this.natstatus = 'maybe';
       console.log('sub after setPlayer', this);
       $scope.optyears = rs;
     },
+    setSubparam: function(){
+      subparam =  {
+        category: (this.gender == 'M' ? 'B' : 'G') + this.category,
+        emailparent: this.emailparent || '',
+        emailplayer: this.emailplayer || '',
+        fullnameattendant: this.fullnameattendant || '',
+        fullnameparent: this.fullnameparent || '',
+        idbel: this.idbel,
+        mobileattendant: this.mobileattendant || '',
+        mobileparent: this.mobileparent || '',
+        paymessage: this.paymessage,
+      };
+    },
     uploadPhoto: function(){
+      this.errocode = null;
       if (!$scope.photo.cropresult || !$scope.photo.cropresult.length) {
         this.gotoTab(4);
         return;
       }
-      subscription.uploadPhoto($scope.photo.cropresult).then(
-          (function(){
-            console.log('upload succeeded');
-            this.gotoTab(4)
-          }).bind(this)
+      api('uploadPhoto', {
+        photo: $scope.photo.cropresult,
+        idsub: this.idsub,
+      }).then(
+        (function(){
+          console.log('upload succeeded');
+          this.gotoTab(4)
+        }).bind(this),
+        function(err){
+          console.error(err);
+        }
       );
     }
   };

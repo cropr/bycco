@@ -49,45 +49,45 @@
         </md-button>
       </p>
     </div>
-    <div ng-show="sub.searched && sub.errorbelplayer==404">
-      <p class="alert alert-danger">
-        {% blocktrans %}
-          The id number could not be found.<br>
-          Please take into account that a takes a few days before a newly
-          requested id-number is available.
-        {% endblocktrans %}
-      </p>
+    <div ng-show="sub.errorcode=='notfound'"
+         md-colors="{background: 'warn'}"
+         class="cardbox md-whiteframe-3dp">
+      {% blocktrans %}
+        The id number could not be found.<br>
+        Please take into account that a takes a few days before a newly
+        requested id-number is available.
+      {% endblocktrans %}
     </div>
-    <div ng-show="sub.searched && sub.errorbelplayer==497">
-      <p class="alert alert-danger">
-        {% blocktrans %}
-          This player is already registered
-        {% endblocktrans %}
-     </p>
-   </div>
-    <div ng-show="sub.searched && sub.errorbelplayer==498">
-      <p class="alert alert-danger">
-        {% blocktrans %}
-          An unknown error occured.  Please try again.
-          If the error persists, please contact the organizers
-        {% endblocktrans %}
-     </p>
-   </div>
-   <div ng-show="sub.searched && sub.errorbelplayer==499">
-     <p class="alert alert-danger">
-       {% blocktrans %}
+    <div ng-show="sub.errorcode=='alreadyregistered'"
+         md-colors="{background: 'warn'}"
+         class="cardbox md-whiteframe-3dp">
+      {% blocktrans %}
+        This player is already registered
+      {% endblocktrans %}
+    </div>
+    <div ng-show="sub.errorcode=='unknown'"
+         md-colors="{background: 'warn'}"
+         class="cardbox md-whiteframe-3dp">
+      {% blocktrans %}
+        An unknown error occured.  Please try again.
+        If the error persists, please contact the organizers
+      {% endblocktrans %}
+    </div>
+    <div ng-show="sub.errorcode=='noyouth'"
+        md-colors="{background: 'warn'}"
+        class="cardbox md-whiteframe-3dp">
+      {% blocktrans %}
          This id number does not belong to a youth player
-       {% endblocktrans %}
-     </p>
-   </div>
-    <div ng-show="sub.searched && sub.found" class="cardbox md-whiteframe-4dp">
+      {% endblocktrans %}
+    </div>
+    <div ng-show="sub.found" class="cardbox md-whiteframe-4dp">
       <h4>{% trans "Player found:" %}</h4>
       <p ng-bind="sub.fullname()"></p>
       <p>
         <md-button ng-click="sub.gotoTab(2)" class="md-raised md-primary">
           {% trans "Continue" %}
         </md-button>
-        <md-button ng-click="sub.clearPlayer(0)" class="md-raised md-primary">
+        <md-button ng-click="sub.clearPlayer()" class="md-raised md-primary">
           {% trans "Other player" %}
         </md-button>
       </p>
@@ -250,13 +250,13 @@
       </div>
     </div>
 
-    <div class="phtop phtop alert alert-danger" ng-show="requiredmissing">
+    <div class="phtop phtop md-warn md-whiteframe-3dp" ng-show="requiredmissing">
       {% blocktrans %}
         One of the required fields is invalid.
       {% endblocktrans %}
     </div>
 
-    <div class="phtop phtop alert alert-danger" ng-show="sub.error403">
+    <div class="phtop phtop md-warn md-whiteframe-3dp" ng-show="sub.firewall">
       {% blocktrans %}
         We are experiencing authentication problems while sending the data to
         the server.  Probably you are behind a firewall that blocks the traffic.
@@ -265,7 +265,7 @@
     </div>
 
     <div class="pftop pbtop">
-      <md-button ng-click="sub.checkDetails()" class="md-raised md-primary">
+      <md-button ng-click="sub.createSubscription()" class="md-raised md-primary">
         {% trans "Continue" %}
       </md-button>
     </div>
@@ -291,9 +291,10 @@
         {% endblocktrans %}
       </div>
       <div class="photosrc">
-          <img-crop image="photo.cropsource" result-image="photo.cropresult" area-type="rectangle"
-                    result-image-size="{w:160,h:200}" area-image-size="{w:80,h:100}"
-                    aspect-ratio="0.8" result-image-format="image/jpeg"></img-crop>
+          <ui-cropper
+            image="photo.cropsource" result-image="photo.cropresult" area-type="rectangle"
+            result-image-size="{w:160,h:200}" area-image-size="{w:80,h:100}"
+            aspect-ratio="0.8" result-image-format="image/jpeg"></ui-cropper>
       </div>
 
 
@@ -334,7 +335,7 @@
       <div ng-show="sub.natstatus == 'nobelg'" class="pftop pfbot">
         {% blocktrans %}
           For the FIDE you are not a Belgian.
-          This means you cannot win the Balgian title and you cannot participate
+          This means you cannot win the Belgian title and you cannot participate
           to the European and World Championships as part of the Belgian team.
         {% endblocktrans %}
       </div>
@@ -348,7 +349,33 @@
         {% endblocktrans %}
       </div>
     </div>
-    <div class="pftop pbtop">
+    <div class="cardbox md-whiteframe-4dp">
+      <h3>{% trans "Privacy rules" %}</h3>
+      <div class="pftop pfbot">
+        {% blocktrans %}
+          You give Bycco to right to use the personal data collected in this
+          subscription form.  <br>
+          Bycco will only use this data in order to organize
+          this championships.
+          <ul>
+           <li>Bycco will use the profile picture for a badge and for
+             identification on the website</li>
+           <li>Bycco will use all personal data like telephone numbers and email
+             addresses for internal purposes only</li>
+           <li>Bycoo is taking overview photos/videos of the championships and
+             can publish these photos/videos on its website and on social media</li>
+           <li>If Bycco is taking a closeup photos/video of a player,
+             Bycco will explicitely ask permission to publish</li>
+            <li>In any case Bycco will not leak any personal information to third
+              parties</li>
+          </ul>
+        {% endblocktrans %}
+      </div>
+      <div>
+        <md-checkbox ng-model="sub.privacy">{% trans "I agree" %}</md-checkbox>
+      </div>
+    </div>
+    <div class="pftop pbtop" ng-show="sub.privacy">
       <md-button ng-click="sub.gotoTab(5)" class="md-raised md-primary">
         {% trans "Continue" %}
       </md-button>
@@ -375,15 +402,15 @@
           </div>
           <div class="phtop">
             <span>{% trans "ID Club" %}</span>:
-            <span ng-bind="sub.belplayer.idclub"></span>
+            <span ng-bind="sub.idclub"></span>
           </div>
           <div class="phtop">
             <span>{% trans "Nationality" %}</span>:
-            <span ng-bind="sub.belplayer.nationality"></span>
+            <span ng-bind="sub.nationalitybel"></span>
           </div>
           <div class="phtop">
             <span>{% trans "FIDE Nationality" %}</span>:
-            <span ng-bind="sub.fideplayer.fidenation"></span>
+            <span ng-bind="sub.nationionalityfide"></span>
           </div>
         </div>
         <div flex="35" layout="column">
@@ -413,7 +440,7 @@
       <div class="pfbot">
         {% blocktrans %}
           The subscription fee is 35 Euro is you pay before the 1st of March
-          2017.  After that date you wil have to pay 45 Euro.
+          2018.  After that date you wil have to pay 45 Euro.
         {% endblocktrans %}
       </div>
       <div class="pfbot">
@@ -441,7 +468,7 @@
   </md-tab>
 
   {% addtoblock "css" %}
-    <link rel="stylesheet" href="{% static 'css/subscription.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ui-cropper.css' %}">
   {% endaddtoblock %}
 
 </md-tabs>

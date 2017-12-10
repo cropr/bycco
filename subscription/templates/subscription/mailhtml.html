@@ -9,7 +9,7 @@
 }
 .phtop {  margin-top: 0.5em; }
 </style>
-<h1>{% trans "Belgian Youth Chess Championships 2017" %}</h1>
+<h1>{% trans "Belgian Youth Chess Championships 2018" %}</h1>
 <div class="cardbox  md-whiteframe-4dp">
     <h3>{% trans "Confirmation details" %}</h3>
     <table>
@@ -19,33 +19,31 @@
             </td>
             <td width="35%">
                 <div class="phtop">
-                    {% trans "Fullname" %}: {{sub.fullname}}
+                    {% trans "Fullname" %}: {{sub.fullname }}
                 </div>
                 <div class="phtop">
                     {% trans "Birthdate" %}: {{sub.birthdate}}
                 </div>
                 <div class="phtop">
-                    {% trans "ID Club" %}:{{sub.id_club}}
+                    {% trans "ID Club" %}: {{sub.idclub}}
                 </div>
                 <div class="phtop">
-                    {% trans "Nationality" %}: {{sub.nationality}}
-                </div>
-                <div class="phtop">
-                    {% trans "FIDE Nationality" %}: {{sub.fidenation}}
+                    {% trans "FIDE Nationality" %}: {{sub.nationalityfide}}
                 </div>
             </td>
             <td width="35%" >
                 <div class="phtop">
-                    {% trans "National rating" %}: {{sub.natrating}}
+                    {% trans "National rating" %}: {{sub.ratingbel}}
                 </div>
                 <div class="phtop">
-                    {% trans "FIDE rating" %}: {{sub.fiderating}}
+                    {% trans "FIDE rating" %}: {{sub.ratingfide}}
                 </div>
                 <div class="phtop">
                     {% trans "Gender" %}: {{sub.gender}}
                 </div>
                 <div class="phtop">
                     {% trans "Category" %}: {{sub.category}}
+                </div>
             </td>
         </tr>
   </table>
@@ -58,7 +56,7 @@
     <div class="pfbot">
         {% blocktrans %}
             The subscription fee is 35 Euro is you pay before the 1st of March
-            2017.  After that date you wil have to pay 45 Euro.
+            2018.  After that date you wil have to pay 45 Euro.
         {% endblocktrans %}
     </div>
     <div class="pfbot">

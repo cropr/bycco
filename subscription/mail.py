@@ -23,13 +23,12 @@ def sendconfirmationmail(s):
     :return:
     """
     sub = {
-        'fullname': "{0} {1}".format(s.firstname, s.name),
+        'fullname': "{0} {1}".format(s.first_name, s.last_name),
         'birthdate': s.birthdate.strftime("%d/%m/%Y"),
-        'id_club': s.id_club,
-        'nationality': s.nationality,
-        'fidenation': s.fidenation,
-        'natrating': s.natrating,
-        'fiderating': s.fiderating,
+        'idclub': s.idclub,
+        'nationalityfide': s.nationalityfide,
+        'ratingbel': s.ratingbel,
+        'ratingfide': s.ratingfide,
         'gender': s.gender,
         'category': s.category,
         'paymessage': s.paymessage,
@@ -44,7 +43,7 @@ def sendconfirmationmail(s):
         tolist.append(s.emailplayer)
     if s.emailparent:
         tolist.append(s.emailparent)
-    msg['From'] = 'organisatie@bjk2017.be'
+    msg['From'] = 'info@bycco.be'
     msg['To'] = ', '.join(tolist)
     msg['CC'] = ', '.join(mailcc)
 
@@ -58,7 +57,7 @@ def sendconfirmationmail(s):
     # alternatives.attach(msghtml)
     # msg.attach(alternatives)
 
-    msghtml = MIMEText(get_template('cd_subscription/mailhtml.html').render(
+    msghtml = MIMEText(get_template('subscription/mailhtml.html').render(
         context=context), 'html', 'utf-8')
     msg.attach(msghtml)
 

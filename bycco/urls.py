@@ -18,7 +18,7 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
-    url(r'^api/subscription/', include(subscription.apiurls)),
+    url(r'^api/', include(subscription.apiurls)),
 ]
 
 urlpatterns += i18n_patterns(

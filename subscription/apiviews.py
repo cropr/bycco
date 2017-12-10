@@ -4,7 +4,7 @@ import logging
 log = logging.getLogger(__name__)
 
 import requests
-
+from binascii import a2b_base64
 from django.conf import settings
 from rest_framework import status
 from rest_framework.decorators import api_view, renderer_classes
@@ -30,10 +30,10 @@ def test(request):
     return Response(data={'a':'b'})
 
 @api_view(['POST'])
-def subscription_confirmation(request, pk):
+def subscription_confirmation(request, idsub):
 
     try:
-        subscription = Subscription.objects.get(pk=pk)
+        subscription = Subscription.objects.get(pk=idsub)
     except Subscription.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -86,7 +86,7 @@ def subscriptions(request):
 
     if request.method == 'POST':
 
-        ss = SubscriptionSerializer(data=request.data)
+        ss = SubscriptionSerializer(data=request.data.get('subscription'))
         if ss.is_valid():
             idbel = ss.validated_data.get('idbel')
             idbel = idbel.lstrip('0')
@@ -96,20 +96,20 @@ def subscriptions(request):
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             bp = resp.json()
             idfide = bp.get('idfide', '')
+            fp = {}
             if idfide:
                 ca_url = "{0}ranking/fide/{1}".format(settings.CHESSAPI_URL,
                                                      idfide)
                 resp = requests.get(ca_url)
-                fp = {}
                 if resp.status_code == 200:
                     fp = resp.json()
             try:
                 cs = Subscription.objects.get(idbel=idbel)
             except Subscription.DoesNotExist:
                 cs = Subscription()
-            cs.birthdate = bp.get('birthdate')
+            cs.birthdate = bp.get('birthdate').split('T')[0]
             cs.category = ss.validated_data.get('category')
-            cs.chesstitle = bp.get('chesstitle')
+            cs.chesstitle = bp.get('chesstitle') or ''
             cs.emailparent = ss.validated_data.get('emailparent') or ''
             cs.emailplayer = ss.validated_data.get('emailplayer') or ''
             cs.federation = bp.get('federation')
@@ -118,7 +118,7 @@ def subscriptions(request):
             cs.fullnameattendant = ss.validated_data.get('fullnameattendant') or ''
             cs.fullnameparent = ss.validated_data.get('fullnameparent') or ''
             cs.gender = bp.get('gender')
-            cs.idclub = bp.idclub
+            cs.idclub = bp.get('idclub')
             cs.idfide = idfide
             cs.idbel = idbel
             cs.last_name = bp.get('last_name')
@@ -128,7 +128,7 @@ def subscriptions(request):
             cs.mobileplayer = ss.validated_data.get('mobileplayer') or ''
             cs.ratingbel = bp.get('currentrating')
             cs.ratingfide = fp.get('currentrating', 0)
-            cs.rating = max(cs.natrating, cs.fiderating)
+            cs.rating = max(cs.ratingbel, cs.ratingfide)
             cs.nationalitybel = bp.get('nationalitybel')
             cs.payamount = 0
             try:
@@ -139,7 +139,7 @@ def subscriptions(request):
             rm1 = cs.pk // 1000
             rm2 = cs.pk % 1000
             rm3 = nr % 97 or 97
-            cs.paymessage = "+++020/170{0:01d}/{1:03d}{2:02d}+++".format(
+            cs.paymessage = "+++020/180{0:01d}/{1:03d}{2:02d}+++".format(
                 rm1, rm2, rm3)
             cs.save()
             return Response({'id': cs.id, 'paymessage': cs.paymessage},
@@ -148,31 +148,31 @@ def subscriptions(request):
 
 @api_view(['GET', 'POST'])
 @renderer_classes((ImageRenderer, JSONRenderer))
-def subscription_photo(request, pk):
+def subscription_photo(request, idsub):
 
     pass
 
-    # try:
-    #     subscription = Subscription.objects.get(pk=pk)
-    # except Subscription.DoesNotExist:
-    #     return Response(status=status.HTTP_404_NOT_FOUND)
-    #
-    # if request.method == 'GET':
-    #     return Response(content_type=subscription.badgemimetype,
-    #                     data=subscription.badgeimage)
-    #
-    # if request.method == 'POST':
-    #     ps = PhotoSerializer(data=request.data)
-    #     if ps.is_valid():
-    #         try:
-    #             header, data = ps.validated_data.get('imagedata').split(',')
-    #             subscription.badgemimetype = header.split(':')[1].split(';')[0]
-    #             subscription.badgeimage = a2b_base64(data)
-    #             subscription.badgelength = len(subscription.badgeimage)
-    #             subscription.save()
-    #             return Response(status=status.HTTP_201_CREATED)
-    #         except Exception as e:
-    #             return Response(status=status.HTTP_400_BAD_REQUEST)
+    try:
+        subscription = Subscription.objects.get(pk=idsub)
+    except Subscription.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        return Response(content_type=subscription.badgemimetype,
+                        data=subscription.badgeimage)
+
+    if request.method == 'POST':
+        photo = request.data.get('photo')
+        if photo:
+            try:
+                header, data = photo.split(',')
+                subscription.badgemimetype = header.split(':')[1].split(';')[0]
+                subscription.badgeimage = a2b_base64(data)
+                subscription.badgelength = len(subscription.badgeimage)
+                subscription.save()
+                return Response(status=status.HTTP_201_CREATED)
+            except Exception as e:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def belplayer(request, idbel):
@@ -192,7 +192,10 @@ def belplayer(request, idbel):
                 details['alreadysubscribed'] = True
         except:
             pass
-    return Response(details)
+        return Response(details)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 @api_view(['GET'])
 def fideplayer(request, idfide):
@@ -204,7 +207,10 @@ def fideplayer(request, idfide):
     if resp.status_code == 200:
         details.update(resp.json())
         details['idfide'] = details['_id']
-    return Response(details)
+        return Response(details)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 @api_view(['GET'])
 def participants(request, cat):

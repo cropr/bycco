@@ -12,12 +12,6 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 
 module.exports = merge(baseWebpackConfig, {
-  module: {
-    rules: utils.styleLoaders({
-      sourceMap: config.dev.cssSourceMap,
-      extract: true
-    })
-  },
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',
   output: {
@@ -28,14 +22,25 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': config.cms.env
     }),
-    new ExtractTextPlugin({
-      filename: 'css/[name].css'
-    }),
     new CopyWebpackPlugin([
       {
-        from: './static/img',
+        from: './src/img',
         to: path.resolve(config.cms.assetsRoot, config.cms.assetsSubDirectory, "img")
       },
-    ])
+      {
+        from: './src/stylus/bycco.css',
+        to: path.resolve(config.cms.assetsRoot, config.cms.assetsSubDirectory,
+          "css", "bycco.css")
+      },
+      {
+        from: './node_modules/angular-material/angular-material.min.css',
+        to: path.resolve(config.cms.assetsRoot, config.cms.assetsSubDirectory,
+          "css", "angular-material.css")
+      },
+      {
+        from: './node_modules/ui-cropper/compile/minified/ui-cropper.css',
+        to: path.resolve(config.cms.assetsRoot, config.cms.assetsSubDirectory,
+          "css", "ui-cropper.css")
+      },    ])
   ]
 });

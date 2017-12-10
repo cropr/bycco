@@ -7,12 +7,11 @@ import 'angular-aria/angular-aria.min';
 import 'angular-material/angular-material';
 import 'angular-sanitize/angular-sanitize.min';
 import 'ng-file-upload/dist/ng-file-upload.min';
-import 'ng-img-crop/compile/minified/ng-img-crop';
+import 'ui-cropper/compile/minified/ui-cropper';
 
-import './stylus/app.styl';
-
-import 'angular-material/angular-material.min.css';
-import './controllers/ctrl_sub';
+import './angular/api';
+import './angular/apidef';
+import './angular/ctrl_sub';
 
 Vue.use(Vuetify);
 
