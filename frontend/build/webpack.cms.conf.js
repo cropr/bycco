@@ -41,6 +41,7 @@ module.exports = merge(baseWebpackConfig, {
         from: './node_modules/ui-cropper/compile/minified/ui-cropper.css',
         to: path.resolve(config.cms.assetsRoot, config.cms.assetsSubDirectory,
           "css", "ui-cropper.css")
-      },    ])
+      },
+    ])
   ]
 });

@@ -348,6 +348,9 @@
           to the European and World Championships as part of the Belgian team.
         {% endblocktrans %}
       </div>
+      <div>
+        <md-checkbox ng-model="sub.nationagree">{% trans "I agree" %}</md-checkbox>
+      </div>
     </div>
     <div class="cardbox md-whiteframe-4dp">
       <h3>{% trans "Privacy rules" %}</h3>
@@ -375,7 +378,7 @@
         <md-checkbox ng-model="sub.privacy">{% trans "I agree" %}</md-checkbox>
       </div>
     </div>
-    <div class="pftop pbtop" ng-show="sub.privacy">
+    <div class="pftop pbtop" ng-show="sub.privacy && sub.nationagree">
       <md-button ng-click="sub.gotoTab(5)" class="md-raised md-primary">
         {% trans "Continue" %}
       </md-button>
@@ -410,7 +413,7 @@
           </div>
           <div class="phtop">
             <span>{% trans "FIDE Nationality" %}</span>:
-            <span ng-bind="sub.nationionalityfide"></span>
+            <span ng-bind="sub.nationalityfide"></span>
           </div>
         </div>
         <div flex="35" layout="column">

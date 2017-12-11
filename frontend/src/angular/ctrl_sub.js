@@ -126,6 +126,8 @@ angular.module('subscription', [
       this.currentratingfide = 0;
       this.adult =  false;
       this.firewall = false;
+      this.privacy = false;
+      this.nationagree = false;
       subparam = {};
     },
     confirm: function(){
