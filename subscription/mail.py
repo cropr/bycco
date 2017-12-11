@@ -13,7 +13,7 @@ from email.mime.image import MIMEImage
 from django.conf import settings
 import smtplib
 
-mailfrom = 'ruben@decrop.net'
+mailfrom = 'info@bycco.be'
 mailcc = ['luc.cornet@telenet.be']
 
 def sendconfirmationmail(s):
