@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n sekizai_tags %}
+
+{% block title %}BJK 2018{% endblock title %}
+
+{%  block noncms_main %}
+  <div class="main">
+    <div class="content {% block content_classes %}{% endblock content_classes %}">
+      <div class="fluidcontainer">
+      {% block content %}{% endblock content %}
+      </div>
+    </div>
+  </div>
+{% endblock noncms_main %}
+

@@ -11,7 +11,8 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    cms: './src/cms.js',
+    subscription: './src/subscription.js',
   },
   output: {
     path: config.prod.assetsRoot,

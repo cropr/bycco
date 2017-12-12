@@ -1,12 +1,12 @@
 __pycache__/
-*.py[cod]
-develop-eggs/
-fe_dist/
 fe_cms/
+fe_prod/
 frontend/node_modules/
 dist/
 *.mo
-*.pot
 env/
-frontend-old/
 .idea
+*.css.map
+/frontend/npm-debug.log
+/frontend/yarn-error.log
+/frontend/src/stylus/bycco.css

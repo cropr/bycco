@@ -1,7 +1,5 @@
-{% extends "base.html" %}
+{% extends "cms.html" %}
 {% load cms_tags i18n %}
-
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
 {% block banner %}
 <div class="landing-box">
@@ -14,8 +12,3 @@
 {% block toolbar_classes %}navlanding{% endblock toolbar_classes%}
 
 {% block content_classes %}contentlanding{% endblock content_classes %}
-
-{% block content %}
-{% placeholder "content" %}
-{% endblock content %}
-
