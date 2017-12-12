@@ -17,7 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
 #: bycco/settings.py:28 bycco/settings.py:126 dist/bycco-0.2.2
 #: 2/bycco/settings.py:26 2/bycco/settings.py:124
 #: dist/bycco-0.2.2/bycco/settings.py:26 dist/bycco-0.2.2/bycco/settings.py:124
@@ -45,41 +44,32 @@ msgstr ""
 #: bycco/templates/base.html:45 dist/bycco-0.2.2 2/bycco/templates/base.html:46
 #: dist/bycco-0.2.2/bycco/templates/base.html:46
 msgid "Categories"
-msgstr "Categorieên"
+msgstr ""
 
 #: bycco/templates/base.html:76 bycco/templates/base.html:98 dist/bycco-0.2.2
 #: 2/bycco/templates/base.html:77 2/bycco/templates/base.html:98
 #: dist/bycco-0.2.2/bycco/templates/base.html:77
 #: dist/bycco-0.2.2/bycco/templates/base.html:98
 msgid "Subscribe"
-msgstr "Inschrijven"
+msgstr ""
 
 #: bycco/templates/base.html:87 dist/bycco-0.2.2 2/bycco/templates/base.html:87
 #: dist/bycco-0.2.2/bycco/templates/base.html:87
 msgid "BYC 2018"
-msgstr "BJK 2018"
+msgstr ""
 
 #: bycco/templates/base.html:92 dist/bycco-0.2.2 2/bycco/templates/base.html:92
 #: dist/bycco-0.2.2/bycco/templates/base.html:92
 msgid "Agenda"
-msgstr "Agenda"
+msgstr ""
 
 #: bycco/templates/base.html:95 dist/bycco-0.2.2 2/bycco/templates/base.html:95
 #: dist/bycco-0.2.2/bycco/templates/base.html:95
 msgid "Lodging"
-msgstr "Verblijf"
+msgstr ""
 
 #: bycco/templates/landing.html:7 dist/bycco-0.2.2
 #: 2/bycco/templates/landing.html:9
 #: dist/bycco-0.2.2/bycco/templates/landing.html:9
 msgid "Belgian Youth Chess Championships 2018"
-msgstr "Belgisch Jeugdkampioenschap Schaken 2018"
-
-#~ msgid "Subsribe"
-#~ msgstr "Inschrijving"
-
-#~ msgid "Registration"
-#~ msgstr "Inschrijving"
-
-#~ msgid "Rules"
-#~ msgstr "Reglement"
+msgstr ""

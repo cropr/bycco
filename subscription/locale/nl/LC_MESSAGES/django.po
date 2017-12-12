@@ -7,202 +7,204 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-10 13:44+0100\n"
+"POT-Creation-Date: 2017-12-12 15:25+0100\n"
 "PO-Revision-Date: 2017-12-10 14:43+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.0.5\n"
 
-#: mail.py:40
+#: subscription/mail.py:40
 msgid "Confirmation Subscription"
 msgstr "Bevestiging Inschrijving"
 
-#: models.py:11
+#: subscription/models.py:11
 msgid "Badge image"
 msgstr ""
 
-#: models.py:12
+#: subscription/models.py:12
 msgid "Length badge image"
 msgstr ""
 
-#: models.py:14 templates/subscription/mailhtml.html:25
-#: templates/subscription/mailtext.html:6
-#: templates/subscription/subscriptionpage.html:110
-#: templates/subscription/subscriptionpage.html:400
+#: subscription/models.py:14
+#: subscription/templates/subscription/mailhtml.html:25
+#: subscription/templates/subscription/subscriptionpage.html:110
+#: subscription/templates/subscription/subscriptionpage.html:403
 msgid "Birthdate"
 msgstr "Geboortedatum"
 
-#: models.py:15 templates/subscription/mailhtml.html:45
-#: templates/subscription/mailtext.html:13
-#: templates/subscription/subscriptionpage.html:141
-#: templates/subscription/subscriptionpage.html:431
+#: subscription/models.py:15
+#: subscription/templates/subscription/mailhtml.html:45
+#: subscription/templates/subscription/subscriptionpage.html:141
+#: subscription/templates/subscription/subscriptionpage.html:434
 msgid "Category"
 msgstr "Categorie"
 
-#: models.py:17
+#: subscription/models.py:17
 msgid "Chess title"
 msgstr "Schaaktitel"
 
-#: models.py:18
+#: subscription/models.py:18
 msgid "Email parent"
 msgstr "E-mail ouders"
 
-#: models.py:19
+#: subscription/models.py:19
 msgid "Email player"
 msgstr "E-mail speler"
 
-#: models.py:20
+#: subscription/models.py:20
 msgid "Federation"
 msgstr "Federatie"
 
-#: models.py:21
+#: subscription/models.py:21
 msgid "First name"
 msgstr "Voornaam"
 
-#: models.py:22
+#: subscription/models.py:22
 msgid "Full name responsible on site"
 msgstr "Volledige naam verantwoordelijke ter plaatse"
 
-#: models.py:23
+#: subscription/models.py:23
 msgid "Full name parent"
 msgstr "Volledig naam ouder"
 
-#: models.py:24 templates/subscription/mailhtml.html:42
-#: templates/subscription/mailtext.html:12
-#: templates/subscription/subscriptionpage.html:136
-#: templates/subscription/subscriptionpage.html:426
+#: subscription/models.py:24
+#: subscription/templates/subscription/mailhtml.html:42
+#: subscription/templates/subscription/subscriptionpage.html:136
+#: subscription/templates/subscription/subscriptionpage.html:429
 msgid "Gender"
 msgstr "Geslacht"
 
-#: models.py:24 templates/subscription/subscriptionpage.html:137
-#: templates/subscription/subscriptionpage.html:427
+#: subscription/models.py:24
+#: subscription/templates/subscription/subscriptionpage.html:137
+#: subscription/templates/subscription/subscriptionpage.html:430
 msgid "Male"
 msgstr "Mannelijk"
 
-#: models.py:24 templates/subscription/subscriptionpage.html:138
-#: templates/subscription/subscriptionpage.html:428
+#: subscription/models.py:24
+#: subscription/templates/subscription/subscriptionpage.html:138
+#: subscription/templates/subscription/subscriptionpage.html:431
 msgid "Female"
 msgstr "Vrouwelijk"
 
-#: models.py:25
+#: subscription/models.py:25
 msgid "Club id"
 msgstr "Club ID"
 
-#: models.py:26
+#: subscription/models.py:26
 msgid "FIDE id"
 msgstr "FIDE ID"
 
-#: models.py:27
+#: subscription/models.py:27
 msgid "Belgian id"
 msgstr "Stamnummer"
 
-#: models.py:28
+#: subscription/models.py:28
 msgid "Locale"
 msgstr "Taal"
 
-#: models.py:29
+#: subscription/models.py:29
 msgid "GSM number responsible on site"
 msgstr "GSM nummer verantwoordelijke ter plaatse"
 
-#: models.py:30
+#: subscription/models.py:30
 msgid "GSM parent"
 msgstr "GSM ouder"
 
-#: models.py:31
+#: subscription/models.py:31
 msgid "GSM player"
 msgstr "GSM speler"
 
-#: models.py:32
+#: subscription/models.py:32
 msgid "Last name"
 msgstr "Achternaam"
 
-#: models.py:33
+#: subscription/models.py:33
 msgid "Nationality Passport"
 msgstr "Nationaliteit pasport"
 
-#: models.py:34
+#: subscription/models.py:34
 msgid "Nationality FIDE"
 msgstr "FIDE nationaliteit"
 
-#: models.py:35
+#: subscription/models.py:35
 msgid "Amount to pay"
 msgstr "Te betalen bedrag"
 
-#: models.py:36
+#: subscription/models.py:36
 msgid "Payment date"
 msgstr "Betalingsdatum"
 
-#: models.py:37
+#: subscription/models.py:37
 msgid "Payment message"
 msgstr "Betalingsbericht"
 
-#: models.py:38
+#: subscription/models.py:38
 msgid "Used rating"
 msgstr "Gebruikte rating"
 
-#: models.py:39 models.py:40 templates/subscription/mailhtml.html:39
-#: templates/subscription/mailtext.html:11
-#: templates/subscription/subscriptionpage.html:132
-#: templates/subscription/subscriptionpage.html:422
+#: subscription/models.py:39
+#, fuzzy
+#| msgid "Belgian id"
+msgid "Belgian rating"
+msgstr "Stamnummer"
+
+#: subscription/models.py:40
+#: subscription/templates/subscription/mailhtml.html:39
+#: subscription/templates/subscription/subscriptionpage.html:132
+#: subscription/templates/subscription/subscriptionpage.html:425
 msgid "FIDE rating"
 msgstr ""
 
-#: models.py:41
+#: subscription/models.py:41
 msgid "Remarks"
 msgstr "Opmerkingen"
 
-#: templates/subscription/mailhtml.html:12
+#: subscription/templates/subscription/mailhtml.html:12
 msgid "Belgian Youth Chess Championships 2018"
 msgstr "Belgisch Jeugdkampioenschap Schalen 2018"
 
-#: templates/subscription/mailhtml.html:14
-#: templates/subscription/mailtext.html:4
-#: templates/subscription/subscriptionpage.html:389
+#: subscription/templates/subscription/mailhtml.html:14
+#: subscription/templates/subscription/subscriptionpage.html:392
 msgid "Confirmation details"
 msgstr "Details bevestiging"
 
-#: templates/subscription/mailhtml.html:22
-#: templates/subscription/mailtext.html:5
-#: templates/subscription/subscriptionpage.html:106
-#: templates/subscription/subscriptionpage.html:206
-#: templates/subscription/subscriptionpage.html:228
-#: templates/subscription/subscriptionpage.html:396
+#: subscription/templates/subscription/mailhtml.html:22
+#: subscription/templates/subscription/subscriptionpage.html:106
+#: subscription/templates/subscription/subscriptionpage.html:206
+#: subscription/templates/subscription/subscriptionpage.html:228
+#: subscription/templates/subscription/subscriptionpage.html:399
 msgid "Fullname"
 msgstr "Volledige naam"
 
-#: templates/subscription/mailhtml.html:28
-#: templates/subscription/mailtext.html:7
-#: templates/subscription/subscriptionpage.html:114
-#: templates/subscription/subscriptionpage.html:404
+#: subscription/templates/subscription/mailhtml.html:28
+#: subscription/templates/subscription/subscriptionpage.html:114
+#: subscription/templates/subscription/subscriptionpage.html:407
 msgid "ID Club"
 msgstr "Club ID"
 
-#: templates/subscription/mailhtml.html:31
-#: templates/subscription/mailtext.html:9
-#: templates/subscription/subscriptionpage.html:122
-#: templates/subscription/subscriptionpage.html:412
+#: subscription/templates/subscription/mailhtml.html:31
+#: subscription/templates/subscription/subscriptionpage.html:122
+#: subscription/templates/subscription/subscriptionpage.html:415
 msgid "FIDE Nationality"
 msgstr "FIDE nationaliteit"
 
-#: templates/subscription/mailhtml.html:36
-#: templates/subscription/mailtext.html:10
-#: templates/subscription/subscriptionpage.html:128
-#: templates/subscription/subscriptionpage.html:418
+#: subscription/templates/subscription/mailhtml.html:36
+#: subscription/templates/subscription/subscriptionpage.html:128
+#: subscription/templates/subscription/subscriptionpage.html:421
 msgid "National rating"
 msgstr "Nationale rating"
 
-#: templates/subscription/mailhtml.html:55
-#: templates/subscription/mailtext.html:15
-#: templates/subscription/subscriptionpage.html:439
+#: subscription/templates/subscription/mailhtml.html:55
+#: subscription/templates/subscription/subscriptionpage.html:442
 msgid "Payment"
 msgstr "Betaling"
 
-#: templates/subscription/mailhtml.html:57
+#: subscription/templates/subscription/mailhtml.html:57
 msgid ""
 "\n"
 "            The subscription fee is 35 Euro is you pay before the 1st of "
@@ -215,7 +217,7 @@ msgstr ""
 "wordt het 45 Euro.\n"
 " "
 
-#: templates/subscription/mailhtml.html:63
+#: subscription/templates/subscription/mailhtml.html:63
 msgid ""
 "\n"
 "            Pay the amount on account BE33 0017 5924 5146 with the "
@@ -227,64 +229,33 @@ msgstr ""
 "gestructureerde mededeling:\n"
 " "
 
-#: templates/subscription/mailtext.html:2
-msgid "Belgian Youth Chess Championships 2017"
-msgstr "Belgisch Jeugdkampioenschap Schalen 2018"
-
-#: templates/subscription/mailtext.html:8
-#: templates/subscription/subscriptionpage.html:118
-#: templates/subscription/subscriptionpage.html:325
-#: templates/subscription/subscriptionpage.html:327
-#: templates/subscription/subscriptionpage.html:408
-msgid "Nationality"
-msgstr "Nationaliteit"
-
-#: templates/subscription/mailtext.html:16
-msgid ""
-"\n"
-"The subscription fee is 35 Euro is you pay before the 1st of March\n"
-"2017.  After that date you wil have to pay 45 Euro.\n"
-msgstr ""
-"\n"
-"Het inschrijvingsgeld bedraagt 35 Euro indien je voor 1 maart betaalt.Nadien "
-"wordt het 45 Euro.\n"
-
-#: templates/subscription/mailtext.html:21
-msgid ""
-"\n"
-"Pay the amount on account BE33 0017 5924 5146 with the structered message:\n"
-msgstr ""
-"\n"
-"Betaal het bedrag op rekening BE33 0017 5924 5146 van Bycco met de volgende "
-"gestructureerde mededeling:\n"
-
-#: templates/subscription/participants.html:4
-#: templates/subscription/subscriptionpage.html:4
-#: templates/subscription/subscriptionpage.html:8
+#: subscription/templates/subscription/participants.html:4
+#: subscription/templates/subscription/subscriptionpage.html:4
+#: subscription/templates/subscription/subscriptionpage.html:8
 msgid "Tournament Subscriptions"
 msgstr "Inschrijvingen Toernooi"
 
-#: templates/subscription/participants.html:11
+#: subscription/templates/subscription/participants.html:11
 msgid "Participants"
 msgstr "Deelnemers"
 
-#: templates/subscription/participants.html:19
+#: subscription/templates/subscription/participants.html:19
 msgid "Girls"
 msgstr "Meisjes"
 
-#: templates/subscription/participants.html:33
+#: subscription/templates/subscription/participants.html:33
 msgid "Boys"
 msgstr "Jongens"
 
-#: templates/subscription/subscribesms.html:4
+#: subscription/templates/subscription/subscribesms.html:4
 msgid "Subscribe SMS"
 msgstr ""
 
-#: templates/subscription/subscribesms.html:10
+#: subscription/templates/subscription/subscribesms.html:10
 msgid "Pairing by SMS texting"
 msgstr ""
 
-#: templates/subscription/subscribesms.html:12
+#: subscription/templates/subscription/subscribesms.html:12
 msgid ""
 "\n"
 "     As an exclusivity, we are proud to offer you free of charge the\n"
@@ -294,7 +265,7 @@ msgid ""
 "     "
 msgstr ""
 
-#: templates/subscription/subscribesms.html:19
+#: subscription/templates/subscription/subscribesms.html:19
 msgid ""
 "\n"
 "     All you have to do, is to register your national id and and the mobile\n"
@@ -304,7 +275,7 @@ msgid ""
 "     "
 msgstr ""
 
-#: templates/subscription/subscribesms.html:27
+#: subscription/templates/subscription/subscribesms.html:27
 msgid ""
 "\n"
 "     Only 1 mobile number can be registered per player.\n"
@@ -314,50 +285,50 @@ msgid ""
 "     "
 msgstr ""
 
-#: templates/subscription/subscribesms.html:35
+#: subscription/templates/subscription/subscribesms.html:35
 msgid "Mobile number"
 msgstr "GSM nummer"
 
-#: templates/subscription/subscribesms.html:40
-#: templates/subscription/subscriptionpage.html:38
-#: templates/subscription/subscriptionpage.html:40
-#: templates/subscription/subscriptionpage.html:43
+#: subscription/templates/subscription/subscribesms.html:40
+#: subscription/templates/subscription/subscriptionpage.html:38
+#: subscription/templates/subscription/subscriptionpage.html:40
+#: subscription/templates/subscription/subscriptionpage.html:43
 msgid "ID number"
 msgstr "Stamnummer"
 
-#: templates/subscription/subscribesms.html:45
+#: subscription/templates/subscription/subscribesms.html:45
 msgid "Subscribe"
 msgstr "Inschrijven"
 
-#: templates/subscription/subscribesms.html:50
+#: subscription/templates/subscription/subscribesms.html:50
 msgid "Registration successful"
 msgstr "Inschrijving gelukt"
 
-#: templates/subscription/subscribesms.html:55
+#: subscription/templates/subscription/subscribesms.html:55
 msgid "Error"
 msgstr "Fout"
 
-#: templates/subscription/subscribesms.html:56
+#: subscription/templates/subscription/subscribesms.html:56
 msgid "Invalid country code"
 msgstr "Ongeldige landcode"
 
-#: templates/subscription/subscribesms.html:57
+#: subscription/templates/subscription/subscribesms.html:57
 msgid "Not a valid mobile number"
 msgstr "Ongeldig GSM-nummer"
 
-#: templates/subscription/subscribesms.html:58
+#: subscription/templates/subscription/subscribesms.html:58
 msgid "No participant with this national ID"
 msgstr "Geen deelnemer met dit stamnummer gevonden"
 
-#: templates/subscription/subscribesms.html:59
+#: subscription/templates/subscription/subscribesms.html:59
 msgid "This player is already registered"
 msgstr "Deze speler is reeds ingeschreven"
 
-#: templates/subscription/subscriptionpage.html:14
+#: subscription/templates/subscription/subscriptionpage.html:14
 msgid "Intro"
 msgstr "Intro"
 
-#: templates/subscription/subscriptionpage.html:15
+#: subscription/templates/subscription/subscriptionpage.html:15
 msgid ""
 "\n"
 "        You need 2 items in order to subscribe to the Belgian\n"
@@ -368,15 +339,15 @@ msgstr ""
 "Je hebt 2 zaken nodig om te schrijven voor het Belgisch jeugdkampioenschap\n"
 " "
 
-#: templates/subscription/subscriptionpage.html:20
+#: subscription/templates/subscription/subscriptionpage.html:20
 msgid "Your id number of the Royal Belgian Chess Federation"
 msgstr "Je stamnummer bij de KBSB"
 
-#: templates/subscription/subscriptionpage.html:21
+#: subscription/templates/subscription/subscriptionpage.html:21
 msgid "A photo for your badge"
 msgstr "Een foto voor je badge"
 
-#: templates/subscription/subscriptionpage.html:23
+#: subscription/templates/subscription/subscriptionpage.html:23
 msgid ""
 "\n"
 "        In case you do not have your id number of the RBCF,\n"
@@ -392,23 +363,23 @@ msgstr ""
 "enkele dagen duurt vooraleer een pas aangevraagd stamnummer gepubliceerd is\n"
 " "
 
-#: templates/subscription/subscriptionpage.html:33
-#: templates/subscription/subscriptionpage.html:88
-#: templates/subscription/subscriptionpage.html:269
-#: templates/subscription/subscriptionpage.html:319
-#: templates/subscription/subscriptionpage.html:380
+#: subscription/templates/subscription/subscriptionpage.html:33
+#: subscription/templates/subscription/subscriptionpage.html:88
+#: subscription/templates/subscription/subscriptionpage.html:269
+#: subscription/templates/subscription/subscriptionpage.html:319
+#: subscription/templates/subscription/subscriptionpage.html:383
 msgid "Continue"
 msgstr "Verder"
 
-#: templates/subscription/subscriptionpage.html:41
+#: subscription/templates/subscription/subscriptionpage.html:41
 msgid "Please provide your id number of the RBCF"
 msgstr "Gelieve je stamnummer op te geven"
 
-#: templates/subscription/subscriptionpage.html:48
+#: subscription/templates/subscription/subscriptionpage.html:48
 msgid "Lookup ID number"
 msgstr "Opzoeken stamnummer"
 
-#: templates/subscription/subscriptionpage.html:55
+#: subscription/templates/subscription/subscriptionpage.html:55
 msgid ""
 "\n"
 "        The id number could not be found.<br>\n"
@@ -422,7 +393,7 @@ msgstr ""
 "stamnummer beschibaar wordt.\n"
 " "
 
-#: templates/subscription/subscriptionpage.html:64
+#: subscription/templates/subscription/subscriptionpage.html:64
 msgid ""
 "\n"
 "        This player is already registered\n"
@@ -432,7 +403,7 @@ msgstr ""
 "Deze speler is al geregistreerd\n"
 " "
 
-#: templates/subscription/subscriptionpage.html:71
+#: subscription/templates/subscription/subscriptionpage.html:71
 msgid ""
 "\n"
 "        An unknown error occured.  Please try again.\n"
@@ -444,7 +415,7 @@ msgstr ""
 "Indien deze fout aanhoudt, gelieve de organisatie te contacteren.\n"
 " "
 
-#: templates/subscription/subscriptionpage.html:79
+#: subscription/templates/subscription/subscriptionpage.html:79
 msgid ""
 "\n"
 "         This id number does not belong to a youth player\n"
@@ -454,28 +425,35 @@ msgstr ""
 "Dit stamnummer is niet van een jeugdspeler\n"
 " "
 
-#: templates/subscription/subscriptionpage.html:84
+#: subscription/templates/subscription/subscriptionpage.html:84
 msgid "Player found:"
 msgstr "Gevonden speler:"
 
-#: templates/subscription/subscriptionpage.html:91
+#: subscription/templates/subscription/subscriptionpage.html:91
 msgid "Other player"
 msgstr "Andere speler"
 
-#: templates/subscription/subscriptionpage.html:97
+#: subscription/templates/subscription/subscriptionpage.html:97
 msgid "Details"
 msgstr ""
 
-#: templates/subscription/subscriptionpage.html:101
+#: subscription/templates/subscription/subscriptionpage.html:101
 msgid "Details player"
 msgstr "Details speler"
 
-#: templates/subscription/subscriptionpage.html:154
-#: templates/subscription/subscriptionpage.html:195
+#: subscription/templates/subscription/subscriptionpage.html:118
+#: subscription/templates/subscription/subscriptionpage.html:325
+#: subscription/templates/subscription/subscriptionpage.html:327
+#: subscription/templates/subscription/subscriptionpage.html:411
+msgid "Nationality"
+msgstr "Nationaliteit"
+
+#: subscription/templates/subscription/subscriptionpage.html:154
+#: subscription/templates/subscription/subscriptionpage.html:195
 msgid "Required information"
 msgstr "Benodigde informatie"
 
-#: templates/subscription/subscriptionpage.html:156
+#: subscription/templates/subscription/subscriptionpage.html:156
 #, python-format
 msgid ""
 "\n"
@@ -489,21 +467,21 @@ msgstr ""
 "Voor volwassenen hebben we de volgende informatie nodig.\n"
 " "
 
-#: templates/subscription/subscriptionpage.html:163
-#: templates/subscription/subscriptionpage.html:247
+#: subscription/templates/subscription/subscriptionpage.html:163
+#: subscription/templates/subscription/subscriptionpage.html:247
 msgid "Email address player"
 msgstr "E-mailadres speler"
 
-#: templates/subscription/subscriptionpage.html:167
+#: subscription/templates/subscription/subscriptionpage.html:167
 msgid "GSM number player"
 msgstr "GSM nummer speler"
 
-#: templates/subscription/subscriptionpage.html:173
-#: templates/subscription/subscriptionpage.html:239
+#: subscription/templates/subscription/subscriptionpage.html:173
+#: subscription/templates/subscription/subscriptionpage.html:239
 msgid "Optional information"
 msgstr "Optionele informatie"
 
-#: templates/subscription/subscriptionpage.html:175
+#: subscription/templates/subscription/subscriptionpage.html:175
 msgid ""
 "\n"
 "            Although optional it is recommended to provide the details of a "
@@ -515,15 +493,15 @@ msgstr ""
 "Hoewel optioneel, is het aangeraden om de details te geven van een club- of "
 "ligaverantwoordelijk die tijdens het toernooi ter plaatse is. "
 
-#: templates/subscription/subscriptionpage.html:182
+#: subscription/templates/subscription/subscriptionpage.html:182
 msgid "Fullname respresentative"
 msgstr "Volledige naam verantwoordelijke"
 
-#: templates/subscription/subscriptionpage.html:186
+#: subscription/templates/subscription/subscriptionpage.html:186
 msgid "GSM number representative"
 msgstr "GSM nummer verantwoordelijke"
 
-#: templates/subscription/subscriptionpage.html:197
+#: subscription/templates/subscription/subscriptionpage.html:197
 #, python-format
 msgid ""
 "\n"
@@ -537,32 +515,32 @@ msgstr ""
 "Voor minderjarigen hebben we de volgende informatie nodig \n"
 " "
 
-#: templates/subscription/subscriptionpage.html:204
+#: subscription/templates/subscription/subscriptionpage.html:204
 msgid "Info about parent"
 msgstr "Info ouder"
 
-#: templates/subscription/subscriptionpage.html:210
+#: subscription/templates/subscription/subscriptionpage.html:210
 msgid "Email address"
 msgstr "E-mailadres"
 
-#: templates/subscription/subscriptionpage.html:214
-#: templates/subscription/subscriptionpage.html:232
+#: subscription/templates/subscription/subscriptionpage.html:214
+#: subscription/templates/subscription/subscriptionpage.html:232
 msgid "GSM number"
 msgstr "GSM nummer"
 
-#: templates/subscription/subscriptionpage.html:219
+#: subscription/templates/subscription/subscriptionpage.html:219
 msgid "Info about presence on site"
 msgstr "Info verantwoordelijke ter plaatse"
 
-#: templates/subscription/subscriptionpage.html:222
+#: subscription/templates/subscription/subscriptionpage.html:222
 msgid "A parent is present at site"
 msgstr "Een ouder is ter plaatse aanwezig"
 
-#: templates/subscription/subscriptionpage.html:225
+#: subscription/templates/subscription/subscriptionpage.html:225
 msgid "Info about adult representative at site"
 msgstr "Info ivm. Volwassen verantwoordelijke ter plaatse"
 
-#: templates/subscription/subscriptionpage.html:241
+#: subscription/templates/subscription/subscriptionpage.html:241
 msgid ""
 "\n"
 "            The information requested below, is optional but it is highly\n"
@@ -574,7 +552,7 @@ msgstr ""
 "geven.\n"
 " "
 
-#: templates/subscription/subscriptionpage.html:254
+#: subscription/templates/subscription/subscriptionpage.html:254
 msgid ""
 "\n"
 "        One of the required fields is invalid.\n"
@@ -584,7 +562,7 @@ msgstr ""
 "Een van de verplichte velden is ongeldig\n"
 " "
 
-#: templates/subscription/subscriptionpage.html:260
+#: subscription/templates/subscription/subscriptionpage.html:260
 msgid ""
 "\n"
 "        We are experiencing authentication problems while sending the data "
@@ -601,15 +579,15 @@ msgstr ""
 "Probeer de inschrijving\n"
 "opnieuw via een rechtstreeks verbinding met het Internet "
 
-#: templates/subscription/subscriptionpage.html:275
+#: subscription/templates/subscription/subscriptionpage.html:275
 msgid "Photo"
 msgstr "Foto"
 
-#: templates/subscription/subscriptionpage.html:277
+#: subscription/templates/subscription/subscriptionpage.html:277
 msgid "Select photo"
 msgstr "Foto kiezen"
 
-#: templates/subscription/subscriptionpage.html:279
+#: subscription/templates/subscription/subscriptionpage.html:279
 msgid ""
 "\n"
 "          We need a photo to make your tournament badge.\n"
@@ -623,7 +601,7 @@ msgstr ""
 "ofwel een foto te slepen \n"
 "naar het opgegeven sleepgebied, ofwel door in het sleepgebied te klikken "
 
-#: templates/subscription/subscriptionpage.html:289
+#: subscription/templates/subscription/subscriptionpage.html:289
 msgid ""
 "\n"
 "        Photo area . Drop your photo here or click to select a photo\n"
@@ -632,11 +610,11 @@ msgstr ""
 "\n"
 "Sleepgebied. Sleep je foto naar hier of klik hier. "
 
-#: templates/subscription/subscriptionpage.html:303
+#: subscription/templates/subscription/subscriptionpage.html:303
 msgid "Resulting photo"
 msgstr "Resultaat"
 
-#: templates/subscription/subscriptionpage.html:305
+#: subscription/templates/subscription/subscriptionpage.html:305
 msgid ""
 "\n"
 "          Once the photo is selected, you can move the selector handles "
@@ -653,7 +631,7 @@ msgstr ""
 "Zorg ervoor dat het gezicht voldoende groot zichtbaar.  Wanneer de bewerkte "
 "foto OK is, klik op verder "
 
-#: templates/subscription/subscriptionpage.html:329
+#: subscription/templates/subscription/subscriptionpage.html:329
 msgid ""
 "\n"
 "          For the FIDE you are a Belgian.\n"
@@ -668,7 +646,7 @@ msgstr ""
 "WK\n"
 "kan deelnemen in het Belgische team. "
 
-#: templates/subscription/subscriptionpage.html:336
+#: subscription/templates/subscription/subscriptionpage.html:336
 msgid ""
 "\n"
 "          For the FIDE you are not a Belgian.\n"
@@ -684,7 +662,7 @@ msgstr ""
 "EK / WK\n"
 "kan deelnemen in het Belgische team. "
 
-#: templates/subscription/subscriptionpage.html:343
+#: subscription/templates/subscription/subscriptionpage.html:343
 msgid ""
 "\n"
 "          You are not affiliated to the FIDE.  Unless you contact us and\n"
@@ -702,11 +680,16 @@ msgstr ""
 "Zo kan je Belgisch kampioen worden en deelnemen aan het EK / WK in het "
 "Belgische team "
 
-#: templates/subscription/subscriptionpage.html:353
+#: subscription/templates/subscription/subscriptionpage.html:352
+#: subscription/templates/subscription/subscriptionpage.html:378
+msgid "I agree"
+msgstr "Ik ga akkoord"
+
+#: subscription/templates/subscription/subscriptionpage.html:356
 msgid "Privacy rules"
 msgstr "Privacyregels"
 
-#: templates/subscription/subscriptionpage.html:355
+#: subscription/templates/subscription/subscriptionpage.html:358
 msgid ""
 "\n"
 "          You give Bycco to right to use the personal data collected in "
@@ -752,16 +735,12 @@ msgstr ""
 "          </ul>\n"
 "        "
 
-#: templates/subscription/subscriptionpage.html:375
-msgid "I agree"
-msgstr "Ik ga akkoord"
-
-#: templates/subscription/subscriptionpage.html:386
-#: templates/subscription/subscriptionpage.html:455
+#: subscription/templates/subscription/subscriptionpage.html:389
+#: subscription/templates/subscription/subscriptionpage.html:458
 msgid "Confirm"
 msgstr "Bevestigen"
 
-#: templates/subscription/subscriptionpage.html:441
+#: subscription/templates/subscription/subscriptionpage.html:444
 msgid ""
 "\n"
 "          The subscription fee is 35 Euro is you pay before the 1st of "
@@ -774,7 +753,7 @@ msgstr ""
 "Nadien wordt\n"
 "het 45 Euro. "
 
-#: templates/subscription/subscriptionpage.html:447
+#: subscription/templates/subscription/subscriptionpage.html:450
 msgid ""
 "\n"
 "          Pay the amount on account BE33 0017 5924 5146 with the structered "
@@ -785,7 +764,7 @@ msgstr ""
 "Betaal het bedrag op rekening BE33 0017 5924 5146 van Bycco met de volgende "
 "gestructureerde mededeling: "
 
-#: templates/subscription/subscriptionpage.html:459
+#: subscription/templates/subscription/subscriptionpage.html:462
 msgid ""
 "\n"
 "      Your subscription is confirmed\n"
@@ -794,6 +773,27 @@ msgstr ""
 "\n"
 "Je inschrijving is bevestigd "
 
-#: templates/subscription/subscriptionpage.html:465
+#: subscription/templates/subscription/subscriptionpage.html:468
 msgid "New subscription"
 msgstr "Nieuwe inschrijving"
+
+#~ msgid "Belgian Youth Chess Championships 2017"
+#~ msgstr "Belgisch Jeugdkampioenschap Schalen 2018"
+
+#~ msgid ""
+#~ "\n"
+#~ "The subscription fee is 35 Euro is you pay before the 1st of March\n"
+#~ "2017.  After that date you wil have to pay 45 Euro.\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Het inschrijvingsgeld bedraagt 35 Euro indien je voor 1 maart betaalt."
+#~ "Nadien wordt het 45 Euro.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Pay the amount on account BE33 0017 5924 5146 with the structered "
+#~ "message:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Betaal het bedrag op rekening BE33 0017 5924 5146 van Bycco met de "
+#~ "volgende gestructureerde mededeling:\n"
