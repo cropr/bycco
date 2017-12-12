@@ -10,3 +10,4 @@ env/
 /frontend/npm-debug.log
 /frontend/yarn-error.log
 /frontend/src/stylus/bycco.css
+/bycco.egg-info/

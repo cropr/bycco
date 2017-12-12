@@ -1,0 +1,134 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-09 09:36+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:23
+msgid "Male"
+msgstr ""
+
+#: models.py:24
+msgid "Female"
+msgstr ""
+
+#: models.py:26
+msgid "Club id"
+msgstr ""
+
+#: models.py:27
+msgid "Fide id"
+msgstr ""
+
+#: models.py:28
+msgid "National id"
+msgstr ""
+
+#: models.py:30 templates/cdp/viewtrn.html:99
+msgid "Name"
+msgstr ""
+
+#: models.py:31
+msgid "Nationality"
+msgstr ""
+
+#: models.py:32
+msgid "Fide rating"
+msgstr ""
+
+#: models.py:53
+msgid "white"
+msgstr ""
+
+#: models.py:54
+msgid "black"
+msgstr ""
+
+#: models.py:55
+msgid "notassigned"
+msgstr ""
+
+#: templates/cdp/manageswar.html:4 templates/cdp/managetrn.html:4
+msgid "Tournament Subscriptions"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:4 templates/cdp/viewtrn.html.py:52
+msgid "Series"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:18
+msgid "Series "
+msgstr ""
+
+#: templates/cdp/viewtrn.html:34
+msgid " Go to round"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:61 templates/cdp/viewtrn.html.py:64
+msgid "Pairings"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:64 templates/cdp/viewtrn.html.py:93
+msgid "Round"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:70
+msgid "White"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:71
+msgid "Result"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:72
+msgid "Black"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:82
+msgid "No pairings available"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:90 templates/cdp/viewtrn.html.py:93
+msgid "Standings"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:100
+msgid "Points"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:101
+msgid "Rating"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:102
+msgid "Gender"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:103
+msgid "Clubname"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:104
+msgid "# Games"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:117
+msgid "No standings available"
+msgstr ""
+
+#: templates/cdp/viewtrn.html:123
+msgid "Live boards"
+msgstr ""
