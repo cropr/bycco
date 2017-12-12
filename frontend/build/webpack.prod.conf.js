@@ -51,21 +51,21 @@ const webpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: './src/img',
-        to: path.resolve(config.cms.assetsRoot, config.cms.assetsSubDirectory, "img")
+        to: path.resolve(config.prod.assetsRoot, config.cms.assetsSubDirectory, "img")
       },
       {
         from: './src/stylus/bycco.css',
-        to: path.resolve(config.cms.assetsRoot, config.cms.assetsSubDirectory,
+        to: path.resolve(config.prod.assetsRoot, config.cms.assetsSubDirectory,
           "css", "bycco.css")
       },
       {
         from: './node_modules/angular-material/angular-material.min.css',
-        to: path.resolve(config.cms.assetsRoot, config.cms.assetsSubDirectory,
+        to: path.resolve(config.prod.assetsRoot, config.cms.assetsSubDirectory,
           "css", "angular-material.css")
       },
       {
         from: './node_modules/ui-cropper/compile/minified/ui-cropper.css',
-        to: path.resolve(config.cms.assetsRoot, config.cms.assetsSubDirectory,
+        to: path.resolve(config.prod.assetsRoot, config.cms.assetsSubDirectory,
           "css", "ui-cropper.css")
       },
     ]),
