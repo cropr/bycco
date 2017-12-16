@@ -1,7 +1,9 @@
 v 0.3.1
 -------
 bugs subscription solved:
- - player older than 20
+ - player older than 20 check
+ - reset all fileds when changing player
+
 
 v 0.3.0
 -------

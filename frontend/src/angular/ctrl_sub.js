@@ -132,6 +132,13 @@ angular.module('subscription', [
       this.currentratingbel = 0;
       this.currentratingfide = 0;
       this.adult =  false;
+      this.emailplayer = '';
+      this.mobileplayer = '';
+      this.fullnameparent = '';
+      this.emailparent = '';
+      this.mobileparent = '';
+      this.fullnameattendant = '';
+      this.mobilemobileattendant = '';
       this.firewall = false;
       this.privacy = false;
       this.nationagree = false;
