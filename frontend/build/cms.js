@@ -29,10 +29,7 @@ rm(path.join(config.prod.assetsRoot, config.prod.assetsSubDirectory), err => {
       process.exit(1)
     }
 
-    console.log(chalk.cyan('  Build complete.\n'));
-    console.log(chalk.yellow(
-      '  Tip: built files are meant to be served over an HTTP server.\n' +
-      '  Opening index.html over file:// won\'t work.\n'
-    ))
+    console.log(chalk.cyan('  Build complete. ' + new Date() + '\n'));
+
   })
 });

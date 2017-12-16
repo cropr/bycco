@@ -1,3 +1,12 @@
+v 0.3.1
+-------
+bugs subscription solved:
+ - player older than 20
+
+v 0.3.0
+-------
+subscriptions committed for field test
+
 v 0.2.2
 -------
 update navigation colors

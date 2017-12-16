@@ -62,6 +62,13 @@ angular.module('subscription', [
             this.found = false;
             return;
           }
+          let db = new Date(player.birthdate);
+          console.log('player birthdate', db);
+          if (db.getFullYear() < 1998) {
+            this.errorcode = 'playeradult';
+            this.found = false;
+            return;
+          }
           this.setPlayer(player);
           if (player.idfide && player.idfide.length) {
             api('searchIdFide', {idfide:player.idfide}).then(

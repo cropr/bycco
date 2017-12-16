@@ -58,6 +58,13 @@
         requested id-number is available.
       {% endblocktrans %}
     </div>
+    <div ng-show="sub.errorcode=='playeradult'"
+         md-colors="{background: 'warn'}"
+         class="cardbox md-whiteframe-3dp">
+      {% blocktrans %}
+        The id number is not belonging to a youth player.
+      {% endblocktrans %}
+    </div>
     <div ng-show="sub.errorcode=='alreadyregistered'"
          md-colors="{background: 'warn'}"
          class="cardbox md-whiteframe-3dp">
