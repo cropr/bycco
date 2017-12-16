@@ -30,6 +30,12 @@
                 <div class="phtop">
                     {% trans "FIDE Nationality" %}: {{sub.nationalityfide}}
                 </div>
+                <div class="phtop">
+                  <span>{% trans "Can become Belgian champion" %}</span>:
+                  {% if sub.natstatus == 'fidebelg' %}{%  trans "Yes" %}{%  endif %}
+                  {% if sub.natstatus == 'nobelg' %}{%  trans "No" %}{%  endif %}
+                  {% if sub.natstatus == 'maybe' %}{%  trans "To be confirmed" %}{%  endif %}
+                </div>
             </td>
             <td width="35%" >
                 <div class="phtop">
@@ -67,4 +73,5 @@
     <div class="pftop"></div>
 </div>
 <br><br>
-The BYCCO team
+The Bycco team
+Natstatus: <span ng-bind="sub.natstatus"></span>

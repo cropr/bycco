@@ -27,12 +27,17 @@ def sendconfirmationmail(s):
         'birthdate': s.birthdate.strftime("%d/%m/%Y"),
         'idclub': s.idclub,
         'nationalityfide': s.nationalityfide,
+        'natstatus': 'maybe',
         'ratingbel': s.ratingbel,
         'ratingfide': s.ratingfide,
         'gender': s.gender,
         'category': s.category,
         'paymessage': s.paymessage,
     }
+    if s.nationalityfide == 'BEL':
+        sub['natstatus'] = 'fidebelg'
+    elif s.nationalityfide and len(s.nationalityfide) > 1:
+        sub['natstatus'] = 'nobelg'
     context = Context({'sub':sub})
 
     # make root object of message
