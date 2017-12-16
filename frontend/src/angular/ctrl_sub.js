@@ -88,23 +88,22 @@ angular.module('subscription', [
       );
     },
     createSubscription: function(){
-      let requiredmissing = false;
+      let rm = false;
       if (!this.adult) {
-        if (invalidField(this.fullnameparent)) requiredmissing = true;
-        if (invalidField(this.emailparent)) requiredmissing = true;
-        if (invalidField(this.mobileparent)) requiredmissing = true;
+        rm = rm || invalidField(this.fullnameparent);
+        rm = rm || invalidField(this.emailparent);
+        rm = rm || invalidField(this.mobileparent);
         if (!$scope.parentispresent) {
-          if (invalidField(this.fullnameattendant)) requiredmissing = true;
-          if (invalidField(this.mobileattendant)) requiredmissing = true;
+          rm = rm || invalidField(this.fullnameattendant);
+          rm = rm || invalidField(this.mobileattendant);
         }
       }
       else {
-        if (invalidField(this.emailplayer)) requiredmissing = true;
-        if (invalidField(this.mobileplayer)) requiredmissing = true;
+        rm = rm || invalidField(this.emailplayer);
+        rm = rm || invalidField(this.mobileplayer);
       }
-      if (requiredmissing) {
-        console.log('required missing');
-        $scope.requiredmissing = true;
+      if (rm) {
+        this.errorcode = 'invalidfield';
         return;
       }
       this.setSubparam();
@@ -116,9 +115,7 @@ angular.module('subscription', [
         }).bind(this),
         (function(data) {
           console.error('subscription failed', data);
-          if (data == 403) {
-            this.firewall = true;
-          }
+          this.errorcode = (data == 403) ? 'firewall' : 'unknown';
         }).bind(this)
       );
     },
@@ -145,7 +142,7 @@ angular.module('subscription', [
       subparam = {};
     },
     confirm: function(){
-      this.errocode = null;
+      this.errorcode = null;
       api('confirmSubscription',{
         idsub: this.idsub
       }).then(
@@ -164,6 +161,7 @@ angular.module('subscription', [
     gotoTab: function(ix) {
       this.tabix = ix;
       this.max_tabix = Math.max(this.max_tabix, ix);
+      this.errorcode = null;
     },
     init: function(){
       this.max_tabix = 0;
@@ -234,7 +232,7 @@ angular.module('subscription', [
       };
     },
     uploadPhoto: function(){
-      this.errocode = null;
+      this.errorcode = null;
       if (!$scope.photo.cropresult || !$scope.photo.cropresult.length) {
         this.gotoTab(4);
         return;

@@ -253,23 +253,36 @@
         <md-input-container>
           <label>{% trans "Email address player" %}</label>
           <input ng-model="sub.emailplayer" type="email">
-        </md-input-container>
+        </md-input-container> `1
       </div>
     </div>
 
-    <div class="phtop phtop md-warn md-whiteframe-3dp" ng-show="requiredmissing">
+    <div ng-show="sub.errorcode=='invalidfield'"
+         md-colors="{background: 'warn'}"
+         class="cardbox md-whiteframe-3dp">
       {% blocktrans %}
         One of the required fields is invalid.
       {% endblocktrans %}
     </div>
 
-    <div class="phtop phtop md-warn md-whiteframe-3dp" ng-show="sub.firewall">
+    <div ng-show="sub.errorcode=='firewall'"
+         md-colors="{background: 'warn'}"
+         class="cardbox md-whiteframe-3dp">
       {% blocktrans %}
         We are experiencing authentication problems while sending the data to
         the server.  Probably you are behind a firewall that blocks the traffic.
         Try again using a direct connection to the Internet.
       {% endblocktrans %}
     </div>
+    <div ng-show="sub.errorcode=='unknown'"
+         md-colors="{background: 'warn'}"
+         class="cardbox md-whiteframe-3dp">
+      {% blocktrans %}
+        An unknown error occured.  Please try again.
+        If the error persists, please contact the organizers
+      {% endblocktrans %}
+    </div>
+
 
     <div class="pftop pbtop">
       <md-button ng-click="sub.createSubscription()" class="md-raised md-primary">
