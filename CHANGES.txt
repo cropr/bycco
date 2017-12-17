@@ -1,3 +1,12 @@
+v 0.3.4
+-------
+ - subscription: made input fields column wide
+ - added 15 mmarch for non fide id players
+
+v 0.3.3
+-------
+added cc mail address ruben@decrop.net
+
 v 0.3.2
 -------
 bugs subscription solved:

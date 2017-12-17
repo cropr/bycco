@@ -12,7 +12,7 @@ requires = []
 
 setup(
     name='bycco',
-    version='0.3.2',
+    version='0.3.4',
     description='Belgian Youtth Chess Championshops 2018',
     long_description=README + '\n\n' + CHANGES,
     classifiers=[
