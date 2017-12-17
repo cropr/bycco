@@ -14,7 +14,7 @@ from django.conf import settings
 import smtplib
 
 mailfrom = 'info@bycco.be'
-mailcc = ['luc.cornet@telenet.be']
+mailcc = ['luc.cornet@telenet.be', 'ruben@decrop.net']
 
 def sendconfirmationmail(s):
     """
