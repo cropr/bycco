@@ -1,4 +1,4 @@
-v 0.3.1
+v 0.3.2
 -------
 bugs subscription solved:
  - player older than 20 check
@@ -8,10 +8,13 @@ bugs subscription solved:
  - translation improvements nl, fr
  - added champion status in confirmation
 
+v 0.3.1
+-------
+subscriptions committed for field test
 
 v 0.3.0
 -------
-subscriptions committed for field test
+updated reservations
 
 v 0.2.2
 -------
