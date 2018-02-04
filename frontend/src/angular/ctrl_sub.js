@@ -63,7 +63,6 @@ angular.module('subscription', [
             return;
           }
           let db = new Date(player.birthdate);
-          console.log('player birthdate', db);
           if (db.getFullYear() < 1998) {
             this.errorcode = 'playeradult';
             this.found = false;

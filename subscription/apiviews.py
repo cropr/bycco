@@ -16,6 +16,18 @@ from .serializers import SubscriptionSerializer
 
 from .mail import sendconfirmationmail
 
+def to_int(s, default):
+    """
+    convert s to integer , returning default if failing
+    :param s: str
+    :param default: int
+    :return: an int
+    """
+    try:
+        return int(s)
+    except:
+        return default
+
 class ImageRenderer(BaseRenderer):
     media_type = 'image/*'
     format = 'jpg'
@@ -233,116 +245,131 @@ def participants(request, cat):
 @api_view(['GET', 'POST'])
 def mgmtattendees(request):
 
-    pass
 
-    # if request.method == 'GET':
-    #     param = request.GET
-    #     start = to_int(param.get('start'), 0)
-    #     count = to_int(param.get('count'), 40)
-    #     query = Subscription.objects.all()
-    #     cat = param.get('cat')
-    #     if cat:
-    #         query = query.filter(category=cat)
-    #     ss = param.get('ss')
-    #     if ss:
-    #         query = query.filter(name__icontains=ss)
-    #     n_attendees = query.count()
-    #     query = query.order_by('name')[start:start+count]
-    #     result = {
-    #         'ss': ss,
-    #         'cat': cat,
-    #         'start': start,
-    #         'count': count,
-    #         'n_attendees': n_attendees,
-    #         'attendees': [{
-    #                 'id': p.id,
-    #                 'category': p.category,
-    #                 'name': p.name,
-    #                 'firstname': p.firstname,
-    #                 'rating': p.rating,
-    #                 'id_national': p.id_national,
-    #                 'id_club': p.id_club,
-    #                 'fidenation': p.fidenation,
-    #                 'confirmed': p.confirmed,
-    #                 'meals': p.custom1,
-    #                 'present': p.custom2,
-    #                 'payamount': p.payamount,
-    #             } for p in query]
-    #     }
-    #     return Response(result)
-    #
-    # if request.method == 'POST':
-    #     ss = request.data
-    #     try:
-    #         cs = Subscription()
-    #         cs.category = ss.get('category')
-    #         cs.chesstitle = ss.get('chesstitle')
-    #         cs.firstname = ss.get('firstname')
-    #         cs.gender = ss.get('gender')
-    #         cs.id_national = '0'
-    #         cs.locale = request.LANGUAGE_CODE.lower()[:2]
-    #         cs.name = ss.get('name')
-    #         cs.custom1 = ss.get('meals')
-    #         cs.custom2 = ss.get('present')
-    #         cs.save()
-    #         cs.id_national = str(int(cs.pk) + 100000)
-    #         cs.save()
-    #         return Response(dict(id_national=cs.id_national),
-    #                         status=status.HTTP_201_CREATED)
-    #     except Exception as e:
-    #         return Response(e, status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'GET':
+        param = request.GET
+        start = to_int(param.get('start'), 0)
+        count = to_int(param.get('count'), 40)
+        query = Subscription.objects.all()
+        cat = param.get('cat')
+        if cat:
+            query = query.filter(category=cat)
+        ss = param.get('ss')
+        if ss:
+            query = query.filter(last_name__icontains=ss)
+        n_attendees = query.count()
+        query = query.order_by('last_name')[start:start+count]
+        result = {
+            'ss': ss,
+            'cat': cat,
+            'start': start,
+            'count': count,
+            'n_attendees': n_attendees,
+            'attendees': [{
+                    'id': p.id,
+                    'category': p.category,
+                    'last_name': p.last_name,
+                    'first_name': p.first_name,
+                    'rating': p.rating,
+                    'idbel': p.idbel,
+                    'idclub': p.idclub,
+                    'nationalityfide': p.nationalityfide,
+                    'confirmed': p.confirmed,
+                    'meals': p.custom1,
+                    'present': p.custom2,
+                    'payamount': p.payamount,
+                } for p in query]
+        }
+        log.info('result: %s', result)
+        return Response(result)
+
+    if request.method == 'POST':
+        ss = request.data
+        try:
+            cs = Subscription()
+            cs.category = ss.get('category')
+            cs.chesstitle = ss.get('chesstitle')
+            cs.firstname = ss.get('first_name')
+            cs.gender = ss.get('gender')
+            cs.id_national = '0'
+            cs.locale = request.LANGUAGE_CODE.lower()[:2]
+            cs.name = ss.get('name')
+            cs.custom1 = ss.get('meals')
+            cs.custom2 = ss.get('present')
+            cs.save()
+            cs.id_national = str(int(cs.pk) + 100000)
+            cs.save()
+            return Response(dict(id_national=cs.id_national),
+                            status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response(e, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def mgmtattendee_detail(request, id):
 
-    pass
+    try:
+        p = Subscription.objects.get(idbel=id)
+    except Subscription.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
-    # try:
-    #     p = Subscription.objects.get(id_national=id)
-    # except Subscription.DoesNotExist:
-    #     return Response(status=status.HTTP_404_NOT_FOUND)
-    #
-    # if request.method == 'GET':
-    #     attendee = {
-    #         'id': p.id,
-    #         'category': p.category,
-    #         'name': p.name,
-    #         'firstname': p.firstname,
-    #         'gender': p.gender,
-    #         'rating': p.rating,
-    #         'id_national': p.id_national,
-    #         'id_club': p.id_club,
-    #         'fidenation': p.fidenation,
-    #         'confirmed': p.confirmed,
-    #         'meals': p.custom1,
-    #         'present': p.custom2,
-    #         'payamount': p.payamount,
-    #     }
-    #     return Response(dict(attendee=attendee))
-    #
-    # if request.method == 'PUT':
-    #     data = request.data
-    #     p.name = data.get('name')
-    #     p.firstname = data.get('firstname')
-    #     p.chesstitle = data.get('chesstitle','')
-    #     p.category = data.get('category')
-    #     p.custom1 = data.get('meals')
-    #     p.custom2 = data.get('present')
-    #     p.gender = data.get('gender')
-    #     p.payamount = int(data.get('payamount', 0))
-    #     try:
-    #         p.save()
-    #         return Response(dict(id_national=p.id_national),
-    #                         status=status.HTTP_200_OK)
-    #     except Exception as e:
-    #         return Response(e, status=status.HTTP_406_NOT_ACCEPTABLE)
-    #
-    # if request.method == 'DELETE':
-    #     try:
-    #         p.delete()
-    #         return Response(status=status.HTTP_204_NO_CONTENT)
-    #     except Exception as e:
-    #         return Response(e, status=status.HTTP_406_NOT_ACCEPTABLE)
+    if request.method == 'GET':
+        attendee = {
+            'id': p.id,
+            'birthdate': p.birthdate.isoformat() if p.birthdate else '',
+            'category': p.category,
+            'confirmed': p.confirmed,
+            'emailparent': p.emailparent,
+            'emailplayer': p.emailparent,
+            'federation': p.federation,
+            'first_name': p.first_name,
+            'fullnameattendant': p.fullnameattendant,
+            'fullnameparent': p.fullnameparent,
+            'gender': p.gender,
+            'idclub': p.idclub,
+            'idbel': p.idbel,
+            'idfide': p.idfide,
+            'last_name': p.last_name,
+            'locale': p.locale,
+            'meals': p.custom1,
+            'mobileattendant': p.mobileattendant,
+            'mobileparent': p.mobileparent,
+            'mobileplayer': p.mobileplayer,
+            'nationalitybel': p.nationalitybel,
+            'nationalityfide': p.nationalityfide,
+            'present': p.custom2 == 'Y',
+            'payamount': p.payamount,
+            'paydate': p.paydate.isoformat() if p.paydate else '',
+            'paymessage': p.paymessage,
+            'rating': p.rating,
+            'ratingbel': p.ratingbel,
+            'ratingfide': p.ratingfide,
+            'remarks': p.custom3,
+        }
+        return Response(dict(attendee=attendee))
+
+    if request.method == 'PUT':
+        data = request.data
+        p.name = data.get('name')
+        p.firstname = data.get('firstname')
+        p.chesstitle = data.get('chesstitle','')
+        p.category = data.get('category')
+        p.custom1 = data.get('meals')
+        p.custom2 = data.get('present')
+        p.gender = data.get('gender')
+        p.payamount = int(data.get('payamount', 0))
+        try:
+            p.save()
+            return Response(dict(id_national=p.id_national),
+                            status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(e, status=status.HTTP_406_NOT_ACCEPTABLE)
+
+    if request.method == 'DELETE':
+        try:
+            p.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            return Response(e, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 @api_view(['GET', 'POST'])
 def mgmtattendee_photo(request, id):

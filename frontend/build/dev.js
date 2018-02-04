@@ -1,20 +1,16 @@
 'use strict';
 
-require('./check-versions')();
-
-process.env.NODE_ENV = 'cms';
-
-const rm = require('rimraf');
 const path = require('path');
+const rm = require('rimraf');
 const chalk = require('chalk');
 const webpack = require('webpack');
-const config = require('../config/index');
-const webpackConfig = require('./webpack.cms.conf');
+const config = require('../config/dev');
 
+console.log('building dev version');
 
-rm(path.join(config.prod.assetsRoot, config.prod.assetsSubDirectory), err => {
+rm(path.join(config.assetsRoot, config.assetsSubDirectory), err => {
   if (err) throw err;
-  webpack(webpackConfig, function (err, stats) {
+  webpack(config.webpackconfig, function (err, stats) {
     if (err) throw err;
     process.stdout.write(stats.toString({
       colors: true,
@@ -22,14 +18,14 @@ rm(path.join(config.prod.assetsRoot, config.prod.assetsSubDirectory), err => {
       children: false,
       chunks: false,
       chunkModules: false
-    }) + '\n\n');
+    }) + '\n');
 
     if (stats.hasErrors()) {
       console.log(chalk.red('  Build failed with errors.\n'));
       process.exit(1)
     }
 
-    console.log(chalk.cyan('  Build complete. ' + new Date() + '\n'));
+    console.log(chalk.cyan('  Build complete. ' + new Date() ));
 
   })
 });

@@ -39,7 +39,7 @@ if (!Object.assign) location.href = '/browsernotsupported';
       </div>
       <v-list dark dense class="cyan darken-1">
         {% show_menu 0 100 100 100 %}
-                <v-list-group >
+        <v-list-group >
           <v-list-tile slot="item" @click="">
             <v-list-tile-content>
               {% trans "Categories" %}
@@ -78,6 +78,24 @@ if (!Object.assign) location.href = '/browsernotsupported';
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+      <v-divider></v-divider>
+      {% if request.user.is_authenticated %}
+      <v-list dark dense class="cyan darken-1">
+        <v-list-group>
+          <v-list-tile slot="item" @click="">
+            <v-list-tile-content>Admin</v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>keyboard_arrow_down</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+          <v-list-tile href="/subscribe/attendee">
+            <v-list-tile-content>
+              <v-list-tile-title>Participants</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
+      </v-list>
+      {% endif %}
     </v-navigation-drawer>
 
     <v-toolbar v-cloak fixed dark app

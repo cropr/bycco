@@ -8,7 +8,7 @@ urlpatterns = [
 
     url(r'^$', subscriptionpage),
     url(r'^participants$', participantspage),
-    url(r'^attendee$', mgmtattendeepage),
+    url(r'^attendee$', mg_attendee_page),
     url(r'^csv$', csvparticipants),
     url(r'^sms$', smspage),
     url(r'^printbadges$', printbadges),

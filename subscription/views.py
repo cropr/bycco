@@ -16,8 +16,8 @@ def subscriptionpage(request):
 def participantspage(request):
     return render(request, 'subscription/participants.html')
 
-def mgmtattendeepage(request):
-    return render(request, 'subscription/mgmtattendee.html')
+def mg_attendee_page(request):
+    return render(request, 'subscription/mg_attendee.html')
 
 def printbadges(request):
     """
@@ -271,27 +271,26 @@ def csvparticipants(request):
         'emailparent',
         'emailplayer',
         'federation',
-        'fidenation',
-        'fiderating',
-        'firstname',
+        'first_name',
         'fullnameattendant',
         'fullnameparent',
         'gender',
-        'id_club',
-        'id_fide',
-        'id_national',
+        'idbel',
+        'idclub',
+        'idfide',
+        'last_name',
         'locale',
         'mobileattendant',
         'mobileparent',
         'mobileplayer',
-        'name',
-        'nationality',
-        'natrating',
+        'nationalitybel',
+        'nationalityfide',
         'payamount',
         'paydate',
         'paymessage',
         'rating',
-        'remarks',
+        'ratingbel',
+        'ratingfide',
         'custom1',
         'custom2',
         'custom3',

@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "non-cms.html" %}
 {% load cms_tags i18n sekizai_tags staticfiles %}
 
-{% block title %}Manage Persons{% endblock title %}
+{% block title %}Manage Participants{% endblock title %}
 
 {% block content %}
 
-<div ng-app="mgmtattendee" ng-controller="mgmtAttendeeCtrl" class="container">
+<div ng-app="mg_attendee" ng-controller="mgAttendeeCtrl" class="container">
 
 <h1>Manage Attendees</h1>
 
@@ -22,7 +22,7 @@
         <md-input-container flex>
           <label>Category</label>
           <md-select ng-model="att.cat">
-            <md-option></md-option>
+            <md-option value="">All players</md-option>
             <md-option value="B8">B8</md-option>
             <md-option value="G8">G8</md-option>
             <md-option value="B10">B10</md-option>
@@ -51,6 +51,9 @@
                      ng-hide="att.status">
             Add
           </md-button>
+          <md-button class="md-primary md-raised" href="/subscribe/csv">
+            CSV
+          </md-button>
         </div>
       </div>
       <div  class="cardbox md-whiteframe-4dp" ng-show="att.show_add()">
@@ -59,11 +62,11 @@
           <div flex layout="column">
             <md-input-container flex>
               <label>Name</label>
-              <input ng-model="attendee.name" type="text">
+              <input ng-model="attendee.last_name" type="text">
             </md-input-container>
             <md-input-container flex>
               <label>First Name</label>
-              <input ng-model="attendee.firstname" type="text">
+              <input ng-model="attendee.first_name" type="text">
             </md-input-container>
             <md-input-container flex>
               <label>Chesstitle</label>
@@ -156,11 +159,11 @@
           <div flex layout="column">
             <md-input-container flex>
               <label>Name</label>
-              <input ng-model="attendee.name" type="text">
+              <input ng-model="attendee.last_name" type="text">
             </md-input-container>
             <md-input-container flex>
               <label>First Name</label>
-              <input ng-model="attendee.firstname" type="text">
+              <input ng-model="attendee.first_name" type="text">
             </md-input-container>
             <md-input-container flex>
               <label>Chesstitle</label>
@@ -282,16 +285,16 @@
               <td><img width=50
                        ng-src="{% templatetag openvariable %}photourl(p){% templatetag closevariable %}">
               </td>
-              <td ng-bind="p.firstname"></td>
-              <td ng-bind="p.name"></td>
+              <td ng-bind="p.first_name"></td>
+              <td ng-bind="p.last_name"></td>
               <td ng-bind="p.category"></td>
               <td ng-bind="p.present"></td>
               <td ng-bind="p.payamount"></td>
               <td>
-                <span class="fa fa-2x fa-pencil" ng-click="att.open_edit(p)"></span>&nbsp;&nbsp;
-                <span class="fa fa-2x fa-photo" ng-click="att.open_photo(p)"></span>
-                <span class="fa fa-2x fa-id-badge" ng-click="att.add_badge(p)"></span>&nbsp;&nbsp;
-                <span class="fa fa-2x fa-id-card" ng-click="att.add_card(p)"></span>&nbsp;&nbsp;
+                <md-icon ng-click="att.open_edit(p)">edit</md-icon>&nbsp;&nbsp;
+                <md-icon ng-click="att.open_photo(p)">photo</md-icon>
+                <md-icon ng-click="att.add_badge(p)">assignment_ind</md-icon>&nbsp;&nbsp;
+                <md-icon ng-click="att.add_card(p)">local_offer</md-icon>
               </td>
             </tr>
           </table>
@@ -437,15 +440,9 @@
 <link href="{% static 'css/angular-material.css' %}" rel="stylesheet">
 {% endaddtoblock %}
 
-{% addtoblock "js" %}
-<script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-animate/angular-animate.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-aria/angular-aria.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-sanitize/angular-sanitize.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-material/angular-material.min.js' %}"></script>
-<script src="{% static 'bower_components/ng-file-upload/ng-file-upload.js' %}"></script>
-<script src="{% static 'bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.js' %}"></script>
-<script src="{% static 'js/mgmtattendee.js' %}" type="application/javascript"></script>
-{% endaddtoblock %}
+{% block jsapplication %}
+  <script src="{% static 'mg_attendee.js' %}" ></script>
+{% endblock jsapplication %}
+
 
 {% endblock content %}

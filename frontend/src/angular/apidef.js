@@ -7,6 +7,36 @@ angular.module('api')
     base_url : '/api',
     schema: {
       // per api call define the required parameters per type
+      getAttendees: {
+        method: 'GET',
+        url: '/attendees',
+        body: ['query'],
+        required: [],
+      },
+      addAttendee: {
+        method: 'POST',
+        url: '/attendees',
+        body: ['attendee'],
+        required: ['attendee'],
+      },
+      getAttendee: {
+        method: 'GET',
+        url: '/attendees/{idattendee}',
+        path: ['idattendee'],
+        required: ['idattendee'],
+      },
+      deleteAttendee: {
+        method: 'DELETE',
+        url: '/attendees/{idattendee}',
+        path: ['idattendee'],
+        required: ['idattendee'],
+      },
+      updateAttendee: {
+        method: 'PUT',
+        url: '/attendees/{idattendee}',
+        body: ['attendee'],
+        required: ['attendee', 'idattendee'],
+      },
       searchIdNational: {
         method: 'GET',
         url: '/belplayer/{idbel}',

@@ -1,18 +1,12 @@
 import os
-from YamJam import yamjam
 
 gettext = lambda s: s
-_ = lambda s:s
-cfg = yamjam().get('bycco') or {}
 
-
-ALLOWED_HOSTS = cfg.get('allowed_hosts', ['*'])
+ALLOWED_HOSTS = ['*']
 
 APPEND_SLASH = False
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-CHESSAPI_URL = cfg.get('chessapi_url', 'http://localhost:8001/')
 
 CKEDITOR_SETTINGS = {
     'stylesSet': [
@@ -72,22 +66,10 @@ CMS_PLACEHOLDER_CONF = {}
 
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
-dbcfg = cfg.get('db') or {}
-DATABASES = {
-    'default': {
-        'ENGINE': dbcfg.get('engine',  'django.db.backends.postgresql_psycopg2'),
-        'HOST': dbcfg.get('host', 'localhost'),
-        'NAME': 'bycco',
-        'PASSWORD': dbcfg.get('password'),
-        'PORT': dbcfg.get('port', ''),
-        'USER': dbcfg.get('user'),
-    },
-}
+DEBUG = True
 
-DEBUG = cfg.get('debug', True)
-
-EMAIL_HOST = cfg.get('email_host', 'localhost')
-EMAIL_PORT = cfg.get('email_port', 1025)
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
 
 INSTALLED_APPS = (
     'djangocms_admin_style',
@@ -153,7 +135,7 @@ LOGGING = {
 }
 
 
-MEDIA_ROOT = cfg.get('media_root', os.path.join(DATA_DIR, 'media'))
+MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 MEDIA_URL = '/media/'
 
 META_SITE_PROTOCOL = 'https'
@@ -201,10 +183,9 @@ SECRET_KEY = 'kustabitjevierkantigmekloten'
 
 SITE_ID = 1
 
-STATIC_ROOT = cfg.get('static_root')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    cfg.get('staticfiles_rdir', os.path.join(BASE_DIR, 'fe_cms', 'static')),
+    os.path.join(BASE_DIR, 'fe_dist', 'static'),
 )
 
 TEMPLATES = [
@@ -250,3 +231,9 @@ USE_L10N = True
 USE_TZ = True
 
 WSGI_APPLICATION = 'bycco.wsgi.application'
+
+try:
+    from local_settings import *
+except ImportError:
+    print('No local settings found')
+    pass

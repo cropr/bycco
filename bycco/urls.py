@@ -24,6 +24,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^subscribe', include(subscription.urls)),
+    url(r'^subscribe/', include(subscription.urls)),
     # next url pattern has a negative lookahead pattern
     # to avoid redirecting 404s in /api/* to /{locale}/api/*
     url(r'^(?!api)', include('cms.urls')),

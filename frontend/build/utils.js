@@ -1,32 +1,15 @@
 'use strict';
 
 const path = require('path');
-const config = require('../config/index');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-exports.assetsPath = function (_path) {
-  let ad;
-  switch (process.env.NODE_ENV) {
-    case 'production':
-      ad = config.prod.assetsSubDirectory;
-      break;
-    case 'cms':
-      ad = config.cms.assetsSubDirectory;
-      break;
-    default:
-      ad = config.dev.assetsSubDirectory;
-      break;
-  }
-  return path.posix.join(ad, _path);
-};
-
-exports.cssLoaders = function (options) {
+exports.cssLoaders = function(options) {
   options = options || {};
 
   const cssLoader = {
     loader: 'css-loader',
     options: {
-      minimize: process.env.NODE_ENV === 'production',
+      minimize: options.minimize,
       sourceMap: options.sourceMap
     }
   };
@@ -67,16 +50,6 @@ exports.cssLoaders = function (options) {
   }
 };
 
-// Generate loaders for standalone style files (outside of .vue)
-exports.styleLoaders = function (options) {
-  const output = [];
-  const loaders = exports.cssLoaders(options);
-  for (const extension in loaders) {
-    const loader = loaders[extension];
-    output.push({
-      test: new RegExp('\\.' + extension + '$'),
-      use: loader
-    })
-  }
-  return output
+exports.resolve = function(dir) {
+  return path.join(__dirname, '..', dir)
 };

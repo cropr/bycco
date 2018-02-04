@@ -1,8 +1,5 @@
-__pycache__/
-fe_cms/
-fe_prod/
+fe_dist/
 frontend/node_modules/
-dist/
 *.mo
 env/
 .idea
@@ -11,3 +8,4 @@ env/
 /frontend/yarn-error.log
 /frontend/src/stylus/bycco.css
 /bycco.egg-info/
+/local_settings.py

@@ -15,8 +15,8 @@ urlpatterns = [
         apiviews.subscription_confirmation),
     # url(r'/detail/(?P<pk>[0-9]+)/$', subscription_detail),
     # url(r'/participants/(?P<cat>.+)$', participants),
-    # url(r'/attendee$', mgmtattendees),
-    # url(r'/attendee/(?P<id>[0-9]+)$', mgmtattendee_detail),
-    # url(r'/attendee/(?P<id>[0-9]+)/photo$', mgmtattendee_photo),
+    url(r'attendees$', apiviews.mgmtattendees),
+    url(r'attendees/(?P<id>\w+)$', apiviews.mgmtattendee_detail),
+    # url(r'attendees/(?P<id>[0-9]+)/photo$', mgmtattendee_photo),
 ]
 
