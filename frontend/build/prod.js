@@ -8,7 +8,7 @@ const config = require('../config/prod');
 
 console.log('building prod version');
 
-rm(path.join(config.prod.assetsRoot, config.assetsSubDirectory), err => {
+rm(path.join(config.assetsRoot, config.assetsSubDirectory), err => {
   if (err) throw err;
   webpack(config.webpackconfg, function (err, stats) {
     if (err) throw err;
