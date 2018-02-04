@@ -1,7 +1,7 @@
 fe_dist/
 frontend/node_modules/
 *.mo
-env/
+venv/
 .idea
 *.css.map
 /frontend/npm-debug.log
@@ -9,3 +9,5 @@ env/
 /frontend/src/stylus/bycco.css
 /bycco.egg-info/
 /local_settings.py
+*.pyc
+/dist
