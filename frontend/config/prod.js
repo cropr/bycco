@@ -2,6 +2,7 @@
 
 const path = require('path');
 const utils = require('../build/utils');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const root = path.resolve(__dirname, '../../fe_dist');
 const staticpath = 'static';
@@ -9,15 +10,28 @@ const staticpath = 'static';
 module.exports = {
   assetsRoot: root ,
   assetsSubDirectory: staticpath,
-  assetsPublicPath: '/',
-  productionGzip: false,
-  productionGzipExtensions: ['js', 'css'],
-
+  proxyTable: {},
+  // assetsPublicPath: '/',
+  // productionGzip: false,
+  // productionGzipExtensions: ['js', 'css'],
   webpackconfg: {
     entry: {
       cms: './src/cms.js',
       subscription: './src/subscription.js',
       mg_attendee: './src/mg_attendee.js',
+    },
+    output: {
+      path: path.resolve(root, staticpath),
+      filename: '[name].js',
+      publicPath: '/'
+    },
+    devtool: '#cheap-module-eval-source-map',
+    resolve: {
+      extensions: ['.js', '.vue', '.json'],
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+        '@': utils.resolve('src'),
+      }
     },
     module: {
       rules: [{
@@ -43,10 +57,6 @@ module.exports = {
           include: [utils.resolve('src')]
         }
       ]
-    },
-    devtool: config.productionSourceMap ,
-    output: {
-      path: path.resolve(root, staticpath)
     },
     plugins: [
       new CopyWebpackPlugin([
