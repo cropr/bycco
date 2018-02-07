@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
+import './stylus/bycco.styl';
 
 Vue.use(Vuetify);
 

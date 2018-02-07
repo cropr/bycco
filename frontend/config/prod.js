@@ -55,6 +55,10 @@ module.exports = {
           test: /\.js$/,
           loader: 'babel-loader',
           include: [utils.resolve('src')]
+        },
+        {
+          test: /\.styl$/,
+          loader: 'style-loader!css-loader!stylus-loader'
         }
       ]
     },
@@ -63,10 +67,6 @@ module.exports = {
         {
           from: './src/img',
           to: path.resolve(root, staticpath, "img")
-        },
-        {
-          from: './src/stylus/bycco.css',
-          to: path.resolve(root, staticpath, "css", "bycco.css")
         },
         {
           from: './node_modules/angular-material/angular-material.min.css',
