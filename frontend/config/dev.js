@@ -69,6 +69,10 @@ module.exports =  {
     plugins: [
       new CopyWebpackPlugin([
         {
+          from: './static',
+          to: path.resolve(root, staticpath)
+        },
+        {
           from: './src/img',
           to: path.resolve(root, staticpath, "img")
         },

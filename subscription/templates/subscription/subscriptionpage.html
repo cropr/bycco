@@ -505,7 +505,32 @@
 
 </div>
 
+{% addtoblock "js" %}
+
+<script src="{% static 'js/lib/angular.min.js' %}"></script>
+<script src="{% static 'js/lib/angular-animate.min.js' %}"></script>
+<script src="{% static 'js/lib/angular-aria.min.js' %}"></script>
+<script src="{% static 'js/lib/angular-cookies.min.js' %}"></script>
+<script src="{% static 'js/lib/angular-gettext.min.js' %}"></script>
+<script src="{% static 'js/lib/locale/angular-locale_en.js' %}"></script>
+<script src="{% static 'js/lib/locale/angular-locale_fr.js' %}"></script>
+<script src="{% static 'js/lib/locale/angular-locale_de.js' %}"></script>
+<script src="{% static 'js/lib/locale/angular-locale_nl.js' %}"></script>
+<script src="{% static 'js/lib/angular-material.min.js' %}"></script>
+<script src="{% static 'js/lib/angular-messages.min.js' %}"></script>
+<script src="{% static 'js/lib/angular-route.min.js' %}"></script>
+<script src="{% static 'js/lib/angular-sanitize.min.js' %}"></script>
+<script src="{% static 'js/lib/ng-file-upload.min.js' %}"></script>
+<script src="{% static 'js/lib/ui-cropper.js' %}"></script>
+
+<script src="{% static 'js/controllers/ctrl_sub.js'%}"></script>
+<script src="{% static 'js/services/api.js'%}"></script>
+<script src="{% static 'js/services/apidef.js'%}"></script>
+
+{% endaddtoblock %}
+
 {% endblock content %}
+
 
 {% block jsapplication %}
   <script src="{% static 'subscription.js' %}" ></script>
