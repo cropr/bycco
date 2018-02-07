@@ -3,6 +3,7 @@
 const path = require('path');
 const utils = require('../build/utils');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const root = path.resolve(__dirname, '../../fe_dist');
 const staticpath = 'static';
@@ -58,7 +59,10 @@ module.exports = {
         },
         {
           test: /\.styl$/,
-          loader: 'style-loader!css-loader!stylus-loader'
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: ['css-loader','stylus-loader']
+          })
         }
       ]
     },
@@ -77,6 +81,7 @@ module.exports = {
           to: path.resolve(root, staticpath, "css", "ui-cropper.css")
         },
       ]),
+      new ExtractTextPlugin("css/bycco.css")
     ]
   }
 };
