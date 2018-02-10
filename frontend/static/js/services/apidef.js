@@ -67,6 +67,12 @@ angular.module('api')
         body: ['subscription'],
         required: ['subscription']
       },
+      getPhoto: {
+        method: 'GET',
+        url: '/subscriptions/{idsub}/photo',
+        path: ['idsub'],
+        required: ['idsub']
+      },
       uploadPhoto: {
         method: 'POST',
         url: '/subscriptions/{idsub}/photo',

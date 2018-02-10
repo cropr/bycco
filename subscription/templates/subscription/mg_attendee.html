@@ -61,7 +61,7 @@
         <div layout="row">
           <div flex layout="column">
             <md-input-container flex>
-              <label>Name</label>
+              <label>Last Name</label>
               <input ng-model="attendee.last_name" type="text">
             </md-input-container>
             <md-input-container flex>
@@ -158,7 +158,7 @@
         <div layout="row">
           <div flex layout="column">
             <md-input-container flex>
-              <label>Name</label>
+              <label>Last Name</label>
               <input ng-model="attendee.last_name" type="text">
             </md-input-container>
             <md-input-container flex>
@@ -315,9 +315,9 @@
           </div>
           <div flex="50">
             <div class="phtop">
-              <span>Name</span>:
-              <span ng-bind="attendee.firstname"></span>
-              <span ng-bind="attendee.name"></span>
+              <span>Last Name</span>:
+              <span ng-bind="attendee.first_name"></span>
+              <span ng-bind="attendee.last_name"></span>
             </div>
             <div class="phtop">
               <span>National ID</span>:
@@ -385,8 +385,8 @@
             <td><img width=50
                      ng-src="{% templatetag openvariable %}photourl(p){% templatetag closevariable %}">
             </td>
-            <td ng-bind="p.firstname"></td>
-            <td ng-bind="p.name"></td>
+            <td ng-bind="p.first_name"></td>
+            <td ng-bind="p.last_name"></td>
             <td ng-bind="p.category"></td>
             <td>
               <span class="fa fa-2x fa-remove" ng-click="bdg.remove_single(p)"></span>
@@ -419,8 +419,8 @@
             <td><img width=50
                      ng-src="{% templatetag openvariable %}photourl(p){% templatetag closevariable %}">
             </td>
-            <td ng-bind="p.firstname"></td>
-            <td ng-bind="p.name"></td>
+            <td ng-bind="p.first_name"></td>
+            <td ng-bind="p.last_name"></td>
             <td ng-bind="p.category"></td>
             <td>
               <span class="fa fa-2x fa-remove" ng-click="crd.remove_single(p)"></span>

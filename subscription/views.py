@@ -36,8 +36,8 @@ def printbadges(request):
         rix = j % 2 + 1
         cix = j // 2 + 1
         badge = {
-            'name': p.name,
-            'firstname': p.firstname,
+            'last_name': p.last_name,
+            'first_name': p.first_name,
             'rating': p.rating or "",
             'chesstitle': p.chesstitle + " " if p.chesstitle else "",
             'category': p.category,
@@ -67,12 +67,12 @@ def printallbadges(request):
     pages = []
     badges = []
     j = 0
-    for p in Subscription.objects.all().order_by('category','name'):
+    for p in Subscription.objects.all().order_by('category','last_name'):
         rix = j % 2 + 1
         cix = j // 2 + 1
         badge = {
-            'name': p.name,
-            'firstname': p.firstname,
+            'last_name': p.last_name,
+            'first_name': p.first_name,
             'rating': p.rating or "",
             'chesstitle': p.chesstitle + " " if p.chesstitle else "",
             'category': p.category,
@@ -110,7 +110,7 @@ def printnamecards(request):
         rix = j % 2 + 1
         ct = p.chesstitle + " " if p.chesstitle else ""
         card = {
-            'fullname': "{0}{1} {2}".format(ct, p.name, p.firstname),
+            'fullname': "{0}{1} {2}".format(ct, p.last_name, p.first_name),
             'natrating': p.natrating or "0",
             'fiderating': p.fiderating or "0",
             'category': p.category,
@@ -139,13 +139,13 @@ def printallnamecards(request):
     pages = []
     cards = []
     j = 0
-    for p in Subscription.objects.all().order_by('category','name'):
+    for p in Subscription.objects.all().order_by('category','last_name'):
         if not p.category.startswith('B'):
             continue
         rix = j % 2 + 1
         ct = p.chesstitle + " " if p.chesstitle else ""
         card = {
-            'fullname': "{0}{1} {2}".format(ct, p.name, p.firstname),
+            'fullname': "{0}{1} {2}".format(ct, p.last_name, p.first_name),
             'natrating': p.natrating or "0",
             'fiderating': p.fiderating or "0",
             'category': p.category,
@@ -175,13 +175,13 @@ def printallnamecardsgirls(request):
     pages = []
     cards = []
     j = 0
-    for p in Subscription.objects.all().order_by('category','name'):
+    for p in Subscription.objects.all().order_by('category','last_name'):
         if not p.category.startswith('G'):
             continue
         rix = j % 2 + 1
         ct = p.chesstitle + " " if p.chesstitle else ""
         card = {
-            'fullname': "{0}{1} {2}".format(ct, p.name, p.firstname),
+            'fullname': "{0}{1} {2}".format(ct, p.last_name, p.first_name),
             'natrating': p.natrating or "0",
             'fiderating': p.fiderating or "0",
             'category': p.category,

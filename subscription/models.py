@@ -44,4 +44,4 @@ class Subscription(Model):
     custom3 = TextField(blank=True)
 
     def __str__(self):
-        return '%s %s' % (self.firstname, self.name)
+        return '%s %s' % (self.first_name, self.last_name)

@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'belplayer/(?P<idbel>[0-9]+)$', apiviews.belplayer),
     url(r'fideplayer/(?P<idfide>[0-9]+)$', apiviews.fideplayer),
     url(r'subscriptions$', apiviews.subscriptions),
-    url(r'subscriptions/(?P<idsub>[0-9]+)/photo$', apiviews.subscription_photo),
+    url(r'photo/(?P<id>[0-9]+)$', apiviews.attendee_photo),
     url(r'subscriptions/(?P<idsub>[0-9]+)/confirm$',
         apiviews.subscription_confirmation),
     # url(r'/detail/(?P<pk>[0-9]+)/$', subscription_detail),

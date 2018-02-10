@@ -177,8 +177,7 @@ angular.module('mg_attendee', [
   };
 
   $scope.photourl = function(p){
-    return '/cd_subscription/api/attendee/' + ((p && p.id_national) ?
-            p.id_national:0) + '/photo?' + randomstr  ;
+    return '/api/photo/' + ((p && p.id) ? p.id : 0);
   };
 
   $scope.att = {
@@ -192,7 +191,7 @@ angular.module('mg_attendee', [
     },
     ask_delete: function(){
       if (confirm("Are you sure to delete " + $scope.attendee.name + " " +
-          $scope.attendee.firstname + "?")) {
+          $scope.attendee.first_name + "?")) {
         mgmtattendee_service.deleteAttendee().then(initAttendees);
       }
     },
@@ -202,8 +201,8 @@ angular.module('mg_attendee', [
     open_add: function(){
       this.status = 'add';
       angular.extend($scope.attendee,{
-        name: '',
-        firstname: '',
+        last_name: '',
+        first_name: '',
         chesstitle: '',
         category: 'EAT',
         gender: 'M',

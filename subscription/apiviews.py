@@ -6,6 +6,7 @@ log = logging.getLogger(__name__)
 import requests
 from binascii import a2b_base64
 from django.conf import settings
+from django.http.response import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.response import Response
@@ -233,8 +234,8 @@ def participants(request, cat):
     # data = [{
     #     'id': p.id,
     #     'category': p.category,
-    #     'name': p.name,
-    #     'firstname': p.firstname,
+    #     'last_name': p.last_name,
+    #     'first_name': p.first_name,
     #     'rating': p.rating,
     #     'id_club': p.id_club,
     #     'fidenation': p.fidenation,
@@ -289,11 +290,11 @@ def mgmtattendees(request):
             cs = Subscription()
             cs.category = ss.get('category')
             cs.chesstitle = ss.get('chesstitle')
-            cs.firstname = ss.get('first_name')
+            cs.first_name = ss.get('first_name')
             cs.gender = ss.get('gender')
             cs.id_national = '0'
             cs.locale = request.LANGUAGE_CODE.lower()[:2]
-            cs.name = ss.get('name')
+            cs.last_name = ss.get('last_name')
             cs.custom1 = ss.get('meals')
             cs.custom2 = ss.get('present')
             cs.save()
@@ -349,8 +350,8 @@ def mgmtattendee_detail(request, id):
 
     if request.method == 'PUT':
         data = request.data
-        p.name = data.get('name')
-        p.firstname = data.get('firstname')
+        p.last_name = data.get('last_name')
+        p.first_name = data.get('first_name')
         p.chesstitle = data.get('chesstitle','')
         p.category = data.get('category')
         p.custom1 = data.get('meals')
@@ -372,31 +373,29 @@ def mgmtattendee_detail(request, id):
             return Response(e, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 @api_view(['GET', 'POST'])
-def mgmtattendee_photo(request, id):
+def attendee_photo(request, id):
 
-    pass
+    p = None
+    try:
+        p = Subscription.objects.get(id=id)
+        foundplayer = True
+    except Subscription.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
-    # p = None
-    # try:
-    #     p = Subscription.objects.get(id_national=id)
-    #     foundplayer = True
-    # except Subscription.DoesNotExist:
-    #     return Response(status=status.HTTP_404_NOT_FOUND)
-    #
-    # if request.method == 'GET':
-    #     if not p or not p.badgelength:
-    #         with open('../cd_subscription/static/img/nobody.png', 'rb') as img:
-    #             return HttpResponse(img.read(), content_type="image/png")
-    #     return HttpResponse(p.badgeimage, content_type=p.badgemimetype)
-    #
-    # if request.method == 'POST':
-    #     data=request.data
-    #     try:
-    #         header, data = data.get('imagedata').split(',')
-    #         p.badgemimetype = header.split(':')[1].split(';')[0]
-    #         p.badgeimage = a2b_base64(data)
-    #         p.badgelength = len(p.badgeimage)
-    #         p.save()
-    #         return Response(status=status.HTTP_201_CREATED)
-    #     except Exception as e:
-    #         return Response(e, status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'GET':
+        if not p or not p.badgelength:
+            with open('subscription/nobody.png', 'rb') as img:
+                return HttpResponse(data=img.read(), content_type="image/png")
+        return HttpResponse(data=p.badgeimage, content_type=p.badgemimetype)
+
+    if request.method == 'POST':
+        data=request.data
+        try:
+            header, data = data.get('imagedata').split(',')
+            p.badgemimetype = header.split(':')[1].split(';')[0]
+            p.badgeimage = a2b_base64(data)
+            p.badgelength = len(p.badgeimage)
+            p.save()
+            return Response(status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response(e, status=status.HTTP_400_BAD_REQUEST)
