@@ -51,7 +51,12 @@ angular.module('mg_attendee', [
     getAttendees: function() {
       $scope.players = [];
       var q = $q.defer();
-      api('getAttendees', {query:queryParams()}).then(
+      api('getAttendees', {
+        start: $scope.pager.start,
+        count: $scope.pager.count,
+        ss: $scope.att.ss.length ? $scope.att.ss : null,
+        cat: $scope.att.cat ? $scope.att.cat : null
+      }).then(
         function(data){
           $log.info('gotPlayers', data);
           $scope.players = data.attendees;
@@ -135,10 +140,7 @@ angular.module('mg_attendee', [
 
   function queryParams(){
     return {
-      start: $scope.pager.start,
-      count: $scope.pager.count,
-      ss: $scope.att.ss.length ? $scope.att.ss : null,
-      cat: $scope.att.cat ? $scope.att.cat : null
+
     }
   }
 

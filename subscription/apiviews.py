@@ -240,11 +240,11 @@ def participants(request, cat):
 @api_view(['GET', 'POST'])
 def attendee_all(request):
 
-
     if request.method == 'GET':
         param = request.GET
         start = to_int(param.get('start'), 0)
         count = to_int(param.get('count'), 40)
+        ss = param.get('ss')
         query = Subscription.objects.all()
         cat = param.get('cat')
         if cat:

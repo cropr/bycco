@@ -80,6 +80,7 @@ angular.module('api',[])
       });
 
       // make http call
+      console.log('body', body)
       options = {
         method: apidef.method,
         url: base_url +  surl,

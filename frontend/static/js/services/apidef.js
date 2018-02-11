@@ -10,7 +10,7 @@ angular.module('api')
       getAttendees: {
         method: 'GET',
         url: '/attendees',
-        body: ['query'],
+        query: ['ss', 'start', 'count', 'cat'],
         required: [],
       },
       addAttendee: {
@@ -81,8 +81,6 @@ angular.module('api')
         path: ['idsub'],
         required: ['photo', 'idsub']
       },
-
-
     }
   }
 )
