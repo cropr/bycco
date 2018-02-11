@@ -18,7 +18,7 @@ angular.module('mg_attendee', [
 
   var randomstr = '12345';
 
-  var mgmtattendee_service = {
+  var attendee_service = {
     addAttendee: function() {
       var q = $q.defer();
       api('addAttendee', {attendee:$scope.attendee}).then(
@@ -67,10 +67,12 @@ angular.module('mg_attendee', [
     },
     getAttendee: function(id){
       var q = $q.defer();
-      api('getAttendee', {idattendee: id}).then(
+      api('getAttendee', {id: id}).then(
         function(data){
           $log.info('gotAttendee', data);
           $scope.attendee = data.attendee;
+          $scope.bdate = new Date($scope.attendee.birthdate);
+          $scope.pdate = new Date($scope.attendee.paydate ? $scope.attendee.paydate: null)
         },
         function(err){
           $log.error('getAttendee', err);
@@ -95,7 +97,7 @@ angular.module('mg_attendee', [
     updateAttendee: function() {
       var q = $q.defer();
       api('updateAttendee', {
-        idattendee: $scope.attendee.id_national,
+        id: $scope.attendee.id,
         attendee: $scope.attendee,
       }).then(
         function(ro){
@@ -123,6 +125,12 @@ angular.module('mg_attendee', [
       );
       return q.promise;
     }
+  };
+
+  var tabs =  {
+    attendees: 0,
+    detail: 1,
+    print: 2,
   };
 
   function queryParams(){
@@ -159,19 +167,19 @@ angular.module('mg_attendee', [
     start: 0,
     goto: function(i) {
       $scope.pager.start = i * $scope.pager.count;
-      mgmtattendee_service.getAttendees();
+      attendee_service.getAttendees();
     },
     next: function(){
       if ($scope.pager.start + $scope.pager.count < $scope.pager.total) {
         $scope.pager.start += $scope.pager.count;
-        mgmtattendee_service.getAttendees();
+        attendee_service.getAttendees();
       }
     },
     prev: function(){
       if ($scope.pager.start > 0) {
         $scope.pager.start -= $scope.pager.count;
         if ($scope.pager.start < 0) $scope.pager.start = 0;
-        mgmtattendee_service.getAttendees();
+        attendee_service.getAttendees();
       }
     }
   };
@@ -192,11 +200,12 @@ angular.module('mg_attendee', [
     ask_delete: function(){
       if (confirm("Are you sure to delete " + $scope.attendee.name + " " +
           $scope.attendee.first_name + "?")) {
-        mgmtattendee_service.deleteAttendee().then(initAttendees);
+        attendee_service.deleteAttendee().then(initAttendees);
       }
     },
     cancel: function(){
       this.status = '';
+      $scope.tab = tabs.attendees
     },
     open_add: function(){
       this.status = 'add';
@@ -210,14 +219,15 @@ angular.module('mg_attendee', [
       });
     },
     open_edit: function(p){
-      this.status = 'edit';
-      mgmtattendee_service.getAttendee(p.idbel);
+      $scope.detailmode = 'edit';
+      $scope.tab = tabs['detail'];
+      attendee_service.getAttendee(p.id);
     },
     open_photo: function(p){
       initPhoto(p);
     },
     save_add: function(){
-      mgmtattendee_service.addAttendee().then(
+      attendee_service.addAttendee().then(
         function(data){
           alert('Attendee saved with id: ' + data.id_national);
           $scope.att.status = 'addsaved';
@@ -229,19 +239,19 @@ angular.module('mg_attendee', [
       )
     },
     save_edit: function(){
-      mgmtattendee_service.updateAttendee().then(
+      attendee_service.updateAttendee().then(
         function(data){
-          alert('Attendee ' + data.id_national + ' updated');
+          alert('Attendee ' + data.idbel + ' updated');
           $scope.att.status = 'editsaved';
           $log.info('cat', $scope.att.cat);
-          mgmtattendee_service.getAttendees();
+          attendee_service.getAttendees();
         },
         function(ro) {
           alert(ro);
         }
       )    },
     search: function(){
-        mgmtattendee_service.getAttendees();
+        attendee_service.getAttendees();
     },
     show_add: function(){
       return this.status == 'add' || this.status == 'addsaved';
@@ -257,13 +267,13 @@ angular.module('mg_attendee', [
     clearselected: function(){
       $scope.badges = [];
     },
-    printall: mgmtattendee_service.printallbadges,
+    printall: attendee_service.printallbadges,
     printselected: function(){
       var ids = [];
       $scope.badges.forEach(function(v,ix) {
         ids.push(v.id_national);
       });
-      mgmtattendee_service.printbadges(ids);
+      attendee_service.printbadges(ids);
     },
     remove_single: function(p){
       var dix = -1;
@@ -282,13 +292,13 @@ angular.module('mg_attendee', [
     clearselected: function(){
       $scope.cards = [];
     },
-    printall: mgmtattendee_service.printallnamecards,
+    printall: attendee_service.printallnamecards,
     printselected: function(){
       var ids = [];
       $scope.cards.forEach(function(v,ix) {
         ids.push(v.id_national);
       });
-      mgmtattendee_service.printnamecards(ids);
+      attendee_service.printnamecards(ids);
     },
     remove_single: function(p){
       var dix = -1;
@@ -312,7 +322,7 @@ angular.module('mg_attendee', [
     },
     upload: function(){
       if (!$scope.photo.cropresult || !$scope.photo.cropresult.length) return;
-      mgmtattendee_service.uploadPhoto($scope.attendee.id_national,
+      attendee_service.uploadPhoto($scope.attendee.id_national,
           $scope.photo.cropresult);
 
     }
@@ -338,18 +348,16 @@ angular.module('mg_attendee', [
     $scope.att.ss = "";
     $scope.tab = 0;
     $scope.att.status = '';
-    mgmtattendee_service.getAttendees();
+    attendee_service.getAttendees();
   }
 
   function initPhoto(p){
     $scope.attendee = {};
     $scope.tab = 1;
     randomstr = Math.ceil(Math.random()*10000);
-    mgmtattendee_service.getAttendee(p.id_national);
+    attendee_service.getAttendee(p.id_national);
     $scope.photo.init()
   }
-
-
 
   initAttendees();
 

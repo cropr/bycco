@@ -205,7 +205,6 @@ def belplayer(request, idbel):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-
 @api_view(['GET'])
 def fideplayer(request, idfide):
 
@@ -304,7 +303,7 @@ def attendee_all(request):
 def attendee_detail(request, id):
 
     try:
-        p = Subscription.objects.get(idbel=id)
+        p = Subscription.objects.get(id=id)
     except Subscription.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -313,6 +312,7 @@ def attendee_detail(request, id):
             'id': p.id,
             'birthdate': p.birthdate.isoformat() if p.birthdate else '',
             'category': p.category,
+            'chesstitle': p.chesstitle,
             'confirmed': p.confirmed,
             'emailparent': p.emailparent,
             'emailplayer': p.emailparent,
@@ -332,10 +332,10 @@ def attendee_detail(request, id):
             'mobileplayer': p.mobileplayer,
             'nationalitybel': p.nationalitybel,
             'nationalityfide': p.nationalityfide,
-            'present': p.custom2 == 'Y',
             'payamount': p.payamount,
             'paydate': p.paydate.isoformat() if p.paydate else '',
             'paymessage': p.paymessage,
+            'present': p.custom2 == 'Y',
             'rating': p.rating,
             'ratingbel': p.ratingbel,
             'ratingfide': p.ratingfide,
@@ -344,18 +344,34 @@ def attendee_detail(request, id):
         return Response(dict(attendee=attendee))
 
     if request.method == 'PUT':
-        data = request.data
-        p.last_name = data.get('last_name')
-        p.first_name = data.get('first_name')
-        p.chesstitle = data.get('chesstitle','')
+        data = request.data.get('attendee', {})
+        # p.birthdate = data.get('last_name')
         p.category = data.get('category')
+        p.chesstitle = data.get('chesstitle','')
+        p.emailparent = data.get('emailparent', '')
+        p.emailplayer = data.get('emailplayer', '')
+        p.first_name = data.get('first_name')
+        p.fullnameattendant = data.get('fullnameattendant')
+        p.fullnameparent = data.get('fullnameparent')
+        p.last_name = data.get('last_name')
+        p.locale = data.get('locale')
+        p.meals = data.get('custom1')
+        p.mobileattendant = data.get('mobileattendant')
+        p.mobileparent = data.get('mobileparent')
+        p.mobileplayer = data.get('mobileplayer')
+        p.nationalityfide = data.get('nationalityfide')
+        p.payamount = int(data.get('payamount', 0))
+        # p.paydate = data.get('paydate')
+        p.present = data.get('custom2') == 'Yes'
+        p.rating = data.get('rating')
+        p.ratingbel = data.get('ratingbel')
+        p.ratingfide = data.get('ratingfide')
+        p.remarks = data.get('remarks')
         p.custom1 = data.get('meals')
         p.custom2 = data.get('present')
-        p.gender = data.get('gender')
-        p.payamount = int(data.get('payamount', 0))
         try:
             p.save()
-            return Response(dict(id_national=p.id_national),
+            return Response(dict(id=p.id),
                             status=status.HTTP_200_OK)
         except Exception as e:
             return Response(e, status=status.HTTP_406_NOT_ACCEPTABLE)
@@ -368,6 +384,7 @@ def attendee_detail(request, id):
             return Response(e, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 @api_view(['GET', 'POST'])
+@renderer_classes((ImageRenderer, JSONRenderer))
 def attendee_photo(request, id):
 
     p = None
@@ -380,8 +397,8 @@ def attendee_photo(request, id):
     if request.method == 'GET':
         if not p or not p.badgelength:
             with open('subscription/nobody.png', 'rb') as img:
-                return HttpResponse(data=img.read(), content_type="image/png")
-        return HttpResponse(data=p.badgeimage, content_type=p.badgemimetype)
+                return Response(data=img.read(), content_type="image/png")
+        return Response(data=p.badgeimage, content_type=p.badgemimetype)
 
     if request.method == 'POST':
         data=request.data

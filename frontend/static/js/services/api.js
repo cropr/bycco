@@ -66,7 +66,7 @@ angular.module('api',[])
         if (!apidef.required.every(function(k){
           return k in all;
         })) {
-          console.log('apicall', name, 'failed: missing_param');
+          console.log('apicall', name, 'failed: missing_param', all);
           return $q.reject(new Error('missing_param'));
         }
       }

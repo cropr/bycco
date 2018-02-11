@@ -56,210 +56,6 @@
           </md-button>
         </div>
       </div>
-      <div  class="cardbox md-whiteframe-4dp" ng-show="att.show_add()">
-        <h4>New attendee</h4>
-        <div layout="row">
-          <div flex layout="column">
-            <md-input-container flex>
-              <label>Last Name</label>
-              <input ng-model="attendee.last_name" type="text">
-            </md-input-container>
-            <md-input-container flex>
-              <label>First Name</label>
-              <input ng-model="attendee.first_name" type="text">
-            </md-input-container>
-            <md-input-container flex>
-              <label>Chesstitle</label>
-              <md-select ng-model="attendee.chesstitle" type="text">
-                <md-option></md-option>
-                <md-option value="GM">GM</md-option>
-                <md-option value="IM">IM</md-option>
-                <md-option value="FM">FM</md-option>
-                <md-option value="WGM">WGM</md-option>
-                <md-option value="WIM">WIM</md-option>
-                <md-option value="WFM">WFM</md-option>
-                <md-option value="IA">IA</md-option>
-                <md-option value="FA">FA</md-option>
-              </md-select>
-            </md-input-container>
-            <div flex class="pftop">
-              <label>Presence</label>
-              <div>
-                <input ng-model="attendee.present" type="radio" value="YES">
-                 Yes &nbsp;&nbsp;&nbsp;
-                <input ng-model="attendee.present" type="radio" value="NO">
-                 No
-              </div>
-            </div>
-          </div>
-          <div flex layout="column">
-            <md-input-container flex>
-              <label>Category</label>
-              <md-select ng-model="attendee.category" type="text">
-                <md-option></md-option>
-                <md-option value="B8">B8</md-option>
-                <md-option value="G8">G8</md-option>
-                <md-option value="B10">B10</md-option>
-                <md-option value="G10">G10</md-option>
-                <md-option value="B12">B12</md-option>
-                <md-option value="G12">G12</md-option>
-                <md-option value="B14">B14</md-option>
-                <md-option value="G14">G14</md-option>
-                <md-option value="B16">B16</md-option>
-                <md-option value="G16">G16</md-option>
-                <md-option value="B18">B18</md-option>
-                <md-option value="G18">G18</md-option>
-                <md-option value="B20">B20</md-option>
-                <md-option value="G20">G20</md-option>
-                <md-option value="ORG">Organiser</md-option>
-                <md-option value="ARB">Arbiter</md-option>
-                <md-option value="SPO">Sponsor or Guest</md-option>
-                <md-option value="EAT">Resident with meals</md-option>
-              </md-select>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Meals</label>
-              <md-select ng-model="attendee.meals" type="text">
-                <md-option></md-option>
-                <md-option value="FB">Full boarding</md-option>
-                <md-option value="HB">Half boarding</md-option>
-                <md-option value="BO">Breakfast only</md-option>
-              </md-select>
-            </md-input-container>
-            <div flex class="pftop">
-              <label>Gender</label>
-              <div>
-                <input ng-model="attendee.gender" type="radio" name=gender value="M">
-                 Male &nbsp;&nbsp;&nbsp;
-                <input ng-model="attendee.gender" type="radio" name=gender value="F">
-                Female
-              </div>
-            </div>
-          </div>
-          <div flex>
-            <md-button class="md-primary md-raised"
-                       ng-click="att.save_add()">
-              Save
-            </md-button>
-            <md-button class="md-primary md-raised"
-                       ng-click="att.cancel()">
-              Close
-            </md-button>
-            <md-button ng-click="att.open_photo(attendee)"
-                       class="md-primary md-raised"
-                       ng-show="att.status=='addsaved'">
-              Photo
-            </md-button>
-          </div>
-        </div>
-      </div>
-      <div  class="cardbox md-whiteframe-4dp" ng-show="att.show_edit()">
-        <h4>Modify attendee: <span ng-bind="attendee.id_national"></span></h4>
-        <div layout="row">
-          <div flex layout="column">
-            <md-input-container flex>
-              <label>Last Name</label>
-              <input ng-model="attendee.last_name" type="text">
-            </md-input-container>
-            <md-input-container flex>
-              <label>First Name</label>
-              <input ng-model="attendee.first_name" type="text">
-            </md-input-container>
-            <md-input-container flex>
-              <label>Chesstitle</label>
-              <md-select ng-model="attendee.chesstitle" type="text">
-                <md-option></md-option>
-                <md-option value="GM">GM</md-option>
-                <md-option value="IM">IM</md-option>
-                <md-option value="FM">FM</md-option>
-                <md-option value="WGM">WGM</md-option>
-                <md-option value="WIM">WIM</md-option>
-                <md-option value="WFM">WFM</md-option>
-                <md-option value="IA">IA</md-option>
-                <md-option value="FA">FA</md-option>
-              </md-select>
-            </md-input-container>
-            <div class="flex bg-danger" ng-show="attendee.payamount>0">
-              Still to pay!!
-            </div>
-            <md-input-container flex>
-              <label>Pay Amount</label>
-              <input ng-model="attendee.payamount" type="number">
-            </md-input-container>
-          </div>
-          <div flex layout="column">
-            <md-input-container flex>
-              <label>Category</label>
-              <md-select ng-model="attendee.category" type="text">
-                <md-option></md-option>
-                <md-option value="B8">B8</md-option>
-                <md-option value="G8">G8</md-option>
-                <md-option value="B10">B10</md-option>
-                <md-option value="G10">G10</md-option>
-                <md-option value="B12">B12</md-option>
-                <md-option value="G12">G12</md-option>
-                <md-option value="B14">B14</md-option>
-                <md-option value="G14">G14</md-option>
-                <md-option value="B16">B16</md-option>
-                <md-option value="G16">G16</md-option>
-                <md-option value="B18">B18</md-option>
-                <md-option value="G18">G18</md-option>
-                <md-option value="B20">B20</md-option>
-                <md-option value="G20">G20</md-option>
-                <md-option value="ORG">Organiser</md-option>
-                <md-option value="ARB">Arbiter</md-option>
-                <md-option value="SPO">Sponsor or Guest</md-option>
-                <md-option value="EAT">Resident with meals</md-option>
-              </md-select>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Meals</label>
-              <md-select ng-model="attendee.meals" type="text">
-                <md-option></md-option>
-                <md-option value="FB">Full boarding</md-option>
-                <md-option value="HB">Half boarding</md-option>
-                <md-option value="BO">Breakfast only</md-option>
-              </md-select>
-            </md-input-container>
-            <div flex class="pftop">
-              <label>Gender</label>
-              <div>
-                <input ng-model="attendee.gender" type="radio" name=gender value="M">
-                 Male &nbsp;&nbsp;&nbsp;
-                <input ng-model="attendee.gender" type="radio" name=gender value="F">
-                Female
-              </div>
-            </div>
-            <div flex class="pftop">
-              <label>Presence</label>
-              <div>
-                <input ng-model="attendee.present" type="radio" name=present value="YES">
-                Yes &nbsp;&nbsp;&nbsp;
-                <input ng-model="attendee.present" type="radio" name=present value="NO">
-                No
-              </div>
-            </div>
-          </div>
-          <div flex>
-            <md-button class="md-primary md-raised"
-                       ng-click="att.save_edit()">
-              Save
-            </md-button>
-            <md-button class="md-primary md-raised"
-                       ng-click="att.cancel()">
-              Close
-            </md-button>
-            <md-button class="md-primary md-raised"
-                       ng-click="att.open_photo()" >
-              Photo
-            </md-button>
-            <md-button class="md-primary md-raised"
-                       ng-click="att.ask_delete()" >
-              Delete
-            </md-button>
-          </div>
-        </div>
-      </div>
       <div class="cardbox md-whiteframe-4dp" >
         <h4>Registered attendees</h4>
         Showing from <span ng-bind="pager.start +1"></span> to
@@ -298,6 +94,192 @@
               </td>
             </tr>
           </table>
+      </div>
+    </md-tab-body>
+   </md-tab>
+
+  <md-tab>
+    <md-tab-label>Detail</md-tab-label>
+    <md-tab-body>
+      <div  class="cardbox md-whiteframe-4dp">
+        <h4 ng-show="detailmode == 'new'" class="pftop phbot">New attendee</h4>
+        <h4 ng-show="detailmode == 'edit'" class="pftop phbot">Edit attendee</h4>
+        <div layout="row">
+          <div flex layout="column">
+            <md-input-container flex>
+              <label>Last Name</label>
+              <input ng-model="attendee.last_name" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>First Name</label>
+              <input ng-model="attendee.first_name" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Chesstitle</label>
+              <md-select ng-model="attendee.chesstitle" type="text">
+                <md-option></md-option>
+                <md-option value="GM">GM</md-option>
+                <md-option value="IM">IM</md-option>
+                <md-option value="FM">FM</md-option>
+                <md-option value="WGM">WGM</md-option>
+                <md-option value="WIM">WIM</md-option>
+                <md-option value="WFM">WFM</md-option>
+                <md-option value="IA">IA</md-option>
+                <md-option value="FA">FA</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container flex>
+              <label>Birth Date</label>
+              <input ng-model="bdate" type="date"
+                     value="{% templatetag openvariable %}attendee.birthdate{% templatetag closevariable %}">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Category</label>
+              <md-select ng-model="attendee.category" type="text">
+                <md-option></md-option>
+                <md-option value="B8">B8</md-option>
+                <md-option value="G8">G8</md-option>
+                <md-option value="B10">B10</md-option>
+                <md-option value="G10">G10</md-option>
+                <md-option value="B12">B12</md-option>
+                <md-option value="G12">G12</md-option>
+                <md-option value="B14">B14</md-option>
+                <md-option value="G14">G14</md-option>
+                <md-option value="B16">B16</md-option>
+                <md-option value="G16">G16</md-option>
+                <md-option value="B18">B18</md-option>
+                <md-option value="G18">G18</md-option>
+                <md-option value="B20">B20</md-option>
+                <md-option value="G20">G20</md-option>
+                <md-option value="ORG">Organiser</md-option>
+                <md-option value="ARB">Arbiter</md-option>
+                <md-option value="SPO">Sponsor or Guest</md-option>
+                <md-option value="EAT">Resident with meals</md-option>
+              </md-select>
+            </md-input-container>
+            <div flex>
+              <b>Gender:</b> <span ng-bind="attendee.gender"></span>
+            </div>
+            <div flex>
+              <b>ID Club:</b> <span ng-bind="attendee.idclub"></span>
+            </div>
+            <div flex>
+              <b>ID Fide:</b> <span ng-bind="attendee.idfide"></span>
+            </div>
+            <div flex>
+              <b>ID Bel:</b> <span ng-bind="attendee.idbel"></span>
+            </div>
+            <div flex>
+              <b>Nationality Bel:</b> <span ng-bind="attendee.nationalitybel"></span>
+            </div>
+            <md-input-container flex>
+              <label>Nationality FIDE</label>
+              <input ng-model="attendee.nationalityfide" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Rating FIDE</label>
+              <input ng-model="attendee.ratingfide" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Rating Bel</label>
+              <input ng-model="attendee.ratingbel" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Rating Used</label>
+              <input ng-model="attendee.rating" type="text">
+            </md-input-container>
+            <div flex>
+              <b>Confirmed:</b> <span ng-bind="attendee.confirmed ? 'Yes' : 'No' "></span>
+            </div>
+          </div>
+          <div flex layout="column">
+            <md-input-container flex>
+              <label>Email player</label>
+              <input ng-model="attendee.emailplayer" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Fullname parent</label>
+              <input ng-model="attendee.fullnameparent" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Mobile parent</label>
+              <input ng-model="attendee.mobileparent" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Email parent</label>
+              <input ng-model="attendee.emailparent" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Fullname local representative</label>
+              <input ng-model="attendee.fullnameattendant" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Mobile local representative</label>
+              <input ng-model="attendee.mobileattendant" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Email local representative</label>
+              <input ng-model="attendee.emailattendant" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Meals</label>
+              <md-select ng-model="attendee.meals" type="text">
+                <md-option></md-option>
+                <md-option value="FB">Full boarding</md-option>
+                <md-option value="HB">Half boarding</md-option>
+                <md-option value="BO">Breakfast only</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container flex>
+              <label>Locale</label>
+              <md-select ng-model="attendee.locale" type="text">
+                <md-option></md-option>
+                <md-option value="nl">NL</md-option>
+                <md-option value="fr">FR</md-option>
+                <md-option value="de">DE</md-option>
+                <md-option value="en">EN</md-option>
+              </md-select>
+            </md-input-container>
+            <div flex>
+              <b>Payment message:</b> <span ng-bind="attendee.paymessage"></span>
+            </div>
+            <md-input-container flex>
+              <label>Payment Amount</label>
+              <input ng-model="attendee.payamount" type="text">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Payment Date</label>
+              <input ng-model="pdate" type="date"
+                     value="{% templatetag openvariable %}attendee.paydate{% templatetag closevariable %}">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Presence</label>
+              <md-select ng-model="attendee.presence" type="text">
+                <md-option></md-option>
+                <md-option value="0">Yes</md-option>
+                <md-option value="1">No</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container flex>
+              <label>Remarks</label>
+              <input ng-model="attendee.remarks" type="text">
+            </md-input-container>
+          </div>
+          <div flex>
+            <md-button class="md-primary md-raised"
+                       ng-click="att.save_edit()">
+              Save
+            </md-button>
+            <md-button class="md-primary md-raised"
+                       ng-click="att.cancel()">
+              Close
+            </md-button>
+            <md-button ng-click="att.open_photo(attendee)"
+                       class="md-primary md-raised"
+                       ng-show="att.status=='addsaved'">
+              Photo
+            </md-button>
+          </div>
       </div>
     </md-tab-body>
    </md-tab>
@@ -364,7 +346,7 @@
   </md-tab>
 
   <md-tab>
-    <md-tab-label>Badges</md-tab-label>
+    <md-tab-label>Print</md-tab-label>
     <md-tab-body>
       <div class="cardbox md-whiteframe-4dp">
         <md-button ng-click="bdg.printall()" class="md-raised md-primary">
@@ -394,12 +376,6 @@
           </tr>
           </table>
       </div>
-    </md-tab-body>
-  </md-tab>
-
-  <md-tab >
-    <md-tab-label>Name Cards</md-tab-label>
-    <md-tab-body>
       <div class="cardbox md-whiteframe-4dp">
         <md-button ng-click="crd.printall()" class="md-raised md-primary">
           Print All
