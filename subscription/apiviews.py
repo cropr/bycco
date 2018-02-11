@@ -38,10 +38,6 @@ class ImageRenderer(BaseRenderer):
     def render(self, data, media_type=None, renderer_context=None):
         return data
 
-@api_view(['GET'])
-def test(request):
-    return Response(data={'a':'b'})
-
 @api_view(['POST'])
 def subscription_confirmation(request, idsub):
 
@@ -90,7 +86,7 @@ def subscription_detail(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['POST', 'GET'])
-def subscriptions(request):
+def subscription_all(request):
 
     # if request.method == 'GET':
     #     subscriptions = Subscription.objects.all()
@@ -224,7 +220,6 @@ def fideplayer(request, idfide):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-
 @api_view(['GET'])
 def participants(request, cat):
 
@@ -244,7 +239,7 @@ def participants(request, cat):
     # return Response(data)
 
 @api_view(['GET', 'POST'])
-def mgmtattendees(request):
+def attendee_all(request):
 
 
     if request.method == 'GET':
@@ -306,7 +301,7 @@ def mgmtattendees(request):
             return Response(e, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def mgmtattendee_detail(request, id):
+def attendee_detail(request, id):
 
     try:
         p = Subscription.objects.get(idbel=id)
