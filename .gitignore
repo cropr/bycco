@@ -11,3 +11,4 @@ venv/
 /local_settings.py
 *.pyc
 /dist
+/.vscode/
