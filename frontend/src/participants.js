@@ -1,70 +1,73 @@
-'use strict';
+import 'babel-polyfill';
+import Vue from 'vue';
+import Vuetify from 'vuetify';
+import './stylus/bycco.styl';
 
-angular.module('participants', [
-  'ngAnimate',
-  'ngAria',
-  'ngMaterial',
-  'ngSanitize'
-])
+Vue.use(Vuetify);
 
-.config(function($httpProvider){
-  $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-  $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-})
+import axios from 'axios';
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-.controller('partCtrl', function($scope, $http, $q, $log){
-
-  var part_service = {
-    getBoys: function(cat) {
-      $scope.boys = [];
-      var q = $q.defer();
-      $http.get('/cd_subscription/api/participants/' + cat.boys).then(
-        function(ro){
-          $scope.boys = ro.data;
-        },
-        function(ro){
-          console.error('getBoys', ro);
-        }
-      );
-      return q.promise;
-    },
-    getGirls: function(cat) {
-      $scope.girls = [];
-      var q = $q.defer();
-      $http.get('/cd_subscription/api/participants/' + cat.girls).then(
-        function(ro){
-          $scope.girls = ro.data;
-        },
-        function(ro){
-          console.error('getGirls', ro);
-        }
-      );
-      return q.promise;
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split('&');
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split('=');
+    if (decodeURIComponent(pair[0]) == variable) {
+      return decodeURIComponent(pair[1]);
     }
-  };
+  }
+  return null
+}
 
-  $scope.categories = [
-    {label: '-8', boys:'B8', girls: 'G8'},
-    {label: '-10', boys:'B10', girls: 'G10'},
-    {label: '-12', boys:'B12', girls: 'G12'},
-    {label: '-14', boys:'B14', girls: 'G14'},
-    {label: '-16', boys:'B16', girls: 'G16'},
-    {label: '-18', boys:'B18', girls: 'G18'},
-    {label: '-20', boys:'B20', girls: 'G20'}
-  ];
+window.vm = new Vue({
+  el: '#app',
+  data: {
+    drawer: false,
+    tabix: 0,
+    categories: [8, 10, 12, 14, 16, 18, 20],
+    cat: 8,
+    girls: [],
+    boys: []
+  },
+  methods: {
+    photourl (p) {
+      return '/api/photo/' + ((p && p.id) ? p.id : 0);
+    },
+    changecat (cat) {
+      var filtered;
+      this.cat = cat;
+      axios.get('/api/attendees?cat=G' + this.cat).then(
+        response => {
+          filtered = [];
+          response.data.attendees.forEach(function(p){
+            if (p.confirmed) filtered.push(p)
+          });
+          this.girls = filtered;
+        }
+      );
+      axios.get('/api/attendees?cat=B'+ this.cat).then(
+        response => {
+          filtered = [];
+          response.data.attendees.forEach(function(p){
+            if (p.confirmed) filtered.push(p)
+          });
+          this.boys = filtered;
+        }
+      )
 
-  $scope.loadcat = function(cat) {
-    console.log('selected cat', cat);
-    part_service.getBoys(cat);
-    part_service.getGirls(cat);
-  };
+    }
+  },
 
-  $scope.photourl = function(p) {
-    return '/cd_subscription/api/subscription/' + p.id + '/photo';
-  };
-
-  $scope.girls = [];
-
-  $scope.boys = [];
+  mounted () {
+    var qcat = getQueryVariable('cat'), self=this;
+    console.log('qcat', qcat, this);
+    console.log('theme primary', this.$vuetify.theme.primary)
+    this.categories.forEach(function(c, ix){
+      if (c == qcat) self.tabix = ix;
+    });
+    this.changecat(qcat ? qcat : this.cat);
+  }
 
 });

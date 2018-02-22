@@ -1,66 +1,58 @@
-{% extends "base.html" %}
+{% extends "vue.html" %}
 {% load cms_tags i18n sekizai_tags staticfiles %}
 
 {% block title %}{% trans "Tournament Subscriptions" %}{% endblock title %}
 
-{% block content %}
-
-<div ng-app="participants" ng-controller="partCtrl" class="container">
-
+{% block vuecontent %}
 
 <h1>{% trans "Participants" %}</h1>
 
-<md-tabs md-border-bottom md-autoselect md-dynamic-height>
+<v-tabs v-model="tabix" class="blue-grey lighten-3" light
+    slider-color="pink">
+  <v-tab v-for="cat in categories" @click="changecat(cat)" class="mx-2">
+    -<span v-text="cat"></span>
+  </v-tab>
+</v-tabs>
 
-  <md-tab ng-repeat="cat in categories" md-on-select="loadcat(cat)">
-    <md-tab-label><span ng-bind="cat.label"></span></md-tab-label>
-    <md-tab-body>
-      <div class="cardbox md-whiteframe-2dp">
-        <h3>{% trans "Girls" %} <span ng-bind="cat.label"></span></h3>
-        <table class="table">
-          <tr ng-repeat="p in girls"  ng-show="p.confirmed">
-            <td ng-bind="$index + 1"></td>
-            <td><img width=50
-                     ng-src="{% templatetag openvariable %}photourl(p) {% templatetag closevariable %}">
-            </td>
-            <td ng-bind="p.first_name"></td>
-            <td ng-bind="p.last_name"></td>
-            <td ng-bind="p.rating"></td>
-          </tr>
-        </table>
-      </div>
-      <div class="cardbox md-whiteframe-2dp">
-        <h3>{% trans "Boys" %} <span ng-bind="cat.label"></span></h3>
-        <table class="table">
-          <tr ng-repeat="p in boys" ng-show="p.confirmed">
-            <td ng-bind="$index + 1"></td>
-            <td><img width=50
-                     ng-src="{% templatetag openvariable %}photourl(p) {% templatetag closevariable %}">
-            </td>
-            <td ng-bind="p.first_name"></td>
-            <td ng-bind="p.last_name"></td>
-            <td ng-bind="p.rating"></td>
-          </tr>
-        </table>
-      </div>
-    </md-tab-body>
-  </md-tab>
-
-</md-tabs>
-
-</div>
-
-{% addtoblock "css" %}
-<link href="{% static "bower_components/angular-material/angular-material.min.css"%}" rel="stylesheet">
-{% endaddtoblock %}
+<v-tabs-items v-model="tabix" class="elevation-1">
+  <v-tab-item v-for="cat in categories">
+      <v-card>
+        <v-card-title class="headline">
+          {% trans "Girls" %} -<span v-text="cat"></span>
+        </v-card-title>
+        <v-card-text>
+          <table>
+            <tr v-for="(p,index) in girls">
+              <td v-text="index + 1"></td>
+              <td><img width=50 :src="photourl(p)"></td>
+              <td v-text="p.first_name"></td>
+              <td v-text="p.last_name"></td>
+              <td v-text="p.rating"></td>
+            </tr>
+          </table>
+        </v-card-text>
+      </v-card>
+      <v-card>
+        <v-card-title class="headline">
+          {% trans "Boys" %} -<span v-text="cat"></span>
+        </v-card-title>
+        <v-card-text>
+          <table>
+            <tr v-for="(p,index) in boys">
+              <td v-text="index + 1"></td>
+              <td><img width=50 :src="photourl(p)"></td>
+              <td v-text="p.first_name"></td>
+              <td v-text="p.last_name"></td>
+              <td v-text="p.rating"></td>
+            </tr>
+          </table>
+        </v-card-text>
+      </v-card>
+  </v-tab-item>
+</v-tabs-items>
 
 {% addtoblock "js" %}
-<script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-animate/angular-animate.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-aria/angular-aria.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-sanitize/angular-sanitize.min.js' %}"></script>
-<script src="{% static 'bower_components/angular-material/angular-material.min.js' %}"></script>
-<script src="{% static 'js/participants.js' %}" type="application/javascript"></script>
+<script src="{% static 'participants.js' %}" type="application/javascript"></script>
 {% endaddtoblock %}
 
-{% endblock content %}
+{% endblock vuecontent %}

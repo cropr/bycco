@@ -6,11 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/angular-material.css' %}">
-<link rel="stylesheet" href="{% static 'css/bycco.css' %}">
+{#<link rel="stylesheet" href="{% static 'css/bycco.css' %}">#}
 {% render_block "css" %}
-<script>
-// quick check for IE11 and other older browsers
-</script>
 </head>
 <body>
 
@@ -19,8 +16,8 @@
 <div id="app">
 
     <v-navigation-drawer v-cloak dark temporary fixed v-model="drawer"
-                         class="navmax cyan darken-1">
-      <v-toolbar flat class="cyan">
+                         class="navmax blue-grey darken-1">
+      <v-toolbar flat class="blue-grey">
         <v-list>
           <v-list-tile>
             <v-list-tile-title class="title">
@@ -30,44 +27,47 @@
         </v-list>
       </v-toolbar>
       <v-divider></v-divider>
-      <div class="btn-language cyan darken-1">
+      <div class="btn-language blue-grey darken-1">
         <v-btn flat small class="hover-darker" href="/nl/">NL</v-btn>
         <v-btn flat small href="/fr/">FR</v-btn>
         <v-btn flat small href="/de/">DE</v-btn>
         <v-btn flat small href="/en/">EN</v-btn>
       </div>
-      <v-list dark dense class="cyan darken-1">
+      <v-list dark dense class="blue-grey darken-1">
         {% show_menu 0 100 100 100 %}
         <v-list-group >
-          <v-list-tile slot="item" @click="">
+          <v-list-tile slot="activator" @click="">
             <v-list-tile-content>
               {% trans "Categories" %}
             </v-list-tile-content>
-            <v-list-tile-action>
-              <v-icon>keyboard_arrow_down</v-icon>
-            </v-list-tile-action>
           </v-list-tile>
           <div>
-            <v-btn class="white--text hover-darker" @click="category('B8')" flat>B8</v-btn>
-            <v-btn class="white--text" flat>G8</v-btn>
+            <v-btn class="white--text hover-darker" href="/subscribe/participants?cat=8" flat>B8</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=8" flat>G8</v-btn>
           </div>
           <div>
-            <v-btn class="white--text" flat>B10</v-btn><v-btn class="white--text" flat>G10</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=10" flat>B10</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=10" flat>G10</v-btn>
           </div>
           <div>
-            <v-btn class="white--text" flat>B12</v-btn><v-btn class="white--text" flat>G12</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=12" flat>B12</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=12" flat>G12</v-btn>
           </div>
           <div>
-            <v-btn class="white--text" flat>B14</v-btn><v-btn class="white--text" flat>G14</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=14" flat>B14</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=14" flat>G14</v-btn>
           </div>
           <div>
-            <v-btn class="white--text" flat>B16</v-btn><v-btn class="white--text" flat>G16</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=16" flat>B16</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=16" flat>G16</v-btn>
           </div>
           <div>
-            <v-btn class="white--text" flat>B18</v-btn><v-btn class="white--text" flat>G18</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=18" flat>B18</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=18" flat>G18</v-btn>
           </div>
           <div>
-            <v-btn class="white--text" flat>B20</v-btn><v-btn class="white--text" flat>G20</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=20" flat>B20</v-btn>
+            <v-btn class="white--text" href="/subscribe/participants?cat=20" flat>G20</v-btn>
           </div>
         </v-list-group>
         <v-list-tile  href="/subscribe">
@@ -80,15 +80,13 @@
       </v-list>
       <v-divider></v-divider>
       {% if request.user.is_authenticated %}
-      <v-list dark dense class="cyan darken-1">
+      <v-list dark dense class="blue-grey darken-1">
         <v-list-group>
-          <v-list-tile slot="item" @click="">
+          <v-list-tile slot="activator" @click="">
             <v-list-tile-content>Admin</v-list-tile-content>
-            <v-list-tile-action>
-              <v-icon>keyboard_arrow_down</v-icon>
-            </v-list-tile-action>
           </v-list-tile>
           <v-list-tile href="/subscribe/attendee">
+            <v-list-tile-action></v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>Participants</v-list-tile-title>
             </v-list-tile-content>
@@ -99,8 +97,8 @@
     </v-navigation-drawer>
 
     <v-toolbar v-cloak fixed dark app
-               class="cyan darken-2 {% block toolbar_classes %}{% endblock toolbar_classes %}">
-      <v-toolbar-side-icon @click.stop="toggleMenu()"></v-toolbar-side-icon>
+               class="blue-grey darken-2 {% block toolbar_classes %}{% endblock toolbar_classes %}">
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-items>
         <v-btn flat large>{% trans "BYC 2018" %}</v-btn>
       </v-toolbar-items>
@@ -120,15 +118,15 @@
 
   {% block banner %}{% endblock banner %}
 
-  {% block cms_main %}{% endblock cms_main %}
+  {% block vueapp %}{% endblock vueapp %}
+
+  {% block vuefooter %}{% endblock vuefooter %}
 
 </div>
 
-{% block noncms_main %}{% endblock noncms_main %}
+{% block angularapp %}{% endblock angularapp %}
 
-{# todo footer #}
-
-{% block jsapplication %}{% endblock jsapplication %}
+{% block angularfooter %} {% endblock angularfooter %}
 
 {% render_block "js" %}
 

@@ -3,24 +3,19 @@
 {% for child in children %}
 {% if child.children %}
   <v-list-group>
-    <v-list-tile  slot="item" @click="">
+    <v-list-tile  slot="activator" @click="">
       <v-list-tile-content>
-        <v-list-tile-title>
+        <v-list-tile-content>
           {{ child.get_menu_title}}
-        </v-list-tile-title>
+        </v-list-tile-content>
       </v-list-tile-content>
-      <v-list-tile-action>
-        <v-icon>keyboard_arrow_down</v-icon>
-      </v-list-tile-action>
     </v-list-tile>
-    {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+    {% show_menu from_level to_level extra_inactive extra_active 'menu/sub_menu.html' "" "" child %}
   </v-list-group>
 {%  else %}
   <v-list-tile  href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
     <v-list-tile-content>
-      <v-list-tile-title>
-        {{ child.get_menu_title}}
-      </v-list-tile-title>
+      <v-list-tile-title>{{ child.get_menu_title}}</v-list-tile-title>
     </v-list-tile-content>
   </v-list-tile>
 {%  endif %}

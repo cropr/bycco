@@ -13,5 +13,24 @@
 </main>
 {% endblock vueapp %}
 
+{% block vuefooter %}
+<v-footer height="auto" class="blue-grey lighten-1 white--text">
+  <v-layout row class="py-2">
+    <v-flex md3 sm6 xs12 class="ml-2" light>
+      {%  trans "About Bycco" %}
+    </v-flex>
+    <v-flex md3 sm6 xs12 class="ml-2">
+      {%  trans "The team" %}
+    </v-flex>
+    <v-flex md3 sm6 xs12 class="ml-2">
+      {%  trans "Contact" %} <a href="mailto:info@bycco.be">info@bycco.be</a>
+    </v-flex>
+    <v-flex md3 sm6 xs12 class="ml-2">
+      <img src="{% static "img/facebook.png" %}">
+      <img src="{% static "img/twitter.png" %}">
+    </v-flex>
+  </v-layout>
+</v-footer>
+{%  endblock vuefooter %}
 
 

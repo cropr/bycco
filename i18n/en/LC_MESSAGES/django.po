@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-17 19:06+0100\n"
+"POT-Creation-Date: 2018-02-19 09:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,59 +17,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bycco/settings.py:28 bycco/settings.py:126 dist/bycco-0.2.2
-#: 2/bycco/settings.py:26 2/bycco/settings.py:124
-#: dist/bycco-0.2.2/bycco/settings.py:26 dist/bycco-0.2.2/bycco/settings.py:124
+#: bycco/settings.py:22 bycco/settings.py:108
 msgid "en"
 msgstr ""
 
-#: bycco/settings.py:35 bycco/settings.py:127 dist/bycco-0.2.2
-#: 2/bycco/settings.py:33 2/bycco/settings.py:125
-#: dist/bycco-0.2.2/bycco/settings.py:33 dist/bycco-0.2.2/bycco/settings.py:125
+#: bycco/settings.py:29 bycco/settings.py:109
 msgid "nl"
 msgstr ""
 
-#: bycco/settings.py:42 bycco/settings.py:128 dist/bycco-0.2.2
-#: 2/bycco/settings.py:40 2/bycco/settings.py:126
-#: dist/bycco-0.2.2/bycco/settings.py:40 dist/bycco-0.2.2/bycco/settings.py:126
+#: bycco/settings.py:36 bycco/settings.py:110
 msgid "fr"
 msgstr ""
 
-#: bycco/settings.py:49 bycco/settings.py:129 dist/bycco-0.2.2
-#: 2/bycco/settings.py:47 2/bycco/settings.py:127
-#: dist/bycco-0.2.2/bycco/settings.py:47 dist/bycco-0.2.2/bycco/settings.py:127
+#: bycco/settings.py:43 bycco/settings.py:111
 msgid "de"
 msgstr ""
 
-#: bycco/templates/base.html:45 dist/bycco-0.2.2 2/bycco/templates/base.html:46
-#: dist/bycco-0.2.2/bycco/templates/base.html:46
+#: bycco/templates/base.html:41
 msgid "Categories"
 msgstr ""
 
-#: bycco/templates/base.html:76 bycco/templates/base.html:98 dist/bycco-0.2.2
-#: 2/bycco/templates/base.html:77 2/bycco/templates/base.html:98
-#: dist/bycco-0.2.2/bycco/templates/base.html:77
-#: dist/bycco-0.2.2/bycco/templates/base.html:98
+#: bycco/templates/base.html:76 bycco/templates/base.html:114
 msgid "Subscribe"
 msgstr ""
 
-#: bycco/templates/base.html:87 dist/bycco-0.2.2 2/bycco/templates/base.html:87
-#: dist/bycco-0.2.2/bycco/templates/base.html:87
+#: bycco/templates/base.html:103
 msgid "BYC 2018"
 msgstr ""
 
-#: bycco/templates/base.html:92 dist/bycco-0.2.2 2/bycco/templates/base.html:92
-#: dist/bycco-0.2.2/bycco/templates/base.html:92
+#: bycco/templates/base.html:108
 msgid "Agenda"
 msgstr ""
 
-#: bycco/templates/base.html:95 dist/bycco-0.2.2 2/bycco/templates/base.html:95
-#: dist/bycco-0.2.2/bycco/templates/base.html:95
+#: bycco/templates/base.html:111
 msgid "Lodging"
 msgstr ""
 
-#: bycco/templates/landing.html:7 dist/bycco-0.2.2
-#: 2/bycco/templates/landing.html:9
-#: dist/bycco-0.2.2/bycco/templates/landing.html:9
+#: bycco/templates/landing.html:7
 msgid "Belgian Youth Chess Championships 2018"
 msgstr ""

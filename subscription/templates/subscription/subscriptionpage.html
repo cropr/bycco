@@ -1,4 +1,4 @@
-{% extends "non-cms.html" %}
+{% extends "angular.html" %}
 {% load cms_tags i18n sekizai_tags staticfiles %}
 
 {% block title %}{% trans "Tournament Subscriptions" %}{% endblock title %}
@@ -506,6 +506,7 @@
 </div>
 
 {% addtoblock "js" %}
+<script src="{% static 'subscription.js' %}" ></script>
 
 <script src="{% static 'js/lib/angular.min.js' %}"></script>
 <script src="{% static 'js/lib/angular-animate.min.js' %}"></script>
@@ -530,8 +531,3 @@
 {% endaddtoblock %}
 
 {% endblock content %}
-
-
-{% block jsapplication %}
-  <script src="{% static 'subscription.js' %}" ></script>
-{% endblock jsapplication %}

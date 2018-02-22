@@ -17,6 +17,7 @@ module.exports =  {
     entry: {
       cms: './src/cms.js',
       subscription: './src/subscription.js',
+      participants: './src/participants.js',
       mg_attendee: './src/mg_attendee.js',
     },
     output: {
@@ -59,10 +60,10 @@ module.exports =  {
         },
         {
           test: /\.styl$/,
-          use: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: ['css-loader','stylus-loader']
-          })
+          use: ['style-loader', 'css-loader', 'stylus-loader']
+          // use: ExtractTextPlugin.extract({
+          //   use: ['style-loader', 'css-loader','stylus-loader']
+          // })
         }
       ]
     },
@@ -85,7 +86,10 @@ module.exports =  {
           to: path.resolve(root, staticpath, "css", "ui-cropper.css")
         },
       ]),
-      new ExtractTextPlugin("css/bycco.css")
+      new ExtractTextPlugin({
+        filename: 'css/bycco.css',
+        allChunks: true,
+      })
     ],
   }
 };
