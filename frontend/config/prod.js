@@ -19,6 +19,7 @@ module.exports = {
     entry: {
       cms: './src/cms.js',
       subscription: './src/subscription.js',
+      participants: './src/participants.js',      
       mg_attendee: './src/mg_attendee.js',
     },
     output: {
