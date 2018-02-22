@@ -5,7 +5,6 @@ const utils = require('../build/utils');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-
 const root = path.resolve(__dirname, '../../fe_dist');
 const staticpath = 'static';
 

@@ -12,14 +12,11 @@ module.exports = {
   assetsRoot: root ,
   assetsSubDirectory: staticpath,
   proxyTable: {},
-  // assetsPublicPath: '/',
-  // productionGzip: false,
-  // productionGzipExtensions: ['js', 'css'],
   webpackconfg: {
     entry: {
       cms: './src/cms.js',
       subscription: './src/subscription.js',
-      participants: './src/participants.js',      
+      participants: './src/participants.js',
       mg_attendee: './src/mg_attendee.js',
     },
     output: {
@@ -60,11 +57,18 @@ module.exports = {
         },
         {
           test: /\.styl$/,
-          use: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: ['css-loader','stylus-loader']
-          })
+          use: ['style-loader', 'css-loader', 'stylus-loader']
+          // use: ExtractTextPlugin.extract({
+          //   use: ['style-loader', 'css-loader','stylus-loader']
+          // })
         }
+        // {
+        //   test: /\.styl$/,
+        //   use: ExtractTextPlugin.extract({
+        //     fallback: "style-loader",
+        //     use: ['css-loader','stylus-loader']
+        //   })
+        // }
       ]
     },
     plugins: [
