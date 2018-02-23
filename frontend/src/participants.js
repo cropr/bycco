@@ -38,7 +38,7 @@ window.vm = new Vue({
     changecat (cat) {
       var filtered;
       this.cat = cat;
-      axios.get('/api/attendees?cat=G' + this.cat).then(
+      axios.get('/api/attendees?count=999&cat=G' + this.cat).then(
         response => {
           filtered = [];
           response.data.attendees.forEach(function(p){
@@ -47,7 +47,7 @@ window.vm = new Vue({
           this.girls = filtered;
         }
       );
-      axios.get('/api/attendees?cat=B'+ this.cat).then(
+      axios.get('/api/attendees?count=999&cat=B'+ this.cat).then(
         response => {
           filtered = [];
           response.data.attendees.forEach(function(p){
