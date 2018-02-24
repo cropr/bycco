@@ -417,6 +417,7 @@
 {% endaddtoblock %}
 
 {% addtoblock "js" %}
+<script src="{% static 'mg_attendee.js' %}" ></script>
 
 <script src="{% static 'js/lib/angular.min.js' %}"></script>
 <script src="{% static 'js/lib/angular-animate.min.js' %}"></script>
@@ -442,7 +443,4 @@
 
 {% endblock content %}
 
-{% block jsapplication %}
-  <script src="{% static 'mg_attendee.js' %}" ></script>
-{% endblock jsapplication %}
 

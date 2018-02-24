@@ -5,6 +5,7 @@ log = logging.getLogger(__name__)
 
 import requests
 from binascii import a2b_base64
+from django.shortcuts import redirect
 from django.conf import settings
 from django.http.response import HttpResponse
 from rest_framework import status
@@ -396,8 +397,7 @@ def attendee_photo(request, id):
 
     if request.method == 'GET':
         if not p or not p.badgelength:
-            with open('subscription/nobody.png', 'rb') as img:
-                return Response(data=img.read(), content_type="image/png")
+            return redirect('/static/img/nobody.png')
         return Response(data=p.badgeimage, content_type=p.badgemimetype)
 
     if request.method == 'POST':
