@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n sekizai_tags %}
+{% load i18n staticfiles sekizai_tags %}
 
 {% block title %}BJK 2018{% endblock title %}
 
@@ -12,4 +12,25 @@
     </div>
   </div>
 {% endblock angularapp %}
+
+{% block angularfooter %}
+<footer class="footer blue-grey lighten-1 white--text"
+        style="height: auto;">
+  <div class="layout py-2 row">
+    <div class="flex ml-2 md3 sm6 xs12 light">
+      About Bycco
+    </div>
+    <div class="flex ml-2 md3 sm6 xs12">
+      The team
+    </div>
+    <div class="flex ml-2 md3 sm6 xs12">
+      Contact <a href="mailto:info@bycco.be">info@bycco.be</a>
+    </div>
+    <div class="flex ml-2 md3 sm6 xs12">
+      <img src="{% static "img/facebook.png" %}">
+      <img src="{% static "img/twitter.png" %}">
+    </div>
+  </div>
+</footer>
+{% endblock angularfooter %}
 

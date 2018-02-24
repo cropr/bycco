@@ -29,7 +29,22 @@ window.vm = new Vue({
     categories: [8, 10, 12, 14, 16, 18, 20],
     cat: 8,
     girls: [],
-    boys: []
+    boys: [],
+    headers: [
+      {
+        text: 'Nr',
+        sortable: false,
+        width: '2em',
+      },
+      {
+        text: 'Photo',
+        sortable: false,
+        width: '40px',
+      },
+      { text: 'First Name ', value: 'first_name' },
+      { text: 'Last Name', value: 'last_name' },
+      { text: 'Rating', value: 'rating' },
+    ]
   },
   methods: {
     photourl (p) {
@@ -42,7 +57,7 @@ window.vm = new Vue({
         response => {
           filtered = [];
           response.data.attendees.forEach(function(p){
-            if (p.confirmed) filtered.push(p)
+            if (p.confirmed) filtered.push(p);
           });
           this.girls = filtered;
         }

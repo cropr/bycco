@@ -21,15 +21,15 @@
           {% trans "Girls" %} -<span v-text="cat"></span>
         </v-card-title>
         <v-card-text>
-          <table>
-            <tr v-for="(p,index) in girls">
-              <td v-text="index + 1"></td>
-              <td><img width=50 :src="photourl(p)"></td>
-              <td v-text="p.first_name"></td>
-              <td v-text="p.last_name"></td>
-              <td v-text="p.rating"></td>
-            </tr>
-          </table>
+          <v-data-table :headers="headers" :items="girls" hide-actions>
+            <template slot="items" slot-scope="props">
+                <td v-text="props.index + 1"></td>
+                <td><img width=50 :src="photourl(props.item)"></td>
+                <td v-text="props.item.first_name"></td>
+                <td v-text="props.item.last_name"></td>
+                <td v-text="props.item.rating"></td>
+            </template>
+          </v-data-table>
         </v-card-text>
       </v-card>
       <v-card>
@@ -37,15 +37,15 @@
           {% trans "Boys" %} -<span v-text="cat"></span>
         </v-card-title>
         <v-card-text>
-          <table>
-            <tr v-for="(p,index) in boys">
-              <td v-text="index + 1"></td>
-              <td><img width=50 :src="photourl(p)"></td>
-              <td v-text="p.first_name"></td>
-              <td v-text="p.last_name"></td>
-              <td v-text="p.rating"></td>
-            </tr>
-          </table>
+          <v-data-table :headers="headers" :items="boys" hide-actions>
+            <template slot="items" slot-scope="props">
+                <td v-text="props.index + 1"></td>
+                <td><img width=50 :src="photourl(props.item)"></td>
+                <td v-text="props.item.first_name"></td>
+                <td v-text="props.item.last_name"></td>
+                <td v-text="props.item.rating"></td>
+            </template>
+          </v-data-table>
         </v-card-text>
       </v-card>
   </v-tab-item>

@@ -55,20 +55,17 @@ module.exports = {
           loader: 'babel-loader',
           include: [utils.resolve('src')]
         },
-        {
-          test: /\.styl$/,
-          use: ['style-loader', 'css-loader', 'stylus-loader']
-          // use: ExtractTextPlugin.extract({
-          //   use: ['style-loader', 'css-loader','stylus-loader']
-          // })
-        }
         // {
         //   test: /\.styl$/,
-        //   use: ExtractTextPlugin.extract({
-        //     fallback: "style-loader",
-        //     use: ['css-loader','stylus-loader']
-        //   })
+        //   use: ['style-loader', 'css-loader', 'stylus-loader']
         // }
+        {
+          test: /\.styl$/,
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: ['css-loader','stylus-loader']
+          })
+        }
       ]
     },
     plugins: [
