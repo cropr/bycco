@@ -105,7 +105,7 @@
         <h4 ng-show="detailmode == 'new'" class="pftop phbot">New attendee</h4>
         <h4 ng-show="detailmode == 'edit'" class="pftop phbot">Edit attendee</h4>
         <div layout="row">
-          <div flex layout="column">
+          <div flex="40" layout="column">
             <md-input-container flex>
               <label>Last Name</label>
               <input ng-model="attendee.last_name" type="text">
@@ -192,7 +192,7 @@
               <b>Confirmed:</b> <span ng-bind="attendee.confirmed ? 'Yes' : 'No' "></span>
             </div>
           </div>
-          <div flex layout="column">
+          <div flex="40" layout="column">
             <md-input-container flex>
               <label>Email player</label>
               <input ng-model="attendee.emailplayer" type="text">
@@ -265,10 +265,14 @@
               <input ng-model="attendee.remarks" type="text">
             </md-input-container>
           </div>
-          <div flex>
+          <div flex="20">
             <md-button class="md-primary md-raised"
                        ng-click="att.save_edit()">
               Save
+            </md-button>
+            <md-button class="md-primary md-raised"
+                       ng-click="att.resend_confirmation()">
+              Resend
             </md-button>
             <md-button class="md-primary md-raised"
                        ng-click="att.cancel()">
@@ -418,7 +422,7 @@
 {% endaddtoblock %}
 
 {% addtoblock "js" %}
-<script src="{% static 'mg_attendee.js' %}" ></script>
+
 
 <script src="{% static 'js/lib/angular.min.js' %}"></script>
 <script src="{% static 'js/lib/angular-animate.min.js' %}"></script>
@@ -436,7 +440,7 @@
 <script src="{% static 'js/lib/ng-file-upload.min.js' %}"></script>
 <script src="{% static 'js/lib/ui-cropper.js' %}"></script>
 
-<script src="{% static 'js/controllers/ctrl_mgattendee.js'%}"></script>
+<script src="{% static 'mg_attendee.js' %}" ></script>
 <script src="{% static 'js/services/api.js'%}"></script>
 <script src="{% static 'js/services/apidef.js'%}"></script>
 

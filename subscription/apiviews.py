@@ -53,6 +53,20 @@ def subscription_confirmation(request, idsub):
         sendconfirmationmail(subscription)
         return Response(status=status.HTTP_200_OK)
 
+@api_view(['POST'])
+def subscription_resend(request, idsub):
+    """ resend confirmation email"""
+
+    try:
+        subscription = Subscription.objects.get(pk=idsub)
+    except Subscription.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'POST':
+        subscription.confirmed = True
+        sendconfirmationmail(subscription)
+        return Response(status=status.HTTP_200_OK)
+
 @api_view(['GET', 'PUT', 'DELETE'])
 def subscription_detail(request, pk):
 
@@ -340,7 +354,7 @@ def attendee_detail(request, id):
             'rating': p.rating,
             'ratingbel': p.ratingbel,
             'ratingfide': p.ratingfide,
-            'remarks': p.custom3,
+            'remarks': p.remarks,
         }
         return Response(dict(attendee=attendee))
 

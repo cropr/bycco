@@ -38,6 +38,12 @@ angular.module('api')
         body: ['attendee'],
         required: ['attendee', 'id'],
       },
+      resendConfirmation: {
+        method: 'POST',
+        url: '/attendees/{id}/resend',
+        path: ['id'],
+        required: ['id'],
+      },
       searchIdNational: {
         method: 'GET',
         url: '/belplayer/{idbel}',
