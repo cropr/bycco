@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-19 09:10+0100\n"
+"POT-Creation-Date: 2018-03-04 19:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,18 @@ msgstr "Verblijf"
 #: bycco/templates/landing.html:7
 msgid "Belgian Youth Chess Championships 2018"
 msgstr "Belgisch Jeugdkampioenschap Schaken 2018"
+
+#: bycco/templates/vue.html:30
+msgid "About Bycco"
+msgstr "Over Bycco"
+
+#: bycco/templates/vue.html:33
+msgid "The team"
+msgstr "Het team"
+
+#: bycco/templates/vue.html:36
+msgid "Contact"
+msgstr ""
 
 #~ msgid "Subsribe"
 #~ msgstr "Inschrijving"
