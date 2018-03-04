@@ -2,12 +2,9 @@ import 'babel-polyfill';
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import './stylus/bycco.styl';
+import api from './api/api';
 
 Vue.use(Vuetify);
-
-import axios from 'axios';
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
@@ -21,10 +18,16 @@ function getQueryVariable(variable) {
   return null
 }
 
+window.config = {
+  apiurl: '/api'
+};
+
 window.vm = new Vue({
   el: '#app',
   data: {
     drawer: false,
+    adCarouselValue: 0,
+    nAdCarousel: 6,
     tabix: 0,
     categories: [8, 10, 12, 14, 16, 18, 20],
     cat: 8,
@@ -51,31 +54,35 @@ window.vm = new Vue({
       return '/api/photo/' + ((p && p.id) ? p.id : 0);
     },
     changecat (cat) {
-      var filtered;
+      var filtered, self=this;
       this.cat = cat;
-      axios.get('/api/attendees?count=999&cat=G' + this.cat).then(
-        response => {
-          filtered = [];
-          response.data.attendees.forEach(function(p){
-            if (p.confirmed) filtered.push(p);
-          });
-          this.girls = filtered;
-        }
-      );
-      axios.get('/api/attendees?count=999&cat=B'+ this.cat).then(
-        response => {
-          filtered = [];
-          response.data.attendees.forEach(function(p){
-            if (p.confirmed) filtered.push(p)
-          });
-          this.boys = filtered;
-        }
-      )
-
+      api('getAttendees', {
+        count: 999,
+        cat: 'G'+cat
+      }).then(function(data){
+        console.log('data', data);
+        filtered = [];
+        data.attendees.forEach(function(p){
+          if (p.confirmed) filtered.push(p);
+        });
+        self.girls = filtered;
+      });
+      api('getAttendees', {
+        count: 999,
+        cat: 'B'+cat
+      }).then(function(data) {
+        filtered = [];
+        data.attendees.forEach(function(p){
+          if (p.confirmed) filtered.push(p);
+        });
+        self.boys = filtered;
+      });
     }
   },
 
   mounted () {
+    var secCarousel = Math.floor((new Date()/1000) % (6 * this.nAdCarousel));
+    this.adCarouselValue = Math.floor(secCarousel / this.nAdCarousel);
     var qcat = getQueryVariable('cat'), self=this;
     console.log('qcat', qcat, this);
     console.log('theme primary', this.$vuetify.theme.primary)

@@ -14,6 +14,16 @@
 {% endblock vueapp %}
 
 {% block vuefooter %}
+<v-carousel hide-controls hide-delimiters :value="adCarouselValue"
+            class="adcarrousel mb-2">
+  <v-carousel-item :src="'/static/img/frame_archery.png'"></v-carousel-item>
+  <v-carousel-item :src="'/static/img/frame_blankenberge.png'"></v-carousel-item>
+  <v-carousel-item :src="'/static/img/frame_chessconsult.png'"></v-carousel-item>
+  <v-carousel-item :src="'/static/img/frame_cvwarehouse.png'"></v-carousel-item>
+  <v-carousel-item :src="'/static/img/frame_g4gm.png'"></v-carousel-item>
+  <v-carousel-item :src="'/static/img/frame_talistro.png'"></v-carousel-item>
+</v-carousel>
+
 <v-footer height="auto" class="blue-grey lighten-1 white--text">
   <v-layout row class="py-2">
     <v-flex md3 sm6 xs12 class="ml-2" light>

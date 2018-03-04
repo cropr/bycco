@@ -5,10 +5,10 @@ angular.module('subscription', [
   'ngMaterial',
   'ngSanitize',
   'uiCropper',
-  'api',
+  'common',
 ])
 
-.controller('subCtrl', function($scope, $http, $q, $log, api){
+.controller('subCtrl', function($scope, $http, $q, $log, $timeout, api){
 
   let subparam = {};
 
@@ -53,41 +53,50 @@ angular.module('subscription', [
           (this.month <10? '0': '') + this.month  + '/' + this.year;
     },
     checkIdNational: function(){
+      var self=this;
       this.searched = true;
       this.errorcode = null;
       api('searchIdNational', {idbel: this.idbel}).then(
-        (function (player){
-          if (player.alreadysubscribed) {
-            this.errorcode = 'alreadyregistered';
-            this.found = false;
-            return;
-          }
-          let db = new Date(player.birthdate);
-          if (db.getFullYear() < 1998) {
-            this.errorcode = 'playeradult';
-            this.found = false;
-            return;
-          }
-          this.setPlayer(player);
-          if (player.idfide && player.idfide.length) {
-            api('searchIdFide', {idfide:player.idfide}).then(
-              this.setFidePlayer.bind(this), null
-            )
-          }
-        }).bind(this),
-        (function(err){
-          console.error('Could not get id national', err, this);
-          if (err.status == 404) {
-            this.errorcode = 'notfound';
-            this.found = false;
-            return
-          }
-          this.errorcode = 'unknown';
-        }).bind(this)
+        function (player){
+          $timeout(function(){
+            console.log('success ', player, self);
+            if (player.alreadysubscribed) {
+              self.errorcode = 'alreadyregistered';
+              self.found = false;
+              return;
+            }
+            let db = new Date(player.birthdate);
+            if (db.getFullYear() < 1998) {
+              self.errorcode = 'playeradult';
+              self.found = false;
+              return;
+            }
+            self.setPlayer(player);
+            if (player.idfide && player.idfide.length) {
+              api('searchIdFide', {idfide:player.idfide}).then(
+                function(){
+                  $timeout(self.setFidePlayer.bind(self)(player));
+                },
+                null
+              )
+            }
+          })
+        },
+        function(err){
+          $timeout(function(){
+            console.error('Could not get id national', err, self);
+            if (err.status == 404) {
+              self.errorcode = 'notfound';
+              self.found = false;
+              return
+            }
+            self.errorcode = 'unknown';
+          })
+        }
       );
     },
     createSubscription: function(){
-      let rm = false;
+      var rm = false, self=this;
       if (!this.adult) {
         rm = rm || invalidField(this.fullnameparent);
         rm = rm || invalidField(this.emailparent);
@@ -107,15 +116,19 @@ angular.module('subscription', [
       }
       this.setSubparam();
       api('createSubscription', {subscription: subparam}).then(
-        (function(data) {
-          this.paymessage = data.paymessage;
-          this.idsub = data.id;
-          this.gotoTab(3);
-        }).bind(this),
-        (function(data) {
-          console.error('subscription failed', data);
-          this.errorcode = (data == 403) ? 'firewall' : 'unknown';
-        }).bind(this)
+        function(data) {
+          $timeout(function(){
+            self.paymessage = data.paymessage;
+            self.idsub = data.id;
+            self.gotoTab(3);
+          });
+        },
+        function(data) {
+          $timeout(function(){
+            console.error('subscription failed', data);
+            self.errorcode = (data == 403) ? 'firewall' : 'unknown';
+          })
+        }
       );
     },
     clearPlayer: function(){
@@ -141,17 +154,22 @@ angular.module('subscription', [
       subparam = {};
     },
     confirm: function(){
+      var self=this;
       this.errorcode = null;
       api('confirmSubscription',{
         idsub: this.idsub
       }).then(
         function(){
-          console.log('sub confirmed', this);
-          this.subscriptionconfirmed = true;
-        }.bind(this),
+          $timeout(function(){
+            console.log('sub confirmed', self);
+            self.subscriptionconfirmed = true;
+          })
+        },
         function(){
-          this.confirmationfailed = true;
-        }.bind(this)
+          $timeout(function() {
+            self.confirmationfailed = true;
+          })
+        }
       );
     },
     fullname: function(){
@@ -231,6 +249,7 @@ angular.module('subscription', [
       };
     },
     uploadPhoto: function(){
+      var self=this;
       this.errorcode = null;
       if (!$scope.photo.cropresult || !$scope.photo.cropresult.length) {
         this.gotoTab(4);
@@ -240,12 +259,16 @@ angular.module('subscription', [
         photo: $scope.photo.cropresult,
         idsub: this.idsub,
       }).then(
-        (function(){
-          console.log('upload succeeded');
-          this.gotoTab(4)
-        }).bind(this),
+        function(){
+          $timeout(function(){
+            console.log('upload succeeded');
+            self.gotoTab(4)
+          })
+        },
         function(err){
-          console.error(err);
+          $timeout(function(){
+            console.error(err);
+          });
         }
       );
     }

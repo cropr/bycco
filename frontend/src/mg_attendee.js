@@ -8,8 +8,11 @@ Vue.use(Vuetify);
 new Vue({
   el: '#app',
   data: {
-      drawer: false,
+    drawer: false,
+    adCarouselValue: 0,
+    nAdCarousel: 6,
   },
+
   methods: {
     toggleMenu () {
       this.drawer = !this.drawer;
@@ -20,6 +23,11 @@ new Vue({
     clickedMenu (item) {
       console.log('clicked menu', item)
     }
+  },
+
+  mounted () {
+    var secCarousel = Math.floor((new Date()/1000) % (6 * this.nAdCarousel));
+    this.adCarouselValue = Math.floor(secCarousel / this.nAdCarousel);
   }
 });
 
