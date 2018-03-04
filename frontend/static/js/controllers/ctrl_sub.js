@@ -74,7 +74,7 @@ angular.module('subscription', [
             self.setPlayer(player);
             if (player.idfide && player.idfide.length) {
               api('searchIdFide', {idfide:player.idfide}).then(
-                function(){
+                function(player){
                   $timeout(self.setFidePlayer.bind(self)(player));
                 },
                 null
