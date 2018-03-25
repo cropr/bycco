@@ -31,4 +31,4 @@ six
 tzlocal
 unidecode
 yamjam
-https://chessdevil.myqnapcloud.com:8101/pip/dbf/dbf-1.0.tar.gz
+https://chessdevil.myqnapcloud.com/pip/dbf/dbf-1.0.tar.gz

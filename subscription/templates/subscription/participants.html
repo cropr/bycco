@@ -52,8 +52,13 @@
   </v-tab-item>
 </v-tabs-items>
 
-{% render_bundle 'manifest' %}
-{% render_bundle 'vendor' %}
+{% addtoblock "js" %}
 {% render_bundle 'participants' %}
+{% if PRODUCTION %}
+  {% render_bundle 'manifest' %}
+  {% render_bundle 'vendor' %}
+{% endif %}
+{% endaddtoblock %}
+
 
 {% endblock vuecontent %}

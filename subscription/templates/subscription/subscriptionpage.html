@@ -498,20 +498,20 @@
     </div>
   </md-tab>
 
-  {% addtoblock "css" %}
-    <link rel="stylesheet" href="{% static 'css/ui-cropper.css' %}">
-  {% endaddtoblock %}
-
 </md-tabs>
 
 </div>
 
-{% render_bundle 'manifest' %}
-{% render_bundle 'vendor' %}
-{% render_bundle 'subscription' %}
-
+{% addtoblock "css" %}
+<link rel="stylesheet" href="{% static 'css/ui-cropper.css' %}">
+<link rel="stylesheet" href="{% static 'css/angular-material.min.css' %}">
+{% endaddtoblock %}
 
 {% addtoblock "js" %}
+{% render_bundle 'subscription' %}{% if PRODUCTION %}
+  {% render_bundle 'manifest' %}
+  {% render_bundle 'vendor' %}
+{% endif %}
 
 <script src="{% static 'js/lib/angular.min.js' %}"></script>
 <script src="{% static 'js/lib/angular-animate.min.js' %}"></script>
