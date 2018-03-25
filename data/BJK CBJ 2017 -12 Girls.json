@@ -1,0 +1,2048 @@
+{
+    "Swar" : {
+        "TournamentDesc" : {
+            "Version" : "v3.24",
+            "Tournament" : "BJK CBJ 2017 -12 Girls",
+            "Organizer" : "BYCCO",
+            "ClubOrLogo" : "",
+            "Place" : "Blankenberge",
+            "Arbiter_1" : "IA Sylvin De Vet",
+            "Arbiter_2" : "IA Sylvin De Vet",
+            "StartDate" : "09/04/2017",
+            "EndDate" : "15/04/2017",
+            "RateOfPlay" : "90 min with incr. 30\"",
+            "NbOfRounds" : 9,
+            "NbOfMeetings" : 1,
+            "SepareteCategories" : 0,
+            "FideHomologation " : 1,
+            "FideTournamentId" : "159995",
+            "FideArbiterId_1" : 214787,
+            "FideArbiterName_1" : "De Vet Sylvin",
+            "FideArbiterId_2" : 205494,
+            "FideArbiterName_2" : "Cornet Luc",
+            "TournamentType" : "Swiss",
+            "NbGroups" : 0,
+            "XtrPoints" : "0.0",
+            "SW321_Win" : "0.0",
+            "SW321_Null" : "0.0",
+            "SW321_Loss" : "0.0",
+            "SW321_Bye" : "0.0",
+            "SW321_Presence" : "0.0",
+            "EloUsed" : "Higher of National and Fide",
+            "TournamentStd" : "Standard",
+            "ByeValue" : "0.0",
+            "AbsenceValue" : "0.5",
+            "ForfaitValue" : "0.5",
+            "Federation" : "KBSB",
+            "NbDates" : 9,
+            "NbPlayers" : 16,
+            "DatesArray" : [ {
+                "DateValue" : "09/04/2017"
+            }, {
+                "DateValue" : "10/04/2017"
+            }, {
+                "DateValue" : "10/04/2017"
+            }, {
+                "DateValue" : "11/04/2017"
+            }, {
+                "DateValue" : "12/04/2017"
+            }, {
+                "DateValue" : "12/04/2017"
+            }, {
+                "DateValue" : "13/04/2017"
+            }, {
+                "DateValue" : "14/04/2017"
+            }, {
+                "DateValue" : "15/04/2017"
+            } ],
+            "TieBreaks" : [ {
+                "Type" : "Progressif"
+            }, {
+                "Type" : "Bucholtz"
+            }, {
+                "Type" : "Sonneborn-Berger"
+            }, {
+                "Type" : "Nb.Games Won"
+            }, {
+                "Type" : "Nb.played with Black"
+            } ],
+            "Category" : "AGE",
+            "Category_1" : [ {
+                "Type" : "AGE",
+                "100" : "+12"
+            }, {
+                "Type" : "AGE",
+                "200" : "-12"
+            } ]
+        },
+        "Player" : [ {
+            "Ranking" : 1,
+            "Name" : "Gulieva Karina",
+            "Ni" : 10,
+            "Rank" : 3,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2006-12-12",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 14608,
+            "FideId" : 251135,
+            "Affiliated" : 1,
+            "NationalElo" : 1411,
+            "FideElo" : 1300,
+            "Titel" : "",
+            "ClubNumber" : 418,
+            "ClubName" : "Geraardsbergen",
+            "NbOfParts" : 9,
+            "Points" : "8.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "41.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "46.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "40.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "8"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1602,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "3",
+                "OpponentNi" : 7,
+                "OpponentName" : "Frere Esther",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "3",
+                "OpponentNi" : 4,
+                "OpponentName" : "Deleu Ellen",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "1",
+                "OpponentNi" : 2,
+                "OpponentName" : "De Rycke Tyani",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "1",
+                "OpponentNi" : 12,
+                "OpponentName" : "Morote Luna",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "1",
+                "OpponentNi" : 5,
+                "OpponentName" : "Deleu Karen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "1",
+                "OpponentNi" : 6,
+                "OpponentName" : "Deleu Leen",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "1",
+                "OpponentNi" : 16,
+                "OpponentName" : "Vanderstappen Louise",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "1",
+                "OpponentNi" : 9,
+                "OpponentName" : "Goossens Anouck",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "1",
+                "OpponentNi" : 15,
+                "OpponentName" : "Roymans Liese",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 2,
+            "Name" : "De Rycke Tyani",
+            "Ni" : 2,
+            "Rank" : 1,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2005-08-30",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 14625,
+            "FideId" : 247936,
+            "Affiliated" : 1,
+            "NationalElo" : 1462,
+            "FideElo" : 1509,
+            "Titel" : "",
+            "ClubNumber" : 436,
+            "ClubName" : "LSV-Chesspirant",
+            "NbOfParts" : 9,
+            "Points" : "7.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "36.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "44.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "33.25"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "7"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 1536,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "1",
+                "OpponentNi" : 1,
+                "OpponentName" : "Collin Adelaide",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "1",
+                "OpponentNi" : 5,
+                "OpponentName" : "Deleu Karen",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Gulieva Karina",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "2",
+                "OpponentNi" : 16,
+                "OpponentName" : "Vanderstappen Louise",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "2",
+                "OpponentNi" : 6,
+                "OpponentName" : "Deleu Leen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "2",
+                "OpponentNi" : 12,
+                "OpponentName" : "Morote Luna",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "2",
+                "OpponentNi" : 4,
+                "OpponentName" : "Deleu Ellen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "2",
+                "OpponentNi" : 14,
+                "OpponentName" : "Navez Alice",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "2",
+                "OpponentNi" : 11,
+                "OpponentName" : "Kuijpers Maura",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 3,
+            "Name" : "Deleu Leen",
+            "Ni" : 6,
+            "Rank" : 5,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2006-10-19",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 14517,
+            "FideId" : 246700,
+            "Affiliated" : 1,
+            "NationalElo" : 1329,
+            "FideElo" : 1334,
+            "Titel" : "",
+            "ClubNumber" : 401,
+            "ClubName" : "KGSRL Gent",
+            "NbOfParts" : 9,
+            "Points" : "6.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "31.5"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "49.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "31.75"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "5"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1341,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "5",
+                "OpponentNi" : 14,
+                "OpponentName" : "Navez Alice",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "2",
+                "OpponentNi" : 12,
+                "OpponentName" : "Morote Luna",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "3",
+                "OpponentNi" : 16,
+                "OpponentName" : "Vanderstappen Louise",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "4",
+                "OpponentNi" : 4,
+                "OpponentName" : "Deleu Ellen",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "2",
+                "OpponentNi" : 2,
+                "OpponentName" : "De Rycke Tyani",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Gulieva Karina",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "4",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Wachter Livia",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "3",
+                "OpponentNi" : 5,
+                "OpponentName" : "Deleu Karen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "3",
+                "OpponentNi" : 8,
+                "OpponentName" : "Gelders Marte",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 4,
+            "Name" : "Morote Luna",
+            "Ni" : 12,
+            "Rank" : 2,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2006-02-04",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 15402,
+            "FideId" : 251020,
+            "Affiliated" : 1,
+            "NationalElo" : 1484,
+            "FideElo" : 1484,
+            "Titel" : "",
+            "ClubNumber" : 166,
+            "ClubName" : "TSMechelen",
+            "NbOfParts" : 9,
+            "Points" : "5.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "29.5"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "46.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "23.75"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "4"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1337,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "2",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Wachter Livia",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "2",
+                "OpponentNi" : 6,
+                "OpponentName" : "Deleu Leen",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "2",
+                "OpponentNi" : 15,
+                "OpponentName" : "Roymans Liese",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Gulieva Karina",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "3",
+                "OpponentNi" : 9,
+                "OpponentName" : "Goossens Anouck",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "2",
+                "OpponentNi" : 2,
+                "OpponentName" : "De Rycke Tyani",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "3",
+                "OpponentNi" : 5,
+                "OpponentName" : "Deleu Karen",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "4",
+                "OpponentNi" : 4,
+                "OpponentName" : "Deleu Ellen",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "5",
+                "OpponentNi" : 7,
+                "OpponentName" : "Frere Esther",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 5,
+            "Name" : "Deleu Ellen",
+            "Ni" : 4,
+            "Rank" : 8,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2005-08-08",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 14510,
+            "FideId" : 246689,
+            "Affiliated" : 1,
+            "NationalElo" : 1184,
+            "FideElo" : 1208,
+            "Titel" : "",
+            "ClubNumber" : 401,
+            "ClubName" : "KGSRL Gent",
+            "NbOfParts" : 9,
+            "Points" : "5.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "27.5"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "50.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "26.50"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "5"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 1215,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "8",
+                "OpponentNi" : 11,
+                "OpponentName" : "Kuijpers Maura",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "3",
+                "OpponentNi" : 10,
+                "OpponentName" : "Gulieva Karina",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "6",
+                "OpponentNi" : 8,
+                "OpponentName" : "Gelders Marte",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "4",
+                "OpponentNi" : 6,
+                "OpponentName" : "Deleu Leen",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "5",
+                "OpponentNi" : 14,
+                "OpponentName" : "Navez Alice",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "4",
+                "OpponentNi" : 15,
+                "OpponentName" : "Roymans Liese",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "2",
+                "OpponentNi" : 2,
+                "OpponentName" : "De Rycke Tyani",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "4",
+                "OpponentNi" : 12,
+                "OpponentName" : "Morote Luna",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "4",
+                "OpponentNi" : 16,
+                "OpponentName" : "Vanderstappen Louise",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 6,
+            "Name" : "Deleu Karen",
+            "Ni" : 5,
+            "Rank" : 4,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2006-10-19",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 14521,
+            "FideId" : 246697,
+            "Affiliated" : 1,
+            "NationalElo" : 1361,
+            "FideElo" : 1344,
+            "Titel" : "",
+            "ClubNumber" : 401,
+            "ClubName" : "KGSRL Gent",
+            "NbOfParts" : 9,
+            "Points" : "5.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "26.5"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "45.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "18.25"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "4"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1239,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "4",
+                "OpponentNi" : 13,
+                "OpponentName" : "Muys Elitha",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "1",
+                "OpponentNi" : 2,
+                "OpponentName" : "De Rycke Tyani",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "4",
+                "OpponentNi" : 11,
+                "OpponentName" : "Kuijpers Maura",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "3",
+                "OpponentNi" : 14,
+                "OpponentName" : "Navez Alice",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Gulieva Karina",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "3",
+                "OpponentNi" : 16,
+                "OpponentName" : "Vanderstappen Louise",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "3",
+                "OpponentNi" : 12,
+                "OpponentName" : "Morote Luna",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "3",
+                "OpponentNi" : 6,
+                "OpponentName" : "Deleu Leen",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "6",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Wachter Livia",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 7,
+            "Name" : "Vanderstappen Louise",
+            "Ni" : 16,
+            "Rank" : 6,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2005-05-27",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 13461,
+            "FideId" : 243000,
+            "Affiliated" : 1,
+            "NationalElo" : 1242,
+            "FideElo" : 1233,
+            "Titel" : "",
+            "ClubNumber" : 462,
+            "ClubName" : "Zottegem",
+            "NbOfParts" : 9,
+            "Points" : "5.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "25.5"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "49.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "23.50"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "3"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1212,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "6",
+                "OpponentNi" : 15,
+                "OpponentName" : "Roymans Liese",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "4",
+                "OpponentNi" : 9,
+                "OpponentName" : "Goossens Anouck",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "3",
+                "OpponentNi" : 6,
+                "OpponentName" : "Deleu Leen",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "2",
+                "OpponentNi" : 2,
+                "OpponentName" : "De Rycke Tyani",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "4",
+                "OpponentNi" : 8,
+                "OpponentName" : "Gelders Marte",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "3",
+                "OpponentNi" : 5,
+                "OpponentName" : "Deleu Karen",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Gulieva Karina",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "5",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Wachter Livia",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "4",
+                "OpponentNi" : 4,
+                "OpponentName" : "Deleu Ellen",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 8,
+            "Name" : "Navez Alice",
+            "Ni" : 14,
+            "Rank" : 13,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2005-05-26",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 16002,
+            "FideId" : 252336,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 0,
+            "Titel" : "",
+            "ClubNumber" : 525,
+            "ClubName" : "Bourlette - Anderlues",
+            "NbOfParts" : 9,
+            "Points" : "5.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "23.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "37.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "13.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "5"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 775,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "5",
+                "OpponentNi" : 6,
+                "OpponentName" : "Deleu Leen",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "6",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Wachter Livia",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "5",
+                "OpponentNi" : 9,
+                "OpponentName" : "Goossens Anouck",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "3",
+                "OpponentNi" : 5,
+                "OpponentName" : "Deleu Karen",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "5",
+                "OpponentNi" : 4,
+                "OpponentName" : "Deleu Ellen",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "6",
+                "OpponentNi" : 11,
+                "OpponentName" : "Kuijpers Maura",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "7",
+                "OpponentNi" : 1,
+                "OpponentName" : "Collin Adelaide",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "2",
+                "OpponentNi" : 2,
+                "OpponentName" : "De Rycke Tyani",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "7",
+                "OpponentNi" : 13,
+                "OpponentName" : "Muys Elitha",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 9,
+            "Name" : "Goossens Anouck",
+            "Ni" : 9,
+            "Rank" : 7,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2005-01-21",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 15984,
+            "FideId" : 254517,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 1237,
+            "Titel" : "",
+            "ClubNumber" : 121,
+            "ClubName" : "Turnhout",
+            "NbOfParts" : 9,
+            "Points" : "5.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "23.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "36.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "12.50"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "5"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 1054,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "7",
+                "OpponentNi" : 8,
+                "OpponentName" : "Gelders Marte",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "4",
+                "OpponentNi" : 16,
+                "OpponentName" : "Vanderstappen Louise",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "5",
+                "OpponentNi" : 14,
+                "OpponentName" : "Navez Alice",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "5",
+                "OpponentNi" : 15,
+                "OpponentName" : "Roymans Liese",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "3",
+                "OpponentNi" : 12,
+                "OpponentName" : "Morote Luna",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "5",
+                "OpponentNi" : 7,
+                "OpponentName" : "Frere Esther",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "6",
+                "OpponentNi" : 13,
+                "OpponentName" : "Muys Elitha",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Gulieva Karina",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "8",
+                "OpponentNi" : 1,
+                "OpponentName" : "Collin Adelaide",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 10,
+            "Name" : "Gelders Marte",
+            "Ni" : 8,
+            "Rank" : 15,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2006-01-31",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 15467,
+            "FideId" : 0,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 0,
+            "Titel" : "",
+            "ClubNumber" : 732,
+            "ClubName" : "Houthalen-Oost",
+            "NbOfParts" : 9,
+            "Points" : "5.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "21.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "31.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "12.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "5"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 594,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "7",
+                "OpponentNi" : 9,
+                "OpponentName" : "Goossens Anouck",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "8",
+                "OpponentNi" : 13,
+                "OpponentName" : "Muys Elitha",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "6",
+                "OpponentNi" : 4,
+                "OpponentName" : "Deleu Ellen",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "6",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Wachter Livia",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "4",
+                "OpponentNi" : 16,
+                "OpponentName" : "Vanderstappen Louise",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "8",
+                "OpponentNi" : 1,
+                "OpponentName" : "Collin Adelaide",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "5",
+                "OpponentNi" : 11,
+                "OpponentName" : "Kuijpers Maura",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "7",
+                "OpponentNi" : 7,
+                "OpponentName" : "Frere Esther",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "3",
+                "OpponentNi" : 6,
+                "OpponentName" : "Deleu Leen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 11,
+            "Name" : "Roymans Liese",
+            "Ni" : 15,
+            "Rank" : 14,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2006-09-27",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 16158,
+            "FideId" : 253464,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 0,
+            "Titel" : "",
+            "ClubNumber" : 135,
+            "ClubName" : "Geel",
+            "NbOfParts" : 9,
+            "Points" : "4.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "22.5"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "36.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 9.50"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "4"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 731,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "6",
+                "OpponentNi" : 16,
+                "OpponentName" : "Vanderstappen Louise",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "5",
+                "OpponentNi" : 1,
+                "OpponentName" : "Collin Adelaide",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "2",
+                "OpponentNi" : 12,
+                "OpponentName" : "Morote Luna",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "5",
+                "OpponentNi" : 9,
+                "OpponentName" : "Goossens Anouck",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "6",
+                "OpponentNi" : 11,
+                "OpponentName" : "Kuijpers Maura",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "4",
+                "OpponentNi" : 4,
+                "OpponentName" : "Deleu Ellen",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "8",
+                "OpponentNi" : 7,
+                "OpponentName" : "Frere Esther",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "6",
+                "OpponentNi" : 13,
+                "OpponentName" : "Muys Elitha",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Gulieva Karina",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 12,
+            "Name" : "Kuijpers Maura",
+            "Ni" : 11,
+            "Rank" : 16,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2005-12-15",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 15487,
+            "FideId" : 251178,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 0,
+            "Titel" : "",
+            "ClubNumber" : 726,
+            "ClubName" : "Neerpelt",
+            "NbOfParts" : 9,
+            "Points" : "4.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "19.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "35.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 8.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "4"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 410,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "8",
+                "OpponentNi" : 4,
+                "OpponentName" : "Deleu Ellen",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "7",
+                "OpponentNi" : 7,
+                "OpponentName" : "Frere Esther",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "4",
+                "OpponentNi" : 5,
+                "OpponentName" : "Deleu Karen",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "7",
+                "OpponentNi" : 13,
+                "OpponentName" : "Muys Elitha",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "6",
+                "OpponentNi" : 15,
+                "OpponentName" : "Roymans Liese",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "6",
+                "OpponentNi" : 14,
+                "OpponentName" : "Navez Alice",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "5",
+                "OpponentNi" : 8,
+                "OpponentName" : "Gelders Marte",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "8",
+                "OpponentNi" : 1,
+                "OpponentName" : "Collin Adelaide",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "2",
+                "OpponentNi" : 2,
+                "OpponentName" : "De Rycke Tyani",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 13,
+            "Name" : "De Wachter Livia",
+            "Ni" : 3,
+            "Rank" : 10,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2005-01-26",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 17290,
+            "FideId" : 0,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 0,
+            "Titel" : "",
+            "ClubNumber" : 166,
+            "ClubName" : "TSMechelen",
+            "NbOfParts" : 9,
+            "Points" : "3.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "16.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "34.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 3.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "3"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 477,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "2",
+                "OpponentNi" : 12,
+                "OpponentName" : "Morote Luna",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "6",
+                "OpponentNi" : 14,
+                "OpponentName" : "Navez Alice",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "8",
+                "OpponentNi" : 7,
+                "OpponentName" : "Frere Esther",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "6",
+                "OpponentNi" : 8,
+                "OpponentName" : "Gelders Marte",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "8",
+                "OpponentNi" : 1,
+                "OpponentName" : "Collin Adelaide",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "7",
+                "OpponentNi" : 13,
+                "OpponentName" : "Muys Elitha",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "4",
+                "OpponentNi" : 6,
+                "OpponentName" : "Deleu Leen",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "5",
+                "OpponentNi" : 16,
+                "OpponentName" : "Vanderstappen Louise",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "6",
+                "OpponentNi" : 5,
+                "OpponentName" : "Deleu Karen",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 14,
+            "Name" : "Frere Esther",
+            "Ni" : 7,
+            "Rank" : 11,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2005-04-16",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 14302,
+            "FideId" : 252166,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 0,
+            "Titel" : "",
+            "ClubNumber" : 436,
+            "ClubName" : "LSV-Chesspirant",
+            "NbOfParts" : 9,
+            "Points" : "2.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "11.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "36.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 1.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "2"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 239,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "3",
+                "OpponentNi" : 10,
+                "OpponentName" : "Gulieva Karina",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "7",
+                "OpponentNi" : 11,
+                "OpponentName" : "Kuijpers Maura",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "8",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Wachter Livia",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "8",
+                "OpponentNi" : 1,
+                "OpponentName" : "Collin Adelaide",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "7",
+                "OpponentNi" : 13,
+                "OpponentName" : "Muys Elitha",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "5",
+                "OpponentNi" : 9,
+                "OpponentName" : "Goossens Anouck",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "8",
+                "OpponentNi" : 15,
+                "OpponentName" : "Roymans Liese",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "7",
+                "OpponentNi" : 8,
+                "OpponentName" : "Gelders Marte",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "5",
+                "OpponentNi" : 12,
+                "OpponentName" : "Morote Luna",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 15,
+            "Name" : "Muys Elitha",
+            "Ni" : 13,
+            "Rank" : 12,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2005-01-05",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 13808,
+            "FideId" : 252174,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 0,
+            "Titel" : "",
+            "ClubNumber" : 436,
+            "ClubName" : "LSV-Chesspirant",
+            "NbOfParts" : 9,
+            "Points" : "1.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "7.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "33.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "1"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : -62,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "4",
+                "OpponentNi" : 5,
+                "OpponentName" : "Deleu Karen",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "8",
+                "OpponentNi" : 8,
+                "OpponentName" : "Gelders Marte",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "7",
+                "OpponentNi" : 1,
+                "OpponentName" : "Collin Adelaide",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "7",
+                "OpponentNi" : 11,
+                "OpponentName" : "Kuijpers Maura",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "7",
+                "OpponentNi" : 7,
+                "OpponentName" : "Frere Esther",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "7",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Wachter Livia",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "6",
+                "OpponentNi" : 9,
+                "OpponentName" : "Goossens Anouck",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "6",
+                "OpponentNi" : 15,
+                "OpponentName" : "Roymans Liese",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "7",
+                "OpponentNi" : 14,
+                "OpponentName" : "Navez Alice",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 16,
+            "Name" : "Collin Adelaide",
+            "Ni" : 1,
+            "Rank" : 9,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-12",
+            "BirthDate" : "2006-06-26",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 13359,
+            "FideId" : 0,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 0,
+            "Titel" : "",
+            "ClubNumber" : 901,
+            "ClubName" : "Namur-Echecs",
+            "NbOfParts" : 9,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "37.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : -495,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "1",
+                "OpponentNi" : 2,
+                "OpponentName" : "De Rycke Tyani",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "5",
+                "OpponentNi" : 15,
+                "OpponentName" : "Roymans Liese",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "7",
+                "OpponentNi" : 13,
+                "OpponentName" : "Muys Elitha",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "8",
+                "OpponentNi" : 7,
+                "OpponentName" : "Frere Esther",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "8",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Wachter Livia",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "8",
+                "OpponentNi" : 8,
+                "OpponentName" : "Gelders Marte",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "7",
+                "OpponentNi" : 14,
+                "OpponentName" : "Navez Alice",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "8",
+                "OpponentNi" : 11,
+                "OpponentName" : "Kuijpers Maura",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "8",
+                "OpponentNi" : 9,
+                "OpponentName" : "Goossens Anouck",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        } ]
+    }
+}

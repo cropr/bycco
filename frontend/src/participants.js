@@ -27,7 +27,7 @@ window.vm = new Vue({
   data: {
     drawer: false,
     adCarouselValue: 0,
-    nAdCarousel: 6,
+    nAdCarousel: 5,
     tabix: 0,
     categories: [8, 10, 12, 14, 16, 18, 20],
     cat: 8,

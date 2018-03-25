@@ -1,5 +1,6 @@
 {% extends "angular.html" %}
 {% load cms_tags i18n sekizai_tags staticfiles %}
+{% load render_bundle from webpack_loader %}
 
 {% block title %}Manage Participants{% endblock title %}
 
@@ -421,8 +422,8 @@
 <link href="{% static 'css/angular-material.css' %}" rel="stylesheet">
 {% endaddtoblock %}
 
-{% addtoblock "js" %}
 
+{% addtoblock "js" %}
 
 <script src="{% static 'js/lib/angular.min.js' %}"></script>
 <script src="{% static 'js/lib/angular-animate.min.js' %}"></script>
@@ -440,9 +441,9 @@
 <script src="{% static 'js/lib/ng-file-upload.min.js' %}"></script>
 <script src="{% static 'js/lib/ui-cropper.js' %}"></script>
 
-<script src="{% static 'mg_attendee.js' %}" ></script>
-<script src="{% static 'js/services/api.js'%}"></script>
-<script src="{% static 'js/services/apidef.js'%}"></script>
+{% render_bundle 'manifest' %}
+{% render_bundle 'vendor' %}
+{% render_bundle 'mg_attendee' %}
 
 {% endaddtoblock %}
 

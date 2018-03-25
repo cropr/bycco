@@ -11,7 +11,7 @@ new Vue({
   data: {
     drawer: false,
     adCarouselValue: 0,
-    nAdCarousel: 6,
+    nAdCarousel: 5,
   },
   methods: {
     gotoUrl (url) {

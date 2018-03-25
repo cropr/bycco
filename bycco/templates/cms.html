@@ -1,5 +1,6 @@
 {% extends "vue.html" %}
 {% load cms_tags staticfiles sekizai_tags i18n %}
+{% load render_bundle from webpack_loader %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
@@ -8,7 +9,11 @@
 {% placeholder "content" %}
 
 {% addtoblock "js" %}
-<script src="{% static 'cms.js' %}"></script>
+{% render_bundle 'cms' %}
+{% if PRODUCTION %}
+  {% render_bundle 'manifest' %}
+  {% render_bundle 'vendor' %}
+{% endif %}
 {% endaddtoblock %}
 
 {% endblock vuecontent %}

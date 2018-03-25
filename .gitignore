@@ -7,6 +7,7 @@ venv/
 /frontend/npm-debug.log
 /frontend/yarn-error.log
 /frontend/src/stylus/bycco.css
+/frontend/webpack-stats.json
 /bycco.egg-info/
 /local_settings.py
 *.pyc

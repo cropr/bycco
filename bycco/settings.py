@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'djangocms_googlemap',
     'djangocms_video',
     'subscription',
+    'webpack_loader',
     'bycco'
 )
 
@@ -172,6 +173,7 @@ PARLER_LANGUAGES = {
     }
 }
 
+PRODUCTION = True
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': [],
 #     'DEFAULT_PERMISSION_CLASSES': [],
@@ -204,7 +206,8 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'sekizai.context_processors.sekizai',
                 'django.template.context_processors.static',
-                'cms.context_processors.cms_settings'
+                'cms.context_processors.cms_settings',
+                'bycco.util.production_settings',
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -229,6 +232,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'static/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json')
+    }
+}
 
 WSGI_APPLICATION = 'bycco.wsgi.application'
 

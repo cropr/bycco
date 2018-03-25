@@ -1,0 +1,1556 @@
+{
+    "Swar" : {
+        "TournamentDesc" : {
+            "Version" : "v3.24",
+            "Tournament" : "BJK CBJ 2017 -16 Girls",
+            "Organizer" : "BYCCO",
+            "ClubOrLogo" : "",
+            "Place" : "Blankenberge",
+            "Arbiter_1" : "IA Sylvin De Vet",
+            "Arbiter_2" : "IA Sylvin De Vet",
+            "StartDate" : "09/04/2017",
+            "EndDate" : "15/04/2017",
+            "RateOfPlay" : "90 min with incr. 30\"",
+            "NbOfRounds" : 9,
+            "NbOfMeetings" : 1,
+            "SepareteCategories" : 0,
+            "FideHomologation " : 1,
+            "FideTournamentId" : "159991",
+            "FideArbiterId_1" : 214787,
+            "FideArbiterName_1" : "De Vet Sylvin",
+            "FideArbiterId_2" : 205494,
+            "FideArbiterName_2" : "Cornet Luc",
+            "TournamentType" : "Swiss",
+            "NbGroups" : 0,
+            "XtrPoints" : "0.0",
+            "SW321_Win" : "0.0",
+            "SW321_Null" : "0.0",
+            "SW321_Loss" : "0.0",
+            "SW321_Bye" : "0.0",
+            "SW321_Presence" : "0.0",
+            "EloUsed" : "Higher of National and Fide",
+            "TournamentStd" : "Standard",
+            "ByeValue" : "0.0",
+            "AbsenceValue" : "0.5",
+            "ForfaitValue" : "0.5",
+            "Federation" : "KBSB",
+            "NbDates" : 9,
+            "NbPlayers" : 12,
+            "DatesArray" : [ {
+                "DateValue" : "09/04/2017"
+            }, {
+                "DateValue" : "10/04/2017"
+            }, {
+                "DateValue" : "10/04/2017"
+            }, {
+                "DateValue" : "11/04/2017"
+            }, {
+                "DateValue" : "12/04/2017"
+            }, {
+                "DateValue" : "12/04/2017"
+            }, {
+                "DateValue" : "13/04/2017"
+            }, {
+                "DateValue" : "14/04/2017"
+            }, {
+                "DateValue" : "15/04/2017"
+            } ],
+            "TieBreaks" : [ {
+                "Type" : "Progressif"
+            }, {
+                "Type" : "Bucholtz"
+            }, {
+                "Type" : "Sonneborn-Berger"
+            }, {
+                "Type" : "Nb.Games Won"
+            }, {
+                "Type" : "Nb.played with Black"
+            } ],
+            "Category" : "AGE",
+            "Category_1" : [ {
+                "Type" : "AGE",
+                "100" : "+16"
+            }, {
+                "Type" : "AGE",
+                "200" : "-16"
+            } ]
+        },
+        "Player" : [ {
+            "Ranking" : 1,
+            "Name" : "Swennen Fleur",
+            "Ni" : 10,
+            "Rank" : 2,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2001-02-26",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 10590,
+            "FideId" : 233366,
+            "Affiliated" : 1,
+            "NationalElo" : 1671,
+            "FideElo" : 1728,
+            "Titel" : "",
+            "ClubNumber" : 726,
+            "ClubName" : "Neerpelt",
+            "NbOfParts" : 8,
+            "Points" : "8.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "40.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "47.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "41.75"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "6"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "3"
+            } ],
+            "Performance" : 1792,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "2",
+                "OpponentNi" : 8,
+                "OpponentName" : "Maebe Sabine",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "2",
+                "OpponentNi" : 7,
+                "OpponentName" : "Godart Clara",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "1",
+                "OpponentNi" : 12,
+                "OpponentName" : "Vitharana Annelies",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "1",
+                "OpponentNi" : 9,
+                "OpponentName" : "Mitran Marie",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "1",
+                "OpponentNi" : 2,
+                "OpponentName" : "Boshra Sosanna",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "1",
+                "OpponentNi" : 1,
+                "OpponentName" : "Akulova Alicia",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "1",
+                "OpponentNi" : 3,
+                "OpponentName" : "Claeys Elisabeth",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "1",
+                "OpponentNi" : 6,
+                "OpponentName" : "Dhaenens Elke",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "2",
+                "OpponentNi" : 5,
+                "OpponentName" : "Decellier Lise",
+                "Result" : "1FF",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 2,
+            "Name" : "Vitharana Annelies",
+            "Ni" : 12,
+            "Rank" : 1,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2002-05-24",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 10970,
+            "FideId" : 239666,
+            "Affiliated" : 1,
+            "NationalElo" : 1711,
+            "FideElo" : 1748,
+            "Titel" : "",
+            "ClubNumber" : 462,
+            "ClubName" : "Zottegem",
+            "NbOfParts" : 9,
+            "Points" : "8.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "38.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "42.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "34.50"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "8"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1797,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "1",
+                "OpponentNi" : 6,
+                "OpponentName" : "Dhaenens Elke",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "1",
+                "OpponentNi" : 1,
+                "OpponentName" : "Akulova Alicia",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Swennen Fleur",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "2",
+                "OpponentNi" : 3,
+                "OpponentName" : "Claeys Elisabeth",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "2",
+                "OpponentNi" : 9,
+                "OpponentName" : "Mitran Marie",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "2",
+                "OpponentNi" : 7,
+                "OpponentName" : "Godart Clara",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "2",
+                "OpponentNi" : 2,
+                "OpponentName" : "Boshra Sosanna",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "2",
+                "OpponentNi" : 11,
+                "OpponentName" : "Verhelst Eleen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "1",
+                "OpponentNi" : 8,
+                "OpponentName" : "Maebe Sabine",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 3,
+            "Name" : "Mitran Marie",
+            "Ni" : 9,
+            "Rank" : 3,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2002-12-04",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 12738,
+            "FideId" : 243191,
+            "Affiliated" : 1,
+            "NationalElo" : 1585,
+            "FideElo" : 1625,
+            "Titel" : "",
+            "ClubNumber" : 174,
+            "ClubName" : "Brasschaat",
+            "NbOfParts" : 9,
+            "Points" : "6.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "32.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "40.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "24.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "5"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1574,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "3",
+                "OpponentNi" : 5,
+                "OpponentName" : "Decellier Lise",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "3",
+                "OpponentNi" : 3,
+                "OpponentName" : "Claeys Elisabeth",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "2",
+                "OpponentNi" : 1,
+                "OpponentName" : "Akulova Alicia",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Swennen Fleur",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "2",
+                "OpponentNi" : 12,
+                "OpponentName" : "Vitharana Annelies",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "3",
+                "OpponentNi" : 8,
+                "OpponentName" : "Maebe Sabine",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "3",
+                "OpponentNi" : 6,
+                "OpponentName" : "Dhaenens Elke",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "4",
+                "OpponentNi" : 4,
+                "OpponentName" : "Collin Josephine",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "3",
+                "OpponentNi" : 11,
+                "OpponentName" : "Verhelst Eleen",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 4,
+            "Name" : "Claeys Elisabeth",
+            "Ni" : 3,
+            "Rank" : 6,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2002-03-25",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 10306,
+            "FideId" : 237680,
+            "Affiliated" : 1,
+            "NationalElo" : 1305,
+            "FideElo" : 1397,
+            "Titel" : "",
+            "ClubNumber" : 404,
+            "ClubName" : "De Drie Torens Gent",
+            "NbOfParts" : 9,
+            "Points" : "5.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "27.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "40.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "15.50"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "5"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1506,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "6",
+                "OpponentNi" : 2,
+                "OpponentName" : "Boshra Sosanna",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "3",
+                "OpponentNi" : 9,
+                "OpponentName" : "Mitran Marie",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "4",
+                "OpponentNi" : 11,
+                "OpponentName" : "Verhelst Eleen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "2",
+                "OpponentNi" : 12,
+                "OpponentName" : "Vitharana Annelies",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "3",
+                "OpponentNi" : 7,
+                "OpponentName" : "Godart Clara",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "4",
+                "OpponentNi" : 5,
+                "OpponentName" : "Decellier Lise",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Swennen Fleur",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "3",
+                "OpponentNi" : 1,
+                "OpponentName" : "Akulova Alicia",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "5",
+                "OpponentNi" : 4,
+                "OpponentName" : "Collin Josephine",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 5,
+            "Name" : "Akulova Alicia",
+            "Ni" : 1,
+            "Rank" : 4,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2002-07-31",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 10949,
+            "FideId" : 242861,
+            "Affiliated" : 1,
+            "NationalElo" : 1544,
+            "FideElo" : 1518,
+            "Titel" : "",
+            "ClubNumber" : 713,
+            "ClubName" : "Leopoldsburg",
+            "NbOfParts" : 9,
+            "Points" : "5.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "26.5"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "43.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "19.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "3"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 1477,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "4",
+                "OpponentNi" : 11,
+                "OpponentName" : "Verhelst Eleen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "1",
+                "OpponentNi" : 12,
+                "OpponentName" : "Vitharana Annelies",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "2",
+                "OpponentNi" : 9,
+                "OpponentName" : "Mitran Marie",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "3",
+                "OpponentNi" : 7,
+                "OpponentName" : "Godart Clara",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "4",
+                "OpponentNi" : 8,
+                "OpponentName" : "Maebe Sabine",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Swennen Fleur",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "4",
+                "OpponentNi" : 4,
+                "OpponentName" : "Collin Josephine",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "3",
+                "OpponentNi" : 3,
+                "OpponentName" : "Claeys Elisabeth",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "4",
+                "OpponentNi" : 6,
+                "OpponentName" : "Dhaenens Elke",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 6,
+            "Name" : "Godart Clara",
+            "Ni" : 7,
+            "Rank" : 5,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2002-01-02",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 10297,
+            "FideId" : 232726,
+            "Affiliated" : 1,
+            "NationalElo" : 1435,
+            "FideElo" : 1465,
+            "Titel" : "",
+            "ClubNumber" : 909,
+            "ClubName" : "Philippeville",
+            "NbOfParts" : 9,
+            "Points" : "4.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "23.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "38.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "12.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "4"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1385,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "5",
+                "OpponentNi" : 4,
+                "OpponentName" : "Collin Josephine",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "2",
+                "OpponentNi" : 10,
+                "OpponentName" : "Swennen Fleur",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "3",
+                "OpponentNi" : 8,
+                "OpponentName" : "Maebe Sabine",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "3",
+                "OpponentNi" : 1,
+                "OpponentName" : "Akulova Alicia",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "3",
+                "OpponentNi" : 3,
+                "OpponentName" : "Claeys Elisabeth",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "2",
+                "OpponentNi" : 12,
+                "OpponentName" : "Vitharana Annelies",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "5",
+                "OpponentNi" : 11,
+                "OpponentName" : "Verhelst Eleen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "5",
+                "OpponentNi" : 5,
+                "OpponentName" : "Decellier Lise",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "6",
+                "OpponentNi" : 2,
+                "OpponentName" : "Boshra Sosanna",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 7,
+            "Name" : "Dhaenens Elke",
+            "Ni" : 6,
+            "Rank" : 7,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2002-04-12",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 14329,
+            "FideId" : 249009,
+            "Affiliated" : 1,
+            "NationalElo" : 1270,
+            "FideElo" : 1243,
+            "Titel" : "",
+            "ClubNumber" : 422,
+            "ClubName" : "MSV",
+            "NbOfParts" : 9,
+            "Points" : "4.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "18.5"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "39.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "14.75"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "4"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1374,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "1",
+                "OpponentNi" : 12,
+                "OpponentName" : "Vitharana Annelies",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "4",
+                "OpponentNi" : 11,
+                "OpponentName" : "Verhelst Eleen",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "5",
+                "OpponentNi" : 5,
+                "OpponentName" : "Decellier Lise",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "5",
+                "OpponentNi" : 8,
+                "OpponentName" : "Maebe Sabine",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "5",
+                "OpponentNi" : 4,
+                "OpponentName" : "Collin Josephine",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "5",
+                "OpponentNi" : 2,
+                "OpponentName" : "Boshra Sosanna",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "3",
+                "OpponentNi" : 9,
+                "OpponentName" : "Mitran Marie",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Swennen Fleur",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "4",
+                "OpponentNi" : 1,
+                "OpponentName" : "Akulova Alicia",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 8,
+            "Name" : "Maebe Sabine",
+            "Ni" : 8,
+            "Rank" : 8,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2002-02-23",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 14720,
+            "FideId" : 249017,
+            "Affiliated" : 1,
+            "NationalElo" : 1197,
+            "FideElo" : 1254,
+            "Titel" : "",
+            "ClubNumber" : 401,
+            "ClubName" : "KGSRL Gent",
+            "NbOfParts" : 9,
+            "Points" : "4.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "19.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "42.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : "11.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "4"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 1352,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "2",
+                "OpponentNi" : 10,
+                "OpponentName" : "Swennen Fleur",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "5",
+                "OpponentNi" : 4,
+                "OpponentName" : "Collin Josephine",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "3",
+                "OpponentNi" : 7,
+                "OpponentName" : "Godart Clara",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "5",
+                "OpponentNi" : 6,
+                "OpponentName" : "Dhaenens Elke",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "4",
+                "OpponentNi" : 1,
+                "OpponentName" : "Akulova Alicia",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "3",
+                "OpponentNi" : 9,
+                "OpponentName" : "Mitran Marie",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "6",
+                "OpponentNi" : 5,
+                "OpponentName" : "Decellier Lise",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "6",
+                "OpponentNi" : 2,
+                "OpponentName" : "Boshra Sosanna",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "1",
+                "OpponentNi" : 12,
+                "OpponentName" : "Vitharana Annelies",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 9,
+            "Name" : "Boshra Sosanna",
+            "Ni" : 2,
+            "Rank" : 12,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2001-01-20",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 16981,
+            "FideId" : 255203,
+            "Affiliated" : 1,
+            "NationalElo" : 0,
+            "FideElo" : 0,
+            "Titel" : "",
+            "ClubNumber" : 278,
+            "ClubName" : "Le Pantin",
+            "NbOfParts" : 9,
+            "Points" : "2.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "17.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "40.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 4.50"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "2"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 1224,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "6",
+                "OpponentNi" : 3,
+                "OpponentName" : "Claeys Elisabeth",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "6",
+                "OpponentNi" : 5,
+                "OpponentName" : "Decellier Lise",
+                "Result" : "½",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "6",
+                "OpponentNi" : 4,
+                "OpponentName" : "Collin Josephine",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "4",
+                "OpponentNi" : 11,
+                "OpponentName" : "Verhelst Eleen",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "1",
+                "OpponentNi" : 10,
+                "OpponentName" : "Swennen Fleur",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "5",
+                "OpponentNi" : 6,
+                "OpponentName" : "Dhaenens Elke",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "2",
+                "OpponentNi" : 12,
+                "OpponentName" : "Vitharana Annelies",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "6",
+                "OpponentNi" : 8,
+                "OpponentName" : "Maebe Sabine",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "6",
+                "OpponentNi" : 7,
+                "OpponentName" : "Godart Clara",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 10,
+            "Name" : "Decellier Lise",
+            "Ni" : 5,
+            "Rank" : 9,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2002-11-04",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 10648,
+            "FideId" : 234257,
+            "Affiliated" : 1,
+            "NationalElo" : 1208,
+            "FideElo" : 1249,
+            "Titel" : "",
+            "ClubNumber" : 541,
+            "ClubName" : "Leuze-en-Hainaut",
+            "NbOfParts" : 8,
+            "Points" : "2.5",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "11.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "34.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 7.75"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "2"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 1152,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "3",
+                "OpponentNi" : 9,
+                "OpponentName" : "Mitran Marie",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "6",
+                "OpponentNi" : 2,
+                "OpponentName" : "Boshra Sosanna",
+                "Result" : "½",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "5",
+                "OpponentNi" : 6,
+                "OpponentName" : "Dhaenens Elke",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "6",
+                "OpponentNi" : 4,
+                "OpponentName" : "Collin Josephine",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "6",
+                "OpponentNi" : 11,
+                "OpponentName" : "Verhelst Eleen",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "4",
+                "OpponentNi" : 3,
+                "OpponentName" : "Claeys Elisabeth",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "6",
+                "OpponentNi" : 8,
+                "OpponentName" : "Maebe Sabine",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "5",
+                "OpponentNi" : 7,
+                "OpponentName" : "Godart Clara",
+                "Result" : "1",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "2",
+                "OpponentNi" : 10,
+                "OpponentName" : "Swennen Fleur",
+                "Result" : "0ff",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 11,
+            "Name" : "Verhelst Eleen",
+            "Ni" : 11,
+            "Rank" : 10,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2001-11-15",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 13806,
+            "FideId" : 244295,
+            "Affiliated" : 1,
+            "NationalElo" : 1150,
+            "FideElo" : 1241,
+            "Titel" : "",
+            "ClubNumber" : 436,
+            "ClubName" : "LSV-Chesspirant",
+            "NbOfParts" : 9,
+            "Points" : "2.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "12.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "40.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 5.50"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "2"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "5"
+            } ],
+            "Performance" : 1143,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "4",
+                "OpponentNi" : 1,
+                "OpponentName" : "Akulova Alicia",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "4",
+                "OpponentNi" : 6,
+                "OpponentName" : "Dhaenens Elke",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "4",
+                "OpponentNi" : 3,
+                "OpponentName" : "Claeys Elisabeth",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "4",
+                "OpponentNi" : 2,
+                "OpponentName" : "Boshra Sosanna",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "6",
+                "OpponentNi" : 5,
+                "OpponentName" : "Decellier Lise",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "6",
+                "OpponentNi" : 4,
+                "OpponentName" : "Collin Josephine",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "5",
+                "OpponentNi" : 7,
+                "OpponentName" : "Godart Clara",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Down",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "2",
+                "OpponentNi" : 12,
+                "OpponentName" : "Vitharana Annelies",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "3",
+                "OpponentNi" : 9,
+                "OpponentName" : "Mitran Marie",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 12,
+            "Name" : "Collin Josephine",
+            "Ni" : 4,
+            "Rank" : 11,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-16",
+            "BirthDate" : "2002-05-22",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 12129,
+            "FideId" : 240877,
+            "Affiliated" : 1,
+            "NationalElo" : 1150,
+            "FideElo" : 1239,
+            "Titel" : "",
+            "ClubNumber" : 901,
+            "ClubName" : "Namur-Echecs",
+            "NbOfParts" : 9,
+            "Points" : "1.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "6.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : "37.50"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 3.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "1"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "4"
+            } ],
+            "Performance" : 969,
+            "Absent" : "Present",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 9,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "5",
+                "OpponentNi" : 7,
+                "OpponentName" : "Godart Clara",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 2,
+                "Tabel" : "5",
+                "OpponentNi" : 8,
+                "OpponentName" : "Maebe Sabine",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 3,
+                "Tabel" : "6",
+                "OpponentNi" : 2,
+                "OpponentName" : "Boshra Sosanna",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 4,
+                "Tabel" : "6",
+                "OpponentNi" : 5,
+                "OpponentName" : "Decellier Lise",
+                "Result" : "1",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 5,
+                "Tabel" : "5",
+                "OpponentNi" : 6,
+                "OpponentName" : "Dhaenens Elke",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 6,
+                "Tabel" : "6",
+                "OpponentNi" : 11,
+                "OpponentName" : "Verhelst Eleen",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 7,
+                "Tabel" : "4",
+                "OpponentNi" : 1,
+                "OpponentName" : "Akulova Alicia",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 8,
+                "Tabel" : "4",
+                "OpponentNi" : 9,
+                "OpponentName" : "Mitran Marie",
+                "Result" : "0",
+                "Color" : "Black",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            }, {
+                "RoundNr" : 9,
+                "Tabel" : "5",
+                "OpponentNi" : 3,
+                "OpponentName" : "Claeys Elisabeth",
+                "Result" : "0",
+                "Color" : "White",
+                "Float" : "Up",
+                "XtraPts" : "0.0"
+            } ]
+        } ]
+    }
+}

@@ -1,5 +1,6 @@
 {% extends "angular.html" %}
 {% load cms_tags i18n sekizai_tags staticfiles %}
+{% load render_bundle from webpack_loader %}
 
 {% block title %}{% trans "Tournament Subscriptions" %}{% endblock title %}
 {% block content %}
@@ -505,8 +506,12 @@
 
 </div>
 
+{% render_bundle 'manifest' %}
+{% render_bundle 'vendor' %}
+{% render_bundle 'subscription' %}
+
+
 {% addtoblock "js" %}
-<script src="{% static 'subscription.js' %}" ></script>
 
 <script src="{% static 'js/lib/angular.min.js' %}"></script>
 <script src="{% static 'js/lib/angular-animate.min.js' %}"></script>
