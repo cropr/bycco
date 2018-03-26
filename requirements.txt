@@ -10,6 +10,7 @@ django-mptt
 django-polymorphic<2.0
 django-sekizai
 django-treebeard
+django-webpack-loader
 djangocms-admin-style
 djangocms-attributes-field
 djangocms-column
@@ -30,5 +31,4 @@ requests
 six
 tzlocal
 unidecode
-yamjam
 https://chessdevil.myqnapcloud.com/pip/dbf/dbf-1.0.tar.gz
