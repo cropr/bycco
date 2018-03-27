@@ -53,11 +53,11 @@
 </v-tabs-items>
 
 {% addtoblock "js" %}
-{% render_bundle 'participants' %}
 {% if PRODUCTION %}
   {% render_bundle 'manifest' %}
   {% render_bundle 'vendor' %}
 {% endif %}
+{% render_bundle 'participants' %}
 {% endaddtoblock %}
 
 

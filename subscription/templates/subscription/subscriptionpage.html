@@ -508,10 +508,11 @@
 {% endaddtoblock %}
 
 {% addtoblock "js" %}
-{% render_bundle 'subscription' %}{% if PRODUCTION %}
+{% if PRODUCTION %}
   {% render_bundle 'manifest' %}
   {% render_bundle 'vendor' %}
 {% endif %}
+{% render_bundle 'subscription' %}
 
 <script src="{% static 'js/lib/angular.min.js' %}"></script>
 <script src="{% static 'js/lib/angular-animate.min.js' %}"></script>
