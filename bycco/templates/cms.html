@@ -9,11 +9,11 @@
 {% placeholder "content" %}
 
 {% addtoblock "js" %}
-{% render_bundle 'cms' %}
 {% if PRODUCTION %}
   {% render_bundle 'manifest' %}
   {% render_bundle 'vendor' %}
 {% endif %}
+{% render_bundle 'cms' %}
 {% endaddtoblock %}
 
 {% endblock vuecontent %}
