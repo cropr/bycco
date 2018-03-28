@@ -145,15 +145,7 @@ const prodWebpackConfig = {
     new CopyWebpackPlugin([
       {
         from: './static',
-        to: path.resolve(root, staticpath)
-      },
-      {
-        from: './node_modules/angular-material/angular-material.min.css',
-        to: path.resolve(root, staticpath, "css", "angular-material.css")
-      },
-      {
-        from: './node_modules/ui-cropper/compile/minified/ui-cropper.css',
-        to: path.resolve(root, staticpath, "css", "ui-cropper.css")
+        to: root
       },
     ]),
     new ExtractTextPlugin("css/bycco.css"),
