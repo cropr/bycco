@@ -10,8 +10,6 @@ new Vue({
   el: '#app',
   data: {
     drawer: false,
-    adCarouselValue: 0,
-    nAdCarousel: 5,
   },
   methods: {
     gotoUrl (url) {
@@ -22,12 +20,7 @@ new Vue({
     }
   },
 
-  mounted () {
-    var secCarousel = Math.floor((new Date()/1000) % (6 * this.nAdCarousel));
-    this.adCarouselValue = Math.floor(secCarousel / this.nAdCarousel);
-  }
 });
-
 
 window.config = {
   apiurl: '/api'
@@ -36,7 +29,7 @@ window.config = {
 window.bridge = {
 
   gotoAngularRoute: function(path) {
-    console.log('This will be overwritten by the angular bidge factory')
+    console.log('This will be overwritten by the angular bridge factory')
   },
 
   api: apicall,

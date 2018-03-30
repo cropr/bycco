@@ -419,12 +419,11 @@
 </div>
 
 {% addtoblock "css" %}
-<link href="{% static 'css/angular-material.css' %}" rel="stylesheet">
+<link href="{% static 'css/angular-material.min.css' %}" rel="stylesheet">
 {% endaddtoblock %}
 
 
 {% addtoblock "js" %}
-
 {% if PRODUCTION %}
   {% render_bundle 'manifest' %}
   {% render_bundle 'vendor' %}
@@ -446,6 +445,9 @@
 <script src="{% static 'js/lib/angular-sanitize.min.js' %}"></script>
 <script src="{% static 'js/lib/ng-file-upload.min.js' %}"></script>
 <script src="{% static 'js/lib/ui-cropper.js' %}"></script>
+
+<script src="{% static 'js/controllers/ctrl_mgmtatt.js'%}"></script>
+<script src="{% static 'js/services/common.js'%}"></script>
 
 {% endaddtoblock %}
 

@@ -134,6 +134,9 @@ const devWebpackConfig = {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     clientLogLevel: 'warning',
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    },
     historyApiFallback: {
       rewrites: [
         { from: /.*/, to: path.posix.join('/', 'index.html') },
@@ -158,11 +161,9 @@ const devWebpackConfig = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
-    // new HtmlWebpackPlugin({
-    //   filename: 'index.html',
-    //   template: 'index.html',
-    //   inject: true
-    // }),
+    new BundleTracker(
+      {filename: './webpack-stats.json'}
+    ),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),

@@ -3,16 +3,18 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import './stylus/bycco.styl';
 
+import AdCarousel from './components/AdCarousel'
+
 Vue.use(Vuetify);
 
 new Vue({
   el: '#app',
   data: {
     drawer: false,
-    adCarouselValue: 0,
-    nAdCarousel: 5,
   },
-
+  components: {
+    "ad-carousel": AdCarousel
+  },
   methods: {
     gotoUrl (url) {
       console.log('going to ', url)
@@ -22,8 +24,5 @@ new Vue({
     }
   },
 
-  mounted () {
-    var secCarousel = Math.floor((new Date()/1000) % (6 * this.nAdCarousel));
-    this.adCarouselValue = Math.floor(secCarousel / this.nAdCarousel);
-  }
+
 });
