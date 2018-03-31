@@ -2,6 +2,9 @@ import schemas from './apidef';
 import axios from 'axios';
 import _ from 'lodash';
 
+axios.defaults.xsrfHeaderName = "X-CSRFToken";
+axios.defaults.xsrfCookieName = 'csrftoken';
+
 export default function(name, params) {
 
   let schema, surl, options, _body = undefined,

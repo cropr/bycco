@@ -11,7 +11,15 @@ angular.module('mg_attendee', [
 
 .controller('mgAttendeeCtrl', function($scope, $http, $q, $log, $timeout, api){
 
-  var randomstr = '12345';
+  var randomstr = '12345',
+      tabs = {
+        overview: 0,
+        detail: 1,
+        photo: 2,
+        print: 3
+      };
+
+
 
   var attendee_service = {
     addAttendee: function() {
@@ -133,28 +141,24 @@ angular.module('mg_attendee', [
       );
       return q.promise;
     },
-    uploadPhoto: function(id, imagedata){
-      var q = $q.defer();
-      $http.post('/cd_subscription/api/attendee/' + id + '/photo',
-            {imagedata: imagedata}).then(
-        function(ro){
-          $log.info('photo uploeded');
-          $timeout(function() {
-            initPhoto($scope.attendee);
-          });
+    uploadPhoto: function(attendee, imagedata){
+      api('uploadPhoto', {
+        photo: imagedata,
+        idsub: attendee.id,
+      }).then(
+        function(){
+          $timeout(function(){
+            console.log('upload succeeded');
+            initPhoto(attendee);
+          })
         },
-        function(ro){
-          $log.error('uploadPhoto', ro);
+        function(err){
+          $timeout(function(){
+            console.error(err);
+          });
         }
       );
-      return q.promise;
     }
-  };
-
-  var tabs =  {
-    attendees: 0,
-    detail: 1,
-    print: 2,
   };
 
   function queryParams(){
@@ -357,7 +361,7 @@ angular.module('mg_attendee', [
     },
     upload: function(){
       if (!$scope.photo.cropresult || !$scope.photo.cropresult.length) return;
-      attendee_service.uploadPhoto($scope.attendee.id_national,
+      attendee_service.uploadPhoto($scope.attendee,
           $scope.photo.cropresult);
 
     }
@@ -365,6 +369,7 @@ angular.module('mg_attendee', [
 
   $scope.$watch('photo.data', function () {
     var reader;
+    console.log('watched');
     $scope.filename = $scope.photo.data.name + '';
     if ($scope.photo.data.name) {
       reader = new FileReader();
@@ -381,16 +386,17 @@ angular.module('mg_attendee', [
     $scope.players = [];
     $scope.attendee = {};
     $scope.att.ss = "";
-    $scope.tab = 0;
+    $scope.tab = tabs.overview;
     $scope.att.status = '';
     attendee_service.getAttendees();
   }
 
   function initPhoto(p){
     $scope.attendee = {};
-    $scope.tab = 1;
+    console.log('going to tab', tabs.photo);
+    $scope.tab = tabs.photo;
     randomstr = Math.ceil(Math.random()*10000);
-    attendee_service.getAttendee(p.id_national);
+    attendee_service.getAttendee(p.id);
     $scope.photo.init()
   }
 

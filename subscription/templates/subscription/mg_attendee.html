@@ -330,9 +330,10 @@
           Photo area.
         </div>
         <div class="photosrc">
-            <img-crop image="photo.cropsource" result-image="photo.cropresult" area-type="rectangle"
-                      result-image-size="{w:160,h:200}" area-image-size="{w:80,h:100}"
-                      aspect-ratio="0.8" result-image-format="image/jpeg"></img-crop>
+            <ui-cropper
+              image="photo.cropsource" result-image="photo.cropresult" area-type="rectangle"
+              result-image-size="{w:160,h:200}" area-image-size="{w:80,h:100}"
+              aspect-ratio="0.8" result-image-format="image/jpeg"></ui-cropper>
         </div>
       </div>
       <div  class="cardbox md-whiteframe-4dp">
@@ -419,7 +420,8 @@
 </div>
 
 {% addtoblock "css" %}
-<link href="{% static 'css/angular-material.min.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/ui-cropper.css' %}">
+<link rel="stylesheet" href="{% static 'css/angular-material.min.css' %}">
 {% endaddtoblock %}
 
 
