@@ -80,4 +80,15 @@ export default {
     path: ['idsub'],
     required: ['photo', 'idsub']
   },
+  addTournament: {
+    method: 'POST',
+    url: '/tournament',
+    body: ['name', 'shortname', 'rounds'],
+    required: ['name', 'shortname', 'rounds'],
+  },
+  getTournaments: {
+    method: 'GET',
+    url: '/tournament',
+    required: [],
+  }
 };

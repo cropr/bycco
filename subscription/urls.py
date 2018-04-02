@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^participants$', participantspage),
     url(r'^mg_attendee$', mg_attendee_page),
     url(r'^mg_presence$', mg_presence_page),
+    url(r'^mg_trn$', mg_trn_page),
     url(r'^csv$', csvparticipants),
     url(r'^sms$', smspage),
     url(r'^printbadges$', printbadges),

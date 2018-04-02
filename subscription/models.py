@@ -46,3 +46,88 @@ class Subscription(Model):
 
     def __str__(self):
         return '%s %s' % (self.first_name, self.last_name)
+
+class CdTournament(Model):
+    name = CharField(max_length=50)
+    shortname = CharField(max_length=10)
+    rounds = IntegerField(default=9)
+    creationdate = DateTimeField(auto_now_add=True)
+
+class CdTournamentPrizes(Model):
+    tournament = OneToOneField(CdTournament,
+        on_delete=CASCADE,
+        primary_key=True,)
+    jsonprizes = TextField(max_length=50, default='')
+
+
+class CdPlayer(Model):
+    birthdate = DateField()
+    chesstitle = CharField(max_length=4, blank=True)
+    clubname = CharField(max_length=40)
+    federation = CharField(max_length=4)
+    fidenation = CharField(max_length=4, blank=True)
+    fiderating = IntegerField(default=0)
+    firstname = CharField(max_length=25)
+    gender = CharField(max_length=1, choices=(
+        ('M', _('Male')),
+        ('F', _('Female'))
+    ))
+    id_club = CharField(_("Club id"), max_length=4)
+    id_fide = CharField(_("Fide id"), max_length=15, blank=True)
+    id_national = CharField(_("National id"), max_length=6, unique=True)
+    id_trn = ForeignKey(CdTournament, on_delete=CASCADE)
+    name = CharField(_("Name"), max_length=40)
+    nationality = CharField(_("Nationality"), max_length=4)
+    natrating = IntegerField(_("Fide rating"), default=0)
+    rating = IntegerField(default=0)
+
+class CdStanding(Model):
+    ngames = IntegerField()
+    player = ForeignKey(CdPlayer, on_delete=CASCADE)
+    points = DecimalField(max_digits=4, decimal_places=2)
+    ranknr = IntegerField()
+    round = IntegerField()
+
+class CdPairing(Model):
+    black = CharField(max_length=50)
+    boardnr = IntegerField()
+    id_black = ForeignKey(CdPlayer, on_delete=CASCADE, related_name='black')
+    id_white = ForeignKey(CdPlayer, on_delete=CASCADE, related_name='white')
+    result = CharField(max_length=6)
+    round = IntegerField()
+    white = CharField(max_length=50)
+
+class CdScoreCard(Model):
+    color = CharField(max_length=1, choices=(
+        ('W', _("white")),
+        ('B', _("black")),
+        ('N', _("notassigned")),
+    ))
+    float = CharField(max_length=2)
+    id_oppponent = ForeignKey(CdPlayer, on_delete=CASCADE, related_name='player')
+    id_player = ForeignKey(CdPlayer, on_delete=CASCADE, related_name='opponent')
+    opponent = CharField(max_length=50)
+    player = CharField(max_length=50)
+    points = DecimalField(max_digits=4, decimal_places=2)
+    round = IntegerField()
+    result = CharField(max_length=6)
+
+class CdSwarTournament(Model):
+    tournament = OneToOneField(CdTournament,
+        on_delete=CASCADE,
+        primary_key=True,)
+    swarname = CharField(max_length=50, default='')
+
+class CdSwarJson(Model):
+    STATUSES = (
+        ('ACT', 'Active'),
+        ('OUT', 'Outdated'),
+        ('UNP', 'Unpublished'),
+    )
+
+    name = CharField(max_length=50)
+    round = IntegerField()
+    jsonfile = TextField()
+    tournament = ForeignKey(CdSwarTournament, on_delete=CASCADE)
+    uploaddate = DateTimeField(auto_now_add=True)
+    status = CharField(max_length=3, choices=STATUSES, default='UNP')

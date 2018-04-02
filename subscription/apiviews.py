@@ -14,8 +14,28 @@ from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.response import Response
 from rest_framework.renderers import BaseRenderer, JSONRenderer
 
-from .models import Subscription
-from .serializers import SubscriptionSerializer
+from .models import (
+    CdSwarTournament,
+    CdSwarJson,
+    CdTournament,
+    CdTournamentPrizes,
+    Subscription
+)
+
+from .serializers import (
+    SubscriptionSerializer,
+    SwarTournamentSerializer,
+    SwarJsonSerializer,
+    SwarJsonSerializerSmall,
+    TournamentSerializer,
+)
+
+from .swarconvert import (
+    pairingsfromswar,
+    standingsfromswar,
+    playercardfromswar,
+    prizesfromswar,
+)
 
 from .mail import sendconfirmationmail
 
@@ -39,6 +59,8 @@ class ImageRenderer(BaseRenderer):
 
     def render(self, data, media_type=None, renderer_context=None):
         return data
+
+# subscription
 
 @api_view(['POST'])
 def subscription_confirmation(request, idsub):
@@ -199,6 +221,8 @@ def subscription_photo(request, idsub):
             except Exception as e:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
 
+# chess player
+
 @api_view(['GET'])
 def belplayer(request, idbel):
 
@@ -235,24 +259,7 @@ def fideplayer(request, idfide):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-@api_view(['GET'])
-def participants(request, cat):
-
-    pass
-
-    # players = Subscription.objects.filter(category=cat).order_by('-rating')
-    # data = [{
-    #     'id': p.id,
-    #     'category': p.category,
-    #     'last_name': p.last_name,
-    #     'first_name': p.first_name,
-    #     'rating': p.rating,
-    #     'id_club': p.id_club,
-    #     'fidenation': p.fidenation,
-    #     'confirmed': p.confirmed,
-    # } for p in players]
-    # return Response(data)
-
+# ateendees
 @api_view(['GET', 'POST'])
 def attendee_all(request):
 
@@ -445,3 +452,289 @@ def attendee_photo(request, id):
             return Response(status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response(e, status=status.HTTP_400_BAD_REQUEST)
+
+# tournament
+@api_view(['GET', 'POST'])
+def tournament_all(request):
+
+    if request.method == 'POST':
+        trn_serializer = TournamentSerializer(data=request.data)
+        if trn_serializer.is_valid():
+            trn_serializer.save()
+            return Response(trn_serializer.data)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'GET':
+        shortname = request.GET.get('shortname', None)
+        trns = CdTournament.objects.all()
+        if shortname:
+            trns = trns.filter(shortname=shortname)
+        trn_serializer = TournamentSerializer(trns, many=True)
+        return Response(dict(trns=trn_serializer.data))
+
+@api_view(['GET', 'DELETE'])
+def tournament_one(request, id_trn):
+    try:
+        trn = CdSwarTournament.objects.get(id=id_trn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        trn_serializer = SwarTournamentSerializer(trn)
+        return Response(trn_serializer.data)
+
+    if request.method == 'DELETE':
+        trn.delete()
+        trns = CdSwarTournament.objects.all()
+        trn_serializer = SwarTournamentSerializer(trns, many=True)
+        return Response(trn_serializer.data)
+
+@api_view(['GET'])
+def tournament_pairings(request, id_trn, round):
+    try:
+        trn = CdTournament.objects.get(id=id_trn)
+    except CdTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    swarround = int(round) + 1
+    try:
+        swartrn = CdSwarTournament.objects.get(tournament=trn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    try:
+        swarjson = CdSwarJson.objects.get(tournament=swartrn, round=swarround,
+                                      status='ACT')
+    except CdSwarJson.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    trndata = json.loads(swarjson.jsonfile)
+    data = {
+        'id_trn': trn.id,
+        'tournament': trn.name,
+        'round': int(round),
+        'pairings': pairingsfromswar(trndata)
+    }
+    return Response(data)
+
+@api_view(['GET'])
+def tournament_standings(request, id_trn, round):
+    try:
+        trn = CdTournament.objects.get(id=id_trn)
+    except CdTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    swarround = int(round) + 1
+    try:
+        swartrn = CdSwarTournament.objects.get(tournament=trn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    try:
+        swarjson = CdSwarJson.objects.get(tournament=swartrn, round=swarround,
+                                      status='ACT')
+    except CdSwarJson.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    trndata = json.loads(swarjson.jsonfile)
+    data = {
+        'id_trn': trn.id,
+        'tournament': trn.name,
+        'round': int(round),
+        'standings': standingsfromswar(trndata)
+    }
+    return Response(data)
+
+@api_view(['GET'])
+def tournament_playercard(request, id_trn, id_player):
+    try:
+        id_player = int(id_player)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    try:
+        trn = CdTournament.objects.get(id=id_trn)
+    except CdTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    try:
+        swartrn = CdSwarTournament.objects.get(tournament=trn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    swarjsons = CdSwarJson.objects.filter(tournament=swartrn, status='ACT')
+    topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1)
+    try:
+        swarjson = CdSwarJson.objects.get(tournament=swartrn, round=topround,
+            status='ACT')
+    except CdSwarJson.DoesNotExist:
+        log.debug("swarjson for topround %d not found", topround)
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    trndata = json.loads(swarjson.jsonfile)
+    return Response(playercardfromswar(trndata, id_player))
+
+@api_view(['GET', 'POST'])
+def tournament_prizes(request, id_trn):
+    try:
+        trn = CdTournament.objects.get(id=id_trn)
+    except CdTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'POST':
+        cat = trn.shortname
+        try:
+            swartrn = CdSwarTournament.objects.get(tournament=trn)
+        except CdSwarTournament.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        swarjsons = CdSwarJson.objects.filter(tournament=swartrn, status='ACT')
+        topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1)
+        try:
+            swarjson = CdSwarJson.objects.get(tournament=swartrn, round=topround,
+                status='ACT')
+        except CdSwarJson.DoesNotExist:
+            log.debug("swarjson for topround %d not found", topround)
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        trndata = json.loads(swarjson.jsonfile)
+        prizesjson = json.dumps(prizesfromswar(trndata, cat))
+        if not hasattr(trn, 'cdtournamentprizes'):
+            trnprizes = CdTournamentPrizes(tournament=trn)
+            trnprizes.jsonprizes = prizesjson
+            trnprizes.save()
+        else:
+            trnprizes = trn.cdtournamentprizes
+            trnprizes.jsonprizes = prizesjson
+            trnprizes.save()
+        return Response(json.loads(prizesjson))
+
+    if request.method == 'GET':
+        if hasattr(trn, 'cdtournamentprizes'):
+            return Response(json.loads(trn.cdtournamentprizes.jsonprizes))
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['POST'])
+def tournament_swar(request, id_trn):
+    """
+    enable swar on a tournament
+    """
+    try:
+        trn = CdTournament.objects.get(id=id_trn)
+    except CdTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'POST':
+        swartrn_serializer = SwarTournamentSerializer(data=request.data)
+        if swartrn_serializer.is_valid():
+            swartrn = swartrn_serializer.save(tournament=trn)
+            swardata = SwarTournamentSerializer(swartrn).data
+            swardata.update(TournamentSerializer(trn).data)
+            return Response(swardata)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+def swartrn_all(request):
+    swardata = {}
+    for swartrn in CdSwarTournament.objects.all():
+        srl = SwarTournamentSerializer(swartrn)
+        swardata[swartrn.tournament_id] = srl.data
+    for trn in CdTournament.objects.all():
+        if trn.id in swardata:
+            swardata[trn.id].update(TournamentSerializer(trn).data)
+    return Response(swardata.values())
+
+@api_view(['GET', 'DELETE'])
+def swartrn_one(request, id_trn):
+    try:
+        trn = CdSwarTournament.objects.get(tournament_id=id_trn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        trn_serializer = SwarTournamentSerializer(trn)
+        return Response(trn_serializer.data)
+
+    if request.method == 'DELETE':
+        trn.delete()
+        trns = CdSwarTournament.objects.all()
+        trn_serializer = SwarTournamentSerializer(trns, many=True)
+        return Response(trn_serializer.data)
+
+@api_view(['POST'])
+def swarfile_publication(request, id_trn, id_swar):
+    try:
+        trn = CdSwarTournament.objects.get(tournament_id=id_trn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    try:
+        swar = CdSwarJson.objects.get(id=id_swar)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    CdSwarJson.objects.filter(tournament=id_trn, status='ACT',
+                              round=swar.round).update(status='OUT')
+    CdSwarJson.objects.filter(tournament=id_trn, id=id_swar).update(status='ACT')
+    # TODO create a optimized publishing JSON string
+    swarjsons = CdSwarJson.objects.filter(tournament=id_trn).order_by(
+        '-round', '-uploaddate')
+    ss = SwarJsonSerializerSmall(swarjsons, many=True)
+    return Response(ss.data)
+
+@api_view(['GET', 'POST'])
+def swarfile_all(request, id_trn):
+
+    try:
+        trn = CdSwarTournament.objects.get(tournament_id=id_trn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'POST':
+        # add a new Swar file
+        data = request.data
+        data['tournament'] = id_trn
+        swar_serializer  = SwarJsonSerializer(data=data)
+        if swar_serializer.is_valid():
+            swar_serializer.save()
+            trn.swarname = swar_serializer.data['name']
+            trn.save()
+            swarjsons = CdSwarJson.objects.filter(tournament=id_trn).order_by(
+                '-round', '-uploaddate')
+            ss = SwarJsonSerializerSmall(swarjsons, many=True)
+            return Response(ss.data)
+        else:
+            log.debug('invalid data %s', swar_serializer.data)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'GET':
+        # get all swarupload files
+        swarjsons = CdSwarJson.objects.filter(tournament=id_trn).order_by(
+                '-round', '-uploaddate')
+        ss = SwarJsonSerializerSmall(swarjsons, many=True)
+        return Response(ss.data)
+
+@api_view(['GET', 'DELETE'])
+def swarfile_one(request, id_trn, id_swar):
+
+    try:
+        swar = CdSwarJson.objects.get(tournament=id_trn, id=id_swar)
+    except CdSwarJson.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        ss = SwarJsonSerializer(swar)
+        return Response(ss.data)
+
+    if request.method == 'DELETE':
+        swar.delete()
+        swarjsons = CdSwarJson.objects.filter(tournament=id_trn).order_by(
+                '-round', '-uploaddate')
+        ss = SwarJsonSerializerSmall(swarjsons, many=True)
+        return Response(ss.data)
+
+@api_view(['GET'])
+def topround(request, id_trn):
+    try:
+        trn = CdTournament.objects.get(id=id_trn)
+    except CdTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    try:
+        swartrn = CdSwarTournament.objects.get(tournament=trn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    swarjsons = CdSwarJson.objects.filter(tournament=swartrn)
+    topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1) - 1
+    return Response(topround)
