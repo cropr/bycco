@@ -1,0 +1,19 @@
+{% extends "vue.html" %}
+{% load cms_tags i18n sekizai_tags staticfiles %}
+{% load render_bundle from webpack_loader %}
+
+{% block title %}{% trans "Tournament Subscriptions" %}{% endblock title %}
+
+{% block vuecontent %}
+
+<mg-presence></mg-presence>
+
+{% addtoblock "js" %}
+{% if PRODUCTION %}
+  {% render_bundle 'manifest' %}
+  {% render_bundle 'vendor' %}
+{% endif %}
+{% render_bundle 'mg_presence' %}
+{% endaddtoblock %}
+
+{% endblock vuecontent %}
