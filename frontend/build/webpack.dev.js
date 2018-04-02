@@ -16,6 +16,7 @@ const devWebpackConfig = {
     subscription: './src/subscription.js',
     participants: './src/participants.js',
     mg_attendee: './src/mg_attendee.js',
+    mg_presence: './src/mg_presence.js',
   },
   output: {
     path: path.resolve(__dirname, '../dist'),

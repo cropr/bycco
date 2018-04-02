@@ -17,6 +17,7 @@ const prodWebpackConfig = {
     subscription: './src/subscription.js',
     participants: './src/participants.js',
     mg_attendee: './src/mg_attendee.js',
+    mg_presence: './src/mg_presence.js',
   },
   output: {
     path: root,

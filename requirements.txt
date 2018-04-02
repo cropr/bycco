@@ -24,6 +24,7 @@ djangocms-video
 djangorestframework
 easy-thumbnails
 html5lib==0.9999999
+iso8601
 pillow
 psycopg2
 pytz

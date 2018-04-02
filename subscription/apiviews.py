@@ -4,6 +4,7 @@ import logging
 log = logging.getLogger(__name__)
 
 import requests
+import iso8601
 from binascii import a2b_base64
 from django.shortcuts import redirect
 from django.conf import settings
@@ -263,7 +264,11 @@ def attendee_all(request):
         query = Subscription.objects.all()
         cat = param.get('cat')
         if cat:
-            query = query.filter(category=cat)
+            if ',' in cat:
+                cats = cat.split(',')
+                query = query.filter(category__in=cats)
+            else:
+                query = query.filter(category=cat)
         ss = param.get('ss')
         if ss:
             query = query.filter(last_name__icontains=ss)
@@ -286,7 +291,7 @@ def attendee_all(request):
                     'nationalityfide': p.nationalityfide,
                     'confirmed': p.confirmed,
                     'meals': p.custom1,
-                    'present': p.custom2,
+                    'present': p.present.isoformat() if p.present else '',
                     'payamount': p.payamount,
                 } for p in query]
         }
@@ -350,7 +355,7 @@ def attendee_detail(request, id):
             'payamount': p.payamount,
             'paydate': p.paydate.isoformat() if p.paydate else '',
             'paymessage': p.paymessage,
-            'present': p.custom2 == 'Y',
+            'present': p.present.isoformat() if p.present else '',
             'rating': p.rating,
             'ratingbel': p.ratingbel,
             'ratingfide': p.ratingfide,
@@ -366,29 +371,44 @@ def attendee_detail(request, id):
         p.emailparent = data.get('emailparent', '')
         p.emailplayer = data.get('emailplayer', '')
         p.first_name = data.get('first_name')
-        p.fullnameattendant = data.get('fullnameattendant')
-        p.fullnameparent = data.get('fullnameparent')
+        if data.get('fullnameattendant'):
+            p.fullnameattendant = data.get('fullnameattendant')
+        if data.get('fullnameparent'):
+            p.fullnameparent = data.get('fullnameparent')
         p.last_name = data.get('last_name')
-        p.locale = data.get('locale')
+        if data.get('locale'):
+            p.locale = data.get('locale')
         p.meals = data.get('custom1')
-        p.mobileattendant = data.get('mobileattendant')
-        p.mobileparent = data.get('mobileparent')
-        p.mobileplayer = data.get('mobileplayer')
+        if data.get('mobileattendant'):
+            p.mobileattendant = data.get('mobileattendant')
+        if data.get('mobilemobileparent'):
+            p.mobileparent = data.get('mobileparent')
+        if data.get('mobileplayer'):
+            p.mobileplayer = data.get('mobileplayer')
         p.nationalityfide = data.get('nationalityfide')
         p.payamount = int(data.get('payamount', 0))
         # p.paydate = data.get('paydate')
-        p.present = data.get('custom2') == 'Yes'
+        if 'present' in data:
+            present = data.get('present')
+            if present:
+                p.present = iso8601.parse_date(present)
+            else:
+                p.present = None
         p.rating = data.get('rating')
-        p.ratingbel = data.get('ratingbel')
-        p.ratingfide = data.get('ratingfide')
-        p.remarks = data.get('remarks')
-        p.custom1 = data.get('meals')
-        p.custom2 = data.get('present')
+        if data.get('ratingbel'):
+            p.ratingbel = data.get('ratingbel')
+        if data.get('ratingfide'):
+            p.ratingfide = data.get('ratingfide')
+        if data.get('remarks'):
+            p.remarks = data.get('remarks')
+        if data.get('custom1'):
+            p.custom1 = data.get('meals')
         try:
             p.save()
             return Response(dict(id=p.id),
                             status=status.HTTP_200_OK)
         except Exception as e:
+            log.exception("could not update attendee")
             return Response(e, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     if request.method == 'DELETE':

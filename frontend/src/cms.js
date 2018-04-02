@@ -3,7 +3,7 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import './stylus/bycco.styl';
 
-import AdCarousel from './components/AdCarousel'
+import AdCarousel from './components/AdCarousel';
 
 Vue.use(Vuetify);
 
@@ -13,7 +13,7 @@ new Vue({
     drawer: false,
   },
   components: {
-    "ad-carousel": AdCarousel
+    "ad-carousel": AdCarousel,
   },
   methods: {
     gotoUrl (url) {

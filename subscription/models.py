@@ -35,12 +35,13 @@ class Subscription(Model):
     payamount = IntegerField(_("Amount to pay"), blank=True, default=0)
     paydate = DateField(_("Payment date"), null=True,)
     paymessage = CharField(_("Payment message"), max_length=20, default='', blank=True)
+    present = DateTimeField('Check-in time', null=True)
     rating = IntegerField(_("Used rating"), default=0)
     ratingbel = IntegerField(_("Belgian rating"), default=0)
     ratingfide = IntegerField(_("FIDE rating"), default=0)
     remarks = TextField(_("Remarks"), blank=True)
     custom1 = TextField(blank=True)                     # maaltijdregime
-    custom2 = TextField(blank=True)                     # aangemeld
+    custom2 = TextField(blank=True)
     custom3 = TextField(blank=True)
 
     def __str__(self):

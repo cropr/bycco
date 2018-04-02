@@ -19,6 +19,9 @@ def participantspage(request):
 def mg_attendee_page(request):
     return render(request, 'subscription/mg_attendee.html')
 
+def mg_presence_page(request):
+    return render(request, 'subscription/mg_presence.html')
+
 def printbadges(request):
     """
     :param request: 
