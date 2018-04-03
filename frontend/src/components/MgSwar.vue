@@ -5,11 +5,11 @@
 
 <v-tabs v-model="tabix" class="blue-grey lighten-3" light
     slider-color="pink">
-  <v-tab class="mx-2">
-    Upload Swar
+  <v-tab @click="gotoTab('overview')" class="mx-2">
+    Overview
   </v-tab>
-  <v-tab class="mx-2">
-    <span v-text="currentSwar.shortname"></span>
+  <v-tab @click="gotoTab('existing')" class="mx-2">
+    <span v-text="currentTrn.shortname"></span>
   </v-tab>
 </v-tabs>
 
@@ -28,13 +28,13 @@
 
 <script>
 import api from '../api/api';
-import MgSwarUpload from './MgSwarUpload';
-import MgSwarDetail from './MgSwarDetail';
+import MgTrnOverview from './MgTrnOverview';
+import MgTrnDetail from './MgTrnDetail';
 
 export default {
   components: {
-    "mg-swar-upload": MgSwarUpload,
-    "mg-swar-detail": MgSwarDetail,
+    "mg-trn-overview": MgTrnOverview,
+    "mg-trn-detail": MgTrnDetail,
   },
   data () {
     return {

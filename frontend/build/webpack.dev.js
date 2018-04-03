@@ -17,6 +17,7 @@ const devWebpackConfig = {
     participants: './src/participants.js',
     mg_attendee: './src/mg_attendee.js',
     mg_presence: './src/mg_presence.js',
+    mg_swar: './src/mg_swar.js',
     mg_trn: './src/mg_trn.js',
   },
   output: {

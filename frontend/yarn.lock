@@ -1813,6 +1813,10 @@ core-js@^2.4.0, core-js@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
 
+core-js@^2.5.3:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.4.tgz#f2c8bf181f2a80b92f360121429ce63a2f0aeae0"
+
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -7436,7 +7440,7 @@ uniq@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/uniq/-/uniq-1.0.1.tgz#b31c5ae8254844a3a8281541ce2b04b865a734ff"
 
-uniqid@^4.0.0:
+uniqid@^4.0.0, uniqid@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/uniqid/-/uniqid-4.1.1.tgz#89220ddf6b751ae52b5f72484863528596bb84c1"
   dependencies:
@@ -7579,6 +7583,13 @@ vm-browserify@0.0.4:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
   dependencies:
     indexof "0.0.1"
+
+vue-drag-drop@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/vue-drag-drop/-/vue-drag-drop-0.2.4.tgz#a50450bbb35db677131fb103b6eb417342864a90"
+  dependencies:
+    core-js "^2.5.3"
+    uniqid "^4.1.1"
 
 vue-hot-reload-api@^2.2.0:
   version "2.2.0"
