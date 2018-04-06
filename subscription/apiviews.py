@@ -322,7 +322,7 @@ def attendee_all(request):
             cs.save()
             cs.idbel = str(int(cs.pk) + 100000)
             cs.save()
-            return Response(dict(id_bel=cs.id_bel),
+            return Response(dict(idbel=cs.idbel),
                             status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response(e, status=status.HTTP_400_BAD_REQUEST)
