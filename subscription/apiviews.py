@@ -314,15 +314,15 @@ def attendee_all(request):
             cs.chesstitle = ss.get('chesstitle')
             cs.first_name = ss.get('first_name')
             cs.gender = ss.get('gender')
-            cs.id_national = '0'
+            cs.idbel = '200000'
             cs.locale = request.LANGUAGE_CODE.lower()[:2]
             cs.last_name = ss.get('last_name')
             cs.custom1 = ss.get('meals')
             cs.custom2 = ss.get('present')
             cs.save()
-            cs.id_national = str(int(cs.pk) + 100000)
+            cs.idbel = str(int(cs.pk) + 100000)
             cs.save()
-            return Response(dict(id_national=cs.id_national),
+            return Response(dict(id_bel=cs.id_bel),
                             status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response(e, status=status.HTTP_400_BAD_REQUEST)

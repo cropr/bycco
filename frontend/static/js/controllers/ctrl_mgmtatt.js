@@ -269,9 +269,9 @@ angular.module('mg_attendee', [
     save_add: function(){
       attendee_service.addAttendee().then(
         function(data){
-          alert('Attendee saved with id: ' + data.id_national);
+          alert('Attendee saved with id: ' + data.idbel);
           $scope.att.status = 'addsaved';
-          $scope.attendee.id_national = data.id_national;
+          $scope.attendee.idbel = data.idbel;
         },
         function(ro) {
           alert(ro);
