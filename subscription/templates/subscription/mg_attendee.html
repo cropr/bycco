@@ -267,11 +267,15 @@
             </md-input-container>
           </div>
           <div flex="20">
-            <md-button class="md-primary md-raised"
+            <md-button class="md-primary md-raised" ng-show="detailmode == 'edit'"
                        ng-click="att.save_edit()">
               Save
             </md-button>
-            <md-button class="md-primary md-raised"
+            <md-button class="md-primary md-raised" ng-show="detailmode == 'new'"
+                       ng-click="att.save_add()">
+              Save
+            </md-button>
+            <md-button class="md-primary md-raised"  ng-show="detailmode == 'edit'"
                        ng-click="att.resend_confirmation()">
               Resend
             </md-button>
@@ -279,7 +283,7 @@
                        ng-click="att.cancel()">
               Close
             </md-button>
-            <md-button ng-click="att.open_photo(attendee)"
+            <md-button ng-click="att.open_photo(attendee)"  ng-show="detailmode == 'edit'"
                        class="md-primary md-raised"
                        ng-show="att.status=='addsaved'">
               Photo

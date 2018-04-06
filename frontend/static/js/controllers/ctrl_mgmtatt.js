@@ -234,6 +234,8 @@ angular.module('mg_attendee', [
     },
     open_add: function(){
       this.status = 'add';
+      $scope.tab = tabs['detail'];
+      $scope.detailmode = 'new';
       angular.extend($scope.attendee,{
         last_name: '',
         first_name: '',

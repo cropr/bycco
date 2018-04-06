@@ -41,7 +41,7 @@ class Subscription(Model):
     ratingfide = IntegerField(_("FIDE rating"), default=0)
     remarks = TextField(_("Remarks"), blank=True)
     custom1 = TextField(blank=True)                     # maaltijdregime
-    custom2 = TextField(blank=True)
+    custom2 = TextField(blank=True, null=True)
     custom3 = TextField(blank=True)
 
     def __str__(self):

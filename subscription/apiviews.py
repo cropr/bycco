@@ -307,7 +307,7 @@ def attendee_all(request):
         return Response(result)
 
     if request.method == 'POST':
-        ss = request.data
+        ss = request.data.get('attendee', {})
         try:
             cs = Subscription()
             cs.category = ss.get('category')
@@ -455,6 +455,7 @@ def attendee_photo(request, id):
             return Response(e, status=status.HTTP_400_BAD_REQUEST)
 
 # tournament
+
 @api_view(['GET', 'POST'])
 def tournament_all(request):
 
