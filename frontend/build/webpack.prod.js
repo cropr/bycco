@@ -20,6 +20,7 @@ const prodWebpackConfig = {
     mg_presence: './src/mg_presence.js',
     mg_swar: './src/mg_swar.js',
     mg_trn: './src/mg_trn.js',
+    view_trn: './src/view_trn.js',
   },
   output: {
     path: root,

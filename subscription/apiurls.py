@@ -27,16 +27,14 @@ urlpatterns = [
     url(r'^tournament/(?P<id_trn>[0-9]+)/prizes$',
         apiviews.tournament_prizes),
     url(r'^tournament/(?P<id_trn>[0-9]+)/swar$', apiviews.tournament_swar),
-    url(r'^swartrn$', apiviews.swartrn_all),
-    url(r'^swartrn/(?P<id_trn>[0-9]+)$', apiviews.swartrn_one),
-    url(r'^swartrn$', apiviews.swartrn_all),
-    url(r'^swartrn/(?P<id_trn>[0-9]+)$', apiviews.swartrn_one),
-    url(r'^swartrn/(?P<id_trn>[0-9]+)/publication/(?P<id_swar>[0-9]+)$',
+    url(r'^swar$', apiviews.swartrn_all),
+    url(r'^swar/(?P<id_swartrn>[0-9]+)$', apiviews.swartrn_one),
+    url(r'^swar/(?P<id_swartrn>[0-9]+)/publication/(?P<id_swarfile>[0-9]+)$',
         apiviews.swarfile_publication),
-    url(r'^swartrn/(?P<id_trn>[0-9]+)/swar$', apiviews.swarfile_all),
-    url(r'^swartrn/(?P<id_trn>[0-9]+)/swar/(?P<id_swar>[0-9]+)$',
+    url(r'^swar/(?P<id_swartrn>[0-9]+)/file$', apiviews.swarfile_all),
+    url(r'^swar/(?P<id_swartrn>[0-9]+)/file/(?P<id_swarfile>[0-9]+)$',
         apiviews.swarfile_one),
-    url(r'^swartrn/(?P<id_trn>[0-9]+)/topround$', apiviews.topround),
+    url(r'^swarn/(?P<id_swartrn>[0-9]+)/topround$', apiviews.topround),
 
 ]
 

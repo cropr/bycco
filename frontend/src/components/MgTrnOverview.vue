@@ -31,7 +31,7 @@
           Existing tournaments
         </v-card-title>
         <v-card-text>
-          <v-layout v-for="(t,ix) in trns" class="phbot phtop" :key="t.shortname">
+          <v-layout v-for="(t,ix) in trns" :key="t.shortname" class="my-1">
             <v-flex xs1 v-text="ix+1"></v-flex>
             <v-flex xs11>
               <a href="#" @click="opentrn(t)" v-text="t.name"></a>

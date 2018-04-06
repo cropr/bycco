@@ -28,6 +28,7 @@ from .serializers import (
     SwarJsonSerializer,
     SwarJsonSerializerSmall,
     TournamentSerializer,
+    UploadSwarJsonSerializer
 )
 
 from .swarconvert import (
@@ -627,16 +628,44 @@ def tournament_swar(request, id_trn):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-@api_view(['GET'])
+# swar
+
+@api_view(['GET', 'POST'])
 def swartrn_all(request):
-    swardata = {}
-    for swartrn in CdSwarTournament.objects.all():
-        srl = SwarTournamentSerializer(swartrn)
-        swardata[swartrn.tournament_id] = srl.data
-    for trn in CdTournament.objects.all():
-        if trn.id in swardata:
-            swardata[trn.id].update(TournamentSerializer(trn).data)
-    return Response(swardata.values())
+
+    if request.method == 'POST':
+        # adding a new swar file
+        uploadSerializer = UploadSwarJsonSerializer(data=request.data)
+        if not uploadSerializer.is_valid():
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        uploadSwar = uploadSerializer.validated_data
+        id_trn = uploadSwar['id_trn']
+        name = uploadSwar['name']
+        jsonfile = uploadSwar['jsonfile']
+        round = uploadSwar['round']
+        try:
+            trn = CdTournament.objects.get(id=id_trn)
+        except CdTournament.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        try:
+            swartrn = CdSwarTournament.objects.get(tournament=trn)
+        except CdSwarTournament.DoesNotExist:
+            # no swartrn exists, so create it
+            swartrn = CdSwarTournament(tournament=trn, swarname=name)
+            swartrn.save()
+        swarjson = CdSwarJson(round=round, jsonfile=jsonfile, swartrn=swartrn)
+        swarjson.save()
+        return Response(status=status.HTTP_201_CREATED)
+
+    if request.method == 'GET':
+        swardata = {}
+        for swartrn in CdSwarTournament.objects.all():
+            srl = SwarTournamentSerializer(swartrn)
+            swardata[swartrn.tournament_id] = srl.data
+        for trn in CdTournament.objects.all():
+            if trn.id in swardata:
+                swardata[trn.id].update(TournamentSerializer(trn).data)
+        return Response(dict(swartrns=swardata.values()))
 
 @api_view(['GET', 'DELETE'])
 def swartrn_one(request, id_trn):
@@ -656,61 +685,39 @@ def swartrn_one(request, id_trn):
         return Response(trn_serializer.data)
 
 @api_view(['POST'])
-def swarfile_publication(request, id_trn, id_swar):
+def swarfile_publication(request, id_swartrn, id_swarfile):
     try:
-        trn = CdSwarTournament.objects.get(tournament_id=id_trn)
+        CdSwarTournament.objects.get(tournament_id=id_swartrn)
     except CdSwarTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     try:
-        swar = CdSwarJson.objects.get(id=id_swar)
+        swar = CdSwarJson.objects.get(id=id_swarfile)
     except:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    CdSwarJson.objects.filter(tournament=id_trn, status='ACT',
+    CdSwarJson.objects.filter(swartrn_id=id_swartrn, status='ACT',
                               round=swar.round).update(status='OUT')
-    CdSwarJson.objects.filter(tournament=id_trn, id=id_swar).update(status='ACT')
-    # TODO create a optimized publishing JSON string
-    swarjsons = CdSwarJson.objects.filter(tournament=id_trn).order_by(
-        '-round', '-uploaddate')
+    CdSwarJson.objects.filter(swartrn_id=id_swartrn, id=id_swarfile).update(
+        status='ACT')
+    return Response(status=status.HTTP_201_CREATED)
+
+@api_view(['GET'])
+def swarfile_all(request, id_swartrn):
+
+    try:
+        swartrn = CdSwarTournament.objects.get(tournament_id=id_swartrn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    swarjsons = CdSwarJson.objects.filter(swartrn_id=id_swartrn).order_by(
+                '-round', '-uploaddate')
     ss = SwarJsonSerializerSmall(swarjsons, many=True)
     return Response(ss.data)
 
-@api_view(['GET', 'POST'])
-def swarfile_all(request, id_trn):
-
-    try:
-        trn = CdSwarTournament.objects.get(tournament_id=id_trn)
-    except CdSwarTournament.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'POST':
-        # add a new Swar file
-        data = request.data
-        data['tournament'] = id_trn
-        swar_serializer  = SwarJsonSerializer(data=data)
-        if swar_serializer.is_valid():
-            swar_serializer.save()
-            trn.swarname = swar_serializer.data['name']
-            trn.save()
-            swarjsons = CdSwarJson.objects.filter(tournament=id_trn).order_by(
-                '-round', '-uploaddate')
-            ss = SwarJsonSerializerSmall(swarjsons, many=True)
-            return Response(ss.data)
-        else:
-            log.debug('invalid data %s', swar_serializer.data)
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
-    if request.method == 'GET':
-        # get all swarupload files
-        swarjsons = CdSwarJson.objects.filter(tournament=id_trn).order_by(
-                '-round', '-uploaddate')
-        ss = SwarJsonSerializerSmall(swarjsons, many=True)
-        return Response(ss.data)
-
 @api_view(['GET', 'DELETE'])
-def swarfile_one(request, id_trn, id_swar):
+def swarfile_one(request, id_swartrn, id_swarfile):
 
     try:
-        swar = CdSwarJson.objects.get(tournament=id_trn, id=id_swar)
+        swar = CdSwarJson.objects.get(swartrn_id=id_swartrn, id=id_swarfile)
     except CdSwarJson.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -720,10 +727,7 @@ def swarfile_one(request, id_trn, id_swar):
 
     if request.method == 'DELETE':
         swar.delete()
-        swarjsons = CdSwarJson.objects.filter(tournament=id_trn).order_by(
-                '-round', '-uploaddate')
-        ss = SwarJsonSerializerSmall(swarjsons, many=True)
-        return Response(ss.data)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET'])
 def topround(request, id_trn):

@@ -1,24 +1,22 @@
 <template>
 <div>
 
-<h1>Tournaments</h1>
+<h1>SWAR management</h1>
 
-<v-tabs v-model="tabix" class="blue-grey lighten-3" light
-    slider-color="pink">
-  <v-tab @click="gotoTab('overview')" class="mx-2">
+<v-tabs class="blue-grey lighten-3" light slider-color="pink" v-model="tabix">
+  <v-tab class="mx-2">
     Overview
   </v-tab>
-  <v-tab @click="gotoTab('existing')" class="mx-2">
-    <span v-text="currentTrn.shortname"></span>
+  <v-tab class="mx-2">
+    <span v-text="currentSwartrn.shortname"></span>
   </v-tab>
 </v-tabs>
-
 <v-tabs-items v-model="tabix">
   <v-tab-item>
-    <mg-trn-overview :trns="trns" @openTrn="openTrn"></mg-trn-overview>
+    <mg-swar-overview :swartrns="swartrns" @openSwar="openSwar"></mg-swar-overview>
   </v-tab-item>
   <v-tab-item>
-    <mg-trn-detail :trn="currentTrn"></mg-trn-detail>
+    <mg-swar-detail :swartrn="currentSwartrn" :tabix="tabix"></mg-swar-detail>
   </v-tab-item>
 </v-tabs-items>
 
@@ -28,79 +26,43 @@
 
 <script>
 import api from '../api/api';
-import MgTrnOverview from './MgTrnOverview';
-import MgTrnDetail from './MgTrnDetail';
+import MgSwarOverview from './MgSwarOverview';
+import MgSwarDetail from './MgSwarDetail';
 
 export default {
   components: {
-    "mg-trn-overview": MgTrnOverview,
-    "mg-trn-detail": MgTrnDetail,
+    "mg-swar-overview": MgSwarOverview,
+    "mg-swar-detail": MgSwarDetail,
+
   },
   data () {
     return {
       trns: [],
-      tabix: 0,
-      currentTrn: {},
+      swartrns: [],
+      tabix: "0",
+      currentSwartrn: {},
     }
   },
   methods: {
-    gotoTab (tabname) {
-
-    },
-    gettrns () {
+    getSwartrns () {
       var self = this;
-      api('getTournaments').then(
+      api('getSwarTournaments').then(
         function (data) {
-          self.trns = data.trns;
+          self.swartrns = data.swartrns || [];
         },
         function (data) {
-          console.error('adding trn failed', data)
+          console.error('gettings swartrn failed', data)
         }
       )
     },
-    openTrn (t) {
-      console.log('opening trn', t);
-      this.currentTrn = t;
-      this.tabix = 1;
-    }
-    // updating () {
-    //   let cats = [], self=this;
-    //   _.forEach(this.cat, function(v, k){
-    //     if (v) {
-    //       cats.push(...v.split(','));
-    //     }
-    //   });
-    //   api('getAttendees', {
-    //     count: 999,
-    //     cat: cats.join(',')
-    //   }).then(function(data){
-    //     console.log('data', data);
-    //     self.attendees = [];
-    //     data.attendees.forEach(function(p){
-    //       if (p.confirmed) {
-    //         self.attendees.push(p)
-    //       };
-    //     });
-    //   self.sortAttendees();
-    //   }, function(data){
-    //     console.log('error getting attendees', data);
-    //   });
-    // },
-    // sortAttendees () {
-    //   console.log('sorting');
-    //   this.attendees.sort(function(a,b){
-    //     if (a.present < b.present) return -1;
-    //     if (a.present > b.present) return 1;
-    //     if (a.lastname < b.lastname) return -1;
-    //     if (a.lastname > b.lastname) return 1;
-    //     if (a.firstname < b.firstname) return -1;
-    //     if (a.firstname > b.firstname) return 1;
-    //     return 0;
-    //   })
-    // }
+    openSwar (st) {
+      console.log('opening swar', st.shortname);
+      this.currentSwartrn = st;
+      this.tabix = "1";
+    },
   },
   mounted () {
-    this.gettrns();
+    this.getSwartrns();
   },
 }
 </script>

@@ -9,7 +9,7 @@
     Upload Swar
   </v-tab>
   <v-tab class="mx-2">
-    <span v-text="currentSwar.shortname"></span>
+    <span v-text="currentTrn.shortname"></span>
   </v-tab>
 </v-tabs>
 
@@ -28,13 +28,13 @@
 
 <script>
 import api from '../api/api';
-import MgSwarUpload from './MgSwarUpload';
-import MgSwarDetail from './MgSwarDetail';
+import MgTrnOverview from './MgTrnOverview';
+import MgtrnDetail from './MgTrnDetail';
 
 export default {
   components: {
-    "mg-swar-upload": MgSwarUpload,
-    "mg-swar-detail": MgSwarDetail,
+    "mg-trn-overview": MgTrnOverview,
+    "mg-trn-detail": MgtrnDetail,
   },
   data () {
     return {
@@ -44,9 +44,6 @@ export default {
     }
   },
   methods: {
-    gotoTab (tabname) {
-
-    },
     gettrns () {
       var self = this;
       api('getTournaments').then(
@@ -63,41 +60,6 @@ export default {
       this.currentTrn = t;
       this.tabix = 1;
     }
-    // updating () {
-    //   let cats = [], self=this;
-    //   _.forEach(this.cat, function(v, k){
-    //     if (v) {
-    //       cats.push(...v.split(','));
-    //     }
-    //   });
-    //   api('getAttendees', {
-    //     count: 999,
-    //     cat: cats.join(',')
-    //   }).then(function(data){
-    //     console.log('data', data);
-    //     self.attendees = [];
-    //     data.attendees.forEach(function(p){
-    //       if (p.confirmed) {
-    //         self.attendees.push(p)
-    //       };
-    //     });
-    //   self.sortAttendees();
-    //   }, function(data){
-    //     console.log('error getting attendees', data);
-    //   });
-    // },
-    // sortAttendees () {
-    //   console.log('sorting');
-    //   this.attendees.sort(function(a,b){
-    //     if (a.present < b.present) return -1;
-    //     if (a.present > b.present) return 1;
-    //     if (a.lastname < b.lastname) return -1;
-    //     if (a.lastname > b.lastname) return 1;
-    //     if (a.firstname < b.firstname) return -1;
-    //     if (a.firstname > b.firstname) return 1;
-    //     return 0;
-    //   })
-    // }
   },
   mounted () {
     this.gettrns();

@@ -31,6 +31,7 @@ class SwarTournamentSerializer(serializers.ModelSerializer):
 
         fields = (
             'swarname',
+            'tournament_id',
         )
 
 
@@ -40,10 +41,9 @@ class SwarJsonSerializer(serializers.ModelSerializer):
 
         fields = (
             'id',
-            'name',
             'round',
             'jsonfile',
-            'tournament',
+            'swartrn',
             'uploaddate',
             'status',
         )
@@ -55,9 +55,14 @@ class SwarJsonSerializerSmall(serializers.ModelSerializer):
 
         fields = (
             'id',
-            'name',
             'round',
-            'tournament',
+            'swartrn',
             'uploaddate',
             'status',
         )
+
+class UploadSwarJsonSerializer(serializers.Serializer):
+    id_trn = serializers.IntegerField()
+    name = serializers.CharField()
+    jsonfile = serializers.CharField()
+    round = serializers.IntegerField()

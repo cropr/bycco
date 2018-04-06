@@ -14,7 +14,7 @@ export default function(name, params) {
       path= {}, spath,
       all = {};
 
-  console.log('api call', name, params, schemas);
+  console.log('api call', name, params);
   schema = schemas[name];
   if (!schema) {
     console.error('schema not found:', name );

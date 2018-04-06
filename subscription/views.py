@@ -22,8 +22,14 @@ def mg_attendee_page(request):
 def mg_presence_page(request):
     return render(request, 'subscription/mg_presence.html')
 
+def mg_swar_page(request):
+    return render(request, 'subscription/mg_swar.html')
+
 def mg_trn_page(request):
     return render(request, 'subscription/mg_trn.html')
+
+def view_trn_page(request):
+    return render(request, 'subscription/view_trn.html')
 
 def printbadges(request):
     """

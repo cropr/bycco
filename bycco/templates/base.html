@@ -21,7 +21,7 @@
 {% cms_toolbar %}
 
 <div id="app">
-
+ <v-app>
     <v-navigation-drawer v-cloak dark temporary fixed v-model="drawer"
                          class="navmax blue-grey darken-1">
       <v-toolbar flat class="blue-grey">
@@ -146,6 +146,8 @@
   {% block vueapp %}{% endblock vueapp %}
 
   {% block vuefooter %}{% endblock vuefooter %}
+
+ </v-app>
 
 </div>
 

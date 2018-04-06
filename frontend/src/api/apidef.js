@@ -1,5 +1,7 @@
 export default {
   // per api call define the required parameters per type
+
+  //attendee
   getAttendees: {
     method: 'GET',
     url: '/attendees',
@@ -37,6 +39,8 @@ export default {
     path: ['id'],
     required: ['id'],
   },
+
+  // chess members
   searchIdNational: {
     method: 'GET',
     url: '/belplayer/{idbel}',
@@ -49,6 +53,8 @@ export default {
     path: ['idfide'],
     required: ['idfide'],
   },
+
+  // subscription : to be checked if all methods are still used
   confirmSubscription: {
     method: 'POST',
     path: ['idsub'],
@@ -80,6 +86,8 @@ export default {
     path: ['idsub'],
     required: ['photo', 'idsub']
   },
+
+  //tournamanet
   addTournament: {
     method: 'POST',
     url: '/tournament',
@@ -90,5 +98,42 @@ export default {
     method: 'GET',
     url: '/tournament',
     required: [],
-  }
+  },
+
+  // swar
+  uploadSwarJson: { // use _body
+    method: 'POST',
+    url: '/swar',
+    body: ['name', 'jsonfile', 'round', 'id_trn'],
+    required: ['name', 'jsonfile', 'round', 'id_trn'],
+  },
+  getSwarTournaments: {
+    method: 'GET',
+    url: '/swar',
+    required: [],
+  },
+  getSwarFiles: {
+    method: 'GET',
+    url: '/swar/{id_swartrn}/file',
+    path: ['id_swartrn'],
+    required: ['id_swartrn'],
+  },
+  getSwarFile: {
+    method: 'GET',
+    url: '/swar/{id_swartrn}/file/{id_swarfile}',
+    path: ['id_swartrn', 'id_swarfile'],
+    required: ['id_swartrn', 'id_swarfile'],
+  },
+  removeSwarFile: {
+    method: 'DELETE',
+    url: '/swar/{id_swartrn}/file/{id_swarfile}',
+    path: ['id_swartrn', 'id_swarfile'],
+    required: ['id_swartrn', 'id_swarfile'],
+  },
+  publishSwarFile: {
+    method: 'POST',
+    url: '/swar/{id_swartrn}/publication/{id_swarfile}',
+    path: ['id_swartrn', 'id_swarfile'],
+    required: ['id_swartrn', 'id_swarfile'],
+  },
 };

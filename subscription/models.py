@@ -125,9 +125,8 @@ class CdSwarJson(Model):
         ('UNP', 'Unpublished'),
     )
 
-    name = CharField(max_length=50)
     round = IntegerField()
     jsonfile = TextField()
-    tournament = ForeignKey(CdSwarTournament, on_delete=CASCADE)
+    swartrn = ForeignKey(CdSwarTournament, on_delete=CASCADE)
     uploaddate = DateTimeField(auto_now_add=True)
     status = CharField(max_length=3, choices=STATUSES, default='UNP')
