@@ -258,7 +258,7 @@ def printboardnumbers(request):
                 counter = 0
     if counter > 0:
         pages.append(page)
-    return render(request, 'cd_subscription/printboardnr.html',
+    return render(request, '/subscription/printboardnr.html',
                   {'pages': pages})
 
 def smspage(request):
