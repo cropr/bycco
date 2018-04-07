@@ -83,9 +83,7 @@ export default {
         console.log('data', data);
         self.attendees = [];
         data.attendees.forEach(function(p){
-          if (p.confirmed) {
-            self.attendees.push(p)
-          };
+          self.attendees.push(p)
         });
       self.sortAttendees();
       }, function(data){
