@@ -151,7 +151,7 @@ def printallnamecards(request):
     cards = []
     j = 0
     for p in Subscription.objects.all().order_by('category','last_name'):
-        if not p.category.startswith('B'):
+        if not p.category.startswith('G'):
             continue
         rix = j % 2 + 1
         ct = p.chesstitle + " " if p.chesstitle else ""
