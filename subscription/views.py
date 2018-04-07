@@ -91,8 +91,7 @@ def printallbadges(request):
             'meals': p.custom1,
             'mealsclass': "badge_{}".format(p.custom1 or "NM"),
             'color': p.category,
-            'photourl': 'cd_subscription/api/attendee/{0}/photo'.format(
-                p.id_national),
+            'photourl': '/api//photo/{0}'.format(p.id),
             'positionclass': 'badge{0}{1}'.format(cix, rix)
         }
         badges.append(badge)
@@ -103,7 +102,7 @@ def printallbadges(request):
             badges = []
     if j > 0:
         pages.append(badges)
-    return render(request, 'cd_subscription/printbadge.html', {'pages': pages})
+    return render(request, 'subscription/printbadge.html', {'pages': pages})
 
 def printnamecards(request):
     """
