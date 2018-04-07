@@ -91,7 +91,7 @@ def printallbadges(request):
             'meals': p.custom1,
             'mealsclass': "badge_{}".format(p.custom1 or "NM"),
             'color': p.category,
-            'photourl': '/api//photo/{0}'.format(p.id),
+            'photourl': '/api/photo/{0}'.format(p.id),
             'positionclass': 'badge{0}{1}'.format(cix, rix)
         }
         badges.append(badge)
@@ -157,13 +157,12 @@ def printallnamecards(request):
         ct = p.chesstitle + " " if p.chesstitle else ""
         card = {
             'fullname': "{0}{1} {2}".format(ct, p.last_name, p.first_name),
-            'natrating': p.natrating or "0",
-            'fiderating': p.fiderating or "0",
+            'natrating': p.ratingbel or "0",
+            'fiderating': p.ratingfide or "0",
             'category': p.category,
             'color': p.category,
             'locale': p.locale,
-            'photourl': 'cd_subscription/api/attendee/{0}/photo'.format(
-                p.id_national),
+            'photourl': '/api/photo/{0}'.format(p.id),
             'positionclass': 'card_1{0}'.format(rix)
         }
         cards.append(card)
@@ -174,7 +173,7 @@ def printallnamecards(request):
             cards = []
     if j > 0:
         pages.append(cards)
-    return render(request, 'cd_subscription/printnamecard.html',
+    return render(request, 'subscription/printnamecard.html',
                   {'pages': pages})
 
 def printallnamecardsgirls(request):
