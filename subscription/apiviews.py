@@ -5,6 +5,7 @@ log = logging.getLogger(__name__)
 
 import requests
 import iso8601
+import simplejson as json
 from binascii import a2b_base64
 from django.shortcuts import redirect
 from django.conf import settings
@@ -386,7 +387,7 @@ def attendee_detail(request, id):
         p.last_name = data.get('last_name')
         if data.get('locale'):
             p.locale = data.get('locale')
-        p.meals = data.get('custom1')
+        p.meals = data.get('meals')
         if data.get('mobileattendant'):
             p.mobileattendant = data.get('mobileattendant')
         if data.get('mobilemobileparent'):
@@ -409,7 +410,7 @@ def attendee_detail(request, id):
             p.ratingfide = data.get('ratingfide')
         if data.get('remarks'):
             p.remarks = data.get('remarks')
-        if data.get('custom1'):
+        if data.get('meals'):
             p.custom1 = data.get('meals')
         try:
             p.save()
@@ -498,7 +499,7 @@ def tournament_pairings(request, id_trn, round):
         trn = CdTournament.objects.get(id=id_trn)
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    swarround = int(round) + 1
+    swarround = int(round)
     try:
         swartrn = CdSwarTournament.objects.get(tournament=trn)
     except CdSwarTournament.DoesNotExist:
@@ -523,7 +524,7 @@ def tournament_standings(request, id_trn, round):
         trn = CdTournament.objects.get(id=id_trn)
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    swarround = int(round) + 1
+    swarround = int(round)
     try:
         swartrn = CdSwarTournament.objects.get(tournament=trn)
     except CdSwarTournament.DoesNotExist:
