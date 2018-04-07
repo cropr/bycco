@@ -19,6 +19,9 @@ def participantspage(request):
 def mg_attendee_page(request):
     return render(request, 'subscription/mg_attendee.html')
 
+def mg_attendee_vue_page(request):
+    return render(request, 'subscription/mg_attendee_vue.html')
+
 def mg_presence_page(request):
     return render(request, 'subscription/mg_presence.html')
 
@@ -36,13 +39,13 @@ def printbadges(request):
     :param request: 
     :return: 
     """
-    ids = request.GET
+    ids = request.GET.get('ids')
     pages = []
     badges = []
     j = 0
-    for id in ids:
+    for id in ids.split(','):
         try:
-            p = Subscription.objects.get(id_national=id)
+            p = Subscription.objects.get(id=id)
         except Subscription.DoesNotExist:
             continue
         rix = j % 2 + 1
@@ -56,8 +59,7 @@ def printbadges(request):
             'meals': p.custom1,
             'mealsclass': "badge_{}".format(p.custom1 or "NM"),
             'color': p.category,
-            'photourl': 'cd_subscription/api/attendee/{0}/photo'.format(
-                p.id_national),
+            'photourl': '/api/photo/{0}'.format(p.id),
             'positionclass': 'badge{0}{1}'.format(cix, rix)
         }
         badges.append(badge)
@@ -68,14 +70,13 @@ def printbadges(request):
             badges = []
     if j > 0:
         pages.append(badges)
-    return render(request, 'cd_subscription/printbadge.html', {'pages': pages})
+    return render(request, 'subscription/printbadge.html', {'pages': pages})
 
 def printallbadges(request):
     """
     :param request: 
     :return: 
     """
-    ids = request.POST.get('ids')
     pages = []
     badges = []
     j = 0
@@ -109,49 +110,14 @@ def printnamecards(request):
     :param request: 
     :return: 
     """
-    ids = request.GET
+    ids = request.GET.get('ids')
     pages = []
     cards = []
     j = 0
-    for id in ids:
+    for id in ids.split(','):
         try:
-            p = Subscription.objects.get(id_national=id)
+            p = Subscription.objects.get(id=id)
         except Subscription.DoesNotExist:
-            continue
-        rix = j % 2 + 1
-        ct = p.chesstitle + " " if p.chesstitle else ""
-        card = {
-            'fullname': "{0}{1} {2}".format(ct, p.last_name, p.first_name),
-            'natrating': p.natrating or "0",
-            'fiderating': p.fiderating or "0",
-            'category': p.category,
-            'color': p.category,
-            'locale': p.locale,
-            'photourl': 'cd_subscription/api/attendee/{0}/photo'.format(
-                p.id_national),
-            'positionclass': 'card_1{0}'.format(rix)
-        }
-        cards.append(card)
-        j += 1
-        if j == 2:
-            j = 0
-            pages.append(cards)
-            cards = []
-    if j > 0:
-        pages.append(cards)
-    return render(request, 'cd_subscription/printnamecard.html', {'pages': pages})
-
-def printallnamecards(request):
-    """
-    :param request: 
-    :return: 
-    """
-    ids = request.POST.get('ids')
-    pages = []
-    cards = []
-    j = 0
-    for p in Subscription.objects.all().order_by('category','last_name'):
-        if not p.category.startswith('G'):
             continue
         rix = j % 2 + 1
         ct = p.chesstitle + " " if p.chesstitle else ""
@@ -173,10 +139,9 @@ def printallnamecards(request):
             cards = []
     if j > 0:
         pages.append(cards)
-    return render(request, 'subscription/printnamecard.html',
-                  {'pages': pages})
+    return render(request, 'subscription/printnamecard.html', {'pages': pages})
 
-def printallnamecardsgirls(request):
+def printallnamecards(request):
     """
     :param request: 
     :return: 
@@ -186,19 +151,16 @@ def printallnamecardsgirls(request):
     cards = []
     j = 0
     for p in Subscription.objects.all().order_by('category','last_name'):
-        if not p.category.startswith('G'):
-            continue
         rix = j % 2 + 1
         ct = p.chesstitle + " " if p.chesstitle else ""
         card = {
             'fullname': "{0}{1} {2}".format(ct, p.last_name, p.first_name),
-            'natrating': p.natrating or "0",
-            'fiderating': p.fiderating or "0",
+            'natrating': p.ratingbel or "0",
+            'fiderating': p.ratingfide or "0",
             'category': p.category,
             'color': p.category,
             'locale': p.locale,
-            'photourl': 'cd_subscription/api/attendee/{0}/photo'.format(
-                p.id_national),
+            'photourl': '/api/photo/{0}'.format(p.id),
             'positionclass': 'card_1{0}'.format(rix)
         }
         cards.append(card)
@@ -209,8 +171,7 @@ def printallnamecardsgirls(request):
             cards = []
     if j > 0:
         pages.append(cards)
-    return render(request, 'cd_subscription/printnamecard.html',
-                  {'pages': pages})
+    return render(request, 'subscription/printnamecard.html', {'pages': pages})
 
 def printboardnumbers(request):
     """

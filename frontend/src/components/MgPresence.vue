@@ -75,6 +75,7 @@ export default {
           cats.push(...v.split(','));
         }
       });
+      console.log('cats', cats);
       api('getAttendees', {
         count: 999,
         cat: cats.join(',')

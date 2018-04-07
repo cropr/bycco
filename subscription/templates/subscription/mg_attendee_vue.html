@@ -1,0 +1,19 @@
+{% extends "vue.html" %}
+{% load cms_tags i18n sekizai_tags staticfiles %}
+{% load render_bundle from webpack_loader %}
+
+{% block title %}Manage Attendees New{% endblock title %}
+
+{% block vuecontent %}
+
+<mg-attendee></mg-attendee>
+
+{% addtoblock "js" %}
+{% if PRODUCTION %}
+  {% render_bundle 'manifest' %}
+  {% render_bundle 'vendor' %}
+{% endif %}
+{% render_bundle 'mg_attendee_vue' %}
+{% endaddtoblock %}
+
+{% endblock vuecontent %}
