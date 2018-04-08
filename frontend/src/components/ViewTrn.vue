@@ -176,6 +176,7 @@ export default {
   data () {
     return {
       trn: {},
+      trns: [],
       cat: 'BG8',
       round: "1",
       subdrawer: false,
@@ -185,17 +186,33 @@ export default {
   methods: {
     gotoCat (cat) {
       console.log('Going to cat ', cat, this.subdrawer);
+      var self=this;
       this.cat = catmapping[cat];
       this.subdrawer = false;
+      _.forEach(this.trns, function(t){
+        if (t.shortname == self.cat) {
+          self.trn = t;
+        }
+      })
     },
     gotoRound (r) {
       console.log('Going to round ', r);
       this.round = r;
       this.subdrawer = false;
+    },
+    getTrn (cat) {
+      var self=this;
+
     }
   },
   mounted () {
-
+    var self=this;
+    api('getTournaments').then(
+      function(data) {
+        self.trns = data.trns;
+        self.gotoCat(self.cat);
+      }
+    )
   },
 }
 </script>

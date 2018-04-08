@@ -1,14 +1,14 @@
 <template>
 <v-card class="ma-1">
-  <v-card-title>Pairings Round<span v-text="currentRound"></span> </v-card-title>
-    <table class="table" style="width:auto;" ng-show="pairings.length">
+  <v-card-title>Standings Round<span v-text="currentRound"></span> </v-card-title>
+    <table class="table" style="width:auto;" ng-show="standings.length">
       <tr>
         <th>N.</th>
         <th>White</th>
         <th>Result</th>
         <th>Black</th>
       </tr>
-      <tr v-for="(p,ix) in pairings" :key="p.white">
+      <tr v-for="(p,ix) in standings" :key="p.white">
         <td v-text="p.black ? ix+1 : ''"></td>
         <td>
           <span v-text="p.white"></span>
@@ -29,8 +29,8 @@
         </td>
       </tr>
     </table>
-    <div ng-hide="pairings.length">
-      No pairings available
+    <div ng-hide="standings.length">
+      No standings available
     </div>
 </v-card>
 </template>
@@ -44,6 +44,7 @@ export default {
   data () {
     return {
       currentRound: 1,
+      standings: [],
     }
   },
   methods: {
