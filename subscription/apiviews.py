@@ -505,7 +505,7 @@ def tournament_pairings(request, id_trn, round):
     except CdSwarTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     try:
-        swarjson = CdSwarJson.objects.get(tournament=swartrn, round=swarround,
+        swarjson = CdSwarJson.objects.get(swartrn=swartrn, round=swarround,
                                       status='ACT')
     except CdSwarJson.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)

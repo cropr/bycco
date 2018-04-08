@@ -126,7 +126,7 @@
   </v-tabs>
   <v-tabs-items v-model="tabix">
     <v-tab-item>
-      <view-trn-pairings :trn="trn"></view-trn-pairings>
+      <view-trn-pairings :updateTrn="updateTrn"></view-trn-pairings>
     </v-tab-item>
     <v-tab-item>
       <view-trn-standings :trn="trn"></view-trn-standings>
@@ -144,6 +144,7 @@
 
 <script>
 import api from '../api/api';
+import _ from 'lodash';
 import ViewTrnPairings from './ViewTrnPairings';
 import ViewTrnStandings from './ViewTrnStandings';
 import ViewTrnLive from './ViewTrnLive';
@@ -176,22 +177,28 @@ export default {
   data () {
     return {
       trn: {},
+      updateTrn: {},
       trns: [],
-      cat: 'BG8',
+      cat: 'B8',
       round: "1",
       subdrawer: false,
       tabix: '0',
+      pairings:[],
     }
   },
   methods: {
     gotoCat (cat) {
-      console.log('Going to cat ', cat, this.subdrawer);
+      console.log('Going to cat ', cat, this.trns);
       var self=this;
       this.cat = catmapping[cat];
       this.subdrawer = false;
       _.forEach(this.trns, function(t){
         if (t.shortname == self.cat) {
           self.trn = t;
+          self.updateTrn = {
+            trn: t,
+            round: self.round
+          };
         }
       })
     },
@@ -199,11 +206,11 @@ export default {
       console.log('Going to round ', r);
       this.round = r;
       this.subdrawer = false;
+      this.updateTrn = {
+        trn: this.trn,
+        round: r
+      };
     },
-    getTrn (cat) {
-      var self=this;
-
-    }
   },
   mounted () {
     var self=this;

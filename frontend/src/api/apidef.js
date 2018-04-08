@@ -99,6 +99,12 @@ export default {
     url: '/tournament',
     required: [],
   },
+  getPairings: {
+    method: 'GET',
+    url: '/tournament/{id_trn}/pairings/{round}',
+    path: ['id_trn', 'round'],
+    required: ['id_trn', 'round'],
+  },
 
   // swar
   uploadSwarJson: { // use _body
@@ -112,6 +118,7 @@ export default {
     url: '/swar',
     required: [],
   },
+
   getSwarFiles: {
     method: 'GET',
     url: '/swar/{id_swartrn}/file',
