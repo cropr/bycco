@@ -1,34 +1,53 @@
 <template>
 <div>
-  <h4>Pairings</h4>
-  <table style="width:auto;">
-    <tr v-for="(p,ix) in pairings" :key="p.white">
-      <td v-text="ix + 1"></td>
-      <td v-text="p.white"></td>
-      <td v-text="p.result"></td>
-      <td v-text="p.black"></td>
-    </tr>
-    <tr v-show="bye">
-      <td></td>
-      <td v-text="bye.white"></td>
-      <td>Bye</td>
-      <td></td>
-    </tr>
-    <tr v-for="p in absences" :key="p.white">
-      <td></td>
-      <td v-text="p.white"></td>
-      <td>Abs.</td>
-      <td></td>
-    </tr>
-  </table>
-  <h4>Standings</h4>
-  <table style="width:auto;">
-    <tr v-for="(p,ix) in players" :key="p.name">
-      <td v-text="ix + 1"></td>
-      <td v-text="p.name"></td>
-      <td v-text="p.points"></td>
-    </tr>
-  </table>
+  <v-card class="ma-2">
+    <v-card-title>
+      <h4>Pairings</h4>
+    </v-card-title>
+    <v-card-text>
+      <table style="width:auto;">
+        <tr v-for="(p,ix) in pairings" :key="p.white">
+          <td v-text="ix + 1"></td>
+          <td v-text="p.white"></td>
+          <td v-text="p.result"></td>
+          <td v-text="p.black"></td>
+        </tr>
+        <tr v-show="bye">
+          <td></td>
+          <td v-text="bye.white"></td>
+          <td>Bye</td>
+          <td></td>
+        </tr>
+        <tr v-for="p in absences" :key="p.white">
+          <td></td>
+          <td v-text="p.white"></td>
+          <td>Abs.</td>
+          <td></td>
+        </tr>
+      </table>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn color="primary" @click="printPairing">Print</v-btn>
+    </v-card-actions>
+  </v-card>
+  <v-card class="ma-2">
+    <v-card-title>
+      <h4>Standings</h4>
+    </v-card-title>
+    <v-card-text>
+      <table style="width:auto;">
+        <tr v-for="(p,ix) in players" :key="p.name">
+          <td v-text="ix + 1"></td>
+          <td v-text="p.name"></td>
+          <td v-text="p.points"></td>
+        </tr>
+      </table>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn color="primary" @click="printStanding">Print</v-btn>
+    </v-card-actions>
+  </v-card>
+
 </div>
 </template>
 
@@ -139,12 +158,19 @@ export default {
           self.players[six] = pl;
         });
       });
-    }
+    },
+    printPairing () {
+      window.open('/subscribe/printpairing?id_swarfile='+this.swarfile.id, '_blank')
+    },
+    printStanding () {
+
+    },
   },
   watch: {
     swarfile: function(newVal, oldVal) {
       if ('jsonfile' in newVal) {
         this.parseSwarFile();
+
       }
     }
   }

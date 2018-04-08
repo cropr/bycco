@@ -79,7 +79,7 @@ def processswarjson(swarjson):
             "points": float(p.get("Points")),
             "gender": "F" if p.get("Sex").startswith('F') else 'M',
             "country": p.get("Country"),
-            "id_national": str(p.get("NationalId")),
+            "idbel": str(p.get("NationalId")),
             "id_fide": str(p.get("FideId")),
             "id_club": str(p.get("ClubNumber")),
             "clubname": p.get("ClubName"),
@@ -103,10 +103,14 @@ def processswarjson(swarjson):
                 if len(ra) == ix + 1:
                     absences.append({
                         "white": pl["name"],
-                        "white_id": pl["id_national"],
+                        "white_id": pl["idbel"],
                         "white_rating": pl["rating"],
                         "white_points": pl["points"],
                         "result": "--",
+                        "black": "",
+                        "black_id": "",
+                        "black_rating": '',
+                        "black_points": '',
                     })
                 continue
             if g.get("Tabel") == "BYE":
@@ -114,10 +118,14 @@ def processswarjson(swarjson):
                 if len(ra) == ix +1:
                     bye = {
                         "white": pl["name"],
-                        "white_id": pl["id_national"],
+                        "white_id": pl["idbel"],
                         "white_rating": pl["rating"],
                         "white_points": pl["points"],
                         "result": "Bye",
+                        "black": "",
+                        "black_id": "",
+                        "black_rating": '',
+                        "black_points": '',
                     }
                 continue
             lastgame = {
@@ -135,7 +143,7 @@ def processswarjson(swarjson):
                 lg = pairings.get(pix, {})
                 if lastgame["color"] == "W":
                     lg["white"] =  pl["name"]
-                    lg["white_id"] = pl["id_national"]
+                    lg["white_id"] = pl["idbel"]
                     lg["white_rating"] = pl["rating"]
                     lg["white_points"] = pl["points"]
                     if lastgame["result"] == "1":
@@ -149,11 +157,11 @@ def processswarjson(swarjson):
                     elif lastgame["result"] == "0FF":
                         lg["result"] = "0-1 FF"
                     else:
-                        lg["result"] = "???"
+                        lg["result"] = " - "
                     pairings[pix] = lg
                 if lastgame["color"] == "B":
                     lg["black"] = pl["name"]
-                    lg["black_id"] = pl["id_national"]
+                    lg["black_id"] = pl["idbel"]
                     lg["black_rating"] = pl["rating"]
                     lg["black_points"] = pl["points"]
                     pairings[pix] = lg

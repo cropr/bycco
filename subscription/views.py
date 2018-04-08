@@ -4,11 +4,20 @@ import logging
 log = logging.getLogger(__name__)
 
 import csv
+import simplejson as json
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from .models import Subscription
+from .models import (
+    CdSwarTournament,
+    CdSwarJson,
+    CdTournament,
+    CdTournamentPrizes,
+    Subscription
+)
+
+
 
 def subscriptionpage(request):
     return render(request, 'subscription/subscriptionpage.html')
@@ -220,8 +229,29 @@ def printboardnumbers(request):
     return render(request, '/subscription/printboardnr.html',
                   {'pages': pages})
 
-def smspage(request):
-    return render(request, 'cd_subscription/subscribesms.html')
+def printpairing(request):
+    """
+    :param request:
+    :return:
+    """
+    from .swarconvert import pairingsfromswar
+    id_swarfile = request.GET.get('id_swarfile')
+    try:
+        swarfile = CdSwarJson.objects.get(id=id_swarfile)
+    except CdSwarJson.DoesNotExist:
+        return "Swarfile not found"
+    trnname = swarfile.swartrn.tournament.name
+    trncolor = swarfile.swartrn.tournament.shortname
+    round = swarfile.round
+    swarjson = json.loads(swarfile.jsonfile)
+    pairings = pairingsfromswar(swarjson)
+    return render(request, 'subscription/printpairing.html', {
+        'trnname': trnname,
+        'trncolor': trncolor,
+        'pairings': pairings,
+        'round': round,
+    })
+
 
 @login_required
 def csvparticipants(request):

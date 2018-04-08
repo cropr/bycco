@@ -6,7 +6,7 @@
 <v-tabs v-model="tabix" class="blue-grey lighten-3" light
     slider-color="pink">
   <v-tab class="mx-2">
-    Upload Swar
+    Overview
   </v-tab>
   <v-tab class="mx-2">
     <span v-text="currentTrn.shortname"></span>
@@ -15,7 +15,7 @@
 
 <v-tabs-items v-model="tabix">
   <v-tab-item>
-    <mg-trn-overview :trns="trns" @openTrn="openTrn"></mg-trn-overview>
+    <mg-trn-overview :trns="trns" @openTrn="openTrn" @updateTrns="getttrns"></mg-trn-overview>
   </v-tab-item>
   <v-tab-item>
     <mg-trn-detail :trn="currentTrn"></mg-trn-detail>

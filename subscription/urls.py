@@ -15,12 +15,12 @@ urlpatterns = [
     url(r'^mg_trn$', mg_trn_page),
     url(r'^view_trn$', view_trn_page),
     url(r'^csv$', csvparticipants),
-    url(r'^sms$', smspage),
     url(r'^printbadges$', printbadges),
     url(r'^printallbadges$', printallbadges),
     url(r'^printnamecards$', printnamecards),
     url(r'^printallnamecards$', printallnamecards),
     url(r'^printboardnumbers$', printboardnumbers),
+    url(r'^printpairing$', printpairing),
 
 ]
 

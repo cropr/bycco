@@ -13,30 +13,41 @@
     </v-flex>
   </v-layout>
 
-  <h4 class="mt-2">Found players</h4>
-  <v-layout v-for="(p,ix) in attendees" :key="p.id" v-show="!p.selected">
-    <v-flex xs1>
-      <v-checkbox @change="selectAttendee(p)" v-model="p.selected"></v-checkbox>
-    </v-flex>
-    <v-flex xs4>
-      <span v-text="p.first_name"></span>
-      <span v-text="p.last_name"></span>
-      <span v-text="p.category"></span>
-    </v-flex>
+  <v-card>
+    <v-card-title>
+      <h4 class="mt-2">Found players</h4>
+    </v-card-title>
+    <v-card-text>
+      <v-layout v-for="(p,ix) in attendees" :key="p.id" v-show="!p.selected">
+        <v-flex xs1>
+          <v-checkbox @change="selectAttendee(p)" v-model="p.selected"></v-checkbox>
+        </v-flex>
+        <v-flex xs4>
+          <span v-text="p.first_name"></span>
+          <span v-text="p.last_name"></span>
+          <span v-text="p.category"></span>
+        </v-flex>
+      </v-layout>
+    </v-card-text>
+  </v-card>
 
-  </v-layout>
-
-  <h4 class="mt-2">Selected attendees</h4>
-  <v-layout v-for="(p,ix) in selected" :key="p.id">
-    <v-flex xs4>
-      <span v-text="p.first_name"></span>
-      <span v-text="p.last_name"></span>
-      <span v-text="p.category"></span>
-    </v-flex>
-    <v-flex xs2>
-      <v-btn @click="remove(p)">Delete</v-btn>
-    </v-flex>
-  </v-layout>
+  <v-card>
+    <v-card-title>
+      <h4 class="mt-2">Selected attendees</h4>
+    </v-card-title>
+    <v-card-text>
+      <v-layout v-for="(p,ix) in selected" :key="p.id">
+        <v-flex xs4>
+          <span v-text="p.first_name"></span>
+          <span v-text="p.last_name"></span>
+          <span v-text="p.category"></span>
+        </v-flex>
+        <v-flex xs2>
+          <v-btn @click="remove(p)">Delete</v-btn>
+        </v-flex>
+      </v-layout>
+    </v-card-text>
+  </v-card>v
 
 </v-container>
 

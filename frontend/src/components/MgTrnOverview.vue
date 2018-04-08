@@ -66,28 +66,12 @@ export default {
         rounds: this.rounds
       }).then(
         function(data){
-          self.gettrns();
+          self.$emit('updateTrns')
         },
         function(data) {
           console.error('adding trn failed', data)
         }
       )
-    },
-    gettrns () {
-      var self = this;
-      api('addTournament', {
-        name: this.name,
-        shortname: this.shortname,
-        rounds: this.rounds
-      }).then(
-        function(data){
-          ;
-        },
-        function(data) {
-          console.error('adding trn failed', data)
-        }
-      )
-
     },
     opentrn (t) {
       console.log('opening trn', t);

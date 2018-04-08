@@ -8,35 +8,192 @@ import datetime
 
 board_configs = [
     {
-        'venue': 'grote_zaal',
+        'venue': 'BG8',
+        'boards': [
+            {'group': 'BG8', 'board': 1},
+            {'group': 'BG8', 'board': 2},
+            {'group': 'BG8', 'board': 3},
+            {'group': 'BG8', 'board': 4},
+            {'group': 'BG8', 'board': 5},
+        ]
+    },
+    {
+        'venue': 'B10',
+        'boards': [
+            {'group': 'B10', 'board': 1},
+            {'group': 'B10', 'board': 2},
+            {'group': 'B10', 'board': 3},
+            {'group': 'B10', 'board': 4},
+            {'group': 'B10', 'board': 5},
+            {'group': 'B10', 'board': 6},
+            {'group': 'B10', 'board': 7},
+            {'group': 'B10', 'board': 8},
+            {'group': 'B10', 'board': 9},
+            {'group': 'B10', 'board': 10},
+        ]
+    },
+    {
+        'venue': 'G10',
+        'boards': [
+            {'group': 'G10', 'board': 1},
+            {'group': 'G10', 'board': 2},
+            {'group': 'G10', 'board': 3},
+        ]
+    },
+    {
+        'venue': 'B12',
         'boards': [
             {'group': 'B12', 'board': 1},
             {'group': 'B12', 'board': 2},
             {'group': 'B12', 'board': 3},
             {'group': 'B12', 'board': 4},
+            {'group': 'B12', 'board': 5},
+            {'group': 'B12', 'board': 6},
+            {'group': 'B12', 'board': 7},
+            {'group': 'B12', 'board': 8},
+            {'group': 'B12', 'board': 9},
+            {'group': 'B12', 'board': 10},
+            {'group': 'B12', 'board': 11},
+            {'group': 'B12', 'board': 12},
+            {'group': 'B12', 'board': 13},
+            {'group': 'B12', 'board': 14},
+            {'group': 'B12', 'board': 15},
+            {'group': 'B12', 'board': 16},
+            {'group': 'B12', 'board': 17},
         ]
-    },  
+    },
     {
-        'venue': 'kleine_zaal',
+        'venue': 'G12',
         'boards': [
             {'group': 'G12', 'board': 1},
             {'group': 'G12', 'board': 2},
+            {'group': 'G12', 'board': 3},
+            {'group': 'G12', 'board': 4},
         ]
-    },  
+    },
+    {
+        'venue': 'B14',
+        'boards': [
+            {'group': 'B14', 'board': 1},
+            {'group': 'B14', 'board': 2},
+            {'group': 'B14', 'board': 3},
+            {'group': 'B14', 'board': 4},
+            {'group': 'B14', 'board': 5},
+            {'group': 'B14', 'board': 6},
+            {'group': 'B14', 'board': 7},
+            {'group': 'B14', 'board': 8},
+            {'group': 'B14', 'board': 9},
+            {'group': 'B14', 'board': 10},
+            {'group': 'B14', 'board': 11},
+            {'group': 'B14', 'board': 12},
+            {'group': 'B14', 'board': 13},
+            {'group': 'B14', 'board': 14},
+            {'group': 'B14', 'board': 15},
+            {'group': 'B14', 'board': 16},
+            {'group': 'B14', 'board': 17},
+            {'group': 'B14', 'board': 18},
+        ]
+    },
+    {
+        'venue': 'G14',
+        'boards': [
+            {'group': 'G14', 'board': 1},
+            {'group': 'G14', 'board': 2},
+            {'group': 'G14', 'board': 3},
+            {'group': 'G14', 'board': 4},
+            {'group': 'G14', 'board': 5},
+        ]
+    },
+    {
+        'venue': 'B16',
+        'boards': [
+            {'group': 'B16', 'board': 1},
+            {'group': 'B16', 'board': 2},
+            {'group': 'B16', 'board': 3},
+            {'group': 'B16', 'board': 4},
+            {'group': 'B16', 'board': 5},
+            {'group': 'B16', 'board': 6},
+            {'group': 'B16', 'board': 7},
+            {'group': 'B16', 'board': 8},
+            {'group': 'B16', 'board': 9},
+            {'group': 'B16', 'board': 10},
+            {'group': 'B16', 'board': 11},
+            {'group': 'B16', 'board': 12},
+            {'group': 'B16', 'board': 13},
+            {'group': 'B16', 'board': 14},
+            {'group': 'B16', 'board': 15},
+            {'group': 'B16', 'board': 16},
+            {'group': 'B16', 'board': 17},
+            {'group': 'B16', 'board': 18},
+        ]
+    },
+    {
+        'venue': 'G16',
+        'boards': [
+            {'group': 'G16', 'board': 1},
+            {'group': 'G16', 'board': 2},
+            {'group': 'G16', 'board': 3},
+        ]
+    },
+    {
+        'venue': 'BG18',
+        'boards': [
+            {'group': 'BG18', 'board': 1},
+            {'group': 'BG18', 'board': 2},
+            {'group': 'BG18', 'board': 3},
+            {'group': 'BG18', 'board': 4},
+            {'group': 'BG18', 'board': 5},
+            {'group': 'BG18', 'board': 6},
+            {'group': 'BG18', 'board': 7},
+            {'group': 'BG18', 'board': 8},
+            {'group': 'BG18', 'board': 9},
+            {'group': 'BG18', 'board': 10},
+            {'group': 'BG18', 'board': 11},
+            {'group': 'BG18', 'board': 12},
+            {'group': 'BG18', 'board': 13},
+            {'group': 'BG18', 'board': 14},
+            {'group': 'BG18', 'board': 15},
+            {'group': 'BG18', 'board': 16},
+            {'group': 'BG18', 'board': 17},
+            {'group': 'BG18', 'board': 18},
+        ]
+    },
+    {
+        'venue': 'BG20',
+        'boards': [
+            {'group': 'BG20', 'board': 1},
+            {'group': 'BG20', 'board': 2},
+            {'group': 'BG20', 'board': 3},
+            {'group': 'BG20', 'board': 4},
+            {'group': 'BG20', 'board': 5},
+            {'group': 'BG20', 'board': 6},
+            {'group': 'BG20', 'board': 7},
+            {'group': 'BG20', 'board': 8},
+            {'group': 'BG20', 'board': 9},
+            {'group': 'BG20', 'board': 10},
+            {'group': 'BG20', 'board': 11},
+            {'group': 'BG20', 'board': 12},
+            {'group': 'BG20', 'board': 13},
+            {'group': 'BG20', 'board': 14},
+            {'group': 'BG20', 'board': 15},
+            {'group': 'BG20', 'board': 16},
+            {'group': 'BG20', 'board': 17},
+        ]
+    },
 ]
 
 swar2017 = [
-    ("BJK CBJ 2017 -8.json", "BG8"),
-    ("BJK CBJ 2017 -10 Boys.json", "B10"),
-    ("BJK CBJ 2017 -10 Girls.json", "G10"),
-    ("BJK CBJ 2017 -12 Boys.json", "B12"),
-    ("BJK CBJ 2017 -12 Girls.json", "G12"),
-    ("BJK CBJ 2017 -14 Boys.json", "B14"),
-    ("BJK CBJ 2017 -14 Girls.json", "G14"),
-    ("BJK CBJ 2017 -16 Boys.json", "B16"),
-    ("BJK CBJ 2017 -16 Girls.json", "G16"),
-    ("BJK CBJ 2017 -18.json", "BG18"),
-    ("BJK CBJ 2017 -20.json", "BG20"),
+    ("BJK CBJ 2018 -8.json", "BG8"),
+    ("BJK CBJ 2018 -10 Boys.json", "B10"),
+    ("BJK CBJ 2018 -10 Girls.json", "G10"),
+    ("BJK CBJ 2018 -12 Boys.json", "B12"),
+    ("BJK CBJ 2018 -12 Girls.json", "G12"),
+    ("BJK CBJ 2018 -14 Boys.json", "B14"),
+    ("BJK CBJ 2018 -14 Girls.json", "G14"),
+    ("BJK CBJ 2018 -16 Boys.json", "B16"),
+    ("BJK CBJ 2018 -16 Girls.json", "G16"),
+    ("BJK CBJ 2018 -18.json", "BG18"),
+    ("BJK CBJ 2018 -20.json", "BG20"),
 ]
 
 def load_tournaments():
@@ -117,7 +274,7 @@ def pgn_from_game(game, group, round):
     else:
         white = '?'
         black = '?'
-    return b"""[Event "Belgian Youth championships 2017 %(group)b"]
+    return b"""[Event "Belgian Youth championships 2018 %(group)b"]
 [Site "Blankenberge, Belgium BEL"]
 [Date "%(today)b"]
 [Round "%(round)d"]

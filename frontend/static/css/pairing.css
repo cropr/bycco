@@ -1,0 +1,97 @@
+.ad {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 12em;
+}
+
+.flexcontainer {
+  display: flex;
+}
+
+.width40 {
+  flex: 0 1 40%;
+}
+
+.pairingright {
+  flex: 0 1 15%;
+  height: 2em;
+  width: 100%
+}
+
+.mx-2 {
+  padding-right: 8px !important;
+  padding-left:  8px !important;
+}
+
+@page {
+  size: A4;
+  margin: 0; }
+@media print {
+  .pairingpage {
+    margin: 3em;
+    border: initial;
+    border-radius: initial;
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: always; } }
+
+.B8 {
+  background-color: #f3e0e9 !important; }
+
+.G8 {
+  background-color: #f3e0e9 !important; }
+
+.BG8 {
+  background-color: #f3e0e9 !important; }
+
+.B10 {
+  background-color: #8bf589 !important; }
+
+.G10 {
+  background-color: #def5c1 !important; }
+
+.B12 {
+  background-color: #678cf9 !important; }
+
+.G12 {
+  background-color: #b0d0ef !important; }
+
+.B14 {
+  background-color: #f8f79a !important; }
+
+.G14 {
+  background-color: #eed76e !important; }
+
+.B16 {
+  background-color: #de5150 !important; }
+
+.G16 {
+  background-color: #fa6883 !important; }
+
+.B18 {
+  background-color: #8f43de !important; }
+
+.G18 {
+  background-color: #8f43de !important; }
+
+.BG18 {
+  background-color: #8f43de !important; }
+
+.B20 {
+  background-color: #aaaaaa !important; }
+
+.G20 {
+  background-color: #aaaaaa !important; }
+
+.BG20 {
+  background-color: #aaaaaa !important; }
+
+.ORG {
+  background-color: #1734dc !important; }
+
+.ARB {
+  background-color: #1734dc !important; }
+

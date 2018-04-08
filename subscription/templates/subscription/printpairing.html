@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="">
+<title>Pairing Blankenberge 2018</title>
+<link href="{% static "css/pairing.css"%}" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="pairingpage">
+  <div class="flexcontainer">
+    <div class="width40">
+      <h2>{{ trnname }}</h2>
+    </div>
+    <div class="width40">
+      <h2> Round: {{ round }}</h2>
+    </div>
+    <div class="pairingright {{ trncolor }}"></div>
+  </div>
+
+  <table>
+      <tr>
+        <td></td>
+        <td>White</td>
+        <td></td>
+        <td>Black</td>
+      </tr>
+  {% for p in pairings %}
+      <tr>
+        <td class="mx-2">{{ forloop.counter }}</td>
+        <td class="mx-2">{{ p.white }} ({{ p.white_rating }}) ({{ p.white_points }})</td>
+        <td class="mx-2">{{ p.result }}</td>
+        <td class="mx-2">{{ p.black }}
+          {% if p.black_id %}
+            ({{ p.white_rating }}) ({{ p.white_points }})
+          {% endif %}
+        </td>
+      </tr>
+  {% endfor %}
+
+  </table>
+  <img class="ad" src="/static/img/talistro.png">
+</div>
+</body>
+</html>
