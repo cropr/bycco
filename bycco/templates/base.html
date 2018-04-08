@@ -42,45 +42,10 @@
       </div>
       <v-list dark dense class="blue-grey darken-1">
         {% show_menu 0 100 100 100 %}
-        <v-list-group >
-          <v-list-tile slot="activator" @click="">
-            <v-list-tile-content>
-              {% trans "Categories" %}
-            </v-list-tile-content>
-          </v-list-tile>
-          <div>
-            <v-btn class="white--text hover-darker" href="/subscribe/participants?cat=8" flat>B8</v-btn>
-            <v-btn class="white--text" href="/subscribe/participants?cat=8" flat>G8</v-btn>
-          </div>
-          <div>
-            <v-btn class="white--text" href="/subscribe/participants?cat=10" flat>B10</v-btn>
-            <v-btn class="white--text" href="/subscribe/participants?cat=10" flat>G10</v-btn>
-          </div>
-          <div>
-            <v-btn class="white--text" href="/subscribe/participants?cat=12" flat>B12</v-btn>
-            <v-btn class="white--text" href="/subscribe/participants?cat=12" flat>G12</v-btn>
-          </div>
-          <div>
-            <v-btn class="white--text" href="/subscribe/participants?cat=14" flat>B14</v-btn>
-            <v-btn class="white--text" href="/subscribe/participants?cat=14" flat>G14</v-btn>
-          </div>
-          <div>
-            <v-btn class="white--text" href="/subscribe/participants?cat=16" flat>B16</v-btn>
-            <v-btn class="white--text" href="/subscribe/participants?cat=16" flat>G16</v-btn>
-          </div>
-          <div>
-            <v-btn class="white--text" href="/subscribe/participants?cat=18" flat>B18</v-btn>
-            <v-btn class="white--text" href="/subscribe/participants?cat=18" flat>G18</v-btn>
-          </div>
-          <div>
-            <v-btn class="white--text" href="/subscribe/participants?cat=20" flat>B20</v-btn>
-            <v-btn class="white--text" href="/subscribe/participants?cat=20" flat>G20</v-btn>
-          </div>
-        </v-list-group>
-        <v-list-tile  href="/subscribe">
+        <v-list-tile  href="/subscribe/view_trn">
           <v-list-tile-content>
             <v-list-tile-title>
-              {% trans "Subscribe" %}
+              {% trans "Tournament" %}
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
@@ -147,8 +112,8 @@
         <v-btn flat large href="/info/lodging">
           {% trans "Lodging" %}
         </v-btn>
-        <v-btn flat large href="/subscribe">
-          {% trans "Subscribe" %}
+        <v-btn flat large href="/subscribe/view_trn">
+          {% trans "Tournament" %}
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
