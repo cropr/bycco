@@ -619,7 +619,7 @@ def tournament_topround(request, id_trn):
     except CdSwarTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     swarjsons = CdSwarJson.objects.filter(swartrn=swartrn)
-    topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1) - 1
+    topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1)
     return Response(topround)
 
 
@@ -746,4 +746,3 @@ def swarfile_one(request, id_swartrn, id_swarfile):
     if request.method == 'DELETE':
         swar.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-

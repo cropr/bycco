@@ -57,6 +57,7 @@ CMS_LANGUAGES = {
 CMS_TEMPLATES = (
     ('page.html', 'Page'),
     ('landing.html', 'Landing page'),
+    ('landing_blog.html', 'Landing with Blog'),
     ('clean.html', 'Clean'),
 )
 

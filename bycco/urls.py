@@ -20,6 +20,7 @@ urlpatterns = [
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^api/', include(subscription.apiurls)),
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+    url(r'news/', include('djangocms_blog.urls', namespace='Blog')),
 ]
 
 urlpatterns += i18n_patterns(
