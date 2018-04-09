@@ -1,54 +1,88 @@
 <template>
-<v-card class="ma-1">
-  <v-card-title>Standings Round<span v-text="currentRound"></span> </v-card-title>
-    <table class="table" style="width:auto;" ng-show="standings.length">
-      <tr>
-        <th>N.</th>
-        <th>White</th>
-        <th>Result</th>
-        <th>Black</th>
-      </tr>
-      <tr v-for="(p,ix) in standings" :key="p.white">
-        <td v-text="p.black ? ix+1 : ''"></td>
-        <td>
-          <span v-text="p.white"></span>
-          <span class="hidden-xs">
-            (<span v-text="p.white_rating"></span> :
-            <span v-text="p.white_points.toFixed(1)"></span>)
-          </span>
-        </td>
-        <td>
-          <span v-text="result(p)"></span>
-        </td>
-        <td>
-          <span v-text="p.black"></span>
-          <span class="hidden-xs" v-show="p.black">
-            (<span v-text="p.black_rating"></span> :
-            <span v-text="p.black_points.toFixed(1)"></span>)
-          </span>
-        </td>
-      </tr>
-    </table>
-    <div ng-hide="standings.length">
-      No standings available
-    </div>
-</v-card>
+<div class="mt-2">
+  <v-card class="ma-2" v-show="standings.length">
+    <v-card-title>
+      <h4>Standings Round <span v-text="round"></span></h4>
+    </v-card-title>
+    <v-card-text>
+      <table style="width:auto;" v-show="standings.length">
+        <tr>
+          <th>N.</th>
+          <th class="px-1">Name</th>
+          <th class="px-1">Points</th>
+          <th class="px-1">Rating</th>
+          <th class="px-1">Gender</th>
+          <th class="px-1"># Games</th>
+          <!--<th>TB1</th>-->
+          <!--<th>TB2</th>-->
+          <!--<th>TB3</th>-->
+          <!--<th>TB4</th>-->
+          <!--<th>TB5</th>-->
+        </tr>
+        <tr v-for="(s,ix) in standings" :key="s.id">
+          <td class="px-2" v-text="ix+1"></td>
+          <td class="px-2" v-text="s.name"></td>
+          <td class="px-2" v-text="s.points"></td>
+          <td class="px-2" v-text="s.rating"></td>
+          <td class="px-2" v-text="s.gender"></td>
+          <td class="px-2" v-text="s.ngames"></td>
+          <!--<td ng-bind-html="s.tiebreak[0].Points"></td>-->
+          <!--<td ng-bind-html="s.tiebreak[1].Points"></td>-->
+          <!--<td ng-bind-html="s.tiebreak[2].Points"></td>-->
+          <!--<td ng-bind-html="s.tiebreak[3].Points"></td>-->
+          <!--<td ng-bind-html="s.tiebreak[4].Points"></td>-->
+        </tr>
+      </table>
+    </v-card-text>
+  </v-card>
+  <v-card class="ma-2" v-show="!standings.length">
+    <v-card-title>
+      <h4>Standings</h4>
+    </v-card-title>
+    <v-card-text>
+      No standings available yet
+    </v-card-text>
+  </v-card>
+</div>
 </template>
 
 <script>
-import _ from 'lodash';
+
 import api from '../api/api';
 
 export default {
-  props: ['trn'],
+  props: ['updateTrn'],
   data () {
     return {
-      currentRound: 1,
+      trn: {},
       standings: [],
+      round: 1,
     }
   },
   methods: {
+    getStandings () {
+      var self=this;
+      api('getStandings', {
+        id_trn: this.trn.id,
+        round: this.round
+      }).then(
+        function(data){
+          self.standings = data.standings;
+        },
+        function(data) {
+          console.error('failed getting standings', data);
+        }
+      )
+    }
   },
+  watch: {
+    updateTrn: function(newVal, oldVal) {
+      console.log('new Value for Trn', newVal);
+      this.trn = newVal.trn;
+      this.round = newVal.round;
+      this.getStandings();
+    },
+  }
 }
 </script>
 

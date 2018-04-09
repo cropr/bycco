@@ -105,6 +105,12 @@ export default {
     path: ['id_trn', 'round'],
     required: ['id_trn', 'round'],
   },
+  getStandings: {
+    method: 'GET',
+    url: '/tournament/{id_trn}/standings/{round}',
+    path: ['id_trn', 'round'],
+    required: ['id_trn', 'round'],
+  },
 
   // swar
   uploadSwarJson: { // use _body

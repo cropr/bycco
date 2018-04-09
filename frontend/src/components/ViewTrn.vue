@@ -129,7 +129,7 @@
       <view-trn-pairings :updateTrn="updateTrn"></view-trn-pairings>
     </v-tab-item>
     <v-tab-item>
-      <view-trn-standings :trn="trn"></view-trn-standings>
+      <view-trn-standings :updateTrn="updateTrn"></view-trn-standings>
     </v-tab-item>
     <v-tab-item>
       <view-trn-live :trn="trn"></view-trn-live>

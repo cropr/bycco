@@ -61,7 +61,6 @@ export default {
   },
   watch: {
     updateTrn: function(newVal, oldVal) {
-      console.log('new Value for Trn', newVal);
       this.trn = newVal.trn;
       this.round = newVal.round;
       this.getPairings();

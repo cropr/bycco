@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^api/', include(subscription.apiurls)),
+    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
 ]
 
 urlpatterns += i18n_patterns(

@@ -72,7 +72,31 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT = 25
 
 INSTALLED_APPS = (
+    # newsblog
+    'aldryn_apphooks_config',
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'meta',
+    'sortedm2m',
+    'djangocms_blog',
+
+    # django cms
+    'cms',
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_image',
+    'cmsplugin_filer_utils',
     'djangocms_admin_style',
+    'djangocms_text_ckeditor',
+    'djangocms_column',
+    'djangocms_link',
+    'djangocms_style',
+    'djangocms_snippet',
+    'djangocms_googlemap',
+    'djangocms_video',
+
+    # django
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -81,23 +105,13 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.messages',
-    'cms',
+    'easy_thumbnails',
+    'filer',
     'menus',
     'sekizai',
     'treebeard',
-    'djangocms_text_ckeditor',
-    'filer',
-    'easy_thumbnails',
-    'djangocms_column',
-    'djangocms_link',
-    'cmsplugin_filer_file',
-    'cmsplugin_filer_folder',
-    'cmsplugin_filer_image',
-    'cmsplugin_filer_utils',
-    'djangocms_style',
-    'djangocms_snippet',
-    'djangocms_googlemap',
-    'djangocms_video',
+
+    # my apps
     'subscription',
     'webpack_loader',
     'bycco'

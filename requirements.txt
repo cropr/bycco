@@ -29,7 +29,7 @@ pillow
 psycopg2
 pytz
 requests
-simplejson
+simplejson®
 six
 tzlocal
 unidecode
