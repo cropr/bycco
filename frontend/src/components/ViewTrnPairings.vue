@@ -1,7 +1,7 @@
 <template>
 <div class="mt-2">
 
-  <v-card class="ma-2" v-show="pairings.length">
+  <v-card class="ma-2" v-show="pairings.length && round<=topround">
     <v-card-title>
       <h4>Pairings Round <span v-text="round"></span></h4>
     </v-card-title>
@@ -16,7 +16,7 @@
       </table>
     </v-card-text>
   </v-card>
-  <v-card class="ma-2" v-show="!pairings.length">
+  <v-card class="ma-2" v-show="!pairings.length || round>topround">
     <v-card-title>
       <h4>Pairings</h4>
     </v-card-title>
@@ -24,7 +24,6 @@
       No pairings available yet
     </v-card-text>
   </v-card>
-
 
 </div>
 
@@ -41,11 +40,22 @@ export default {
       trn: {},
       pairings: [],
       round: 1,
+      topround: 1,
     }
   },
   methods: {
     getPairings () {
       var self=this;
+      api('getTopround', {
+        id_trn: this.trn.id,
+      }).then(
+        function(data){
+          self.topround = data;
+        },
+        function(data) {
+          console.error('failed getting topround', data);
+        }
+      );
       api('getPairings', {
         id_trn: this.trn.id,
         round: this.round

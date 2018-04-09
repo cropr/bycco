@@ -1,6 +1,6 @@
 <template>
 <div class="mt-2">
-  <v-card class="ma-2" v-show="standings.length">
+  <v-card class="ma-2" v-show="standings.length && round<=topround">
     <v-card-title>
       <h4>Standings Round <span v-text="round"></span></h4>
     </v-card-title>
@@ -35,7 +35,7 @@
       </table>
     </v-card-text>
   </v-card>
-  <v-card class="ma-2" v-show="!standings.length">
+  <v-card class="ma-2" v-show="!standings.length || round>topround">
     <v-card-title>
       <h4>Standings</h4>
     </v-card-title>
@@ -57,11 +57,22 @@ export default {
       trn: {},
       standings: [],
       round: 1,
+      topround: 1,
     }
   },
   methods: {
     getStandings () {
       var self=this;
+      api('getTopround', {
+        id_trn: this.trn.id,
+      }).then(
+        function(data){
+          self.topround = data;
+        },
+        function(data) {
+          console.error('failed getting topround', data);
+        }
+      );
       api('getStandings', {
         id_trn: this.trn.id,
         round: this.round
@@ -72,7 +83,7 @@ export default {
         function(data) {
           console.error('failed getting standings', data);
         }
-      )
+      );
     }
   },
   watch: {

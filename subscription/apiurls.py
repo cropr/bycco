@@ -24,6 +24,7 @@ urlpatterns = [
         apiviews.tournament_standings),
     url(r'^tournament/(?P<id_trn>[0-9]+)/playercard/(?P<id_player>[0-9]+)$',
         apiviews.tournament_playercard),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/topround$', apiviews.tournament_topround),
     url(r'^tournament/(?P<id_trn>[0-9]+)/prizes$',
         apiviews.tournament_prizes),
     url(r'^tournament/(?P<id_trn>[0-9]+)/swar$', apiviews.tournament_swar),
@@ -34,7 +35,5 @@ urlpatterns = [
     url(r'^swar/(?P<id_swartrn>[0-9]+)/file$', apiviews.swarfile_all),
     url(r'^swar/(?P<id_swartrn>[0-9]+)/file/(?P<id_swarfile>[0-9]+)$',
         apiviews.swarfile_one),
-    url(r'^swarn/(?P<id_swartrn>[0-9]+)/topround$', apiviews.topround),
 
 ]
-

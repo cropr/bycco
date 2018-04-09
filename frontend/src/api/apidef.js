@@ -111,6 +111,12 @@ export default {
     path: ['id_trn', 'round'],
     required: ['id_trn', 'round'],
   },
+  getTopround: {
+    method: 'GET',
+    url: '/tournament/{id_trn}/topround',
+    path: ['id_trn'],
+    required: ['id_trn'],
+  },
 
   // swar
   uploadSwarJson: { // use _body

@@ -7,6 +7,7 @@ import requests
 import iso8601
 import simplejson as json
 from binascii import a2b_base64
+from django.db.models import Max
 from django.shortcuts import redirect
 from django.conf import settings
 from django.http.response import HttpResponse
@@ -607,6 +608,21 @@ def tournament_prizes(request, id_trn):
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+@api_view(['GET'])
+def tournament_topround(request, id_trn):
+    try:
+        trn = CdTournament.objects.get(id=id_trn)
+    except CdTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    try:
+        swartrn = CdSwarTournament.objects.get(tournament=trn)
+    except CdSwarTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    swarjsons = CdSwarJson.objects.filter(swartrn=swartrn)
+    topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1) - 1
+    return Response(topround)
+
+
 @api_view(['POST'])
 def tournament_swar(request, id_trn):
     """
@@ -731,16 +747,3 @@ def swarfile_one(request, id_swartrn, id_swarfile):
         swar.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-@api_view(['GET'])
-def topround(request, id_trn):
-    try:
-        trn = CdTournament.objects.get(id=id_trn)
-    except CdTournament.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-    try:
-        swartrn = CdSwarTournament.objects.get(tournament=trn)
-    except CdSwarTournament.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-    swarjsons = CdSwarJson.objects.filter(tournament=swartrn)
-    topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1) - 1
-    return Response(topround)
