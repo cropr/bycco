@@ -1,3 +1,4 @@
+aldryn-apphooks-config
 cmsplugin-filer
 dj-database-url
 django<1.11
