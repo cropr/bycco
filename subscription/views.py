@@ -8,6 +8,8 @@ import simplejson as json
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import gettext_lazy as _
+
 
 from .models import (
     CdSwarTournament,
@@ -17,7 +19,15 @@ from .models import (
     Subscription
 )
 
-
+translations = {
+    'Category': _('Category'),
+    'Files': _('Files'),
+    'Live Games': _('Live Games'),
+    'Pairings': _('Pairings'),
+    'Round': _('Round'),
+    'Standings': _('Standings'),
+    'Tournament Results': _('Tournament Results'),
+}
 
 def subscriptionpage(request):
     return render(request, 'subscription/subscriptionpage.html')
@@ -41,7 +51,10 @@ def mg_trn_page(request):
     return render(request, 'subscription/mg_trn.html')
 
 def view_trn_page(request):
-    return render(request, 'subscription/view_trn.html')
+    log.warning('pairings: %s ', translations)
+    return render(request, 'subscription/view_trn.html', {
+        'translations': translations,
+    })
 
 def printbadges(request):
     """

@@ -9,11 +9,23 @@
 <view-trn></view-trn>
 
 {% addtoblock "js" %}
+<script>
+  var _t = {
+  {%  for key, value in translations.items %}
+    '{{ key}}': '{{ value }}',
+  {% endfor %}
+  };
+</script>
+
 {% if PRODUCTION %}
   {% render_bundle 'manifest' %}
   {% render_bundle 'vendor' %}
 {% endif %}
 {% render_bundle 'view_trn' %}
+
+
 {% endaddtoblock %}
 
 {% endblock vuecontent %}
+
+

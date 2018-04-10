@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-19 09:10+0100\n"
+"POT-Creation-Date: 2018-04-10 22:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,42 +17,108 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bycco/settings.py:22 bycco/settings.py:108
+#: bycco/settings.py:22 bycco/settings.py:122
 msgid "en"
 msgstr ""
 
-#: bycco/settings.py:29 bycco/settings.py:109
+#: bycco/settings.py:29 bycco/settings.py:123
 msgid "nl"
 msgstr ""
 
-#: bycco/settings.py:36 bycco/settings.py:110
+#: bycco/settings.py:36 bycco/settings.py:124
 msgid "fr"
 msgstr ""
 
-#: bycco/settings.py:43 bycco/settings.py:111
+#: bycco/settings.py:43 bycco/settings.py:125
 msgid "de"
 msgstr ""
 
-#: bycco/templates/base.html:41
-msgid "Categories"
+#: bycco/templates/base.html:48 bycco/templates/base.html:123
+msgid "Tournament"
 msgstr ""
 
-#: bycco/templates/base.html:76 bycco/templates/base.html:114
-msgid "Subscribe"
+#: bycco/templates/base.html:55
+msgid "News"
 msgstr ""
 
-#: bycco/templates/base.html:103
+#: bycco/templates/base.html:112
 msgid "BYC 2018"
 msgstr ""
 
-#: bycco/templates/base.html:108
+#: bycco/templates/base.html:117
 msgid "Agenda"
 msgstr ""
 
-#: bycco/templates/base.html:111
+#: bycco/templates/base.html:120
 msgid "Lodging"
 msgstr ""
 
-#: bycco/templates/landing.html:7
+#: bycco/templates/landing.html:7 bycco/templates/landing_blog.html:10
 msgid "Belgian Youth Chess Championships 2018"
+msgstr ""
+
+#: bycco/templates/vue.html:23
+msgid "About Bycco"
+msgstr ""
+
+#: bycco/templates/vue.html:26
+msgid "The team"
+msgstr ""
+
+#: bycco/templates/vue.html:29
+msgid "Contact"
+msgstr ""
+
+#: bycco/templates/weblog/entry_content.html:7
+msgid "Last update on"
+msgstr ""
+
+#: bycco/templates/weblog/entry_content.html:32
+#, python-format
+msgid "%(percent)s%% of %(object)s still remains to read."
+msgstr ""
+
+#: bycco/templates/weblog/entry_content.html:34
+msgid "Continue reading"
+msgstr ""
+
+#: bycco/templates/weblog/entry_detail.html:23
+msgid "Next entry"
+msgstr ""
+
+#: bycco/templates/weblog/entry_detail.html:38
+msgid "Previous entry"
+msgstr ""
+
+#: bycco/templates/zinnia/base.html:9 bycco/templates/zinnia/base.html:13
+msgid "Categories"
+msgstr ""
+
+#: bycco/templates/zinnia/base.html:21
+msgid "Calendar"
+msgstr ""
+
+#: bycco/templates/zinnia/base.html:30
+msgid "Recent entries"
+msgstr ""
+
+#: bycco/templates/zinnia/base.html:39
+msgid "Archives"
+msgstr ""
+
+#: bycco/templates/zinnia/base.html:50
+msgid "Tools"
+msgstr ""
+
+#: bycco/templates/zinnia/base.html:56 bycco/templates/zinnia/base.html:57
+msgid "Dashboard"
+msgstr ""
+
+#: bycco/templates/zinnia/base.html:63 bycco/templates/zinnia/base.html:64
+msgid "Post an entry"
+msgstr ""
+
+#: bycco/templates/zinnia/entry_archive.html:5
+#: bycco/templates/zinnia/entry_archive.html:7
+msgid "Last entries"
 msgstr ""

@@ -100,28 +100,94 @@
   </v-navigation-drawer>
   <v-toolbar color="blue-grey lighten-2">
     <v-toolbar-title>
-      <h3 class="white--text">Tournament Results <span v-text="cat"></span>
-        Round <span v-text="round"></span>
+      <h3 class="white--text">
+        <span v-text="_t['Tournament Results']"></span> <span v-text="cat"></span>
+        <span v-text="_t['Round']"></span> <span v-text="round"></span>
       </h3>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn flat icon color="white" @click.stop="subdrawer = !subdrawer">
-      <v-icon>more_vert</v-icon>
-    </v-btn>
+    <div class="hidden-sm-and-down">
+      <span class="white--text" v-text="_t.Category"></span>:
+      <span class="white--text" v-text="cat"></span>
+      <v-menu bottom left min-width="100px">
+        <v-btn icon slot="activator" class="white--text">
+          <v-icon>arrow_drop_down</v-icon>
+        </v-btn>
+        <v-list>
+          <v-layout row>
+            <v-list-tile sm6 @click="gotoCat('B8')">B8</v-list-tile>
+            <v-list-tile sm6 @click="gotoCat('G8')">G8</v-list-tile>
+          </v-layout>
+          <v-layout row>
+            <v-list-tile sm6 @click="gotoCat('B10')">B10</v-list-tile>
+            <v-list-tile sm6 @click="gotoCat('G10')">G10</v-list-tile>
+          </v-layout>
+          <v-layout row>
+            <v-list-tile sm6 @click="gotoCat('B12')">B12</v-list-tile>
+            <v-list-tile sm6 @click="gotoCat('G12')">G12</v-list-tile>
+          </v-layout>
+          <v-layout row>
+            <v-list-tile sm6 @click="gotoCat('B14')">B14</v-list-tile>
+            <v-list-tile sm6 @click="gotoCat('G14')">G14</v-list-tile>
+          </v-layout>
+          <v-layout row>
+            <v-list-tile sm6 @click="gotoCat('B16')">B16</v-list-tile>
+            <v-list-tile sm6 @click="gotoCat('G16')">G16</v-list-tile>
+          </v-layout>
+          <v-layout row>
+            <v-list-tile sm6 @click="gotoCat('B18')">B18</v-list-tile>
+            <v-list-tile sm6 @click="gotoCat('G18')">G18</v-list-tile>
+          </v-layout>
+          <v-layout row>
+            <v-list-tile sm6 @click="gotoCat('B20')">B20</v-list-tile>
+            <v-list-tile sm6 @click="gotoCat('G20')">G20</v-list-tile>
+          </v-layout>
+       </v-list>
+      </v-menu>
+      <span class="white--text" v-text="_t.Round"></span>:
+      <span class="white--text" v-text="round"></span>
+      <v-menu bottom left min-width="100px">
+        <v-btn icon slot="activator" class="white--text">
+          <v-icon>arrow_drop_down</v-icon>
+        </v-btn>
+        <v-list>
+          <v-layout row>
+            <v-list-tile sm4 @click="gotoRound('1')">1</v-list-tile>
+            <v-list-tile sm4 @click="gotoRound('2')">2</v-list-tile>
+            <v-list-tile sm4 @click="gotoRound('3')">3</v-list-tile>
+          </v-layout>
+          <v-layout row>
+            <v-list-tile sm4 @click="gotoRound('4')">4</v-list-tile>
+            <v-list-tile sm4 @click="gotoRound('5')">5</v-list-tile>
+            <v-list-tile sm4 @click="gotoRound('6')">6</v-list-tile>
+          </v-layout>
+          <v-layout row>
+            <v-list-tile sm4 @click="gotoRound('7')">7</v-list-tile>
+            <v-list-tile sm4 @click="gotoRound('8')">8</v-list-tile>
+            <v-list-tile sm4 @click="gotoRound('9')">9</v-list-tile>
+          </v-layout>
+       </v-list>
+      </v-menu>
+    </div>
+    <div class="hidden-md-and-up">
+      <v-btn flat icon color="white" @click.stop="subdrawer = !subdrawer">
+        <v-icon>more_vert</v-icon>
+      </v-btn>
+    </div>
   </v-toolbar>
 
   <v-tabs light slider-color="pink" v-model="tabix">
     <v-tab class="mx-2">
-      Pairings
+      <span v-text="_t.Pairings"></span>
     </v-tab>
     <v-tab class="mx-2">
-      Standings
+      <span v-text="_t.Standings"></span>
     </v-tab>
     <v-tab class="mx-2">
-      Live Games
+      <span v-text="_t['Live Games']"></span>
     </v-tab>
     <v-tab class="mx-2">
-      Files
+      <span v-text="_t.Files"></span>
     </v-tab>
   </v-tabs>
   <v-tabs-items v-model="tabix">
@@ -184,6 +250,10 @@ export default {
       subdrawer: false,
       tabix: '0',
       pairings:[],
+      _t: {},
+      catitems: ['B8', 'G8', 'B10', 'G10', 'B12', 'G12', 'B14', 'G14',
+        'B16', 'G16', 'B18', 'G18', 'B20', 'G20'
+      ]
     }
   },
   methods: {
@@ -194,11 +264,30 @@ export default {
       this.subdrawer = false;
       _.forEach(this.trns, function(t){
         if (t.shortname == self.cat) {
-          self.trn = t;
-          self.updateTrn = {
-            trn: t,
-            round: self.round
-          };
+          if ('id' in self.trn ) {
+            self.trn = t;
+            self.updateTrn = {
+              trn: t,
+              round: self.round
+            };
+          }
+          else {
+            api('getTopround', {
+              id_trn: t.id,
+            }).then(
+              function(data){
+                self.trn = t;
+                self.round = data;
+                self.updateTrn = {
+                  trn: t,
+                  round: self.round
+                };
+              },
+              function(data) {
+                console.error('failed getting topround', data);
+              }
+            );
+          }
         }
       })
     },
@@ -211,6 +300,9 @@ export default {
         round: r
       };
     },
+    openCat () {
+
+    }
   },
   mounted () {
     var self=this;
@@ -219,7 +311,10 @@ export default {
         self.trns = data.trns;
         self.gotoCat(self.cat);
       }
-    )
+    );
+    _.forEach(window._t, function(v,k){
+      self._t[k] = v;
+    })
   },
 }
 </script>

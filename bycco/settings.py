@@ -141,6 +141,10 @@ LOGGING = {
             'level': 'DEBUG',
             'handlers': ['console']
         },
+        'subscription': {
+            'level': 'DEBUG',
+            'handlers': ['console']
+        },
         'django' : {
             'level': 'INFO',
             'handlers': ['console'],

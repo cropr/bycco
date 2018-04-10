@@ -40,5 +40,4 @@ simplejson
 six
 tzlocal
 unidecode
-zinnia-wysiwyg-tinymce
 https://chessdevil.myqnapcloud.com/pip/dbf/dbf-1.0.tar.gz
