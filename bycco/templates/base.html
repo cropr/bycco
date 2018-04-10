@@ -49,6 +49,13 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile  href="/weblog/">
+          <v-list-tile-content>
+            <v-list-tile-title>
+              {% trans "News" %}
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list>
       <v-divider></v-divider>
       {% if request.user.is_authenticated %}
