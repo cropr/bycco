@@ -73,14 +73,6 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT = 25
 
 INSTALLED_APPS = (
-    # newsblog
-    'aldryn_apphooks_config',
-    'parler',
-    'taggit',
-    'taggit_autosuggest',
-    'meta',
-    'sortedm2m',
-    'djangocms_blog',
 
     # django cms
     'cms',
@@ -111,6 +103,12 @@ INSTALLED_APPS = (
     'menus',
     'sekizai',
     'treebeard',
+
+    #blog
+    'django_comments',
+    'mptt',
+    'tagging',
+    'zinnia',
 
     # my apps
     'subscription',
@@ -223,6 +221,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'cms.context_processors.cms_settings',
                 'bycco.util.production_settings',
+                'zinnia.context_processors.version',
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -256,6 +255,18 @@ WEBPACK_LOADER = {
 }
 
 WSGI_APPLICATION = 'bycco.wsgi.application'
+
+ZINNIA_ENTRY_CONTENT_TEMPLATES = [
+    ('weblog/entry_content.html', 'bycco'),
+]
+
+ZINNIA_ENTRY_DETAIL_TEMPLATES = [
+    ('weblog/entry_detail.html', 'bycco'),
+]
+
+ZINNIA_ENTRY_LOOP_TEMPLATES = {
+    'bycco': {1: 'weblog/entry_loop.html'},
+}
 
 try:
     from local_settings import *

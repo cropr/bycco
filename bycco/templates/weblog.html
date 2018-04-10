@@ -1,0 +1,32 @@
+{% extends "vue.html" %}
+{% load cms_tags staticfiles sekizai_tags i18n %}
+{% load render_bundle from webpack_loader %}
+
+{% block title %}News Blog Bycco{% endblock title %}
+
+{% block vuecontent %}
+
+<v-container>
+  <v-layout wrap>
+    <v-flex xs12 sm8 class="weblogcontent">
+      <div class="mr-2">
+      {% block content %}{% endblock %}
+      </div>
+    </v-flex>
+    <v-flex xs12 sm4>
+      {% block sidebar %}{% endblock sidebar %}
+    </v-flex>
+  </v-layout>
+</v-container>
+
+
+{% addtoblock "js" %}
+{% if PRODUCTION %}
+  {% render_bundle 'manifest' %}
+  {% render_bundle 'vendor' %}
+{% endif %}
+{% render_bundle 'weblog' %}
+{% endaddtoblock %}
+
+{% endblock vuecontent %}
+

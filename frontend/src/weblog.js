@@ -1,0 +1,28 @@
+import 'babel-polyfill';
+import Vue from 'vue';
+import Vuetify from 'vuetify';
+import './stylus/bycco.styl';
+
+import AdCarousel from './components/AdCarousel';
+
+Vue.use(Vuetify);
+
+new Vue({
+  el: '#app',
+  data: {
+    drawer: false,
+  },
+  components: {
+    "ad-carousel": AdCarousel,
+  },
+  methods: {
+    gotoUrl (url) {
+      console.log('going to ', url)
+    },
+    clickedMenu (item) {
+      console.log('clicked menu', item)
+    }
+  },
+
+
+});

@@ -20,13 +20,14 @@ urlpatterns = [
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^api/', include(subscription.apiurls)),
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
-    url(r'news/', include('djangocms_blog.urls', namespace='Blog')),
 ]
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^subscribe', include(subscription.urls)),
     url(r'^subscribe/', include(subscription.urls)),
+    url(r'^weblog/', include('zinnia.urls')),
+    url(r'^comments/', include('django_comments.urls')),
     # next url pattern has a negative lookahead pattern
     # to avoid redirecting 404s in /api/* to /{locale}/api/*
     url(r'^(?!api)', include('cms.urls')),

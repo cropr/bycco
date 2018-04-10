@@ -1,8 +1,9 @@
 aldryn-apphooks-config
 cmsplugin-filer
 dj-database-url
-django<1.11
+django=1.11
 django-appconf
+django-blog-zinnia
 django-classy-tags
 django-cms
 django-filer
@@ -19,7 +20,6 @@ django-taggit-autosuggest
 django-webpack-loader
 djangocms-admin-style
 djangocms-attributes-field
-djangocms-blog
 djangocms-column
 djangocms-googlemap
 djangocms-installer
@@ -40,4 +40,5 @@ simplejson
 six
 tzlocal
 unidecode
+zinnia-wysiwyg-tinymce
 https://chessdevil.myqnapcloud.com/pip/dbf/dbf-1.0.tar.gz

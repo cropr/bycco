@@ -22,6 +22,7 @@ const prodWebpackConfig = {
     mg_swar: './src/mg_swar.js',
     mg_trn: './src/mg_trn.js',
     view_trn: './src/view_trn.js',
+    weblog: './src/weblog.js',
   },
   output: {
     path: root,

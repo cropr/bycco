@@ -298,6 +298,7 @@ def dump_pgn(pgns):
 
 if __name__ == "__main__":
     trns = load_tournaments()
-    pgns = [generate_lifechess_pgns(bc, trns, 3) for bc in board_configs]
+    round = 4
+    pgns = [generate_lifechess_pgns(bc, trns, round) for bc in board_configs]
     dump_pgn(pgns)
     print('wrote pgn files')
