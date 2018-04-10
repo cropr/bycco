@@ -1,7 +1,7 @@
 aldryn-apphooks-config
 cmsplugin-filer
 dj-database-url
-django=1.11
+django==1.11
 django-appconf
 django-blog-zinnia
 django-classy-tags
