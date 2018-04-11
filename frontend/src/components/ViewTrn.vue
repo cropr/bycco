@@ -201,7 +201,7 @@
       <view-trn-live :trn="trn"></view-trn-live>
     </v-tab-item>
     <v-tab-item>
-      <view-trn-files :trn="trn"></view-trn-files>
+      <view-trn-files :updateTrn="updateTrn"></view-trn-files>
     </v-tab-item>
   </v-tabs-items>
 

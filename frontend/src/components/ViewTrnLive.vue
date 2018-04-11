@@ -31,6 +31,7 @@ export default {
     return {}
   },
   computed: {
+
     linkavailable () {
       return this.trn.shortname && this.trn.shortname in links;
     },
@@ -40,7 +41,7 @@ export default {
       }
       return '';
     },
-  },
+  }
 }
 </script>
 

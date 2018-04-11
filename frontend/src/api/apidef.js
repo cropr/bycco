@@ -117,6 +117,12 @@ export default {
     path: ['id_trn'],
     required: ['id_trn'],
   },
+  getPdfGames: {
+    method: 'GET',
+    url: '/tournament/{id_trn}/pdfgames',
+    path: ['id_trn'],
+    required: ['id_trn'],
+  },
 
   // swar
   uploadSwarJson: { // use _body
