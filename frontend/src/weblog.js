@@ -22,6 +22,14 @@ new Vue({
     },
     clickedMenu (item) {
       console.log('clicked menu', item)
+    },
+    _ls (dict) {  //
+      if (this.lang in dict) return dict[this.lang];
+      if ('def' in dict) return dict.def;
+      return '***';
+    },
+    _lo (l) {
+      return l == this.lang
     }
   },
 
