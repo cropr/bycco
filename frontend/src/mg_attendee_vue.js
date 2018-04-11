@@ -10,10 +10,6 @@ Vue.use(Vuetify);
 import MgAttendee from './components/MgAttendee';
 import AdCarousel from './components/AdCarousel';
 
-window.config = {
-  apiurl: '/api'
-};
-
 new Vue({
   el: '#app',
   data () {

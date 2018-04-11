@@ -9,10 +9,6 @@ Vue.use(Vuetify);
 import ViewTrn from './components/ViewTrn';
 import AdCarousel from './components/AdCarousel';
 
-window.config = {
-  apiurl: '/api'
-};
-
 new Vue({
   el: '#app',
   data () {

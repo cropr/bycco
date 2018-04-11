@@ -1,12 +1,14 @@
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% for entry in entries %}
   <v-card class="my-2">
     <v-card-title class="blue-grey lighten-3">
-      {{ entry.title }}
+      {{ entry.title | safe}}
     </v-card-title>
     <v-card-text>
+      {{ entry.html_lead | safe }}
       <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}"
-         rel="bookmark">{{ entry.title }}</a>
+         rel="bookmark">{% trans "Continue reading" %}</a>
     </v-card-text>
   </v-card>
 {% endfor %}

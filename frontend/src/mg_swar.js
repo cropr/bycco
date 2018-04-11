@@ -9,10 +9,6 @@ Vue.use(Vuetify);
 import MgSwar from './components/MgSwar';
 import AdCarousel from './components/AdCarousel';
 
-window.config = {
-  apiurl: '/api'
-};
-
 new Vue({
   el: '#app',
   data () {

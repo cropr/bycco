@@ -11,6 +11,7 @@ new Vue({
   el: '#app',
   data: {
     drawer: false,
+    lang: window.config.lang,
   },
   components: {
     "ad-carousel": AdCarousel,

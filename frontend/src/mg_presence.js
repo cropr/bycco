@@ -20,8 +20,3 @@ window.vm = new Vue({
 
   },
 });
-
-window.config = {
-  apiurl: '/api'
-};
-

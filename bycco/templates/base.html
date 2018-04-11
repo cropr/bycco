@@ -139,6 +139,15 @@
 
 {% block angularfooter %} {% endblock angularfooter %}
 
+{%  get_current_language as LANGUAGE_CODE %}
+
+<script>
+window.config = {
+  apiurl: '/api',
+  lang: '{{ LANGUAGE_CODE }}'
+}
+</script>
+
 {% render_block "js" %}
 
 </body>

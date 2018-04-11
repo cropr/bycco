@@ -22,10 +22,6 @@ var vm = new Vue({
   },
 });
 
-window.config = {
-  apiurl: '/api'
-};
-
 window.bridge = {
 
   gotoAngularRoute: function(path) {

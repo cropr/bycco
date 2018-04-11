@@ -18,10 +18,6 @@ function getQueryVariable(variable) {
   return null
 }
 
-window.config = {
-  apiurl: '/api'
-};
-
 window.vm = new Vue({
   el: '#app',
   data: {

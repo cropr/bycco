@@ -8,31 +8,22 @@
       <time class="updated" datetime="{{ object.last_update|date:"c" }}"
             itemprop="dateModified">{{ object.last_update|date:"DATE_FORMAT" }}</time>.
     </p>
-    {% if object.image  and not continue_reading %}
-    <div class="entry-image">
-      {% if continue_reading %}
-      <a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">
-        {% endif %}
+    {% if continue_reading %}
+      <div>{{ object.html_lead|safe }}</div>
+      <p><a href="{{ object.get_absolute_url }}">
+          {% trans "Continue reading" %}
+        </a>
+      </p>
+    {% else %}
+      {% if object.image %}
         <figure itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
           <img src="{{ object.image.url }}" alt="{{ object.image_caption|default:object.title }}" itemprop="contentUrl" />
           {% if object.image_caption %}
           <figcaption itemprop="caption">{{ object.image_caption }}</figcaption>
           {% endif %}
         </figure>
-        {% if continue_reading %}
-      </a>
       {% endif %}
-    </div>
+      <div>{{ object_content|safe }}</div>
     {% endif %}
-    <div class="entry-content" itemprop="articleBody">
-      {{ object_content|safe }}
-    </div>
-    <p class="continue-reading">
-      <a href="{{ object.get_absolute_url }}"
-         title="{% blocktrans with object=object.title percent=object_content.remaining_percent|floatformat:0 %}{{ percent }}% of {{ object }} still remains to read.{% endblocktrans %}"
-         rel="bookmark" itemprop="url">
-        {% trans "Continue reading" %}
-      </a>
-    </p>
   </v-card-text>
 </v-card>
