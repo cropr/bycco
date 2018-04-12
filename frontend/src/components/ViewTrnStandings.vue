@@ -13,6 +13,8 @@
           <th class="px-1">Games</th>
           <th class="px-1">Gender</th>
           <th class="px-1 hidden-xs-only">Rating</th>
+          <th class="px-1 hidden-xs-only">Club</th>
+          <th class="px-1 hidden-xs-only">TPR.</th>
           <th class="px-1 hidden-xs-only">TB1</th>
           <th class="px-1 hidden-xs-only">TB2</th>
           <th class="px-1 hidden-xs-only">TB3</th>
@@ -26,6 +28,8 @@
           <td class="px-2" v-text="s.ngames"></td>
           <td class="px-2" v-text="s.gender"></td>
           <td class="px-2 hidden-xs-only" v-text="s.rating"></td>
+          <td class="px-2 hidden-xs-only" v-text="s.id_club"></td>
+          <td class="px-2 hidden-xs-only" v-text="s.tpr"></td>
           <td class="px-2 hidden-xs-only" v-text="s.tiebreak[0].Points"></td>
           <td class="px-2 hidden-xs-only" v-text="s.tiebreak[1].Points"></td>
           <td class="px-2 hidden-xs-only" v-text="s.tiebreak[2].Points"></td>

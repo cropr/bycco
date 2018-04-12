@@ -82,6 +82,7 @@ def processswarjson(swarjson):
             "idbel": str(p.get("NationalId")),
             "id_fide": str(p.get("FideId")),
             "id_club": str(p.get("ClubNumber")),
+            "tpr": str(p.get("Performance")),
             "clubname": p.get("ClubName"),
             "natrating": p.get("NationalElo", 0),
             "fiderating": p.get("FideElo", 0),
