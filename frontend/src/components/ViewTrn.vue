@@ -101,8 +101,10 @@
   <v-toolbar color="blue-grey lighten-2">
     <v-toolbar-title>
       <h3 class="white--text">
-        <span v-text="_t['Tournament Results']"></span> <span v-text="cat"></span>
-        <span v-text="_t['Round']"></span> <span v-text="round"></span>
+        <span class="hidden-xs-only" v-text="_t['Tournament Results']"></span>
+        <span v-text="cat"></span>
+        <span class="hidden-xs-only" v-text="_t['Round']">
+        </span> <span v-text="round"></span>
       </h3>
     </v-toolbar-title>
     <v-spacer></v-spacer>

@@ -13,11 +13,11 @@
           <th class="px-1">Rating</th>
           <th class="px-1">Gender</th>
           <th class="px-1"># Games</th>
-          <!--<th>TB1</th>-->
-          <!--<th>TB2</th>-->
-          <!--<th>TB3</th>-->
-          <!--<th>TB4</th>-->
-          <!--<th>TB5</th>-->
+          <th class="px-1 hidden-xs-only">TB1</th>
+          <th class="px-1 hidden-xs-only">TB2</th>
+          <th class="px-1 hidden-xs-only">TB3</th>
+          <th class="px-1 hidden-xs-only">TB4</th>
+          <th class="px-1 hidden-xs-only">TB5</th>
         </tr>
         <tr v-for="(s,ix) in standings" :key="s.id">
           <td class="px-2" v-text="ix+1"></td>
@@ -26,11 +26,11 @@
           <td class="px-2" v-text="s.rating"></td>
           <td class="px-2" v-text="s.gender"></td>
           <td class="px-2" v-text="s.ngames"></td>
-          <!--<td ng-bind-html="s.tiebreak[0].Points"></td>-->
-          <!--<td ng-bind-html="s.tiebreak[1].Points"></td>-->
-          <!--<td ng-bind-html="s.tiebreak[2].Points"></td>-->
-          <!--<td ng-bind-html="s.tiebreak[3].Points"></td>-->
-          <!--<td ng-bind-html="s.tiebreak[4].Points"></td>-->
+          <td class="px-2 hidden-xs-only" v-text="s.tiebreak[0].Points"></td>
+          <td class="px-2 hidden-xs-only" v-text="s.tiebreak[1].Points"></td>
+          <td class="px-2 hidden-xs-only" v-text="s.tiebreak[2].Points"></td>
+          <td class="px-2 hidden-xs-only" v-text="s.tiebreak[3].Points"></td>
+          <td class="px-2 hidden-xs-only" v-text="s.tiebreak[4].Points"></td>
         </tr>
       </table>
     </v-card-text>

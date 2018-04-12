@@ -25,7 +25,7 @@ def dumptrn(trn, round):
 
 if __name__ == "__main__":
     trn = loadtrnjson()
-    round = 6
+    round = 7
     trnfixed = fixtrn(trn, round)
     dumptrn(trnfixed, round)
     print('wrote json file for round', round)
