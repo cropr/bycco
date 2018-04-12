@@ -46,7 +46,7 @@ export default {
   methods: {
     getPairings () {
       var self=this;
-      this.standings = [];
+      this.pairings = [];
       api('getTopround', {
         id_trn: this.trn.id,
       }).then(
