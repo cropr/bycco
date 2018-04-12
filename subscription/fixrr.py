@@ -3,8 +3,7 @@
 # modifications by Chessdevil Consulting BVBA
 
 import simplejson as json
-import os, os.path
-import datetime
+import sys
 
 def loadtrnjson():
     with open('BJK CBJ 2018 -16 Girls.json') as f:
@@ -25,7 +24,7 @@ def dumptrn(trn, round):
 
 if __name__ == "__main__":
     trn = loadtrnjson()
-    round = 7
+    round = int(sys.argv[1])
     trnfixed = fixtrn(trn, round)
     dumptrn(trnfixed, round)
     print('wrote json file for round', round)

@@ -10,9 +10,9 @@
           <th>N.</th>
           <th class="px-1">Name</th>
           <th class="px-1">Points</th>
-          <th class="px-1">Rating</th>
+          <th class="px-1">Games</th>
           <th class="px-1">Gender</th>
-          <th class="px-1"># Games</th>
+          <th class="px-1 hidden-xs-only">Rating</th>
           <th class="px-1 hidden-xs-only">TB1</th>
           <th class="px-1 hidden-xs-only">TB2</th>
           <th class="px-1 hidden-xs-only">TB3</th>
@@ -23,9 +23,9 @@
           <td class="px-2" v-text="ix+1"></td>
           <td class="px-2" v-text="s.name"></td>
           <td class="px-2" v-text="s.points"></td>
-          <td class="px-2" v-text="s.rating"></td>
-          <td class="px-2" v-text="s.gender"></td>
           <td class="px-2" v-text="s.ngames"></td>
+          <td class="px-2" v-text="s.gender"></td>
+          <td class="px-2 hidden-xs-only" v-text="s.rating"></td>
           <td class="px-2 hidden-xs-only" v-text="s.tiebreak[0].Points"></td>
           <td class="px-2 hidden-xs-only" v-text="s.tiebreak[1].Points"></td>
           <td class="px-2 hidden-xs-only" v-text="s.tiebreak[2].Points"></td>
