@@ -28,6 +28,7 @@ urlpatterns = [
         apiviews.tournament_playercard),
     url(r'^tournament/(?P<id_trn>[0-9]+)/topround$', apiviews.tournament_topround),
     url(r'^tournament/(?P<id_trn>[0-9]+)/pdfgames$', apiviews.tournament_pdfgames),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/pgngames$', apiviews.tournament_pgngames),
     url(r'^tournament/(?P<id_trn>[0-9]+)/prizes$',
         apiviews.tournament_prizes),
     url(r'^tournament/(?P<id_trn>[0-9]+)/swar$', apiviews.tournament_swar),

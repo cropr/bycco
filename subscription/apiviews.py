@@ -674,6 +674,35 @@ def tournament_pdfgames(request, id_trn):
         ro = []
     return Response(dict(pdfgames=ro))
 
+@api_view(['GET'])
+def tournament_pgngames(request, id_trn):
+    """
+    enable swar on a tournament
+    """
+    from filer.models.filemodels import File
+
+    try:
+        trn = CdTournament.objects.get(id=id_trn)
+    except CdTournament.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    cat  = trn.shortname
+    if cat.startswith('BG'):
+        pgncat = 'bg{0}'.format(cat[2:])
+    else:
+        pgncat = '{0}{1}'.format(cat[0].lower(), cat[1:])
+    log.debug('PGN cat %s', pgncat)
+    try:
+        pgnfiles = File.objects.filter(original_filename__contains=pgncat)
+        ro = []
+        for p in pgnfiles.all():
+            ro.append({'file': p.file.name, 'filename': p.original_filename})
+    except File.DoesNotExist:
+        log.debug('no pgnfiles found %s', pgncat)
+        ro = []
+    return Response(dict(pgngames=ro))
+
+
 # swar
 
 @api_view(['GET', 'POST'])

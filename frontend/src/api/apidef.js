@@ -123,6 +123,12 @@ export default {
     path: ['id_trn'],
     required: ['id_trn'],
   },
+  getPgnGames: {
+    method: 'GET',
+    url: '/tournament/{id_trn}/pgngames',
+    path: ['id_trn'],
+    required: ['id_trn'],
+  },
 
   // swar
   uploadSwarJson: { // use _body
