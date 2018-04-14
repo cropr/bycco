@@ -47,7 +47,7 @@
         </v-flex>
       </v-layout>
     </v-card-text>
-  </v-card>v
+  </v-card>
 
 </v-container>
 

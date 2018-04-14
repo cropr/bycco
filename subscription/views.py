@@ -265,6 +265,29 @@ def printpairing(request):
         'round': round,
     })
 
+def printprizes(request, cat):
+    try:
+        trn = CdTournament.objects.get(shortname=cat)
+        if hasattr(trn, "cdtournamentprizes"):
+            prizes = json.loads(trn.cdtournamentprizes.jsonprizes).get(
+                'playerprizes', [])
+    except CdTournament.DoesNotExist:
+        prizes = []
+    cards = []
+    pages = []
+    j = 0
+    for p in prizes:
+        rix = j % 3 + 1
+        p['positionclass'] = 'prize_1{0}'.format(rix)
+        j += 1
+        cards.append(p)
+        if j == 3:
+            j = 0
+            pages.append(cards)
+            cards = []
+    if j > 0:
+        pages.append(cards)
+    return render(request, 'subscription/printprize.html', dict(pages=pages))
 
 @login_required
 def csvparticipants(request):

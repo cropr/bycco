@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^printallnamecards$', printallnamecards),
     url(r'^printboardnumbers$', printboardnumbers),
     url(r'^printpairing$', printpairing),
-
+    url(r'^printprizes/(?P<cat>.+)$', printprizes),
 ]
 

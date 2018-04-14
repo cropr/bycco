@@ -15,10 +15,10 @@
 
 <v-tabs-items v-model="tabix">
   <v-tab-item>
-    <mg-trn-overview :trns="trns" @openTrn="openTrn" @updateTrns="getttrns"></mg-trn-overview>
+    <mg-trn-overview :trns="trns" @openTrn="openTrn" @updateTrns="gettrns"></mg-trn-overview>
   </v-tab-item>
   <v-tab-item>
-    <mg-trn-detail :trn="currentTrn"></mg-trn-detail>
+    <mg-trn-detail :trn="currentTrn" :tabix="tabix"></mg-trn-detail>
   </v-tab-item>
 </v-tabs-items>
 
@@ -39,7 +39,7 @@ export default {
   data () {
     return {
       trns: [],
-      tabix: 0,
+      tabix: "0",
       currentTrn: {},
     }
   },
@@ -58,7 +58,7 @@ export default {
     openTrn (t) {
       console.log('opening trn', t);
       this.currentTrn = t;
-      this.tabix = 1;
+      this.tabix = "1";
     }
   },
   mounted () {

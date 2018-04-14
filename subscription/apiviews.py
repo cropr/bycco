@@ -582,10 +582,10 @@ def tournament_prizes(request, id_trn):
             swartrn = CdSwarTournament.objects.get(tournament=trn)
         except CdSwarTournament.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-        swarjsons = CdSwarJson.objects.filter(tournament=swartrn, status='ACT')
+        swarjsons = CdSwarJson.objects.filter(swartrn=swartrn, status='ACT')
         topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1)
         try:
-            swarjson = CdSwarJson.objects.get(tournament=swartrn, round=topround,
+            swarjson = CdSwarJson.objects.get(swartrn=swartrn, round=topround,
                 status='ACT')
         except CdSwarJson.DoesNotExist:
             log.debug("swarjson for topround %d not found", topround)
@@ -696,6 +696,7 @@ def tournament_pgngames(request, id_trn):
         pgnfiles = File.objects.filter(original_filename__contains=pgncat)
         ro = []
         for p in pgnfiles.all():
+
             ro.append({'file': p.file.name, 'filename': p.original_filename})
     except File.DoesNotExist:
         log.debug('no pgnfiles found %s', pgncat)

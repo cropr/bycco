@@ -6,15 +6,16 @@
                       v-text="trn.name">
         </v-card-title>
         <v-card-text>
-          <span v-text="prizes.length" v-show="prizes.length"></span>
-          <span v-show="prizes.length">prizes available</span>
-          <span v-show="!prizes.length">
+          <div v-show="prizes.length">
+            <span v-text="prizes.length"></span> prizes available.
+          </div>
+          <div v-show="!prizes.length">
             No prizes generated
-          </span>
+          </div>
         </v-card-text>
         <v-card-actions>
-          <v-btn class="blue-grey" color="primary" @click="generatePrizes">
-            Generate Prizes
+          <v-btn class="blue-grey" color="primary" @click="createPrizes">
+            Create Prizes
           </v-btn>
           <v-btn class="blue-grey" color="primary" @click="printPrizes">
             Print Prizes
@@ -29,19 +30,54 @@
 import api from '../api/api';
 
 export default {
-  props: ['trn'],
+  props: ['trn', 'tabix'],
   data () {
     return {
       prizes: []
     }
   },
   methods: {
-    generatePrizes () {
-      console.log('generatePrizes')
+    createPrizes () {
+      var self=this;
+      self.prizes = [];
+      api('createPrizes', {
+        id_trn: this.trn.id
+      }).then(
+        function(data){
+          console.log('created prizes', data);
+          self.prizes = data.playerprizes
+        },
+        function(data) {
+          console.error('Error creating prizes', data)
+        }
+      )
+    },
+    getPrizes () {
+      var self=this;
+      self.prizes = [];
+      api('getPrizes', {
+        id_trn: this.trn.id
+      }).then(
+        function(data){
+          console.log('got prizes', data);
+          self.prizes = data.playerprizes
+        },
+        function(data) {
+          console.error('Error getting prizes', data)
+        }
+      )
     },
     printPrizes () {
-      console.log('printPrizes')
+      window.open('/subscribe/printprizes/' + this.trn.shortname)
     },
+  },
+  watch: {
+    tabix: function(newVal, oldVal) {
+      console.log('watch update', newVal);
+      if (newVal == "1") {
+        this.getPrizes();
+      }
+    }
   }
 }
 </script>
