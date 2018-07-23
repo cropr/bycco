@@ -38,7 +38,8 @@ def sendconfirmationmail(s):
         sub['natstatus'] = 'fidebelg'
     elif s.nationalityfide and len(s.nationalityfide) > 1:
         sub['natstatus'] = 'nobelg'
-    context = Context({'sub':sub})
+    # context = Context({'sub':sub})
+    context = {'sub':sub}
 
     # make root object of message
     msg = MIMEMultipart('related')
