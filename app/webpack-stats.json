@@ -1,0 +1,94 @@
+{
+  "status": "done",
+  "publicPath": "http://localhost:8080/static/",
+  "chunks": {
+    "adm": [
+      {
+        "name": "css/adm.afc5778e.css",
+        "publicPath": "http://localhost:8080/static/css/adm.afc5778e.css",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/css/adm.afc5778e.css"
+      },
+      {
+        "name": "js/adm.607e93b3.js",
+        "publicPath": "http://localhost:8080/static/js/adm.607e93b3.js",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/js/adm.607e93b3.js"
+      },
+      {
+        "name": "css/adm.afc5778e.css.map",
+        "publicPath": "http://localhost:8080/static/css/adm.afc5778e.css.map",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/css/adm.afc5778e.css.map"
+      },
+      {
+        "name": "js/adm.607e93b3.js.map",
+        "publicPath": "http://localhost:8080/static/js/adm.607e93b3.js.map",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/js/adm.607e93b3.js.map"
+      }
+    ],
+    "chunk-vendors": [
+      {
+        "name": "css/chunk-vendors.6c95e88b.css",
+        "publicPath": "http://localhost:8080/static/css/chunk-vendors.6c95e88b.css",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/css/chunk-vendors.6c95e88b.css"
+      },
+      {
+        "name": "js/chunk-vendors.ec6ce4bc.js",
+        "publicPath": "http://localhost:8080/static/js/chunk-vendors.ec6ce4bc.js",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/js/chunk-vendors.ec6ce4bc.js"
+      },
+      {
+        "name": "css/chunk-vendors.6c95e88b.css.map",
+        "publicPath": "http://localhost:8080/static/css/chunk-vendors.6c95e88b.css.map",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/css/chunk-vendors.6c95e88b.css.map"
+      },
+      {
+        "name": "js/chunk-vendors.ec6ce4bc.js.map",
+        "publicPath": "http://localhost:8080/static/js/chunk-vendors.ec6ce4bc.js.map",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/js/chunk-vendors.ec6ce4bc.js.map"
+      }
+    ],
+    "cms": [
+      {
+        "name": "css/cms.0416b320.css",
+        "publicPath": "http://localhost:8080/static/css/cms.0416b320.css",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/css/cms.0416b320.css"
+      },
+      {
+        "name": "js/cms.4b963371.js",
+        "publicPath": "http://localhost:8080/static/js/cms.4b963371.js",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/js/cms.4b963371.js"
+      },
+      {
+        "name": "css/cms.0416b320.css.map",
+        "publicPath": "http://localhost:8080/static/css/cms.0416b320.css.map",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/css/cms.0416b320.css.map"
+      },
+      {
+        "name": "js/cms.4b963371.js.map",
+        "publicPath": "http://localhost:8080/static/js/cms.4b963371.js.map",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/js/cms.4b963371.js.map"
+      }
+    ],
+    "subscribe": [
+      {
+        "name": "css/subscribe.b49d377e.css",
+        "publicPath": "http://localhost:8080/static/css/subscribe.b49d377e.css",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/css/subscribe.b49d377e.css"
+      },
+      {
+        "name": "js/subscribe.c2323aea.js",
+        "publicPath": "http://localhost:8080/static/js/subscribe.c2323aea.js",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/js/subscribe.c2323aea.js"
+      },
+      {
+        "name": "css/subscribe.b49d377e.css.map",
+        "publicPath": "http://localhost:8080/static/css/subscribe.b49d377e.css.map",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/css/subscribe.b49d377e.css.map"
+      },
+      {
+        "name": "js/subscribe.c2323aea.js.map",
+        "publicPath": "http://localhost:8080/static/js/subscribe.c2323aea.js.map",
+        "path": "/Users/ruben/develop/djangoprojects/bycco/fe_dist/static/js/subscribe.c2323aea.js.map"
+      }
+    ]
+  }
+}

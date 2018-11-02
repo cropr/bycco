@@ -1,0 +1,75 @@
+{% load cms_tags staticfiles sekizai_tags i18n menu_tags %}
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BJK 2019</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% render_block "css" %}
+</head>
+<body>
+{% cms_toolbar %}
+
+<div id="app"></div>
+
+<div id="cms-content" style="display:none;">
+  {%  placeholder "content" %}
+</div>
+
+<div id="cms-menu-items" style="display:none;">
+  {%  show_menu 0 100 100 100 %}
+</div>
+
+{% render_bundle 'cms' %}
+
+{% render_block "js" %}
+
+<script>
+
+function registerComponent(id, dataf) {
+  let cmscontent = document.getElementById(id),
+      chtml='';
+  // filter out <template> and <script> tags
+  for (let i=0; i<cmscontent.children.length; i++) {
+    let tag = cmscontent.children[i].tagName;
+    if (tag != 'TEMPLATE'  && tag != 'SCRIPT') {
+      chtml += cmscontent.children[i].outerHTML;
+    }
+  }
+  application.Vue.component(id, {
+    template: '<div>' + chtml + '</div>',
+    data: dataf || function(){ return{}},
+  });
+}
+
+registerComponent('cms-content', function (){return { tabactive: 0}});
+registerComponent('cms-menu-items');
+
+application.Vue.config.ignoredElements = [
+  'cms-template',
+  'cms-plugin',
+];
+
+window.config = {
+  api_url: '/api',
+  lang: '{{ LANGUAGE_CODE }}'
+}
+
+
+vm = new application.Vue({
+  render: h => h(application.App),
+  i18n: application.i18n,
+  store: application.store,
+  created () {
+    new application.VueCmsPatch(this)
+  },
+}).$mount('#app');
+
+
+</script>
+
+
+
+</body>
+</html>

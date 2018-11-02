@@ -1,0 +1,9 @@
+#!/bin/env bash
+python3 -m venv venv
+. venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+if [ ! -f backend/local_settings.py ]; then
+  echo "Installing local_settings.py"
+  cp setupdata/local_settings.py backend
+fi
