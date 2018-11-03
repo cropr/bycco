@@ -7,6 +7,9 @@
 <title>BJK 2019</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% render_block "css" %}
+{% if PRODUCTION %}
+  {% render_bundle 'cms' 'css' %}
+{% endif %}
 </head>
 <body>
 {% cms_toolbar %}
@@ -21,7 +24,13 @@
   {%  show_menu 0 100 100 100 %}
 </div>
 
-{% render_bundle 'cms' %}
+{% if PRODUCTION %}
+  {% render_bundle 'manifest' %}
+  {% render_bundle 'vendor' %}
+  {% render_bundle 'cms' 'js' %}
+{% else %}
+  {% render_bundle 'cms' %}
+{% endif %}
 
 {% render_block "js" %}
 
