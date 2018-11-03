@@ -7,11 +7,11 @@ module.exports = {
     plugins: [
       new BundleTracker({
         indent: 2,
-        publicPath: 'http://localhost:8080/static/'
+        publicPath: process.env.NODE_ENV === 'production' ? 'static/' : 'http://localhost:8080/static/'
       })
     ]
   },
-  outputDir: '../fe_dist/static',
+  outputDir: 'dist/static',
   baseUrl: "/static",
   crossorigin: "anonymous",
   runtimeCompiler: true,
