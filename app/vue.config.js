@@ -7,7 +7,7 @@ module.exports = {
     plugins: [
       new BundleTracker({
         indent: 2,
-        publicPath: process.env.NODE_ENV === 'production' ? 'static/' : 'http://localhost:8080/static/'
+        publicPath: process.env.NODE_ENV === 'production' ? '/static/' : 'http://localhost:8080/static/'
       })
     ]
   },
