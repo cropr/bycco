@@ -210,7 +210,7 @@ SECRET_KEY = 'kustabitjevierkantigmekloten'
 
 SITE_ID = 1
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'backend', 'static')
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
 
 TEMPLATES = [
