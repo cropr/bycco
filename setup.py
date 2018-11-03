@@ -2,19 +2,14 @@ import os
 
 from setuptools import setup, find_packages
 
-here = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(here, 'README.txt')) as f:
-    README = f.read()
-with open(os.path.join(here, 'CHANGES.txt')) as f:
-    CHANGES = f.read()
 
 requires = []
 
 setup(
     name='bycco',
     version='0.5.0',
-    description='Belgian Youtth Chess Championshops 2018',
-    long_description=README + '\n\n' + CHANGES,
+    description='BYC 2019',
+    long_description='Belgian Youth Chess Cheampionships 2019',
     classifiers=[
         "Programming Language :: Python",
         "Framework :: Django-cms",
