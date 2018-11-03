@@ -66,6 +66,17 @@ CMS_PLACEHOLDER_CONF = {}
 
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
+DATABASES = {   # dummy for collectstatic
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'localhost',
+        'NAME': 'bycco',
+        'USER': '',
+        'PASSWORD': '',
+    }
+}
+
+
 DEBUG = True
 
 EMAIL_HOST = 'localhost'
