@@ -25,8 +25,8 @@
 </div>
 
 {% if PRODUCTION %}
-  {% render_bundle 'manifest' %}
-  {% render_bundle 'vendor' %}
+{#  {% render_bundle 'manifest' %}#}
+  {% render_bundle 'chunk-vendors' %}
   {% render_bundle 'cms' 'js' %}
 {% else %}
   {% render_bundle 'cms' %}

@@ -199,6 +199,7 @@ MIGRATION_MODULES = {
 # }
 
 PRODUCTION = True
+
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': [],
 #     'DEFAULT_PERMISSION_CLASSES': [],
@@ -230,8 +231,7 @@ TEMPLATES = [
                 'sekizai.context_processors.sekizai',
                 'django.template.context_processors.static',
                 'cms.context_processors.cms_settings',
-                'bycco.util.production_settings',
-                # 'zinnia.context_processors.version',
+                'rd_django.context_processor.tamplate_settings',
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -241,6 +241,8 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_SETTINGS = ['PRODUCTION']
 
 TIME_ZONE = 'Europe/Brussels'
 

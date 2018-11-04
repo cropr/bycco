@@ -22,8 +22,6 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 
 ALLOWED_HOSTS = ['*']
 
-CHESSAPI_URL = 'http://localhost:8001/'
-
 DEBUG = True
 
 DATABASES = {
@@ -37,18 +35,15 @@ DATABASES = {
 
 }
 
-EMAIL_HOST = '127.0.0.1'
-EMAIL_PORT = 1025
-
-OLDSITE = 'https://www.frbe-kbsb.be'
-
 STATICFILES_DIRS = (
-    os.path.join(ROOT_DIR, 'frontend', 'static'),
+    os.path.join(ROOT_DIR, 'app', 'dist', 'static'),
 )
+
+# PRODUCTION = False
 
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'static/',
-        'STATS_FILE': os.path.join(ROOT_DIR,  'frontend', 'webpack-stats.json'),
+        'STATS_FILE': os.path.join(ROOT_DIR,  'app', 'webpack-stats.json'),
     }
 }

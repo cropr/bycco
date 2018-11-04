@@ -14,6 +14,3 @@ def to_int(s, default):
          return int(s)
     except ValueError:
         return default
-
-def production_settings(request):
-    return { 'PRODUCTION': settings.PRODUCTION}

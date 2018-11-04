@@ -20,6 +20,7 @@ djangocms-snippet
 djangocms-googlemap
 djangorestframework
 html5lib>=0.999999,<0.99999999
+gunicorn
 Pillow
 psycopg2.binary
 pytz
@@ -28,3 +29,4 @@ reversion
 simplejson
 six
 wheel
+rd_django-0.7.0-py3-none-any.whl
