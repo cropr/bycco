@@ -1,8 +1,10 @@
 {
-  "BYC 2019": "BJK 2019",
-  "Calendar": "Agenda",
-  "Lodging": "Verblijf",
-  "News": "Nieuws",
-  "Tournament": "Toernooi",
-  "-- EOF --": "-- EOF-- "
+    "About Bycco": "Over Bycco",
+    "BYC 2019": "BJK 2019",
+    "Calendar": "Agenda",
+    "Contact": "Contact",
+    "Lodging": "Verblijf",
+    "News": "Nieuws",
+    "The team": "Het team",
+    "Tournament": "Toernooi"
 }

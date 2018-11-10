@@ -6,6 +6,5 @@
 *.pyc
 *.css.map
 /backend/local_settings.py
-/app/node_modules
-/app/webpack-stats.json
-/backend/bycco.db
+/frontend/node_modules
+/frontend/webpack-stats.json

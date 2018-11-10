@@ -1,37 +1,21 @@
-import 'babel-polyfill';
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-import './stylus/bycco.styl';
+import Vue from 'vue'
+import store from './store'
+import { i18n } from './util/lang'
+import VueCmsPatch from './vue-djangocms-patch';
+import './util/vuetify'
+import './style/bycco.styl'
 
-import AdCarousel from './components/AdCarousel';
+import Cms from './Cms.vue'
 
-Vue.use(Vuetify);
+Vue.config.productionTip = false;
 
-new Vue({
-  el: '#app',
-  data: {
-    drawer: false,
-    lang: window.config.lang,
-  },
-  components: {
-    "ad-carousel": AdCarousel,
-  },
-  methods: {
-    gotoUrl (url) {
-      console.log('going to ', url)
-    },
-    clickedMenu (item) {
-      console.log('clicked menu', item)
-    },
-    _ls (dict) {  //
-      if (this.lang in dict) return dict[this.lang];
-      if ('def' in dict) return dict.def;
-      return '***';
-    },
-    _lo (l) {
-      return l == this.lang
-    }
+window.application = {
+  Vue: Vue,
+  VueCmsPatch: VueCmsPatch,
+  App: Cms,
+  store: store,
+  i18n: i18n,
+};
 
-  },
 
-});
+

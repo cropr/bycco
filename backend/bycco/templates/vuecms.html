@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles sekizai_tags i18n menu_tags %}
+{% load cms_tags staticfiles sekizai_tags i18n menu_tags rd_django %}
 {% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +23,11 @@
 <div id="cms-menu-items" style="display:none;">
   {%  show_menu 0 100 100 100 %}
 </div>
+
+<div id="cms-language-block" style="display:none;">
+  {%  render_language_block %}
+</div>
+
 
 {% if PRODUCTION %}
 {#  {% render_bundle 'manifest' %}#}
@@ -54,6 +59,7 @@ function registerComponent(id, dataf) {
 
 registerComponent('cms-content', function (){return { tabactive: 0}});
 registerComponent('cms-menu-items');
+registerComponent('cms-language-block');
 
 application.Vue.config.ignoredElements = [
   'cms-template',
@@ -63,8 +69,14 @@ application.Vue.config.ignoredElements = [
 window.config = {
   api_url: '/api',
   lang: '{{ LANGUAGE_CODE }}'
-}
+};
 
+window.config.urli18 = {
+  nl: "{% page_language_url 'nl' %}",
+  fr: "{% page_language_url 'fr' %}",
+  de: "{% page_language_url 'de' %}",
+  en: "{% page_language_url 'en' %}",
+};
 
 vm = new application.Vue({
   render: h => h(application.App),

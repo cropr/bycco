@@ -1,8 +1,10 @@
 {
-  "BYC 2019": "CBJ 2019",
-  "Calendar": "Calendrier",
-  "Lodging": "Séjour",
-  "News": "Nouvelles",
-  "Tournament": "Tournoi",
-  "-- EOF --": "-- EOF-- "
+    "About Bycco": "Concernant Bycco",
+    "BYC 2019": "CBJ 2019",
+    "Calendar": "Calendrier",
+    "Contact": "Contact",
+    "Lodging": "Séjour",
+    "News": "Nouvelles",
+    "The team": "L' équipe",
+    "Tournament": "Tournoi"
 }

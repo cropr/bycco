@@ -11,7 +11,7 @@
       {{ $t("Contact") }}: <a href="mailto:info@bycco.be">info@bycco.be</a>
     </v-flex>
     <v-flex md3 sm6 xs12 class="ml-2">
-      <a href="https://www.facebook.com/bjk2018.cbj2018.bjlm2018">
+      <a href="https://www.facebook.com/ByccoBel">
         <img src="/static/img/facebook.png"></a>
       <a href="https://twitter.com/@ByccoBel">
         <img src="/static/img/twitter.png"></a>
@@ -27,5 +27,14 @@
 </script>
 
 <style scoped>
+
+a:link, a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: 700;
+}
 
 </style>

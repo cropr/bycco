@@ -7,11 +7,11 @@
   </v-toolbar-items>
   <v-spacer></v-spacer>
   <v-toolbar-items class="hidden-sm-and-down">
-    <v-btn flat large href="/info/agenda">{{ $t('Calendar')}}
+    <v-btn flat large href="/info/calendar">{{ $t('Calendar')}}
     </v-btn>
-    <v-btn flat large href="/info/lodging">{{ $t('Lodging')}}
+    <v-btn flat large href="/info/lodging-and-meals">{{ $t('Lodging')}}
     </v-btn>
-    <v-btn flat large href="/subscribe/view_trn"> {{ $t('Tournament')}}
+    <v-btn flat large href="/bycco/subscriptions"> {{ $t('Tournament')}}
     </v-btn>
   </v-toolbar-items>
 </v-toolbar>
@@ -35,6 +35,9 @@ export default {
   methods:   {
     openDrawer () {
       this.$store.commit('updateDrawer', true)
+    },
+    urlI18n (lang) {
+      return window.config.urli18[lang];
     }
   },
 }

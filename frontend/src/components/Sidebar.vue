@@ -12,27 +12,13 @@
       </v-toolbar>
       <v-divider></v-divider>
       <div class="btn-language blue-grey darken-1">
-        <v-btn flat class="hover-darker btn-language" href="/nl/">NL</v-btn>
-        <v-btn flat class="hover-darker btn-language" href="/fr/">FR</v-btn>
-        <v-btn flat class="hover-darker btn-language" href="/de/">DE</v-btn>
-        <v-btn flat class="hover-darker btn-language" href="/en/">EN</v-btn>
+        <v-btn flat class="hover-darker btn-language" :href="urlI18n('nl')">NL</v-btn>
+        <v-btn flat class="hover-darker btn-language" :href="urlI18n('fr')">FR</v-btn>
+        <v-btn flat class="hover-darker btn-language" :href="urlI18n('de')">DE</v-btn>
+        <v-btn flat class="hover-darker btn-language" :href="urlI18n('en')">EN</v-btn>
       </div>
       <v-list dark dense class="blue-grey darken-1">
         <cms-menu-items></cms-menu-items>
-        <v-list-tile  href="/subscribe/view_trn">
-          <v-list-tile-content>
-            <v-list-tile-title>
-              {{ $t("Tournament") }}
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile  href="/weblog/">
-          <v-list-tile-content>
-            <v-list-tile-title>
-              {{ $t("News") }}
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
       </v-list>
       <v-divider></v-divider>
       <v-list dark dense class="blue-grey darken-1" v-if="authenticated">
@@ -110,6 +96,12 @@ export default {
       this.fixtoolbar = true;
     }
   },
+
+  methods: {
+    urlI18n (lang) {
+      return window.config.urli18[lang];
+    }
+  }
 
 
 }

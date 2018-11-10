@@ -1,8 +1,10 @@
 {
-  "BYC 2019": "BJLM 2019",
-  "Calendar": "Agenda",
-  "Lodging": "Unterkunft",
-  "News": "Nachrichten",
-  "Tournament": "Turnier",
-  "-- EOF --": "-- EOF-- "
+    "About Bycco": "Über Bycco",
+    "BYC 2019": "BJLM 2019",
+    "Calendar": "Agenda",
+    "Contact": "Kontakt",
+    "Lodging": "Unterkunft",
+    "News": "Nachrichten",
+    "The team": "Das Team",
+    "Tournament": "Turnier"
 }
