@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 16:40+0100\n"
-"PO-Revision-Date: 2018-11-17 16:48+0100\n"
+"PO-Revision-Date: 2018-11-17 19:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -168,10 +168,8 @@ msgid "Fide id"
 msgstr ""
 
 #: subscription/models.py:77
-#, fuzzy
-#| msgid "Nationality"
 msgid "National id"
-msgstr "Nationaliteit"
+msgstr "Stamnummer"
 
 #: subscription/models.py:79
 msgid "Name"
@@ -186,10 +184,8 @@ msgid "Nationality"
 msgstr "Nationaliteit"
 
 #: subscription/models.py:81
-#, fuzzy
-#| msgid "Federation"
 msgid "Fide rating"
-msgstr "Federatie"
+msgstr "Fide Rating"
 
 #: subscription/models.py:102
 msgid "white"
