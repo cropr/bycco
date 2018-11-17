@@ -260,7 +260,7 @@ export default {
   },
   methods: {
     gotoCat (cat) {
-      console.log('Going to cat ', cat, this.trns);
+      console.log('Going to categories ', cat, this.trns);
       var self=this;
       this.cat = catmapping[cat];
       this.subdrawer = false;

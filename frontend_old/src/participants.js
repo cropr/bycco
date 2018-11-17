@@ -79,13 +79,13 @@ window.vm = new Vue({
   mounted () {
     var secCarousel = Math.floor((new Date()/1000) % (6 * this.nAdCarousel));
     this.adCarouselValue = Math.floor(secCarousel / this.nAdCarousel);
-    var qcat = getQueryVariable('cat'), self=this;
+    var qcat = getQueryVariable('categories'), self=this;
     console.log('qcat', qcat, this);
     console.log('theme primary', this.$vuetify.theme.primary)
     this.categories.forEach(function(c, ix){
       if (c == qcat) self.tabix = ix;
     });
-    this.changecat(qcat ? qcat : this.cat);
+    this.changecat(qcat ? qcat : this.categories);
   }
 
 });

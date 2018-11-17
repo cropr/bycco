@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 22:51+0200\n"
+"POT-Creation-Date: 2018-11-17 16:41+0100\n"
 "PO-Revision-Date: 2018-04-10 13:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,69 +18,33 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: bycco/settings.py:22 bycco/settings.py:122
+#: bycco/settings.py:24 bycco/settings.py:132
 msgid "en"
 msgstr ""
 
-#: bycco/settings.py:29 bycco/settings.py:123
+#: bycco/settings.py:31 bycco/settings.py:133
 msgid "nl"
 msgstr ""
 
-#: bycco/settings.py:36 bycco/settings.py:124
+#: bycco/settings.py:38 bycco/settings.py:134
 msgid "fr"
 msgstr ""
 
-#: bycco/settings.py:43 bycco/settings.py:125
+#: bycco/settings.py:45 bycco/settings.py:135
 msgid "de"
 msgstr ""
 
-#: bycco/templates/base.html:48 bycco/templates/base.html:123
-msgid "Tournament"
-msgstr "Turnier"
-
-#: bycco/templates/base.html:55
-msgid "News"
-msgstr "Nachrichten"
-
-#: bycco/templates/base.html:112
-msgid "BYC 2018"
-msgstr "BJLM 2018"
-
-#: bycco/templates/base.html:117
-msgid "Agenda"
-msgstr ""
-
-#: bycco/templates/base.html:120
-msgid "Lodging"
-msgstr "Unterkunft"
-
-#: bycco/templates/landing.html:7 bycco/templates/landing_blog.html:10
+#: bycco/templates/landing.html:7
 msgid "Belgian Youth Chess Championships 2018"
 msgstr ""
 
-#: bycco/templates/vue.html:23
-msgid "About Bycco"
-msgstr "Über Bycco"
-
-#: bycco/templates/vue.html:26
-msgid "The team"
-msgstr "Das Team"
-
-#: bycco/templates/vue.html:29
-msgid "Contact"
-msgstr "Kontakt"
+#: bycco/templates/weblog/entries_recent.html:11
+#: bycco/templates/weblog/entry_content.html:14
+msgid "Continue reading"
+msgstr ""
 
 #: bycco/templates/weblog/entry_content.html:7
 msgid "Last update on"
-msgstr ""
-
-#: bycco/templates/weblog/entry_content.html:32
-#, python-format
-msgid "%(percent)s%% of %(object)s still remains to read."
-msgstr ""
-
-#: bycco/templates/weblog/entry_content.html:34
-msgid "Continue reading"
 msgstr ""
 
 #: bycco/templates/weblog/entry_detail.html:23
@@ -91,35 +55,35 @@ msgstr "nächster Eintrag"
 msgid "Previous entry"
 msgstr "vorheriger Eintrag"
 
-#: bycco/templates/zinnia/base.html:9 bycco/templates/zinnia/base.html:13
-msgid "Categories"
-msgstr "Kategorien"
+#~ msgid "Tournament"
+#~ msgstr "Turnier"
 
-#: bycco/templates/zinnia/base.html:21
-msgid "Calendar"
-msgstr "Kalender"
+#~ msgid "News"
+#~ msgstr "Nachrichten"
 
-#: bycco/templates/zinnia/base.html:30
-msgid "Recent entries"
-msgstr "neueste Einträge"
+#~ msgid "BYC 2018"
+#~ msgstr "BJLM 2018"
 
-#: bycco/templates/zinnia/base.html:39
-msgid "Archives"
-msgstr ""
+#~ msgid "Lodging"
+#~ msgstr "Unterkunft"
 
-#: bycco/templates/zinnia/base.html:50
-msgid "Tools"
-msgstr ""
+#~ msgid "About Bycco"
+#~ msgstr "Über Bycco"
 
-#: bycco/templates/zinnia/base.html:56 bycco/templates/zinnia/base.html:57
-msgid "Dashboard"
-msgstr ""
+#~ msgid "The team"
+#~ msgstr "Das Team"
 
-#: bycco/templates/zinnia/base.html:63 bycco/templates/zinnia/base.html:64
-msgid "Post an entry"
-msgstr ""
+#~ msgid "Contact"
+#~ msgstr "Kontakt"
 
-#: bycco/templates/zinnia/entry_archive.html:5
-#: bycco/templates/zinnia/entry_archive.html:7
-msgid "Last entries"
-msgstr "letzte Einträge"
+#~ msgid "Categories"
+#~ msgstr "Kategorien"
+
+#~ msgid "Calendar"
+#~ msgstr "Kalender"
+
+#~ msgid "Recent entries"
+#~ msgstr "neueste Einträge"
+
+#~ msgid "Last entries"
+#~ msgstr "letzte Einträge"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 22:51+0200\n"
-"PO-Revision-Date: 2018-04-10 23:05+0200\n"
+"POT-Creation-Date: 2018-11-17 16:41+0100\n"
+"PO-Revision-Date: 2018-11-17 16:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -16,9 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
-#: subscription/mail.py:45
+#: subscription/mail.py:55
 msgid "Confirmation Subscription"
 msgstr "Confirmation de l’inscription"
 
@@ -30,17 +30,15 @@ msgstr ""
 msgid "Length badge image"
 msgstr ""
 
-#: subscription/models.py:14
-#: subscription/templates/subscription/mailhtml.html:25
-#: subscription/templates/subscription/subscriptionpage.html:118
-#: subscription/templates/subscription/subscriptionpage.html:425
+#: subscription/models.py:14 subscription/templates/subscription/mailhtml.html:25
+#: subscription/templates/subscription/subscriptionpageold.html:118
+#: subscription/templates/subscription/subscriptionpageold.html:425
 msgid "Birthdate"
 msgstr "Date de naissance"
 
-#: subscription/models.py:15
-#: subscription/templates/subscription/mailhtml.html:51
-#: subscription/templates/subscription/subscriptionpage.html:149
-#: subscription/templates/subscription/subscriptionpage.html:462
+#: subscription/models.py:15 subscription/templates/subscription/mailhtml.html:51
+#: subscription/templates/subscription/subscriptionpageold.html:149
+#: subscription/templates/subscription/subscriptionpageold.html:462
 #: subscription/views.py:23
 msgid "Category"
 msgstr "Catégorie"
@@ -73,22 +71,21 @@ msgstr "Nom complet du responsable sur place"
 msgid "Full name parent"
 msgstr "Nom complet du parent"
 
-#: subscription/models.py:24
-#: subscription/templates/subscription/mailhtml.html:48
-#: subscription/templates/subscription/subscriptionpage.html:144
-#: subscription/templates/subscription/subscriptionpage.html:457
+#: subscription/models.py:24 subscription/templates/subscription/mailhtml.html:48
+#: subscription/templates/subscription/subscriptionpageold.html:144
+#: subscription/templates/subscription/subscriptionpageold.html:457
 msgid "Gender"
 msgstr "Sexe"
 
 #: subscription/models.py:24 subscription/models.py:72
-#: subscription/templates/subscription/subscriptionpage.html:145
-#: subscription/templates/subscription/subscriptionpage.html:458
+#: subscription/templates/subscription/subscriptionpageold.html:145
+#: subscription/templates/subscription/subscriptionpageold.html:458
 msgid "Male"
 msgstr "Masculin"
 
 #: subscription/models.py:24 subscription/models.py:73
-#: subscription/templates/subscription/subscriptionpage.html:146
-#: subscription/templates/subscription/subscriptionpage.html:459
+#: subscription/templates/subscription/subscriptionpageold.html:146
+#: subscription/templates/subscription/subscriptionpageold.html:459
 msgid "Female"
 msgstr "Féminin"
 
@@ -152,10 +149,9 @@ msgstr "Rating utilisé"
 msgid "Belgian rating"
 msgstr "Elo belge"
 
-#: subscription/models.py:41
-#: subscription/templates/subscription/mailhtml.html:45
-#: subscription/templates/subscription/subscriptionpage.html:140
-#: subscription/templates/subscription/subscriptionpage.html:453
+#: subscription/models.py:41 subscription/templates/subscription/mailhtml.html:45
+#: subscription/templates/subscription/subscriptionpageold.html:140
+#: subscription/templates/subscription/subscriptionpageold.html:453
 msgid "FIDE rating"
 msgstr "Rating FIDE"
 
@@ -176,10 +172,10 @@ msgid "Name"
 msgstr "Nom"
 
 #: subscription/models.py:80
-#: subscription/templates/subscription/subscriptionpage.html:126
-#: subscription/templates/subscription/subscriptionpage.html:346
-#: subscription/templates/subscription/subscriptionpage.html:348
-#: subscription/templates/subscription/subscriptionpage.html:433
+#: subscription/templates/subscription/subscriptionpageold.html:126
+#: subscription/templates/subscription/subscriptionpageold.html:346
+#: subscription/templates/subscription/subscriptionpageold.html:348
+#: subscription/templates/subscription/subscriptionpageold.html:433
 msgid "Nationality"
 msgstr "Nationalité"
 
@@ -204,79 +200,78 @@ msgid "Belgian Youth Chess Championships 2018"
 msgstr "Championnats de Belgique d’échecs de la jeunesse 2018"
 
 #: subscription/templates/subscription/mailhtml.html:14
-#: subscription/templates/subscription/subscriptionpage.html:414
+#: subscription/templates/subscription/subscriptionpageold.html:414
 msgid "Confirmation details"
 msgstr "Details de la confirmation"
 
 #: subscription/templates/subscription/mailhtml.html:22
-#: subscription/templates/subscription/subscriptionpage.html:114
-#: subscription/templates/subscription/subscriptionpage.html:214
-#: subscription/templates/subscription/subscriptionpage.html:236
-#: subscription/templates/subscription/subscriptionpage.html:421
+#: subscription/templates/subscription/subscriptionpageold.html:114
+#: subscription/templates/subscription/subscriptionpageold.html:214
+#: subscription/templates/subscription/subscriptionpageold.html:236
+#: subscription/templates/subscription/subscriptionpageold.html:421
 msgid "Fullname"
 msgstr "Nom complet"
 
 #: subscription/templates/subscription/mailhtml.html:28
-#: subscription/templates/subscription/subscriptionpage.html:122
-#: subscription/templates/subscription/subscriptionpage.html:429
+#: subscription/templates/subscription/subscriptionpageold.html:122
+#: subscription/templates/subscription/subscriptionpageold.html:429
 msgid "ID Club"
 msgstr "ID cercle"
 
 #: subscription/templates/subscription/mailhtml.html:31
-#: subscription/templates/subscription/subscriptionpage.html:130
-#: subscription/templates/subscription/subscriptionpage.html:437
+#: subscription/templates/subscription/subscriptionpageold.html:130
+#: subscription/templates/subscription/subscriptionpageold.html:437
 msgid "FIDE Nationality"
 msgstr "Nationalité FIDE"
 
 #: subscription/templates/subscription/mailhtml.html:34
-#: subscription/templates/subscription/subscriptionpage.html:441
+#: subscription/templates/subscription/subscriptionpageold.html:441
 msgid "Can become Belgian champion"
 msgstr "Peut devenir champion belge"
 
 #: subscription/templates/subscription/mailhtml.html:35
-#: subscription/templates/subscription/subscriptionpage.html:442
+#: subscription/templates/subscription/subscriptionpageold.html:442
 msgid "Yes"
 msgstr "Oui"
 
 #: subscription/templates/subscription/mailhtml.html:36
-#: subscription/templates/subscription/subscriptionpage.html:443
+#: subscription/templates/subscription/subscriptionpageold.html:443
 msgid "No"
 msgstr "Non"
 
 #: subscription/templates/subscription/mailhtml.html:37
-#: subscription/templates/subscription/subscriptionpage.html:444
+#: subscription/templates/subscription/subscriptionpageold.html:444
 msgid "To be confirmed"
 msgstr "A confirmer"
 
 #: subscription/templates/subscription/mailhtml.html:42
-#: subscription/templates/subscription/subscriptionpage.html:136
-#: subscription/templates/subscription/subscriptionpage.html:449
+#: subscription/templates/subscription/subscriptionpageold.html:136
+#: subscription/templates/subscription/subscriptionpageold.html:449
 msgid "National rating"
 msgstr "Rating belge"
 
 #: subscription/templates/subscription/mailhtml.html:61
-#: subscription/templates/subscription/subscriptionpage.html:470
+#: subscription/templates/subscription/subscriptionpageold.html:470
 msgid "Payment"
 msgstr "Paiement"
 
 #: subscription/templates/subscription/mailhtml.html:63
 msgid ""
 "\n"
-"            The subscription fee is 35 Euro is you pay before the 11th of "
-"March\n"
-"            2018.  After that date you wil have to pay 45 Euro.\n"
+"            The subscription fee is 35 Euro is you pay before the 15th of March\n"
+"            2019.  After that date you wil have to pay 45 Euro.\n"
 "        "
 msgstr ""
 "\n"
-"Le droit d’inscription est de 35 Euro jusqu’au 11 Mars.  Après cette date le "
+"Le droit d’inscription est de 35 Euro jusqu’au 15 Mars 2019.  Après cette date le "
 "montant est de 45 Euro.\n"
 " "
 
 #: subscription/templates/subscription/mailhtml.html:69
 msgid ""
 "\n"
-"            Pay the amount on account BE33 0017 5924 5146 with the "
-"structered message:\n"
+"            Pay the amount on account BE33 0017 5924 5146 with the structered "
+"message:\n"
 "        "
 msgstr ""
 "\n"
@@ -285,8 +280,8 @@ msgstr ""
 
 #: subscription/templates/subscription/mg_presence.html:5
 #: subscription/templates/subscription/participants.html:5
-#: subscription/templates/subscription/subscriptionpage.html:5
-#: subscription/templates/subscription/subscriptionpage.html:9
+#: subscription/templates/subscription/subscriptionpageold.html:5
+#: subscription/templates/subscription/subscriptionpageold.html:9
 msgid "Tournament Subscriptions"
 msgstr "Enrégistrements aux championnats"
 
@@ -314,8 +309,7 @@ msgstr ""
 msgid ""
 "\n"
 "     As an exclusivity, we are proud to offer you free of charge the\n"
-"     possibility to receive a text message with your personalized pairing "
-"of\n"
+"     possibility to receive a text message with your personalized pairing of\n"
 "     the next round\n"
 "     "
 msgstr ""
@@ -334,8 +328,7 @@ msgstr ""
 msgid ""
 "\n"
 "     Only 1 mobile number can be registered per player.\n"
-"     Only numbers from Belgium, the Netherlands, Germany, France and "
-"Luxembourg\n"
+"     Only numbers from Belgium, the Netherlands, Germany, France and Luxembourg\n"
 "     are supported\n"
 "     "
 msgstr ""
@@ -345,9 +338,9 @@ msgid "Mobile number"
 msgstr "Numéro mobile"
 
 #: subscription/templates/subscription/subscribesms.html:40
-#: subscription/templates/subscription/subscriptionpage.html:39
-#: subscription/templates/subscription/subscriptionpage.html:41
-#: subscription/templates/subscription/subscriptionpage.html:44
+#: subscription/templates/subscription/subscriptionpageold.html:39
+#: subscription/templates/subscription/subscriptionpageold.html:41
+#: subscription/templates/subscription/subscriptionpageold.html:44
 msgid "ID number"
 msgstr "Matricule"
 
@@ -379,11 +372,11 @@ msgstr ""
 msgid "This player is already registered"
 msgstr "Ce joueur est déjà enregistré"
 
-#: subscription/templates/subscription/subscriptionpage.html:15
+#: subscription/templates/subscription/subscriptionpageold.html:15
 msgid "Intro"
 msgstr ""
 
-#: subscription/templates/subscription/subscriptionpage.html:16
+#: subscription/templates/subscription/subscriptionpageold.html:16
 msgid ""
 "\n"
 "        You need 2 items in order to subscribe to the Belgian\n"
@@ -393,15 +386,15 @@ msgstr ""
 "\n"
 "Vous avez besoin de 2 choses pour l’enrégistrement aux championnats belges "
 
-#: subscription/templates/subscription/subscriptionpage.html:21
+#: subscription/templates/subscription/subscriptionpageold.html:21
 msgid "Your id number of the Royal Belgian Chess Federation"
 msgstr "Le matricule de la FRBE"
 
-#: subscription/templates/subscription/subscriptionpage.html:22
+#: subscription/templates/subscription/subscriptionpageold.html:22
 msgid "A photo for your badge"
 msgstr "Une photo pour le badge"
 
-#: subscription/templates/subscription/subscriptionpage.html:24
+#: subscription/templates/subscription/subscriptionpageold.html:24
 msgid ""
 "\n"
 "        In case you do not have your id number of the RBCF,\n"
@@ -413,28 +406,27 @@ msgid ""
 msgstr ""
 "\n"
 "Dans le cas où vous n’avez pas de matricule de la FRBE,\n"
-"vous devez contacter votre club d’échecs, qui peut obtenir un nouveau "
-"matricule.\n"
+"vous devez contacter votre club d’échecs, qui peut obtenir un nouveau matricule.\n"
 "Veuillez tenir compte il peut prendre quelques jours avant que le nouveau "
 "matricule soit publié "
 
-#: subscription/templates/subscription/subscriptionpage.html:34
-#: subscription/templates/subscription/subscriptionpage.html:96
-#: subscription/templates/subscription/subscriptionpage.html:290
-#: subscription/templates/subscription/subscriptionpage.html:340
-#: subscription/templates/subscription/subscriptionpage.html:405
+#: subscription/templates/subscription/subscriptionpageold.html:34
+#: subscription/templates/subscription/subscriptionpageold.html:96
+#: subscription/templates/subscription/subscriptionpageold.html:290
+#: subscription/templates/subscription/subscriptionpageold.html:340
+#: subscription/templates/subscription/subscriptionpageold.html:405
 msgid "Continue"
 msgstr "Continuer"
 
-#: subscription/templates/subscription/subscriptionpage.html:42
+#: subscription/templates/subscription/subscriptionpageold.html:42
 msgid "Please provide your id number of the RBCF."
 msgstr "Veuillez fournir le matricule de la FRBE."
 
-#: subscription/templates/subscription/subscriptionpage.html:49
+#: subscription/templates/subscription/subscriptionpageold.html:49
 msgid "Lookup ID number"
 msgstr "Chercher matricule"
 
-#: subscription/templates/subscription/subscriptionpage.html:56
+#: subscription/templates/subscription/subscriptionpageold.html:56
 msgid ""
 "\n"
 "        The id number could not be found.<br>\n"
@@ -447,7 +439,7 @@ msgstr ""
 "Veuillez tenir compte que ça prend quelques jours avant que le matricule\n"
 "soit publié. "
 
-#: subscription/templates/subscription/subscriptionpage.html:65
+#: subscription/templates/subscription/subscriptionpageold.html:65
 msgid ""
 "\n"
 "        The id number is not belonging to a youth player.\n"
@@ -457,7 +449,7 @@ msgstr ""
 "Ce matricule n’appartient pas à un jeune.\n"
 " "
 
-#: subscription/templates/subscription/subscriptionpage.html:72
+#: subscription/templates/subscription/subscriptionpageold.html:72
 msgid ""
 "\n"
 "        This player is already registered\n"
@@ -466,8 +458,8 @@ msgstr ""
 "\n"
 "Ce joueur est déjà enrégistré. "
 
-#: subscription/templates/subscription/subscriptionpage.html:79
-#: subscription/templates/subscription/subscriptionpage.html:281
+#: subscription/templates/subscription/subscriptionpageold.html:79
+#: subscription/templates/subscription/subscriptionpageold.html:281
 msgid ""
 "\n"
 "        An unknown error occured.  Please try again.\n"
@@ -478,7 +470,7 @@ msgstr ""
 "Une erreur inconnue s’est produite. Veuillez réessayer\n"
 "Si l’erreur persiste, veuillez contacter les organisateurs. "
 
-#: subscription/templates/subscription/subscriptionpage.html:87
+#: subscription/templates/subscription/subscriptionpageold.html:87
 msgid ""
 "\n"
 "         This id number does not belong to a youth player\n"
@@ -487,28 +479,28 @@ msgstr ""
 "\n"
 "Ce matricule n’appartient pas à un jeune "
 
-#: subscription/templates/subscription/subscriptionpage.html:92
+#: subscription/templates/subscription/subscriptionpageold.html:92
 msgid "Player found:"
 msgstr "Joueur trouvé:"
 
-#: subscription/templates/subscription/subscriptionpage.html:99
+#: subscription/templates/subscription/subscriptionpageold.html:99
 msgid "Other player"
 msgstr "Autre joueur"
 
-#: subscription/templates/subscription/subscriptionpage.html:105
+#: subscription/templates/subscription/subscriptionpageold.html:105
 msgid "Details"
 msgstr "Détails"
 
-#: subscription/templates/subscription/subscriptionpage.html:109
+#: subscription/templates/subscription/subscriptionpageold.html:109
 msgid "Details player"
 msgstr "Détails du joueur"
 
-#: subscription/templates/subscription/subscriptionpage.html:162
-#: subscription/templates/subscription/subscriptionpage.html:203
+#: subscription/templates/subscription/subscriptionpageold.html:162
+#: subscription/templates/subscription/subscriptionpageold.html:203
 msgid "Required information"
 msgstr "Information requise"
 
-#: subscription/templates/subscription/subscriptionpage.html:164
+#: subscription/templates/subscription/subscriptionpageold.html:164
 #, python-format
 msgid ""
 "\n"
@@ -520,80 +512,78 @@ msgstr ""
 "%(ob)s sub.first_name %(cb)s est un adult au début du tournoi.\n"
 "Pour des adultes on a besoin des informations suivantes. "
 
-#: subscription/templates/subscription/subscriptionpage.html:171
-#: subscription/templates/subscription/subscriptionpage.html:255
+#: subscription/templates/subscription/subscriptionpageold.html:171
+#: subscription/templates/subscription/subscriptionpageold.html:255
 msgid "Email address player"
 msgstr "Adresse e-mail du joueur"
 
-#: subscription/templates/subscription/subscriptionpage.html:175
+#: subscription/templates/subscription/subscriptionpageold.html:175
 msgid "GSM number player"
 msgstr "Numéro GSM du joueur"
 
-#: subscription/templates/subscription/subscriptionpage.html:181
-#: subscription/templates/subscription/subscriptionpage.html:247
+#: subscription/templates/subscription/subscriptionpageold.html:181
+#: subscription/templates/subscription/subscriptionpageold.html:247
 msgid "Optional information"
 msgstr "Information facultative"
 
-#: subscription/templates/subscription/subscriptionpage.html:183
+#: subscription/templates/subscription/subscriptionpageold.html:183
 msgid ""
 "\n"
-"            Although optional it is recommended to provide the details of a "
-"club\n"
+"            Although optional it is recommended to provide the details of a club\n"
 "            or league representative that is at site during the tournament\n"
 "          "
 msgstr ""
 "\n"
-"Bien que facultative, il est recommandé de fournir les détails d’un "
-"responsable du cercle \n"
+"Bien que facultative, il est recommandé de fournir les détails d’un responsable "
+"du cercle \n"
 "ou de la ligue qui est sur place pendant le tournoi "
 
-#: subscription/templates/subscription/subscriptionpage.html:190
+#: subscription/templates/subscription/subscriptionpageold.html:190
 msgid "Fullname respresentative"
 msgstr "Nom complet du responsable"
 
-#: subscription/templates/subscription/subscriptionpage.html:194
+#: subscription/templates/subscription/subscriptionpageold.html:194
 msgid "GSM number representative"
 msgstr "Numéro GSM du responsable"
 
-#: subscription/templates/subscription/subscriptionpage.html:205
+#: subscription/templates/subscription/subscriptionpageold.html:205
 #, python-format
 msgid ""
 "\n"
 "            %(ob)s sub.first_name %(cb)s is still a minor at the\n"
-"            start of the tournament. For minors we need following "
-"information.\n"
+"            start of the tournament. For minors we need following information.\n"
 "          "
 msgstr ""
 "\n"
 "%(ob)s sub.first_name %(cb)s est toujours un mineur au début du tournoi.\n"
 "Pour des mineurs on a besoin des informations suivantes "
 
-#: subscription/templates/subscription/subscriptionpage.html:212
+#: subscription/templates/subscription/subscriptionpageold.html:212
 msgid "Info about parent"
 msgstr "Information sur le parent"
 
-#: subscription/templates/subscription/subscriptionpage.html:218
+#: subscription/templates/subscription/subscriptionpageold.html:218
 msgid "Email address"
 msgstr "Adresse e-mail"
 
-#: subscription/templates/subscription/subscriptionpage.html:222
-#: subscription/templates/subscription/subscriptionpage.html:240
+#: subscription/templates/subscription/subscriptionpageold.html:222
+#: subscription/templates/subscription/subscriptionpageold.html:240
 msgid "GSM number"
 msgstr "Numéro GSM"
 
-#: subscription/templates/subscription/subscriptionpage.html:227
+#: subscription/templates/subscription/subscriptionpageold.html:227
 msgid "Info about presence on site"
 msgstr "Information sur la présence sur place"
 
-#: subscription/templates/subscription/subscriptionpage.html:230
+#: subscription/templates/subscription/subscriptionpageold.html:230
 msgid "A parent is present at site"
 msgstr "Un parent est sur place pendant le tournoi"
 
-#: subscription/templates/subscription/subscriptionpage.html:233
+#: subscription/templates/subscription/subscriptionpageold.html:233
 msgid "Info about adult representative at site"
 msgstr "Information sur le responsable sur place"
 
-#: subscription/templates/subscription/subscriptionpage.html:249
+#: subscription/templates/subscription/subscriptionpageold.html:249
 msgid ""
 "\n"
 "            The information requested below, is optional but it is highly\n"
@@ -604,7 +594,7 @@ msgstr ""
 "Les informations demandées ci-dessous sont facultatives mais il est vivement "
 "recommandé de les fournir "
 
-#: subscription/templates/subscription/subscriptionpage.html:264
+#: subscription/templates/subscription/subscriptionpageold.html:264
 msgid ""
 "\n"
 "        One of the required fields is invalid.\n"
@@ -613,31 +603,29 @@ msgstr ""
 "\n"
 "Un des champs requis, est invalide. "
 
-#: subscription/templates/subscription/subscriptionpage.html:272
+#: subscription/templates/subscription/subscriptionpageold.html:272
 msgid ""
 "\n"
-"        We are experiencing authentication problems while sending the data "
-"to\n"
-"        the server.  Probably you are behind a firewall that blocks the "
-"traffic.\n"
+"        We are experiencing authentication problems while sending the data to\n"
+"        the server.  Probably you are behind a firewall that blocks the traffic.\n"
 "        Try again using a direct connection to the Internet.\n"
 "      "
 msgstr ""
 "\n"
-"Nous rencontrons des problèmes d’authentification lors de l’envoi des "
-"données au serveur. \n"
+"Nous rencontrons des problèmes d’authentification lors de l’envoi des données au "
+"serveur. \n"
 "Probablement vous êtes derrière un firewall qui bloque le trafic.\n"
 "Réessayez en utilisant une connexion directe à l’Internet. "
 
-#: subscription/templates/subscription/subscriptionpage.html:296
+#: subscription/templates/subscription/subscriptionpageold.html:296
 msgid "Photo"
 msgstr ""
 
-#: subscription/templates/subscription/subscriptionpage.html:298
+#: subscription/templates/subscription/subscriptionpageold.html:298
 msgid "Select photo"
 msgstr "Selectionner Photo"
 
-#: subscription/templates/subscription/subscriptionpage.html:300
+#: subscription/templates/subscription/subscriptionpageold.html:300
 msgid ""
 "\n"
 "          We need a photo to make your tournament badge.\n"
@@ -648,11 +636,11 @@ msgid ""
 msgstr ""
 "\n"
 "Nous avons besoin d’une photo pour le badge du tournoi\n"
-"Vous sélectionnez une photo en faisant glisser et déposer une photo dans la "
-"zone de photo ou en cliquant sur la zone de photo.\n"
+"Vous sélectionnez une photo en faisant glisser et déposer une photo dans la zone "
+"de photo ou en cliquant sur la zone de photo.\n"
 " "
 
-#: subscription/templates/subscription/subscriptionpage.html:310
+#: subscription/templates/subscription/subscriptionpageold.html:310
 msgid ""
 "\n"
 "        Photo area . Drop your photo here or click to select a photo\n"
@@ -661,105 +649,93 @@ msgstr ""
 "\n"
 "Zone de photo. Faites glisser et déposer la photo ici ou cliquez ici. "
 
-#: subscription/templates/subscription/subscriptionpage.html:324
+#: subscription/templates/subscription/subscriptionpageold.html:324
 msgid "Resulting photo"
 msgstr "La photo résultante"
 
-#: subscription/templates/subscription/subscriptionpage.html:326
+#: subscription/templates/subscription/subscriptionpageold.html:326
 msgid ""
 "\n"
-"          Once the photo is selected, you can move the selector handles "
-"with\n"
-"          your mouse in order to adjust the photo.  Please make sure that "
-"the\n"
+"          Once the photo is selected, you can move the selector handles with\n"
+"          your mouse in order to adjust the photo.  Please make sure that the\n"
 "          face of player fills the resulting image.\n"
 "          When the resulting image seems OK, click continue.\n"
 "        "
 msgstr ""
 "\n"
-"Une fois la photo sélectionnée, vous pouvez déplacer les poignées du "
-"sélecteur\n"
-"avec votre souris pour ajuster la photo. Assurez-vous que le visage du "
-"joueur remplit l’image résultante. \n"
+"Une fois la photo sélectionnée, vous pouvez déplacer les poignées du sélecteur\n"
+"avec votre souris pour ajuster la photo. Assurez-vous que le visage du joueur "
+"remplit l’image résultante. \n"
 "Lorsque l’image obtenue semble correcte, cliquez sur Continuer. "
 
-#: subscription/templates/subscription/subscriptionpage.html:350
+#: subscription/templates/subscription/subscriptionpageold.html:350
 msgid ""
 "\n"
 "          For the FIDE you are a Belgian.\n"
 "          This means you can win the Balgian title and you can participate\n"
-"          to the European and World Championships as part of the Belgian "
-"team.\n"
+"          to the European and World Championships as part of the Belgian team.\n"
 "        "
 msgstr ""
 "\n"
 "Pour la FIDE, vous êtes belge..Cela signifie que vous pouvez gagner le titre "
-"belge et vous pouvez participer aux CE ou CM faisant partie de l’équipe "
-"belge. "
+"belge et vous pouvez participer aux CE ou CM faisant partie de l’équipe belge. "
 
-#: subscription/templates/subscription/subscriptionpage.html:357
+#: subscription/templates/subscription/subscriptionpageold.html:357
 msgid ""
 "\n"
 "          For the FIDE you are not a Belgian.\n"
-"          This means you cannot win the Belgian title and you cannot "
-"participate\n"
-"          to the European and World Championships as part of the Belgian "
-"team.\n"
+"          This means you cannot win the Belgian title and you cannot participate\n"
+"          to the European and World Championships as part of the Belgian team.\n"
 "        "
 msgstr ""
 "\n"
 "Pour la FIDE, vous avez la nationalité non belge. Cela signifie que vous ne "
-"pouvez pas gagner le titre belge et vous ne pouvez pas participer aux CE ou "
-"CM faisant partie de l’équipe belge. "
+"pouvez pas gagner le titre belge et vous ne pouvez pas participer aux CE ou CM "
+"faisant partie de l’équipe belge. "
 
-#: subscription/templates/subscription/subscriptionpage.html:364
+#: subscription/templates/subscription/subscriptionpageold.html:364
 msgid ""
 "\n"
 "          You are not affiliated to the FIDE.  Unless you\n"
-"          <a href=mailto:info@bycco.be>contact us</a> before the 15th of "
-"March\n"
+"          <a href=mailto:info@bycco.be>contact us</a> before the 15th of March\n"
 "          and instruct us to explicitely do otherwise,\n"
 "          we will affiliate you as a Belgian to the FIDE,\n"
 "          so you can win the Belgian title and you can participate\n"
-"          to the European and World Championships as part of the Belgian "
-"team.\n"
+"          to the European and World Championships as part of the Belgian team.\n"
 "        "
 msgstr ""
 "\n"
 "Vous n’êtes pas affilié à la FIDE. \n"
-"Sauf si vous <a href=“mailto:info@bycco.be”>nous contactiez</a> avant le 15 "
-"mars et que vous nous instruisiez explicitement à faire autrement, \n"
+"Sauf si vous <a href=“mailto:info@bycco.be”>nous contactiez</a> avant le 15 mars "
+"et que vous nous instruisiez explicitement à faire autrement, \n"
 "nous vous affilierons en tant que Belge à la FIDE, afin que vous puissiez "
-"remporter le titre belge et participer aux CE et CM faisant partie de "
-"l’équipe belge. "
+"remporter le titre belge et participer aux CE et CM faisant partie de l’équipe "
+"belge. "
 
-#: subscription/templates/subscription/subscriptionpage.html:374
-#: subscription/templates/subscription/subscriptionpage.html:400
+#: subscription/templates/subscription/subscriptionpageold.html:374
+#: subscription/templates/subscription/subscriptionpageold.html:400
 msgid "I agree"
 msgstr "Je suis d’accord"
 
-#: subscription/templates/subscription/subscriptionpage.html:378
+#: subscription/templates/subscription/subscriptionpageold.html:378
 msgid "Privacy rules"
 msgstr "Confidentialité des données"
 
-#: subscription/templates/subscription/subscriptionpage.html:380
+#: subscription/templates/subscription/subscriptionpageold.html:380
 msgid ""
 "\n"
-"          You give Bycco to right to use the personal data collected in "
-"this\n"
+"          You give Bycco to right to use the personal data collected in this\n"
 "          subscription form.  <br>\n"
 "          Bycco will only use this data in order to organize\n"
 "          this championships.\n"
 "          <ul>\n"
 "           <li>Bycco will use the profile picture for a badge and for\n"
 "             identification on the website.</li>\n"
-"           <li>Bycco will use all personal data like telephone numbers and "
-"email\n"
+"           <li>Bycco will use all personal data like telephone numbers and email\n"
 "             addresses for internal purposes only.</li>\n"
-"           <li>Bycoo is taking overview photos/videos of the championships "
-"and\n"
-"             can publish these photos/videos on its website and on social "
-"media</li>\n"
+"           <li>Bycoo is taking overview photos/videos of the championships and\n"
+"             can publish these photos/videos on its website and on social media</"
+"li>\n"
 "           <li>If Bycco is taking a closeup photos/video of a player,\n"
 "             Bycco will explicitely ask permission to publish.</li>\n"
 "            <li>In any case Bycco will not leak any personal information to "
@@ -769,36 +745,33 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"         Vous donnez à Bycco le droit d’utiliser les données collectionnées "
-"par ce formulaire d’inscription. <br>\n"
-"          Bycco n’utilisera ces données que pour l’organisation du "
-"championnat.\n"
+"         Vous donnez à Bycco le droit d’utiliser les données collectionnées par "
+"ce formulaire d’inscription. <br>\n"
+"          Bycco n’utilisera ces données que pour l’organisation du championnat.\n"
 "          <ul>\n"
 "           <li>Bycco utllise votre photo de profil pour le badge et pour "
 "l’identification sur le site web</li>\n"
-"           <li>Bycco utilise les données privées (numéro GSM, adresse e-"
-"mail, …) à des fins internes </li>\n"
-"           <li>Bycoo prend des photos / vidéos d’ensemble lors des "
-"championnats et peut publier \n"
-"             ces photos / vidéos sur le site web et sur les médias sociaux</"
-"li>\n"
+"           <li>Bycco utilise les données privées (numéro GSM, adresse e-mail, …) "
+"à des fins internes </li>\n"
+"           <li>Bycoo prend des photos / vidéos d’ensemble lors des championnats "
+"et peut publier \n"
+"             ces photos / vidéos sur le site web et sur les médias sociaux</li>\n"
 "           <li>Si Bycco prend un photo / vidéo de près d’un joueur,\n"
 "              Bycco demandera explicitement l’autorisation de publier.</li>\n"
-"            <li>En tout cas, Bycco ne divulguera aucune information "
-"personnelle à des tiers.</li>\n"
+"            <li>En tout cas, Bycco ne divulguera aucune information personnelle à "
+"des tiers.</li>\n"
 "          </ul>\n"
 "        "
 
-#: subscription/templates/subscription/subscriptionpage.html:411
-#: subscription/templates/subscription/subscriptionpage.html:486
+#: subscription/templates/subscription/subscriptionpageold.html:411
+#: subscription/templates/subscription/subscriptionpageold.html:486
 msgid "Confirm"
 msgstr "Confirmer"
 
-#: subscription/templates/subscription/subscriptionpage.html:472
+#: subscription/templates/subscription/subscriptionpageold.html:472
 msgid ""
 "\n"
-"          The subscription fee is 35 Euro if you pay before the 11th of "
-"March\n"
+"          The subscription fee is 35 Euro if you pay before the 11th of March\n"
 "          2018.  After that date you wil have to pay 45 Euro.\n"
 "        "
 msgstr ""
@@ -807,7 +780,7 @@ msgstr ""
 "montant est de 45 Euro.\n"
 " "
 
-#: subscription/templates/subscription/subscriptionpage.html:478
+#: subscription/templates/subscription/subscriptionpageold.html:478
 msgid ""
 "\n"
 "          Pay the amount on account BE33 0017 5924 5146 with the structered "
@@ -818,7 +791,7 @@ msgstr ""
 "Veuillez payer le montant au compte BE33 0017 5924 5146 avec le message "
 "structuré: "
 
-#: subscription/templates/subscription/subscriptionpage.html:490
+#: subscription/templates/subscription/subscriptionpageold.html:490
 msgid ""
 "\n"
 "      Your subscription is confirmed\n"
@@ -827,7 +800,7 @@ msgstr ""
 "\n"
 "Votre inscription est confirmée. "
 
-#: subscription/templates/subscription/subscriptionpage.html:496
+#: subscription/templates/subscription/subscriptionpageold.html:496
 msgid "New subscription"
 msgstr "Nouvelle inscription"
 
@@ -864,13 +837,12 @@ msgstr "Résultats du tournoi"
 #~ "2017.  After that date you wil have to pay 45 Euro.\n"
 #~ msgstr ""
 #~ "\n"
-#~ "Le droit d’inscription est de 35 Euro jusqu’au premier Mars.  Après cette "
-#~ "date le montant est de 45 Euro. \n"
+#~ "Le droit d’inscription est de 35 Euro jusqu’au premier Mars.  Après cette date "
+#~ "le montant est de 45 Euro. \n"
 
 #~ msgid ""
 #~ "\n"
-#~ "Pay the amount on account BE33 0017 5924 5146 with the structered "
-#~ "message:\n"
+#~ "Pay the amount on account BE33 0017 5924 5146 with the structered message:\n"
 #~ msgstr ""
 #~ "\n"
 #~ "Veuillez payer le montant au compte BE33 0017 5924 5146 avec le message "

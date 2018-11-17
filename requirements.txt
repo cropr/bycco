@@ -19,8 +19,9 @@ djangocms-video
 djangocms-snippet
 djangocms-googlemap
 djangorestframework
-html5lib>=0.999999,<0.99999999
 gunicorn
+html5lib>=0.999999,<0.99999999
+iso8601
 Pillow
 psycopg2.binary
 pytz

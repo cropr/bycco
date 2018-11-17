@@ -91,7 +91,7 @@ def subscription_resend(request, idsub):
     if request.method == 'POST':
         subscription.confirmed = True
         sendconfirmationmail(subscription)
-        return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_204_NO_CONTENT, content_type='application/json')
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def subscription_detail(request, pk):
@@ -185,11 +185,11 @@ def subscription_all(request):
                 cs.save()
             except Exception as e:
                 log.exception('Saving to db')
-            nr = 201800000 + cs.pk
+            nr = 2019010000 + cs.pk
             rm1 = cs.pk // 1000
             rm2 = cs.pk % 1000
             rm3 = nr % 97 or 97
-            cs.paymessage = "+++020/180{0:01d}/{1:03d}{2:02d}+++".format(
+            cs.paymessage = "+++201/901{0:01d}/{1:03d}{2:02d}+++".format(
                 rm1, rm2, rm3)
             cs.save()
             return Response({'id': cs.id, 'paymessage': cs.paymessage},
@@ -199,8 +199,6 @@ def subscription_all(request):
 @api_view(['GET', 'POST'])
 @renderer_classes((ImageRenderer, JSONRenderer))
 def subscription_photo(request, idsub):
-
-    pass
 
     try:
         subscription = Subscription.objects.get(pk=idsub)
@@ -223,6 +221,8 @@ def subscription_photo(request, idsub):
                 return Response(status=status.HTTP_201_CREATED)
             except Exception as e:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 # chess player
 
@@ -272,7 +272,7 @@ def attendee_all(request):
         count = to_int(param.get('count'), 40)
         ss = param.get('ss')
         query = Subscription.objects.all()
-        cat = param.get('cat')
+        cat = param.get('categories')
         if cat:
             if ',' in cat:
                 cats = cat.split(',')
@@ -286,7 +286,7 @@ def attendee_all(request):
         query = query.order_by('last_name')[start:start+count]
         result = {
             'ss': ss,
-            'cat': cat,
+            'categories': cat,
             'start': start,
             'count': count,
             'n_attendees': n_attendees,
@@ -663,7 +663,7 @@ def tournament_pdfgames(request, id_trn):
         pdfcat = 'Min{0}'.format(cat[2:])
     else:
         pdfcat = 'Min{0}{1}'.format(cat[1:], cat[0])
-    log.debug('PDF cat %s', pdfcat)
+    log.debug('PDF categories %s', pdfcat)
     try:
         pdffiles = File.objects.filter(original_filename__contains=pdfcat)
         ro = []
@@ -691,7 +691,7 @@ def tournament_pgngames(request, id_trn):
         pgncat = 'bg{0}'.format(cat[2:])
     else:
         pgncat = '{0}{1}'.format(cat[0].lower(), cat[1:])
-    log.debug('PGN cat %s', pgncat)
+    log.debug('PGN categories %s', pgncat)
     try:
         pgnfiles = File.objects.filter(original_filename__contains=pgncat)
         ro = []

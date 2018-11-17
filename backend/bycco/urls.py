@@ -12,22 +12,21 @@ from django.views.static import serve
 
 from .views import test_base, test_cms, test_vue, test_vuecms
 
-# import subscription.apiurls
-# import subscription.urls
+import subscription.apiurls
+import subscription.urls
 
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}}),
-    # url(r'^api/', include(subscription.apiurls)),
+    url(r'^api/', include(subscription.apiurls)),
     # url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
 ]
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
-
-#     url(r'^subscribe', include(subscription.urls)),
-#     url(r'^subscribe/', include(subscription.urls)),
+    url(r'^subscribe', include(subscription.urls)),
+    url(r'^subscribe/', include(subscription.urls)),
 
 
     # to avoid redirecting 404s in /api/* to /{locale}/api/*

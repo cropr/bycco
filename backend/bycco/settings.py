@@ -8,6 +8,8 @@ APPEND_SLASH = False
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+CHESSAPI_URL = 'https://chessapi.bycco.be/'
+
 CKEDITOR_SETTINGS = {
     'stylesSet': [
         {'name': 'carousel caption', 'element': 'div', 'attributes': {
@@ -118,7 +120,7 @@ INSTALLED_APPS = (
     'reversion',
 
     # my apps
-    # 'subscription',
+    'subscription',
     'webpack_loader',
     'rd_django',
     'bycco'

@@ -65,7 +65,7 @@ angular.module('mg_attendee', [
           $timeout(function() {
             $scope.players = data.attendees;
             $scope.att.ss = data.ss || "";
-            $scope.att.cat = data.cat || "";
+            $scope.att.categories = data.cat || "";
             updatePager(data.start, data.count, data.n_attendees)
           });
         },
@@ -258,7 +258,7 @@ angular.module('mg_attendee', [
         function(data){
           alert('Confirmation for attendee ' + data.idbel + ' resent');
           $scope.att.status = 'editsaved';
-          $log.info('cat', $scope.att.cat);
+          $log.info('categories', $scope.att.cat);
           attendee_service.getAttendees();
         },
         function(ro) {
@@ -283,7 +283,7 @@ angular.module('mg_attendee', [
         function(data){
           alert('Attendee ' + data.idbel + ' updated');
           $scope.att.status = 'editsaved';
-          $log.info('cat', $scope.att.cat);
+          $log.info('categories', $scope.att.cat);
           attendee_service.getAttendees();
         },
         function(ro) {

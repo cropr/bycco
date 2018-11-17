@@ -101,7 +101,7 @@ angular.module('subscription', [
         rm = rm || invalidField(this.fullnameparent);
         rm = rm || invalidField(this.emailparent);
         rm = rm || invalidField(this.mobileparent);
-        if (!$scope.parentispresent) {
+        if (!$scope.isParentPresent) {
           rm = rm || invalidField(this.fullnameattendant);
           rm = rm || invalidField(this.mobileattendant);
         }

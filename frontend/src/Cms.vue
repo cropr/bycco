@@ -18,7 +18,6 @@
 
 import { loadLanguageAsync } from './util/lang'
 
-
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
 import ByccoFooter from './components/ByccoFooter'
