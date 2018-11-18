@@ -1,24 +1,24 @@
 <template>
 <div>
-  <h2 v-t="'ID number'"></h2>
-  <div v-t="'SubId1'"></div>
+  <h2>{{$t('ID number')}}</h2>
+  <div>{{$t('SubId1')}}</div>
   <v-text-field :label="$t('ID number')" required v-model="flow.idnumber"></v-text-field>
-  <v-btn @click="lookup()" v-t="'Lookup ID number'" color="primary"></v-btn>
+  <v-btn @click="lookup()" color="primary">{{$t('Lookup ID number')}}</v-btn>
   <v-alert type="error" class="mt-2" v-show="errorcode">
     <div v-show="errorcode == 'notfound'">
-      <div v-t="'SubId2'"></div>
-      <div v-t="'SubId3'"></div>
+      <div>{{$t('SubId2')}}</div>
+      <div>{{$t('SubId3')}}</div>
     </div>
-    <div v-show="flow.errorcode == 'playeradult'" v-t="'SubId4'"></div>
-    <div v-show="flow.errorcode == 'alreadyregistered'" v-t="'SubId5'"></div>
-    <div v-show="flow.errorcode == 'unknown'" v-t="'UnknownError'"></div>
+    <div v-show="flow.errorcode == 'playeradult'">{{$t('SubId4')}}</div>
+    <div v-show="flow.errorcode == 'alreadyregistered'">{{$t('SubId5')}}</div>
+    <div v-show="flow.errorcode == 'unknown'">{{$t('UnknownError')}}</div>
   </v-alert>
   <div class="mt-4">
     <div v-show="flow.isPlayerFound">{{$t('Player found:')}} {{subscription.first_name}} {{subscription.last_name}}</div>
     <div class="mt-2">
-      <v-btn v-show="flow.isPlayerFound" v-t="'Continue'" @click="next" color="primary"></v-btn>
-      <v-btn v-show="flow.isPlayerFound" v-t="'Other player'" @click="restart"></v-btn>
-      <v-btn v-t="'Back'" @click="prev"></v-btn>
+      <v-btn v-show="flow.isPlayerFound" @click="next" color="primary">{{$t('Continue')}}</v-btn>
+      <v-btn v-show="flow.isPlayerFound" @click="restart">{{$t('Other player')}}</v-btn>
+      <v-btn @click="prev">{{$t('Back')}}</v-btn>
     </div>
   </div>
 </div>

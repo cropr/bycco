@@ -1,66 +1,66 @@
 <template>
 <div>
-  <h2 v-t="'Confirmation details'"></h2>
+  <h2>{{$t('Confirmation details')}}</h2>
   <v-layout row>
     <v-flex xs12 sm6 lg4 class="confirmationphoto">
       <img :src="photo">
     </v-flex>
     <v-flex xs12 sm6 lg4>
       <div class="mt-2">
-        <span v-t="'Full name'"></span>:
+        <span>{{$t('Full name')}}</span>:
         {{ subscription.first_name }} {{subscription.last_name}}
       </div>
       <div class="mt-2">
-          <span v-t="'Birthdate'"></span>:
+          <span>{{$t('Birthdate')}}</span>:
           {{ birthdate }}
       </div>
       <div class="mt-2">
-          <span v-t="'ID Club'"></span>:
+          <span>{{$t('ID Club')}}</span>:
           {{ subscription.id_club }}
       </div>
       <div class="mt-2">
-          <span v-t="'Nationality'"></span>:
+          <span>{{$t('Nationality')}}</span>:
           {{ subscription.nationalitybel }}
       </div>
       <div class="mt-2">
-          <span v-t="'FIDE Nationality'"></span>:
+          <span>{{$t('FIDE Nationality')}}</span>:
           {{ subscription.nationalityfide }}
       </div>
       <div class="mt-2">
-        <span v-t="'Can become Belgian champion'"></span>:
-        <span v-if="subscription.natstatus == 'fidebelg'" v-t="'Yes'"></span>
-        <span v-if="subscription.natstatus == 'nobelg'" v-t="'No'"></span>
-        <span v-if="subscription.natstatus == 'maybe'" v-t="'To be confirmed'"></span>
+        <span>{{$t('Can become Belgian champion')}}</span>:
+        <span v-if="subscription.natstatus == 'fidebelg'">{{$t('Yes')}}</span>
+        <span v-if="subscription.natstatus == 'nobelg'">{{$t('No')}}</span>
+        <span v-if="subscription.natstatus == 'maybe'">{{$t('To be confirmed')}}</span>
       </div>
     </v-flex>
     <v-flex xs12 sm6 lg4>
       <div class="mt-2">
-          <span v-t="'National rating'"></span>:
+          <span>{{$t('National rating')}}</span>:
           {{ subscription.currentratingbel }}
       </div>
       <div class="mt-2">
-          <span v-t="'FIDE rating'"></span>:
+          <span>{{$t('FIDE rating')}}</span>:
           {{ subscription.currentratingfide }}
       </div>
       <div class="mt-2">
-          <span v-t="'Gender'"></span>:
+          <span>{{$t('Gender')}}</span>:
           {{ subscription.gender }}
       </div>
       <div class="mt-2">
-          <span v-t="'Category'"></span>:
+          <span>{{$t('Category')}}</span>:
           -{{ subscription.category }}
       </div>
     </v-flex>
   </v-layout>
-  <h3 v-t="'Payment'"></h3>
-  <div v-t="'SubConf1'"></div>
-  <div><span v-t="'SubConf2'"></span> {{ subscription.paymessage }}</div>
+  <h3>{{$t('Payment')}}</h3>
+  <div>{{$t('SubConf1')}}</div>
+  <div><span>{{$t('SubConf2')}}</span> {{ subscription.paymessage }}</div>
   <div>
-    <v-btn v-t="'Confirm'" @click="confirm" color="primary"></v-btn>
+    <v-btn @click="confirm" color="primary">{{$t('Confirm')}}</v-btn>
   </div>
   <div v-show="flow.isConfirmed">
-    <div v-t="'Your subscription is confirmed'"></div>
-    <v-btn v-t="'New subscription'" @click="restart"></v-btn>
+    <div>{{$t('Your subscription is confirmed')}}</div>
+    <v-btn @click="restart">{{$t('New subscription')}}</v-btn>
   </div>
 </div>
 </template>

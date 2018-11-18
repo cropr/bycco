@@ -1,7 +1,7 @@
 <template>
 <div>
-  <h2 v-t="'Photo'"></h2>
-  <h4 class="mt-2" v-t="'Select photo'"></h4>
+  <h2>{{$t('Photo')}}</h2>
+  <h4 class="mt-2">{{$t('Select photo')}}</h4>
   <div>{{$t('SubPhoto1')}}</div>
   <div class="my-1">
     <file-pond ref="pond" accepted-file-types="image/jpeg, image/png"
@@ -13,13 +13,13 @@
                  preview="#photoresult" :img-style="{height: '400px'}">
     </vue-cropper>
   </div>
-  <h4 v-t="'Resulting photo'" class="mt-2"></h4>
-  <div v-t="'SubPhoto3'"></div>
+  <h4 class="mt-2">{{$t('Resulting photo')}}</h4>
+  <div>{{$t('SubPhoto3')}}</div>
   <div id="photoresult" class="photoresult"></div>
   <div class="mt-2">
-    <v-btn @click="doCrop" color="primary" v-t="'Continue'">
+    <v-btn @click="doCrop" color="primary">{{$t('Continue')}}
     </v-btn>
-    <v-btn @click="prev" v-t="'Back'">
+    <v-btn @click="prev">{{$t('Back')}}
     </v-btn>
   </div>
 

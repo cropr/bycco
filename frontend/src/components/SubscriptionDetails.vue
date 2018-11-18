@@ -1,41 +1,41 @@
 <template>
 <div>
-  <h2 v-t="'Details player'"></h2>
+  <h2>{{$t('Details player')}}</h2>
 
   <v-layout row wrap>
     <v-flex xs12 sm6 >
       <div class="mt-2">
-        <span v-t="'Full name'"></span>:
+        <span>{{$t('Full name')}}</span>:
         {{ subscription.first_name }} {{subscription.last_name}}
       </div>
       <div class="mt-2">
-        <span v-t="'Birthdate'"></span>:
+        <span>{{$t('Birthdate')}}</span>:
         {{ birthdate }}
       </div>
       <div class="mt-2">
-        <span v-t="'ID Club'"></span>:
+        <span>{{$t('ID Club')}}</span>:
         {{ subscription.idclub }}
       </div>
       <div class="mt-2">
-        <span v-t="'Nationality'"></span>:
+        <span>{{$t('Nationality')}}</span>:
         {{ subscription.nationalitybel }}
       </div>
       <div class="mt-2">
-        <span v-t="'FIDE Nationality'"></span>:
+        <span>{{$t('FIDE Nationality')}}</span>:
         {{ subscription.nationalityfide }}
       </div>
     </v-flex>
     <v-flex xs12 sm6>
       <div class="mt-2">
-        <span v-t="'National rating'"></span>:
+        <span>{{$t('National rating')}}</span>:
         {{ subscription.currentratingbel }}
       </div>
       <div class="mt-2">
-        <span v-t="'FIDE rating'"></span>:
+        <span>{{$t('FIDE rating')}}</span>:
         {{ subscription.currentratingfide }}
       </div>
       <div class="mt-2">
-        <span v-t="'Gender'"></span>:
+        <span>{{$t('Gender')}}</span>:
         {{ subscription.gender }}
       </div>
 
@@ -48,7 +48,7 @@
 
   <div v-show="adult" class="mt-3">
 
-      <h3 class="mt-3" v-t="'Required information'"></h3>
+      <h3 class="mt-3">{{$t('Required information')}}</h3>
       <div > {{ p1() }}</div>
 
       <v-layout row wrap>
@@ -60,10 +60,10 @@
         </v-flex>
       </v-layout>
 
-      <h3 class="mt-3" v-t="'Optional information'"></h3>
+      <h3 class="mt-3">{{$t('Optional information')}}</h3>
       <v-layout row wrap>
         <v-flex xs12 sm6>
-          <div v-t="'SubDetail2'"></div>
+          <div>{{$t('SubDetail2')}}</div>
           <v-text-field :label="$t('Full name respresentative')" v-model="flow.fullnameattendant">
           </v-text-field>
           <v-text-field :label="$t('GSM number representative')" v-model="flow.mobileattendant">
@@ -74,12 +74,12 @@
 
   <div v-show="!adult">
 
-    <h3 class="mt-3" v-t="'Required information'"></h3>
+    <h3 class="mt-3">{{$t('Required information')}}</h3>
     <div > {{ p3() }}</div>
 
     <v-layout row wrap>
       <v-flex xs12 sm6>
-        <h4 v-t="'Info about parent'"></h4>
+        <h4>{{$t('Info about parent')}}</h4>
         <v-text-field :label="$t('Full name')" v-model="flow.fullnameparent" required>
         </v-text-field>
         <v-text-field :label="$t('Email address')" v-model="flow.emailparent" required>
@@ -88,11 +88,11 @@
         </v-text-field>
       </v-flex>
       <v-flex xs12 sm6>
-        <h4 v-t="'Info about presence on site'"></h4>
+        <h4>{{$t('Info about presence on site')}}</h4>
         <v-checkbox :label="$t('A parent is present at site')"  v-model="flow.isParentPresent">
         </v-checkbox>
         <div v-show="!flow.isParentPresent">
-          <h4 v-t="'Info about adult representative at site'"></h4>
+          <h4>{{$t('Info about adult representative at site')}}</h4>
           <v-text-field :label="$t('Full name')" v-model="flow.fullnameattendant" required>
           </v-text-field>
           <v-text-field :label="$t('GSM number')" v-model="flow.mobileattendant" required>
@@ -104,7 +104,7 @@
     <h4 class="mt-3" v-t="'Optional information'"></h4>
     <v-layout row wrap>
       <v-flex xs12 sm6>
-        <div v-t="'SubDetail4'"></div>
+        <div>{{$t('SubDetail4')}}</div>
         <v-text-field :label="$t('Email address player')" v-model="flow.emailplayer" required>
         </v-text-field>
         <v-text-field :label="$t('GSM number player')" v-model="flow.mobileplayer" required>
@@ -115,13 +115,13 @@
   </div>
 
   <v-alert type="error" class="mt-2" dismissible :value="errorcode">
-    <div v-show="errorcode == 'invalidfield'" v-t="'SubDetail5'"></div>
-    <div v-show="errorcode == 'firewall'" v-t="'SubDetail6'"></div>
-    <div v-show="errorcode == 'unknown'" v-t="'UnknownError'"></div>
+    <div v-show="errorcode == 'invalidfield'">{{$t('SubDetail5')}}</div>
+    <div v-show="errorcode == 'firewall'">{{$t('SubDetail6')}}</div>
+    <div v-show="errorcode == 'unknown'">{{$t('UnknownError')}}</div>
   </v-alert>
 
   <div class="mt-2">
-    <v-btn @click="createSubscription()" color="primary" v-t="'Continue'">
+    <v-btn @click="createSubscription()" color="primary">{{$t('Continue')}}
     </v-btn>
     <v-btn @click="prev" v-t="'Back'">
     </v-btn>
