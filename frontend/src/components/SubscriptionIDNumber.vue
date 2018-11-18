@@ -9,9 +9,9 @@
       <div>{{$t('SubId2')}}</div>
       <div>{{$t('SubId3')}}</div>
     </div>
-    <div v-show="flow.errorcode == 'playeradult'">{{$t('SubId4')}}</div>
-    <div v-show="flow.errorcode == 'alreadyregistered'">{{$t('SubId5')}}</div>
-    <div v-show="flow.errorcode == 'unknown'">{{$t('UnknownError')}}</div>
+    <div v-show="errorcode == 'playeradult'">{{$t('SubId4')}}</div>
+    <div v-show="errorcode == 'alreadyregistered'">{{$t('SubId5')}}</div>
+    <div v-show="errorcode == 'unknown'">{{$t('UnknownError')}}</div>
   </v-alert>
   <div class="mt-4">
     <div v-show="flow.isPlayerFound">{{$t('Player found:')}} {{subscription.first_name}} {{subscription.last_name}}</div>

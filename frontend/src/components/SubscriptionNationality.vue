@@ -17,7 +17,7 @@
   </ul>
   <v-checkbox :label="$t('I agree')" v-model="hasAgreedPriv"></v-checkbox>
   <div>
-    <v-btn @click="next" v-show="agreed" color="primary"><{{$t('Continue')}}/v-btn>
+    <v-btn @click="next" v-show="agreed" color="primary">{{$t('Continue')}}</v-btn>
     <v-btn @click="prev">{{$t('Back')}}</v-btn>
   </div>
 

@@ -45,6 +45,7 @@
             {{ $t('Confirmation')}}
           </v-stepper-step>
           <v-stepper-content step="6">
+
             <subscription-confirmation></subscription-confirmation>
           </v-stepper-content>
 
