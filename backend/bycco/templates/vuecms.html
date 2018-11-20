@@ -67,14 +67,15 @@ application.Vue.config.ignoredElements = [
 
 window.config = {
   api_url: '/api',
-  lang: '{{ LANGUAGE_CODE }}'
-};
-
-window.config.urli18 = {
-  nl: "{% page_language_url 'nl' %}",
-  fr: "{% page_language_url 'fr' %}",
-  de: "{% page_language_url 'de' %}",
-  en: "{% page_language_url 'en' %}",
+  lang: '{{ LANGUAGE_CODE }}',
+  subscriptions_enabled: {{ SUBSCRIPTIONS_ENABLED }},
+  tournament_enabled: {{ TOURNAMENT_ENABLED }},
+  urli18: {
+    nl: "{% page_language_url 'nl' %}",
+    fr: "{% page_language_url 'fr' %}",
+    de: "{% page_language_url 'de' %}",
+    en: "{% page_language_url 'en' %}",
+  }
 };
 
 vm = new application.Vue({

@@ -101,7 +101,7 @@
       </v-flex>
     </v-layout>
 
-    <h4 class="mt-3" v-t="'Optional information'"></h4>
+    <h4 class="mt-3">{{$t('Optional information')}}</h4>
     <v-layout row wrap>
       <v-flex xs12 sm6>
         <div>{{$t('SubDetail4')}}</div>

@@ -188,24 +188,7 @@ MIGRATION_MODULES = {
 
 }
 
-# PARLER_LANGUAGES = {
-#     1: (
-#         {'code': 'nl',},
-#         {'code': 'en',},
-#         {'code': 'fr', },
-#         {'code': 'de', },
-#     ),
-#     'default': {
-#         'fallbacks': ['nl', 'fr', 'de'],
-#     }
-# }
-
 PRODUCTION = True
-
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [],
-#     'DEFAULT_PERMISSION_CLASSES': [],
-# }
 
 ROOT_URLCONF = 'bycco.urls'
 
@@ -215,6 +198,8 @@ SITE_ID = 1
 
 STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
+
+SUBSCRIPTIONS_ENABLED = 1
 
 TEMPLATES = [
     {
@@ -244,7 +229,7 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATE_SETTINGS = ['PRODUCTION']
+TEMPLATE_SETTINGS = ['PRODUCTION', 'SUBSCRIPTIONS_ENABLED', 'TOURNAMENT_ENABLED']
 
 TIME_ZONE = 'Europe/Brussels'
 
@@ -254,6 +239,8 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+
+TOURNAMENT_ENABLED = 0
 
 USE_I18N = True
 

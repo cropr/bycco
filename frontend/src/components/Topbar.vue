@@ -11,7 +11,11 @@
     </v-btn>
     <v-btn flat large href="/info/lodging-and-meals">{{ $t('Lodging')}}
     </v-btn>
-    <v-btn flat large href="/bycco/subscriptions"> {{ $t('Tournament')}}
+    <v-btn flat large href="/subscribe" v-if="subscriptions_enabled">
+      {{ $t('Register')}}
+    </v-btn>
+    <v-btn flat large href="/bycco/subscriptions" v-if="tournament_enabled">
+      {{ $t('Tournament')}}
     </v-btn>
   </v-toolbar-items>
 </v-toolbar>
@@ -24,6 +28,8 @@ export default {
 
   data () {return {
     fixtoolbar: false,
+    subscriptions_enabled: window.config.subscriptions_enabled,
+    tournament_enabled: window.config.tournament_enabled,
   }},
 
   mounted() {
