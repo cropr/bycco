@@ -1,5 +1,5 @@
 <template>
-<v-carousel hide-controls hide-delimiters :value="current"
+<v-carousel hide-controls hide-delimiters :value="current" height="170"
             class="adcarousel mb-2" :interval="interval*1000">
   <v-carousel-item v-for="item in items" :key="item.name" :src="item.src">
   </v-carousel-item>
@@ -30,5 +30,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.adcarousel.v-carousel {
+  width: 360px;
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

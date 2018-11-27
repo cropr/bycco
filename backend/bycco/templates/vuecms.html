@@ -5,13 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>BJK 2019</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% render_block "css" %}
 {% if PRODUCTION %}
   {% render_bundle 'cms' 'css' %}
 {% endif %}
 </head>
 <body>
+<script>
+if (!Promise) {
+  location.href = '/notsupported';
+}
+</script>
 {% cms_toolbar %}
 
 <div id="app"></div>
@@ -66,6 +72,7 @@ application.Vue.config.ignoredElements = [
 ];
 
 window.config = {
+  {% block extra_config %}{% endblock extra_config %}
   api_url: '/api',
   lang: '{{ LANGUAGE_CODE }}',
   subscriptions_enabled: {{ SUBSCRIPTIONS_ENABLED }},
@@ -87,10 +94,7 @@ vm = new application.Vue({
   },
 }).$mount('#app');
 
-
 </script>
-
-
 
 </body>
 </html>

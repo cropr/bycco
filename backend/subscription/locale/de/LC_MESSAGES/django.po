@@ -196,8 +196,8 @@ msgid "notassigned"
 msgstr ""
 
 #: subscription/templates/subscription/mailhtml.html:12
-msgid "Belgian Youth Chess Championships 2018"
-msgstr "Belgische Schach-Jugend-Landesmeisterschaft 2018"
+msgid "Belgian Youth Chess Championships 2019"
+msgstr "Belgische Schach-Jugend-Landesmeisterschaft 2019"
 
 #: subscription/templates/subscription/mailhtml.html:14
 #: subscription/templates/subscription/subscriptionpageold.html:414
@@ -793,7 +793,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"Die Einschreibungsgebühr beträgt 35 Euro, wenn Sie vor dem 11. März zahlen . "
+"Die Einschreibungsgebühr beträgt 35 Euro, wenn Sie vor dem 15. März zahlen . "
 "Danach erhöht sich diese auf 45 Euro. \n"
 "  "
 

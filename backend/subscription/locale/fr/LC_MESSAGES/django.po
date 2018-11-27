@@ -196,8 +196,8 @@ msgid "notassigned"
 msgstr ""
 
 #: subscription/templates/subscription/mailhtml.html:12
-msgid "Belgian Youth Chess Championships 2018"
-msgstr "Championnats de Belgique d’échecs de la jeunesse 2018"
+msgid "Belgian Youth Chess Championships 2019"
+msgstr "Championnats de Belgique d’échecs de la jeunesse 2019"
 
 #: subscription/templates/subscription/mailhtml.html:14
 #: subscription/templates/subscription/subscriptionpageold.html:414
@@ -828,22 +828,4 @@ msgstr "Classement"
 msgid "Tournament Results"
 msgstr "Résultats du tournoi"
 
-#~ msgid "Belgian Youth Chess Championships 2017"
-#~ msgstr "Championnats de Belgique d’échecs de la jeunesse 2018"
 
-#~ msgid ""
-#~ "\n"
-#~ "The subscription fee is 35 Euro is you pay before the 1st of March\n"
-#~ "2017.  After that date you wil have to pay 45 Euro.\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Le droit d’inscription est de 35 Euro jusqu’au premier Mars.  Après cette date "
-#~ "le montant est de 45 Euro. \n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Pay the amount on account BE33 0017 5924 5146 with the structered message:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Veuillez payer le montant au compte BE33 0017 5924 5146 avec le message "
-#~ "structuré: \n"

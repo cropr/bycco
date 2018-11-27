@@ -1,14 +1,5 @@
-{% extends "cms.html" %}
-{% load cms_tags i18n %}
+{% extends "vuecms.html" %}
 
-{% block banner %}
-<div class="landing-box">
-  <div class="landing-title">
-    {% trans "Belgian Youth Chess Championships 2018" %}
-  </div>
-</div>
-{% endblock banner %}
-
-{% block toolbar_classes %}navlanding{% endblock toolbar_classes%}
-
-{% block content_classes %}contentlanding{% endblock content_classes %}
+{% block extra_config %}
+  landing: true,
+{% endblock extra_config %}

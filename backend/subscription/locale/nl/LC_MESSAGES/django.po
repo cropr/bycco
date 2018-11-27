@@ -200,8 +200,8 @@ msgid "notassigned"
 msgstr ""
 
 #: subscription/templates/subscription/mailhtml.html:12
-msgid "Belgian Youth Chess Championships 2018"
-msgstr "Belgisch Jeugdkampioenschap Schalen 2018"
+msgid "Belgian Youth Chess Championships 2019"
+msgstr "Belgisch Jeugdkampioenschap Schaken 2019"
 
 #: subscription/templates/subscription/mailhtml.html:14
 #: subscription/templates/subscription/subscriptionpageold.html:414

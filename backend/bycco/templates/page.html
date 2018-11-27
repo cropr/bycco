@@ -1,8 +1,18 @@
-{%  extends "cms.html" %}
-{% load cms_tags menu_tags staticfiles sekizai_tags i18n %}
-{% load render_bundle from webpack_loader %}
-
-{% block content %}
-<h1>Extending cms.html as page.html</h1>
+{% load cms_tags staticfiles %}
+<!doctype html>
+<html>
+<head>
+<title>{% block title %}Belgian Youth Championships{% endblock title %}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116219765-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-116219765-1');
+</script>
+</head>
+<body>
 {%  placeholder "content" %}
-{% endblock content%}
+</body>
+</html>

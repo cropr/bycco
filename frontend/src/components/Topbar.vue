@@ -1,6 +1,6 @@
 <template>
 <v-toolbar v-cloak fixed dark app
-           class="blue-grey darken-2" :class="{fixtoolbar: fixtoolbar}">
+           class="blue-grey darken-2" :class="{fixtoolbar: fixtoolbar, landing: landing}">
   <v-toolbar-side-icon @click.stop="openDrawer"></v-toolbar-side-icon>
   <v-toolbar-items>
     <v-btn flat large href="/">{{ $t('BYC 2019')}}</v-btn>
@@ -28,6 +28,7 @@ export default {
 
   data () {return {
     fixtoolbar: false,
+    landing: window.config.landing,
     subscriptions_enabled: window.config.subscriptions_enabled,
     tournament_enabled: window.config.tournament_enabled,
   }},
@@ -52,5 +53,10 @@ export default {
 <style scoped>
 .fixtoolbar {
   top: 50px;
+}
+
+.landing.blue-grey.darken-2 {
+  background-color: rgba(77, 94, 101, 0.4) !important;
+  /*background-color: green;*/
 }
 </style>
