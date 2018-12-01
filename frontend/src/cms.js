@@ -5,16 +5,16 @@ import VueCmsPatch from './vue-djangocms-patch';
 import './util/vuetify'
 import './style/bycco.styl'
 
-import Cms from './Cms.vue'
+import Cms from './pages/Cms.vue'
 
 Vue.config.productionTip = false;
 
 window.application = {
   Vue: Vue,
-  VueCmsPatch: VueCmsPatch,
   App: Cms,
   store: store,
   i18n: i18n,
+  VueCmsPatch: VueCmsPatch,
 };
 
 

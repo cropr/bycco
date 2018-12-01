@@ -3,7 +3,7 @@
     <sidebar />
     <topbar />
     <v-content><v-container fluid grid-list-lg>
-      <h1 class="my-2" v-t="'Subscription'"></h1>
+      <h1 class="my-2">{{$t('Subscription')}}</h1>
       <v-stepper v-model="flow.step" vertical>
 
           <v-stepper-step :complete="flow.step > 1" step="1">
@@ -57,18 +57,19 @@
 
 <script>
 
-import { loadLanguageAsync } from './util/lang'
+import { loadLanguageAsync } from '../util/lang'
 import { mapState } from 'vuex'
 
-import Sidebar from './components/Sidebar'
-import Topbar from './components/Topbar'
-import ByccoFooter from './components/ByccoFooter'
-import SubscriptionIntro from './components/SubscriptionIntro'
-import SubscriptionIdNumber from './components/SubscriptionIDNumber'
-import SubscriptionDetails from './components/SubscriptionDetails'
-import SubscriptionPhoto from './components/SubscriptionPhoto'
-import SubscriptionNationality from './components/SubscriptionNationality'
-import SubscriptionConfirmation from './components/SubscriptionConfirmation'
+import Sidebar from '../components/Sidebar'
+import Topbar from '../components/Topbar'
+import AdCarousel from '../components/AdCarousel'
+import ByccoFooter from '../components/ByccoFooter'
+import SubscriptionIntro from '../components/SubscriptionIntro'
+import SubscriptionIdNumber from '../components/SubscriptionIDNumber'
+import SubscriptionDetails from '../components/SubscriptionDetails'
+import SubscriptionPhoto from '../components/SubscriptionPhoto'
+import SubscriptionNationality from '../components/SubscriptionNationality'
+import SubscriptionConfirmation from '../components/SubscriptionConfirmation'
 
 // import AdCarousel from './components/AdCarousel'
 
@@ -84,7 +85,7 @@ export default {
     Sidebar,
     Topbar,
     ByccoFooter,
-    // 'ad-carousel': AdCarousel,
+    AdCarousel,
     SubscriptionIntro,
     SubscriptionIdNumber,
     SubscriptionDetails,

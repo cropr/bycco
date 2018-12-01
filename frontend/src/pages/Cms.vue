@@ -18,13 +18,13 @@
 
 <script>
 
-import { loadLanguageAsync } from './util/lang'
+import { loadLanguageAsync } from '../util/lang'
 
-import Sidebar from './components/Sidebar'
-import Topbar from './components/Topbar'
-import ByccoFooter from './components/ByccoFooter'
-import Banner from './components/Banner'
-import AdCarousel from './components/AdCarousel'
+import Sidebar from '../components/Sidebar'
+import Topbar from '../components/Topbar'
+import ByccoFooter from '../components/ByccoFooter'
+import Banner from '../components/Banner'
+import AdCarousel from '../components/AdCarousel'
 
 export default {
 

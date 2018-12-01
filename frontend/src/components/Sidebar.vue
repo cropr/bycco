@@ -19,10 +19,10 @@
       </div>
       <v-list dark dense class="blue-grey darken-1">
         <cms-menu-items></cms-menu-items>
-        <v-list-tile href="/subscribe"  v-if="subscriptions_enabled">
+        <v-list-tile href="/trn/subscription"  v-if="sections.subscription">
           <v-list-tile-content>{{$t('Register')}}</v-list-tile-content>
         </v-list-tile>
-        <v-list-tile href="/subscribe"  v-if="tournament_enabled">
+        <v-list-tile href="/trn/overview"  v-if="sections.tournament">
           <v-list-tile-content>{{$t('Tournament')}}</v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -95,8 +95,11 @@ export default {
 
   data () {return {
     fixtoolbar: false,
-    subscriptions_enabled: window.config.subscriptions_enabled,
-    tournament_enabled: window.config.tournament_enabled,
+    sections: {
+      participants: window.config.participants_enabled,
+      subscription: window.config.subscriptions_enabled,
+      tournament: window.config.tournament_enabled,
+    },
 
   }},
 

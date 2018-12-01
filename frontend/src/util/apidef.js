@@ -105,6 +105,10 @@ export default {
     path: ['id_trn', 'round'],
     required: ['id_trn', 'round'],
   },
+  getParticipants: {
+    method: 'GET',
+    url: '/participants',
+  },
   getStandings: {
     method: 'GET',
     url: '/tournament/{id_trn}/standings/{round}',

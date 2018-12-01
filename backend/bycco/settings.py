@@ -120,7 +120,7 @@ INSTALLED_APPS = (
     'reversion',
 
     # my apps
-    'subscription',
+    'tournament',
     'webpack_loader',
     'rd_django',
     'bycco'
@@ -188,6 +188,8 @@ MIGRATION_MODULES = {
 
 }
 
+PARTICIPANTS_ENABLED = 0
+
 PRODUCTION = True
 
 ROOT_URLCONF = 'bycco.urls'
@@ -229,7 +231,10 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATE_SETTINGS = ['PRODUCTION', 'SUBSCRIPTIONS_ENABLED', 'TOURNAMENT_ENABLED']
+TEMPLATE_SETTINGS = [
+    'PRODUCTION', 'PARTICIPANTS_ENABLED', 'SUBSCRIPTIONS_ENABLED',
+    'TOURNAMENT_ENABLED'
+]
 
 TIME_ZONE = 'Europe/Brussels'
 

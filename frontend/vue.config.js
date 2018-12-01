@@ -19,7 +19,7 @@ module.exports = {
   pages: {
     cms: 'src/cms.js',
     adm: 'src/adm.js',
-    subscribe: 'src/subscribe.js',
+    tournament: 'src/tournament.js',
   }
 }
   

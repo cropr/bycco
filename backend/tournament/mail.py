@@ -16,7 +16,6 @@ from django.conf import settings
 mailfrom = 'info@bycco.be'
 mailcc = 'confirmation@bycco.be'
 
-
 def sendconfirmationmail(s):
     """
     send confirmation email
@@ -46,7 +45,7 @@ def sendconfirmationmail(s):
     if s.emailparent:
         tolist.append(s.emailparent)
 
-    msghtml = get_template('subscription/mailhtml.html').render(
+    msghtml = get_template('tournament/mailhtml.html').render(
         context=context)
     msgtext = strip_tags(msghtml)
     image = MIMEImage(s.badgeimage, _subtype=s.badgemimetype, name='badge.png')

@@ -2,7 +2,7 @@
 # modifications by Chessdevil Consulting BVBA
 
 from django.conf.urls import url
-from subscription import apiviews
+from tournament import apiviews
 
 urlpatterns = [
     url(r'attendees$', apiviews.attendee_all),
@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'belplayer/(?P<idbel>[0-9]+)$', apiviews.belplayer),
     url(r'fideplayer/(?P<idfide>[0-9]+)$', apiviews.fideplayer),
     url(r'photo/(?P<id>[0-9]+)$', apiviews.attendee_photo),
+    url(r'participants$', apiviews.participants),
     url(r'subscriptions$', apiviews.subscription_all),
     url(r'subscriptions/(?P<idsub>[0-9]+)/photo$', apiviews.subscription_photo),
     url(r'subscriptions/(?P<idsub>[0-9]+)/confirm$',

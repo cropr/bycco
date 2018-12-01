@@ -57,8 +57,8 @@ class Migration(migrations.Migration):
                 ('points', models.DecimalField(decimal_places=2, max_digits=4)),
                 ('round', models.IntegerField()),
                 ('result', models.CharField(max_length=6)),
-                ('id_oppponent', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='player', to='subscription.CdPlayer')),
-                ('id_player', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='opponent', to='subscription.CdPlayer')),
+                ('id_oppponent', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='player', to='tournament.CdPlayer')),
+                ('id_player', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='opponent', to='tournament.CdPlayer')),
             ],
         ),
         migrations.CreateModel(
@@ -69,7 +69,7 @@ class Migration(migrations.Migration):
                 ('points', models.DecimalField(decimal_places=2, max_digits=4)),
                 ('ranknr', models.IntegerField()),
                 ('round', models.IntegerField()),
-                ('player', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='subscription.CdPlayer')),
+                ('player', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tournament.CdPlayer')),
             ],
         ),
         migrations.CreateModel(
@@ -136,35 +136,35 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CdSwarTournament',
             fields=[
-                ('tournament', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='subscription.CdTournament')),
+                ('tournament', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='tournament.CdTournament')),
                 ('swarname', models.CharField(default='', max_length=50)),
             ],
         ),
         migrations.CreateModel(
             name='CdTournamentPrizes',
             fields=[
-                ('tournament', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='subscription.CdTournament')),
+                ('tournament', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='tournament.CdTournament')),
                 ('jsonprizes', models.TextField(default='', max_length=50)),
             ],
         ),
         migrations.AddField(
             model_name='cdplayer',
             name='id_trn',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='subscription.CdTournament'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tournament.CdTournament'),
         ),
         migrations.AddField(
             model_name='cdpairing',
             name='id_black',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='black', to='subscription.CdPlayer'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='black', to='tournament.CdPlayer'),
         ),
         migrations.AddField(
             model_name='cdpairing',
             name='id_white',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='white', to='subscription.CdPlayer'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='white', to='tournament.CdPlayer'),
         ),
         migrations.AddField(
             model_name='cdswarjson',
             name='swartrn',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='subscription.CdSwarTournament'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tournament.CdSwarTournament'),
         ),
     ]

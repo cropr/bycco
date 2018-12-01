@@ -30,31 +30,28 @@ translations = {
 }
 
 def subscriptionpage(request):
-    return render(request, 'subscription/subscriptionpage.html')
+    return render(request, 'tournament/subscriptionpage.html')
+
+# def participantspage(request):
+#     return render(request, 'subscription/participants.html')
+#
+# def mg_attendee_page(request):
+#     return render(request, 'subscription/mg_attendee.html')
+#
+# def mg_attendee_vue_page(request):
+#     return render(request, 'subscription/mg_attendee_vue.html')
+#
+# def mg_presence_page(request):
+#     return render(request, 'subscription/mg_presence.html')
+#
+# def mg_swar_page(request):
+#     return render(request, 'subscription/mg_swar.html')
+#
+# def mg_trn_page(request):
+#     return render(request, 'subscription/mg_trn.html')
 
 def participantspage(request):
-    return render(request, 'subscription/participants.html')
-
-def mg_attendee_page(request):
-    return render(request, 'subscription/mg_attendee.html')
-
-def mg_attendee_vue_page(request):
-    return render(request, 'subscription/mg_attendee_vue.html')
-
-def mg_presence_page(request):
-    return render(request, 'subscription/mg_presence.html')
-
-def mg_swar_page(request):
-    return render(request, 'subscription/mg_swar.html')
-
-def mg_trn_page(request):
-    return render(request, 'subscription/mg_trn.html')
-
-def view_trn_page(request):
-    log.warning('pairings: %s ', translations)
-    return render(request, 'subscription/view_trn.html', {
-        'translations': translations,
-    })
+    return render(request, 'tournament/participantspage.html')
 
 def printbadges(request):
     """

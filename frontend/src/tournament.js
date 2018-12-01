@@ -6,7 +6,8 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 Vue.use(Vuetify);
 
-import Subscribe from './Subscribe.vue'
+import TrnSubscription from './pages/TrnSubscription'
+import TrnParticipants from './pages/TrnParticipants'
 import VueCmsPatch from "./vue-djangocms-patch";
 
 Vue.config.productionTip = false;
@@ -14,10 +15,18 @@ Vue.config.productionTip = false;
 window.application = {
   Vue: Vue,
   VueCmsPatch: VueCmsPatch,
-  App: Subscribe,
+  // App: Subscribe,
   store: store,
   i18n: i18n,
 };
 
+switch (window.config.appname) {
+  case 'TrnSubscription':
+    window.application.App = TrnSubscription;
+    break;
+  case 'TrnParticipants':
+    window.application.App = TrnParticipants;
+    break;
+}
 
 

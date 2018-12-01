@@ -12,6 +12,15 @@ class SubscriptionSerializer(serializers.Serializer):
     mobileattendant = serializers.CharField(allow_blank=True)
     mobileparent = serializers.CharField(allow_blank=True)
 
+class ParticipantSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Subscription
+
+        fields = [
+            'id', 'first_name', 'last_name', 'category', 'ratingbel',
+            'ratingfide', 'gender',
+        ]
 
 class TournamentSerializer(serializers.ModelSerializer):
     class Meta:

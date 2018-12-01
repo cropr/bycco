@@ -25,6 +25,7 @@ from .models import (
 )
 
 from .serializers import (
+    ParticipantSerializer,
     SubscriptionSerializer,
     SwarTournamentSerializer,
     SwarJsonSerializer,
@@ -127,12 +128,20 @@ def subscription_detail(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['POST', 'GET'])
+def participants(request):
+
+    if request.method == 'GET':
+        subscriptions = Subscription.objects.all()
+        ss = ParticipantSerializer(subscriptions, many=True)
+        return Response(ss.data)
+
+@api_view(['POST', 'GET'])
 def subscription_all(request):
 
-    # if request.method == 'GET':
-    #     subscriptions = Subscription.objects.all()
-    #     ss = SubscriptionSerializer(subscriptions, many=True)
-    #     return Response(ss.data)
+    if request.method == 'GET':
+        subscriptions = Subscription.objects.all()
+        ss = SubscriptionSerializer(subscriptions, many=True)
+        return Response(ss.data)
 
     if request.method == 'POST':
 
