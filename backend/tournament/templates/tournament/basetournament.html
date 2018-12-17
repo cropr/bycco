@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load cms_tags i18n sekizai_tags staticfiles menu_tags %}
+{% load render_bundle from webpack_loader %}
+
+{% block content %}
+
+{% addtoblock "css" %}
+{% if PRODUCTION %}
+  {% render_bundle 'tournament' 'css' %}
+{% endif %}
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+
+<script>
+window.config = {
+  {% block extra_config %}{% endblock extra_config %}
+  participants_enabled: {{ PARTICIPANTS_ENABLED }},
+  subscriptions_enabled: {{ SUBSCRIPTIONS_ENABLED }},
+  tournament_enabled: {{ TOURNAMENT_ENABLED }},
+  api_url: '/api',
+  lang: '{{ LANGUAGE_CODE }}'
+};
+</script>
+
+{% if PRODUCTION %}
+  {% render_bundle 'chunk-vendors' %}
+  {% render_bundle 'tournament' 'js' %}
+{% else %}
+  {% render_bundle 'tournament' %}
+{% endif %}
+
+<script>
+function registerComponent(id, dataf) {
+  let cmscontent = document.getElementById(id),
+      chtml='';
+  // filter out <template> and <script> tags
+  for (let i=0; i<cmscontent.children.length; i++) {
+    let tag = cmscontent.children[i].tagName;
+    if (tag != 'TEMPLATE'  && tag != 'SCRIPT') {
+      chtml += cmscontent.children[i].outerHTML;
+    }
+  }
+  application.Vue.component(id, {
+    template: '<div>' + chtml + '</div>',
+    data: dataf || function(){ return{}},
+  });
+}
+
+registerComponent('cms-menu-items');
+
+vm = new application.Vue({
+  render: h => h(application.App),
+  i18n: application.i18n,
+  store: application.store,
+  created () {
+    new application.VueCmsPatch(this)
+  },
+}).$mount('#app');
+
+</script>
+{% endaddtoblock js %}
+
+<div id="app"></div>
+
+<div id="cms-menu-items" style="display:none;">
+  {%  show_menu 0 100 100 100 %}
+</div>
+
+{% endblock content %}
