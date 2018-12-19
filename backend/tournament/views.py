@@ -53,6 +53,10 @@ def subscriptionpage(request):
 def participantspage(request):
     return render(request, 'tournament/participantspage.html')
 
+def managementtpage(request):
+    return render(request, 'tournament/managementtpage.html')
+
+
 def printbadges(request):
     """
     :param request: 

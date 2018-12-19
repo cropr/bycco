@@ -1,30 +1,30 @@
 import Vue from 'vue'
-import store from './store'
+import VueRouter from 'vue-router'
+import store from './store/mgmt'
 import { i18n } from './util/lang'
+import './util/vuetify'
+import './style/bycco.styl'
 
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
-Vue.use(Vuetify);
-
-import VueCmsPatch from "./vue-djangocms-patch";
+import MgmtTournament from './pages/MgmtTournament'
 
 Vue.config.productionTip = false;
 
+const router = new VueRouter({
+  routes: [
+    {path: '/participants', component: MgmtPartipants},
+    {path: '/swar', component: MgmtSwar},
+    {path: '*', redirect: '/participants'},
+  ],
+  mode: 'hash',
+});
+
 window.application = {
   Vue: Vue,
-  VueCmsPatch: VueCmsPatch,
-  // App: Subscribe,
+  App: MgmtTournament,
   store: store,
   i18n: i18n,
+  router,
 };
 
-switch (window.config.appname) {
-  case 'TrnSubscription':
-    window.application.App = TrnSubscription;
-    break;
-  case 'TrnParticipants':
-    window.application.App = TrnParticipants;
-    break;
-}
 
 

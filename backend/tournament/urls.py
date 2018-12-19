@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^$', subscriptionpage),
     url(r'^subscription$', subscriptionpage),
     url(r'^participants$', participantspage),
+    url(r'^management$', managementtpage),
     # url(r'^overview$', overviewpage),
 
     # url(r'^mg_attendee$', mg_attendee_page),
