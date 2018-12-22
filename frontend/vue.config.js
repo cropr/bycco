@@ -18,7 +18,7 @@ module.exports = {
   runtimeCompiler: true,
   pages: {
     cms: 'src/cms.js',
-    adm: 'src/adm.js',
+    mgmttournament: 'src/mgmttournament.js',
     tournament: 'src/tournament.js',
   }
 }

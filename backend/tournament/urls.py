@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^$', subscriptionpage),
     url(r'^subscription$', subscriptionpage),
     url(r'^participants$', participantspage),
-    url(r'^management$', managementtpage),
+    url(r'^management$', managementpage),
     # url(r'^overview$', overviewpage),
 
     # url(r'^mg_attendee$', mg_attendee_page),
@@ -17,7 +17,7 @@ urlpatterns = [
     # url(r'^mg_presence$', mg_presence_page),
     # url(r'^mg_swar$', mg_swar_page),
     # url(r'^mg_trn$', mg_trn_page),
-    # url(r'^csv$', csvparticipants),
+    url(r'^csv$', csvparticipants),
     # url(r'^printbadges$', printbadges),
     # url(r'^printallbadges$', printallbadges),
     # url(r'^printnamecards$', printnamecards),

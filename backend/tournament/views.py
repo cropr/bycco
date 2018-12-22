@@ -53,8 +53,8 @@ def subscriptionpage(request):
 def participantspage(request):
     return render(request, 'tournament/participantspage.html')
 
-def managementtpage(request):
-    return render(request, 'tournament/managementtpage.html')
+def managementpage(request):
+    return render(request, 'tournament/managementpage.html')
 
 
 def printbadges(request):
@@ -293,7 +293,7 @@ def printprizes(request, cat):
 @login_required
 def csvparticipants(request):
     """
-    cretae a csv file of all participants
+    create a csv file of all participants
     :param request:
     :return:
     """

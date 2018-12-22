@@ -137,6 +137,7 @@ LANGUAGES = (
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'i18n'),)
 
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

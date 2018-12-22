@@ -6,17 +6,22 @@ import './util/vuetify'
 import './style/bycco.styl'
 
 import MgmtTournament from './pages/MgmtTournament'
+import MgmtParticipants from './pages/MgmtParticipants'
+import MgmtSwar from './pages/MgmtSwar'
 
 Vue.config.productionTip = false;
 
+Vue.use(VueRouter);
+
 const router = new VueRouter({
   routes: [
-    {path: '/participants', component: MgmtPartipants},
+    {path: '/participants', component: MgmtParticipants},
     {path: '/swar', component: MgmtSwar},
     {path: '*', redirect: '/participants'},
   ],
   mode: 'hash',
 });
+
 
 window.application = {
   Vue: Vue,

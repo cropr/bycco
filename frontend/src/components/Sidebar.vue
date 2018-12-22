@@ -12,10 +12,10 @@
       </v-toolbar>
       <v-divider></v-divider>
       <div class="btn-language blue-grey darken-1">
-        <v-btn flat class="hover-darker btn-language" :href="urlI18n('nl')">NL</v-btn>
-        <v-btn flat class="hover-darker btn-language" :href="urlI18n('fr')">FR</v-btn>
-        <v-btn flat class="hover-darker btn-language" :href="urlI18n('de')">DE</v-btn>
-        <v-btn flat class="hover-darker btn-language" :href="urlI18n('en')">EN</v-btn>
+        <v-btn flat class="hover-darker btn-language" :href="url_i18nn('nl')">NL</v-btn>
+        <v-btn flat class="hover-darker btn-language" :href="url_i18nn('fr')">FR</v-btn>
+        <v-btn flat class="hover-darker btn-language" :href="url_i18nn('de')">DE</v-btn>
+        <v-btn flat class="hover-darker btn-language" :href="url_i18nn('en')">EN</v-btn>
       </div>
       <v-list dark dense class="blue-grey darken-1">
         <cms-menu-items></cms-menu-items>
@@ -110,8 +110,8 @@ export default {
   },
 
   methods: {
-    urlI18n (lang) {
-      return window.config.urli18[lang];
+    url_i18nn (lang) {
+      return window.config.url_i18n[lang];
     }
   }
 

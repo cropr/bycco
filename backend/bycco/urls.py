@@ -25,6 +25,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
+    url('accounts/', include('django.contrib.auth.urls')),
     url(r'^trn', include(tournament.urls)),
     url(r'^trn/', include(tournament.urls)),
 

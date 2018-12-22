@@ -49,8 +49,8 @@ export default {
     openDrawer () {
       this.$store.commit('updateDrawer', true)
     },
-    urlI18n (lang) {
-      return window.config.urli18[lang];
+    url_i18nn (lang) {
+      return window.config.url_i18n[lang];
     }
   },
 }
