@@ -1,6 +1,6 @@
 recursive-include i18n *
 recursive-include bycco *.py
-recursive-include subscription *.py
+recursive-include tournament *.py
 recursive-include bycco/templates *
-recursive-include subscription/templates *
-recursive-include subscription/locale *
+recursive-include tournament/templates *
+recursive-include tournament/locale *
