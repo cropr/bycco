@@ -34,6 +34,7 @@ if (!Promise) {
   {%  render_language_block %}
 </div>
 
+<script>console.log('before IF production'); window.application = {Vue:{}};</script>
 
 {% if PRODUCTION %}
   {% render_bundle 'chunk-vendors' %}
@@ -42,9 +43,13 @@ if (!Promise) {
   {% render_bundle 'cms' %}
 {% endif %}
 
+<script>console.log('after IF production');</script>
+
 {% render_block "js" %}
 
 <script>
+
+console.log('running script inside vuecms.js');
 
 function registerComponent(id, dataf) {
   let cmscontent = document.getElementById(id),
@@ -61,6 +66,8 @@ function registerComponent(id, dataf) {
     data: dataf || function(){ return{}},
   });
 }
+
+console.log('application', window.application);
 
 registerComponent('cms-content', function (){return { tabactive: 0}});
 registerComponent('cms-menu-items');

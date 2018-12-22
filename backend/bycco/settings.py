@@ -152,7 +152,7 @@ LOGGING = {
             'level': 'DEBUG',
             'handlers': ['console']
         },
-        'subscription': {
+        'tournament': {
             'level': 'DEBUG',
             'handlers': ['console']
         },
