@@ -34,22 +34,17 @@ if (!Promise) {
   {%  render_language_block %}
 </div>
 
-<script>console.log('before IF production'); window.application = {Vue:{}};</script>
-
 {% if PRODUCTION %}
   {% render_bundle 'chunk-vendors' %}
+  {% render_bundle 'chunk-common' %}
   {% render_bundle 'cms' 'js' %}
 {% else %}
   {% render_bundle 'cms' %}
 {% endif %}
 
-<script>console.log('after IF production');</script>
-
 {% render_block "js" %}
 
 <script>
-
-console.log('running script inside vuecms.js');
 
 function registerComponent(id, dataf) {
   let cmscontent = document.getElementById(id),
@@ -67,39 +62,50 @@ function registerComponent(id, dataf) {
   });
 }
 
-console.log('application', window.application);
+function startup () {
+  console.log('starting up', window.application);
+  registerComponent('cms-content', function (){return { tabactive: 0}});
+  registerComponent('cms-menu-items');
+  registerComponent('cms-language-block');
 
-registerComponent('cms-content', function (){return { tabactive: 0}});
-registerComponent('cms-menu-items');
-registerComponent('cms-language-block');
+  application.Vue.config.ignoredElements = [
+    'cms-template',
+    'cms-plugin',
+  ];
 
-application.Vue.config.ignoredElements = [
-  'cms-template',
-  'cms-plugin',
-];
+  window.config = {
+    {% block extra_config %}{% endblock extra_config %}
+    api_url: '/api',
+    lang: '{{ LANGUAGE_CODE }}',
+    subscriptions_enabled: {{ SUBSCRIPTIONS_ENABLED }},
+    tournament_enabled: {{ TOURNAMENT_ENABLED }},
+    url_i18n: {
+      nl: "{% page_language_url 'nl' %}",
+      fr: "{% page_language_url 'fr' %}",
+      de: "{% page_language_url 'de' %}",
+      en: "{% page_language_url 'en' %}",
+    }
+  };
 
-window.config = {
-  {% block extra_config %}{% endblock extra_config %}
-  api_url: '/api',
-  lang: '{{ LANGUAGE_CODE }}',
-  subscriptions_enabled: {{ SUBSCRIPTIONS_ENABLED }},
-  tournament_enabled: {{ TOURNAMENT_ENABLED }},
-  url_i18n: {
-    nl: "{% page_language_url 'nl' %}",
-    fr: "{% page_language_url 'fr' %}",
-    de: "{% page_language_url 'de' %}",
-    en: "{% page_language_url 'en' %}",
-  }
-};
+  vm = new application.Vue({
+    render: h => h(application.App),
+    i18n: application.i18n,
+    store: application.store,
+    created () {
+      new application.VueCmsPatch(this)
+    },
+  }).$mount('#app');
 
-vm = new application.Vue({
-  render: h => h(application.App),
-  i18n: application.i18n,
-  store: application.store,
-  created () {
-    new application.VueCmsPatch(this)
-  },
-}).$mount('#app');
+}
+
+if (document.readyState === "loading") {  // Loading hasn't finished yet
+  document.addEventListener("DOMContentLoaded", startup);
+}
+else {  // `DOMContentLoaded` has already fired
+  startup();
+}
+
+
 
 </script>
 

@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import store from './store'
 import { i18n } from './util/lang'
-
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
-Vue.use(Vuetify);
+import './util/vuetify'
+import './style/bycco.styl'
 
 import TrnSubscription from './pages/TrnSubscription'
 import TrnParticipants from './pages/TrnParticipants'

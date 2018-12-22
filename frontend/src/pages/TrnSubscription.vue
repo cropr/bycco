@@ -71,7 +71,6 @@ import SubscriptionPhoto from '../components/SubscriptionPhoto'
 import SubscriptionNationality from '../components/SubscriptionNationality'
 import SubscriptionConfirmation from '../components/SubscriptionConfirmation'
 
-// import AdCarousel from './components/AdCarousel'
 
 export default {
 
