@@ -1,57 +1,57 @@
 <template>
 <v-container fluid>
 
-<h1>Management Participants</h1>
-
-<v-tabs v-model="tabix" class="blue-grey lighten-3" light slider-color="pink">
-  <v-tab>Participants</v-tab>
-  <v-tab>Detail</v-tab>
-  <v-tab>Photo</v-tab>
-  <v-tab>Invoice</v-tab>
-  <v-tab>Badges</v-tab>
-  <v-tab>Name Cards</v-tab>
-</v-tabs>
-
-<v-tabs-items v-model="tabix">
-  <v-tab-item>
-    <mgmt-part-list />
-  </v-tab-item>
-  <v-tab-item>
-    <h3 class="mt-2">Details</h3>
-    <p>To DO</p>
-  </v-tab-item>
-  <v-tab-item>
-    <h3 class="mt-2">Photo</h3>
-    <p>To DO</p>
-  </v-tab-item>
-  <v-tab-item>
-    <h3 class="mt-2">Invoice</h3>
-    <p>To DO</p>
-  </v-tab-item>
-  <v-tab-item>
-    <!--<mg-attendee-badge></mg-attendee-badge>-->
-  </v-tab-item>
-  <v-tab-item>
-    <!--<mg-attendee-namecard></mg-attendee-namecard>-->
-  </v-tab-item>
-</v-tabs-items>
-
+  <mgmt-part-list @update="update($event)" v-show="section == 'list'" :ts="ts" />
+  <mgmt-part-edit @update="update($event)" v-if="section == 'edit'"
+                  :participant="params" :ts="ts"/>
+  <mgmt-part-invoice @update="update($event)" v-if="section == 'invoice'"
+                  :participant="params"  :ts="ts" />
+  <v-snackbar v-model="snackbar" bottom>
+    {{ snacktext }}
+    <v-btn flat @click="snackbar = false">
+      <v-icon>cancel</v-icon>
+    </v-btn>
+  </v-snackbar>
 </v-container>
 </template>
 
 <script>
 
-import MgmtPartList  from '../components/MgmtPartList'
+import MgmtPartList from '../components/MgmtPartList'
+import MgmtPartEdit from '../components/MgmtPartEdit'
+import MgmtPartInvoice from '../components/MgmtPartInvoice'
 
 export default {
   name: "MgmtParticipants",
 
   data () {return {
-    tabix: 0,
+    section: 'list',
+    snackbar: false,
+    snacktext: '',
+    params: {},
+    ts: new Date(),
   }},
 
   components: {
+    MgmtPartInvoice,
     MgmtPartList,
+    MgmtPartEdit,
+  },
+
+  methods: {
+    update (ev) {
+      console.log('update', ev);
+      this.section = ev.section;
+      this.params = ev.params;
+      if (ev.reload) {
+        this.ts = new Date();
+      }
+      if (ev.text) {
+        this.snacktext = ev.text;
+        this.snackbar = true;
+      }
+
+    }
   }
 }
 </script>

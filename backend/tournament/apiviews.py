@@ -10,35 +10,32 @@ from binascii import a2b_base64
 from django.db.models import Max
 from django.shortcuts import redirect
 from django.conf import settings
-from django.http.response import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.response import Response
 from rest_framework.renderers import BaseRenderer, JSONRenderer
 
 from .models import (
-    CdSwarTournament,
     CdSwarJson,
+    CdSwarTournament,
     CdTournament,
     CdTournamentPrizes,
-    Subscription
+    Subscription,
+    TrnInvoice,
 )
 
 from .serializers import (
     ParticipantSerializer,
     SubscriptionSerializer,
     SwarTournamentSerializer,
-    SwarJsonSerializer,
-    SwarJsonSerializerSmall,
     TournamentSerializer,
-    UploadSwarJsonSerializer
 )
 
-from .swarconvert import (
+from .swar import (
+    prizesfromswar,
+    playercardfromswar,
     pairingsfromswar,
     standingsfromswar,
-    playercardfromswar,
-    prizesfromswar,
 )
 
 from .mail import sendconfirmationmail
@@ -271,17 +268,17 @@ def fideplayer(request, idfide):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-# ateendees
+# attendees
 @api_view(['GET', 'POST'])
 def attendee_all(request):
 
     if request.method == 'GET':
         param = request.GET
-        start = to_int(param.get('start'), 0)
-        count = to_int(param.get('count'), 40)
+        # start = to_int(param.get('start'), 0)
+        # count = to_int(param.get('count'), 40)
         ss = param.get('ss')
+        cat = param.get('cat')
         query = Subscription.objects.all()
-        cat = param.get('categories')
         if cat:
             if ',' in cat:
                 cats = cat.split(',')
@@ -291,14 +288,9 @@ def attendee_all(request):
         ss = param.get('ss')
         if ss:
             query = query.filter(last_name__icontains=ss)
-        n_attendees = query.count()
-        query = query.order_by('last_name')[start:start+count]
         result = {
             'ss': ss,
             'categories': cat,
-            'start': start,
-            'count': count,
-            'n_attendees': n_attendees,
             'attendees': [{
                     'id': p.id,
                     'category': p.category,
@@ -314,7 +306,6 @@ def attendee_all(request):
                     'payamount': p.payamount,
                 } for p in query]
         }
-        log.info('result: %s', result)
         return Response(result)
 
     if request.method == 'POST':
@@ -354,7 +345,7 @@ def attendee_detail(request, id):
             'chesstitle': p.chesstitle,
             'confirmed': p.confirmed,
             'emailparent': p.emailparent,
-            'emailplayer': p.emailparent,
+            'emailplayer': p.emailplayer,
             'federation': p.federation,
             'first_name': p.first_name,
             'fullnameattendant': p.fullnameattendant,
@@ -363,6 +354,8 @@ def attendee_detail(request, id):
             'idclub': p.idclub,
             'idbel': p.idbel,
             'idfide': p.idfide,
+            'invoicecreated': None,
+            'invoicesent': None,
             'last_name': p.last_name,
             'locale': p.locale,
             'meals': p.custom1,
@@ -380,32 +373,35 @@ def attendee_detail(request, id):
             'ratingfide': p.ratingfide,
             'remarks': p.remarks,
         }
+        try:
+            inv = TrnInvoice.objects.get(id_participant=id)
+            attendee['invoicecreated'] = inv.creationdate
+            attendee['invoicesent'] = inv.sentdate
+        except TrnInvoice.DoesNotExist:
+            pass
         return Response(dict(attendee=attendee))
 
     if request.method == 'PUT':
         data = request.data.get('attendee', {})
-        # p.birthdate = data.get('last_name')
+        p.birthdate = data.get('birthdate')
         p.category = data.get('category')
         p.chesstitle = data.get('chesstitle','')
+        p.confirmed = data.get('confirmed', False)
         p.emailparent = data.get('emailparent', '')
         p.emailplayer = data.get('emailplayer', '')
         p.first_name = data.get('first_name')
-        if data.get('fullnameattendant'):
-            p.fullnameattendant = data.get('fullnameattendant')
-        if data.get('fullnameparent'):
-            p.fullnameparent = data.get('fullnameparent')
+        p.fullnameattendant = data.get('fullnameattendant', '')
+        p.fullnameparent = data.get('fullnameparent', '')
+        p.gender = data.get('gender')
         p.last_name = data.get('last_name')
-        if data.get('locale'):
-            p.locale = data.get('locale')
+        p.locale = data.get('locale', 'nl')
         p.meals = data.get('meals')
-        if data.get('mobileattendant'):
-            p.mobileattendant = data.get('mobileattendant')
-        if data.get('mobilemobileparent'):
-            p.mobileparent = data.get('mobileparent')
-        if data.get('mobileplayer'):
-            p.mobileplayer = data.get('mobileplayer')
+        p.mobileattendant = data.get('mobileattendant','')
+        p.mobileparent = data.get('mobileparent', '')
+        p.mobileplayer = data.get('mobileplayer', '')
         p.nationalityfide = data.get('nationalityfide')
         p.payamount = int(data.get('payamount', 0))
+        p.paymessage = data.get('paymessage', '')
         # p.paydate = data.get('paydate')
         if 'present' in data:
             present = data.get('present')
@@ -413,15 +409,11 @@ def attendee_detail(request, id):
                 p.present = iso8601.parse_date(present)
             else:
                 p.present = None
-        p.rating = data.get('rating')
-        if data.get('ratingbel'):
-            p.ratingbel = data.get('ratingbel')
-        if data.get('ratingfide'):
-            p.ratingfide = data.get('ratingfide')
-        if data.get('remarks'):
-            p.remarks = data.get('remarks')
-        if data.get('meals'):
-            p.custom1 = data.get('meals')
+        p.rating = data.get('rating', 0)
+        p.ratingbel = data.get('ratingbel', 0)
+        p.ratingfide = data.get('ratingfide', 0)
+        p.remarks = data.get('remarks', 0)
+        p.custom1 = data.get('meals', '')
         try:
             p.save()
             return Response(dict(id=p.id),
@@ -466,7 +458,6 @@ def attendee_photo(request, id):
             return Response(e, status=status.HTTP_400_BAD_REQUEST)
 
 # tournament
-
 @api_view(['GET', 'POST'])
 def tournament_all(request):
 
@@ -631,7 +622,6 @@ def tournament_topround(request, id_trn):
     topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1)
     return Response(topround)
 
-
 @api_view(['POST'])
 def tournament_swar(request, id_trn):
     """
@@ -712,104 +702,3 @@ def tournament_pgngames(request, id_trn):
         ro = []
     return Response(dict(pgngames=ro))
 
-
-# swar
-
-@api_view(['GET', 'POST'])
-def swartrn_all(request):
-
-    if request.method == 'POST':
-        # adding a new swar file
-        uploadSerializer = UploadSwarJsonSerializer(data=request.data)
-        if not uploadSerializer.is_valid():
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-        uploadSwar = uploadSerializer.validated_data
-        id_trn = uploadSwar['id_trn']
-        name = uploadSwar['name']
-        jsonfile = uploadSwar['jsonfile']
-        round = uploadSwar['round']
-        try:
-            trn = CdTournament.objects.get(id=id_trn)
-        except CdTournament.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        try:
-            swartrn = CdSwarTournament.objects.get(tournament=trn)
-        except CdSwarTournament.DoesNotExist:
-            # no swartrn exists, so create it
-            swartrn = CdSwarTournament(tournament=trn, swarname=name)
-            swartrn.save()
-        swarjson = CdSwarJson(round=round, jsonfile=jsonfile, swartrn=swartrn)
-        swarjson.save()
-        return Response(status=status.HTTP_201_CREATED)
-
-    if request.method == 'GET':
-        swardata = {}
-        for swartrn in CdSwarTournament.objects.all():
-            srl = SwarTournamentSerializer(swartrn)
-            swardata[swartrn.tournament_id] = srl.data
-        for trn in CdTournament.objects.all():
-            if trn.id in swardata:
-                swardata[trn.id].update(TournamentSerializer(trn).data)
-        return Response(dict(swartrns=swardata.values()))
-
-@api_view(['GET', 'DELETE'])
-def swartrn_one(request, id_trn):
-    try:
-        trn = CdSwarTournament.objects.get(tournament_id=id_trn)
-    except CdSwarTournament.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        trn_serializer = SwarTournamentSerializer(trn)
-        return Response(trn_serializer.data)
-
-    if request.method == 'DELETE':
-        trn.delete()
-        trns = CdSwarTournament.objects.all()
-        trn_serializer = SwarTournamentSerializer(trns, many=True)
-        return Response(trn_serializer.data)
-
-@api_view(['POST'])
-def swarfile_publication(request, id_swartrn, id_swarfile):
-    try:
-        CdSwarTournament.objects.get(tournament_id=id_swartrn)
-    except CdSwarTournament.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-    try:
-        swar = CdSwarJson.objects.get(id=id_swarfile)
-    except:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-    CdSwarJson.objects.filter(swartrn_id=id_swartrn, status='ACT',
-                              round=swar.round).update(status='OUT')
-    CdSwarJson.objects.filter(swartrn_id=id_swartrn, id=id_swarfile).update(
-        status='ACT')
-    return Response(status=status.HTTP_201_CREATED)
-
-@api_view(['GET'])
-def swarfile_all(request, id_swartrn):
-
-    try:
-        swartrn = CdSwarTournament.objects.get(tournament_id=id_swartrn)
-    except CdSwarTournament.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    swarjsons = CdSwarJson.objects.filter(swartrn_id=id_swartrn).order_by(
-                '-round', '-uploaddate')
-    ss = SwarJsonSerializerSmall(swarjsons, many=True)
-    return Response(ss.data)
-
-@api_view(['GET', 'DELETE'])
-def swarfile_one(request, id_swartrn, id_swarfile):
-
-    try:
-        swar = CdSwarJson.objects.get(swartrn_id=id_swartrn, id=id_swarfile)
-    except CdSwarJson.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        ss = SwarJsonSerializer(swar)
-        return Response(ss.data)
-
-    if request.method == 'DELETE':
-        swar.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)

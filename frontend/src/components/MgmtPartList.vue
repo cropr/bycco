@@ -1,42 +1,52 @@
 <template>
 <v-container fluid grid-list-md class="elevation-1">
+  <v-layout row>
+    <v-flex>
+        <h1>Management Participants</h1>
+    </v-flex>
+    <v-flex>
+      <v-tooltip bottom>
+        <v-btn outline fab color="blue-grey" href="/trn/csv" slot="activator">
+          <v-icon>cloud_download</v-icon>
+        </v-btn>
+        <span>CSV download</span>
+      </v-tooltip>
+    </v-flex>
+  </v-layout>
 
   <v-layout row wrap>
-    <v-flex sm6 xs12>
+    <v-flex sm4 xs6>
       <v-text-field append-icon="search" @click:append="search" v-model="ss" />
     </v-flex>
-    <v-flex sm4 xs8>
-      <v-select :items="catitems" v-model="catselected"></v-select>
+    <v-flex sm4 xs6>
+      <v-select :items="catitems" v-model="catselected" @change="changeCat()" />
     </v-flex>
-    <v-flex sm2 xs4>
-      <v-btn href="/trn/csv" >CSV</v-btn>
+    <v-flex>
+      <v-checkbox label="Not confirmed" v-model="isNotConfirmed" />
     </v-flex>
   </v-layout>
 
   <v-data-table :items="filteredParticipants" class="elevation-1" :headers="headers"
                 :rows-per-page-items="[25,50,100]" :pagination.sync="pagination">
     <template slot="headers" slot-scope="props" >
-      <tr>
-        <th>
-          <v-checkbox :input-value="props.all" :indeterminate="props.indeterminate"
-            primary hide-details @click="toggleAll"
-          ></v-checkbox>
-        </th>
-        <th v-for="header in props.headers" :key="header.text"
-            :class="headerClasses(header)" @click="changeSort(header)">
-          {{ header.text }}
-          <v-icon small v-show="header.sortable">arrow_upward</v-icon>
-        </th>
-      </tr>
+      <th v-for="header in props.headers" :key="header.text"
+          :class="headerClasses(header)" @click="changeSort(header)">
+        {{ header.text }}
+        <v-icon small v-show="header.sortable">arrow_upward</v-icon>
+      </th>
+      <th class="text-xs-left">Actions</th>
     </template>
     <template slot="items" slot-scope="props">
-      <td>
-        <v-checkbox :input-value="props.selected" primary hide-details></v-checkbox>
-      </td>
-      <td >{{ props.item.last_name }}</td>
-      <td >{{ props.item.first_name }}</td>
-      <td class="text-xs-center">{{ props.item.gender }}</td>
+      <td>{{ props.item.id }}</td>
+      <td>{{ props.item.first_name }}</td>
+      <td>{{ props.item.last_name }}</td>
       <td class="text-xs-center">{{ props.item.category }}</td>
+      <td>
+        <v-icon class="mr-1" @click="editParticipant(props.item)">edit</v-icon>
+        <v-icon class="mr-1" @click="photoParticipant(props.item)">face</v-icon>
+        <v-icon class="mr-1" @click="invoiceParticipant(props.item)">euro_symbol</v-icon>
+        <v-icon class="mr-1" @click="printParticipant(props.item)">print</v-icon>
+      </td>
     </template>
   </v-data-table>
 
@@ -51,20 +61,28 @@ import _ from 'lodash'
 export default {
   name: "MgmtPartList",
 
+  props: ['ts'],
+
   computed: {
     filteredParticipants () {
-      if (this.catselected == 'All')
-        return this.participants;
-      return _.filter(this.participants, function(p){
-        return this.catsSelected[p.category]
-      }.bind(this))
+      let result = this.participants,
+          noplayers = ['All', 'Player', 'ORG', 'ARB', 'SPO', 'EAT'];
+      if (this.catselected == 'Players')
+         result =  _.filter(result, function(p) {
+            return noplayers.indexOf(p.category) == -1;
+         });
+      if (this.isNotConfirmed)
+        result = _.filter(result, ['confirmed', false]);
+      // if (this.hasNoInvoice)
+      //   retult = _.filter(result, ['invoiced', false])
+      return result
     },
     headers () { return [
       {
-        text: 'Last name',
+        text: 'ID',
         align: 'left',
         sortable: true,
-        value: 'last_name'
+        value: 'id'
       },
       {
         text: 'First name',
@@ -73,9 +91,10 @@ export default {
         value: 'first_name'
       },
       {
-        text: 'Gender',
-        align: 'center',
-        value: 'gender'
+        text: 'Last name',
+        align: 'left',
+        sortable: true,
+        value: 'last_name'
       },
       {
         text: 'Category',
@@ -83,6 +102,11 @@ export default {
         value: 'category'
       },
     ]},
+    catsearch () {
+      if (['All', 'Players'].indexOf(this.catselected) >= 0 ) return null;
+      return this.catselected;
+    }
+
   },
 
 
@@ -110,6 +134,9 @@ export default {
       {value: "EAT", text: 'Resident with meals'},
     ],
     catselected: 'All',
+    catselectedOld: 'All',
+    hasNoInvoice: false,
+    isNotConfirmed: false,
     pagination: {
       sortBy: 'last_name',
       descending: false,
@@ -120,8 +147,22 @@ export default {
   }},
 
   methods: {
+    changeCat () {
+      if (this.catselected == 'All' || this.catselected == 'Players') {
+        if (this.catselectedOld == 'All' || this.catselectedOld == 'Players'){
+          // leave it as is, the filtering will do its job
+        }
+        else {
+          this.getParticipants();
+        }
+      }
+      else {
+        this.getParticipants();
+      }
+      this.catselectedOld = this.catselected;
+    },
+
     changeSort (header) {
-      console.log('chnage sort', header.value, header.sortable)
       if (!header.sortable) return;
       if (this.pagination.sortBy === header.value) {
         this.pagination.descending = !this.pagination.descending
@@ -130,6 +171,25 @@ export default {
         this.pagination.descending = false
       }
     },
+
+    editParticipant(participant) {
+      this.$emit('update', {
+        section: 'edit',
+        params: participant,
+      })
+    },
+
+    getParticipants () {
+      api('getAttendees', {
+        cat: this.catsearch,
+        ss: this.ss.length ? this.ss : null,
+      }).then(
+        function(data) {
+          this.participants = data.attendees;
+        }.bind(this)
+      );
+    },
+
     headerClasses (header) {
       let hc = ['column'];
       hc.push(header.align ? 'text-xs-' + header.align : 'text-xs-left');
@@ -138,9 +198,18 @@ export default {
       hc.push(header.value === this.pagination.sortBy ? 'active' : '');
       return hc;
     },
-    search () {
-      console.log('searching')
+
+    invoiceParticipant (participant) {
+      this.$emit('update', {
+        section: 'invoice',
+        params: participant,
+      })
     },
+
+    search () {
+      this.getParticipants();
+    },
+
     toggleAll () {
       if (this.selected.length) {
         this.selected = []
@@ -152,13 +221,14 @@ export default {
   },
 
   mounted () {
-    api('getParticipants').then(
-      function(data) {
-        console.log('participants data', data);
-        this.participants = data;
-      }.bind(this)
-    );
+    this.getParticipants();
   },
+
+  watch: {
+    ts: function(){
+      this.getParticipants();
+    }
+  }
 
 }
 </script>

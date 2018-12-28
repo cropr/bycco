@@ -3,6 +3,8 @@
 
 from django.conf.urls import url
 from tournament import apiviews
+from tournament import invoice
+from tournament import swar
 
 urlpatterns = [
     url(r'attendees$', apiviews.attendee_all),
@@ -11,6 +13,9 @@ urlpatterns = [
         apiviews.subscription_resend),
     url(r'belplayer/(?P<idbel>[0-9]+)$', apiviews.belplayer),
     url(r'fideplayer/(?P<idfide>[0-9]+)$', apiviews.fideplayer),
+    url(r'invoice/(?P<id_part>[0-9]+)$', invoice.invoice),
+    url(r'invoice/(?P<id_part>[0-9]+)/send$', invoice.invoice_send),
+    url(r'invoice$', invoice.invoices),
     url(r'photo/(?P<id>[0-9]+)$', apiviews.attendee_photo),
     url(r'participants$', apiviews.participants),
     url(r'subscriptions$', apiviews.subscription_all),
@@ -32,12 +37,12 @@ urlpatterns = [
     url(r'^tournament/(?P<id_trn>[0-9]+)/pgngames$', apiviews.tournament_pgngames),
     url(r'^tournament/(?P<id_trn>[0-9]+)/prizes$', apiviews.tournament_prizes),
     url(r'^tournament/(?P<id_trn>[0-9]+)/swar$', apiviews.tournament_swar),
-    url(r'^swar$', apiviews.swartrn_all),
-    url(r'^swar/(?P<id_swartrn>[0-9]+)$', apiviews.swartrn_one),
+    url(r'^swar$', swar.swartrn_all),
+    url(r'^swar/(?P<id_swartrn>[0-9]+)$', swar.swartrn_one),
     url(r'^swar/(?P<id_swartrn>[0-9]+)/publication/(?P<id_swarfile>[0-9]+)$',
-        apiviews.swarfile_publication),
-    url(r'^swar/(?P<id_swartrn>[0-9]+)/file$', apiviews.swarfile_all),
+        swar.swarfile_publication),
+    url(r'^swar/(?P<id_swartrn>[0-9]+)/file$', swar.swarfile_all),
     url(r'^swar/(?P<id_swartrn>[0-9]+)/file/(?P<id_swarfile>[0-9]+)$',
-        apiviews.swarfile_one),
+        swar.swarfile_one),
 
 ]

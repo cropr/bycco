@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles %}
+{% load cms_tags staticfiles sekizai_tags %}
 <!doctype html>
 <html>
 <head>
@@ -11,8 +11,10 @@
   gtag('js', new Date());
   gtag('config', 'UA-116219765-1');
 </script>
+{% render_block "css" %}
 </head>
 <body>
 {%  placeholder "content" %}
+{% render_block "js" %}
 </body>
 </html>

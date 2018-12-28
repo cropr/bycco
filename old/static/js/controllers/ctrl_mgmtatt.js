@@ -19,8 +19,6 @@ angular.module('mg_attendee', [
         print: 3
       };
 
-
-
   var attendee_service = {
     addAttendee: function() {
       var q = $q.defer();

@@ -23,16 +23,6 @@ export default function(name, params) {
     return Promise.reject(new Error('schama ' + name + ' not found'))
   }
 
-  // check required paramaters
-  if (schema.required) {
-    if (!schema.required.every(function(k){
-      return k in params;
-    })) {
-      console.error('api call', name, 'failed: missing_param', all);
-      return Promise.reject(new Error('missing_param'));
-    }
-  }
-
   // fill in all parameters
   sbody = schema.body || [];
   sheaders = schema.headers || [];
@@ -55,7 +45,8 @@ export default function(name, params) {
     }
     if (squery.indexOf(k) !== -1) {
       all[k] = true;
-      query[k] = v;
+      if (v !== null)
+        query[k] = v;
       return;
     }
     if (spath.indexOf(k) !== -1) {
@@ -64,6 +55,17 @@ export default function(name, params) {
       return;
     }
   });
+
+    // check required paramaters
+  if (schema.required) {
+    if (!schema.required.every(function(k){
+      if (k in params) return true;
+      console.error('api call', name, 'failed: missing_param', k);
+      return false
+    })) {
+      return Promise.reject(new Error('missing_param'));
+    }
+  }
 
   // set axios options dict
   surl = schema.url;

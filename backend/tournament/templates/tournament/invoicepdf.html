@@ -1,0 +1,37 @@
+{% load i18n %}
+<h1>{% trans "Invoice" %} {% trans "Belgian Youth Chess Championships 2019" %}</h1>
+<p>
+<img src="{{ imgurl }}">
+</p>
+<h3 style="margin-top: 3em;">Bycco</h3>
+<div>Belgian Youth Chess Championship Organizers.
+  <span font-size="small">{% trans "npo." %}</span>
+</div>
+<div style="margin-top: 1em;">Museumstraat 67, 9881 Bellem</div>
+<div>{%  trans "VAT number" %}: BE 0630.723.395</div>
+<div>E-mail: info@bycco.be</div>
+<div>Website: https://www.bycco.be</div>
+
+<h3 style="margin-top: 3em;">{% trans "Subcription for" %} {{sub.first_name }} {{sub.last_name }}</h3>
+<div>{% trans "To"  %}: {{ sub.fullnameresponsible }}</div>
+<div>E-mail: {{ sub.emailresponsible }}</div>
+
+<h3 style="margin-top: 3em;">{% trans "Invoice details" %}</h3>
+<p>{% trans "Invoice number" %}: {{ sub.invoicenumber }}</p>
+<p>{% trans "Date" %}: {{ creationdate }}</p>
+
+<table>
+  <tr>
+    <td style="min-width: 30em;">{% trans "Price VAT excluded" %}</td>
+    <td style="text-align: right"><b>{{ sub.pricewithoutvat }} &euro;</b></td>
+  </tr>
+  <tr>
+    <td>{% trans "VAT" %} 6%</td>
+    <td style="text-align: right"><b>{{ sub.vat }} &euro;</b></td>
+  </tr>
+  <tr>
+    <td>{% trans "Price VAT included" %}</td>
+    <td style="text-align: right"><b>{{ sub.pricewithvat }} &euro;</b></td>
+  </tr>
+
+</table>

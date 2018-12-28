@@ -11,7 +11,7 @@
     "axios": "^0.18.0",
     "cropperjs": "^1.4.3",
     "filepond": "^3.3.1",
-    "moment": "^2.22.2",
+    "moment": "^2.23.0",
     "vue": "^2.5.17",
     "vue-cropperjs": "^2.2.2",
     "vue-filepond": "^4.0.1",

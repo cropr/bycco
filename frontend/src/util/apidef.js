@@ -5,7 +5,7 @@ export default {
   getAttendees: {
     method: 'GET',
     url: '/attendees',
-    query: ['ss', 'start', 'count', 'categories'],
+    query: ['ss', 'cat'],
     required: [],
   },
   addAttendee: {
@@ -183,4 +183,32 @@ export default {
     path: ['id_swartrn', 'id_swarfile'],
     required: ['id_swartrn', 'id_swarfile'],
   },
+
+  //invoices
+  createInvoice: {
+    method: 'POST',
+    url: '/invoice/{id_participant}',
+    path: ['id_participant'],
+    required: ['id_participant'],
+  },
+  getInvoice: {
+    method: 'GET',
+    url: '/invoice/{id_participant}',
+    path: ['id_participant'],
+    required: ['id_participant'],
+  },
+  sendInvoice: {
+    method: 'POST',
+    url: '/invoice/{id_participant}/send',
+    path: ['id_participant'],
+    required: ['id_participant'],
+  },
+  invoices: {
+    method: 'POST',
+    url: '/invoice',
+    body: ['command', 'options'],
+    required: ['command'],
+  }
+
+
 };

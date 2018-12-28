@@ -9,6 +9,8 @@
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% render_block "css" %}
 {% if PRODUCTION %}
+  {% render_bundle 'chunk-vendors'  'css' %}
+  {% render_bundle 'chunk-common'  'css' %}
   {% render_bundle 'cms' 'css' %}
 {% endif %}
 </head>
@@ -35,8 +37,8 @@ if (!Promise) {
 </div>
 
 {% if PRODUCTION %}
-  {% render_bundle 'chunk-vendors' %}
-  {% render_bundle 'chunk-common' %}
+  {% render_bundle 'chunk-vendors' 'js' %}
+  {% render_bundle 'chunk-common' 'js' %}
   {% render_bundle 'cms' 'js' %}
 {% else %}
   {% render_bundle 'cms' %}
@@ -63,7 +65,6 @@ function registerComponent(id, dataf) {
 }
 
 function startup () {
-  console.log('starting up', window.application);
   registerComponent('cms-content', function (){return { tabactive: 0}});
   registerComponent('cms-menu-items');
   registerComponent('cms-language-block');
@@ -98,14 +99,7 @@ function startup () {
 
 }
 
-if (document.readyState === "loading") {  // Loading hasn't finished yet
-  document.addEventListener("DOMContentLoaded", startup);
-}
-else {  // `DOMContentLoaded` has already fired
-  startup();
-}
-
-
+startup();
 
 </script>
 

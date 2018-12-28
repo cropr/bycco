@@ -1,3 +1,7 @@
+# original Copyright Ruben Decrop
+# modifications by Chessdevil Consulting BVBA
+
+import base64
 from rest_framework import serializers
 from .models import *
 
@@ -75,3 +79,26 @@ class UploadSwarJsonSerializer(serializers.Serializer):
     name = serializers.CharField()
     jsonfile = serializers.CharField()
     round = serializers.IntegerField()
+
+class Base64Field(serializers.Field):
+    """
+    provides a base64 encoded field.
+    """
+    def to_representation(self, value):
+        return base64.b64encode(value).decode()
+
+
+class TrnInvoiceSerializer(serializers.Serializer):
+
+    creationdate = serializers.DateTimeField()
+    emailresponsible = serializers.CharField()
+    first_name = serializers.CharField()
+    fullnameresponsible = serializers.CharField()
+    invoicenumber = serializers.IntegerField()
+    last_name = serializers.CharField(max_length=40)
+    pdf = Base64Field()
+    pricewithvat = serializers.DecimalField(10,2)
+    pricewithoutvat = serializers.DecimalField(10,2)
+    sentdate = serializers.DateTimeField()
+    vat = serializers.DecimalField(10,2)
+

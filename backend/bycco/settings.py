@@ -83,6 +83,10 @@ DEBUG = True
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 25
+EMAIL_ADDRESSES = {
+    'invoice_from': 'info@bycco.be',
+    'invoice_cc': ['ruben@decrop.net', 'mj.deschepper@gmail.com'],
+}
 
 INSTALLED_APPS = (
 

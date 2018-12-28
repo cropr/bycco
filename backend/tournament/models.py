@@ -6,6 +6,17 @@ from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 
+playercategories = [
+    'B8', 'G8',
+    'B10', 'G10',
+    'B12', 'G12',
+    'B14', 'G14',
+    'B16', 'G16',
+    'B18', 'G18',
+    'B20', 'G20',
+]
+
+
 class Subscription(Model):
 
     badgeimage = BinaryField(_("Badge image"), blank=True)
@@ -58,7 +69,6 @@ class CdTournamentPrizes(Model):
         on_delete=CASCADE,
         primary_key=True,)
     jsonprizes = TextField(max_length=50, default='')
-
 
 class CdPlayer(Model):
     birthdate = DateField()
@@ -130,3 +140,18 @@ class CdSwarJson(Model):
     swartrn = ForeignKey(CdSwarTournament, on_delete=CASCADE)
     uploaddate = DateTimeField(auto_now_add=True)
     status = CharField(max_length=3, choices=STATUSES, default='UNP')
+
+class TrnInvoice(Model):
+    id_participant = IntegerField()
+    creationdate = DateTimeField()
+    emailresponsible = CharField(max_length=50)
+    first_name = CharField(max_length=25)
+    fullnameresponsible = CharField(max_length=50)
+    invoicenumber = IntegerField()
+    last_name = CharField(max_length=40)
+    modifieddate = DateTimeField()
+    pdf = BinaryField(null=True)
+    pricewithvat = DecimalField(max_digits=6, decimal_places=2)
+    pricewithoutvat = DecimalField(max_digits=6, decimal_places=2)
+    sentdate = DateTimeField(null=True)
+    vat = DecimalField(max_digits=6, decimal_places=2)
