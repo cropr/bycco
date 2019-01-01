@@ -8,6 +8,7 @@ import decimal
 import pdfkit
 import base64
 from django.template.loader import get_template
+from django.template.context import RequestContext
 from django.utils.translation import ugettext as _
 from django.utils import translation, timezone
 from django.core.mail import EmailMessage
@@ -27,9 +28,10 @@ from .serializers import (
     TrnInvoiceSerializer,
 )
 
-def create_invoice(sub, recreate=True):
+def create_invoice(request, sub, recreate=True):
     """
     creates and saves a TrnInvoice object for a subcription
+    :param request: the http request
     :param sub: the Subscription Object
     :param recreate: boolean: recreates the invoice if it already exists
     :return: the invoice (saved to the DB)
@@ -58,13 +60,14 @@ def create_invoice(sub, recreate=True):
     invoice.pricewithoutvat = (invoice.pricewithvat / decimal.Decimal(
         1.06)).quantize(decimal.Decimal('.01'))
     invoice.vat = invoice.pricewithvat - invoice.pricewithoutvat
-    create_pdf(invoice, sub.locale)
+    create_pdf(request, invoice, sub.locale)
     invoice.save()
     return invoice
 
-def create_pdf(invoice, locale):
+def create_pdf(request, invoice, locale):
     """
     creates a pdf invoice, and stores it in the invoice object, no save
+    :param request: the http request
     :param invoice: an Invoice object for which the pdf must be created
     :param locale: the language
     :return: True if success, False if failure
@@ -81,7 +84,7 @@ def create_pdf(invoice, locale):
         'creationdate': invoice.creationdate.strftime("%d-%m-%Y")
     }
     invhtml = get_template('tournament/invoicepdf.html').render(
-        context=context)
+        context=context, request=request)
     try:
         pdfkit.from_string(invhtml, 'invoice.pdf')
         pdffile = open('invoice.pdf', 'rb')
@@ -94,16 +97,17 @@ def create_pdf(invoice, locale):
     translation.deactivate()
     return True
 
-def send_invoice(invoice, resend=False):
+def send_invoice(request, invoice, resend=False):
     """
     sends the invoice by email, updates ans saves the invoice.senddate
-    :param invoice: the invoice
     :param request: the request
+    :param invoice: the invoice
     :param resend: resend the email if it already has been sent
     :return: True if success, False if failure
     """
     try:
-        msgtext = get_template('tournament/invoicemail.txt').render().strip()
+        msgtext = get_template('tournament/invoicemail.txt').render(
+            request=request).strip()
         msg = EmailMessage(
             _('Invoice'),
             msgtext,
@@ -136,9 +140,9 @@ def invoices(request):
         if sub.category not in playercategories:
             continue
         if command == 'create' or command == 'create_send':
-            create_invoice(sub, recreate=options.get('recreate', False))
+            create_invoice(request, sub, recreate=options.get('recreate', False))
         if command == 'send' or command == 'create_send':
-            send_invoice(sub, resend=options.get('recreate', False))
+            send_invoice(request, sub, resend=options.get('recreate', False))
     return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET', 'POST'])
@@ -165,7 +169,7 @@ def invoice(request, id_part):
         except Subscription.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND,
                             data='no related subscription')
-        invoice = create_invoice(sub, recreate=True)
+        invoice = create_invoice(request, sub, recreate=True)
         inv_serializer = TrnInvoiceSerializer(invoice)
         return Response(data={'invoice': inv_serializer.data})
 
@@ -178,5 +182,5 @@ def invoice_send(request, id_part):
         except TrnInvoice.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND,
                             data='invoice not found')
-        send_invoice(invoice, resend=True)
+        send_invoice(request, invoice, resend=True)
         return Response(status=status.HTTP_204_NO_CONTENT)

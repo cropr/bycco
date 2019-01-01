@@ -191,6 +191,17 @@ export default {
     },
 
     sendConfirmationEmail () {
+      api('resendConfirmation', {
+        id: this.participant.id,
+      }).then(
+        function(){
+          this.$emit('update', {section: 'edit', params:this.participant,
+            reload: false, text: this.fullname + ' confirmation sent.'})
+        }.bind(this),
+        function(data){
+          console.error('failed to save', data);
+        }
+      );
 
     },
   },

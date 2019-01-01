@@ -60,15 +60,13 @@
 <div class="cardbox">
     <h3>{% trans "Payment" %}</h3>
     <div class="pfbot">
-        {% blocktrans %}
-            The subscription fee is 35 Euro is you pay before the 15th of March
-            2019.  After that date you wil have to pay 45 Euro.
-        {% endblocktrans %}
+{% blocktrans %}The subscription fee is 35 Euro is you pay before the 1st of
+March 2019.  After that date you wil have to pay 45 Euro.{% endblocktrans %}
     </div>
     <div class="pfbot">
-        {% blocktrans %}
-            Pay the amount on account BE33 0017 5924 5146 with the structered message:
-        {% endblocktrans %} {{sub.paymessage}}
+{% blocktrans %}Pay the amount on account BE33 0017 5924 5146 with the
+structered message:
+{% endblocktrans %} {{sub.paymessage}}
     </div>
     <div class="pftop"></div>
 </div>

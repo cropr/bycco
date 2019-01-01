@@ -1,7 +1,5 @@
 {% load i18n %}
-{% blocktrans %}
-Please find attached the invoice for the subscription to the
-Belgian Youth championships 2019
-{% endblocktrans %}
+{% blocktrans %}Please find attached the invoice for the subscription to the
+Belgian Youth championships 2019{% endblocktrans %}
 
 The Bycco team

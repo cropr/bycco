@@ -7,9 +7,11 @@ import csv
 import simplejson as json
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.translation import gettext_lazy as _
 
+def staff(user):
+    return user.is_staff
 
 from .models import (
     CdSwarTournament,
@@ -53,10 +55,11 @@ def subscriptionpage(request):
 def participantspage(request):
     return render(request, 'tournament/participantspage.html')
 
+@user_passes_test(staff)
 def managementpage(request):
     return render(request, 'tournament/managementpage.html')
 
-
+@user_passes_test(staff)
 def printbadges(request):
     """
     :param request: 
@@ -95,6 +98,7 @@ def printbadges(request):
         pages.append(badges)
     return render(request, 'subscription/printbadge.html', {'pages': pages})
 
+@user_passes_test(staff)
 def printallbadges(request):
     """
     :param request: 
@@ -128,6 +132,7 @@ def printallbadges(request):
         pages.append(badges)
     return render(request, 'subscription/printbadge.html', {'pages': pages})
 
+@user_passes_test(staff)
 def printnamecards(request):
     """
     :param request: 
@@ -164,6 +169,7 @@ def printnamecards(request):
         pages.append(cards)
     return render(request, 'subscription/printnamecard.html', {'pages': pages})
 
+@user_passes_test(staff)
 def printallnamecards(request):
     """
     :param request: 
@@ -194,8 +200,9 @@ def printallnamecards(request):
             cards = []
     if j > 0:
         pages.append(cards)
-    return render(request, 'subscription/printnamecard.html', {'pages': pages})
+    return render(request, 'tournament/printnamecard.html', {'pages': pages})
 
+@user_passes_test(staff)
 def printboardnumbers(request):
     """
     :param request: 
@@ -240,15 +247,16 @@ def printboardnumbers(request):
                 counter = 0
     if counter > 0:
         pages.append(page)
-    return render(request, '/subscription/printboardnr.html',
+    return render(request, 'tournament/printboardnr.html',
                   {'pages': pages})
 
+@user_passes_test(staff)
 def printpairing(request):
     """
     :param request:
     :return:
     """
-    from .swarconvert import pairingsfromswar
+    from .swar import pairingsfromswar
     id_swarfile = request.GET.get('id_swarfile')
     try:
         swarfile = CdSwarJson.objects.get(id=id_swarfile)
@@ -259,13 +267,14 @@ def printpairing(request):
     round = swarfile.round
     swarjson = json.loads(swarfile.jsonfile)
     pairings = pairingsfromswar(swarjson)
-    return render(request, 'subscription/printpairing.html', {
+    return render(request, 'tournament/printpairing.html', {
         'trnname': trnname,
         'trncolor': trncolor,
         'pairings': pairings,
         'round': round,
     })
 
+@user_passes_test(staff)
 def printprizes(request, cat):
     try:
         trn = CdTournament.objects.get(shortname=cat)
@@ -288,9 +297,9 @@ def printprizes(request, cat):
             cards = []
     if j > 0:
         pages.append(cards)
-    return render(request, 'subscription/printprize.html', dict(pages=pages))
+    return render(request, 'tournament/printprize.html', dict(pages=pages))
 
-@login_required
+@user_passes_test(staff)
 def csvparticipants(request):
     """
     create a csv file of all participants

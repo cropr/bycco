@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-27 08:05+0100\n"
+"POT-Creation-Date: 2018-12-31 14:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,44 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: build/lib/bycco/settings.py:24 build/lib/bycco/settings.py:132
-#: bycco/settings.py:24 bycco/settings.py:132
-msgid "en"
-msgstr ""
-
-#: build/lib/bycco/settings.py:31 build/lib/bycco/settings.py:133
-#: bycco/settings.py:31 bycco/settings.py:133
-msgid "nl"
-msgstr ""
-
-#: build/lib/bycco/settings.py:38 build/lib/bycco/settings.py:134
-#: bycco/settings.py:38 bycco/settings.py:134
-msgid "fr"
-msgstr ""
-
-#: build/lib/bycco/settings.py:45 build/lib/bycco/settings.py:135
-#: bycco/settings.py:45 bycco/settings.py:135
-msgid "de"
-msgstr ""
-
-#: build/lib/bycco/templates/weblog/entries_recent.html:11
-#: build/lib/bycco/templates/weblog/entry_content.html:14
 #: bycco/templates/weblog/entries_recent.html:11
 #: bycco/templates/weblog/entry_content.html:14
 msgid "Continue reading"
 msgstr ""
 
-#: build/lib/bycco/templates/weblog/entry_content.html:7
 #: bycco/templates/weblog/entry_content.html:7
 msgid "Last update on"
 msgstr ""
 
-#: build/lib/bycco/templates/weblog/entry_detail.html:23
 #: bycco/templates/weblog/entry_detail.html:23
 msgid "Next entry"
 msgstr ""
 
-#: build/lib/bycco/templates/weblog/entry_detail.html:38
 #: bycco/templates/weblog/entry_detail.html:38
 msgid "Previous entry"
 msgstr ""

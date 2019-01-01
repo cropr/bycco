@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-28 19:55+0100\n"
+"POT-Creation-Date: 2018-12-31 17:42+0100\n"
 "PO-Revision-Date: 2018-12-27 08:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Birthdate"
 msgstr "Geburtsdatum"
 
-#: models.py:26 templates/tournament/mailhtml.html:51 views.py:23
+#: models.py:26 templates/tournament/mailhtml.html:51 views.py:25
 msgid "Category"
 msgstr "Kategorie"
 
@@ -184,9 +184,8 @@ msgstr ""
 
 #: templates/tournament/invoicemail.txt:2
 msgid ""
-"\n"
 "Please find attached the invoice for the subscription to the\n"
-"Belgian Youth championships 2019\n"
+"Belgian Youth championships 2019"
 msgstr ""
 
 #: templates/tournament/invoicepdf.html:2 templates/tournament/mailhtml.html:12
@@ -274,24 +273,32 @@ msgid "Payment"
 msgstr "Zahlung"
 
 #: templates/tournament/mailhtml.html:63
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "            The subscription fee is 35 Euro is you pay before the 15th of "
+#| "March\n"
+#| "            2019.  After that date you wil have to pay 45 Euro.\n"
+#| "        "
 msgid ""
-"\n"
-"            The subscription fee is 35 Euro is you pay before the 15th of "
-"March\n"
-"            2019.  After that date you wil have to pay 45 Euro.\n"
-"        "
+"The subscription fee is 35 Euro is you pay before the 1st of\n"
+"March 2019.  After that date you wil have to pay 45 Euro."
 msgstr ""
 "\n"
 "Die Einschreibungsgebühr beträgt 35 Euro, wenn Sie vor dem 15. März 2019 "
 "zahlen. Danach erhöht sich diese auf 45 Euro. \n"
 "  "
 
-#: templates/tournament/mailhtml.html:69
+#: templates/tournament/mailhtml.html:67
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "          Pay the amount on account BE33 0017 5924 5146 with the "
+#| "structered message:\n"
+#| "        "
 msgid ""
-"\n"
-"            Pay the amount on account BE33 0017 5924 5146 with the "
+"Pay the amount on account BE33 0017 5924 5146 with the\n"
 "structered message:\n"
-"        "
 msgstr ""
 "\n"
 "Überweisen Sie den Betrag auf das Konto BE33 0017 5924 5146 von Bycco \n"
@@ -314,103 +321,54 @@ msgstr "Mädchen"
 msgid "Boys"
 msgstr "Jungen"
 
-#: templates/tournament/subscribesms.html:4
-msgid "Subscribe SMS"
-msgstr ""
-
-#: templates/tournament/subscribesms.html:10
-msgid "Pairing by SMS texting"
-msgstr ""
-
-#: templates/tournament/subscribesms.html:12
-msgid ""
-"\n"
-"     As an exclusivity, we are proud to offer you free of charge the\n"
-"     possibility to receive a text message with your personalized pairing "
-"of\n"
-"     the next round\n"
-"     "
-msgstr ""
-
-#: templates/tournament/subscribesms.html:19
-msgid ""
-"\n"
-"     All you have to do, is to register your national id and and the mobile\n"
-"     number. The mobile number must start with the country code without a\n"
-"     + sign or 00 and must mot contain any spaces or punctuation.\n"
-"     Example: 32475123456\n"
-"     "
-msgstr ""
-
-#: templates/tournament/subscribesms.html:27
-msgid ""
-"\n"
-"     Only 1 mobile number can be registered per player.\n"
-"     Only numbers from Belgium, the Netherlands, Germany, France and "
-"Luxembourg\n"
-"     are supported\n"
-"     "
-msgstr ""
-
-#: templates/tournament/subscribesms.html:35
-msgid "Mobile number"
-msgstr ""
-
-#: templates/tournament/subscribesms.html:40
-msgid "ID number"
-msgstr "ID-Nummer"
-
-#: templates/tournament/subscribesms.html:45
-msgid "Subscribe"
-msgstr "Einschreiben"
-
-#: templates/tournament/subscribesms.html:50
-msgid "Registration successful"
-msgstr "Erfolgreiche Einschreibung"
-
-#: templates/tournament/subscribesms.html:55
-msgid "Error"
-msgstr "Fehler"
-
-#: templates/tournament/subscribesms.html:56
-msgid "Invalid country code"
-msgstr ""
-
-#: templates/tournament/subscribesms.html:57
-msgid "Not a valid mobile number"
-msgstr ""
-
-#: templates/tournament/subscribesms.html:58
-msgid "No participant with this national ID"
-msgstr ""
-
-#: templates/tournament/subscribesms.html:59
-msgid "This player is already registered"
-msgstr "Dieser Spieler ist bereits registriert"
-
-#: views.py:24
+#: views.py:26
 msgid "Files"
 msgstr "Dateien"
 
-#: views.py:25
+#: views.py:27
 msgid "Live Games"
 msgstr "Live  Parteien"
 
-#: views.py:26
+#: views.py:28
 msgid "Pairings"
 msgstr "Paarungen"
 
-#: views.py:27
+#: views.py:29
 msgid "Round"
 msgstr "Runde"
 
-#: views.py:28
+#: views.py:30
 msgid "Standings"
 msgstr "Rangliste"
 
-#: views.py:29
+#: views.py:31
 msgid "Tournament Results"
 msgstr "Turnierergebnisse"
+
+#~ msgid ""
+#~ "\n"
+#~ "            Pay the amount on account BE33 0017 5924 5146 with the "
+#~ "structered message:\n"
+#~ "        "
+#~ msgstr ""
+#~ "\n"
+#~ "Überweisen Sie den Betrag auf das Konto BE33 0017 5924 5146 von Bycco \n"
+#~ "mit der strukturierten Mitteilung: "
+
+#~ msgid "ID number"
+#~ msgstr "ID-Nummer"
+
+#~ msgid "Subscribe"
+#~ msgstr "Einschreiben"
+
+#~ msgid "Registration successful"
+#~ msgstr "Erfolgreiche Einschreibung"
+
+#~ msgid "Error"
+#~ msgstr "Fehler"
+
+#~ msgid "This player is already registered"
+#~ msgstr "Dieser Spieler ist bereits registriert"
 
 #~ msgid ""
 #~ "\n"
@@ -796,16 +754,6 @@ msgstr "Turnierergebnisse"
 #~ "Die Einschreibungsgebühr beträgt 35 Euro, wenn Sie vor dem 15. März "
 #~ "zahlen . Danach erhöht sich diese auf 45 Euro. \n"
 #~ "  "
-
-#~ msgid ""
-#~ "\n"
-#~ "          Pay the amount on account BE33 0017 5924 5146 with the "
-#~ "structered message:\n"
-#~ "        "
-#~ msgstr ""
-#~ "\n"
-#~ "Überweisen Sie den Betrag auf das Konto BE33 0017 5924 5146 von Bycco \n"
-#~ "mit der strukturierten Mitteilung: "
 
 #~ msgid ""
 #~ "\n"

@@ -1,7 +1,5 @@
 import os
 
-gettext = lambda s: s
-
 ALLOWED_HOSTS = ['*']
 
 APPEND_SLASH = False
@@ -21,28 +19,28 @@ CKEDITOR_SETTINGS = {
 CMS_LANGUAGES = {
     1: [
         {
-            'name': gettext('en'),
+            'name': 'en',
             'public': True,
             'redirect_on_fallback': True,
             'hide_untranslated': False,
             'code': 'en',
         },
         {
-            'name': gettext('nl'),
+            'name': 'nl',
             'public': True,
             'redirect_on_fallback': True,
             'hide_untranslated': False,
             'code': 'nl',
         },
         {
-            'name': gettext('fr'),
+            'name': 'fr',
             'public': True,
             'redirect_on_fallback': True,
             'hide_untranslated': False,
             'code': 'fr',
         },
         {
-            'name': gettext('de'),
+            'name': 'de',
             'public': True,
             'redirect_on_fallback': True,
             'hide_untranslated': False,
@@ -133,13 +131,13 @@ INSTALLED_APPS = (
 LANGUAGE_CODE = 'nl'
 LANGUAGES = (
     ## Customize this
-    ('en', gettext('en')),
-    ('nl', gettext('nl')),
-    ('fr', gettext('fr')),
-    ('de', gettext('de')),
+    ('en', 'en'),
+    ('nl', 'nl'),
+    ('fr', 'fr'),
+    ('de', 'de'),
 )
 
-LOCALE_PATHS = (os.path.join(BASE_DIR, 'i18n'),)
+
 
 
 LOGGING = {

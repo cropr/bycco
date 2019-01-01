@@ -10,14 +10,16 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 
-from .views import test_base, test_cms, test_vue, test_vuecms
+from .views import test
 
 import tournament.apiurls
 import tournament.urls
 
 admin.autodiscover()
 
+
 urlpatterns = [
+    url(r'^test$', test),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^api/', include(tournament.apiurls)),
     # url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
