@@ -1,4 +1,3 @@
-aldryn-newsblog
 cmsplugin-filer
 Django<2
 django-cms
