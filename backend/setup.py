@@ -6,7 +6,7 @@ requires = []
 
 setup(
     name='bycco',
-    version='0.7.3',
+    version='0.8.0',
     description='BYC 2019',
     long_description='Belgian Youth Chess Cheampionships 2019',
     classifiers=[
