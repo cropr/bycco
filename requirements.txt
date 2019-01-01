@@ -31,4 +31,3 @@ reversion
 simplejson
 six
 wheel
-data/rd_django-0.9.0-py3-none-any.whl
