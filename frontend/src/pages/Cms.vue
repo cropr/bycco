@@ -10,8 +10,8 @@
                 src="/static/img/pier_small.jpg" height="200" />
     <v-content :class="{landing: landing}">
       <v-container>
-        <div class="mainarea my-1 pa-2">
-          <cms-content></cms-content>
+        <div class="mainarea my-1">
+          <cms-content class="pa-1" />
         </div>
       </v-container>
       <v-parallax  v-if="landing && $vuetify.breakpoint.mdAndUp"
@@ -21,14 +21,9 @@
       <v-parallax v-if="landing && $vuetify.breakpoint.xs"
                   src="/static/img/bekers_small.jpg" height="200" />
 
-      <v-container class="mt-3 mb-2">
-        <h2>News items</h2>
-        <p>Hier komen de niewsitems zolas </p>
-        <ul>
-         <li>nieuwjaarswensen </li>
-         <li>betalen voor 1 maart</li>
-         <li>wijziging facebook pagina</li>
-        </ul>
+      <v-container v-if="landing" class="mt-3 mb-2">
+        <h2>{{ $t('News items')}}</h2>
+        <cms-newsitems />
       </v-container>
       <v-parallax  v-if="landing && $vuetify.breakpoint.smAndUp"
                    src="/static/img/winnaars_big.jpg" height="400" />
@@ -59,6 +54,7 @@ export default {
   data () {return {
     tabactive: 0,
     landing: window.config.landing,
+    sidebar: window.config.sidebar,
 
   }},
 

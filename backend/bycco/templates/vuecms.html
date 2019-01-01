@@ -12,13 +12,13 @@
   {% render_bundle 'chunk-common'  'css' %}
   {% render_bundle 'cms' 'css' %}
 {% endif %}
-</head>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'UA-116219765-1');
 </script>
+</head>
 <body>
 <script>
 if (!Promise) {
@@ -40,6 +40,11 @@ if (!Promise) {
 <div id="cms-language-block" style="display:none;">
   {%  render_language_block %}
 </div>
+
+<div id="cms-newsitems" style="display:none;">
+  {%  placeholder "newsitems" %}
+</div>
+
 
 {% if PRODUCTION %}
   {% render_bundle 'chunk-vendors' 'js' %}
@@ -73,6 +78,7 @@ function startup () {
   registerComponent('cms-content', function (){return { tabactive: 0}});
   registerComponent('cms-menu-items');
   registerComponent('cms-language-block');
+  registerComponent('cms-newsitems');
 
   application.Vue.config.ignoredElements = [
     'cms-template',
@@ -84,6 +90,7 @@ function startup () {
     api_url: '/api',
     lang: '{{ LANGUAGE_CODE }}',
     subscriptions_enabled: {{ SUBSCRIPTIONS_ENABLED }},
+    participants_enabled: {{ PARTICIPANTS_ENABLED }},
     tournament_enabled: {{ TOURNAMENT_ENABLED }},
     url_i18n: {
       nl: "{% page_language_url 'nl' %}",

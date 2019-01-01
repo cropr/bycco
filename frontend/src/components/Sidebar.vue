@@ -22,6 +22,9 @@
         <v-list-tile href="/trn/subscription"  v-if="sections.subscription">
           <v-list-tile-content>{{$t('Register')}}</v-list-tile-content>
         </v-list-tile>
+        <v-list-tile href="/trn/participants"  v-if="sections.participants">
+          <v-list-tile-content>{{$t('Participants')}}</v-list-tile-content>
+        </v-list-tile>
         <v-list-tile href="/trn/overview"  v-if="sections.tournament">
           <v-list-tile-content>{{$t('Tournament')}}</v-list-tile-content>
         </v-list-tile>
