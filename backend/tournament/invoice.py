@@ -7,6 +7,7 @@ log = logging.getLogger(__name__)
 import decimal
 import pdfkit
 import base64
+import requests
 from django.template.loader import get_template
 from django.template.context import RequestContext
 from django.utils.translation import ugettext as _
@@ -73,9 +74,11 @@ def create_pdf(request, invoice, locale):
     :return: True if success, False if failure
     """
     translation.activate(locale)
-    logobycco = open('bycco/static/img/logo_bycco.png', 'rb')
-    imgbycco = logobycco.read()
-    logobycco.close()
+    sturl = settings.STATIC_URL
+    urllogo = request.build_absolute_uri("{0}img/logo_bycco.png".format(sturl))
+    rs = requests.get(urllogo)
+    if rs.status_code == 200:
+        imgbycco = rs.content
     imgurl = 'data:image/png;base64,%s' % base64.b64encode(
         imgbycco).decode()
     context = {
