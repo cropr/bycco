@@ -137,12 +137,15 @@ LANGUAGES = (
     ('de', 'de'),
 )
 
-
-
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'detailed': {
+            'class': 'logging.Formatter',
+            'format': '%(asctime)s %(name)-15s %(levelname)-8s %(message)s',
+        }
+    },
     'handlers': {
         'console': {
             'level': 'DEBUG',
@@ -152,11 +155,13 @@ LOGGING = {
     'loggers': {
         'bycco': {
             'level': 'DEBUG',
-            'handlers': ['console']
+            'handlers': ['console'],
+            'formatter': 'detailed',
         },
         'tournament': {
             'level': 'DEBUG',
-            'handlers': ['console']
+            'handlers': ['console'],
+            'formatter': 'detailed',
         },
         'django' : {
             'level': 'INFO',

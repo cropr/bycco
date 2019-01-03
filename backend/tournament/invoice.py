@@ -93,8 +93,8 @@ def create_pdf(request, invoice, locale):
         pdffile = open('invoice.pdf', 'rb')
         invoice.pdf = pdffile.read()
         pdffile.close()
-    except:
-        log.error('Failed to create pdf invoice')
+    except Exception as e:
+        log.exception('Failed to create pdf invoice')
         translation.deactivate()
         return False
     translation.deactivate()

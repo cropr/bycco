@@ -10,6 +10,7 @@
            e-mail: <a href="mailto:info@bycco.be">info@bycco.be</a>
         </div>
         <div>{{ $t('VAT')}}: BE 0630.723.395</div>
+        <div>IBAN: BE33 0017 5924 5146</div>
       </v-flex>
       <v-flex sm5 offset-sm1 xs12 class="mt-2">
         <h4 class="mb-2">{{$t('Our mission')}}</h4>
