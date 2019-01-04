@@ -28,6 +28,7 @@
     <h3>Invoice details</h3>
     <div class="mt-2">Participant: {{invdet.first_name}} {{invdet.last_name}}</div>
     <div class="mt-2">Responsible: {{invdet.fullnameresponsible}}</div>
+    <div class="mt-2">Locale: {{invdet.locale}}</div>
     <div class="mt-2">E-mail: {{invdet.emailresponsible}}</div>
     <div class="mt-2">Amount VAT included: {{invdet.pricewithvat}} &euro;</div>
     <div class="mt-2">Amount VAT excluded: {{invdet.pricewithoutvat}} &euro;</div>

@@ -87,7 +87,6 @@ class Base64Field(serializers.Field):
     def to_representation(self, value):
         return base64.b64encode(value).decode()
 
-
 class TrnInvoiceSerializer(serializers.Serializer):
 
     creationdate = serializers.DateTimeField()
@@ -96,6 +95,7 @@ class TrnInvoiceSerializer(serializers.Serializer):
     fullnameresponsible = serializers.CharField()
     invoicenumber = serializers.IntegerField()
     last_name = serializers.CharField(max_length=40)
+    locale = serializers.CharField(max_length=6)
     pdf = Base64Field()
     pricewithvat = serializers.DecimalField(10,2)
     pricewithoutvat = serializers.DecimalField(10,2)

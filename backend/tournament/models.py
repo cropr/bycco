@@ -149,6 +149,7 @@ class TrnInvoice(Model):
     fullnameresponsible = CharField(max_length=50)
     invoicenumber = IntegerField()
     last_name = CharField(max_length=40)
+    locale = CharField(max_length=6, default='en')
     modifieddate = DateTimeField()
     pdf = BinaryField(null=True)
     pricewithvat = DecimalField(max_digits=6, decimal_places=2)

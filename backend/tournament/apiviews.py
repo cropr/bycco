@@ -74,7 +74,7 @@ def subscription_confirmation(request, idsub):
     if request.method == 'POST':
         subscription.confirmed = True
         subscription.save()
-        sendconfirmationmail(subscription)
+        sendconfirmationmail(request, subscription)
         return Response(status=status.HTTP_200_OK)
 
 @api_view(['POST'])
@@ -88,7 +88,7 @@ def subscription_resend(request, idsub):
 
     if request.method == 'POST':
         subscription.confirmed = True
-        sendconfirmationmail(subscription)
+        sendconfirmationmail(request, subscription)
         return Response(status=status.HTTP_204_NO_CONTENT, content_type='application/json')
 
 @api_view(['GET', 'PUT', 'DELETE'])

@@ -10,7 +10,6 @@ import base64
 import requests
 from django.template.loader import get_template
 from django.template.context import RequestContext
-from django.utils.translation import ugettext as _
 from django.utils import translation, timezone
 from django.core.mail import EmailMessage
 from django.conf import settings
@@ -18,6 +17,7 @@ from email.mime.application import MIMEApplication
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework import status
 from rest_framework.response import Response
+from rd_django.templatetags.rd_i18n import translate
 
 from .models import (
     playercategories,
@@ -61,6 +61,7 @@ def create_invoice(request, sub, recreate=True):
     invoice.pricewithoutvat = (invoice.pricewithvat / decimal.Decimal(
         1.06)).quantize(decimal.Decimal('.01'))
     invoice.vat = invoice.pricewithvat - invoice.pricewithoutvat
+    invoice.locale = sub.locale
     create_pdf(request, invoice, sub.locale)
     invoice.save()
     return invoice
@@ -109,10 +110,11 @@ def send_invoice(request, invoice, resend=False):
     :return: True if success, False if failure
     """
     try:
+        translation.activate(invoice.locale)
         msgtext = get_template('tournament/invoicemail.txt').render(
             request=request).strip()
         msg = EmailMessage(
-            _('Invoice'),
+            translate('Invoice', invoice.locale),
             msgtext,
             to=[invoice.emailresponsible],
             from_email=settings.EMAIL_ADDRESSES['invoice_from'],
@@ -121,7 +123,9 @@ def send_invoice(request, invoice, resend=False):
         pdf = MIMEApplication(invoice.pdf, 'pdf')
         msg.attach(pdf)
         msg.send()
+        translation.deactivate()
     except:
+        log.exception('sending invoice failed')
         return False
     invoice.sentdate = timezone.now()
     invoice.save()

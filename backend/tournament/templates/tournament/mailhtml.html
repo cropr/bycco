@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load rd_i18n %}
 <style>
 .cardbox {
   margin: 13px 6px;
@@ -19,7 +19,6 @@
             </td>
             <td width="35%">
                 <div class="phtop">
-                    {% trans "Fullname" %}: {{sub.fullname }}
                 </div>
                 <div class="phtop">
                     {% trans "Birthdate" %}: {{sub.birthdate}}
@@ -54,19 +53,17 @@
         </tr>
   </table>
   <div class="pftop"></div>
+
 </div>
 <br>
 <br>
 <div class="cardbox">
     <h3>{% trans "Payment" %}</h3>
     <div class="pfbot">
-{% blocktrans %}The subscription fee is 35 Euro is you pay before the 1st of
-March 2019.  After that date you wil have to pay 45 Euro.{% endblocktrans %}
+      {% trans "SubConf1" %}
     </div>
     <div class="pfbot">
-{% blocktrans %}Pay the amount on account BE33 0017 5924 5146 with the
-structered message:
-{% endblocktrans %} {{sub.paymessage}}
+      {% trans "SubConf2" %} {{sub.paymessage}}
     </div>
     <div class="pftop"></div>
 </div>

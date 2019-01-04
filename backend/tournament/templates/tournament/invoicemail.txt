@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load rd_i18n %}
 {% blocktrans %}Please find attached the invoice for the subscription to the
 Belgian Youth championships 2019{% endblocktrans %}
 

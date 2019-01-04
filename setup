@@ -3,6 +3,7 @@ python3 -m venv venv
 . venv/bin/activate
 pip install -U pip
 pip install -r requirements.txt
+pip install -U data/rd_django-0.9.1-py3-none-any.whl
 if [ ! -f backend/local_settings.py ]; then
   echo "Installing local_settings.py"
   cp data/local_settings.py backend
