@@ -153,11 +153,11 @@ export default {
           // leave it as is, the filtering will do its job
         }
         else {
-          this.getParticipants();
+          this.getAttendees();
         }
       }
       else {
-        this.getParticipants();
+        this.getAttendees();
       }
       this.catselectedOld = this.catselected;
     },
@@ -179,7 +179,7 @@ export default {
       })
     },
 
-    getParticipants () {
+    getAttendees () {
       api('getAttendees', {
         cat: this.catsearch,
         ss: this.ss.length ? this.ss : null,
@@ -207,7 +207,7 @@ export default {
     },
 
     search () {
-      this.getParticipants();
+      this.getAttendees();
     },
 
     toggleAll () {
@@ -221,12 +221,12 @@ export default {
   },
 
   mounted () {
-    this.getParticipants();
+    this.getAttendees();
   },
 
   watch: {
     ts: function(){
-      this.getParticipants();
+      this.getAttendees();
     }
   }
 

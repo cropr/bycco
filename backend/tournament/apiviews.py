@@ -128,7 +128,7 @@ def subscription_detail(request, pk):
 def participants(request):
 
     if request.method == 'GET':
-        subscriptions = Subscription.objects.all()
+        subscriptions = Subscription.objects.filter(confirmed=True)
         ss = ParticipantSerializer(subscriptions, many=True)
         return Response(ss.data)
 
