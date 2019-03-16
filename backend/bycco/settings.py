@@ -60,7 +60,7 @@ CMS_TEMPLATES = (
     ('page.html', 'Page'),
 )
 
-CMS_PERMISSION = True
+CMS_PERMISSION = False
 
 CMS_PLACEHOLDER_CONF = {}
 
