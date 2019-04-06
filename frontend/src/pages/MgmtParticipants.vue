@@ -6,6 +6,8 @@
                   :participant="params" :ts="ts"/>
   <mgmt-part-invoice @update="update($event)" v-if="section == 'invoice'"
                   :participant="params"  :ts="ts" />
+  <mgmt-part-photo @update="update($event)" v-if="section == 'photo'"
+                  :participant="params"  :ts="ts" />
   <v-snackbar v-model="snackbar" bottom>
     {{ snacktext }}
     <v-btn flat @click="snackbar = false">
@@ -20,6 +22,7 @@
 import MgmtPartList from '../components/MgmtPartList'
 import MgmtPartEdit from '../components/MgmtPartEdit'
 import MgmtPartInvoice from '../components/MgmtPartInvoice'
+import MgmtPartPhoto from '../components/MgmtPartPhoto'
 
 export default {
   name: "MgmtParticipants",
@@ -36,6 +39,7 @@ export default {
     MgmtPartInvoice,
     MgmtPartList,
     MgmtPartEdit,
+    MgmtPartPhoto
   },
 
   methods: {

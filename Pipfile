@@ -1,0 +1,44 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+cmsplugin-filer = "*"
+django-cms = "*"
+django-cors-headers = "*"
+django-filer = "*"
+django-sekizai = "*"
+django-tablib = "*"
+django-treebeard = "*"
+django-webpack-loader = "*"
+djangocms-admin-style = "*"
+djangocms-attributes-field = "*"
+djangocms-column = "*"
+djangocms-file = "*"
+djangocms-inherit = "*"
+djangocms-link = "*"
+djangocms-style = "*"
+djangocms-text-ckeditor = "*"
+djangocms-video = "*"
+djangocms-snippet = "*"
+djangocms-googlemap = "*"
+djangorestframework = "*"
+gunicorn = "*"
+html5lib = "==0.999999999"
+iso8601 = "*"
+pdfkit = "*"
+psycopg2-binary = "*"
+pytz = "*"
+requests = "*"
+reversion = "*"
+simplejson = "*"
+six = "*"
+Django = "<2"
+Pillow = "*"
+rd-django = {path = "./data/rd_django-0.9.1-py3-none-any.whl"}
+
+[requires]
+python_version = "3.6"

@@ -206,6 +206,13 @@ export default {
       })
     },
 
+    photoParticipant(participant) {
+      this.$emit('update', {
+        section: 'photo',
+        params: participant,
+      })
+    },
+
     search () {
       this.getAttendees();
     },

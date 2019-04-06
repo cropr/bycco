@@ -1,7 +1,5 @@
 .idea
 .vscode
-/fe_dist
-/venv
 *.mo
 *.pyc
 *.css.map
@@ -9,3 +7,4 @@
 /frontend/node_modules
 /frontend/webpack-stats.json
 /frontend/src/util/sorted
+/build
