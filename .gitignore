@@ -1,5 +1,6 @@
 .idea
 .vscode
+.directory
 *.mo
 *.pyc
 *.css.map

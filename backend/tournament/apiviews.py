@@ -314,17 +314,22 @@ def attendee_all(request):
             cs = Subscription()
             cs.category = ss.get('category')
             cs.chesstitle = ss.get('chesstitle')
+            cs.emailplayer = ss.get('emailplayer', '')
             cs.first_name = ss.get('first_name')
             cs.gender = ss.get('gender')
-            cs.idbel = '200000'
-            cs.locale = request.LANGUAGE_CODE.lower()[:2]
+            cs.idbel = ss.get('idfide', '200000')
+            cs.idfide = ss.get('idfide', '')
             cs.last_name = ss.get('last_name')
-            cs.custom1 = ss.get('meals')
+            cs.locale = ss.get('locale', 'en')
+            cs.meals = ss.get('meals', '')
+            cs.mobileplayer = ss.get('mobileplayer', '')
+            cs.remarks = ss.get('remarks', '')
             cs.custom2 = ss.get('present')
             cs.save()
+            log.info('cs idbel %s', cs.idbel)
             cs.idbel = str(int(cs.pk) + 100000)
             cs.save()
-            return Response(dict(idbel=cs.idbel),
+            return Response(dict(id=cs.id),
                             status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response(e, status=status.HTTP_400_BAD_REQUEST)
@@ -395,7 +400,7 @@ def attendee_detail(request, id):
         p.gender = data.get('gender')
         p.last_name = data.get('last_name')
         p.locale = data.get('locale', 'nl')
-        p.meals = data.get('meals')
+        p.meals = data.get('meals', '')
         p.mobileattendant = data.get('mobileattendant','')
         p.mobileparent = data.get('mobileparent', '')
         p.mobileplayer = data.get('mobileplayer', '')

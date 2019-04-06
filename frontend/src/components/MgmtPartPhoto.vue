@@ -23,7 +23,13 @@
           <v-icon>save</v-icon>
         </v-btn>
         <span>Save</span>
-      </v-tooltip>      
+      </v-tooltip>
+      <v-tooltip bottom>
+        <v-btn outline fab color="blue-grey" @click="gotoEdit()" slot="activator">
+          <v-icon>edit</v-icon>
+        </v-btn>
+        <span>Save</span>
+      </v-tooltip>            
     </v-flex>
   </v-layout>
  
@@ -82,15 +88,12 @@ export default {
     fullname () {
       return this.participant.first_name + ' ' + this.participant.last_name;
     },
-    photosrc () {
-      return this.p.id ? '/api/subscriptions/' + this.p.id + '/photo' : 
-        '/static/img/nobody.png' ;
-    }
   },
 
   data () {return {
     p: {},
-    photo: '/static/img/nobody.png',
+    photosrc: '',
+    photo: '',
   }},
 
   methods: {
@@ -102,6 +105,24 @@ export default {
     crop() {
       this.photo = this.$refs.photosrc.getCroppedCanvas({width: 160}).toDataURL();
     },
+
+    getAttendee () {
+      api('getAttendee', {
+        id: this.participant.id
+      }).then(
+      function(data) {
+          this.p = data.attendee;
+          this.photosrc =  this.p.id ? '/api/subscriptions/' + this.p.id + 
+            '/photo?time=' + (new Date()).getTime() : 
+        '/static/img/nobody.png';
+          this.photo = '';
+        }.bind(this)
+      )
+    },
+
+    gotoEdit () {
+      this.$emit('update', {section: 'edit', params: this.participant})
+    },    
 
     handleFile(err, file){
       const reader = new FileReader();
@@ -117,8 +138,14 @@ export default {
         idsub: this.p.id,
       }).then(
         function(){
-            console.log('upload succeeded')
-        },
+          this.$emit('update', {
+            section: 'photo', 
+            text: 'Photo saved',
+            reload: true,
+            params: this.participant,
+          });
+          this.getAttendee()
+        }.bind(this),
         function(err){
           console.log('upload failed', err)
         }
@@ -128,13 +155,7 @@ export default {
   },
 
   mounted () {
-    api('getAttendee', {
-      id: this.participant.id
-    }).then(
-     function(data) {
-        this.p = data.attendee;
-      }.bind(this)
-    )
+    this.getAttendee()
   }
 
 }

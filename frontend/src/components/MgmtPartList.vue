@@ -11,6 +11,12 @@
         </v-btn>
         <span>CSV download</span>
       </v-tooltip>
+      <v-tooltip bottom>
+        <v-btn outline fab color="blue-grey" @click="gotoAdd()" slot="activator">
+          <v-icon>add</v-icon>
+        </v-btn>
+        <span>New participant</span>
+      </v-tooltip>
     </v-flex>
   </v-layout>
 
@@ -188,6 +194,10 @@ export default {
           this.participants = data.attendees;
         }.bind(this)
       );
+    },
+
+    gotoAdd () {
+      this.$emit('update', {section: 'add'})
     },
 
     headerClasses (header) {

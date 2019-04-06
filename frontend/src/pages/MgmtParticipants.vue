@@ -4,6 +4,7 @@
   <mgmt-part-list @update="update($event)" v-show="section == 'list'" :ts="ts" />
   <mgmt-part-edit @update="update($event)" v-if="section == 'edit'"
                   :participant="params" :ts="ts"/>
+  <mgmt-part-add @update="update($event)" v-if="section == 'add'"/>
   <mgmt-part-invoice @update="update($event)" v-if="section == 'invoice'"
                   :participant="params"  :ts="ts" />
   <mgmt-part-photo @update="update($event)" v-if="section == 'photo'"
@@ -21,6 +22,7 @@
 
 import MgmtPartList from '../components/MgmtPartList'
 import MgmtPartEdit from '../components/MgmtPartEdit'
+import MgmtPartAdd from '../components/MgmtPartAdd'
 import MgmtPartInvoice from '../components/MgmtPartInvoice'
 import MgmtPartPhoto from '../components/MgmtPartPhoto'
 
@@ -39,6 +41,7 @@ export default {
     MgmtPartInvoice,
     MgmtPartList,
     MgmtPartEdit,
+    MgmtPartAdd,
     MgmtPartPhoto
   },
 
@@ -54,7 +57,6 @@ export default {
         this.snacktext = ev.text;
         this.snackbar = true;
       }
-
     }
   }
 }

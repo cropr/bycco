@@ -14,6 +14,7 @@ playercategories = [
     'B16', 'G16',
     'B18', 'G18',
     'B20', 'G20',
+    'IMT',
 ]
 
 
@@ -37,6 +38,8 @@ class Subscription(Model):
     idfide = CharField(_("FIDE id"), max_length=15, blank=True)
     idbel = CharField(_("Belgian id"), max_length=6, unique=True)
     locale = CharField(_("Locale"), max_length=5)
+    meals = CharField('Meals', max_length=15, blank=True, default='')   
+        # FB (full baording), HP (half pension), BR (breakfast), or custom
     mobileattendant = CharField(_("GSM number responsible on site"), max_length=15, blank=True, default='')
     mobileparent = CharField(_("GSM parent"), max_length=15, blank=True, default='')
     mobileplayer = CharField(_("GSM player"), max_length=15, blank=True, default='')
@@ -51,9 +54,7 @@ class Subscription(Model):
     ratingbel = IntegerField(_("Belgian rating"), default=0)
     ratingfide = IntegerField(_("FIDE rating"), default=0)
     remarks = TextField(_("Remarks"), blank=True)
-    custom1 = TextField(blank=True)                     # maaltijdregime
-    custom2 = TextField(blank=True, null=True)
-    custom3 = TextField(blank=True)
+    custom1 = TextField(blank=True)
 
     def __str__(self):
         return '%s %s' % (self.first_name, self.last_name)
