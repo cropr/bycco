@@ -6,6 +6,7 @@
   <v-spacer></v-spacer>
   <v-toolbar-items>
     <v-btn flat large to="participants">Participants</v-btn>
+    <v-btn flat large to="trns">Tournaments</v-btn>
     <v-btn flat large to="swar">Swar</v-btn>
   </v-toolbar-items>
 </v-toolbar>

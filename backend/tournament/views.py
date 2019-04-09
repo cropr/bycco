@@ -34,6 +34,9 @@ translations = {
 def subscriptionpage(request):
     return render(request, 'tournament/subscriptionpage.html')
 
+def trnviewpage(request):
+    return render(request, 'tournament/trnviewpage.html')
+
 # def participantspage(request):
 #     return render(request, 'subscription/participants.html')
 #

@@ -6,6 +6,7 @@ import './style/bycco.styl'
 
 import TrnSubscription from './pages/TrnSubscription'
 import TrnParticipants from './pages/TrnParticipants'
+import TrnView from './pages/TrnView'
 
 Vue.config.productionTip = false;
 
@@ -21,6 +22,9 @@ switch (window.config.appname) {
     break;
   case 'TrnParticipants':
     window.application.App = TrnParticipants;
+    break;
+  case 'TrnView':
+    window.application.App = TrnView;
     break;
 }
 

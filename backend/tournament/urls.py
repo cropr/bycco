@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^subscription$', subscriptionpage),
     url(r'^participants$', participantspage),
     url(r'^management$', managementpage),
-    # url(r'^overview$', overviewpage),
+    url(r'^view$', trnviewpage),
 
     # url(r'^mg_attendee$', mg_attendee_page),
     # url(r'^mg_attendee_vue$', mg_attendee_vue_page),
