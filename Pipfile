@@ -4,6 +4,8 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pbr = "*"
+rd-django = {path = "./data/rd_django-0.9.1-py3-none-any.whl"}
 
 [packages]
 cmsplugin-filer = "*"
@@ -38,7 +40,6 @@ simplejson = "*"
 six = "*"
 Django = "<2"
 Pillow = "*"
-rd-django = {path = "./data/rd_django-0.9.1-py3-none-any.whl"}
 
 [requires]
 python_version = "3.6"

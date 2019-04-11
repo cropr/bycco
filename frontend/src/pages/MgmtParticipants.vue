@@ -9,6 +9,10 @@
                   :participant="params"  :ts="ts" />
   <mgmt-part-photo @update="update($event)" v-if="section == 'photo'"
                   :participant="params"  :ts="ts" />
+  <mgmt-part-badge @update="update($event)" v-if="section == 'badge'"
+                  :participant="params" :selection="selection" :ts="ts" />
+  <mgmt-part-namecard @update="update($event)" v-if="section == 'namecard'"
+                  :participant="params"  :selection="selection" :ts="ts" />
   <v-snackbar v-model="snackbar" bottom>
     {{ snacktext }}
     <v-btn flat @click="snackbar = false">
@@ -31,6 +35,7 @@ export default {
 
   data () {return {
     section: 'list',
+    selection: [],
     snackbar: false,
     snacktext: '',
     params: {},
