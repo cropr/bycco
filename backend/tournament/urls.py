@@ -22,7 +22,7 @@ urlpatterns = [
     # url(r'^printallbadges$', printallbadges),
     # url(r'^printnamecards$', printnamecards),
     # url(r'^printallnamecards$', printallnamecards),
-    # url(r'^printboardnumbers$', printboardnumbers),
+    url(r'^printboardnumbers$', printboardnumbers),
     # url(r'^printpairing$', printpairing),
     # url(r'^printprizes/(?P<categories>.+)$', printprizes),
 ]

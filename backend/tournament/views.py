@@ -218,28 +218,29 @@ def printboardnumbers(request):
     for p in Subscription.objects.all():
         cc = counters.get(p.category, 0)
         counters[p.category] = cc + 1
-    cats = (
-        ("B8", "G8"),
-        ("B10",),
-        ("G10", ),
-        ("B12", ),
-        ("G12", ),
-        ("B14", ),
-        ("G14", ),
-        ("B16", ),
-        ("G16", ),
-        ("B18", "G18"),
-        ("B20", "G20"),
-    )
+    cats = {
+        "U8": 12, 
+        "B10": 26,
+        "G10": 6,
+        "B12": 49,
+        "G12": 12,
+        "B14": 41,
+        "G14": 8,
+        "B16": 22,
+        "G16": 8,
+        "B18": 22,
+        "G18": 5,
+        "U20": 13,
+        "IMT": 6,
+    }
     counter = 0
-    for cat in cats:
-        nrcards = sum((counters.get(subcat, 0)) for subcat in cat)
+    for cat, nrcards in cats.items():
         for j in range(nrcards // 2 + 2):
             rix = counter % 3 + 1
             cix = counter // 3 + 1
             card = {
                 'ix': j + 1,
-                'category': cat[0],
+                'category': cat,
                 'positionclass': 'bnr_{0}{1}'.format(cix, rix)
             }
             page.append(card)
