@@ -330,6 +330,7 @@ def csvparticipants(request):
         'idfide',
         'last_name',
         'locale',
+        'meals',
         'mobileattendant',
         'mobileparent',
         'mobileplayer',
@@ -342,7 +343,6 @@ def csvparticipants(request):
         'ratingbel',
         'ratingfide',
         'custom1',
-        'custom2',
         'custom3',
     ]
     writer = csv.writer(response)
