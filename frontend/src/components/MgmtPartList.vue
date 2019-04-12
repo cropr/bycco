@@ -17,6 +17,18 @@
         </v-btn>
         <span>New participant</span>
       </v-tooltip>
+      <v-tooltip bottom>
+        <v-btn outline fab color="blue-grey" @click="gotoBadge()" slot="activator">
+          <v-icon>assignment_ind</v-icon>
+        </v-btn>
+        <span>Badge</span>
+      </v-tooltip>
+      <v-tooltip bottom>
+        <v-btn outline fab color="blue-grey" @click="gotoNamecard()" slot="activator">
+          <v-icon>assignment</v-icon>
+        </v-btn>
+        <span>Namecard</span>
+      </v-tooltip>
     </v-flex>
   </v-layout>
 
@@ -67,7 +79,7 @@ import _ from 'lodash'
 export default {
   name: "MgmtPartList",
 
-  props: ['ts'],
+  props: ['ts', 'selection'],
 
   computed: {
     filteredParticipants () {
@@ -200,6 +212,10 @@ export default {
       this.$emit('update', {section: 'add'})
     },
 
+    gotoBadge () {
+      this.$emit('update', {section: 'badge'})
+    },
+
     headerClasses (header) {
       let hc = ['column'];
       hc.push(header.align ? 'text-xs-' + header.align : 'text-xs-left');
@@ -220,6 +236,15 @@ export default {
       this.$emit('update', {
         section: 'photo',
         params: participant,
+      })
+    },
+
+    printParticipant(participant){
+      var s = this.selection || [];
+      s.push(participant)
+      this.$emit('update', {
+        text: 'Particpant added to print selection',
+        selection: s,
       })
     },
 

@@ -1,18 +1,19 @@
 <template>
 <v-container fluid>
 
-  <mgmt-part-list @update="update($event)" v-show="section == 'list'" :ts="ts" />
+  <mgmt-part-list @update="update($event)" v-show="section == 'list'" 
+    :selection="selection"  :ts="ts" />
   <mgmt-part-edit @update="update($event)" v-if="section == 'edit'"
-                  :participant="params" :ts="ts"/>
+    :participant="params" :ts="ts"/>
   <mgmt-part-add @update="update($event)" v-if="section == 'add'"/>
   <mgmt-part-invoice @update="update($event)" v-if="section == 'invoice'"
-                  :participant="params"  :ts="ts" />
+    :participant="params"  :ts="ts" />
   <mgmt-part-photo @update="update($event)" v-if="section == 'photo'"
-                  :participant="params"  :ts="ts" />
+    :participant="params"  :ts="ts" />
   <mgmt-part-badge @update="update($event)" v-if="section == 'badge'"
-                  :participant="params" :selection="selection" :ts="ts" />
+    :selection="selection" />
   <mgmt-part-namecard @update="update($event)" v-if="section == 'namecard'"
-                  :participant="params"  :selection="selection" :ts="ts" />
+    :selection="selection" :ts="ts" />
   <v-snackbar v-model="snackbar" bottom>
     {{ snacktext }}
     <v-btn flat @click="snackbar = false">
@@ -29,6 +30,8 @@ import MgmtPartEdit from '../components/MgmtPartEdit'
 import MgmtPartAdd from '../components/MgmtPartAdd'
 import MgmtPartInvoice from '../components/MgmtPartInvoice'
 import MgmtPartPhoto from '../components/MgmtPartPhoto'
+import MgmtPartBadge from '../components/MgmtPartBadge'
+// import MgmtPartNamecard from '../components/MgmtPartNamecard'
 
 export default {
   name: "MgmtParticipants",
@@ -47,17 +50,21 @@ export default {
     MgmtPartList,
     MgmtPartEdit,
     MgmtPartAdd,
-    MgmtPartPhoto
+    MgmtPartPhoto,
+    MgmtPartBadge,
   },
 
   methods: {
     update (ev) {
       console.log('update', ev);
-      this.section = ev.section;
-      this.params = ev.params;
-      if (ev.reload) {
+      if (ev.section)
+        this.section = ev.section;
+      if (ev.param)
+        this.params = ev.params;
+      if (ev.selection)
+        this.selection = ev.selection
+      if (ev.reload) 
         this.ts = new Date();
-      }
       if (ev.text) {
         this.snacktext = ev.text;
         this.snackbar = true;

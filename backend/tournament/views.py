@@ -69,10 +69,22 @@ def printbadges(request):
     :return: 
     """
     ids = request.GET.get('ids')
+    cat = request.GET.get('cat')
+    if cat:
+        query = Subscription.objects.all()
+        if cat:
+            if ',' in cat:
+                cats = cat.split(',')
+                query = query.filter(category__in=cats)
+            else:
+                query = query.filter(category=cat)
+        allids = [ s.id for s in query]
+    else: 
+        allids = ids.split(',')
     pages = []
     badges = []
     j = 0
-    for id in ids.split(','):
+    for ix, id in enumerate(allids, 1):
         try:
             p = Subscription.objects.get(id=id)
         except Subscription.DoesNotExist:
@@ -89,7 +101,8 @@ def printbadges(request):
             'mealsclass': "badge_{}".format(p.custom1 or "NM"),
             'color': p.category,
             'photourl': '/api/photo/{0}'.format(p.id),
-            'positionclass': 'badge{0}{1}'.format(cix, rix)
+            'positionclass': 'badge{0}{1}'.format(cix, rix),
+            'ix': ix,
         }
         badges.append(badge)
         j += 1
@@ -99,7 +112,7 @@ def printbadges(request):
             badges = []
     if j > 0:
         pages.append(badges)
-    return render(request, 'subscription/printbadge.html', {'pages': pages})
+    return render(request, 'tournament/printbadge.html', {'pages': pages})
 
 @user_passes_test(staff)
 def printallbadges(request):
@@ -235,7 +248,7 @@ def printboardnumbers(request):
     }
     counter = 0
     for cat, nrcards in cats.items():
-        for j in range(nrcards // 2 + 2):
+        for j in range(nrcards):
             rix = counter % 3 + 1
             cix = counter // 3 + 1
             card = {

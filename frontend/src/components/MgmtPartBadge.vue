@@ -22,33 +22,35 @@
         <v-btn outline fab color="blue-grey" @click="clear()" slot="activator">
           <v-icon>delete</v-icon>
         </v-btn>
-        <span>Clear custom</span>
+        <span>Clear custom selection</span>
       </v-tooltip>
     </v-flex>
   </v-layout>
  
   <div>
     <h4>Make selection</h4>
-    <v-layout row wrap>
-        <v-flex md1 sm2 xs3 v-for="c in boys" :key="c">
-          <v-checkbox v-model="catsSelected[c]" :label="c" hide-details class="check"
-                      @change="recalc" />
-        </v-flex>
-      </v-layout>
+    <v-radio-group v-model="cat">
       <v-layout row wrap>
-        <v-flex md1 sm2 xs3 v-for="c in girls" :key="c">
-          <v-checkbox v-model="catsSelected[c]" :label="c" hide-details class="check"
+        <v-flex md1 sm2 xs3 v-for="c in cats" :key="c">
+          <v-radio :label="c" :value='c' hide-details class="check"
                       @change="recalc" />
         </v-flex>
       </v-layout>
-      <v-layout row wrap>
-        <v-flex md1 sm2 xs3 v-for="c in rest" :key="c">
-          <v-checkbox v-model="catsSelected[c]" :label="c" hide-details class="check"
-                      @change="recalc" />
-        </v-flex>
-      </v-layout>
-
+    </v-radio-group>  
   </div>
+
+  <div>
+    <h4>Selected particpants</h4>
+    <table>
+      <tr v-for="(p,ix) in badges" :key="p.id">
+        <td style="width: 3em;"> {{ ix + 1}}</td>  
+        <td  style="width: 20em;"> {{ p.first_name}} {{p.last_name}}</td>  
+        <td> {{ p.category}}</td>
+      </tr>
+    </table>  
+  </div>
+
+
 
 
 </v-container>
@@ -58,20 +60,19 @@
 
 import api from '../util/api'
 
-
 export default {
 
   name: "MgmtPartBadge",
 
-
-  props: ['participant'],
+  props: ['selection'],
 
   data () {return {
-    selection: [],
-    boys: ['B8', 'B10', 'B12', 'B14', 'B16', 'B18', 'B20'],
-    catsSelected: {'custom'},
-    girls:  ['G8', 'G10', 'G12', 'G14', 'G16', 'G18', 'G20'],
-    rest: ['ORG', 'ARB', 'IMT', 'RES', 'SPO'],
+    cats: ['U8', 'B10', 'G10', 'B12', 'G12', 'B14', 'G14', 'B16', 'G16',
+      'B18', 'G18','U20', 'ORG', 'ARB', 'IMT', 'RES', 'SPO', 'Custom'],
+    cat: 'Custom',
+    catsearch: '',
+    ss: '',
+    badges: this.selection,
   }},
 
   methods: {
@@ -81,37 +82,72 @@ export default {
     },
 
     clear () {
-        this.selection = []
+      this.cat = 'Custom'
+      this.$emit('update', {
+        section: 'list',
+        selection: [],
+        reload: true,
+      });      
     },
 
     print() {
-        var ids=[];
+      var ids, qstr, cs;
+      if (this.cat == 'Custom') {
+        ids=[];
         this.selection.forEach(p => {
             ids.push(p.id);
         });
-        var qstr = id.join('&')
-        window.open('/cd_subscription/printbadges?' + qstr, "_print");
+        qstr = "ids=" + ids.join(',');
+      }
+      else {
+        cs = this.cat;
+        if (cs == 'U8') cs = 'B8,G8';
+        if (cs == 'U20') cs = 'B20,G20';        
+        qstr = "cat=" + cs;
+      }
+      window.open('/trn/printbadges?' + qstr, "_print");
     },
 
-    getAttendee () {
-      api('getAttendee', {
-        id: this.participant.id
-      }).then(
-      function(data) {
-          this.p = data.attendee;
-          this.photosrc =  this.p.id ? '/api/subscriptions/' + this.p.id + 
-            '/photo?time=' + (new Date()).getTime() : 
-        '/static/img/nobody.png';
-          this.photo = '';
-        }.bind(this)
-      )
+    recalc (c) {
+      if (c == 'Custom') {
+        this.badges = this.sortAlphabetically(this.selection);
+      }
+      else {
+        var cs = c;
+        if (cs == 'U8') cs = 'B8,G8';
+        if (cs == 'U20') cs = 'B20,G20';
+        api('getAttendees', {
+          cat: cs
+        }).then(
+          function(data){
+            console.log('data.attendees', data.attendees)
+            this.badges = this.sortAlphabetically(data.attendees); 
+          }.bind(this),
+          function(data){
+            console.log('error getAttendees', data)
+          }
+        );
+      } 
     },
 
+    search() {
+
+    },
+
+    sortAlphabetically(a) {
+      var result = [...a];
+      console.log('result', result);
+      result.sort((a,b) => (a.last_name > b.last_name) ? 1 : (
+        (b.last_name > a.last_name) ? -1 : 0));
+      return result
+    },
+
+    mounted() {
+      this.recalc('Custom')
+    }
+    
+    
   },
-
-  mounted () {
-    this.getAttendee()
-  }
 
 }
 </script>

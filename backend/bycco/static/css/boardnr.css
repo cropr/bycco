@@ -77,10 +77,12 @@
   border: 1px dashed #444; }
 
 .bnrpage {
-  width: 21cm;
-  min-height: 29.7cm;
+  width: 20cm;
+  /* min-height: 29.7cm; */
+  height: 25cm;
   padding: 2cm;
-  margin: 2cm auto 1cm auto;
+  /* margin: 2cm auto 1cm auto; */
+  margin: 0;
   border: 1px #D3D3D3 solid;
   border-radius: 5px;
   background: white;
