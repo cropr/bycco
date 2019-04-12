@@ -343,7 +343,6 @@ def csvparticipants(request):
         'ratingbel',
         'ratingfide',
         'custom1',
-        'custom3',
     ]
     writer = csv.writer(response)
     writer.writerow(fields)
