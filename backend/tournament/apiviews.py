@@ -389,7 +389,12 @@ def attendee_detail(request, id):
 
     if request.method == 'PUT':
         data = request.data.get('attendee', {})
-        p.birthdate = data.get('birthdate', p.birthdate)
+        if 'birthdate' in data:
+            birthdate = data.get('birthdate')
+            if birthdate:
+                p.birthdate = iso8601.parse_date(birthdate)
+            else:
+                p.birthdate = None            
         p.category = data.get('category', p.category)
         p.chesstitle = data.get('chesstitle', p.chesstitle)
         p.confirmed = data.get('confirmed', p.confirmed)
@@ -399,6 +404,8 @@ def attendee_detail(request, id):
         p.fullnameattendant = data.get('fullnameattendant', p.fullnameattendant)
         p.fullnameparent = data.get('fullnameparent', p.fullnameparent)
         p.gender = data.get('gender', p.gender)
+        p.idbel = data.get('idbel', p.idbel)
+        p.idfide = data.get('idefide', p.idfide)
         p.last_name = data.get('last_name', p.last_name)
         p.locale = data.get('locale', p.locale)
         p.meals = data.get('meals', p.meals)

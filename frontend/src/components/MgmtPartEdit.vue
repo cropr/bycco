@@ -62,8 +62,8 @@
       <v-select label="Category" v-model="p.category" :items="categories"/>
       <v-select label="Gender" v-model="p.gender" :items="genders" />
       <p>ID club: {{p.idclub}}</p>
-      <p>ID FIDE: {{p.idfide}}</p>
-      <p>ID Bel: {{p.idbel}}</p>
+      <v-text-field label="ID Bel" v-model="p.idbel" />
+      <v-text-field label="ID Fide" v-model="p.idfide" />
       <p>Nationality Bel: {{p.nationalitybel}}</p>
       <v-text-field label="Nationality FIDE" v-model="p.nationalityfide" />
       <v-text-field label="Rating FIDE" v-model="p.ratingfide" />

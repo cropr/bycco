@@ -152,6 +152,7 @@ export default {
       {value: 'G18', text: 'G18'},
       {value: 'B20', text: 'B20'},
       {value: 'G20', text: 'G20'},
+      {value: "IMT", text: 'IM toernooi'},
       {value: "ORG", text: 'Organiser'},
       {value: "ARB", text: 'Arbiter'},
       {value: "SPO", text: 'Sponsor or Guest'},
