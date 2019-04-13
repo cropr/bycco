@@ -8,7 +8,7 @@ import requests
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 
-from subscription.models import Subscription
+from tournament.models import Subscription
 
 class Command(BaseCommand):
     help = 'Read the subscription2016.json and create emaillist'

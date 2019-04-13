@@ -212,7 +212,7 @@ export default {
   },
 
   mounted () {
-    console.log('received participant', this.participant)
+    console.log('received participant', this.participant.id)
     api('getAttendee', {
       id: this.participant.id
     }).then(

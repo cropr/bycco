@@ -190,10 +190,10 @@ export default {
       }
     },
 
-    editParticipant(participant) {
+    editParticipant(p) {
       this.$emit('update', {
         section: 'edit',
-        params: participant,
+        participant: p,
       })
     },
 
@@ -225,23 +225,23 @@ export default {
       return hc;
     },
 
-    invoiceParticipant (participant) {
+    invoiceParticipant (p) {
       this.$emit('update', {
         section: 'invoice',
-        params: participant,
+        participant: p,
       })
     },
 
-    photoParticipant(participant) {
+    photoParticipant(p) {
       this.$emit('update', {
         section: 'photo',
-        params: participant,
+        participant: p,
       })
     },
 
-    printParticipant(participant){
+    printParticipant(p){
       var s = this.selection || [];
-      s.push(participant)
+      s.push(p)
       this.$emit('update', {
         text: 'Particpant added to print selection',
         selection: s,

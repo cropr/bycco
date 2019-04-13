@@ -4,12 +4,12 @@
   <mgmt-part-list @update="update($event)" v-show="section == 'list'" 
     :selection="selection"  :ts="ts" />
   <mgmt-part-edit @update="update($event)" v-if="section == 'edit'"
-    :participant="params" :ts="ts"/>
+    :participant="participant" :ts="ts"/>
   <mgmt-part-add @update="update($event)" v-if="section == 'add'"/>
   <mgmt-part-invoice @update="update($event)" v-if="section == 'invoice'"
-    :participant="params"  :ts="ts" />
+    :participant="participant"  :ts="ts" />
   <mgmt-part-photo @update="update($event)" v-if="section == 'photo'"
-    :participant="params"  :ts="ts" />
+    :participant="participant"  :ts="ts" />
   <mgmt-part-badge @update="update($event)" v-if="section == 'badge'"
     :selection="selection" />
   <mgmt-part-namecard @update="update($event)" v-if="section == 'namecard'"
@@ -41,7 +41,7 @@ export default {
     selection: [],
     snackbar: false,
     snacktext: '',
-    params: {},
+    participant: {},
     ts: new Date(),
   }},
 
@@ -55,18 +55,18 @@ export default {
   },
 
   methods: {
-    update (ev) {
-      console.log('update', ev);
-      if (ev.section)
-        this.section = ev.section;
-      if (ev.param)
-        this.params = ev.params;
-      if (ev.selection)
-        this.selection = ev.selection
-      if (ev.reload) 
+    update (e) {
+      console.log('update', e);
+      if (e.section)
+        this.section = e.section;
+      if (e.participant)
+        this.participant = e.participant;
+      if (e.selection)
+        this.selection = e.selection
+      if (e.reload) 
         this.ts = new Date();
-      if (ev.text) {
-        this.snacktext = ev.text;
+      if (e.text) {
+        this.snacktext = e.text;
         this.snackbar = true;
       }
     }
