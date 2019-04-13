@@ -1,0 +1,124 @@
+@page {
+  size: A4;
+  margin: 0; }
+
+.cardpage {
+  border: 1px #D3D3D3 solid;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+@media print {
+  .cardpage {
+    margin: 0 0 !important;
+    width: 100%;
+    border-width: 0;
+    border-radius: 0;
+    min-height: initial;
+    box-shadow: none;
+    page-break-after: always; 
+  } 
+}
+
+  .cardpage {
+    width: 21cm;
+    min-height: 29.4cm;
+    padding: 0;
+    margin: 0;
+    /* margin: 1em auto; */
+    position: relative; 
+  }
+
+.cardline {
+  position: absolute;
+  top: 14.80cm;
+  left: 0;
+  right: 0; }
+
+.card_1 {
+  position: absolute;
+  width: 19cm;
+  height: 14.6cm; }
+
+.card_11 {
+  top: 0cm;
+  left: 0cm; }
+
+.card_12 {
+  top: 14.7cm;
+  left: 0cm; }
+
+.cardsponsor1 {
+  position: absolute;
+  top: 2cm;
+  left: 1cm;
+  width: 5.5cm;
+  height: auto; }
+
+.cardsponsor2 {
+  position: absolute;
+  top: 2cm;
+  left: 7cm;
+  width: 5.5cm;
+  height: auto; }
+
+.cardsponsor3 {
+  position: absolute;
+  top: 2cm;
+  left: 13cm;
+  width: 5.5cm;
+  height: auto; }
+
+.cardtitle {
+  position: absolute;
+  top: 7.5cm;
+  left: 4cm;
+  width: 13cm;
+  height: 1.8cm; }
+
+.cardtext {
+  position: absolute;
+  top: 9.5cm;
+  left: 4cm;
+  width: 14cm; }
+
+.cardright {
+  position: absolute;
+  top: 5cm;
+  right: 0cm;
+  width: 1cm;
+  bottom: 5cm; }
+
+.cardline {
+  border-top: 1px dashed #666; }
+
+.cardcategory {
+  font-size: 100%; }
+
+.cardtitle {
+  font-size: 180%;
+  font-weight: bold; }
+  .cardtitle img {
+    height: 100%;
+    width: auto; }
+
+.cardname {
+  font-size: 250%;
+  font-weight: bold; }
+
+.cardrating {
+  font-size: 120%;
+  font-weight: bold; }
+
+.cardturn {
+  transform: rotate(180deg);
+  width: 100%; }
+
+.cardnumber {
+  position: absolute;
+  top: 14cm;
+  right: 0cm;
+  width: 1cm;
+}
+

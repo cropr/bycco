@@ -223,6 +223,10 @@ export default {
       this.$emit('update', {section: 'badge'})
     },
 
+    gotoNamecard () {
+      this.$emit('update', {section: 'namecard'})
+    },
+
     gotoPresence () {
       this.$emit('update', {section: 'presence'})
     },

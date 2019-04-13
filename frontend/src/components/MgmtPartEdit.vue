@@ -68,7 +68,7 @@
       <v-text-field label="Nationality FIDE" v-model="p.nationalityfide" />
       <v-text-field label="Rating FIDE" v-model="p.ratingfide" />
       <v-text-field label="Rating Bel" v-model="p.ratingbel" />
-      <v-text-field label="Nating used" v-model="p.rating" />
+      <v-text-field label="Rating used" v-model="p.rating" />
       <v-select label="Confirmed" v-model="p.confirmed" :items="yesno" />
     </v-flex>
     <v-flex sm6 xs12>

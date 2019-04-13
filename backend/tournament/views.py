@@ -114,39 +114,6 @@ def printbadges(request):
         pages.append(badges)
     return render(request, 'tournament/printbadge.html', {'pages': pages})
 
-@user_passes_test(staff)
-def printallbadges(request):
-    """
-    :param request: 
-    :return: 
-    """
-    pages = []
-    badges = []
-    j = 0
-    for p in Subscription.objects.all().order_by('category','last_name'):
-        rix = j % 2 + 1
-        cix = j // 2 + 1
-        badge = {
-            'last_name': p.last_name,
-            'first_name': p.first_name,
-            'rating': p.rating or "",
-            'chesstitle': p.chesstitle + " " if p.chesstitle else "",
-            'category': p.category,
-            'meals': p.custom1,
-            'mealsclass': "badge_{}".format(p.custom1 or "NM"),
-            'color': p.category,
-            'photourl': '/api/photo/{0}'.format(p.id),
-            'positionclass': 'badge{0}{1}'.format(cix, rix)
-        }
-        badges.append(badge)
-        j += 1
-        if j == 8:
-            j = 0
-            pages.append(badges)
-            badges = []
-    if j > 0:
-        pages.append(badges)
-    return render(request, 'subscription/printbadge.html', {'pages': pages})
 
 @user_passes_test(staff)
 def printnamecards(request):
@@ -155,10 +122,22 @@ def printnamecards(request):
     :return: 
     """
     ids = request.GET.get('ids')
+    cat = request.GET.get('cat')
+    if cat:
+        query = Subscription.objects.all().order_by('last_name', 'first_name')
+        if cat:
+            if ',' in cat:
+                cats = cat.split(',')
+                query = query.filter(category__in=cats)
+            else:
+                query = query.filter(category=cat)
+        allids = [ s.id for s in query]
+    else: 
+        allids = ids.split(',')
     pages = []
     cards = []
     j = 0
-    for id in ids.split(','):
+    for ix, id in enumerate(allids, 1):
         try:
             p = Subscription.objects.get(id=id)
         except Subscription.DoesNotExist:
@@ -173,40 +152,8 @@ def printnamecards(request):
             'color': p.category,
             'locale': p.locale,
             'photourl': '/api/photo/{0}'.format(p.id),
-            'positionclass': 'card_1{0}'.format(rix)
-        }
-        cards.append(card)
-        j += 1
-        if j == 2:
-            j = 0
-            pages.append(cards)
-            cards = []
-    if j > 0:
-        pages.append(cards)
-    return render(request, 'subscription/printnamecard.html', {'pages': pages})
-
-@user_passes_test(staff)
-def printallnamecards(request):
-    """
-    :param request: 
-    :return: 
-    """
-    ids = request.POST.get('ids')
-    pages = []
-    cards = []
-    j = 0
-    for p in Subscription.objects.all().order_by('category','last_name'):
-        rix = j % 2 + 1
-        ct = p.chesstitle + " " if p.chesstitle else ""
-        card = {
-            'fullname': "{0}{1} {2}".format(ct, p.last_name, p.first_name),
-            'natrating': p.ratingbel or "0",
-            'fiderating': p.ratingfide or "0",
-            'category': p.category,
-            'color': p.category,
-            'locale': p.locale,
-            'photourl': '/api/photo/{0}'.format(p.id),
-            'positionclass': 'card_1{0}'.format(rix)
+            'positionclass': 'card_1{0}'.format(rix),
+            'ix': ix,
         }
         cards.append(card)
         j += 1

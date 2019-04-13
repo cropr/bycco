@@ -8,10 +8,10 @@
 <meta name="author" content="">
 <title>Badges 2017</title>
 <link href="{% static "css/namecard.css"%}" rel="stylesheet">
-<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+<link href="{% static "css/catcolors.css"%}" rel="stylesheet">
 
 </head>
-<body>
+<body style="margin-top: 0">
 
 {% for page in pages %}
   <div class="cardpage">
@@ -28,7 +28,7 @@
         </div>
         <div class="cardtitle">
           <img src="/static/img/logo_bycco.png" >
-          Blankenberge 2018
+          Blankenberge 2019
         </div>
         <div class="cardtext">
           <p class="cardname">{{ card.fullname }}</p>
@@ -39,6 +39,7 @@
             F: {{ card.fiderating }}</p>
         </div>
         <div class="cardright {{ card.color }}"></div>
+        <div class="cardnumber">{{ card.ix }}</div>        
       </div>
     {% endfor %}
     <div class="cardline"></div>

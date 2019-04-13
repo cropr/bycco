@@ -82,7 +82,9 @@
   
   .badgebottom {
     border-top: 1px solid #ff2359;
-    text-align: center; }
+    text-align:    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+ center; }
   
   .badgename {
     font-size: 140%;
@@ -109,7 +111,8 @@
   
   @page {
     size: A4;
-    margin: 0; }
+    margin: 0; 
+  }
   @media print {
     .badgepage {
       margin: 0;
