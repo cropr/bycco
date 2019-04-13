@@ -302,7 +302,7 @@ def attendee_all(request):
                     'nationalityfide': p.nationalityfide,
                     'confirmed': p.confirmed,
                     'meals': p.custom1,
-                    'present': p.present.isoformat() if p.present else '',
+                    'present': p.present.strftime("%Y-%m-%dT%H:%M:%SZ") if p.present else '',
                     'payamount': p.payamount,
                 } for p in query]
         }
@@ -372,7 +372,7 @@ def attendee_detail(request, id):
             'payamount': p.payamount,
             'paydate': p.paydate.isoformat() if p.paydate else '',
             'paymessage': p.paymessage,
-            'present': p.present.isoformat() if p.present else '',
+            'present': p.present.strftime("%Y-%m-%dT%H:%M:%SZ") if p.present else '',
             'rating': p.rating,
             'ratingbel': p.ratingbel,
             'ratingfide': p.ratingfide,
@@ -389,25 +389,26 @@ def attendee_detail(request, id):
 
     if request.method == 'PUT':
         data = request.data.get('attendee', {})
-        p.birthdate = data.get('birthdate')
-        p.category = data.get('category')
-        p.chesstitle = data.get('chesstitle','')
-        p.confirmed = data.get('confirmed', False)
-        p.emailparent = data.get('emailparent', '')
-        p.emailplayer = data.get('emailplayer', '')
-        p.first_name = data.get('first_name')
-        p.fullnameattendant = data.get('fullnameattendant', '')
-        p.fullnameparent = data.get('fullnameparent', '')
-        p.gender = data.get('gender')
-        p.last_name = data.get('last_name')
-        p.locale = data.get('locale', 'nl')
-        p.meals = data.get('meals', '')
-        p.mobileattendant = data.get('mobileattendant','')
-        p.mobileparent = data.get('mobileparent', '')
-        p.mobileplayer = data.get('mobileplayer', '')
-        p.nationalityfide = data.get('nationalityfide')
-        p.payamount = int(data.get('payamount', 0))
-        p.paymessage = data.get('paymessage', '')
+        p.birthdate = data.get('birthdate', p.birthdate)
+        p.category = data.get('category', p.category)
+        p.chesstitle = data.get('chesstitle', p.chesstitle)
+        p.confirmed = data.get('confirmed', p.confirmed)
+        p.emailparent = data.get('emailparent', p.emailparent)
+        p.emailplayer = data.get('emailplayer', p.emailplayer)
+        p.first_name = data.get('first_name', p.first_name)
+        p.fullnameattendant = data.get('fullnameattendant', p.fullnameattendant)
+        p.fullnameparent = data.get('fullnameparent', p.fullnameparent)
+        p.gender = data.get('gender', p.gender)
+        p.last_name = data.get('last_name', p.last_name)
+        p.locale = data.get('locale', p.locale)
+        p.meals = data.get('meals', p.meals)
+        p.mobileattendant = data.get('mobileattendant', p.mobileattendant)
+        p.mobileparent = data.get('mobileparent', p.mobileparent)
+        p.mobileplayer = data.get('mobileplayer', p.mobileplayer)
+        p.nationalityfide = data.get('nationalityfide', p.nationalityfide)
+        p.payamount = int(data.get('payamount', p.payamount))
+        p.paymessage = data.get('paymessage', p.paymessage)
+        log.info('data attendee %s', data)
         # p.paydate = data.get('paydate')
         if 'present' in data:
             present = data.get('present')
@@ -415,11 +416,11 @@ def attendee_detail(request, id):
                 p.present = iso8601.parse_date(present)
             else:
                 p.present = None
-        p.rating = data.get('rating', 0)
-        p.ratingbel = data.get('ratingbel', 0)
-        p.ratingfide = data.get('ratingfide', 0)
-        p.remarks = data.get('remarks', 0)
-        p.custom1 = data.get('custom1', '')
+        p.rating = data.get('rating', p.rating)
+        p.ratingbel = data.get('ratingbel', p.ratingbel)
+        p.ratingfide = data.get('ratingfide', p.ratingfide)
+        p.remarks = data.get('remarks', p.remarks)
+        p.custom1 = data.get('custom1', p.custom1)
         try:
             p.save()
             return Response(dict(id=p.id),

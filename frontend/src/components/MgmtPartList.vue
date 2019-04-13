@@ -29,6 +29,12 @@
         </v-btn>
         <span>Namecard</span>
       </v-tooltip>
+      <v-tooltip bottom>
+        <v-btn outline fab color="blue-grey" @click="gotoPresence()" slot="activator">
+          <v-icon>check_box</v-icon>
+        </v-btn>
+        <span>Presence Check</span>
+      </v-tooltip>
     </v-flex>
   </v-layout>
 
@@ -214,6 +220,10 @@ export default {
 
     gotoBadge () {
       this.$emit('update', {section: 'badge'})
+    },
+
+    gotoPresence () {
+      this.$emit('update', {section: 'presence'})
     },
 
     headerClasses (header) {

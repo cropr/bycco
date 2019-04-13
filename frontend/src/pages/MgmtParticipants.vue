@@ -14,7 +14,8 @@
     :selection="selection" />
   <mgmt-part-namecard @update="update($event)" v-if="section == 'namecard'"
     :selection="selection" :ts="ts" />
-  <v-snackbar v-model="snackbar" timeout=4000 bottom>
+  <mgmt-part-presence v-if="section == 'presence'"/>
+  <v-snackbar v-model="snackbar" :timeout="timeout" bottom>
     {{ snacktext }}
     <v-btn flat @click="snackbar = false">
       <v-icon>cancel</v-icon>
@@ -32,6 +33,7 @@ import MgmtPartInvoice from '../components/MgmtPartInvoice'
 import MgmtPartPhoto from '../components/MgmtPartPhoto'
 import MgmtPartBadge from '../components/MgmtPartBadge'
 // import MgmtPartNamecard from '../components/MgmtPartNamecard'
+import MgmtPartPresence from '../components/MgmtPartPresence'
 
 export default {
   name: "MgmtParticipants",
@@ -43,6 +45,7 @@ export default {
     snacktext: '',
     participant: {},
     ts: new Date(),
+    timeout: 4000,
   }},
 
   components: {
@@ -52,6 +55,7 @@ export default {
     MgmtPartAdd,
     MgmtPartPhoto,
     MgmtPartBadge,
+    MgmtPartPresence,
   },
 
   methods: {
