@@ -14,7 +14,7 @@
     :selection="selection" />
   <mgmt-part-namecard @update="update($event)" v-if="section == 'namecard'"
     :selection="selection" :ts="ts" />
-  <v-snackbar v-model="snackbar" bottom>
+  <v-snackbar v-model="snackbar" timeout=4000 bottom>
     {{ snacktext }}
     <v-btn flat @click="snackbar = false">
       <v-icon>cancel</v-icon>
