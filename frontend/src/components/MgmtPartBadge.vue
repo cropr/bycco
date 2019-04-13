@@ -68,7 +68,7 @@ export default {
 
   data () {return {
     cats: ['U8', 'B10', 'G10', 'B12', 'G12', 'B14', 'G14', 'B16', 'G16',
-      'B18', 'G18','U20', 'ORG', 'ARB', 'IMT', 'RES', 'SPO', 'Custom'],
+      'B18', 'G18','U20', 'ORG', 'ARB', 'IMT', 'EAT', 'SPO', 'Custom'],
     cat: 'Custom',
     catsearch: '',
     ss: '',
