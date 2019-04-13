@@ -84,6 +84,7 @@
       <v-text-field label="Payment message" v-model="p.paymessage" />
       <p>Invoice created: <date-formatted :date="p.invoicecreated"/></p>
       <p>Invoice sent: <date-formatted :date="p.invoicesent" /></p>
+      <v-text-field label="Custom1" v-model="p.custom1" />
       <v-textarea label="Remarks" v-model="p.remarks" />
     </v-flex>
   </v-layout>

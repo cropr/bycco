@@ -363,7 +363,7 @@ def attendee_detail(request, id):
             'invoicesent': None,
             'last_name': p.last_name,
             'locale': p.locale,
-            'meals': p.custom1,
+            'meals': p.meals,
             'mobileattendant': p.mobileattendant,
             'mobileparent': p.mobileparent,
             'mobileplayer': p.mobileplayer,
@@ -377,6 +377,7 @@ def attendee_detail(request, id):
             'ratingbel': p.ratingbel,
             'ratingfide': p.ratingfide,
             'remarks': p.remarks,
+            'custom1': p.custom1,
         }
         try:
             inv = TrnInvoice.objects.get(id_participant=id)
@@ -418,7 +419,7 @@ def attendee_detail(request, id):
         p.ratingbel = data.get('ratingbel', 0)
         p.ratingfide = data.get('ratingfide', 0)
         p.remarks = data.get('remarks', 0)
-        p.custom1 = data.get('meals', '')
+        p.custom1 = data.get('custom1', '')
         try:
             p.save()
             return Response(dict(id=p.id),

@@ -71,7 +71,7 @@ def printbadges(request):
     ids = request.GET.get('ids')
     cat = request.GET.get('cat')
     if cat:
-        query = Subscription.objects.all()
+        query = Subscription.objects.all().order_by('last_name', 'first_name')
         if cat:
             if ',' in cat:
                 cats = cat.split(',')
