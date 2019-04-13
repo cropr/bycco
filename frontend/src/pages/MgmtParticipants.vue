@@ -14,7 +14,7 @@
     :selection="selection" />
   <mgmt-part-namecard @update="update($event)" v-if="section == 'namecard'"
     :selection="selection" :ts="ts" />
-  <mgmt-part-presence v-if="section == 'presence'"/>
+  <mgmt-part-presence @update="update($event)" v-if="section == 'presence'"/>
   <v-snackbar v-model="snackbar" :timeout="timeout" bottom>
     {{ snacktext }}
     <v-btn flat @click="snackbar = false">

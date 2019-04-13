@@ -6,7 +6,7 @@
     </v-flex>
     <v-flex>
       <v-tooltip bottom>
-        <v-btn outline fab color="blue-grey" @click="back()" slot="activator">
+        <v-btn outline fab color="blue-grey" @click="back" slot="activator">
           <v-icon>arrow_back</v-icon>
         </v-btn>
         <span>Go Back</span>
@@ -142,7 +142,7 @@ export default {
 
   data () {return {
     cats: ['B8','G8', 'B10', 'G10', 'B12', 'G12', 'B14', 'G14', 'B16', 'G16',
-        'B18', 'G18', 'B20', 'G20', 'IMT', 'ORG', 'ARB', 'RES'
+        'B18', 'G18', 'B20', 'G20', 'IMT', 'ORG', 'ARB', 'EAT'
     ],
     selcats: {},
     notpresent: [],
