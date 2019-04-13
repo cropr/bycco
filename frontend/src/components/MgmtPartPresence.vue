@@ -27,7 +27,7 @@
       <v-data-table :items="notpresent" class="elevation-1" :headers="headers_np"
                     :rows-per-page-items="[25,50,100]"  :pagination.sync="pag_np">
         <template slot="headers" slot-scope="props" >
-          <th v-for="header in props.headers" :key="header.text" @click="changeSort(header)">
+          <th v-for="header in props.headers" :key="header.text" @click="changeSortNp(header)">
             {{ header.text }}
             <v-icon small v-show="header.sortable">arrow_upward</v-icon>
           </th>
@@ -49,7 +49,7 @@
       <v-data-table :items="present" class="elevation-1" :headers="headers_p"
                     :rows-per-page-items="[25,50,100]"  :pagination.sync="pag_p">
         <template slot="headers" slot-scope="props" >
-          <th v-for="header in props.headers" :key="header.text" @click="changeSort(header)">
+          <th v-for="header in props.headers" :key="header.text" @click="changeSortP(header)">
             {{ header.text }}
             <v-icon small v-show="header.sortable">arrow_upward</v-icon>
           </th>
@@ -163,13 +163,23 @@ export default {
       this.$emit('update', {section: 'list'})
     },
 
-    changeSort (header) {
+    changeSortNp (header) {
       if (!header.sortable) return;
-      if (this.pagination.sortBy === header.value) {
-        this.pagination.descending = !this.pagination.descending
+      if (this.pag_np.sortBy === header.value) {
+        this.pag_np.descending = !this.pag_np.descending
       } else {
-        this.pagination.sortBy = header.value;
-        this.pagination.descending = false
+        this.pag_np.sortBy = header.value;
+        this.pag_np.descending = false
+      }
+    },    
+
+    changeSortP (header) {
+      if (!header.sortable) return;
+      if (this.pag_p.sortBy === header.value) {
+        this.pag_p.descending = !this.pag_p.descending
+      } else {
+        this.pag_p.sortBy = header.value;
+        this.pag_p.descending = false
       }
     },    
 
