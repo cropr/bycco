@@ -555,7 +555,7 @@ def tournament_standings(request, id_trn, round):
         'id_trn': trn.id,
         'tournament': trn.name,
         'round': int(round),
-        'standings': standingsfromswar(trndata)
+        'standings': standingsfromswar(trndata, int(round))
     }
     return Response(data)
 

@@ -79,8 +79,8 @@ export default {
         id_trn: this.trn.id,
       }).then(
         function(data){
-          self.topround = data;
-        },
+          this.topround = data;
+        }.bind(this),
         function(data) {
           console.error('failed getting topround', data);
         }

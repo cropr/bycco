@@ -37,23 +37,8 @@ def subscriptionpage(request):
 def trnviewpage(request):
     return render(request, 'tournament/trnviewpage.html')
 
-# def participantspage(request):
-#     return render(request, 'subscription/participants.html')
-#
-# def mg_attendee_page(request):
-#     return render(request, 'subscription/mg_attendee.html')
-#
-# def mg_attendee_vue_page(request):
-#     return render(request, 'subscription/mg_attendee_vue.html')
-#
-# def mg_presence_page(request):
-#     return render(request, 'subscription/mg_presence.html')
-#
-# def mg_swar_page(request):
-#     return render(request, 'subscription/mg_swar.html')
-#
-# def mg_trn_page(request):
-#     return render(request, 'subscription/mg_trn.html')
+def aboutuspage(request):
+    return render(request, 'tournament/aboutuspage.html')
 
 def participantspage(request):
     return render(request, 'tournament/participantspage.html')
@@ -113,7 +98,6 @@ def printbadges(request):
     if j > 0:
         pages.append(badges)
     return render(request, 'tournament/printbadge.html', {'pages': pages})
-
 
 @user_passes_test(staff)
 def printnamecards(request):

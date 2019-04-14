@@ -11,12 +11,7 @@ urlpatterns = [
     url(r'^participants$', participantspage),
     url(r'^management$', managementpage),
     url(r'^view$', trnviewpage),
-
-    # url(r'^mg_attendee$', mg_attendee_page),
-    # url(r'^mg_attendee_vue$', mg_attendee_vue_page),
-    # url(r'^mg_presence$', mg_presence_page),
-    # url(r'^mg_swar$', mg_swar_page),
-    # url(r'^mg_trn$', mg_trn_page),
+    url(r'^aboutus$', aboutuspage),
     url(r'^csv$', csvparticipants),
     url(r'^printbadges$', printbadges),
     url(r'^printnamecards$', printnamecards),

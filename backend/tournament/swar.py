@@ -123,7 +123,6 @@ def processswarjson(swarjson, rr=None):
         for ix, g in enumerate(ra):
             round = g.get("RoundNr")
             currentRound = int(rr or len(ra))
-            log.info('building pairings for round %s', currentRound)
             if currentRound == ix + 1:
                 standings[six] = pl
             if g.get("Tabel") == "Absent":

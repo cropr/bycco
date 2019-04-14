@@ -129,31 +129,30 @@ export default {
     }
   },
   methods: {
-    // getStandings () {
-    //   var self=this;
-    //   this.standings = [];
-    //   api('getTopround', {
-    //     id_trn: this.trn.id,
-    //   }).then(
-    //     function(data){
-    //       self.topround = data;
-    //     },
-    //     function(data) {
-    //       console.error('failed getting topround', data);
-    //     }
-    //   );
-    //   api('getStandings', {
-    //     id_trn: this.trn.id,
-    //     round: this.round
-    //   }).then(
-    //     function(data){
-    //       self.standings = data.standings;
-    //     },
-    //     function(data) {
-    //       console.error('failed getting standings', data);
-    //     }
-    //   );
-    // }
+    getStandings () {
+      this.standings = [];
+      api('getTopround', {
+        id_trn: this.trn.id,
+      }).then(
+        function(data){
+          this.topround = data;
+        }.bind(this),
+        function(data) {
+          console.error('failed getting topround', data);
+        }
+      );
+      api('getStandings', {
+        id_trn: this.trn.id,
+        round: this.round
+      }).then(
+        function(data){
+          this.standings = data.standings;
+        }.bind(this),
+        function(data) {
+          console.error('failed getting standings', data);
+        }
+      );
+    }
   },
   watch: {
     updateTrn: function(newVal) {
