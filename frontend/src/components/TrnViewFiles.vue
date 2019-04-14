@@ -34,32 +34,32 @@ export default {
   },
   methods: {
     getPdfGames () {
-      var self=this;
-      this.pdfgames = [];
-      api('getPdfGames', {
-        id_trn: this.trn.id,
-      }).then(
-        function(data){
-          self.pdfgames = data.pdfgames;
-        },
-        function(data) {
-          console.error('failed getting pdfgames', data);
-        }
-      );
+      // var self=this;
+      // this.pdfgames = [];
+      // api('getPdfGames', {
+      //   id_trn: this.trn.id,
+      // }).then(
+      //   function(data){
+      //     self.pdfgames = data.pdfgames;
+      //   },
+      //   function(data) {
+      //     console.error('failed getting pdfgames', data);
+      //   }
+      // );
     },
     getPgnGames () {
-      var self=this;
-      this.pgngames = [];
-      api('getPgnGames', {
-        id_trn: this.trn.id,
-      }).then(
-        function(data){
-          self.pgngames = data.pgngames;
-        },
-        function(data) {
-          console.error('failed getting pgngames', data);
-        }
-      );
+      // var self=this;
+      // this.pgngames = [];
+      // api('getPgnGames', {
+      //   id_trn: this.trn.id,
+      // }).then(
+      //   function(data){
+      //     self.pgngames = data.pgngames;
+      //   },
+      //   function(data) {
+      //     console.error('failed getting pgngames', data);
+      //   }
+      // );
     }
   },
   watch: {

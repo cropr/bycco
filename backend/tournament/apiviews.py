@@ -515,6 +515,7 @@ def tournament_pairings(request, id_trn, round):
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     swarround = int(round)
+    log.info('getting pairing round %d', swarround)
     try:
         swartrn = CdSwarTournament.objects.get(tournament=trn)
     except CdSwarTournament.DoesNotExist:
@@ -529,7 +530,7 @@ def tournament_pairings(request, id_trn, round):
         'id_trn': trn.id,
         'tournament': trn.name,
         'round': int(round),
-        'pairings': pairingsfromswar(trndata)
+        'pairings': pairingsfromswar(trndata, round)
     }
     return Response(data)
 

@@ -48,13 +48,14 @@ def playercardfromswar(swarjson, plix):
     log.debug("No player found for index %d", plix)
     return None
 
-def pairingsfromswar(swarjson):
+def pairingsfromswar(swarjson, rr=None):
     """
     get the pairings from the swarjson structure
     :param swarjson:
     :return:
     """
-    (standings, pairings, bye, absences) = processswarjson(swarjson)
+    log.info('pairingfrom_swar %s', rr)
+    (standings, pairings, bye, absences) = processswarjson(swarjson, rr)
     skeys = sorted(pairings.keys())
     p = [pairings[k] for k in skeys]
     if bye:
@@ -62,18 +63,19 @@ def pairingsfromswar(swarjson):
     p.extend(absences)
     return p
 
-def standingsfromswar(swarjson):
+def standingsfromswar(swarjson, rr):
     """
     get the pairings from the swarjson structure
     :param swarjson:
     :return:
     """
-    (standings, pairings, bye, absences) = processswarjson(swarjson)
+    log.info('standingfrom_swar %s', rr)
+    (standings, pairings, bye, absences) = processswarjson(swarjson, rr)
     skeys = sorted(standings.keys())
     s = [standings[k] for k in skeys]
     return s
 
-def processswarjson(swarjson):
+def processswarjson(swarjson, rr=None):
     """
     process the jsswarjson file calculating players and pairings
     standings, pairings, bye are dicts
@@ -81,6 +83,7 @@ def processswarjson(swarjson):
     :param swarjson:
     :return: (standings, pairings, bye, absences)
     """
+    log.info('processswarjson %s', rr)
     pairings = {}
     standings = {}
     absences = []
@@ -151,6 +154,8 @@ def processswarjson(swarjson):
                         "black_points": '',
                     }
                 continue
+            currentRound = int(rr or len(ra))
+            log.info('building pairings for round %s', currentRound)
             lastgame = {
                 "table": int(g.get("Tabel")) - 1,
                 "opponentIndex": g.get("OpponentNi"),
@@ -158,10 +163,10 @@ def processswarjson(swarjson):
                 "result": g.get("Result").upper(),
                 "color": "B" if g.get("Color") == "Black" else 'W',
                 "float": g.get("Float"),
-                "round": int(round)-1,
+                "round": currentRound - 1,
             }
             pl["games"].append(lastgame)
-            if len(ra) == ix + 1:
+            if currentRound == ix + 1:
                 pix = lastgame["table"]
                 lg = pairings.get(pix, {})
                 if lastgame["color"] == "W":

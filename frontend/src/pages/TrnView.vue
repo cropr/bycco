@@ -42,7 +42,7 @@
             <v-layout row>
               <v-list-tile sm3 @click="gotoCat('B20')" class="menucell">U20</v-list-tile>
               <v-list-tile sm3 @click="gotoCat('G20')" class="menucell">&nbsp;</v-list-tile>
-              <v-list-tile sm3 @click="gotoCat('B20')" class="menucell">IMT</v-list-tile>
+              <v-list-tile sm3 @click="gotoCat('IMT')" class="menucell">IMT</v-list-tile>
             </v-layout>
             <v-layout row>
               <v-list-tile sm4 @click="gotoRound('1')" class="menucell">R1</v-list-tile>
@@ -71,7 +71,7 @@
           </v-btn>
           <v-list>
             <v-layout row>
-              <v-list-tile class="menucell" @click="gotoCat('B8')">U8</v-list-tile>
+              <v-list-tile class="menucell" @click="gotoCat('U8')">U8</v-list-tile>
             </v-layout>
             <v-layout row>
               <v-list-tile class="menucell" @click="gotoCat('B10')">B10</v-list-tile>
@@ -94,10 +94,10 @@
               <v-list-tile class="menucell" @click="gotoCat('G18')">G18</v-list-tile>
             </v-layout>
             <v-layout row>
-              <v-list-tile class="menucell" @click="gotoCat('B20')">U20</v-list-tile>
+              <v-list-tile class="menucell" @click="gotoCat('U20')">U20</v-list-tile>
             </v-layout>
             <v-layout row>
-              <v-list-tile class="menucell" @click="gotoCat('B20')">IMT</v-list-tile>
+              <v-list-tile class="menucell" @click="gotoCat('IMT')">IMT</v-list-tile>
             </v-layout>
           </v-list>
         </v-menu>
