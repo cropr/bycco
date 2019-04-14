@@ -132,6 +132,7 @@ export default {
       var reader = new FileReader(),
           file = event.dataTransfer.files[0],
           jsonswar;
+      console.log('upload file', file)
       this.dragging = false;
       event.preventDefault();
       reader.onload = function (evt) {

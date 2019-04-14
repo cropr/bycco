@@ -1,9 +1,9 @@
 <template>
 <div>
-  <div class="mt-2" v-show="linkavailable">
+  <div class="mt-2 pa-2" v-show="linkavailable">
    Live Games available <a :href="link">here</a>
   </div>
-  <div class="mt-2" v-show="!linkavailable">
+  <div class="mt-2 pa-2" v-show="!linkavailable">
    Live Games not yet available
   </div>
 </div>
@@ -12,19 +12,19 @@
 <script>
 
 const links = {
-  U8: "http://bycco.livechesscloud.com/view#/2274b3a0-a577-4c72-a077-8c1a31301402",
-  B10: "http://bycco.livechesscloud.com/view/#/8fc3e207-b149-4171-ab59-2ae8c882425c",
-  G10: "http://bycco.livechesscloud.com/view#/09f7f5f0-a01c-43f5-83b5-c29e1bab1712",
-  B12: "http://bycco.livechesscloud.com/view/#/000b3fbc-f53f-4588-89b3-41c962084347",
-  G12: "http://bycco.livechesscloud.com/view#/0d3478bc-124b-436b-a986-abadaef82ac5",
-  B14: "http://bycco.livechesscloud.com/view/#/dd2b79f6-8afc-472e-a479-cf62f2e87beb",
-  G14: "http://bycco.livechesscloud.com/view/#/cd5596ad-9ac2-448c-8b20-4c6313ba4389",
-  B16: "http://bycco.livechesscloud.com/view/#/11109f96-40f8-45cb-9293-78c2288d776d",
-  G16: "http://bycco.livechesscloud.com/view/#/b7c7d269-10a4-4ee1-8b4f-2ad4eaad5e84",
-  B18: "http://bycco.livechesscloud.com/view#/7bb06bdd-4a09-4e77-9980-e358b4611b15",
-  G18: "http://bycco.livechesscloud.com/view#/7bb06bdd-4a09-4e77-9980-e358b4611b15",
-  U20: "http://bycco.livechesscloud.com/view#/db5eea45-4bcf-47a8-8ca5-693de60dd396",
-  IMT: "http://bycco.livechesscloud.com/view#/7bb06bdd-4a09-4e77-9980-e358b4611b15",
+  U8: "http://view.livechesscloud.com/deabfe5d-5d82-481f-9b27-544ba50fdba9",
+  B10: "http://view.livechesscloud.com/d58a240d-1eb6-4dea-8905-2df513b4a9d3",
+  G10: "http://view.livechesscloud.com/5a79b739-7492-4e8b-81bf-3ebf6b5d24ab",
+  B12: "http://view.livechesscloud.com/d99d423d-95d2-449f-ad21-933c8e6b15e8",
+  G12: "http://view.livechesscloud.com/17f49146-bcf9-4bfd-8e53-3751e7ebeefd",
+  B14: "http://view.livechesscloud.com/5acc14c9-a27a-4493-880f-65b820dd3fc2",
+  G14: "http://view.livechesscloud.com/df3a9452-747e-476f-b4ac-c284cfafa9eb",
+  B16: "http://view.livechesscloud.com/b2bc5d4e-5574-43b9-b8f8-cfb77e30c5ef",
+  G16: "http://view.livechesscloud.com/003b14f4-73c8-4b8f-bb7d-1911a6a31e2b",
+  B18: "http://view.livechesscloud.com/01024da8-854d-4214-9b42-85d2e42bf020",
+  G18: "http://view.livechesscloud.com/76f4ce70-1c77-4445-b0e4-643c0db85667",
+  U20: "http://view.livechesscloud.com/dd0059b6-3039-4527-a7de-75e8573276b0",
+  IMT: "http://view.livechesscloud.com/4a968f54-e793-402b-ace6-6b56d8415f35",
 };
 
 export default {

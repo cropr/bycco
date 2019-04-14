@@ -1,0 +1,1329 @@
+{
+    "Swar" : {
+        "TournamentDesc" : {
+            "Version" : "v4.11",
+            "Tournament" : "BJK CBJ 2019 -20BG",
+            "Organizer" : "BYCCO",
+            "ClubOrLogo" : "BYCCO",
+            "Place" : "Blankenberge",
+            "Arbiter_1" : "IA Sylvin DE VET",
+            "Arbiter_2" : "IA Sylvin DE VET",
+            "StartDate" : "14/04/2019",
+            "EndDate" : "20/04/2019",
+            "RateOfPlay" : "90 min with incr. 30\"",
+            "NbOfRounds" : 9,
+            "SepareteCategories" : 0,
+            "FideHomologation " : 1,
+            "FideTournamentId" : "217027",
+            "FideArbiterId_1" : "214787",
+            "FideArbiterName_1" : "De Vet, Sylvin",
+            "FideArbiterId_2" : "1036726 ",
+            "FideArbiterName_2" : "",
+            "TournamentType" : "Swiss",
+            "NbGroups" : 0,
+            "XtrPoints" : "0.0",
+            "AmericainPresence" : 0,
+            "MultiplePairing" : 0,
+            "FirstTableNumber" : 1,
+            "SW321_Win" : "0.0",
+            "SW321_Null" : "0.0",
+            "SW321_Loss" : "0.0",
+            "SW321_Bye" : "0.0",
+            "SW321_Presence" : "0.0",
+            "EloUsed" : "Higher of National and Fide",
+            "TournamentStd" : "Standard",
+            "ByeValue" : "1",
+            "AbsenceValue" : "0",
+            "Federation" : "KBSB",
+            "NbDates" : 9,
+            "NbPlayers" : 24,
+            "DatesArray" : [ {
+                "DateValue" : "14/04/2019"
+            }, {
+                "DateValue" : "15/04/2019"
+            }, {
+                "DateValue" : "15/04/2019"
+            }, {
+                "DateValue" : "16/04/2019"
+            }, {
+                "DateValue" : "17/04/2019"
+            }, {
+                "DateValue" : "17/04/2019"
+            }, {
+                "DateValue" : "18/04/2019"
+            }, {
+                "DateValue" : "19/04/2019"
+            }, {
+                "DateValue" : "20/04/2019"
+            } ],
+            "TieBreaks" : [ {
+                "Type" : "Progressif"
+            }, {
+                "Type" : "Bucholtz"
+            }, {
+                "Type" : "Sonneborn-Berger"
+            }, {
+                "Type" : "Nb.Games Won"
+            }, {
+                "Type" : "Nb.played with Black"
+            } ],
+            "Category" : "AGE",
+            "Category_1" : [ {
+                "Type" : "AGE",
+                "100" : "+20"
+            }, {
+                "Type" : "AGE",
+                "200" : "-20"
+            } ]
+        },
+        "Player" : [ {
+            "Ranking" : 1,
+            "Name" : "Sterck, Arno",
+            "Ni" : 23,
+            "Rank" : 1,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 10284,
+            "FideId" : 228249,
+            "Affiliated" : 1,
+            "NationalElo" : 2267,
+            "FideElo" : 2328,
+            "Titel" : "FM",
+            "ClubNumber" : 260,
+            "ClubName" : "Kapelle-op-den-Bos",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "1",
+                "OpponentNi" : 4,
+                "OpponentName" : "Ghyselen, Tim",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 2,
+            "Name" : "Lee, Deon",
+            "Ni" : 19,
+            "Rank" : 2,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 10397,
+            "FideId" : 1042017,
+            "Affiliated" : 1,
+            "NationalElo" : 2144,
+            "FideElo" : 2178,
+            "Titel" : "",
+            "ClubNumber" : 114,
+            "ClubName" : "Mechelen",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "2",
+                "OpponentNi" : 8,
+                "OpponentName" : "Huettl, Sofie",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 3,
+            "Name" : "Mitran, Anthony Cristian",
+            "Ni" : 18,
+            "Rank" : 3,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2004",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 12736,
+            "FideId" : 240052,
+            "Affiliated" : 1,
+            "NationalElo" : 2102,
+            "FideElo" : 2109,
+            "Titel" : "",
+            "ClubNumber" : 174,
+            "ClubName" : "Brasschaat",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "3",
+                "OpponentNi" : 9,
+                "OpponentName" : "Temmerman, Sara",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 4,
+            "Name" : "Bratuszewski, Jorden",
+            "Ni" : 16,
+            "Rank" : 4,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 10800,
+            "FideId" : 233463,
+            "Affiliated" : 1,
+            "NationalElo" : 2051,
+            "FideElo" : 2061,
+            "Titel" : "",
+            "ClubNumber" : 732,
+            "ClubName" : "Houthalen-Oost",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "4",
+                "OpponentNi" : 12,
+                "OpponentName" : "Koornstra, Robbert-Jan",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 5,
+            "Name" : "De Block, Fabio",
+            "Ni" : 3,
+            "Rank" : 5,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 11034,
+            "FideId" : 226181,
+            "Affiliated" : 1,
+            "NationalElo" : 1982,
+            "FideElo" : 2039,
+            "Titel" : "",
+            "ClubNumber" : 261,
+            "ClubName" : "Opwijk",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "5",
+                "OpponentNi" : 6,
+                "OpponentName" : "De Baets, Keano",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 6,
+            "Name" : "Ismail, Tamer",
+            "Ni" : 10,
+            "Rank" : 6,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 12899,
+            "FideId" : 2909332,
+            "Affiliated" : 1,
+            "NationalElo" : 2031,
+            "FideElo" : 1954,
+            "Titel" : "",
+            "ClubNumber" : 124,
+            "ClubName" : "Deurne",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "6",
+                "OpponentNi" : 2,
+                "OpponentName" : "Rousseau, Christilla",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 7,
+            "Name" : "De Coninck, Erik",
+            "Ni" : 1,
+            "Rank" : 7,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 10474,
+            "FideId" : 233234,
+            "Affiliated" : 1,
+            "NationalElo" : 1959,
+            "FideElo" : 1940,
+            "Titel" : "",
+            "ClubNumber" : 732,
+            "ClubName" : "Houthalen-Oost",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "7",
+                "OpponentNi" : 14,
+                "OpponentName" : "Leyssens, Bas",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 8,
+            "Name" : "Huygebaert, Batist",
+            "Ni" : 22,
+            "Rank" : 8,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 11526,
+            "FideId" : 238422,
+            "Affiliated" : 1,
+            "NationalElo" : 1848,
+            "FideElo" : 1886,
+            "Titel" : "",
+            "ClubNumber" : 430,
+            "ClubName" : "Landegem",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "8",
+                "OpponentNi" : 20,
+                "OpponentName" : "Vanhauwere, Anton",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 9,
+            "Name" : "Beukema, Christiaan",
+            "Ni" : 11,
+            "Rank" : 9,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 11418,
+            "FideId" : 1032976,
+            "Affiliated" : 1,
+            "NationalElo" : 1867,
+            "FideElo" : 1850,
+            "Titel" : "",
+            "ClubNumber" : 174,
+            "ClubName" : "Brasschaat",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "9",
+                "OpponentNi" : 15,
+                "OpponentName" : "Debouver, Torben",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 10,
+            "Name" : "Verboven, Arnout",
+            "Ni" : 13,
+            "Rank" : 10,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 29840,
+            "FideId" : 236012,
+            "Affiliated" : 1,
+            "NationalElo" : 1824,
+            "FideElo" : 1780,
+            "Titel" : "",
+            "ClubNumber" : 114,
+            "ClubName" : "Mechelen",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "10",
+                "OpponentNi" : 21,
+                "OpponentName" : "Verstraeten, Leander",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 11,
+            "Name" : "Temmerman, Sander",
+            "Ni" : 7,
+            "Rank" : 11,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 13522,
+            "FideId" : 242071,
+            "Affiliated" : 1,
+            "NationalElo" : 1778,
+            "FideElo" : 1785,
+            "Titel" : "",
+            "ClubNumber" : 422,
+            "ClubName" : "MSV",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "11",
+                "OpponentNi" : 17,
+                "OpponentName" : "Condes, Alexie Sheen",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 12,
+            "Name" : "Pfeiffer, Noah",
+            "Ni" : 5,
+            "Rank" : 12,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 13545,
+            "FideId" : 241881,
+            "Affiliated" : 1,
+            "NationalElo" : 1738,
+            "FideElo" : 1771,
+            "Titel" : "",
+            "ClubNumber" : 627,
+            "ClubName" : "Wirtzfeld",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "12",
+                "OpponentNi" : 24,
+                "OpponentName" : "Bensafi, Mathias",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 13,
+            "Name" : "Ghyselen, Tim",
+            "Ni" : 4,
+            "Rank" : 13,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 13365,
+            "FideId" : 241466,
+            "Affiliated" : 1,
+            "NationalElo" : 1715,
+            "FideElo" : 1770,
+            "Titel" : "",
+            "ClubNumber" : 462,
+            "ClubName" : "Zottegem",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "1",
+                "OpponentNi" : 23,
+                "OpponentName" : "Sterck, Arno",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 14,
+            "Name" : "Huettl, Sofie",
+            "Ni" : 8,
+            "Rank" : 14,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 12524,
+            "FideId" : 236730,
+            "Affiliated" : 1,
+            "NationalElo" : 1756,
+            "FideElo" : 1767,
+            "Titel" : "",
+            "ClubNumber" : 302,
+            "ClubName" : "KISK Ieper",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "2",
+                "OpponentNi" : 19,
+                "OpponentName" : "Lee, Deon",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 15,
+            "Name" : "Temmerman, Sara",
+            "Ni" : 9,
+            "Rank" : 15,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 13529,
+            "FideId" : 242080,
+            "Affiliated" : 1,
+            "NationalElo" : 1727,
+            "FideElo" : 1738,
+            "Titel" : "",
+            "ClubNumber" : 422,
+            "ClubName" : "MSV",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "3",
+                "OpponentNi" : 18,
+                "OpponentName" : "Mitran, Anthony Cristian",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 16,
+            "Name" : "Koornstra, Robbert-Jan",
+            "Ni" : 12,
+            "Rank" : 16,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 14835,
+            "FideId" : 247294,
+            "Affiliated" : 1,
+            "NationalElo" : 1710,
+            "FideElo" : 1700,
+            "Titel" : "",
+            "ClubNumber" : 261,
+            "ClubName" : "Opwijk",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "4",
+                "OpponentNi" : 16,
+                "OpponentName" : "Bratuszewski, Jorden",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 17,
+            "Name" : "De Baets, Keano",
+            "Ni" : 6,
+            "Rank" : 17,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 14985,
+            "FideId" : 247758,
+            "Affiliated" : 1,
+            "NationalElo" : 1667,
+            "FideElo" : 1685,
+            "Titel" : "",
+            "ClubNumber" : 465,
+            "ClubName" : "Artevelde",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "5",
+                "OpponentNi" : 3,
+                "OpponentName" : "De Block, Fabio",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 18,
+            "Name" : "Rousseau, Christilla",
+            "Ni" : 2,
+            "Rank" : 18,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 16160,
+            "FideId" : 251801,
+            "Affiliated" : 1,
+            "NationalElo" : 1635,
+            "FideElo" : 1647,
+            "Titel" : "",
+            "ClubNumber" : 303,
+            "ClubName" : "KBSK Brugge",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "6",
+                "OpponentNi" : 10,
+                "OpponentName" : "Ismail, Tamer",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 19,
+            "Name" : "Leyssens, Bas",
+            "Ni" : 14,
+            "Rank" : 19,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 50069,
+            "FideId" : 246000,
+            "Affiliated" : 1,
+            "NationalElo" : 1567,
+            "FideElo" : 1606,
+            "Titel" : "",
+            "ClubNumber" : 174,
+            "ClubName" : "Brasschaat",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "7",
+                "OpponentNi" : 1,
+                "OpponentName" : "De Coninck, Erik",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 20,
+            "Name" : "Vanhauwere, Anton",
+            "Ni" : 20,
+            "Rank" : 20,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 12936,
+            "FideId" : 239496,
+            "Affiliated" : 1,
+            "NationalElo" : 1483,
+            "FideElo" : 1508,
+            "Titel" : "",
+            "ClubNumber" : 462,
+            "ClubName" : "Zottegem",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "8",
+                "OpponentNi" : 22,
+                "OpponentName" : "Huygebaert, Batist",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 21,
+            "Name" : "Debouver, Torben",
+            "Ni" : 15,
+            "Rank" : 21,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 10093,
+            "FideId" : 230553,
+            "Affiliated" : 1,
+            "NationalElo" : 1346,
+            "FideElo" : 1442,
+            "Titel" : "",
+            "ClubNumber" : 462,
+            "ClubName" : "Zottegem",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "9",
+                "OpponentNi" : 11,
+                "OpponentName" : "Beukema, Christiaan",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 22,
+            "Name" : "Verstraeten, Leander",
+            "Ni" : 21,
+            "Rank" : 22,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 10064,
+            "FideId" : 239798,
+            "Affiliated" : 1,
+            "NationalElo" : 1264,
+            "FideElo" : 1298,
+            "Titel" : "",
+            "ClubNumber" : 462,
+            "ClubName" : "Zottegem",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "10",
+                "OpponentNi" : 13,
+                "OpponentName" : "Verboven, Arnout",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 23,
+            "Name" : "Condes, Alexie Sheen",
+            "Ni" : 17,
+            "Rank" : 23,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "2000",
+            "Sex" : "Femelle",
+            "Country" : "BEL",
+            "NationalId" : 12749,
+            "FideId" : 237183,
+            "Affiliated" : 1,
+            "NationalElo" : 1159,
+            "FideElo" : 1228,
+            "Titel" : "",
+            "ClubNumber" : 436,
+            "ClubName" : "LSV-Chesspirant",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "11",
+                "OpponentNi" : 7,
+                "OpponentName" : "Temmerman, Sander",
+                "Result" : "-",
+                "Color" : "White",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        }, {
+            "Ranking" : 24,
+            "Name" : "Bensafi, Mathias",
+            "Ni" : 24,
+            "Rank" : 24,
+            "CatIndex" : 200,
+            "CategoryValue_1" : "-20",
+            "BirthDate" : "1999",
+            "Sex" : "Male",
+            "Country" : "BEL",
+            "NationalId" : 17730,
+            "FideId" : 256412,
+            "Affiliated" : 1,
+            "NationalElo" : 1159,
+            "FideElo" : 1121,
+            "Titel" : "",
+            "ClubNumber" : 548,
+            "ClubName" : "Caissa Europe",
+            "NbOfParts" : 0,
+            "Points" : "0.0",
+            "TieBreak" : [ {
+                "Type" : "Progressif",
+                "Points" : "0.0"
+            }, {
+                "Type" : "Bucholtz",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Sonneborn-Berger",
+                "Points" : " 0.00"
+            }, {
+                "Type" : "Nb.Games Won",
+                "Points" : "0"
+            }, {
+                "Type" : "Nb.played with Black",
+                "Points" : "0"
+            } ],
+            "Performance" : 0,
+            "Absent" : "Present",
+            "AbsentAtRounds" : "",
+            "ExtraPts" : "0.0",
+            "SpecialPts" : "0.0",
+            "NbRounds" : 1,
+            "RoundArray" : [ {
+                "RoundNr" : 1,
+                "Tabel" : "12",
+                "OpponentNi" : 5,
+                "OpponentName" : "Pfeiffer, Noah",
+                "Result" : "-",
+                "Color" : "Black",
+                "Float" : "=",
+                "XtraPts" : "0.0"
+            } ]
+        } ]
+    }
+}

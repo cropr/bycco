@@ -17,7 +17,7 @@
     <v-btn flat large href="/trn/subscription" v-if="sections.subscription">
       {{ $t('Register')}}
     </v-btn>
-    <v-btn flat large href="/trn/participants" v-if="sections.tournament">
+    <v-btn flat large href="/trn/view" v-if="sections.tournament">
       {{ $t('Tournament')}}
     </v-btn>
   </v-toolbar-items>

@@ -8,13 +8,13 @@ import datetime
 
 board_configs = [
     {
-        'venue': 'BG8',
+        'venue': 'U8',
         'boards': [
-            {'group': 'BG8', 'board': 1},
-            {'group': 'BG8', 'board': 2},
-            {'group': 'BG8', 'board': 3},
-            {'group': 'BG8', 'board': 4},
-            {'group': 'BG8', 'board': 5},
+            {'group': 'U8', 'board': 1},
+            {'group': 'U8', 'board': 2},
+            {'group': 'U8', 'board': 3},
+            {'group': 'U8', 'board': 4},
+            {'group': 'U8', 'board': 5},
         ]
     },
     {
@@ -30,6 +30,8 @@ board_configs = [
             {'group': 'B10', 'board': 8},
             {'group': 'B10', 'board': 9},
             {'group': 'B10', 'board': 10},
+            {'group': 'B10', 'board': 11},
+            {'group': 'B10', 'board': 12},
         ]
     },
     {
@@ -37,7 +39,6 @@ board_configs = [
         'boards': [
             {'group': 'G10', 'board': 1},
             {'group': 'G10', 'board': 2},
-            {'group': 'G10', 'board': 3},
         ]
     },
     {
@@ -60,6 +61,8 @@ board_configs = [
             {'group': 'B12', 'board': 15},
             {'group': 'B12', 'board': 16},
             {'group': 'B12', 'board': 17},
+            {'group': 'B12', 'board': 18},
+            {'group': 'B12', 'board': 19},
         ]
     },
     {
@@ -69,6 +72,8 @@ board_configs = [
             {'group': 'G12', 'board': 2},
             {'group': 'G12', 'board': 3},
             {'group': 'G12', 'board': 4},
+            {'group': 'G12', 'board': 5},
+            {'group': 'G12', 'board': 6},            
         ]
     },
     {
@@ -92,6 +97,8 @@ board_configs = [
             {'group': 'B14', 'board': 16},
             {'group': 'B14', 'board': 17},
             {'group': 'B14', 'board': 18},
+            {'group': 'B14', 'board': 19},
+            {'group': 'B14', 'board': 20},
         ]
     },
     {
@@ -101,7 +108,6 @@ board_configs = [
             {'group': 'G14', 'board': 2},
             {'group': 'G14', 'board': 3},
             {'group': 'G14', 'board': 4},
-            {'group': 'G14', 'board': 5},
         ]
     },
     {
@@ -121,10 +127,6 @@ board_configs = [
             {'group': 'B16', 'board': 12},
             {'group': 'B16', 'board': 13},
             {'group': 'B16', 'board': 14},
-            {'group': 'B16', 'board': 15},
-            {'group': 'B16', 'board': 16},
-            {'group': 'B16', 'board': 17},
-            {'group': 'B16', 'board': 18},
         ]
     },
     {
@@ -133,77 +135,93 @@ board_configs = [
             {'group': 'G16', 'board': 1},
             {'group': 'G16', 'board': 2},
             {'group': 'G16', 'board': 3},
+            {'group': 'G16', 'board': 4},
+            {'group': 'G16', 'board': 5},
+            {'group': 'G16', 'board': 6},
+            {'group': 'G16', 'board': 7},
         ]
     },
     {
-        'venue': 'BG18',
+        'venue': 'B18',
         'boards': [
-            {'group': 'BG18', 'board': 1},
-            {'group': 'BG18', 'board': 2},
-            {'group': 'BG18', 'board': 3},
-            {'group': 'BG18', 'board': 4},
-            {'group': 'BG18', 'board': 5},
-            {'group': 'BG18', 'board': 6},
-            {'group': 'BG18', 'board': 7},
-            {'group': 'BG18', 'board': 8},
-            {'group': 'BG18', 'board': 9},
-            {'group': 'BG18', 'board': 10},
-            {'group': 'BG18', 'board': 11},
-            {'group': 'BG18', 'board': 12},
-            {'group': 'BG18', 'board': 13},
-            {'group': 'BG18', 'board': 14},
-            {'group': 'BG18', 'board': 15},
-            {'group': 'BG18', 'board': 16},
-            {'group': 'BG18', 'board': 17},
-            {'group': 'BG18', 'board': 18},
+            {'group': 'B18', 'board': 1},
+            {'group': 'B18', 'board': 2},
+            {'group': 'B18', 'board': 3},
+            {'group': 'B18', 'board': 4},
+            {'group': 'B18', 'board': 5},
+            {'group': 'B18', 'board': 6},
+            {'group': 'B18', 'board': 7},
+            {'group': 'B18', 'board': 8},
+            {'group': 'B18', 'board': 9},
+            {'group': 'B18', 'board': 10},
+            {'group': 'B18', 'board': 11},
+            {'group': 'B18', 'board': 12},
+            {'group': 'B18', 'board': 13},
         ]
     },
     {
-        'venue': 'BG20',
-        'boards': [
-            {'group': 'BG20', 'board': 1},
-            {'group': 'BG20', 'board': 2},
-            {'group': 'BG20', 'board': 3},
-            {'group': 'BG20', 'board': 4},
-            {'group': 'BG20', 'board': 5},
-            {'group': 'BG20', 'board': 6},
-            {'group': 'BG20', 'board': 7},
-            {'group': 'BG20', 'board': 8},
-            {'group': 'BG20', 'board': 9},
-            {'group': 'BG20', 'board': 10},
-            {'group': 'BG20', 'board': 11},
-            {'group': 'BG20', 'board': 12},
-            {'group': 'BG20', 'board': 13},
-            {'group': 'BG20', 'board': 14},
-            {'group': 'BG20', 'board': 15},
-            {'group': 'BG20', 'board': 16},
-            {'group': 'BG20', 'board': 17},
+        'venue': 'G18',
+        'boards': [        
+            {'group': 'G18', 'board': 1},
+            {'group': 'G18', 'board': 2},
+            {'group': 'G18', 'board': 3},
+            {'group': 'G18', 'board': 4},
         ]
     },
+    {
+        'venue': 'U20',
+        'boards': [
+            {'group': 'U20', 'board': 1},
+            {'group': 'U20', 'board': 2},
+            {'group': 'U20', 'board': 3},
+            {'group': 'U20', 'board': 4},
+            {'group': 'U20', 'board': 5},
+            {'group': 'U20', 'board': 6},
+            {'group': 'U20', 'board': 7},
+            {'group': 'U20', 'board': 8},
+            {'group': 'U20', 'board': 9},
+        ]
+    },
+    {
+        'venue': 'IMT',
+        'boards': [
+            {'group': 'IMT', 'board': 1},
+            {'group': 'IMT', 'board': 2},
+            {'group': 'IMT', 'board': 3},
+            {'group': 'IMT', 'board': 4},
+            {'group': 'IMT', 'board': 5},
+        ]
+    },    
 ]
 
-swar2017 = [
-    ("BJK CBJ 2018 -8.json", "BG8"),
-    ("BJK CBJ 2018 -10 Boys.json", "B10"),
-    ("BJK CBJ 2018 -10 Girls.json", "G10"),
-    ("BJK CBJ 2018 -12 Boys.json", "B12"),
-    ("BJK CBJ 2018 -12 Girls.json", "G12"),
-    ("BJK CBJ 2018 -14 Boys.json", "B14"),
-    ("BJK CBJ 2018 -14 Girls.json", "G14"),
-    ("BJK CBJ 2018 -16 Boys.json", "B16"),
-    ("BJK CBJ 2018 -16 Girls.json", "G16"),
-    ("BJK CBJ 2018 -18.json", "BG18"),
-    ("BJK CBJ 2018 -20.json", "BG20"),
+swar2019 = [
+    ("BJK CBJ 2019 08BG.json", "U8"),
+    ("BJK CBJ 2019 -10B.json", "B10"),
+    ("BJK CBJ 2019 -10G.json", "G10"),
+    ("BJK CBJ 2019 -12B.json", "B12"),
+    ("BJK CBJ 2019 -12G.json", "G12"),
+    ("BJK CBJ 2019 -14B.json", "B14"),
+    ("BJK CBJ 2019 -14G.json", "G14"),
+    ("BJK CBJ 2019 -16B.json", "B16"),
+    ("BJK CBJ 2019 -16G.json", "G16"),
+    ("BJK CBJ 2019 -18B.json", "B18"),
+    ("BJK CBJ 2019 -18G.json", "G18"),
+    ("BJK CBJ 2019 -20BG.json", "U20"),
+    ("IM-normentoernooi op het BJK 2019.json", "IMT"),
 ]
 
-def load_tournaments():
+testlife = [
+    ("BJK CBJ 2019 -20BG.json", "U20"),    
+]
+
+def load_tournaments(trns):
     """
     Loads the json files generated by SWAR 
     Returns:
         dict -- all the parsed tournaments, indexed by group
     """
     trn = {}
-    for filename, group in swar2017:
+    for filename, group in trns:
         path = os.path.join( os.getcwd(), 'data', filename)
         with open(path, 'rb') as f:
             trn[group] =  json.load(f)
@@ -274,7 +292,7 @@ def pgn_from_game(game, group, round):
     else:
         white = '?'
         black = '?'
-    return b"""[Event "Belgian Youth championships 2018 %(group)b"]
+    return b"""[Event "Belgian Youth championships 2019 %(group)b"]
 [Site "Blankenberge, Belgium BEL"]
 [Date "%(today)b"]
 [Round "%(round)d"]
@@ -297,8 +315,9 @@ def dump_pgn(pgns):
             f.write(pgns[i])
 
 if __name__ == "__main__":
-    trns = load_tournaments()
-    round = 9
+    # trns = load_tournaments(swar2019)
+    trns = load_tournaments(testlife)
+    round = 1
     pgns = [generate_lifechess_pgns(bc, trns, round) for bc in board_configs]
     dump_pgn(pgns)
     print('wrote pgn files for round', round)

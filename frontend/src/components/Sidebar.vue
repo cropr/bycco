@@ -25,7 +25,7 @@
         <v-list-tile href="/trn/participants"  v-if="sections.participants">
           <v-list-tile-content>{{$t('Participants')}}</v-list-tile-content>
         </v-list-tile>
-        <v-list-tile href="/trn/view"  v-if="sections.trnview">
+        <v-list-tile href="/trn/view"  v-if="sections.tournament">
           <v-list-tile-content>{{$t('Tournament')}}</v-list-tile-content>
         </v-list-tile>
       </v-list>
