@@ -195,7 +195,7 @@ board_configs = [
 ]
 
 swar2019 = [
-    ("BJK CBJ 2019 08BG.json", "U8"),
+    ("BJK CBJ 2019 -08BG.json", "U8"),
     ("BJK CBJ 2019 -10B.json", "B10"),
     ("BJK CBJ 2019 -10G.json", "G10"),
     ("BJK CBJ 2019 -12B.json", "B12"),
@@ -315,8 +315,8 @@ def dump_pgn(pgns):
             f.write(pgns[i])
 
 if __name__ == "__main__":
-    # trns = load_tournaments(swar2019)
-    trns = load_tournaments(testlife)
+    trns = load_tournaments(swar2019)
+    # trns = load_tournaments(testlife)
     round = 1
     pgns = [generate_lifechess_pgns(bc, trns, round) for bc in board_configs]
     dump_pgn(pgns)

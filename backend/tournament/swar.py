@@ -121,9 +121,11 @@ def processswarjson(swarjson, rr=None):
         pl["rating"] = max(pl["natrating"], pl["fiderating"])
         ra = p.get("RoundArray")
         for ix, g in enumerate(ra):
-            if len(ra) == ix + 1:
-                standings[six] = pl
             round = g.get("RoundNr")
+            currentRound = int(rr or len(ra))
+            log.info('building pairings for round %s', currentRound)
+            if currentRound == ix + 1:
+                standings[six] = pl
             if g.get("Tabel") == "Absent":
                 pl["absences"].append({"round": int(round) -1})
                 if len(ra) == ix + 1:
@@ -141,7 +143,7 @@ def processswarjson(swarjson, rr=None):
                 continue
             if g.get("Tabel") == "BYE":
                 pl["bye"] = {"round": int(round) -1}
-                if len(ra) == ix +1:
+                if currentRound == ix +1:
                     bye = {
                         "white": pl["name"],
                         "white_id": pl["idbel"],
@@ -154,8 +156,6 @@ def processswarjson(swarjson, rr=None):
                         "black_points": '',
                     }
                 continue
-            currentRound = int(rr or len(ra))
-            log.info('building pairings for round %s', currentRound)
             lastgame = {
                 "table": int(g.get("Tabel")) - 1,
                 "opponentIndex": g.get("OpponentNi"),
