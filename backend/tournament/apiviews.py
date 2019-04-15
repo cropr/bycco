@@ -515,22 +515,28 @@ def tournament_pairings(request, id_trn, round):
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     swarround = int(round)
-    log.info('getting pairing round %d', swarround)
     try:
         swartrn = CdSwarTournament.objects.get(tournament=trn)
     except CdSwarTournament.DoesNotExist:
+        log.info('did not find swar tournament')
         return Response(status=status.HTTP_404_NOT_FOUND)
-    try:
-        swarjson = CdSwarJson.objects.get(swartrn=swartrn, round=swarround,
-                                      status='ACT')
-    except CdSwarJson.DoesNotExist:
+    swarjsons = CdSwarJson.objects.filter(swartrn=swartrn, status='ACT')
+    swarjson = CdSwarJson(round=0)
+    for s in swarjsons:
+        if s.round > swarjson.round:
+            swarjson = s
+    if swarjson.round == 0:
+        log.info('did not find swar json')
         return Response(status=status.HTTP_404_NOT_FOUND)
-    trndata = json.loads(swarjson.jsonfile)
+    pairings = pairingsfromswar(swarjson, int(round))
+    if not pairings:
+        log.info('did not find swar pairings')
+        return Response(status=status.HTTP_404_NOT_FOUND)
     data = {
         'id_trn': trn.id,
         'tournament': trn.name,
         'round': int(round),
-        'pairings': pairingsfromswar(trndata, round)
+        'pairings': pairings,
     }
     return Response(data)
 
@@ -545,17 +551,23 @@ def tournament_standings(request, id_trn, round):
         swartrn = CdSwarTournament.objects.get(tournament=trn)
     except CdSwarTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    try:
-        swarjson = CdSwarJson.objects.get(swartrn=swartrn, round=swarround,
-                                      status='ACT')
-    except CdSwarJson.DoesNotExist:
+    swarjsons = CdSwarJson.objects.filter(swartrn=swartrn, status='ACT')
+    swarjson = CdSwarJson(round=0)
+    for s in swarjsons:
+        if s.round > swarjson.round:
+            swarjson = s
+    if swarjson.round == 0:
+        log.info('did not find swar json')
         return Response(status=status.HTTP_404_NOT_FOUND)
-    trndata = json.loads(swarjson.jsonfile)
+    standings = standingsfromswar(swarjson, int(round))
+    if not standings:
+        log.info('did not find swar standings')
+        return Response(status=status.HTTP_404_NOT_FOUND)
     data = {
         'id_trn': trn.id,
         'tournament': trn.name,
         'round': int(round),
-        'standings': standingsfromswar(trndata, int(round))
+        'standings': standings,
     }
     return Response(data)
 
