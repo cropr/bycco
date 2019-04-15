@@ -1,0 +1,10 @@
+{% load menu_tags %}
+
+{% for child in children %}
+  <v-list-tile  href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+    <v-list-tile-action></v-list-tile-action>
+    <v-list-tile-content>
+      <v-list-tile-title>{{ child.get_menu_title}}</v-list-tile-title>
+    </v-list-tile-content>
+  </v-list-tile>
+{% endfor %}

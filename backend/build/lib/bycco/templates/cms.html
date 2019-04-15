@@ -1,0 +1,36 @@
+{% load cms_tags menu_tags staticfiles sekizai_tags rd_i18n %}
+{% load render_bundle from webpack_loader %}
+<!doctype html>
+<html>
+<head>
+<title>{% block title %}Belgian Youth Championships{% endblock title %}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116219765-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-116219765-1');
+</script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% render_block "css" %}
+</head>
+<body>
+<style>[v-cloak] > * { display:none }</style>
+{% cms_toolbar %}
+{#                                                                        #}
+{# We have to define cms_toolbar outside of block content                 #}
+{# leading to a separate root tmeplate for cms                            #}
+{#                                                                        #}
+{% block content %}
+<h1>{% page_attribute "page_title" %}</h1>
+{%  placeholder "content" %}
+{% endblock content%}
+
+{% render_block "js" %}
+
+</body>
+</html>
+
+
+

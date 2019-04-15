@@ -1,0 +1,325 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-31 17:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: invoice.py:108 templates/tournament/invoicepdf.html:2
+msgid "Invoice"
+msgstr ""
+
+#: mail.py:54
+msgid "Confirmation Subscription"
+msgstr ""
+
+#: models.py:22
+msgid "Badge image"
+msgstr ""
+
+#: models.py:23
+msgid "Length badge image"
+msgstr ""
+
+#: models.py:25 templates/tournament/mailhtml.html:25
+msgid "Birthdate"
+msgstr ""
+
+#: models.py:26 templates/tournament/mailhtml.html:51 views.py:25
+msgid "Category"
+msgstr ""
+
+#: models.py:28
+msgid "Chess title"
+msgstr ""
+
+#: models.py:29
+msgid "Email parent"
+msgstr ""
+
+#: models.py:30
+msgid "Email player"
+msgstr ""
+
+#: models.py:31
+msgid "Federation"
+msgstr ""
+
+#: models.py:32
+msgid "First name"
+msgstr ""
+
+#: models.py:33
+msgid "Full name responsible on site"
+msgstr ""
+
+#: models.py:34
+msgid "Full name parent"
+msgstr ""
+
+#: models.py:35 templates/tournament/mailhtml.html:48
+msgid "Gender"
+msgstr ""
+
+#: models.py:35 models.py:82
+msgid "Male"
+msgstr ""
+
+#: models.py:35 models.py:83
+msgid "Female"
+msgstr ""
+
+#: models.py:36 models.py:85
+msgid "Club id"
+msgstr ""
+
+#: models.py:37
+msgid "FIDE id"
+msgstr ""
+
+#: models.py:38
+msgid "Belgian id"
+msgstr ""
+
+#: models.py:39
+msgid "Locale"
+msgstr ""
+
+#: models.py:40
+msgid "GSM number responsible on site"
+msgstr ""
+
+#: models.py:41
+msgid "GSM parent"
+msgstr ""
+
+#: models.py:42
+msgid "GSM player"
+msgstr ""
+
+#: models.py:43
+msgid "Last name"
+msgstr ""
+
+#: models.py:44
+msgid "Nationality Passport"
+msgstr ""
+
+#: models.py:45
+msgid "Nationality FIDE"
+msgstr ""
+
+#: models.py:46
+msgid "Amount to pay"
+msgstr ""
+
+#: models.py:47
+msgid "Payment date"
+msgstr ""
+
+#: models.py:48
+msgid "Payment message"
+msgstr ""
+
+#: models.py:50
+msgid "Used rating"
+msgstr ""
+
+#: models.py:51
+msgid "Belgian rating"
+msgstr ""
+
+#: models.py:52 templates/tournament/mailhtml.html:45
+msgid "FIDE rating"
+msgstr ""
+
+#: models.py:53
+msgid "Remarks"
+msgstr ""
+
+#: models.py:86
+msgid "Fide id"
+msgstr ""
+
+#: models.py:87
+msgid "National id"
+msgstr ""
+
+#: models.py:89
+msgid "Name"
+msgstr ""
+
+#: models.py:90
+msgid "Nationality"
+msgstr ""
+
+#: models.py:91
+msgid "Fide rating"
+msgstr ""
+
+#: models.py:112
+msgid "white"
+msgstr ""
+
+#: models.py:113
+msgid "black"
+msgstr ""
+
+#: models.py:114
+msgid "notassigned"
+msgstr ""
+
+#: templates/tournament/invoicemail.txt:2
+msgid ""
+"Please find attached the invoice for the subscription to the\n"
+"Belgian Youth championships 2019"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:2 templates/tournament/mailhtml.html:12
+msgid "Belgian Youth Chess Championships 2019"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:8
+msgid "npo."
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:11
+msgid "VAT number"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:15
+msgid "Subcription for"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:16
+msgid "To"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:19
+msgid "Invoice details"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:20
+msgid "Invoice number"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:21
+msgid "Date"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:25
+msgid "Price VAT excluded"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:29
+msgid "VAT"
+msgstr ""
+
+#: templates/tournament/invoicepdf.html:33
+msgid "Price VAT included"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:14
+msgid "Confirmation details"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:22
+msgid "Fullname"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:28
+msgid "ID Club"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:31
+msgid "FIDE Nationality"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:34
+msgid "Can become Belgian champion"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:35
+msgid "Yes"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:36
+msgid "No"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:37
+msgid "To be confirmed"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:42
+msgid "National rating"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:61
+msgid "Payment"
+msgstr ""
+
+#: templates/tournament/mailhtml.html:63
+msgid ""
+"The subscription fee is 35 Euro is you pay before the 1st of\n"
+"March 2019.  After that date you wil have to pay 45 Euro."
+msgstr ""
+
+#: templates/tournament/mailhtml.html:67
+msgid ""
+"Pay the amount on account BE33 0017 5924 5146 with the\n"
+"structered message:\n"
+msgstr ""
+
+#: templates/tournament/mg_presence.html:5
+#: templates/tournament/participants.html:5
+msgid "Tournament Subscriptions"
+msgstr ""
+
+#: templates/tournament/participants.html:9
+msgid "Participants"
+msgstr ""
+
+#: templates/tournament/participants.html:22
+msgid "Girls"
+msgstr ""
+
+#: templates/tournament/participants.html:38
+msgid "Boys"
+msgstr ""
+
+#: views.py:26
+msgid "Files"
+msgstr ""
+
+#: views.py:27
+msgid "Live Games"
+msgstr ""
+
+#: views.py:28
+msgid "Pairings"
+msgstr ""
+
+#: views.py:29
+msgid "Round"
+msgstr ""
+
+#: views.py:30
+msgid "Standings"
+msgstr ""
+
+#: views.py:31
+msgid "Tournament Results"
+msgstr ""

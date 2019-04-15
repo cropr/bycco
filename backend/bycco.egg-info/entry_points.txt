@@ -1,0 +1,6 @@
+[console_scripts]
+pbr = pbr.cmd:main
+
+[pbr.config.drivers]
+plain = pbr.cfg.driver:Plain
+

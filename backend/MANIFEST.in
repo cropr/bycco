@@ -1,0 +1,4 @@
+recursive-include i18n *
+recursive-include bycco/templates *
+recursive-include tournament/templates *
+recursive-include tournament/locale *

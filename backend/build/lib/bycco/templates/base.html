@@ -1,0 +1,20 @@
+{% load cms_tags menu_tags staticfiles sekizai_tags rd_i18n %}
+{% load render_bundle from webpack_loader %}
+<!doctype html>
+<html>
+<head>
+<title>{% block title %}Belgian Youth Championships{% endblock title %}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% render_block "css" %}
+</head>
+<body>
+<style>[v-cloak] > * { display:none }</style>
+{% block content %}
+<h1>Template base.html</h1>
+ Dit is de base template
+{% endblock content%}
+{% render_block "js" %}
+</body>
+</html>

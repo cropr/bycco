@@ -1,6 +1,100 @@
 CHANGES
 =======
 
+* include templates in setup.cfg
+
+1.1.0
+-----
+
+* about us working
+
+1.0.3
+-----
+
+* bugs standings and pairing solved
+
+1.0.2
+-----
+
+* bye issue rr solved
+
+1.0.1
+-----
+
+* added missing init.py files
+
+1.0.0
+-----
+
+* bug topbar B18 G18 solve
+
+0.10.1
+------
+
+* fix round robin swar
+
+0.10.0
+------
+
+* trnview lifechess working
+
+0.9.10
+------
+
+* print namecard working
+
+0.9.9
+-----
+
+* update attendee
+
+0.9.8
+-----
+
+* bug eater in badge solved
+
+0.9.7
+-----
+
+* eat bug solved
+
+0.9.6
+-----
+
+* sorting solved
+* presnece module working
+
+0.9.5
+-----
+
+* badhge printing with meals indiciaor working
+
+0.9.4
+-----
+
+* participant meals and cusytom1 solved
+
+0.9.3
+-----
+
+* mgmt participant moved to particpant iso params parameter
+
+0.9.2
+-----
+
+* print badges working
+* printboarnumbers working
+* removed custom3 from csv
+* custom2 bug in csv download
+
+0.9.1
+-----
+
+* cleanup pipenv and setup
+* cleanup pipenv and setup
+* cleanup pipenv and setup
+* cleanup pipenv and setup
+
 0.9.0
 -----
 

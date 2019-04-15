@@ -1,0 +1,48 @@
+# original Copyright Ruben Decrop
+# modifications by Chessdevil Consulting BVBA
+
+from django.conf.urls import url
+from tournament import apiviews
+from tournament import invoice
+from tournament import swar
+
+urlpatterns = [
+    url(r'attendees$', apiviews.attendee_all),
+    url(r'attendees/(?P<id>\w+)$', apiviews.attendee_detail),
+    url(r'attendees/(?P<idsub>[0-9]+)/resend$',
+        apiviews.subscription_resend),
+    url(r'belplayer/(?P<idbel>[0-9]+)$', apiviews.belplayer),
+    url(r'fideplayer/(?P<idfide>[0-9]+)$', apiviews.fideplayer),
+    url(r'invoice/(?P<id_part>[0-9]+)$', invoice.invoice),
+    url(r'invoice/(?P<id_part>[0-9]+)/send$', invoice.invoice_send),
+    url(r'invoice$', invoice.invoices),
+    url(r'photo/(?P<id>[0-9]+)$', apiviews.attendee_photo),
+    url(r'participants$', apiviews.participants),
+    url(r'subscriptions$', apiviews.subscription_all),
+    url(r'subscriptions/(?P<idsub>[0-9]+)/photo$', apiviews.subscription_photo),
+    url(r'subscriptions/(?P<idsub>[0-9]+)/confirm$',
+        apiviews.subscription_confirmation),
+    url(r'^tournament$', apiviews.tournament_all),
+    url(r'^tournament/(?P<id_trn>[0-9]+)$', apiviews.tournament_one),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/pairings/(?P<round>[0-9]+)$',
+        apiviews.tournament_pairings),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/pairings/(?P<round>[0-9]+)$',
+        apiviews.tournament_pairings),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/standings/(?P<round>[0-9]+)$',
+        apiviews.tournament_standings),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/playercard/(?P<id_player>[0-9]+)$',
+        apiviews.tournament_playercard),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/topround$', apiviews.tournament_topround),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/pdfgames$', apiviews.tournament_pdfgames),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/pgngames$', apiviews.tournament_pgngames),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/prizes$', apiviews.tournament_prizes),
+    url(r'^tournament/(?P<id_trn>[0-9]+)/swar$', apiviews.tournament_swar),
+    url(r'^swar$', swar.swartrn_all),
+    url(r'^swar/(?P<id_swartrn>[0-9]+)$', swar.swartrn_one),
+    url(r'^swar/(?P<id_swartrn>[0-9]+)/publication/(?P<id_swarfile>[0-9]+)$',
+        swar.swarfile_publication),
+    url(r'^swar/(?P<id_swartrn>[0-9]+)/file$', swar.swarfile_all),
+    url(r'^swar/(?P<id_swartrn>[0-9]+)/file/(?P<id_swarfile>[0-9]+)$',
+        swar.swarfile_one),
+
+]

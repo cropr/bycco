@@ -1,0 +1,29 @@
+{% load comments rd_i18n zinnia %}
+<v-card class="my-2">
+  <v-card-title class="blue-grey darken-1">
+    <h3 class="white--text">{{ object.title| safe }}</h3>
+  </v-card-title>
+  <v-card-text>
+    <p>{% trans "Last update on" %}
+      <time class="updated" datetime="{{ object.last_update|date:"c" }}"
+            itemprop="dateModified">{{ object.last_update|date:"DATE_FORMAT" }}</time>.
+    </p>
+    {% if continue_reading %}
+      <div>{{ object.html_lead|safe }}</div>
+      <p><a href="{{ object.get_absolute_url }}">
+          {% trans "Continue reading" %}
+        </a>
+      </p>
+    {% else %}
+      {% if object.image %}
+        <figure itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+          <img src="{{ object.image.url }}" alt="{{ object.image_caption|default:object.title }}" itemprop="contentUrl" />
+          {% if object.image_caption %}
+          <figcaption itemprop="caption">{{ object.image_caption }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endif %}
+      <div>{{ object_content|safe }}</div>
+    {% endif %}
+  </v-card-text>
+</v-card>

@@ -1,0 +1,64 @@
+{% extends "vue.html" %}
+{% load cms_tags i18n sekizai_tags staticfiles %}
+{% load render_bundle from webpack_loader %}
+
+{% block title %}{% trans "Tournament Subscriptions" %}{% endblock title %}
+
+{% block vuecontent %}
+
+<h1>{% trans "Participants" %}</h1>
+
+<v-tabs v-model="tabix" class="blue-grey lighten-3" light
+    slider-color="pink">
+  <v-tab v-for="cat in categories" @click="changecat(cat)" class="mx-2">
+    -<span v-text="cat"></span>
+  </v-tab>
+</v-tabs>
+
+<v-tabs-items v-model="tabix" class="elevation-1">
+  <v-tab-item v-for="cat in categories">
+      <v-card>
+        <v-card-title class="headline">
+          {% trans "Girls" %} -<span v-text="cat"></span>
+        </v-card-title>
+        <v-card-text>
+          <v-data-table :headers="headers" :items="girls" hide-actions>
+            <template slot="items" slot-scope="props">
+                <td v-text="props.index + 1"></td>
+                <td><img width=50 :src="photourl(props.item)"></td>
+                <td v-text="props.item.first_name"></td>
+                <td v-text="props.item.last_name"></td>
+                <td v-text="props.item.rating"></td>
+            </template>
+          </v-data-table>
+        </v-card-text>
+      </v-card>
+      <v-card>
+        <v-card-title class="headline">
+          {% trans "Boys" %} -<span v-text="cat"></span>
+        </v-card-title>
+        <v-card-text>
+          <v-data-table :headers="headers" :items="boys" hide-actions>
+            <template slot="items" slot-scope="props">
+                <td v-text="props.index + 1"></td>
+                <td><img width=50 :src="photourl(props.item)"></td>
+                <td v-text="props.item.first_name"></td>
+                <td v-text="props.item.last_name"></td>
+                <td v-text="props.item.rating"></td>
+            </template>
+          </v-data-table>
+        </v-card-text>
+      </v-card>
+  </v-tab-item>
+</v-tabs-items>
+
+{% addtoblock "js" %}
+{% if PRODUCTION %}
+  {% render_bundle 'manifest' %}
+  {% render_bundle 'vendor' %}
+{% endif %}
+{% render_bundle 'participants' %}
+{% endaddtoblock %}
+
+
+{% endblock vuecontent %}

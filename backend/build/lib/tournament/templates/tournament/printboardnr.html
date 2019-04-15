@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="">
+<title>Boardnumbers</title>
+<link href="{% static "css/boardnr.css"%}" rel="stylesheet">
+<link href="{% static "css/catcolors.css"%}" rel="stylesheet">
+
+</head>
+<body style="margin-top:0">
+
+{% for page in pages %}
+  <div class="bnrpage">
+    {% for bnr in page %}
+      <div class="bnr_1 {{ bnr.positionclass }}">
+        <div class="bnr">
+          <div class="bnrnr">{{ bnr.ix }}</div>
+          <div class="bnrcat {{ bnr.category }}" ng-bind="ix"></div>
+          <div class="brntext">{{ bnr.category   }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
+</body>
+</html>

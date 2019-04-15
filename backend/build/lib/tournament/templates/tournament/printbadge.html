@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="">
+<title>Badges 2017</title>
+<link href="{% static "css/badge.css"%}" rel="stylesheet">
+<link href="{% static "css/catcolors.css"%}" rel="stylesheet">
+
+</head>
+<body style="margin-top: 0;">
+
+{% for page in pages %}
+  <div class="badgepage">
+    {% for badge in page %}
+      <div class="badge_1 {{ badge.positionclass }}">
+        <div class="badgeleft">
+          <img src="{{ badge.photourl }}" >
+        </div>
+        <div class="badgemiddle">
+          <div class="badgename">{{badge.first_name}}</div>
+          <div class="badgename">{{badge.last_name}}</div>
+          <div class="badgecategory">{{badge.category}}</div>
+          <div>{{badge.chesstitle}}{{ badge.rating }}</div>
+          <div class="badgemeals {{ badge.mealsclass}}">{{badge.meals}}</div>
+        </div>
+        <div class="badgeright {{ badge.color }}"></div>
+        <div class="badgebottom">
+          <img src="/static/img/talistro.png">
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
+</body>
+</html>
