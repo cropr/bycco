@@ -1,5 +1,6 @@
 <template>
 <v-app>
+
   <sidebar />
   <topbar />
   <v-content class="viewcontent">
@@ -14,19 +15,20 @@
     <v-tabs-items v-model="tabix">
       <v-tab-item>
         <v-layout row wrap>
-          <person :photourl="https:/api/subscriptions/420/photo"  
-            :fullname="Ruben Decrop"
-            :mobile="+32477571313" :email="ruben@decrop.net" /> 
+          <person :idsub="p.id" v-for="p in organizers" :key="p.id"/> 
         </v-layout>
       </v-tab-item>
       <v-tab-item>
+        <v-layout row wrap>
+          <person :idsub="p.id" v-for="p in arbiters" :key="p.id"/> 
+        </v-layout>
       </v-tab-item>
     </v-tabs-items>
   </v-content>
   <ad-carousel />
   <bycco-footer />
 </v-app>
- 
+
 </template>
 
 <script>
@@ -41,24 +43,6 @@ import ByccoFooter from '../components/ByccoFooter'
 import Person from '../components/Person'
 
 
-const catmapping = {
-  G8: 'U8',
-  B8: 'U8',
-  G10: 'G10',
-  B10: 'B10',
-  G12: 'G12',
-  B12: 'B12',
-  G14: 'G14',
-  B14: 'B14',
-  G16: 'G16',
-  B16: 'B16',
-  G18: 'G18',
-  B18: 'B18',
-  G20: 'U20',
-  B20: 'U20',
-  IMT: 'IMT',
-};
-
 export default {
 
   components: {
@@ -71,17 +55,37 @@ export default {
 
 data () {
     return {
-
+      tabix: 0,
+      organizers: [],
+      arbiters: [],
     }
   },
 
   methods: {
+    getAttendees () {
+      api('getAttendees', {
+        cat: 'ARB,ORG'
+      }).then(
+        function(data){
+          this.organizers = [];
+          this.arbiters = [];
+          console.log('attendees', data.attendees)
+          data.attendees.forEach(function(p){
+            if (p.category == 'ORG') this.organizers.push(p);
+            if (p.category == 'ARB') this.arbiters.push(p);
+          }.bind(this))
+        }.bind(this),
+        function(data){
+          console.log('error getting orgarb', data);
+        }
+      );
+    }
 
 
   },
 
   mounted () {
-
+    this.getAttendees()
   },
 
   created () {

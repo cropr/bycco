@@ -73,6 +73,7 @@
     </v-flex>
     <v-flex sm6 xs12>
       <v-text-field label="Email player" v-model="p.emailplayer" />
+      <v-text-field label="Mobile player" v-model="p.mobileplayer" />
       <v-text-field label="Fullname parent" v-model="p.fullnameparent" />
       <v-text-field label="Mobile parent" v-model="p.mobileparent" />
       <v-text-field label="Email parent" v-model="p.emailparent" />

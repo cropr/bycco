@@ -38,6 +38,7 @@ def trnviewpage(request):
     return render(request, 'tournament/trnviewpage.html')
 
 def aboutuspage(request):
+    log.info('rendering about us')
     return render(request, 'tournament/aboutuspage.html')
 
 def participantspage(request):

@@ -15,8 +15,7 @@
       <v-flex sm5 offset-sm1 xs12 class="mt-2">
         <h4 class="mb-2">{{$t('Our mission')}}</h4>
         <div class="mb-2">{{ $t('GoalBycco')}}</div>
-        <div><a href="/us/organizers">{{ $t('The organizers')}}</a></div>
-        <div><a href="/us/arbiters">{{ $t('The arbiters')}}</a></div>
+        <div><a href="/trn/aboutus">{{ $t('The team')}}</a></div>
       </v-flex>
       <v-flex sm2 offset-sm1 xs12 class="mt-2">
         <h4 class="mb-2">Social media</h4>
