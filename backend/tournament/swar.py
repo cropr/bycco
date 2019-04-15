@@ -156,6 +156,7 @@ def processSwarJsonFile(swar):
                     "black_rating": '',
                     "black_points": '',
                 })
+                continue
             if g.get("Tabel") == "BYE":
                 pl["bye"] = {"round": int(round) -1}
                 bye[round] = {
