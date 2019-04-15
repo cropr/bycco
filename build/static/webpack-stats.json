@@ -1,0 +1,44 @@
+{
+  "status": "done",
+  "publicPath": "http://localhost:8080/static/",
+  "error": "ModuleBuildError",
+  "message": "Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/ruben/develop/python/bycco/frontend/src/pages/AboutUs.vue: Unexpected token, expected \"{\" (70:44)\n\n  68 |           this.arbiters = [];\n  69 |           console.log('attendees', data.attendees)\n> 70 |           data.attendees.forEach(function(p)c{\n     |                                             ^\n  71 |             if (p.category == 'ORG') this.organizers.push(p);\n  72 |             if (p.category == 'ARB') this.arbiters.push(p);\n  73 |           })\n    at _class.raise (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:776:15)\n    at _class.unexpected (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:2079:16)\n    at _class.expect (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:2067:28)\n    at _class.parseBlock (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:4488:10)\n    at _class.parseFunctionBody (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:3754:24)\n    at _class.parseFunctionBodyAndFinish (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:3734:10)\n    at _class.parseFunction (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:4638:10)\n    at _class.parseFunctionExpression (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:3192:17)\n    at _class.parseExprAtom (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:3126:21)\n    at _class.parseExprAtom (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:8185:52)\n    at _class.parseExprAtom (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:8185:52)\n    at _class.parseExprSubscripts (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:2757:21)\n    at _class.parseMaybeUnary (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:2736:21)\n    at _class.parseExprOps (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:2643:21)\n    at _class.parseMaybeConditional (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:2615:21)\n    at _class.parseMaybeAssign (/home/ruben/develop/python/bycco/frontend/node_modules/@babel/core/node_modules/babylon/lib/index.js:2562:21)",
+  "chunks": {
+    "cms": [
+      {
+        "name": "cms.js",
+        "publicPath": "http://localhost:8080/static/cms.js",
+        "path": "/home/ruben/develop/python/bycco/frontend/dist/static/cms.js"
+      },
+      {
+        "name": "cms.c693d5bbff6c90f1f328.hot-update.js",
+        "publicPath": "http://localhost:8080/static/cms.c693d5bbff6c90f1f328.hot-update.js",
+        "path": "/home/ruben/develop/python/bycco/frontend/dist/static/cms.c693d5bbff6c90f1f328.hot-update.js"
+      }
+    ],
+    "mgmttournament": [
+      {
+        "name": "mgmttournament.js",
+        "publicPath": "http://localhost:8080/static/mgmttournament.js",
+        "path": "/home/ruben/develop/python/bycco/frontend/dist/static/mgmttournament.js"
+      },
+      {
+        "name": "mgmttournament.c693d5bbff6c90f1f328.hot-update.js",
+        "publicPath": "http://localhost:8080/static/mgmttournament.c693d5bbff6c90f1f328.hot-update.js",
+        "path": "/home/ruben/develop/python/bycco/frontend/dist/static/mgmttournament.c693d5bbff6c90f1f328.hot-update.js"
+      }
+    ],
+    "tournament": [
+      {
+        "name": "tournament.js",
+        "publicPath": "http://localhost:8080/static/tournament.js",
+        "path": "/home/ruben/develop/python/bycco/frontend/dist/static/tournament.js"
+      },
+      {
+        "name": "tournament.c693d5bbff6c90f1f328.hot-update.js",
+        "publicPath": "http://localhost:8080/static/tournament.c693d5bbff6c90f1f328.hot-update.js",
+        "path": "/home/ruben/develop/python/bycco/frontend/dist/static/tournament.c693d5bbff6c90f1f328.hot-update.js"
+      }
+    ]
+  }
+}

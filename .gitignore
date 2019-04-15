@@ -9,4 +9,5 @@
 /frontend/node_modules
 /frontend/webpack-stats.json
 /frontend/src/util/sorted
+/backend/build
 /build
