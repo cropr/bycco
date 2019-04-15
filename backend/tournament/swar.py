@@ -86,7 +86,7 @@ def comparestanding(s1, s2):
     if s1['points'] < s2['points']: return 1
     if s1['ni'] > s2['ni']: return -1
     if s1['ni'] < s2['ni']: return 1
-    return 0    
+    return 0
 
 def processSwarJsonFile(swar):
     """
