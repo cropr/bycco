@@ -79,7 +79,6 @@ def standingsfromswar(swarjson, round):
     except CdSwarPairings.DoesNotExist:
         return None
 
-
 def comparestanding(s1, s2):
     """ compare function to sort standings"""
     if s1['points'] > s2['points']: return -1
