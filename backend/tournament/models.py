@@ -153,7 +153,6 @@ class CdSwarStandings(Model):
     swartrn = ForeignKey(CdSwarTournament, on_delete=CASCADE)    
 
 
-
 class TrnInvoice(Model):
     id_participant = IntegerField()
     creationdate = DateTimeField()
