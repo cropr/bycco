@@ -6,11 +6,11 @@
    </v-card-title>
    <p class="mt-3 ml-2">PDF</p>
    <ul v-for="p in pdfgames" :key="p.filename">
-     <li class="my-1"><a :href="'/media/' + p.file" v-text="p.filename"></a></li>
+     <li class="my-1"><a :href="'/media/' + p.file" v-text="p.beautyname"></a></li>
    </ul>
    <p class="mt-3 ml-2">PGN</p>
    <ul v-for="p in pgngames" :key="p.filename">
-     <li class="my-1"><a :href="'/media/' + p.file" v-text="p.filename"></a></li>
+     <li class="my-1"><a :href="'/media/' + p.file" v-text="p.beautyname"></a></li>
    </ul>
    <br>
  </v-card>
@@ -22,7 +22,7 @@
 
 <script>
 
-// import api from '../util/api';
+import api from '../util/api';
 
 export default {
   props: ['updateTrn'],
@@ -34,32 +34,39 @@ export default {
   },
   methods: {
     getPdfGames () {
-      // var self=this;
-      // this.pdfgames = [];
-      // api('getPdfGames', {
-      //   id_trn: this.trn.id,
-      // }).then(
-      //   function(data){
-      //     self.pdfgames = data.pdfgames;
-      //   },
-      //   function(data) {
-      //     console.error('failed getting pdfgames', data);
-      //   }
-      // );
+      this.pdfgames = [];
+      api('getPdfGames', {
+        id_trn: this.trn.id,
+      }).then(
+        function(data){
+          this.pdfgames = data.pdfgames;
+          this.pdfgames.forEach(function(p){
+            var name = p.filename.split('.')[0];
+            var catround = name.split('_')[1].split('R');
+            p.beautyname = catround[0] + ' round ' + catround[1]
+          }.bind(this));
+        }.bind(this),
+        function(data) {
+          console.error('failed getting pdfgames', data);
+        }
+      );
     },
     getPgnGames () {
-      // var self=this;
-      // this.pgngames = [];
-      // api('getPgnGames', {
-      //   id_trn: this.trn.id,
-      // }).then(
-      //   function(data){
-      //     self.pgngames = data.pgngames;
-      //   },
-      //   function(data) {
-      //     console.error('failed getting pgngames', data);
-      //   }
-      // );
+      this.pgngames = [];
+      api('getPgnGames', {
+        id_trn: this.trn.id,
+      }).then(
+        function(data){
+          this.pgngames = data.pgngames;
+          this.pgngames.forEach(function(p){
+            var catround = p.filename.split('.')[0].split('R');
+            p.beautyname = catround[0] + ' round ' + catround[1]
+          })
+        }.bind(this),
+        function(data) {
+          console.error('failed getting pgngames', data);
+        }
+      );
     }
   },
   watch: {

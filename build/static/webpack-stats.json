@@ -21,6 +21,11 @@
         "name": "tournament.js",
         "publicPath": "http://localhost:8080/static/tournament.js",
         "path": "/home/ruben/develop/python/bycco/frontend/dist/static/tournament.js"
+      },
+      {
+        "name": "tournament.6c16e47e195ca1d8e62c.hot-update.js",
+        "publicPath": "http://localhost:8080/static/tournament.6c16e47e195ca1d8e62c.hot-update.js",
+        "path": "/home/ruben/develop/python/bycco/frontend/dist/static/tournament.6c16e47e195ca1d8e62c.hot-update.js"
       }
     ]
   }

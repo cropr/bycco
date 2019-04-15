@@ -675,7 +675,7 @@ def tournament_swar(request, id_trn):
 @api_view(['GET'])
 def tournament_pdfgames(request, id_trn):
     """
-    enable swar on a tournament
+    get pdf files 
     """
     from filer.models.filemodels import File
 
@@ -683,18 +683,16 @@ def tournament_pdfgames(request, id_trn):
         trn = CdTournament.objects.get(id=id_trn)
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
-    cat  = trn.shortname
-    if cat.startswith('BG'):
-        pdfcat = 'Min{0}'.format(cat[2:])
-    else:
-        pdfcat = 'Min{0}{1}'.format(cat[1:], cat[0])
-    log.debug('PDF categories %s', pdfcat)
+    cat = trn.shortname + 'R'
     try:
-        pdffiles = File.objects.filter(original_filename__contains=pdfcat)
+        pdffiles = File.objects.filter(original_filename__contains='BJK19')
         ro = []
         for p in pdffiles.all():
-            ro.append({'file': p.file.name, 'filename': p.original_filename})
+            if cat in p.original_filename:
+                ro.append({
+                    'file': p.file.name, 
+                    'filename': p.original_filename}
+                )
     except File.DoesNotExist:
         log.debug('no pdfiles found %s', pdfcat)
         ro = []
@@ -711,19 +709,16 @@ def tournament_pgngames(request, id_trn):
         trn = CdTournament.objects.get(id=id_trn)
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
-    cat  = trn.shortname
-    if cat.startswith('BG'):
-        pgncat = 'bg{0}'.format(cat[2:])
-    else:
-        pgncat = '{0}{1}'.format(cat[0].lower(), cat[1:])
-    log.debug('PGN categories %s', pgncat)
+    cat = trn.shortname + 'R'
     try:
-        pgnfiles = File.objects.filter(original_filename__contains=pgncat)
+        pdffiles = File.objects.filter(original_filename__contains='.pgn')
         ro = []
-        for p in pgnfiles.all():
-
-            ro.append({'file': p.file.name, 'filename': p.original_filename})
+        for p in pdffiles.all():
+            if cat in p.original_filename:
+                ro.append({
+                    'file': p.file.name, 
+                    'filename': p.original_filename}
+                )
     except File.DoesNotExist:
         log.debug('no pgnfiles found %s', pgncat)
         ro = []

@@ -10,4 +10,5 @@
 /frontend/webpack-stats.json
 /frontend/src/util/sorted
 /backend/build
+/backend/media
 /build
