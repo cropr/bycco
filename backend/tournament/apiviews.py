@@ -571,6 +571,7 @@ def tournament_standings(request, id_trn, round):
     }
     return Response(data)
 
+    
 @api_view(['GET'])
 def tournament_playercard(request, id_trn, id_player):
     try:
