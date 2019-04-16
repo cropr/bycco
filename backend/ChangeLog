@@ -1,7 +1,39 @@
 CHANGES
 =======
 
+1.2.4
+-----
+
+* update swar.py
+
+1.2.3
+-----
+
+* pdf and pfn files
+
+1.2.2
+-----
+
+* model reset
+
+1.2.1
+-----
+
+* solve swar absnet bug
+
+1.2.0
+-----
+
+* merged newswar
+* new swar working
+
+1.1.1
+-----
+
+* gitignore updates
+* added manifest.in
 * include templates in setup.cfg
+* updated model for swar
 
 1.1.0
 -----

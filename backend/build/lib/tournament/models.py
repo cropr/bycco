@@ -142,6 +142,18 @@ class CdSwarJson(Model):
     uploaddate = DateTimeField(auto_now_add=True)
     status = CharField(max_length=3, choices=STATUSES, default='UNP')
 
+class CdSwarPairings(Model):
+    round = IntegerField()
+    jsonpairings = TextField()
+    swartrn = ForeignKey(CdSwarTournament, on_delete=CASCADE)    
+
+class CdSwarStandings(Model):
+    round = IntegerField()
+    jsonstandings = TextField()
+    swartrn = ForeignKey(CdSwarTournament, on_delete=CASCADE)    
+
+
+
 class TrnInvoice(Model):
     id_participant = IntegerField()
     creationdate = DateTimeField()

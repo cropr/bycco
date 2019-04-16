@@ -6,10 +6,15 @@ log = logging.getLogger(__name__)
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
+import simplejson as json
+import functools
+
 
 from .models import (
     CdSwarTournament,
     CdSwarJson,
+    CdSwarPairings,
+    CdSwarStandings,
     CdTournament,
     CdTournamentPrizes,
     Subscription,
@@ -48,56 +53,61 @@ def playercardfromswar(swarjson, plix):
     log.debug("No player found for index %d", plix)
     return None
 
-def pairingsfromswar(swarjson, rr=None):
+def pairingsfromswar(swarjson, round):
     """
     get the pairings from the swarjson structure
     :param swarjson:
     :return:
     """
-    log.info('pairingfrom_swar %s', rr)
-    (standings, pairings, bye, absences) = processswarjson(swarjson, rr)
-    skeys = sorted(pairings.keys())
-    p = [pairings[k] for k in skeys]
-    if bye:
-        p.append(bye)
-    p.extend(absences)
-    return p
+    try:
+        p =  CdSwarPairings.objects.get(
+            round=round, swartrn=swarjson.swartrn).jsonpairings
+        return json.loads(p)
+    except CdSwarPairings.DoesNotExist:
+        return None
 
-def standingsfromswar(swarjson, rr):
+def standingsfromswar(swarjson, round):
     """
     get the pairings from the swarjson structure
     :param swarjson:
     :return:
     """
-    log.info('standingfrom_swar %s', rr)
-    (standings, pairings, bye, absences) = processswarjson(swarjson, rr)
-    skeys = sorted(standings.keys())
-    s = [standings[k] for k in skeys]
-    return s
+    try:
+        p =  CdSwarStandings.objects.get(
+            round=round, swartrn=swarjson.swartrn).jsonstandings
+        return json.loads(p)
+    except CdSwarPairings.DoesNotExist:
+        return None
 
-def processswarjson(swarjson, rr=None):
+
+def comparestanding(s1, s2):
+    """ compare function to sort standings"""
+    if s1['points'] > s2['points']: return -1
+    if s1['points'] < s2['points']: return 1
+    if s1['ni'] > s2['ni']: return -1
+    if s1['ni'] < s2['ni']: return 1
+    return 0
+
+def processSwarJsonFile(swar):
     """
     process the jsswarjson file calculating players and pairings
-    standings, pairings, bye are dicts
-    absences a list
-    :param swarjson:
-    :return: (standings, pairings, bye, absences)
+    write jsonfied string to CdSwarPairing and CdSwarStanding
+    for all rounds found 
+    :param swar: {CdSwarJson} 
+    :return: None
     """
-    log.info('processswarjson %s', rr)
     pairings = {}
     standings = {}
-    absences = []
-    bye = None
-    swar = swarjson.get('Swar')
-    if not swar:
-        log.debug('no swar file')
-        return (standings, pairings, bye, absences)
-    players = swar.get('Player')
+    absences = {}
+    bye = {}
+    swj = json.loads(swar.jsonfile)
+    maxround = 0
+    players = swj.get('Swar').get('Player')
     if not players:
         log.debug('no swar file')
         return (standings, pairings, bye, absences)
     for p in players:
-        six = p.get('Ranking') - 1
+        six = p.get('Ranking')
         pl = {
             "name": p.get('Name'),
             "id_player": p.get("Ni"),
@@ -116,83 +126,108 @@ def processswarjson(swarjson, rr=None):
             "games": [],
             "bye": None,
             "absences": [],
-            "tiebreak": p.get("TieBreak")
+            "tiebreak": p.get("TieBreak"),
+            "rank": six,
+            "ni": p.get("Ni"),
         }
         pl["rating"] = max(pl["natrating"], pl["fiderating"])
         ra = p.get("RoundArray")
         for ix, g in enumerate(ra):
             round = g.get("RoundNr")
-            currentRound = int(rr or len(ra))
-            if currentRound == ix + 1:
-                standings[six] = pl
+            if round > maxround:
+                maxround = round
+            if not round in standings:
+                standings[round] = {}
+                pairings[round] = {}
+                absences[round] = []
+                bye[round] = None
+            round = g.get("RoundNr")
+            standings[round][six] = pl
             if g.get("Tabel") == "Absent":
-                pl["absences"].append({"round": int(round) -1})
-                if len(ra) == ix + 1:
-                    absences.append({
-                        "white": pl["name"],
-                        "white_id": pl["idbel"],
-                        "white_rating": pl["rating"],
-                        "white_points": pl["points"],
-                        "result": "--",
-                        "black": "",
-                        "black_id": "",
-                        "black_rating": '',
-                        "black_points": '',
-                    })
+                pl["absences"].append({"round": round -1})
+                absences[round].append({
+                    "white": pl["name"],
+                    "white_id": pl["idbel"],
+                    "white_rating": pl["rating"],
+                    "white_points": pl["points"],
+                    "result": "--",
+                    "black": "",
+                    "black_id": "",
+                    "black_rating": '',
+                    "black_points": '',
+                })
                 continue
             if g.get("Tabel") == "BYE":
                 pl["bye"] = {"round": int(round) -1}
-                if currentRound == ix +1:
-                    bye = {
-                        "white": pl["name"],
-                        "white_id": pl["idbel"],
-                        "white_rating": pl["rating"],
-                        "white_points": pl["points"],
-                        "result": "Bye",
-                        "black": "",
-                        "black_id": "",
-                        "black_rating": '',
-                        "black_points": '',
-                    }
+                bye[round] = {
+                    "white": pl["name"],
+                    "white_id": pl["idbel"],
+                    "white_rating": pl["rating"],
+                    "white_points": pl["points"],
+                    "result": "Bye",
+                    "black": "",
+                    "black_id": "",
+                    "black_rating": '',
+                    "black_points": '',
+                }
                 continue
-            lastgame = {
-                "table": int(g.get("Tabel")) - 1,
+            game = {
+                "table": int(g.get("Tabel")),
                 "opponentIndex": g.get("OpponentNi"),
                 "opponentName": g.get("OpponentName"),
                 "result": g.get("Result").upper(),
                 "color": "B" if g.get("Color") == "Black" else 'W',
                 "float": g.get("Float"),
-                "round": currentRound - 1,
+                "round": round - 1,
             }
-            pl["games"].append(lastgame)
-            if currentRound == ix + 1:
-                pix = lastgame["table"]
-                lg = pairings.get(pix, {})
-                if lastgame["color"] == "W":
-                    lg["white"] =  pl["name"]
-                    lg["white_id"] = pl["idbel"]
-                    lg["white_rating"] = pl["rating"]
-                    lg["white_points"] = pl["points"]
-                    if lastgame["result"] == "1":
-                        lg["result"] = "1-0"
-                    elif lastgame["result"] == "½":
-                        lg["result"] = "½-½"
-                    elif lastgame["result"] == "0":
-                        lg["result"] = "0-1"
-                    elif lastgame["result"] == "1FF":
-                        lg["result"] = "1-0 FF"
-                    elif lastgame["result"] == "0FF":
-                        lg["result"] = "0-1 FF"
-                    else:
-                        lg["result"] = " - "
-                    pairings[pix] = lg
-                if lastgame["color"] == "B":
-                    lg["black"] = pl["name"]
-                    lg["black_id"] = pl["idbel"]
-                    lg["black_rating"] = pl["rating"]
-                    lg["black_points"] = pl["points"]
-                    pairings[pix] = lg
-    return (standings, pairings, bye, absences)
+            pix = game["table"]
+            lg = pairings[round].get(pix, {})
+            if game["color"] == "W":
+                lg["white"] =  pl["name"]
+                lg["white_id"] = pl["idbel"]
+                lg["white_rating"] = pl["rating"]
+                lg["white_points"] = pl["points"]
+                if game["result"] == "1":
+                    lg["result"] = "1-0"
+                elif game["result"] == "½":
+                    lg["result"] = "½-½"
+                elif game["result"] == "0":
+                    lg["result"] = "0-1"
+                elif game["result"] == "1FF":
+                    lg["result"] = "1-0 FF"
+                elif game["result"] == "0FF":
+                    lg["result"] = "0-1 FF"
+                else:
+                    lg["result"] = " - "
+                pairings[round][pix] = lg
+            if game["color"] == "B":
+                lg["black"] = pl["name"]
+                lg["black_id"] = pl["idbel"]
+                lg["black_rating"] = pl["rating"]
+                lg["black_points"] = pl["points"]
+                pairings[round][pix] = lg
+    log.info('pairings in round 1: %d %d', len(pairings[1]), maxround) 
+    for round in range(1, maxround+1):
+        try:
+            swp = CdSwarPairings.objects.get(round=round, 
+                swartrn=swar.swartrn)
+        except CdSwarPairings.DoesNotExist:
+            swp = CdSwarPairings(round=round, swartrn=swar.swartrn)
+        result = [ pairings[round][k] for k in sorted(pairings[round].keys()) ]
+        if bye[round]:
+            result.append(bye[round])
+        result.extend(absences[round])
+        swp.jsonpairings = json.dumps(result)
+        swp.save()
+        try:
+            sws = CdSwarStandings.objects.get(round=round, 
+                swartrn=swar.swartrn)
+        except CdSwarStandings.DoesNotExist:
+            sws = CdSwarStandings(round=round, swartrn=swar.swartrn)
+        result = sorted(standings[maxround].values(), key=lambda p: p['rank']) 
+        sws.jsonstandings = json.dumps(result)
+        sws.save()
+
 
 prizetable = {
     'BG8': ([60, 50, 40, 30, 20], [50,	30]),
@@ -325,6 +360,7 @@ def swarfile_publication(request, id_swartrn, id_swarfile):
         swar = CdSwarJson.objects.get(id=id_swarfile)
     except:
         return Response(status=status.HTTP_404_NOT_FOUND)
+    processSwarJsonFile(swar)
     CdSwarJson.objects.filter(swartrn_id=id_swartrn, status='ACT',
                               round=swar.round).update(status='OUT')
     CdSwarJson.objects.filter(swartrn_id=id_swartrn, id=id_swarfile).update(

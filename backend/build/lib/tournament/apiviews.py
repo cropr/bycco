@@ -515,22 +515,28 @@ def tournament_pairings(request, id_trn, round):
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     swarround = int(round)
-    log.info('getting pairing round %d', swarround)
     try:
         swartrn = CdSwarTournament.objects.get(tournament=trn)
     except CdSwarTournament.DoesNotExist:
+        log.info('did not find swar tournament')
         return Response(status=status.HTTP_404_NOT_FOUND)
-    try:
-        swarjson = CdSwarJson.objects.get(swartrn=swartrn, round=swarround,
-                                      status='ACT')
-    except CdSwarJson.DoesNotExist:
+    swarjsons = CdSwarJson.objects.filter(swartrn=swartrn, status='ACT')
+    swarjson = CdSwarJson(round=0)
+    for s in swarjsons:
+        if s.round > swarjson.round:
+            swarjson = s
+    if swarjson.round == 0:
+        log.info('did not find swar json')
         return Response(status=status.HTTP_404_NOT_FOUND)
-    trndata = json.loads(swarjson.jsonfile)
+    pairings = pairingsfromswar(swarjson, int(round))
+    if not pairings:
+        log.info('did not find swar pairings')
+        return Response(status=status.HTTP_404_NOT_FOUND)
     data = {
         'id_trn': trn.id,
         'tournament': trn.name,
         'round': int(round),
-        'pairings': pairingsfromswar(trndata, round)
+        'pairings': pairings,
     }
     return Response(data)
 
@@ -545,17 +551,23 @@ def tournament_standings(request, id_trn, round):
         swartrn = CdSwarTournament.objects.get(tournament=trn)
     except CdSwarTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    try:
-        swarjson = CdSwarJson.objects.get(swartrn=swartrn, round=swarround,
-                                      status='ACT')
-    except CdSwarJson.DoesNotExist:
+    swarjsons = CdSwarJson.objects.filter(swartrn=swartrn, status='ACT')
+    swarjson = CdSwarJson(round=0)
+    for s in swarjsons:
+        if s.round > swarjson.round:
+            swarjson = s
+    if swarjson.round == 0:
+        log.info('did not find swar json')
         return Response(status=status.HTTP_404_NOT_FOUND)
-    trndata = json.loads(swarjson.jsonfile)
+    standings = standingsfromswar(swarjson, int(round))
+    if not standings:
+        log.info('did not find swar standings')
+        return Response(status=status.HTTP_404_NOT_FOUND)
     data = {
         'id_trn': trn.id,
         'tournament': trn.name,
         'round': int(round),
-        'standings': standingsfromswar(trndata, int(round))
+        'standings': standings,
     }
     return Response(data)
 
@@ -663,7 +675,7 @@ def tournament_swar(request, id_trn):
 @api_view(['GET'])
 def tournament_pdfgames(request, id_trn):
     """
-    enable swar on a tournament
+    get pdf files 
     """
     from filer.models.filemodels import File
 
@@ -671,18 +683,16 @@ def tournament_pdfgames(request, id_trn):
         trn = CdTournament.objects.get(id=id_trn)
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
-    cat  = trn.shortname
-    if cat.startswith('BG'):
-        pdfcat = 'Min{0}'.format(cat[2:])
-    else:
-        pdfcat = 'Min{0}{1}'.format(cat[1:], cat[0])
-    log.debug('PDF categories %s', pdfcat)
+    cat = trn.shortname + 'R'
     try:
-        pdffiles = File.objects.filter(original_filename__contains=pdfcat)
+        pdffiles = File.objects.filter(original_filename__contains='BJK19')
         ro = []
         for p in pdffiles.all():
-            ro.append({'file': p.file.name, 'filename': p.original_filename})
+            if cat in p.original_filename:
+                ro.append({
+                    'file': p.file.name, 
+                    'filename': p.original_filename}
+                )
     except File.DoesNotExist:
         log.debug('no pdfiles found %s', pdfcat)
         ro = []
@@ -699,19 +709,16 @@ def tournament_pgngames(request, id_trn):
         trn = CdTournament.objects.get(id=id_trn)
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
-    cat  = trn.shortname
-    if cat.startswith('BG'):
-        pgncat = 'bg{0}'.format(cat[2:])
-    else:
-        pgncat = '{0}{1}'.format(cat[0].lower(), cat[1:])
-    log.debug('PGN categories %s', pgncat)
+    cat = trn.shortname + 'R'
     try:
-        pgnfiles = File.objects.filter(original_filename__contains=pgncat)
+        pdffiles = File.objects.filter(original_filename__contains='.pgn')
         ro = []
-        for p in pgnfiles.all():
-
-            ro.append({'file': p.file.name, 'filename': p.original_filename})
+        for p in pdffiles.all():
+            if cat in p.original_filename:
+                ro.append({
+                    'file': p.file.name, 
+                    'filename': p.original_filename}
+                )
     except File.DoesNotExist:
         log.debug('no pgnfiles found %s', pgncat)
         ro = []
