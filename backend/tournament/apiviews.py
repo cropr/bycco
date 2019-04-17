@@ -711,6 +711,8 @@ def tournament_pgngames(request, id_trn):
     except CdTournament.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     cat = trn.shortname + 'R'
+    if trn.shortname == 'IM':
+        cat = 'IMR'
     try:
         pdffiles = File.objects.filter(original_filename__contains='.pgn')
         ro = []
