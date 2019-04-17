@@ -145,7 +145,12 @@ export default {
         this.trnchoice = 'select';
         this.checktrns();
       }.bind(this);
-      reader.readAsText(file);
+      if (file) {
+        reader.readAsText(file);
+      }
+      else {
+        console.log('No event file', event)
+      }
     },
     
     getTournaments () {

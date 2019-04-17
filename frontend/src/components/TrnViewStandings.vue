@@ -12,11 +12,11 @@
         <td >{{ props.item.rating }}</td>
         <td >{{ props.item.id_club }}</td>
         <td class="hidden-xs-only">{{ props.item.tpr }}</td>
-        <!-- <td class="hidden-xs-only">{{ props.item.tiebreak[0].Points }}</td>
+        <td class="hidden-xs-only">{{ props.item.tiebreak[0].Points }}</td>
         <td class="hidden-xs-only">{{ props.item.tiebreak[1].Points }}</td>
         <td class="hidden-xs-only">{{ props.item.tiebreak[2].Points }}</td>
         <td class="hidden-xs-only">{{ props.item.tiebreak[3].Points }}</td>
-        <td class="hidden-xs-only">{{ props.item.tiebreak[4].Points }}</td> -->
+        <td class="hidden-xs-only">{{ props.item.tiebreak[4].Points }}</td>
       </template>
     </v-data-table>
   </div>
