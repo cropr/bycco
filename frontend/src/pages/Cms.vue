@@ -73,8 +73,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .landing.v-content {
   padding-top: 0px !important;
+}
+.img-responsive {
+  max-width: 100%;
 }
 </style>

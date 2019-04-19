@@ -248,7 +248,7 @@ def printprizes(request, cat):
         pages.append(cards)
     return render(request, 'tournament/printprize.html', dict(pages=pages))
 
-@user_passes_test(staff)
+
 def csvparticipants(request):
     """
     create a csv file of all participants
@@ -295,4 +295,52 @@ def csvparticipants(request):
     for s in Subscription.objects.all():
         values = [str(getattr(s, f)) for f in fields]
         writer.writerow(values)
+    return response
+
+
+import zipfile, io
+from .swar import standingsfromswar
+
+@user_passes_test(staff)
+def podiumphotos(request):
+    """
+    get the photos for podium
+    """
+    trns = CdTournament.objects.all()
+    photos = []
+    for trn in trns:
+        if trn.shortname == 'IMT':
+            continue
+        swartrn = CdSwarTournament.objects.get(tournament=trn)
+        swarjsons = CdSwarJson.objects.filter(swartrn=swartrn, status='ACT')
+        swarjson = CdSwarJson(round=0)
+        for s in swarjsons:
+            if s.round > swarjson.round:
+                swarjson = s
+        standings = standingsfromswar(swarjson, swarjson.round)
+        boys = []
+        girls = []
+        for pl in standings:
+            if pl['gender'] == 'M':
+                if len(boys) == 3:
+                    continue
+                pl['cat'] = 'B' + trn.shortname[1:]
+                boys.append(pl)
+            if pl['gender'] == 'F':
+                if len(girls) == 3:
+                    continue
+                pl['cat'] = 'G' + trn.shortname[1:]
+                girls.append(pl)
+            idbel = pl['idbel']
+            sb = Subscription.objects.get(idbel=idbel)
+            pl['photo'] = sb.badgeimage
+        for i,b in enumerate(boys, 1):
+            photos.append((b['cat'], i, b['photo'], b['name']))
+        for i,g in enumerate(girls, 1):
+            photos.append((g['cat'], i, g['photo'], g['name']))
+    response = HttpResponse(content_type='application/zip')
+    response['Content-Disposition'] = 'attachment; filename="podiumphotos.zip"'
+    zp = zipfile.ZipFile(response, 'w')
+    for ph in photos:
+        zp.writestr('{0:s}_{1:d}_{3:s}.png'.format(*ph), ph[2])
     return response

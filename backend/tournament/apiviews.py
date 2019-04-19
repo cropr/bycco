@@ -727,3 +727,4 @@ def tournament_pgngames(request, id_trn):
         ro = []
     return Response(dict(pgngames=ro))
 
+
