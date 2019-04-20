@@ -344,3 +344,4 @@ def podiumphotos(request):
     for ph in photos:
         zp.writestr('{0:s}_{1:d}_{3:s}.png'.format(*ph), ph[2])
     return response
+    
