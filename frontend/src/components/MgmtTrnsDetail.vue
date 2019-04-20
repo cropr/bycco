@@ -75,7 +75,7 @@ export default {
     },
 
     printPrizes () {
-      window.open('/subscribe/printprizes/' + this.trn.shortname)
+      window.open('/trn/printprizes/' + this.trn.shortname)
     },
 
   },

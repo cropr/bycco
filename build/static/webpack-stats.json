@@ -14,6 +14,11 @@
         "name": "mgmttournament.js",
         "publicPath": "http://localhost:8080/static/mgmttournament.js",
         "path": "/home/ruben/develop/python/bycco/frontend/dist/static/mgmttournament.js"
+      },
+      {
+        "name": "mgmttournament.a1851aeb0447a1abf892.hot-update.js",
+        "publicPath": "http://localhost:8080/static/mgmttournament.a1851aeb0447a1abf892.hot-update.js",
+        "path": "/home/ruben/develop/python/bycco/frontend/dist/static/mgmttournament.a1851aeb0447a1abf892.hot-update.js"
       }
     ],
     "tournament": [

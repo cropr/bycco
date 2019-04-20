@@ -248,7 +248,6 @@ def printprizes(request, cat):
         pages.append(cards)
     return render(request, 'tournament/printprize.html', dict(pages=pages))
 
-
 def csvparticipants(request):
     """
     create a csv file of all participants
@@ -344,4 +343,3 @@ def podiumphotos(request):
     for ph in photos:
         zp.writestr('{0:s}_{1:d}_{3:s}.png'.format(*ph), ph[2])
     return response
-    
