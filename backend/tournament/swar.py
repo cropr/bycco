@@ -229,17 +229,20 @@ def processSwarJsonFile(swar):
 
 
 prizetable = {
-    'BG8': ([60, 50, 40, 30, 20], [50,	30]),
-    'B10': ([70, 65, 61, 56, 52, 47, 43, 38, 34, 29, 25, 20],[]),
-    'G10': ([], [70, 53, 37, 20]),
-    'B12': ([80, 77,	73,	70,	67,	63,	60,	57,	53,	50,	47,	43,	40,	37,	33,	30,	27,	23,	20], []),
-    'G12': ([], [80, 65, 50, 35, 20]),
-    'B14': ([110, 105, 99, 94, 89, 84, 78, 73, 68, 62, 57, 52, 46, 41, 36, 31, 25, 20], []),
-    'G14': ([], [110, 88, 65, 43, 20]),
-    'B16': ([140, 131, 122, 112, 103, 94, 85, 75, 66, 57, 48, 38, 29, 20], []),
-    'G16': ([], [120, 80, 40]),
-    'BG18': ([150, 138, 126, 115, 103, 91, 79, 67, 55, 44, 32, 20], [130]),
-    'BG20': ([160, 137, 113, 90, 67, 43, 20], [140, 40]),
+    'U8': ([50, 39, 28, 17], [40, 20]),
+    'B10': ([65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10],[]),
+    'G10': ([], [55, 36, 17]),
+    'B12': ([80, 76, 72, 68, 64, 60, 56, 52, 48, 44, 40, 36, 32, 28, 24, 20, 16, 
+        12, 10, 10], []),
+    'G12': ([], [70, 60, 50, 40, 30, 20]),
+    'B14': ([100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20,
+         15, 10, 10], []),
+    'G14': ([], [90, 66, 42, 18]),
+    'B16': ([110, 100, 90, 80, 70, 60, 50, 40, 30, 20], []),
+    'G16': ([], [90, 73, 56, 39]),
+    'B18': ([120, 109, 98, 87, 76, 65, 54, 43, 32, 21], []),
+    'G18': ([], [100, 70, 40]),
+    'U20': ([130, 105, 80, 55, 30], [110]),
 }
 
 def generate_code():
@@ -250,27 +253,25 @@ def generate_code():
     dig33 = (code % 10) * 100 + code % 97
     return "{0:03d}-{1:03d}-{2:03d}".format(dig31, dig32, dig33)
 
-def prizesfromswar(swarjson, category):
+def prizesfromswar(standings, cat):
     """
-    return the player card for a single player
-    :param swarjson: 
-    :param plix: the player index
+    calculates the prizes for a category
+    :param standings: rhe standings in json format
+    :param cat: the category
     :return: 
     """
-    (standings, pairings, bye, absences) = processswarjson(swarjson)
-    skeys = sorted(standings.keys())
+
     playerprizes = []
     curmix = 0
     curfix = 0
-    prizes = prizetable[category]
-    for k in skeys:
+    prizes = prizetable[cat]
+    for player in standings:
         prizem = prizes[0][curmix] if curmix < len(prizes[0]) else None
         prizef = prizes[1][curfix] if curfix < len(prizes[1]) else None
-        player = standings[k]
         if player['gender'] == 'M' and prizem:
             playerprizes.append({
                 'name': player['name'],
-                'category': category,
+                'category': cat,
                 'place': curmix+1,
                 'prize': prizem,
                 'code': generate_code(),
@@ -284,7 +285,7 @@ def prizesfromswar(swarjson, category):
                 log.debug('girl is taking boys price')
             playerprizes.append({
                 'name': player['name'],
-                'category': category,
+                'category': cat,
                 'place': curfix+1,
                 'prize': prizef,
                 'code': generate_code(),
@@ -394,4 +395,3 @@ def swarfile_one(request, id_swartrn, id_swarfile):
     if request.method == 'DELETE':
         swar.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-

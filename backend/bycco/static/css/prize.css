@@ -1,0 +1,95 @@
+@page {
+    size: A4;
+    margin: 0; 
+}
+
+.prizepage {
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+  
+@media print {
+    .prizepage {
+        margin: 0 0 !important;
+        width: 100%;
+        border-width: 0;
+        border-radius: 0;
+        min-height: initial;
+        box-shadow: none;
+        page-break-after: always; 
+    } 
+}
+
+.prizepage {
+    width: 21cm;
+    min-height: 29.4cm;
+    padding: 0;
+    margin: 0;
+    position: relative; 
+}
+  
+  .prizeline1 {
+    position: absolute;
+    top: 9cm;
+    left: 0;
+    right: 0; }
+  
+  .prizeline2 {
+    position: absolute;
+    top: 18cm;
+    left: 0;
+    right: 0; }
+  
+  .prizeline3 {
+    position: absolute;
+    top: 27cm;
+    left: 0;
+    right: 0; }
+  
+  .prizelinev {
+    position: absolute;
+    top: 0cm;
+    height: 27cm;
+    left: 14cm;
+    width: 1cm;
+    border-left: 2px dashed #666; }
+  
+  .prize_1 {
+    position: absolute;
+    width: 14cm;
+    height: 9cm; }
+  
+  .prize_11 {
+    top: 0cm;
+    left: 0cm; }
+  
+  .prize_12 {
+    top: 9cm;
+    left: 0cm; }
+  
+  .prize_13 {
+    top: 18cm;
+    left: 0cm; }
+  
+  .prizetext {
+    position: absolute;
+    top: 9.5cm;
+    left: 4cm;
+    width: 14cm; }
+  
+  .prizeline {
+    border-top: 1px dashed #666; }
+  
+  .prize_logo {
+    padding: 0.5em 2em;
+    font-size: 150%; }
+    .prize_logo img {
+      height: 1cm;
+      width: auto; }
+  
+  .prize_text {
+    padding: 0.5em 3em;
+    font-size: 100%; }
+  

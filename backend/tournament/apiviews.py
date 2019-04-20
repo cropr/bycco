@@ -18,6 +18,7 @@ from rest_framework.renderers import BaseRenderer, JSONRenderer
 from .models import (
     CdSwarJson,
     CdSwarTournament,
+    CdSwarStandings,
     CdTournament,
     CdTournamentPrizes,
     Subscription,
@@ -610,16 +611,19 @@ def tournament_prizes(request, id_trn):
             swartrn = CdSwarTournament.objects.get(tournament=trn)
         except CdSwarTournament.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-        swarjsons = CdSwarJson.objects.filter(swartrn=swartrn, status='ACT')
-        topround = swarjsons.aggregate(topround=Max('round')).get('topround', 1)
-        try:
-            swarjson = CdSwarJson.objects.get(swartrn=swartrn, round=topround,
-                status='ACT')
-        except CdSwarJson.DoesNotExist:
-            log.debug("swarjson for topround %d not found", topround)
+        swarstandings = CdSwarStandings.objects.filter(swartrn=swartrn)
+        swarst = CdSwarStandings(round=0)
+        for s in swarstandings:
+            if s.round > swarst.round:
+                swarst = s
+        if swarst.round == 0:
+            log.info('did not find swar json')
             return Response(status=status.HTTP_404_NOT_FOUND)
-        trndata = json.loads(swarjson.jsonfile)
-        prizesjson = json.dumps(prizesfromswar(trndata, cat))
+        standings = json.loads(swarst.jsonstandings)
+        if not standings:
+            log.info('did not find swar standings')
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        prizesjson = json.dumps(prizesfromswar(standings, cat))
         if not hasattr(trn, 'cdtournamentprizes'):
             trnprizes = CdTournamentPrizes(tournament=trn)
             trnprizes.jsonprizes = prizesjson
