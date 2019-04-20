@@ -260,7 +260,6 @@ def prizesfromswar(standings, cat):
     :param cat: the category
     :return: 
     """
-
     playerprizes = []
     curmix = 0
     curfix = 0
