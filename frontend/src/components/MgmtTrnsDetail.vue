@@ -60,18 +60,18 @@ export default {
     },
 
     getPrizes () {
-      // this.prizes = [];
-      // api('getPrizes', {
-      //   id_trn: this.trn.id
-      // }).then(
-      //   function(data){
-      //     console.log('got prizes', data);
-      //     this.prizes = data.playerprizes
-      //   }.bind(this),
-      //   function(data) {
-      //     console.error('Error getting prizes', data)
-      //   }
-      // )
+      this.prizes = [];
+      api('getPrizes', {
+        id_trn: this.trn.id
+      }).then(
+        function(data){
+          console.log('got prizes', data);
+          this.prizes = data.playerprizes
+        }.bind(this),
+        function(data) {
+          console.error('Error getting prizes', data)
+        }
+      )
     },
 
     printPrizes () {
