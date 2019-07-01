@@ -5,13 +5,13 @@ verify_ssl = true
 
 [dev-packages]
 pbr = "*"
-rd-django = {path = "./data/rd_django-0.9.1-py3-none-any.whl"}
 
 [packages]
 cmsplugin-filer = "*"
 django-cms = "*"
 django-cors-headers = "*"
 django-filer = "*"
+django-reversion = "*"
 django-sekizai = "*"
 django-tablib = "*"
 django-treebeard = "*"
@@ -35,11 +35,7 @@ pdfkit = "*"
 psycopg2-binary = "*"
 pytz = "*"
 requests = "*"
-reversion = "*"
 simplejson = "*"
 six = "*"
-Django = "<2"
+Django = "*"
 Pillow = "*"
-
-[requires]
-python_version = "3.6"

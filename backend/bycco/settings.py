@@ -54,19 +54,20 @@ CMS_LANGUAGES = {
     },
 }
 
+
+CMS_PERMISSION = False
+
+CMS_PLACEHOLDER_CONF = {}
+
 CMS_TEMPLATES = (
     ('vuecms.html', 'Cms Page'),
     ('landing.html', 'LandingPage'),
     ('page.html', 'Page'),
 )
 
-CMS_PERMISSION = False
-
-CMS_PLACEHOLDER_CONF = {}
-
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
-DATABASES = {   # dummy for collectstatic
+DATABASES = {   
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'localhost',
@@ -75,7 +76,6 @@ DATABASES = {   # dummy for collectstatic
         'PASSWORD': '',
     }
 }
-
 
 DEBUG = True
 
@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     'djangocms_googlemap',
     'djangocms_inherit',
     'djangocms_link',
-    'reversion',
+    'django_reversion',
 
     # my apps
     'tournament',
