@@ -5,22 +5,19 @@ verify_ssl = true
 
 [dev-packages]
 pbr = "*"
+flake8 = "*"
 
 [packages]
-cmsplugin-filer = "*"
 django-cms = "*"
 django-cors-headers = "*"
 django-filer = "*"
-django-reversion = "*"
 django-sekizai = "*"
-django-tablib = "*"
 django-treebeard = "*"
 django-webpack-loader = "*"
 djangocms-admin-style = "*"
 djangocms-attributes-field = "*"
 djangocms-column = "*"
 djangocms-file = "*"
-djangocms-inherit = "*"
 djangocms-link = "*"
 djangocms-style = "*"
 djangocms-text-ckeditor = "*"
@@ -39,3 +36,12 @@ simplejson = "*"
 six = "*"
 Django = "*"
 Pillow = "*"
+
+[requires]
+python_version = "3.7"
+
+[dev-packages.rd-django]
+path = "./data/rd_django-0.10.2-py3-none-any.whl"
+
+[dev-packages.fdc8dbd]
+path = "./data/rd_django-0.10.2-py3-none-any.whl"

@@ -12,7 +12,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from django.conf import settings
-from rd_django.templatetags.rd_i18n import translate
+# from rd_django.templatetags.rd_i18n import translate
+from bycco.util import translate
 
 mailfrom = 'info@bycco.be'
 mailcc = 'confirmation@bycco.be'

@@ -17,7 +17,8 @@ from email.mime.application import MIMEApplication
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework import status
 from rest_framework.response import Response
-from rd_django.templatetags.rd_i18n import translate
+# from rd_django.templatetags.rd_i18n import translate
+from bycco.util import translate
 
 from .models import (
     playercategories,

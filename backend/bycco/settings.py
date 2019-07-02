@@ -98,18 +98,18 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.messages',
-    'django_tablib',
+    # 'django_tablib',
 
     # djangocms
     'cms',
     'filer',
     'easy_thumbnails',
-    'cmsplugin_filer_file',
-    'cmsplugin_filer_folder',
-    'cmsplugin_filer_image',
-    'cmsplugin_filer_teaser',
-    'cmsplugin_filer_utils',
-    'cmsplugin_filer_video',
+    # 'cmsplugin_filer_file',
+    # 'cmsplugin_filer_folder',
+    # 'cmsplugin_filer_image',
+    # 'cmsplugin_filer_teaser',
+    # 'cmsplugin_filer_utils',
+    # 'cmsplugin_filer_video',
     'menus',
     'sekizai',
     'treebeard',
@@ -117,9 +117,9 @@ INSTALLED_APPS = (
     'djangocms_style',
     'djangocms_file',
     'djangocms_googlemap',
-    'djangocms_inherit',
+    # 'djangocms_inherit',
     'djangocms_link',
-    'django_reversion',
+    # 'django_reversion',
 
     # my apps
     'tournament',
@@ -215,6 +215,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'bycco', 'templates'),],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -230,11 +231,11 @@ TEMPLATES = [
                 'cms.context_processors.cms_settings',
                 'rd_django.context_processor.tamplate_settings',
             ],
-            'loaders': [
-                'django.template.loaders.filesystem.Loader',
-                'django.template.loaders.app_directories.Loader',
-                'django.template.loaders.eggs.Loader'
-            ],
+            # 'loaders': [
+            #     'django.template.loaders.filesystem.Loader',
+            #     'django.template.loaders.app_directories.Loader',
+            #     'django.template.loaders.eggs.Loader'
+            # ],
         },
     },
 ]
