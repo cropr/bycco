@@ -98,18 +98,11 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.messages',
-    # 'django_tablib',
 
     # djangocms
     'cms',
     'filer',
     'easy_thumbnails',
-    # 'cmsplugin_filer_file',
-    # 'cmsplugin_filer_folder',
-    # 'cmsplugin_filer_image',
-    # 'cmsplugin_filer_teaser',
-    # 'cmsplugin_filer_utils',
-    # 'cmsplugin_filer_video',
     'menus',
     'sekizai',
     'treebeard',
@@ -117,9 +110,7 @@ INSTALLED_APPS = (
     'djangocms_style',
     'djangocms_file',
     'djangocms_googlemap',
-    # 'djangocms_inherit',
     'djangocms_link',
-    # 'django_reversion',
 
     # my apps
     'tournament',
@@ -130,7 +121,6 @@ INSTALLED_APPS = (
 
 LANGUAGE_CODE = 'nl'
 LANGUAGES = (
-    ## Customize this
     ('en', 'en'),
     ('nl', 'nl'),
     ('fr', 'fr'),
@@ -166,7 +156,11 @@ LOGGING = {
         'django' : {
             'level': 'INFO',
             'handlers': ['console'],
-        }
+        },
+        'rd_django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        }        
     },
 }
 
@@ -231,11 +225,6 @@ TEMPLATES = [
                 'cms.context_processors.cms_settings',
                 'rd_django.context_processor.tamplate_settings',
             ],
-            # 'loaders': [
-            #     'django.template.loaders.filesystem.Loader',
-            #     'django.template.loaders.app_directories.Loader',
-            #     'django.template.loaders.eggs.Loader'
-            # ],
         },
     },
 ]
@@ -257,9 +246,7 @@ THUMBNAIL_PROCESSORS = (
 TOURNAMENT_ENABLED = 1
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 WSGI_APPLICATION = 'bycco.wsgi.application'
