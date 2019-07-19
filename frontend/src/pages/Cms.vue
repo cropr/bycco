@@ -23,7 +23,7 @@
 
       <v-container v-if="landing" class="mt-3 mb-2">
         <h2>{{ $t('News items')}}</h2>
-        TO DO
+
         <!-- <cms-newsitems /> -->
       </v-container>
       <v-parallax  v-if="landing && $vuetify.breakpoint.smAndUp"
