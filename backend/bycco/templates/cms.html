@@ -1,36 +1,44 @@
-{% load cms_tags menu_tags staticfiles sekizai_tags rd_i18n %}
+{% load cms_tags menu_tags staticfiles sekizai_tags %}
 {% load render_bundle from webpack_loader %}
 <!doctype html>
 <html>
 <head>
-<title>{% block title %}Belgian Youth Championships{% endblock title %}</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116219765-1"></script>
+<title>{{ TITLE_WEBSITE }}</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141721071-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-116219765-1');
+
+  gtag('config', 'UA-141721071-1');
 </script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="description" content="Fédération Royale Belge des Échecs asbl
+Koninklijke Belgische Schaakbond vzw
+Königlicher Schachbund Belgien vog
+Royal Belgian Chess Federation npo" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 {% render_block "css" %}
+
+{% block xcss_after %}{% endblock xcss_after %}
+
 </head>
 <body>
 <style>[v-cloak] > * { display:none }</style>
+
 {% cms_toolbar %}
-{#                                                                        #}
-{# We have to define cms_toolbar outside of block content                 #}
-{# leading to a separate root tmeplate for cms                            #}
-{#                                                                        #}
-{% block content %}
-<h1>{% page_attribute "page_title" %}</h1>
-{%  placeholder "content" %}
-{% endblock content%}
+
+{% block content %}{% endblock content%}
+
+{% block xscript_before %}{% endblock xscript_before %}
 
 {% render_block "js" %}
 
+{% block xscript_after %}{% endblock xscript_after %}
+
 </body>
 </html>
-
-
 

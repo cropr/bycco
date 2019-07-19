@@ -1,0 +1,3 @@
+<v-container v-html="marked('{{source| escapejs}}'{% if sanitize %}, {sanitize: true}{% endif %})">
+</v-container>
+

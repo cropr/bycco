@@ -1,31 +1,17 @@
-{% load cms_tags staticfiles sekizai_tags rd_i18n menu_tags rd_django %}
+{% extends "cms.html" %}
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
 {% load render_bundle from webpack_loader %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>BJK 2019</title>
-<meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-{% render_block "css" %}
-{% if PRODUCTION %}
-  {% render_bundle 'chunk-vendors'  'css' %}
-  {% render_bundle 'chunk-common'  'css' %}
-  {% render_bundle 'cms' 'css' %}
-{% endif %}
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-116219765-1');
-</script>
-</head>
-<body>
-<script>
-if (!Promise) {
-  location.href = '/notsupported';
-}
-</script>
-{% cms_toolbar %}
+
+{% block xcss_after %}
+
+  {% if PRODUCTION %}
+    {% render_bundle 'chunk-vendors'  'css' %}
+    {% render_bundle 'cms' 'css' %}
+  {% endif %}
+
+{% endblock xcss_after %}
+
+{% block content %}
 
 <div id="app"></div>
 
@@ -37,30 +23,56 @@ if (!Promise) {
   {%  show_menu 0 100 100 100 %}
 </div>
 
-<div id="cms-language-block" style="display:none;">
-  {%  render_language_block %}
+<div id=cms-extracontent style="display:none;">
+  {% block extracontent %}{% endblock extracontent %}
 </div>
 
-<div id="cms-newsitems" style="display:none;">
-  {%  placeholder "newsitems" %}
-</div>
+{% endblock content%}
 
+{% block xscript_before %}
 
-{% if PRODUCTION %}
-  {% render_bundle 'chunk-vendors' 'js' %}
-  {% render_bundle 'chunk-common' 'js' %}
-  {% render_bundle 'cms' 'js' %}
-{% else %}
-  {% render_bundle 'cms' %}
-{% endif %}
+  {{ LOCALE_MSG|json_script:"locale-msg" }}
+  <script>
+  window.config = {
+    lang: '{{ LANGUAGE_CODE }}',
+    localemsg: JSON.parse(document.getElementById('locale-msg').textContent),
+    production: '{{ PRODUCTION }}',
+    phpbaseurl: '{{ PHPBASEURL}}',
+    api_url: '/api',
+    url_i18n: {
+      nl: "{% page_language_url 'nl' %}",
+      fr: "{% page_language_url 'fr' %}",
+      de: "{% page_language_url 'de' %}",
+      en: "{% page_language_url 'en' %}",
+    },
+    {% block extra_config %}{% endblock extra_config %}
+    marked: null,
+  };
+
+  </script>
+
+  {% if PRODUCTION %}
+    {% render_bundle 'chunk-vendors' 'js' %}
+    {% render_bundle 'cms' 'js' %}
+  {% else %}
+    {% render_bundle 'cms' %}
+  {% endif %}
+
+{% endblock xscript_before %}
 
 {% render_block "js" %}
 
+{% block xscript_after %}
+
 <script>
 
-function registerComponent(id, dataf) {
+function registerComponent(id, options) {
   let cmscontent = document.getElementById(id),
       chtml='';
+  if (!cmscontent) {
+    console.error('cannot get doc for id', id);
+    return;
+  }
   // filter out <template> and <script> tags
   for (let i=0; i<cmscontent.children.length; i++) {
     let tag = cmscontent.children[i].tagName;
@@ -68,37 +80,33 @@ function registerComponent(id, dataf) {
       chtml += cmscontent.children[i].outerHTML;
     }
   }
-  application.Vue.component(id, {
+  window.application.Vue.component(id, {
     template: '<div>' + chtml + '</div>',
-    data: dataf || function(){ return{}},
+    data: (options && options.data) || function(){ return{}},
+    methods: (options && options.methods) || {},
   });
 }
 
 function startup () {
-  registerComponent('cms-content', function (){return { tabactive: 0}});
+
+
+  registerComponent('cms-content', {
+      data: function (){return { tabactive: 0}},
+      methods: { marked: window.config.marked},
+    });
+
   registerComponent('cms-menu-items');
-  registerComponent('cms-language-block');
-  registerComponent('cms-newsitems');
+
+  if (window.config.landing) {
+    registerComponent('cms-extracontent', {
+      methods: { marked: window.config.marked},
+    });
+  }  
 
   application.Vue.config.ignoredElements = [
     'cms-template',
     'cms-plugin',
   ];
-
-  window.config = {
-    {% block extra_config %}{% endblock extra_config %}
-    api_url: '/api',
-    lang: '{{ LANGUAGE_CODE }}',
-    subscriptions_enabled: {{ SUBSCRIPTIONS_ENABLED }},
-    participants_enabled: {{ PARTICIPANTS_ENABLED }},
-    tournament_enabled: {{ TOURNAMENT_ENABLED }},
-    url_i18n: {
-      nl: "{% page_language_url 'nl' %}",
-      fr: "{% page_language_url 'fr' %}",
-      de: "{% page_language_url 'de' %}",
-      en: "{% page_language_url 'en' %}",
-    }
-  };
 
   vm = new application.Vue({
     render: h => h(application.App),
@@ -115,5 +123,4 @@ startup();
 
 </script>
 
-</body>
-</html>
+{% endblock xscript_after %}

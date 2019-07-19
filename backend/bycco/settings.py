@@ -61,7 +61,7 @@ CMS_PLACEHOLDER_CONF = {}
 
 CMS_TEMPLATES = (
     ('vuecms.html', 'Cms Page'),
-    ('landing.html', 'LandingPage'),
+    ('vuelanding.html', 'LandingPage'),
     ('page.html', 'Page'),
 )
 
@@ -114,6 +114,7 @@ INSTALLED_APPS = (
 
     # my apps
     'tournament',
+    'byccoarticles',
     'webpack_loader',
     'rd_django',
     'bycco'
@@ -171,7 +172,7 @@ MEDIA_URL = '/media/'
 META_SITE_PROTOCOL = 'https'
 META_USE_SITES = True
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'cms.middleware.utils.ApphookReloadMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
