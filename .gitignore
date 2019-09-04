@@ -6,6 +6,7 @@
 *.css.map
 /backend/local_settings.py
 /backend/dist
+/frontend/dist
 /frontend/node_modules
 /frontend/webpack-stats.json
 /frontend/src/util/sorted

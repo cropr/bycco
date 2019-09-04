@@ -26,8 +26,8 @@ module.exports = {
       chunks: ['chunk-vendors',  'cms'],
     },
     mgmt: {
-      entry: 'src/mgmt.js',
-      chunks: ['chunk-vendors',  'mgmt'],
+      entry: 'src/mgmttournament.js',
+      chunks: ['chunk-vendors',  'mgmttournament'],
     },
     tournament: {
       entry: 'src/tournament.js',
