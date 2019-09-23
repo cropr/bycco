@@ -18,6 +18,7 @@ djangorestframework
 gunicorn
 html5lib==0.999999999
 iso8601
+markdown
 pdfkit
 psycopg2-binary==2.7.7
 pytz
