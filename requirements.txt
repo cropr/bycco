@@ -28,4 +28,3 @@ six
 Django<2.2
 Pillow
 ./data/rd_django-0.10.2-py3-none-any.whl
-

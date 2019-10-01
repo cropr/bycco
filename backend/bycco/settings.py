@@ -201,7 +201,7 @@ SECRET_KEY = 'kustabitjevierkantigmekloten'
 
 SITE_ID = 1
 
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'dist/static'
 STATIC_URL = '/static/'
 
 SUBSCRIPTIONS_ENABLED = 0
