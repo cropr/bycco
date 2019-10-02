@@ -69,10 +69,6 @@
 function registerComponent(id, options) {
   let cmscontent = document.getElementById(id),
       chtml='';
-  if (!cmscontent) {
-    console.error('cannot get doc for id', id);
-    return;
-  }
   // filter out <template> and <script> tags
   for (let i=0; i<cmscontent.children.length; i++) {
     let tag = cmscontent.children[i].tagName;

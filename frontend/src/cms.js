@@ -1,3 +1,5 @@
+console.log('starting cms.js')
+
 import Vue from 'vue'
 import { i18n } from './util/lang'
 import store from './store'

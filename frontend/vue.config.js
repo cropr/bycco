@@ -17,7 +17,7 @@ module.exports = {
     }      
   },
   outputDir: 'dist/static',
-  baseUrl: "/static",
+  publicPath: "/static",
   crossorigin: "anonymous",
   runtimeCompiler: true,
   pages: {
