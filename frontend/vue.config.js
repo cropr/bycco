@@ -17,21 +17,24 @@ module.exports = {
     }      
   },
   outputDir: 'dist/static',
-  publicPath: "/static",
+  publicPath: "/static/",
   crossorigin: "anonymous",
   runtimeCompiler: true,
   pages: {
     cms: {
       entry: 'src/cms.js',
-      chunks: ['chunk-vendors',  'cms'],
+      filename: 'cms.html',
+      // chunks: ['chunk-vendors',  'cms'],
     },
     mgmt: {
       entry: 'src/mgmttournament.js',
-      chunks: ['chunk-vendors',  'mgmttournament'],
+      filename: 'mgmttournament.html',
+      // chunks: ['chunk-vendors',  'mgmttournament'],
     },
     tournament: {
       entry: 'src/tournament.js',
-      chunks: ['chunk-vendors',  'tournament'],
+      filename: 'tournament.html',
+      // chunks: ['chunk-vendors',  'tournament'],
     }
   }
 }
