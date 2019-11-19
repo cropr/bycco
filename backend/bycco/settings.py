@@ -1,259 +1,41 @@
-import os
+from bycco.util.dataclassjson import DataclassEncoder
 
-ALLOWED_HOSTS = ['*']
-
-APPEND_SLASH = False
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-CHESSAPI_URL = 'https://chessapi.bycco.be/'
-
-CKEDITOR_SETTINGS = {
-    'stylesSet': [
-        {'name': 'carousel caption', 'element': 'div', 'attributes': {
-            'class': 'carouselcaption'
-        }}
-    ],
-}
-
-CMS_LANGUAGES = {
-    1: [
-        {
-            'name': 'en',
-            'public': True,
-            'redirect_on_fallback': True,
-            'hide_untranslated': False,
-            'code': 'en',
-        },
-        {
-            'name': 'nl',
-            'public': True,
-            'redirect_on_fallback': True,
-            'hide_untranslated': False,
-            'code': 'nl',
-        },
-        {
-            'name': 'fr',
-            'public': True,
-            'redirect_on_fallback': True,
-            'hide_untranslated': False,
-            'code': 'fr',
-        },
-        {
-            'name': 'de',
-            'public': True,
-            'redirect_on_fallback': True,
-            'hide_untranslated': False,
-            'code': 'de',
-        },
-    ],
-    'default': {
-        'public': True,
-        'redirect_on_fallback': True,
-        'hide_untranslated': False,
-    },
-}
-
-
-CMS_PERMISSION = False
-
-CMS_PLACEHOLDER_CONF = {}
-
-CMS_TEMPLATES = (
-    ('vuecms.html', 'Cms Page'),
-    ('vuelanding.html', 'LandingPage'),
-    ('page.html', 'Page'),
-)
-
-DATA_DIR = os.path.dirname(os.path.dirname(__file__))
-
-DATABASES = {   
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'localhost',
-        'NAME': 'bycco',
-        'USER': '',
-        'PASSWORD': '',
-    }
-}
-
-DEBUG = True
-
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 25
-EMAIL_ADDRESSES = {
-    'invoice_from': 'info@bycco.be',
-    'invoice_cc': ['ruben@decrop.net', 'mj.deschepper@gmail.com'],
-}
-
-INSTALLED_APPS = (
-
-    # django + cms admin
-    'djangocms_admin_style',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.admin',
-    'django.contrib.sites',
-    'django.contrib.sitemaps',
-    'django.contrib.staticfiles',
-    'django.contrib.messages',
-
-    # djangocms
-    'cms',
-    'filer',
-    'easy_thumbnails',
-    'menus',
-    'sekizai',
-    'treebeard',
-    'djangocms_text_ckeditor',
-    'djangocms_style',
-    'djangocms_file',
-    'djangocms_googlemap',
-    'djangocms_link',
-
-    # my apps
-    'tournament',
-    'byccoarticles',
-    'webpack_loader',
-    'rd_django',
-    'bycco'
-)
-
-LANGUAGE_CODE = 'nl'
-LANGUAGES = (
-    ('en', 'en'),
-    ('nl', 'nl'),
-    ('fr', 'fr'),
-    ('de', 'de'),
-)
-
-LOGGING = {
+LOG_CONFIG = {
     'version': 1,
-    'disable_existing_loggers': False,
     'formatters': {
-        'detailed': {
-            'class': 'logging.Formatter',
-            'format': '%(asctime)s %(name)-15s %(levelname)-8s %(message)s',
-        }
+        'simple': {
+            'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        },
     },
     'handlers': {
         'console': {
-            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-        },
+            'level': 'INFO',
+            'formatter': 'simple',
+            'stream': 'ext://sys.stderr'
+        }
     },
     'loggers': {
         'bycco': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'formatter': 'detailed',
-        },
-        'tournament': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'formatter': 'detailed',
-        },
-        'django' : {
-            'level': 'INFO',
-            'handlers': ['console'],
-        },
-        'rd_django': {
             'handlers': ['console'],
             'level': 'INFO',
-        }        
-    },
-}
-
-
-MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
-MEDIA_URL = '/media/'
-
-META_SITE_PROTOCOL = 'https'
-META_USE_SITES = True
-
-MIDDLEWARE = (
-    'cms.middleware.utils.ApphookReloadMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'cms.middleware.user.CurrentUserMiddleware',
-    'cms.middleware.page.CurrentPageMiddleware',
-    'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware'
-)
-
-MIGRATION_MODULES = {
-
-}
-
-PARTICIPANTS_ENABLED = 0
-
-PRODUCTION = True
-
-ROOT_URLCONF = 'bycco.urls'
-
-SECRET_KEY = 'kustabitjevierkantigmekloten'
-
-SITE_ID = 1
-
-STATIC_ROOT = 'dist/static'
-STATIC_URL = '/static/'
-
-SUBSCRIPTIONS_ENABLED = 0
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'bycco', 'templates'),],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.i18n',
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.template.context_processors.media',
-                'django.template.context_processors.csrf',
-                'django.template.context_processors.tz',
-                'sekizai.context_processors.sekizai',
-                'django.template.context_processors.static',
-                'cms.context_processors.cms_settings',
-                'rd_django.context_processor.tamplate_settings',
-            ],
+            'propagate': False,
         },
-    },
-]
+        'flask': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'flask': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    }
+}
 
-TEMPLATE_SETTINGS = [
-    'PRODUCTION', 'PARTICIPANTS_ENABLED', 'SUBSCRIPTIONS_ENABLED',
-    'TOURNAMENT_ENABLED'
-]
+MONGODB = {
+    'database': 'bycco'
+}
 
-TIME_ZONE = 'Europe/Brussels'
-
-THUMBNAIL_PROCESSORS = (
-    'easy_thumbnails.processors.colorspace',
-    'easy_thumbnails.processors.autocrop',
-    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters'
-)
-
-TOURNAMENT_ENABLED = 1
-
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
-
-WSGI_APPLICATION = 'bycco.wsgi.application'
-
-try:
-    from local_settings import *
-    print('local_settings read')
-except ImportError:
-    print('No local settings found')
+RESTFUL_JSON = {'cls': DataclassEncoder}

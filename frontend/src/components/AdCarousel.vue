@@ -1,6 +1,6 @@
 <template>
-<v-carousel hide-controls hide-delimiters :value="current" height="170"
-            class="adcarousel mb-2" :interval="interval*1000">
+<v-carousel :show-arrows="false" hide-delimiters :value="current" height="170"
+            class="adcarousel mb-2" :interval="interval*1000" cycle continuous>
   <v-carousel-item v-for="item in items" :key="item.name" :src="item.src">
   </v-carousel-item>
 </v-carousel>
@@ -25,7 +25,6 @@ export default {
     var secCarousel = Math.floor((new Date()/1000) % (this.interval * this.items.length));
     this.current = Math.floor(secCarousel / this.items.length);
     if (this.current == this.items.length) this.current = 0;
-    console.log('current', this.current)
   }
 }
 </script>

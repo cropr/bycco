@@ -208,7 +208,18 @@ export default {
     url: '/invoice',
     body: ['command', 'options'],
     required: ['command'],
-  }
-
+  },
+  getLanguageFile: {
+    method: 'GET',
+    url: '/lang/{lang}',
+    path: ['lang'],
+    required: ['lang']    
+  },
+  getPageContent: {
+    method: 'GET',
+    url: '/page/{slug}/{locale}',
+    path: ['slug', 'locale'],
+    required: ['slug', 'locale'],
+  },
 
 };

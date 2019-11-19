@@ -1,38 +1,54 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import en from './en'
-import axios from 'axios'
+import api from '../util/api';
 
 Vue.use(VueI18n);
 
-export const i18n = new VueI18n({
-  locale: 'en', // set locale
-  fallbackLocale: 'en',
-  messages: { en } // set locale messages
-})
+let messages = { en: {}}, warninggiven = false;;
 
-const loadedLanguages = [ 'en'] // our default language that is preloaded
+const loadedLanguages = []
 
-function setI18nLanguage (lang) {
-  console.log('set language', lang)
-  i18n.locale = lang;
-  axios.defaults.headers.common['Accept-Language'] = lang
-  document.querySelector('html').setAttribute('lang', lang)
-}
-
-export function loadLanguageAsync (lang) {
-  if (i18n.locale !== lang) {
-    if (!loadedLanguages.includes(lang)) {
-      console.log('loading language', lang)
-      axios.get('/static/lang/' + lang + '.json').then(data => {
-        i18n.setLocaleMessage(lang, data.data)
-        loadedLanguages.push(lang)
-        setI18nLanguage(lang);
-        return
-      })
-    }
-    else {
-      setI18nLanguage(lang)
-    }
+function missingHandler(locale, key){
+  let shortkey = key.substring(0,20)
+  if (loadedLanguages.includes(locale)) {
+    console.warn('Missing translation for key: "' + shortkey + '" in locale ' + locale)
+  }
+  else if (!warninggiven) {
+    console.warn('locale ' + locale + ' not yet loaded')
+    warninggiven = true;
   }
 }
+
+export const i18n = new VueI18n({
+  locale: 'en', 
+  fallbackLocale: 'en',
+  messages,
+  silentTranslationWarn: true,
+  silentFallbackWarn: true,
+})
+
+export function setLanguage(lang) {
+  if (i18n.locale === lang  && loadedLanguages.includes(lang) ) {
+    return Promise.resolve(function(lang){
+      i18n.locale = lang;
+    })
+  }
+  loadLanguage(lang);
+}
+
+export function loadLanguage(lang) {
+  api('getLanguageFile', {
+    lang: lang
+  }).then( 
+    function(data){
+      i18n.setLocaleMessage(lang, data);
+      loadedLanguages.push(lang);
+      i18n.locale = lang;
+      i18n.missing = missingHandler;
+      i18n.silentTranslationWarn = false;
+    },
+    function( data) {
+      console.error('failed getting language file', data)
+    }
+  );
+} 

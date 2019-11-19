@@ -2,11 +2,6 @@ import schemas from './apidef';
 import axios from 'axios';
 import _ from 'lodash';
 
-axios.defaults.xsrfHeaderName = "X-CSRFToken";
-axios.defaults.xsrfCookieName = 'csrftoken';
-
-// uses config.api_url
-
 export default function(name, params) {
 
   let schema, surl, options, _body = undefined,
@@ -16,11 +11,21 @@ export default function(name, params) {
       path= {}, spath,
       all = {};
 
-  console.log('api call', name, params);
+  console.log('api call', name, params, schemas);
   schema = schemas[name];
   if (!schema) {
     console.error('schema not found:', name );
     return Promise.reject(new Error('schama ' + name + ' not found'))
+  }
+
+  // check required paramaters
+  if (schema.required) {
+    if (!schema.required.every(function(k){
+      return k in params;
+    })) {
+      console.log('api call', name, 'failed: missing_param', all);
+      return Promise.reject(new Error('missing_param'));
+    }
   }
 
   // fill in all parameters
@@ -45,8 +50,7 @@ export default function(name, params) {
     }
     if (squery.indexOf(k) !== -1) {
       all[k] = true;
-      if (v !== null)
-        query[k] = v;
+      query[k] = v;
       return;
     }
     if (spath.indexOf(k) !== -1) {
@@ -55,17 +59,6 @@ export default function(name, params) {
       return;
     }
   });
-
-    // check required paramaters
-  if (schema.required) {
-    if (!schema.required.every(function(k){
-      if (k in params) return true;
-      console.error('api call', name, 'failed: missing_param', k);
-      return false
-    })) {
-      return Promise.reject(new Error('missing_param'));
-    }
-  }
 
   // set axios options dict
   surl = schema.url;

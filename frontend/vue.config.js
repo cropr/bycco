@@ -1,41 +1,27 @@
-// vue.config.js
-
-const BundleTracker  = require('webpack-bundle-tracker');
-
 module.exports = {
-  configureWebpack: {
-    plugins: [
-      new BundleTracker({
-        indent: 2,
-        publicPath: process.env.NODE_ENV === 'production' ? '/static/' : 
-          'http://localhost:8080/static/',
-      })
-    ],
-    devServer: {
-      publicPath: '/static',
-      port: 8080,
-    }      
-  },
-  outputDir: 'dist/static',
-  publicPath: "/static/",
-  crossorigin: "anonymous",
-  runtimeCompiler: true,
-  pages: {
-    cms: {
-      entry: 'src/cms.js',
-      filename: 'cms.html',
-      // chunks: ['chunk-vendors',  'cms'],
-    },
-    mgmt: {
-      entry: 'src/mgmttournament.js',
-      filename: 'mgmttournament.html',
-      // chunks: ['chunk-vendors',  'mgmttournament'],
-    },
-    tournament: {
-      entry: 'src/tournament.js',
-      filename: 'tournament.html',
-      // chunks: ['chunk-vendors',  'tournament'],
+  "transpileDependencies": [
+    "vuetify"
+  ],
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+      },   
+      '/static': {
+        target: 'http://localhost:5000',
+      }     
     }
-  }
+  },
+  pages: {
+    landingspage:  {
+      entry: 'src/pages/landingspage.js',
+      filename: (process.env.NODE_ENV == 'development') ?  'dist/landingspage.html' : '../../templates/landingspage.html',
+    },
+    default:  {
+      entry: 'src/pages/default.js',
+      filename: (process.env.NODE_ENV == 'development') ?  'dist/default.html' : '../../templates/default.html',
+    }
+  },
+  outputDir: '../backend/bycco/static/fe',
+  publicPath: '/static/fe'
 }
-  

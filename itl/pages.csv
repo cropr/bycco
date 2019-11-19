@@ -1,0 +1,7 @@
+name,nl,fr,de,en,title_nl,title_fr,title_de,title_en,template
+home,1,1,1,1,Home,Accueil,Startseite,Home,landingspage.html
+huisreglement,1,1,1,0,Huishoudelijk reglement,Règlement de l‘ordre intérieur,Hausinterne Satzung,Internal regulations,default.html
+restaurant,1,1,1,0,Catering,Restauration,Catering,Catering,subpage.html
+toernooireglement,1,1,1,0,Toernooireglement,Règlement du tournoi,Turnierregeln,Tournament rules,default.html
+verblijf,1,1,1,0,Verblijf,Séjour,Aufentalt,Lodging,subpage.html
+toewijzingverblijf,1,1,1,0,Reservering en toewijzing,Les réservations et l' allocation des logements,Reservierung und Zuteilung,Reservation and allocation,subpage.html
