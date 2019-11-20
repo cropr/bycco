@@ -11,7 +11,7 @@ CORS(app)
 
 # load configuration
 app.config.from_object('bycco.settings')
-app.config.from_pyfile('../local_settings.py', silent=True)
+app.config.from_object('local_settings')
 
 # set logging config
 import logging, logging.config
