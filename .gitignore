@@ -1,6 +1,7 @@
 .idea
 .vscode
 .directory
+.mypy_cache
 *.mo
 *.pyc
 *.css.map
