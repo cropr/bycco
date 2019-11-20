@@ -61,7 +61,7 @@
     "Info about presence on site": "Info over aanwezigheid ter plaatse",
     "National rating": "Nationale rating",
     "New subscription": "Nieuwe inschrijving",
-    "Optional information": "Optionele information",
+    "Optional information": "Optionele informatie",
     "Other player": "Andere speler",
     "Payment": "Betaling",
     "Privacy rules": "Privacyregels",
@@ -83,7 +83,7 @@
     "SubNat9": "Indien een close-up van een speler genomen wordt, zal Bycco expliciete toestemming vragen om te publiceren",
     "Subscription": "Inschrijving",
     "Your subscription is confirmed": "Jouw inschrijving is bevestigd",
-    "Register": "Inschrijven",
+    "Register": "Inschriijven",
     "Belgian Youth Chess Championships 2019": "Belgisch Jeugdkampioenschappen Schaken 2019",
     "BEL rating": "BEL rating",
     "Filter categories": "Filter categorieën",
@@ -162,5 +162,10 @@
     "GoalBycco": "Bycco organiseert de Belgische jeugdkampioenschappen schaken als een totaalbeleving waar kwaliteit voorop staat.",
     "The arbiters": "De scheidrechters",
     "The organizers": "De organisatoren",
-    "News items": "Nieuwsberichten"
+    "News items": "Nieuwsberichten",
+    "Home": "Home",
+    "Tournament Rules": "Toernooireglement",
+    "Internal Regulations": "Huishoudelijk Reglement",
+    "Lodging Allocation": "Toewijzing Verblijf",
+    "Catering": "Catering"
 }

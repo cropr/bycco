@@ -1,4 +1,4 @@
-## Reservierung und Zuteilung
+## erblijf
 
 Die Reservierungen werden nur per E-Mail gemacht. Bitte folgende Angaben bei der Buchung unbedingt angeben:
 

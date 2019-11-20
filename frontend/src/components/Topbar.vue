@@ -3,14 +3,10 @@
     :class="{landing: landing}">
   <v-app-bar-nav-icon @click.stop="toggleDrawer" />
   <v-toolbar-items>
-    <v-btn text large href="/landingspage">{{ $t('BYC 2019')}}</v-btn>
+    <v-btn text large href="/">{{ $t('BYC 2019')}}</v-btn>
   </v-toolbar-items>
   <v-spacer></v-spacer>
   <v-toolbar-items class="hidden-sm-and-down">
-    <v-btn text large href="/info/calendar">{{ $t('Calendar')}}
-    </v-btn>
-    <v-btn text large href="/info/lodging-and-meals">{{ $t('Lodging')}}
-    </v-btn>
     <v-btn text large href="/trn/participants" v-if="sections.participants">
       {{ $t('Participants')}}
     </v-btn>

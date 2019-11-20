@@ -27,13 +27,21 @@
       <v-list-item @click="updateSlug('huisreglement')" >
         <v-list-item-content>{{$t('Internal Regulations')}}</v-list-item-content>
       </v-list-item>
+      <v-list-item @click="updateSlug('verblijf')" >
+        <v-list-item-content>{{$t('Lodging')}}</v-list-item-content>
+      </v-list-item>
+      <v-list-item @click="updateSlug('toewijzingverblijf')" >
+        <v-list-item-content>{{$t('Lodging Allocation')}}</v-list-item-content>
+      </v-list-item>
+      <v-list-item @click="updateSlug('restaurant')" >
+        <v-list-item-content>{{$t('Catering')}}</v-list-item-content>
+      </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
 
-import { mapState } from 'vuex'
 import { changeLocale, changeSlug } from '@/util/page'
 
 export default {
