@@ -3,7 +3,7 @@
     :class="{landing: landing}">
   <v-app-bar-nav-icon @click.stop="toggleDrawer" />
   <v-toolbar-items>
-    <v-btn text large href="/">{{ $t('BYC 2019')}}</v-btn>
+    <v-btn text large href="/">{{ $t('BYC 2020')}}</v-btn>
   </v-toolbar-items>
   <v-spacer></v-spacer>
   <v-toolbar-items class="hidden-sm-and-down">
