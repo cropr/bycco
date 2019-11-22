@@ -28,8 +28,16 @@ def renderPage(slug: str, lang: str):
 
 def getPageContent(slug: str, lang: str):
     """
-    renders a page 
+    get the content of a page 
     """
-    log.info(f'rendering page {slug} {lang}')
+    # log.info(f'getting page {slug} {lang}')
     page = PageModel.find_by_slug_locale(slug, lang)
+    return page
+
+def getPages():
+    """
+    get all pages
+    """
+    log.info('get pages')
+    pages = PageModel.find_pages()
     return page

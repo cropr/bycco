@@ -2,4 +2,4 @@
 # copyright Chessdevil Consulting BVBA 2015 - 2019
 
 from .sv_lang import getLanguageFile
-from .sv_page import renderPage, getPageContent
+from .sv_page import renderPage, getPageContent, getPages

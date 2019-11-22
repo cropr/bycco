@@ -4,7 +4,7 @@ import api from '../util/api';
 
 Vue.use(VueI18n);
 
-let messages = { en: {}}, warninggiven = false;;
+let messages = { en: {}}, warninggiven = false;
 
 const loadedLanguages = []
 

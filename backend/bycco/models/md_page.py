@@ -6,16 +6,13 @@ from __future__ import annotations
 import logging
 
 from dataclasses import dataclass, field, asdict
-from typing import Dict, Any, List, Optional, TypeVar, Type
+from typing import Dict, Any, List, Optional, Type
 from datetime import datetime, timedelta
 from pymongo import ReturnDocument
 from bson import ObjectId
 from . import MongoModel, dbconfig
 
 log = logging.getLogger('bycco')
-
-# TPageModel = TypeVar("TPageModel", bound="PageModel")
-
 
 @dataclass
 class PageLocalizedModel:
@@ -31,6 +28,22 @@ class PageLocalizedModel:
     modificationtime: datetime
     owner: str
     slug: str
+
+@dataclass
+class PageBasicModel:
+    """
+    view used in overview of all pages
+    """
+    metatitle: str
+    owner: str 
+    slug: str
+    template: str
+    id: str
+
+    creationtime: Optional[datetime] = None
+    languages: List[str] = field(default_factory=list)
+    modificationtime: Optional[datetime] = None
+    title: Dict[str,str] = field(default_factory=dict)
 
 
 @dataclass
@@ -48,7 +61,7 @@ class PageModel(MongoModel):
     languages: List[str] = field(default_factory=list)
     modificationtime: Optional[datetime] = None
     title: Dict[str,str] = field(default_factory=dict)
-    tabs: Optional[List[Any]] = None
+    subpages: Optional[List["PageModel"]] = None
 
     id: str = field(init=False, default="")    
     _id: ObjectId = field(default_factory=ObjectId)
@@ -66,11 +79,38 @@ class PageModel(MongoModel):
             self.content = { self.languages[0]: "#NA"}
 
     @classmethod
+    def find_all( cls: Type["PageModel"] ) -> List[PageBasicModel]:
+        """
+        find all pages 
+        """
+        coll = dbconfig['db'][cls._collection]
+        pages = []
+        cursor = coll.find({},{
+            "metatitle": 1,
+            "owner": 1,
+            "slug": 1,
+            "template": 1,
+            "creationtime": 1,
+            "languages": 1,
+            "modificationtime": 1,
+            "title": 1,
+        })
+        for doc in cursor:
+            doc['id'] = str(doc.pop('_id'))
+            try:
+                page = PageBasicModel(**doc)
+                pages.append(page)
+            except:
+                log.exception('error encoding pagedoc')
+                return None
+        return pages
+
+    @classmethod
     def find_by_slug(
-            cls: Type[TPageModel], 
+            cls: Type["PageModel"], 
             slug: str, 
             lang: str
-        ) -> Optional[TPageModel]:
+        ) -> Optional["PageModel"]:
         """
         find a page by slug
         returns None if nothing is found
@@ -112,7 +152,7 @@ class PageModel(MongoModel):
 
     @classmethod
     def create_page(
-            cls: "PageModel", 
+            cls: Type["PageModel"], 
             pagedict: Dict[str, Any]
         ) -> Optional["PageModel"]:
         """
@@ -137,15 +177,13 @@ class PageModel(MongoModel):
         """
         update a page
         """
-        coll = dbconfig['db'][cls._collection]
+        coll = dbconfig['db'][self._collection]
         pagedict['modificationtime'] = datetime.utcnow()
         try:
             coll.update_one({'_id': self._id}, pagedict)
         except:
             log.exception('error encoding pagedict')
             return None
-
-
 
     def getSlugTemplates(self):
         """
