@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: bycco
+Version: 0.7.0
+Summary: BYC 2019
+Home-page: https://www.bycco.be
+Author: Ruben Decrop
+Author-email: ruben@decrop.net
+License: UNKNOWN
+Description: Belgian Youth Chess Cheampionships 2019
+Keywords: chess,youth,chempionships Belgium,2018
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Framework :: Django-cms
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
