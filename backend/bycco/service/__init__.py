@@ -3,3 +3,4 @@
 
 from .sv_lang import getLanguageFile
 from .sv_page import renderPage, getPageContent, getPages
+from .sv_subscription import getSubscriptions, addSubscription

@@ -25,6 +25,3 @@ PageModel.create_page({
         'de': 'Die belgischer Jugend-Meisterschaften Schah 2020',
     }
 })
-
-
-

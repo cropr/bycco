@@ -221,5 +221,9 @@ export default {
     path: ['slug', 'locale'],
     required: ['slug', 'locale'],
   },
+  getPages: {
+    method: 'GET',
+    url: '/pages',
+  },
 
 };

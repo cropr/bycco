@@ -10,8 +10,9 @@ class MongoModel:
 
 dbconfig = {}
 
-from .md_page import PageModel
+from .md_page import PageModel, BasicPage, LocalizedPage
 from .md_account import AccountModel
+from .md_subscription import SubscriptionModel, BasicSubscription
 
 def setup_db_connection(config):
     """

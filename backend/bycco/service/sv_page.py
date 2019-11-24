@@ -5,8 +5,9 @@ import logging
 
 import json
 from flask import render_template, abort
+from typing import List, Optional
 from bycco import app
-from bycco.models import PageModel
+from bycco.models import PageModel, PageBasicModel, PageLocalizedModel
 
 log = logging.getLogger('bycco')
 
@@ -26,7 +27,7 @@ def renderPage(slug: str, lang: str):
         window.config.slugtemplates = JSON.parse('{stjson}');
       """)
 
-def getPageContent(slug: str, lang: str):
+def getPageContent(slug: str, lang: str) -> Optional[PageLocalizedModel]:
     """
     get the content of a page 
     """
@@ -34,10 +35,10 @@ def getPageContent(slug: str, lang: str):
     page = PageModel.find_by_slug_locale(slug, lang)
     return page
 
-def getPages():
+def getPages() -> List[PageBasicModel]:
     """
     get all pages
     """
     log.info('get pages')
     pages = PageModel.find_pages()
-    return page
+    return pages

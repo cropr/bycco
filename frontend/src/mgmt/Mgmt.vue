@@ -4,7 +4,7 @@
 
   <v-app-bar v-cloak fixed dark app class="deep-purple darken-2" >
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn text large href="/">Management Bycco</v-btn>
+      <v-btn text large href="/mgmt">Management Bycco</v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items >
@@ -26,16 +26,8 @@
 </template>
 
 <script>
-// import {mapState} from "vuex"
-
-
 export default {
-
   name: 'Mgmt',
-
-  data () {return {
-  }},
-
 
 }
 </script>

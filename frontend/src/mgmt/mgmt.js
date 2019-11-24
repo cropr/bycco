@@ -8,7 +8,7 @@ import store from '@/mgmt/store_mgmt'
 import router from '@/mgmt/router_mgmt'
 import App from '@/mgmt/Mgmt.vue'
 
-let vm = new Vue({
+new Vue({
   vuetify,
   store,
   router,

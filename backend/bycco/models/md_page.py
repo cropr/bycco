@@ -15,53 +15,54 @@ from . import MongoModel, dbconfig
 log = logging.getLogger('bycco')
 
 @dataclass
-class PageLocalizedModel:
+class I18nPageFields:
     """
-    A Localized readonly view on a PageModel
+    subdocument, contain the localized fields of a page
+    """
+    content: str = ""
+    intro: str = ""
+    title: str = ""
+
+@dataclass
+class BasicPage:
+    """
+    A readonly view used in overview of all pages
+    """
+    name: str
+    slug: str
+    id: str
+    creationtime: Optional[datetime] = None
+    modificationtime: Optional[datetime] = None
+
+@dataclass
+class LocalizedPage:
+    """
+    A localized readonly view of a PageModel
     """
     creationtime: datetime
-    i18n_title: str
-    i18n_content: str
-    id: str 
-    languages: List[str]
-    metatitle: str
+    i18n_fields: I18nPageFields
+    id: str
+    locale: str
+    name: str              
     modificationtime: datetime
     owner: str
     slug: str
-
-@dataclass
-class PageBasicModel:
-    """
-    view used in overview of all pages
-    """
-    metatitle: str
-    owner: str 
-    slug: str
-    template: str
-    id: str
-
-    creationtime: Optional[datetime] = None
-    languages: List[str] = field(default_factory=list)
-    modificationtime: Optional[datetime] = None
-    title: Dict[str,str] = field(default_factory=dict)
-
 
 @dataclass
 class PageModel(MongoModel):
     """
     A Page in the database
     """
-    metatitle: str
+    name: str
     owner: str 
     slug: str
-    template: str
 
-    content: Dict[str,str] = field(default_factory=dict)
     creationtime: Optional[datetime] = None
     languages: List[str] = field(default_factory=list)
+    i18n_fieldset: Dict[str, I18nPageFields] = field(default_factory=dict)
     modificationtime: Optional[datetime] = None
-    title: Dict[str,str] = field(default_factory=dict)
-    subpages: Optional[List["PageModel"]] = None
+    subpages: List[str] = field(default_factory=list)
+    template: Optional[str] = None
 
     id: str = field(init=False, default="")    
     _id: ObjectId = field(default_factory=ObjectId)
@@ -72,44 +73,35 @@ class PageModel(MongoModel):
     def __post_init__(self):
         self.id = str(self._id)
         if not self.languages:
-            self.languages = ['nl', 'fr']
-        if not self.title:
-            self.title = { self.languages[0]: self.metatitle}
-        if not self.content: 
-            self.content = { self.languages[0]: "#NA"}
+            self.languages = list(self.localpages.keys()) or ['en']
 
     @classmethod
-    def find_all( cls: Type["PageModel"] ) -> List[PageBasicModel]:
+    def find_pages( cls: Type["PageModel"] ) -> List[BasicPage]:
         """
         find all pages 
         """
         coll = dbconfig['db'][cls._collection]
         pages = []
-        cursor = coll.find({},{
-            "metatitle": 1,
-            "owner": 1,
+        cursor = coll.find({}, {
+            "name": 1,
             "slug": 1,
-            "template": 1,
             "creationtime": 1,
-            "languages": 1,
             "modificationtime": 1,
-            "title": 1,
         })
         for doc in cursor:
             doc['id'] = str(doc.pop('_id'))
             try:
-                page = PageBasicModel(**doc)
+                page = BasicPage(**doc)
                 pages.append(page)
             except:
-                log.exception('error encoding pagedoc')
-                return None
+                log.exception('error encoding BasicPage')
+                continue
         return pages
 
     @classmethod
     def find_by_slug(
             cls: Type["PageModel"], 
             slug: str, 
-            lang: str
         ) -> Optional["PageModel"]:
         """
         find a page by slug
@@ -129,11 +121,13 @@ class PageModel(MongoModel):
             return None
 
     @classmethod
-    def find_by_slug_locale(cls, slug:str, lang: str
-            ) -> Optional[PageLocalizedModel]:        
+    def find_by_slug_locale(
+            cls: Type["PageModel"], 
+            slug: str, 
+            lang: str,
+        ) -> Optional[LocalizedPage]:        
         """
         find a page by slug and locale.  Filters out the correct language
-        of title and content
         returns None if nothing is found
         """
         coll = dbconfig['db'][cls._collection]
@@ -141,10 +135,11 @@ class PageModel(MongoModel):
         if not pagedoc:
             return None
         try:
-            pagedoc['i18n_title'] = pagedoc.pop('title', {}).get(lang, '')
-            pagedoc['i18n_content'] = pagedoc.pop('content', {}).get(lang, '')
             pagedoc['id'] = str(pagedoc.pop('_id'))
-            page = PageLocalizedModel(**pagedoc)
+            pagedoc['locale'] = lang
+            pagedoc['i18n_fields'] = pagedoc.pop('i18n_fieldset', {}).get(lang, 
+                I18nPageFields()) 
+            page = LocalizedPage(**pagedoc)
             return page
         except:
             log.exception('error encoding pagedicr')
@@ -178,9 +173,11 @@ class PageModel(MongoModel):
         update a page
         """
         coll = dbconfig['db'][self._collection]
+        pagedict.pop('id', None)
         pagedict['modificationtime'] = datetime.utcnow()
         try:
-            coll.update_one({'_id': self._id}, pagedict)
+            coll.find_one_and_update({'_id': self._id}, pagedict, 
+                return_document=ReturnDocument.AFTER)
         except:
             log.exception('error encoding pagedict')
             return None
