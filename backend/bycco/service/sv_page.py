@@ -13,7 +13,7 @@ from bycco.models import PageModel, BasicPage, LocalizedPage
 
 log = logging.getLogger('bycco')
 
-def renderPage(slug: str, lang: str):
+def renderPage(slug: str, lang: str, template: str = 'page'):
     """
     renders a page 
     """
@@ -22,14 +22,13 @@ def renderPage(slug: str, lang: str):
     except NotFound:
         abort(404)
     assert page.template is not None
-    templatename = page.template.split('.')[0]
     slugtemplates = page.get_slug_templates()
     stjson = json.dumps(slugtemplates)
     return render_template('index.html', configstub= f"""
         window.config.locale = '{lang}';
         window.config.slug = '{slug}';
         window.config.slugtemplates = JSON.parse('{stjson}');
-      """, templatename=templatename)
+      """, templatename=template)
 
 def getPage(id: str) -> PageModel:
     """

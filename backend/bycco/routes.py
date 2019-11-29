@@ -8,5 +8,4 @@ def index():
 
 @app.route('/page/<slug>/<lang>')
 def page(slug, lang):
-    return renderPage(slug, lang)
-
+    return renderPage(slug, lang, 'page')
