@@ -24,11 +24,11 @@ def renderPage(slug: str, lang: str, template: str = 'page'):
     assert page.template is not None
     slugtemplates = page.get_slug_templates()
     stjson = json.dumps(slugtemplates)
-    return render_template('index.html', configstub= f"""
+    return render_template(f'{template}.html', configstub= f"""
         window.config.locale = '{lang}';
         window.config.slug = '{slug}';
         window.config.slugtemplates = JSON.parse('{stjson}');
-      """, templatename=template)
+      """)
 
 def getPage(id: str) -> PageModel:
     """
