@@ -4,9 +4,19 @@
 from flask_restful import Resource, Api
 from .. import app
 from .api_lang import LangResource
-from .api_page import PageResource, PagesResource
+from .api_page import (
+    PageResource, 
+    PagesResource,
+    SlugResource,
+    SlugLocaleResource,
+)
+from .api_subscription import SubscriptionsResource, SubscriptionResource
 
 apimgr = Api(app)
 apimgr.add_resource(LangResource, '/api/lang/<lang>')
-apimgr.add_resource(PageResource, '/api/page/<slug>/<lang>')
-apimgr.add_resource(PagesResource, '/api/pages')
+apimgr.add_resource(PagesResource, '/api/page')
+apimgr.add_resource(PageResource, '/api/page/<id>')
+apimgr.add_resource(SlugResource, '/api/slug/<slug>')
+apimgr.add_resource(SlugLocaleResource, '/api/slug/<slug>/locale/<locale>')
+apimgr.add_resource(SubscriptionsResource, '/api/subscriptions')
+apimgr.add_resource(SubscriptionResource, '/api/subscription/<id>')

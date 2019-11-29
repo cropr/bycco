@@ -5,14 +5,27 @@ from __future__ import annotations
 
 import logging
 
+from datetime import datetime, date
+from werkzeug.exceptions import BadRequest, NotFound, InternalServerError
 from dataclasses import dataclass, field, asdict
 from typing import Dict, Any, List, Optional, Type
-from datetime import datetime, timedelta
 from pymongo import ReturnDocument
 from bson import ObjectId
 from . import MongoModel, dbconfig
 
 log = logging.getLogger('bycco')
+
+@dataclass
+class BasicPage:
+    """
+    A readonly view used in overview of all pages
+    """
+    active: bool
+    creationtime: datetime
+    id: str
+    modificationtime: datetime
+    name: str
+    slug: str
 
 @dataclass
 class I18nPageFields:
@@ -24,21 +37,11 @@ class I18nPageFields:
     title: str = ""
 
 @dataclass
-class BasicPage:
-    """
-    A readonly view used in overview of all pages
-    """
-    name: str
-    slug: str
-    id: str
-    creationtime: Optional[datetime] = None
-    modificationtime: Optional[datetime] = None
-
-@dataclass
 class LocalizedPage:
     """
     A localized readonly view of a PageModel
     """
+    active: bool
     creationtime: datetime
     i18n_fields: I18nPageFields
     id: str
@@ -47,6 +50,7 @@ class LocalizedPage:
     modificationtime: datetime
     owner: str
     slug: str
+    template: str
 
 @dataclass
 class PageModel(MongoModel):
@@ -57,10 +61,12 @@ class PageModel(MongoModel):
     owner: str 
     slug: str
 
+    active: bool = False
     creationtime: Optional[datetime] = None
-    languages: List[str] = field(default_factory=list)
     i18n_fieldset: Dict[str, I18nPageFields] = field(default_factory=dict)
+    languages: List[str] = field(default_factory=list)
     modificationtime: Optional[datetime] = None
+    pagetype: str = "page"
     subpages: List[str] = field(default_factory=list)
     template: Optional[str] = None
 
@@ -68,6 +74,7 @@ class PageModel(MongoModel):
     _id: ObjectId = field(default_factory=ObjectId)
 
     _collection = 'page'
+    _hidden = ['_id']
 
     # attribute id is created automatically as stringified version of _id
     def __post_init__(self):
@@ -75,18 +82,38 @@ class PageModel(MongoModel):
         if not self.languages:
             self.languages = list(self.localpages.keys()) or ['en']
 
+
+    @classmethod
+    def create_page(
+            cls: Type["PageModel"], 
+            pagedict: Dict[str, Any]
+        ) -> "PageModel":
+        """
+        create a new page
+        """
+        pagedict['_id'] = pagedict.get('_id', ObjectId())
+        pagedict['creationtime'] = datetime.utcnow()
+        pagedict['modificationtime'] = datetime.utcnow()
+        try:
+            cls.coll().insert_one(pagedict)
+            page = cls(**pagedict)
+            return page
+        except:
+            log.exception('error encoding pagedict')
+            raise BadRequest(description="CannotEncodeCreatedPage")
+
     @classmethod
     def find_pages( cls: Type["PageModel"] ) -> List[BasicPage]:
         """
         find all pages 
         """
-        coll = dbconfig['db'][cls._collection]
         pages = []
-        cursor = coll.find({}, {
-            "name": 1,
-            "slug": 1,
+        cursor = cls.coll().find({}, {
+            "active": 1,
             "creationtime": 1,
             "modificationtime": 1,
+            "name": 1,
+            "slug": 1,
         })
         for doc in cursor:
             doc['id'] = str(doc.pop('_id'))
@@ -95,97 +122,103 @@ class PageModel(MongoModel):
                 pages.append(page)
             except:
                 log.exception('error encoding BasicPage')
-                continue
+                raise InternalServerError(description="CannotEncodePage")
         return pages
 
     @classmethod
-    def find_by_slug(
+    def find_by_id(
             cls: Type["PageModel"], 
-            slug: str, 
-        ) -> Optional["PageModel"]:
+            id: str, 
+        ) -> "PageModel":
         """
         find a page by slug
         returns None if nothing is found
         """
-        coll = dbconfig['db'][cls._collection]
-        pagedoc = coll.find_one({
-            'slug': slug,
-        })
+        try:
+            oid = ObjectId(id)
+        except:
+            raise BadRequest(description="InvalidPageId")
+        pagedoc = cls.coll().find_one(oid)
         if not pagedoc:
-            return None
+            raise NotFound(description="PageNotFound")
         try:
             page = cls(**pagedoc)
             return page
         except:
             log.exception('error encoding pagedoc')
-            return None
+            raise InternalServerError(description="ErrorEncodingPage")
 
     @classmethod
-    def find_by_slug_locale(
+    def find_by_slug(
+            cls: Type["PageModel"], 
+            slug: str, 
+        ) -> "PageModel":
+        """
+        find a page by slug
+        returns None if nothing is found
+        """
+        pagedoc = cls.coll().find_one({'slug': slug})
+        if not pagedoc:
+            raise NotFound(description="PageNotFound")
+        try:
+            page = cls(**pagedoc)
+            return page
+        except:
+            log.exception('error encoding pagedoc')
+            raise InternalServerError(description="ErrorEncodingPage")
+
+    @classmethod
+    def find_i18n_by_slug(
             cls: Type["PageModel"], 
             slug: str, 
             lang: str,
-        ) -> Optional[LocalizedPage]:        
+        ) -> LocalizedPage:        
         """
         find a page by slug and locale.  Filters out the correct language
         returns None if nothing is found
         """
-        coll = dbconfig['db'][cls._collection]
-        pagedoc = coll.find_one({'slug': slug}, {'template': 0})
+        pagedoc = cls.coll().find_one({'slug': slug}, 
+            {'pagetype': 0, 'subpages': 0, 'languages': 0})
         if not pagedoc:
-            return None
+            raise NotFound(description="PageNotFound")
         try:
             pagedoc['id'] = str(pagedoc.pop('_id'))
             pagedoc['locale'] = lang
             pagedoc['i18n_fields'] = pagedoc.pop('i18n_fieldset', {}).get(lang, 
-                I18nPageFields()) 
+                I18nPageFields())
             page = LocalizedPage(**pagedoc)
             return page
         except:
-            log.exception('error encoding pagedicr')
-            return None
-
-    @classmethod
-    def create_page(
-            cls: Type["PageModel"], 
-            pagedict: Dict[str, Any]
-        ) -> Optional["PageModel"]:
-        """
-        create a new page
-        """
-        coll = dbconfig['db'][cls._collection]
-        pagedict['_id'] = pagedict.get('_id', ObjectId())
-        pagedict['creationtime'] = datetime.utcnow()
-        pagedict['modificationtime'] = datetime.utcnow()
-        try:
-            coll.insert_one(pagedict)
-            page = cls(**pagedict)
-            return page
-        except:
             log.exception('error encoding pagedict')
-            return None
+            raise InternalServerError(description="ErrorEncodingPage")
 
-    def update_page(
-            self: "PageModel", 
-            pagedict: Dict[str, Any]
-        ) -> None:
-        """
-        update a page
-        """
-        coll = dbconfig['db'][self._collection]
-        pagedict.pop('id', None)
-        pagedict['modificationtime'] = datetime.utcnow()
-        try:
-            coll.find_one_and_update({'_id': self._id}, pagedict, 
-                return_document=ReturnDocument.AFTER)
-        except:
-            log.exception('error encoding pagedict')
-            return None
-
-    def getSlugTemplates(self):
+    def get_slug_templates(self):
         """
         returns a dict of slug:template for all pages 
         """
-        coll = dbconfig['db'][self._collection]
-        return {a['slug']:a['template']  for a in coll.find(projection={
-            'slug':1, 'template':1, '_id':0})}
+        return {a['slug']:a['template']  for a in self.coll().find(
+            projection={'slug':1, 'template':1, '_id':0})}
+
+    @classmethod
+    def update_page(
+            cls: Type["PageModel"],
+            id: str, 
+            pagedict: Dict[str, Any]
+        ) -> "PageModel":
+        """
+        update a page
+        """
+        try:
+            oid = ObjectId(id)
+        except:
+            raise BadRequest(description="InvalidPageId")
+        pagedoc = cls.coll().find_one_and_update({'_id': oid}, 
+            {'$set': pagedict}, return_document=ReturnDocument.AFTER)
+        if not pagedoc:
+            raise NotFound(description="PageNotFound")
+        try:
+            page = cls(**pagedoc)
+            return page
+        except:
+            log.exception('error encoding pagedict')
+            raise InternalServerError(description="ErrorEncodingPage")

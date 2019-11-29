@@ -215,15 +215,35 @@ export default {
     path: ['lang'],
     required: ['lang']    
   },
-  getPageContent: {
+
+  // page and slugs
+  getPageBySlugLocale: {
     method: 'GET',
-    url: '/page/{slug}/{locale}',
+    url: '/slug/{slug}/locale/{locale}',
     path: ['slug', 'locale'],
     required: ['slug', 'locale'],
   },
+  getPageBySlug: {
+    method: 'GET',
+    url: '/slug/{slug}',
+    path: ['id'],
+    required: ['id'],
+  },
+  getPageById: {
+    method: 'GET',
+    url: '/page/{id}',
+    path: ['id'],
+    required: ['id'],
+  },
+  updatePage: {
+    method: 'PUT',
+    url: '/page/{id}',
+    path: ['id'],
+    body: ['page'],
+    required: ['id', 'page'],
+  },
   getPages: {
     method: 'GET',
-    url: '/pages',
+    url: '/page',
   },
-
 };

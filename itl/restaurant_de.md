@@ -4,7 +4,6 @@ Die **Halbpension** im Restaurant beinhaltet folgende Leistungen:
 
  - Jeden Morgen ein reichhaltiges Frühstücksbuffet
  - Jeden Abend das Tagesmenü, bestehend aus:
-
  - Suppe &amp; Salat Bar
  - Hauptgericht: Auswahl zwischen Fleisch- oder Fischgericht
  - Kleines Dessertbuffet
@@ -31,7 +30,7 @@ Maßgebend ist das Alter am 12. April 2020.
 
 Aufenthalt ohne Catering ist möglich in den Studios und Apartments. Für Hotelzimmer ist mindestens Halbpension obligatorisch.
 
-### Preise<
+### Preise
 
 Formule | Alter| 6 Tage| 1 Tag
 --- | --- | --- | ---

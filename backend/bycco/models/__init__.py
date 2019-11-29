@@ -1,15 +1,18 @@
 # copyright Ruben Decrop 2012 - 2015
 # copyright Chessdevil Consulting BVBA 2015 - 2019
 
-from dataclasses import dataclass
 from pymongo import MongoClient
 
-@dataclass
+dbconfig:dict = dict()
+
 class MongoModel:
     _collection = ""
 
-dbconfig = {}
+    @classmethod
+    def coll(cls):
+        return dbconfig['db'][cls._collection]
 
+from .md_counters import CounterModel
 from .md_page import PageModel, BasicPage, LocalizedPage
 from .md_account import AccountModel
 from .md_subscription import SubscriptionModel, BasicSubscription

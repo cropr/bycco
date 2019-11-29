@@ -26,29 +26,28 @@ db = setup_db_connection(app.config['MONGODB'])
 import csv
 from bycco.models.md_page import PageModel
 
-with open('pages.csv') as f:
+with open('itl/pages.csv') as f:
     reader =  csv.DictReader(f)
     for page in reader:
         languages = []
-        content = {}
+        i18n_fieldset = {}
         for l in ['nl', 'fr', 'en', 'de']:
             if page[l] == '1':
                 languages.append(l)
-                with open(f'{page["name"]}_{l}.md') as c:
-                    content[l] = c.read()
+                with open(f'itl/{page["name"]}_{l}.md') as c:
+                    i18n_fieldset[l] = {
+                      'content': c.read(),
+                      'title': page[f"title_{l}"],
+                      'intro': "",
+                    }
         p = {
-            'metatitle': page["name"],
-            'title': {
-                'nl': page["title_nl"],
-                'fr': page["title_fr"],
-                'de': page["title_de"],
-                'en': page["title_en"],
-            },
-            'slug': page["name"],
+            'name': page["name"],
             'owner': 'ruben',
-            'content': content,
+            'slug': page["name"],
+            'active': True,
+            'i18n_fieldset': i18n_fieldset,
             'languages': languages,
-            'template': page['template']
+            'template': page['template'],
         }
         success = PageModel.create_page(p)
         if success:

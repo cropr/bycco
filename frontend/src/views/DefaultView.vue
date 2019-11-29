@@ -20,7 +20,9 @@ export default {
   computed: {
     ...mapState(['page']),
     content () {
-      return marked(this.page.i18n_content || '')
+      if (!this.page) return '';
+      if (!this.page.i18n_fields) return '';
+      return marked(this.page.i18n_fields.content || '')
     },
   },
 

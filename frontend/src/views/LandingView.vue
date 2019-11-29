@@ -59,10 +59,14 @@ export default {
   computed: {
     ...mapState(['page']),
     title () {
-      return marked(this.page.i18n_title || '')
+      if (!this.page) return '';
+      if (!this.page.i18n_fields) return '';
+      return marked(this.page.i18n_fields.title || '')
     },
     content () {
-      return marked(this.page.i18n_content || '')
+      if (!this.page) return '';
+      if (!this.page.i18n_fields) return '';
+      return marked(this.page.i18n_fields.content || '')
     },
   },
 

@@ -18,7 +18,7 @@ Au vu du fait que la demande pour les appartements est plus élevée que la disp
 
 
   - L'organisation veut maximaliser le nombre de participants qui restent sur place dans le Floreal.
-  - L'organisation allouera les chambres/appartements le 7 décembre. Pour l'allocation des chambres/appartements, on tiendra compte de la date et de l'heure de la demande de la réservarion ainsi que du nombre de participants dans le logement.
-  - Après le 7 décembre les séjours restants seront alloués selon le principe "premier arrivé premier servi".
+  - L'organisation allouera les chambres/appartements le 23 décembre. Pour l'allocation des chambres/appartements, on tiendra compte de la date et de l'heure de la demande de la réservarion ainsi que du nombre de participants dans le logement.
+  - Après le 23 décembre les séjours restants seront alloués selon le principe "premier arrivé premier servi".
   - L'organisation se réserve le choix final de l'attribution des logements.
 

@@ -18,6 +18,6 @@ Omdat de vraag naar de grote appartementen hoger is dan het aanbod, gelden volge
 
 
  - De organisatie wil het aantal deelnemers dat in de Floreal kan overnachten, maximaliseren.
- - De organisatieploeg zal de verblijven op 7 december toewijzen. De toewijzing houdt rekening met het tijdstip van de registratie alsook met het aantal deelnemers per reservatie.
- - Na de 7de november zal voor de overblijvende verblijven de regel "eerst komt eerst maalt" toegepast worden.
+ - De organisatieploeg zal de verblijven op 23 december toewijzen. De toewijzing houdt rekening met het tijdstip van de registratie alsook met het aantal deelnemers per reservatie.
+ - Na 23 december zal voor de overblijvende verblijven de regel "eerst komt eerst maalt" toegepast worden.
 
