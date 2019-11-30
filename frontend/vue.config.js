@@ -1,3 +1,6 @@
+
+console.log('filenamedir', process.env.VUE_APP_FILENAMEDIR)
+
 module.exports = {
   "transpileDependencies": [
     "vuetify"
@@ -14,13 +17,17 @@ module.exports = {
   },
   pages: {
     page:  {
-      entry: 'src/pages/page.js',
-      filename: (process.env.NODE_ENV == 'development') ?  'dist/page.html' : '../../templates/page.html',
+      entry: 'src/user/page.js',
+      filename: process.env.VUE_APP_FILENAMEDIR + 'page.html',
     },
     mgmt:  {
       entry: 'src/mgmt/mgmt.js',
-      filename: (process.env.NODE_ENV == 'development') ?  'dist/mgmt.html' : '../../templates/mgmt.html',
+      filename: process.env.VUE_APP_FILENAMEDIR + 'mgmt.html',
     },
+    // subscription:  {
+    //   entry: 'src//user/subscription.js',
+    //   filename: process.env.VUE_APP_FILENAMEDIR + 'subscription.html',
+    // },
   },
   outputDir: '../backend/bycco/static/fe',
   publicPath: '/static/fe'

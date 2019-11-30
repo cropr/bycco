@@ -1,6 +1,6 @@
 <template>
 
-  <v-container class="mt-1" v-html="content" />
+  <v-container class="mt-1 markedcontent" v-html="content" />
 
 </template>
 
@@ -33,10 +33,25 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 
-.nopadding {
-  padding-top: 0px !important;
+.markedcontent table {
+border-collapse: collapse;
+min-width: 30em;
+}
+
+.markedcontent table {
+  border: 1px solid black;
+}
+
+.markedcontent td {
+  border: 1px solid black;
+  padding: 6px;
+}
+
+.markedcontent  th {
+  border: 1px solid black;
+  padding: 6px;
 }
 
 </style>

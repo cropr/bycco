@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import DefaultView from '@/views/DefaultView.vue'
-import LandingView from '@/views/LandingView.vue'
+import DefaultView from '@/user/DefaultView.vue'
+import LandingView from '@/user/LandingView.vue'
 
 Vue.use(VueRouter);
 

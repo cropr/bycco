@@ -11,10 +11,15 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 import {i18n} from '@/util/lang'
-import store from '@/store/store_main'
-import App from '@/pages/Page.vue'
-import router from '@/views/router'
-import { startPage } from '@/util/page'
+import store from '@/user/store'
+import App from '@/user/Page.vue'
+import router from '@/user/router'
+import {start, getPageContent, changeSlug, changeLocale} from '@/util/page'
+import {setNavigation} from '@/util/utils'
+
+setNavigation('getPageContent', getPageContent)
+setNavigation('changeSlug', changeSlug)
+setNavigation('changeLocale', changeLocale)
 
 let vm = new Vue({
   vuetify,
@@ -24,4 +29,4 @@ let vm = new Vue({
   render: h => h(App),
 }).$mount('#app')
 
-startPage(vm);
+start(vm);

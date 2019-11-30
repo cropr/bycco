@@ -10,8 +10,9 @@ from .sv_page import (
     getPageBySlugLocale,
     updatePage,
 )
-from .sv_subscription import (
-    getSubscriptions, 
-    addSubscription, 
-    getSubscription,
-)
+# from .sv_subscription import (
+#     getSubscriptions, 
+#     addSubscription, 
+#     confirmSubscription
+#     getPhoto,
+# )

@@ -5,10 +5,12 @@ import logging
 
 import json
 import requests
+from datetime import date
 from flask import render_template, abort, Response
 from typing import List, Optional, Dict, Any
 from bycco import app
-from bycco.models import SubscriptionModel, BasicSubscription
+from bycco.models import SubscriptionModel, BasicSubscription, CounterModel
+from .mail import sendconfirmationmail
 
 log = logging.getLogger('bycco')
 
@@ -69,11 +71,23 @@ def addSubscription(ss: dict):
     cs.rating = max(cs.ratingbel, cs.ratingfide)
     cs.nationalitybel = bp.get('nationalitybel')
     cs.payamount = 0
-    paymessage = cs.save()
-    return {'paymessage': msg, 'id': cs.id}
+    return {'id': cs.id}
 
-def getSubscription(id: str) -> dict:
-    """
-    get a Subscription
-    """
-    return {}
+def confirmSubscription(id: str) -> None:
+    invoicenumber = CounterModel.nextValue('invoice')
+    nr = 2020010000 + invoicenumber
+    rm1 = invoicenumber // 1000
+    rm2 = invoicenumber % 1000
+    rm3 = nr % 97 or 97
+    paymessage = f"+++202/001{rm1:01d}/{rm2:03d}{rm3:02d}+++"
+    sub = SubscriptionModel.updateSubscription(id, {
+        'confirmed': True,
+        'invoicenumber': invoicenumber,
+        'paymessage': paymessage,
+        'payamount': 35 if date.today() <  date(2020,3,1) else 45    
+    })
+    sendconfirmationmail(sub)
+
+def getPhoto(id: str):
+    sub = SubscriptionModel.find_by_id(id)
+    return Response(sub.badgeimage, content_type=sub.badgemimetype)     

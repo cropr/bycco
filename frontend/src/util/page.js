@@ -3,7 +3,7 @@ import api from '@/util/api'
 let store = null;
 let router = null;
 
-export function startPage(vm) {
+export function start(vm) {
   store = vm.$store;
   router = vm.$router;
   changeSlug(window.config.slug)
@@ -29,6 +29,7 @@ export function changeSlug(s) {
 }
 
 export function changeLocale(l) {
+  console.log('changing locale', l)
   if (l == store.state.locale) return;
   store.commit('updatePageUrl', {locale:l});
   router.push('/page/' + store.state.slug + '/' + store.state.locale)    

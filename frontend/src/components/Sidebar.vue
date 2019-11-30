@@ -42,7 +42,7 @@
 
 <script>
 
-import { changeLocale, changeSlug } from '@/util/page'
+import { navigation } from '@/util/utils'
 
 export default {
 
@@ -72,8 +72,8 @@ export default {
   },
 
   methods: {
-    updateLocale: changeLocale,
-    updateSlug: changeSlug,
+    updateLocale: navigation.changeLocale,
+    updateSlug: navigation.changeSlug,
   }
 
 }

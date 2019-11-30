@@ -10,7 +10,11 @@ from .api_page import (
     SlugResource,
     SlugLocaleResource,
 )
-from .api_subscription import SubscriptionsResource, SubscriptionResource
+# from .api_subscription import (
+#     SubscriptionsResource, 
+#     SubscriptionConfirmResource,
+#     SubscriptionPhotoResource,
+# )
 
 apimgr = Api(app)
 apimgr.add_resource(LangResource, '/api/lang/<lang>')
@@ -18,5 +22,8 @@ apimgr.add_resource(PagesResource, '/api/page')
 apimgr.add_resource(PageResource, '/api/page/<id>')
 apimgr.add_resource(SlugResource, '/api/slug/<slug>')
 apimgr.add_resource(SlugLocaleResource, '/api/slug/<slug>/locale/<locale>')
-apimgr.add_resource(SubscriptionsResource, '/api/subscriptions')
-apimgr.add_resource(SubscriptionResource, '/api/subscription/<id>')
+# apimgr.add_resource(SubscriptionsResource, '/api/subscriptions')
+# apimgr.add_resource(SubscriptionConfirmResource, 
+#     '/api/subscriptions/<id>/confirm')
+# apimgr.add_resource(SubscriptionPhotoResource, 
+#     '/api/subscriptions/<id>/photo')

@@ -10,7 +10,7 @@ from typing import Dict, Any, List, Optional, Type
 from datetime import datetime, timedelta, date
 from pymongo import ReturnDocument
 from bson import ObjectId
-from flask import abort, Response
+from werkzeug.exceptions import BadRequest, NotFound, InternalServerError
 from . import MongoModel, dbconfig, CounterModel
 
 log = logging.getLogger('bycco')
@@ -101,20 +101,39 @@ class SubscriptionModel(MongoModel):
     def find_by_idbel( 
         cls: Type["SubscriptionModel"],
         idbel: str, 
-    ) -> Optional["SubscriptionModel"]:
+    ) -> "SubscriptionModel":
         """
         find a subscription by idbel
         """
-        coll = dbconfig['db'][cls._collection]
-        subdict = coll.find_one({'idbel': idbel})
-        if not subdict:
+        subdoc = cls.coll().find_one({'idbel': idbel})
+        if not subdoc:
             return None
         try:
-            sub = cls(**subdict)
-            return sub
+            return cls(**subdoc)
         except:
             log.exception('Cannot encode Subscription')
-            abort(500, "CannotEncodeSubscription")
+            raise InternalServerError(description="CannotEncodeSubscription")
+
+    @classmethod
+    def find_by_id( 
+        cls: Type["SubscriptionModel"],
+        idbel: str, 
+    ) -> "SubscriptionModel":
+        """
+        find a subscription by idbel
+        """
+        try:
+            oid = ObjectId(id)
+        except:
+            raise BadRequest(description="InvalidSubscriptionId")
+        subdoc = cls.coll().find_one(oid)
+        if not subdoc:
+            raise NotFound(description="SubscriptionNotFound")
+        try:
+            return cls(**subdoc)
+        except:
+            log.exception('Cannot encode Subscription')
+            raise InternalServerError(description="CannotEncodeSubscription")
 
 
     @classmethod
@@ -158,25 +177,28 @@ class SubscriptionModel(MongoModel):
             return sub
         except:
             log.exception('Cannot encode Subscription')
-            abort(Response("CannotEncodeSubscription", status=500))
+            raise InternalServerError(description="CannotEncodeSubscription")
 
-    def confirm(self) -> "SubscriptionModel":
+    @classmethod
+    def updateSubscription(
+        cls: Type["SubscriptionModel"],
+        id: str,
+        subdict: Dict[str, Any]
+    ) -> "SubscriptionModel":
         """
-        confirm subscription, sending mails and creating invoice 
+        update subscription 
         """
-        coll = dbconfig['db'][self._collection]
-        invoicenumber = CounterModel.nextValue('invoice')
-        nr = 2020010000 + invoicenumber
-        rm1 = invoicenumber // 1000
-        rm2 = invoicenumber % 1000
-        rm3 = nr % 97 or 97
-        paymessage = f"+++202/001{rm1:01d}/{rm2:03d}{rm3:02d}+++"
-        s = coll.find_one_and_update(self._id, {"$set": {
-            'confirmed': True,
-            'invoicenumber': invoicenumber,
-            'paymessage': paymessage,
-            'payamount': 35 if date.today() <  date(2020,3,1) else 45
-        }}, return_document=ReturnDocument.AFTER)
-        # send mail
-        # create invoice
-        return s
+        try:
+            oid = ObjectId(id)
+        except:
+            raise BadRequest(description="InvalidSubscriptionId")
+        subdoc = cls.coll().find_one_and_update({'_id': oid}, 
+            {'$set': subdict}, return_document=ReturnDocument.AFTER)
+        if not subdoc:
+            raise NotFound(description="SubscriptionNotFound")
+        try:
+            sub = cls(**subdoc)
+            return sub
+        except:
+            log.exception('error encoding subdict')
+            raise InternalServerError(description="ErrorEncodingSubscription")
