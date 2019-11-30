@@ -6,7 +6,7 @@
 *.pyc
 *.css.map
 /backend/local_settings.py
-/backend/dist
+/backend/bycco/static/fe/
 /frontend/dist
 /frontend/node_modules
 /frontend/webpack-stats.json
