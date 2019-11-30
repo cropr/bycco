@@ -72,8 +72,12 @@ export default {
   },
 
   methods: {
-    updateLocale: navigation.changeLocale,
-    updateSlug: navigation.changeSlug,
+    updateLocale: function(l){
+      navigation.changeLocale(l)
+    },
+    updateSlug: function(l){
+      navigation.changeSlug(l)
+    },
   }
 
 }
