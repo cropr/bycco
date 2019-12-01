@@ -16,3 +16,6 @@ flask-cors = "*"
 
 [requires]
 python_version = "3.7"
+
+[packages.5d75972]
+path = "./setupdata/dbf-1.0-py3-none-any.whl"

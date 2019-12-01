@@ -10,6 +10,7 @@ from .sv_page import (
     getPageBySlugLocale,
     updatePage,
 )
+from .sv_playerlist import getBelplayer, getFideplayer
 # from .sv_subscription import (
 #     getSubscriptions, 
 #     addSubscription, 

@@ -16,6 +16,7 @@ from .md_counters import CounterModel
 from .md_page import PageModel, BasicPage, LocalizedPage
 from .md_account import AccountModel
 from .md_subscription import SubscriptionModel, BasicSubscription
+from .md_belplayer import BelplayerModel, FideplayerModel
 
 def setup_db_connection(config):
     """

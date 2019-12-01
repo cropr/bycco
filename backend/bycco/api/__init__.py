@@ -3,25 +3,34 @@
 
 from flask_restful import Resource, Api
 from .. import app
+apimgr = Api(app)
+
 from .api_lang import LangResource
+apimgr.add_resource(LangResource, '/api/lang/<lang>')
+
 from .api_page import (
     PageResource, 
     PagesResource,
     SlugResource,
     SlugLocaleResource,
 )
+apimgr.add_resource(PagesResource, '/api/page')
+apimgr.add_resource(PageResource, '/api/page/<id>')
+apimgr.add_resource(SlugResource, '/api/slug/<slug>')
+apimgr.add_resource(SlugLocaleResource, '/api/slug/<slug>/locale/<locale>')
+
+from .api_playerlist import (
+    BelplayerResource, 
+    FideplayerResource,
+)
+apimgr.add_resource(BelplayerResource, '/api/belplayer/<id>')
+apimgr.add_resource(FideplayerResource, '/api/fideplayer/<id>')
+
 # from .api_subscription import (
 #     SubscriptionsResource, 
 #     SubscriptionConfirmResource,
 #     SubscriptionPhotoResource,
 # )
-
-apimgr = Api(app)
-apimgr.add_resource(LangResource, '/api/lang/<lang>')
-apimgr.add_resource(PagesResource, '/api/page')
-apimgr.add_resource(PageResource, '/api/page/<id>')
-apimgr.add_resource(SlugResource, '/api/slug/<slug>')
-apimgr.add_resource(SlugLocaleResource, '/api/slug/<slug>/locale/<locale>')
 # apimgr.add_resource(SubscriptionsResource, '/api/subscriptions')
 # apimgr.add_resource(SubscriptionConfirmResource, 
 #     '/api/subscriptions/<id>/confirm')

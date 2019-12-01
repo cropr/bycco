@@ -12,10 +12,10 @@ def page(slug, lang):
 
 @app.route('/mgmt')
 @app.route('/mgmt/<path:path>')
-def mgmt(slug, path=''):
+def mgmt(path=''):
     return render_template('mgmt.html', configstub="")    
 
 @app.route('/subscription')
 @app.route('/subscription/<path:path>')
-def subscription(slug, path=''):
+def subscription(path=''):
     return render_template('subscription.html', configstub="")    
