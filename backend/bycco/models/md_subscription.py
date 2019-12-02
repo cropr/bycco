@@ -29,7 +29,7 @@ class BasicSubscription:
 @dataclass
 class SubscriptionModel(MongoModel):
 
-    birthdate: datetime
+    birthdate: str
     category: str               # ARB, ORG, Bxx, Gxx, BGxx, SPO, EAT
     confirmed: bool
     chesstitle: str
@@ -156,7 +156,7 @@ class SubscriptionModel(MongoModel):
         id = ObjectId()
         coll.insert_one({
             '_id': id,
-            'birthdate': date(1900,1,1),
+            'birthdate': "1900-01-01",
             'category': '#NA',               # ARB, ORG, Bxx, Gxx, BGxx, SPO, EAT
             'confirmed': False,
             'chesstitle': '',
@@ -202,3 +202,11 @@ class SubscriptionModel(MongoModel):
         except:
             log.exception('error encoding subdict')
             raise InternalServerError(description="ErrorEncodingSubscription")
+
+    def save(self: "SubscriptionModel") -> None:
+        """
+        save changes of Subscription instance
+        """
+        subdict = asdict(self)
+        self.coll().find_one_and_replace({'_id': self._id}, subdict)
+

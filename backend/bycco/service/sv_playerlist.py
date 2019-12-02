@@ -5,7 +5,7 @@ import logging
 
 import json, io, zipfile, sys
 import dbf
-from datetime import datetime
+from datetime import datetime, date
 from flask import render_template, abort
 from werkzeug.exceptions import NotFound
 from typing import List, Optional, Union
@@ -71,7 +71,7 @@ def read_zipfile_bel(fszip, period):
         year, month, day = line['DATE_NAISS']
         if year == 0:
             year, month, day = (1900, 1, 1)
-        p.birthdate = datetime(year, month, day)
+        p.birthdate = date(year, month, day).isoformat()
         p.idclub = str(line['CLUB'])
         idfide = line['FIDE']
         p.idfide = str(idfide) if idfide else ""

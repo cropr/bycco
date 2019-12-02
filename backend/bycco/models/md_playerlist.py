@@ -22,7 +22,7 @@ class BelplayerModel(MongoModel):
     A player in the Belgian playerlist
     """
     _id: str            # Belgian id number
-    birthdate: datetime
+    birthdate: str      # YYYY-MM-DD format
     federation: str
     first_name: str
     gender: str 
@@ -65,7 +65,7 @@ class BelplayerModel(MongoModel):
         """
         beldict = {
             '_id': id,
-            'birthdate': datetime(1900,1,1),
+            'birthdate': "1900-01-01",
             'federation': '#NA',
             'first_name': '#NA',
             'gender': '#NA',
@@ -85,6 +85,18 @@ class BelplayerModel(MongoModel):
         """
         beldict = asdict(self)
         self.coll().find_one_and_replace({'_id': self._id}, beldict)
+
+    def currentrating(self) -> int:
+        """
+        gets the current rating
+        """
+        period = '200001'
+        rating = 0
+        for r in self.ratingsbel:
+            if r['period'] > period and r['rating'] > 0:
+                period = r['period']
+                rating = r['rating']
+        return rating        
 
 @dataclass
 class FideplayerModel(MongoModel):
@@ -150,3 +162,15 @@ class FideplayerModel(MongoModel):
         """
         fidedict = asdict(self)
         self.coll().find_one_and_replace({'_id': self._id}, fidedict)
+
+    def currentrating(self) -> int:
+        """
+        gets the current rating
+        """
+        period = '200001'
+        rating = 0
+        for r in self.ratingsfide:
+            if r['period'] > period and r['rating'] > 0:
+                period = r['period']
+                rating = r['rating']
+        return rating
