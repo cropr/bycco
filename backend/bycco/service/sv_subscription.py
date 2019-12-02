@@ -16,7 +16,6 @@ from bycco.models import (
     BelplayerModel,
     FideplayerModel,
 )
-from .mail import sendconfirmationmail
 
 log = logging.getLogger('bycco')
 
@@ -89,5 +88,55 @@ def getPhoto(id: str):
     sub = SubscriptionModel.find_by_id(id)
     return Response(sub.badgeimage, content_type=sub.badgemimetype)     
 
-def sendconfirmationmail(sub):
-    pass    
+def sendconfirmationmail(s: SubscriptionModel):
+    """
+    send confirmation email
+    :param s: the Subscription object
+    :return: None
+    """
+
+    sub = {
+        'fullname': f"{s.first_name} {s.lastname}",
+        'birthdate': s.birthdate,
+        'idclub': s.idclub,
+        'nationalityfide': s.nationalityfide,
+        'natstatus': 'maybe',
+        'ratingbel': s.ratingbel,
+        'ratingfide': s.ratingfide,
+        'gender': s.gender,
+        'category': s.category,
+        'paymessage': s.paymessage,
+    }
+    # if s.nationalityfide == 'BEL':
+    #     sub['natstatus'] = 'fidebelg'
+    # elif s.nationalityfide and len(s.nationalityfide) > 1:
+    #     sub['natstatus'] = 'nobelg'
+    # context = {'sub':sub}
+    # tolist = []
+    # if s.emailplayer:
+    #     tolist.append(s.emailplayer)
+    # if s.emailparent:
+    #     tolist.append(s.emailparent)
+    
+    # basepath = os.path.dirname(os.path.dirname(__file__))
+    # fname = os.path.join(basepath, 'static', 'lang', f'bycco_{s.locale}.json')
+    # log.info(f'loading locale {s.locale} fname {fname}')
+    # with open(fname, 'r') as f:
+    #     locale_msg = json.load(f)
+    # msghtml = get_template('tournament/mailhtml.html').render(
+    #     context=context, request=request)
+    # msgtext = strip_tags(msghtml)
+    # image = MIMEImage(s.badgeimage, _subtype=s.badgemimetype, name='badge.png')
+    # image.add_header('Content-ID', '<1>')
+    # msg = EmailMultiAlternatives(
+    #     translate('Confirmation Subscription', s.locale),
+    #     msgtext,
+    #     to=tolist,
+    #     from_email=mailfrom,
+    #     cc=[mailcc],
+    # )
+    # translation.deactivate()
+    # msg.attach_alternative(msghtml, "text/html")
+    # msg.attach(image)
+    # msg.send()
+
