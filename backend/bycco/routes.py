@@ -19,3 +19,11 @@ def mgmt(path=''):
 @app.route('/subscription/<path:path>')
 def subscription(path=''):
     return render_template('subscription.html', configstub="")    
+
+
+@app.route('/vertaal')
+def vertaal(path=''):
+    return render_template('testmail.html', _={
+        "Vertaal": "Translate",
+        "Tekst <b>met</b> {a} vertaald": "Text <b>with</b> {a} translated"
+    }).format(**{'a':'aa'})    

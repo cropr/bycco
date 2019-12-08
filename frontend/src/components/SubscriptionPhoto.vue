@@ -28,6 +28,7 @@
 
 <script>
 import VueCropper from 'vue-cropperjs';
+import 'cropperjs/dist/cropper.css';
 import vueFilePond from 'vue-filepond';
 import 'filepond/dist/filepond.min.css';
 

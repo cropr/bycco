@@ -7,15 +7,15 @@
   </v-toolbar-items>
   <v-spacer></v-spacer>
   <v-toolbar-items class="hidden-sm-and-down">
-    <v-btn text large href="/trn/participants" v-if="sections.participants">
+    <!-- <v-btn text large href="/participants">
       {{ $t('Participants')}}
-    </v-btn>
-    <v-btn text large href="/trn/subscription" v-if="sections.subscription">
+    </v-btn> -->
+    <!-- <v-btn text large href="/subscription" v-if="sections.subscription">
       {{ $t('Register')}}
-    </v-btn>
-    <v-btn text large href="/trn/view" v-if="sections.tournament">
+    </v-btn> -->
+    <!-- <v-btn text large href="/trn" >
       {{ $t('Tournament')}}
-    </v-btn>
+    </v-btn> -->
   </v-toolbar-items>
 </v-app-bar>
 </template>
@@ -36,7 +36,7 @@ data () {return {
     landing: true, //window.config.landing,
     sections: {
       participants: false, //window.config.participants_enabled,
-      subscription: false, //window.config.subscriptions_enabled,
+      subscription: true, //window.config.subscriptions_enabled,
       tournament: false, //window.config.tournament_enabled,
     },
   }},

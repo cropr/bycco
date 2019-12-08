@@ -17,15 +17,16 @@
     <div v-show="flow.isPlayerFound">{{$t('Player found:')}} {{subscription.first_name}} {{subscription.last_name}}</div>
     <div class="mt-2">
       <v-btn v-show="flow.isPlayerFound" @click="next" color="primary">{{$t('Continue')}}</v-btn>
-      <v-btn v-show="flow.isPlayerFound" @click="restart">{{$t('Other player')}}</v-btn>
-      <v-btn @click="prev">{{$t('Back')}}</v-btn>
+      <v-btn class="ml-2" v-show="flow.isPlayerFound" @click="restart">{{$t('Other player')}}</v-btn>
+      <v-btn class="ml-2" @click="prev">{{$t('Back')}}</v-btn>
     </div>
   </div>
 </div>
 </template>
 
 <script>
-import api from '../util/api'
+import api from '@/util/api'
+import {categories} from '@/util/utils'
 import { mapState } from 'vuex'
 
 export default {
@@ -34,7 +35,8 @@ export default {
 
   data () {return{
     errorcode: false,
-    found: false
+    found: false,
+    maxyear: categories[0].year
   }},
 
   computed: {
@@ -54,13 +56,14 @@ export default {
     lookup() {
       this.errorcode = false;
       api('searchIdNational', {idbel: this.flow.idnumber}).then(
-        function(player) {
-          if (player.alreadysubscribed) {
+        function(data) {
+          let player = data.belplayer;
+          if (data.alreadyregistered) {
             this.errorcode = 'alreadyregistered';
             return;
           }
           let db = new Date(player.birthdate);
-          if (db.getFullYear() < 1998) {
+          if (db.getFullYear() < this.maxyear) {
             this.errorcode = 'playeradult';
             return;
           }
@@ -70,7 +73,7 @@ export default {
             first_name: player.first_name,
             gender: player.gender,
             ratingsbel: player.ratingsbel,
-            currentratingbel: player.currentrating,
+            currentratingbel: player.currentratingbel,
             nationalitybel: player.nationalitybel,
             birthdate: new Date(player.birthdate),
             idbel: player._id,
@@ -80,12 +83,13 @@ export default {
           });
           if (player.idfide && player.idfide.length) {
             api('searchIdFide', {idfide:player.idfide}).then(
-              function(player){
+              function(data){
+                let player = data.fideplayer;
                 this.$store.commit('updateSubscription',  {
                   ratingsfide: player.ratingsfide,
                   nationalityfide: player.nationalityfide,
                   chesstitle: player.chesstitle,
-                  currentratingfide: player.currentrating,
+                  currentratingfide: player.currentratingfide,
                   natstatus:  (player.nationalityfide == 'BEL') ? 'fidebelg': 'nobelg'
                 });
               }.bind(this),

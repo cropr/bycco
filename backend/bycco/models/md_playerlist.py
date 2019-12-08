@@ -30,6 +30,7 @@ class BelplayerModel(MongoModel):
     last_name: str
     nationalitybel: str
 
+    currentratingbel: int = 0
     idfide: str = ''
     ratingsbel: list = field(default_factory=list)
     _class: str = "Belplayer"
@@ -111,6 +112,7 @@ class FideplayerModel(MongoModel):
     nationalityfide: str
 
     chesstitle: str = ''
+    currentratingfide: int = 0
     ratingsfide: list = field(default_factory=list)
     _class: str = "Fideplayer"
 

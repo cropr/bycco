@@ -8,18 +8,25 @@ import dbf
 from datetime import datetime, date
 from flask import render_template, abort
 from werkzeug.exceptions import NotFound
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Tuple
 from bycco import app
-from bycco.models import BelplayerModel, FideplayerModel
+from bycco.models import BelplayerModel, FideplayerModel, SubscriptionModel
 
 log = logging.getLogger('bycco')
 
-def getBelplayer(id: str) -> BelplayerModel:
+def getBelplayer(id: str) -> Tuple[BelplayerModel, bool]:
     """
-    get the page by id 
+    get the page by id amd return is player is a;ready registered
     """
     log.info(f'getting belplayer by id {id}')
-    return BelplayerModel.find_by_id(id)
+    bp = BelplayerModel.find_by_id(id)
+    bp.currentratingbel = bp.currentrating()
+    try:
+        ss = SubscriptionModel.find_by_idbel(id)
+        alreadyregistered = True
+    except NotFound:
+        alreadyregistered = False
+    return (bp, alreadyregistered)
 
 def read_zipfile_bel(fszip, period):
     """
@@ -102,7 +109,9 @@ def getFideplayer(id: str) -> FideplayerModel:
     get the page by id 
     """
     log.info(f'getting fideplayer by id {id}')
-    return FideplayerModel.find_by_id(id)
+    fp = FideplayerModel.find_by_id(id)
+    fp.currentratingfide = fp.currentrating()
+    return fp
 
 def read_zipfile_fide(fszip, period):
     """

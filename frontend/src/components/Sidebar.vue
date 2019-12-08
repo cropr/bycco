@@ -36,6 +36,9 @@
       <v-list-item @click="updateSlug('restaurant')" >
         <v-list-item-content>{{$t('Catering')}}</v-list-item-content>
       </v-list-item>
+      <!-- <v-list-item href="/subscription">
+        <v-list-item-content>{{ $t('Register') }}</v-list-item-content>
+      </v-list-item> -->
     </v-list>
   </v-navigation-drawer>
 </template>

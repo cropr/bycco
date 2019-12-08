@@ -26,13 +26,13 @@ from .api_playerlist import (
 apimgr.add_resource(BelplayerResource, '/api/belplayer/<id>')
 apimgr.add_resource(FideplayerResource, '/api/fideplayer/<id>')
 
-# from .api_subscription import (
-#     SubscriptionsResource, 
-#     SubscriptionConfirmResource,
-#     SubscriptionPhotoResource,
-# )
-# apimgr.add_resource(SubscriptionsResource, '/api/subscriptions')
-# apimgr.add_resource(SubscriptionConfirmResource, 
-#     '/api/subscriptions/<id>/confirm')
-# apimgr.add_resource(SubscriptionPhotoResource, 
-#     '/api/subscriptions/<id>/photo')
+from .api_subscription import (
+    SubscriptionsResource, 
+    SubscriptionConfirmResource,
+    SubscriptionPhotoResource,
+)
+apimgr.add_resource(SubscriptionsResource, '/api/subscriptions')
+apimgr.add_resource(SubscriptionConfirmResource, 
+    '/api/subscriptions/<id>/confirm')
+apimgr.add_resource(SubscriptionPhotoResource, 
+    '/api/subscriptions/<id>/photo')

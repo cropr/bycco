@@ -7,7 +7,6 @@ log = logging.getLogger('talistro_election')
 import requests
 import smtplib
 import dataclasses
-import qrcode
 from io import BytesIO
 from typing import List, Any
 
@@ -15,10 +14,7 @@ from email.message import EmailMessage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
-
-from .. import config
-from ..models import ElectionEventModel, MemberModel, PhoneModel
-from ..util.handler import ApiBaseHandler
+from bycco import app
 
 bcc = 'ruben.bycco@gmail.com'
 
@@ -29,17 +25,17 @@ class BaseEmailBackend:
 class SmtpSslBackend(BaseEmailBackend):
 
     def send_message(self, msg: EmailMessage):
-        with smtplib.SMTP_SSL(config.EMAIL_HOST, config.EMAIL_PORT) as s:
-            if hasattr(config, "EMAIL_USER"):
-                s.login(config.EMAIL_USER, config.EMAIL_PASSWORD)
+        with smtplib.SMTP_SSL(app.config['EMAIL_HOST'], app.config['EMAIL_PORT']) as s:
+            if "EMAIL_USER" in app.config:
+                s.login(app.config['EMAIL_USER'], app.config['EMAIL_PASSWORD'])
             s.send_message(msg)
 
 class SmtpBackend(BaseEmailBackend):
 
     def send_message(self, msg: EmailMessage):
-        with smtplib.SMTP(config.EMAIL_HOST, config.EMAIL_PORT) as s:
-            if hasattr(config, "EMAIL_USER"):
-                s.login(config.EMAIL_USER, config.EMAIL_PASSWORD)
+        with smtplib.SMTP(app.config['EMAIL_HOST'], app.config['EMAIL_PORT']) as s:
+            if "EMAIL_USER" in app.config:
+                s.login(app.config['EMAIL_USER'], app.config['EMAIL_PASSWORD'])
             s.send_message(msg)
     
 class MailgunEmailBackend(BaseEmailBackend):
@@ -52,8 +48,8 @@ class MailgunEmailBackend(BaseEmailBackend):
         """
         # TODO multiple TO, CC and BCC
         from email.generator import BytesGenerator
-        url = config.EMAIL_URL
-        apikey = config.EMAIL_APIKEY
+        url = app.config['EMAIL_URL']
+        apikey = app.config['EMAIL_APIKEY']
         fp = BytesIO()
         g = BytesGenerator(fp)
         g.flatten(msg)

@@ -38,4 +38,12 @@ MONGODB = {
     'database': 'bycco'
 }
 
+
+EMAIL_BACKEND = 'SMTP'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_SENDER = 'noreply@bycco.be'
+EMAIL_BCC = 'ruben.bycco@gmail.com'
+
 RESTFUL_JSON = {'cls': DataclassEncoder}
+

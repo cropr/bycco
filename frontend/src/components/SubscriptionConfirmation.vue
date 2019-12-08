@@ -54,12 +54,12 @@
   </v-layout>
   <h3>{{$t('Payment')}}</h3>
   <div>{{$t('SubConf1')}}</div>
-  <div><span>{{$t('SubConf2')}}</span> {{ subscription.paymessage }}</div>
   <div>
     <v-btn @click="confirm" color="primary">{{$t('Confirm')}}</v-btn>
   </div>
-  <div v-show="flow.isConfirmed">
+  <div class="mt-2" v-show="flow.isConfirmed">
     <div>{{$t('Your subscription is confirmed')}}</div>
+    <div><span>{{$t('SubConf2')}}</span> {{ paymessage }}</div>
     <v-btn @click="restart">{{$t('New subscription')}}</v-btn>
   </div>
 </div>
@@ -75,7 +75,8 @@ export default {
   name: "SubscriptionConfirmation",
 
   data () {return {
-    errorcode: false
+    errorcode: false,
+    paymessage: ''
   }},
 
   computed: {
@@ -90,7 +91,8 @@ export default {
       api('confirmSubscription',{
         idsub: this.subscription.idsub
       }).then(
-        function(){
+        function(data){
+          this.paymessage = data.paymessage
           this.$store.commit('updateFlow', {isConfirmed: true});
         }.bind(this),
         function(data){

@@ -72,6 +72,10 @@ class SubscriptionModel(MongoModel):
 
     _collection = 'subscription'
 
+    # attribute id is created automatically as stringified version of _id
+    def __post_init__(self):
+        self.id = str(self._id)
+
     @classmethod
     def find_subscriptions( 
         cls: Type["SubscriptionModel"] 
@@ -84,17 +88,15 @@ class SubscriptionModel(MongoModel):
         cursor = coll.find({}, {
             "first_name": 1,
             "last_name": 1,
-            "registratiotndate": 1,
+            "registrationdate": 1,
             "modificationtime": 1,
         })
         for doc in cursor:
             doc['id'] = str(doc.pop('_id'))
             try:
-                sub = BasicSubscription(**doc)
-                subs.append(sub)
+                subs.append(BasicSubscription(**doc))
             except:
-                log.exception('error encoding BasicSubscription')
-                continue
+                raise InternalServerError(description="CannotEncodeBasicSubscription")
         return subs
 
     @classmethod
@@ -107,7 +109,7 @@ class SubscriptionModel(MongoModel):
         """
         subdoc = cls.coll().find_one({'idbel': idbel})
         if not subdoc:
-            return None
+            raise NotFound(description="SubscriptionNotFound")
         try:
             return cls(**subdoc)
         except:
@@ -169,7 +171,7 @@ class SubscriptionModel(MongoModel):
             'last_name': '#NA',
             'nationalitybel': '#NA',
             'registrationdate': datetime.utcnow(),
-            'subscriotionnumber': CounterModel.nextValue('subscription')
+            'subscriptionnumber': CounterModel.nextValue('subscription')
         })
         subdict = coll.find_one(id)
         try:
@@ -208,5 +210,6 @@ class SubscriptionModel(MongoModel):
         save changes of Subscription instance
         """
         subdict = asdict(self)
+        subdict.pop('id', None)
         self.coll().find_one_and_replace({'_id': self._id}, subdict)
 

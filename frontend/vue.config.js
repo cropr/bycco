@@ -24,10 +24,10 @@ module.exports = {
       entry: 'src/mgmt/mgmt.js',
       filename: process.env.VUE_APP_FILENAMEDIR + 'mgmt.html',
     },
-    // subscription:  {
-    //   entry: 'src//user/subscription.js',
-    //   filename: process.env.VUE_APP_FILENAMEDIR + 'subscription.html',
-    // },
+    subscription:  {
+      entry: 'src//user/subscription.js',
+      filename: process.env.VUE_APP_FILENAMEDIR + 'subscription.html',
+    },
   },
   outputDir: '../backend/bycco/static/fe',
   publicPath: '/static/fe'

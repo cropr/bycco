@@ -15,7 +15,8 @@ log = logging.getLogger('bycco')
 
 class BelplayerResource(Resource):
     def get(self, id):
-        return {'belplayer': getBelplayer(id)}
+        bp, alreadyregistered = getBelplayer(id)
+        return {'belplayer': bp, 'alreadyregistered':alreadyregistered}
 
 class FideplayerResource(Resource):
     def get(self, id):

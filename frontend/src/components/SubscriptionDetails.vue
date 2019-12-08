@@ -150,7 +150,7 @@ export default {
 
   name: "SubscriptionDetails",
   data () {return {
-    adultdate: moment('2001-04-14'),
+    adultdate: moment('2002-04-12'),
     errorcode: null,
   }},
 
@@ -214,8 +214,8 @@ export default {
       };
       api('createSubscription', {subscription: subparam}).then(
         function(data) {
+          console.log('id sub', data.id)
           this.$store.commit('updateSubscription', {
-            paymessage: data.paymessage,
             idsub: data.id,
             category: this.flow.category,
           });
