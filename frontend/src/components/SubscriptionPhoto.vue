@@ -55,8 +55,8 @@ export default {
 
   watch: {
     photo (nv) {
+      console.log('trying to erase photo', nv.length);
       if (!nv.length) {
-        console.log('trying to empty photo');
         this.$refs.pond.removeFiles();
         this.$refs.photosrc.destroy();
       }

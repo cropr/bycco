@@ -2,6 +2,7 @@
 # copyright Chessdevil Consulting BVBA 2015 - 2019
 
 from pymongo import MongoClient
+from typing import Dict, Any
 
 dbconfig:dict = dict()
 
@@ -17,11 +18,11 @@ from .md_page import PageModel, BasicPage, LocalizedPage
 from .md_account import AccountModel
 from .md_subscription import SubscriptionModel, BasicSubscription
 from .md_playerlist import BelplayerModel, FideplayerModel
+from .md_account import AccountModel
 
-def setup_db_connection(config):
+def setup_db_connection(config: Dict[str, Any]):
     """
-    create a mongo connection 
-    @param(config): the mongo db config
+    create a mongo connection and returns the database object
     """
     dbconfig['host'] = config.get('host') or 'localhost'
     dbconfig['port'] = config.get('port') or 27017

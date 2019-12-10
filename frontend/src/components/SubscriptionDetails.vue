@@ -171,7 +171,7 @@ export default {
     birthdate () {
       return formatDate(this.subscription.birthdate)
     },
-    ...mapState(['subscription', 'flow'])
+    ...mapState(['subscription', 'flow', 'locale'])
   },
 
   watch: {
@@ -209,6 +209,7 @@ export default {
         fullnameattendant: this.flow.fullnameattendant || '',
         fullnameparent: this.flow.fullnameparent || '',
         idbel: this.subscription.idbel,
+        locale: this.locale,
         mobileattendant: this.flow.mobileattendant || '',
         mobileparent: this.flow.mobileparent || '',
       };

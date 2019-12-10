@@ -119,10 +119,10 @@ class SubscriptionModel(MongoModel):
     @classmethod
     def find_by_id( 
         cls: Type["SubscriptionModel"],
-        idbel: str, 
+        id: str, 
     ) -> "SubscriptionModel":
         """
-        find a subscription by idbel
+        find a subscription by id
         """
         try:
             oid = ObjectId(id)

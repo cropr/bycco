@@ -1,7 +1,7 @@
 <template>
 <div>
   <h2>Intro</h2>
-  <div>{{$t('SubIntro1')}}</div>
+  <div>{{ $t('SubIntro1') }}:</div>
   <ul>
     <li>{{$t('SubIntro2')}}</li>
     <li>{{$t('A photo for your badge')}}</li>

@@ -66,7 +66,7 @@ def addSubscription(ss: dict):
     cs.idfide = idfide
     cs.idbel = idbel
     cs.last_name = bp.last_name
-    cs.locale = ss.get('locale') or 'nl'
+    cs.locale = ss.get('locale') or 'en'
     cs.mobileattendant = ss.get('mobileattendant') or ''
     cs.mobileparent = ss.get('mobileparent') or ''
     cs.mobileplayer = ss.get('mobileplayer') or ''
@@ -79,18 +79,24 @@ def addSubscription(ss: dict):
     return {'id': cs.id}
 
 def confirmSubscription(id: str) -> str:
-    invoicenumber = CounterModel.nextValue('invoice')
+    log.info(f'confirm sub {id}')
+    try:
+        sub = SubscriptionModel.find_by_id(id)
+        invoicenumber = sub.invoicenumber if sub.invoicenumber else \
+            CounterModel.nextValue('invoice')
+    except:
+        log.info('Cannot find sub')
+        invoicenumber = CounterModel.nextValue('invoice')
     nr = 202010000 + invoicenumber
     rm1 = invoicenumber // 1000
     rm2 = invoicenumber % 1000
     rm3 = nr % 97 or 97
     paymessage = f"+++020/201{rm1:01d}/{rm2:03d}{rm3:02d}+++"
-    log.info(f'paymessage {paymessage}')
     sub = SubscriptionModel.updateSubscription(id, {
         'confirmed': True,
         'invoicenumber': invoicenumber,
         'paymessage': paymessage,
-        'payamount': 35 if date.today() <  date(2020,3,1) else 45    
+        'payamount': 35 if date.today() < date(2020,3,1) else 45    
     })
     sendconfirmationmail(sub)
     return paymessage
@@ -122,18 +128,12 @@ def sendconfirmationmail(s: SubscriptionModel):
         'birthdate': s.birthdate,
         'idclub': s.idclub,
         'nationalityfide': s.nationalityfide,
-        'natstatus': 'maybe',
         'ratingbel': s.ratingbel,
         'ratingfide': s.ratingfide,
         'gender': s.gender,
         'category': s.category,
         'paymessage': s.paymessage,
-        'photo_cid': make_msgid(),
     }
-    if s.nationalityfide == 'BEL':
-        sub['natstatus'] = 'fidebelg'
-    elif s.nationalityfide and len(s.nationalityfide) > 1:
-        sub['natstatus'] = 'nobelg'
     tolist = []
     if s.emailplayer:
         tolist.append(s.emailplayer)
@@ -141,9 +141,13 @@ def sendconfirmationmail(s: SubscriptionModel):
         tolist.append(s.emailparent)
     basepath = os.path.dirname(os.path.dirname(__file__))
     fname = os.path.join(basepath, 'static', 'lang', f'bycco_{s.locale}.json')
-    log.info(f'loading locale {s.locale} fname {fname}')
     with open(fname, 'r') as f:
         locale_msg = json.load(f)
+    sub['champ'] = locale_msg['To be confirmed']
+    if s.nationalityfide == 'BEL':
+        sub['champ'] = locale_msg['Yes']
+    elif s.nationalityfide and len(s.nationalityfide) > 1:
+        sub['champ'] = locale_msg['No']
     msgcss = render_template('mailsubscription.css')        
     msghtml = render_template('mailsubscription.html', _=locale_msg).format(
         **sub)
@@ -159,7 +163,7 @@ def sendconfirmationmail(s: SubscriptionModel):
     maintype, subtype = s.badgemimetype.split('/')
     parts = cast(List[EmailMessage], msg.get_payload())
     parts[1].add_related(s.badgeimage, maintype, subtype, 
-        cid=sub['photo_cid'])
+        cid='1')
     mailbackend = backends[app.config["EMAIL_BACKEND"]]()
     mailbackend.send_message(msg)
 

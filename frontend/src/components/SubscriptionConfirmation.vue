@@ -16,7 +16,7 @@
       </div>
       <div class="mt-2">
           <span>{{$t('ID Club')}}</span>:
-          {{ subscription.id_club }}
+          {{ subscription.idclub }}
       </div>
       <div class="mt-2">
           <span>{{$t('Nationality')}}</span>:
@@ -60,7 +60,7 @@
   <div class="mt-2" v-show="flow.isConfirmed">
     <div>{{$t('Your subscription is confirmed')}}</div>
     <div><span>{{$t('SubConf2')}}</span> {{ paymessage }}</div>
-    <v-btn @click="restart">{{$t('New subscription')}}</v-btn>
+    <v-btn @click="restart()">{{$t('New subscription')}}</v-btn>
   </div>
 </div>
 </template>
@@ -101,6 +101,7 @@ export default {
       );
     },
     restart () {
+      console.log('trying to reinit');
       this.$store.commit('init')
     }
   },

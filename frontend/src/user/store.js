@@ -87,9 +87,11 @@ const store = new Vuex.Store({
       state.photo = payload
     },
     init (state) {
+      console.log('calling init', state)
       state.flow = initflow;
       state.subscription = {};
       state.photo = '';
+      console.log('after init', state)
     },
     updateFlow(state, payload){
       state.flow = Object.assign({}, state.flow, payload)

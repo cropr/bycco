@@ -4,7 +4,7 @@
   <table>
     <tr>
       <td width="30%" class="confirmationphoto">
-        <img src="cid:{photo_cid}">
+        <img src="cid:1">
       </td>
       <td width="35%">
           <div class="phtop">
@@ -20,16 +20,7 @@
             {{ _["FIDE Nationality"] }}: {nationalityfide}
           </div>
           <div class="phtop">
-            <span>{{ _["Can become Belgian champion"] }}</span>:
-              {% if natstatus == 'fidebelg' %}
-                {{ _["Yes"] }}
-              {% endif %}
-              {% if natstatus == 'nobelg' %}
-                {{ _["No"] }}
-              {% endif %}
-              {% if natstatus == 'maybe' %}
-                {{ _["To be confirmed"] }}
-              {% endif %}
+            <span>{{ _["Can become Belgian champion"] }}: {champ}</span>:
           </div>
         </td>
         <td width="35%" >
@@ -45,7 +36,7 @@
           <div class="phtop">
               {{ _["Category"] }}: {category}
           </div>
-        </td>
+      </td>
       </tr>
   </table>
   <div class="pftop"></div>

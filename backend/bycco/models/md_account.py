@@ -7,20 +7,17 @@ import logging
 import uuid
 import jwt
 import asyncio
+from werkzeug.exceptions import NotFound, InternalServerError, Unauthorized
 from passlib.apps import custom_app_context as pwd_context
 from dataclasses import dataclass, field, asdict
-from typing import Dict, Any, TYPE_CHECKING
+from typing import Dict, Any, Optional, Type, List
 from datetime import datetime, timedelta
 from pymongo import ReturnDocument
 from bson import ObjectId
 from . import MongoModel, dbconfig
 
 log = logging.getLogger(__name__)
-
-if TYPE_CHECKING:
-    from .md_account import AccountModel
-
-extrasalt = 'LailijkeBaiste'
+extrasalt = 'VascheVisch'
 
 def uuidstr():
     return str(uuid.uuid1())
@@ -36,10 +33,12 @@ class AccountModel(MongoModel):
     mobilephone: str
     password: str = ""
     username: str = ""
-    creationtime: datetime = None
-    modificationtime: datetime = None    
+    creationtime: Optional[datetime] = None
+    modificationtime: Optional[datetime] = None    
     tokensalt: str = field(default_factory=uuidstr)
     _id: ObjectId = field(default_factory=ObjectId)
+
+    superuser: bool = False
 
     _collection = 'account'
     # never disclose password and tokensalt 
@@ -54,107 +53,98 @@ class AccountModel(MongoModel):
             self.modificationtime = datetime.utcnow()
 
     @classmethod
-    def get_user(cls, username:str) -> AccountModel:
+    def get_account(cls, username:str) -> "AccountModel":
         """
-        get User
-        #param: evdict: as defined in ElectionEventNewSchema
+        get account
         """
-        coll = dbconfig['db'][cls._collection]
-        rs = coll.find_one({'_id': username})
+        rs = cls.coll().find_one({'_id': username})
         if not rs:
-            raise ApiException(status_code=404, reason='UserNotFound')                
+            raise NotFound(description='AccountNotFound')                
         try:
-            return  cls(**rs)
+            return cls(**rs)
         except Exception as e:
-            log.execption('Cannot get account')
-            raise e
+            log.exception('Cannot encode account')
+            raise InternalServerError(description='CannotEncodeAccount')
 
     @classmethod
-    def get_all_users(cls) -> AccountModel:
+    def get_all_accounts(cls) -> List["AccountModel"]:
         """
-        get all users
+        get all accounts
         """
-        coll = dbconfig['db'][cls._collection]
-        users = [AccountModel(**doc) for doc in coll.find({})]
-        return users
+        try:
+            return [cls(**doc) for doc in cls.coll().find({})]
+        except:
+            log.exception('Cannot encode account')
+            raise InternalServerError(description='CannotEncodeAccount')
 
     @classmethod
-    def update_user(cls, 
-                username: str, 
-                userdict: Dict[str, Any],
-            ) -> AccountModel:
+    def update_account(
+        cls, 
+        username: str, 
+        userdict: Dict[str, Any],       # dict with updated parameters
+    ) -> "AccountModel":
         """
         update a User
-        #param: username: the username
-        #param: userdict: updated fields
         """
-        coll = dbconfig['db'][cls._collection]
         # do not update fields below
         userdict.pop('username', None)
         userdict.pop('password', None)
         userdict.pop('tokensalt', None)
-        rs = coll.find_one_and_update(
+        rs = cls.coll().find_one_and_update(
             {'_id': username},
             {'$set': userdict},
             return_document=ReturnDocument.AFTER
         )
         if not rs:
-            raise ApiException(status_code=404, reason='UserNotFound')                
+            raise NotFound(description='AccountNotFound')                
         try:
-            return  cls(**rs)
-        except Exception as e:
-            log.execption('Cannot update account')
-            raise e
+            return cls(**rs)
+        except:
+            log.exception('Cannot encode account')
+            raise InternalServerError(description='CannotEncodeAccount')
 
     @classmethod
-    def delete_user(cls, username: str) -> None:
+    def delete_account(cls, username: str) -> None:
         """
-        delete a user
-        #param username: 
+        delete an account
         """
-        coll = dbconfig['db'][cls._collection]
-        rs = coll.delete_one({'_id': username})
+        rs = cls.coll().delete_one({'_id': username})
         if rs.acknowledged and rs.deleted_count != 1:
-            raise ApiException(status_code=404, reason='AccountNotFound')
+            raise NotFound(description='AccountNotFound')
 
     @classmethod
-    def create(cls, accountdict: Dict[str, Any]) -> AccountModel:
+    def create_account(
+        cls, 
+        accountdict: Dict[str, Any]
+    ) -> "AccountModel":
         """
-        add a new account
-        #param: accountdict as in schema UserNew
+        create a new account
         """
-        coll = dbconfig['db'][cls._collection]
         try:
             accountdict['_id'] = accountdict.pop('username')
             pwd = accountdict.pop('password')
             accountdict['tokensalt'] = uuidstr()
-            coll.insert_one(accountdict)
+            cls.coll().insert_one(accountdict)
             acc = cls(**accountdict)
             if pwd: 
                 acc.set_password(pwd)
             return acc
-        except Exception as e:
-            log.exception('Cannot create account')
-            raise e
+        except:
+            log.exception('Cannot encode account')
+            raise InternalServerError(description='CannotEncodeAccount')
 
-    def get_token(self, days=30, refresh=False):
+    def get_token(self, days=30, refresh=False) -> bytes:
         """
-        gets a new token
-        :param days: # of days the token is valid
-        :param refresh: create a new token, invalidating the existing tokens
-        :return: return the newly created token
+        gets a new authorization token for an account
         """
-        coll = dbconfig['db'][self._collection]
         if refresh or not self.tokensalt:
             self.tokensalt = uuidstr()
-            rs = coll.find_one_and_update(
+            rs = self.coll().find_one_and_update(
                 { '_id': self._id},
                 {'$set': {'tokensalt': self.tokensalt}}
             )
             if not rs:
-                raise ApiException(status_code=404, reason='CannotUpdateAccount')
-        else:
-            asyncio.sleep(0)
+                raise NotFound(description='AccountNotFound')
         payload = {
             'username': self._id,
             'exp': datetime.utcnow() + timedelta(days=days)
@@ -163,40 +153,36 @@ class AccountModel(MongoModel):
             algorithm='HS256')
 
     @classmethod
-    def check_token(cls, token):
+    def check_token(cls: Type["AccountModel"], token: str) -> "AccountModel":
         """
-        checks an authorization token
-        :param token:
-        :return: the accountModel or raises exception
+        checks an authorization token and returns account
+        raises NotFound or Unauthorized
         """
-        coll = dbconfig['db'][cls._collection]
         try:
             payload = jwt.decode(token, verify=False)
         except:
-            raise ApiException(status_code=401, reason='InvalidToken')
+            raise Unauthorized(description='InvalidToken')
         try:
-            accdict = coll.find_one({'_id': payload.get('username')})
+            accdict = cls.coll().find_one({'_id': payload.get('username')})
             if not accdict:
-                raise ApiException(status_code=401, reason='AccountNotFound')
+                raise NotFound(description='AccountNotFound')
             account = cls(**accdict)
-            jwt.decode(token,  extrasalt + account.tokensalt)
-        except jwt.ExpiredSignatureError:
-            raise ApiException(status_code=401, reason='TokenExpired')
-        except jwt.InvalidTokenError:
-            raise ApiException(status_code=401, reason='InvalidToken')
         except Exception:
-            log.exception('Cannot get account from token')
-            raise ApiException(status_code=401, reason='InvalidToken')
-        return account
+            log.exception('Cannot encode account')
+            raise Unauthorized(description='CannotEncodeAccount')
+        try:
+            jwt.decode(token,  extrasalt + account.tokensalt)
+            return account
+        except jwt.ExpiredSignatureError:
+            raise Unauthorized(description='TokenExpired')
+        except jwt.InvalidTokenError:
+            raise Unauthorized(description='InvalidToken')
 
-    def set_password(self, pwd):
+    def set_password(self, pwd: str):
         """
         sets and persists the password
-        :param pwd:
-        :return: None
         """
-        coll = dbconfig['db'][self._collection]
-        coll.find_one_and_update(
+        self.coll().find_one_and_update(
             { '_id': self._id},
             {'$set': {'password': pwd_context.encrypt(pwd)}}
         )

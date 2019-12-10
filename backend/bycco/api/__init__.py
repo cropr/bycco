@@ -36,3 +36,14 @@ apimgr.add_resource(SubscriptionConfirmResource,
     '/api/subscriptions/<id>/confirm')
 apimgr.add_resource(SubscriptionPhotoResource, 
     '/api/subscriptions/<id>/photo')
+
+from .api_account import (
+    AccountResource,
+    AccountsResource,
+    LoginResource
+)
+
+apimgr.add_resource(AccountsResource, '/api/account')
+apimgr.add_resource(AccountResource, '/api/account/<username>')
+apimgr.add_resource(LoginResource, '/api/login/<username>')
+
