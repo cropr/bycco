@@ -87,7 +87,7 @@ def confirmSubscription(id: str) -> str:
     except:
         log.info('Cannot find sub')
         invoicenumber = CounterModel.nextValue('invoice')
-    nr = 202010000 + invoicenumber
+    nr = int(202010000 + invoicenumber)
     rm1 = invoicenumber // 1000
     rm2 = invoicenumber % 1000
     rm3 = nr % 97 or 97

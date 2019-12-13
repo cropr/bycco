@@ -246,4 +246,13 @@ export default {
     method: 'GET',
     url: '/page',
   },
+
+  // account
+  login: {
+    method: 'POST',
+    url: '/login',
+    body: ['username', 'password', 'command'],
+    required: ['command'],
+  },
+
 };

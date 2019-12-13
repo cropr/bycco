@@ -86,10 +86,10 @@ class SubscriptionModel(MongoModel):
         coll = dbconfig['db'][cls._collection]
         subs = []
         cursor = coll.find({}, {
+            "category": 1,
             "first_name": 1,
             "last_name": 1,
             "registrationdate": 1,
-            "modificationtime": 1,
         })
         for doc in cursor:
             doc['id'] = str(doc.pop('_id'))

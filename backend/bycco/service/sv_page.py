@@ -10,6 +10,7 @@ from werkzeug.exceptions import NotFound
 from typing import List, Optional, Union
 from bycco import app
 from bycco.models import PageModel, BasicPage, LocalizedPage
+from bycco.service import request2account
 
 log = logging.getLogger('bycco')
 
@@ -71,6 +72,6 @@ def getPages() -> List[BasicPage]:
     """
     get all pages
     """
-    log.info('get pages')
+    # request2account().check_right('ViewPages')
     pages = PageModel.find_pages()
     return pages

@@ -84,10 +84,7 @@ class PageModel(MongoModel):
 
 
     @classmethod
-    def create_page(
-            cls: Type["PageModel"], 
-            pagedict: Dict[str, Any]
-        ) -> "PageModel":
+    def create_page(cls, pagedict: Dict[str, Any] ) -> PageModel:
         """
         create a new page
         """
@@ -103,7 +100,7 @@ class PageModel(MongoModel):
             raise BadRequest(description="CannotEncodeCreatedPage")
 
     @classmethod
-    def find_pages( cls: Type["PageModel"] ) -> List[BasicPage]:
+    def find_pages(cls) -> List[BasicPage]:
         """
         find all pages 
         """
@@ -126,10 +123,7 @@ class PageModel(MongoModel):
         return pages
 
     @classmethod
-    def find_by_id(
-            cls: Type["PageModel"], 
-            id: str, 
-        ) -> "PageModel":
+    def find_by_id(cls, id: str, ) -> PageModel:
         """
         find a page by slug
         returns None if nothing is found
@@ -149,10 +143,7 @@ class PageModel(MongoModel):
             raise InternalServerError(description="ErrorEncodingPage")
 
     @classmethod
-    def find_by_slug(
-            cls: Type["PageModel"], 
-            slug: str, 
-        ) -> "PageModel":
+    def find_by_slug(cls, slug: str) -> PageModel:
         """
         find a page by slug
         returns None if nothing is found
@@ -168,11 +159,7 @@ class PageModel(MongoModel):
             raise InternalServerError(description="ErrorEncodingPage")
 
     @classmethod
-    def find_i18n_by_slug(
-            cls: Type["PageModel"], 
-            slug: str, 
-            lang: str,
-        ) -> LocalizedPage:        
+    def find_i18n_by_slug(cls, slug: str, lang: str) -> LocalizedPage:        
         """
         find a page by slug and locale.  Filters out the correct language
         returns None if nothing is found
@@ -200,11 +187,7 @@ class PageModel(MongoModel):
             projection={'slug':1, 'template':1, '_id':0})}
 
     @classmethod
-    def update_page(
-            cls: Type["PageModel"],
-            id: str, 
-            pagedict: Dict[str, Any]
-        ) -> "PageModel":
+    def update_page(cls, id: str, pagedict: Dict[str, Any] ) -> PageModel:
         """
         update a page
         """

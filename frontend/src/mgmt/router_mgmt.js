@@ -4,6 +4,8 @@ import PageAdd from '@/mgmt/PageAdd.vue'
 import PageEdit from '@/mgmt/PageEdit.vue'
 import PageList from '@/mgmt/PageList.vue'
 import PagePreview from '@/mgmt/PagePreview.vue'
+import Login from '@/mgmt/Login.vue'
+
 
 Vue.use(VueRouter);
 
@@ -13,6 +15,7 @@ const router = new VueRouter({
     {path: '/mgmt/page/add', component: PageAdd},
     {path: '/mgmt/page/edit/:id', component: PageEdit},
     {path: '/mgmt/page/preview:id', component: PagePreview},
+    {path: '/mgmt/login', component: Login},
     {path: '*', redirect: '/mgmt/page/list'},
   ],
   mode: 'history'

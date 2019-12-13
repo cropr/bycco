@@ -27,15 +27,16 @@ class AccountModel(MongoModel):
     """
     An Account
     """
+    email: str
     first_name: str
     last_name: str
-    email: str
     mobilephone: str
-    password: str = ""
-    username: str = ""
     creationtime: Optional[datetime] = None
+    accessrights: Dict[str, Any] = field(default_factory=dict)
     modificationtime: Optional[datetime] = None    
+    password: str = ""
     tokensalt: str = field(default_factory=uuidstr)
+    username: str = ""
     _id: ObjectId = field(default_factory=ObjectId)
 
     superuser: bool = False
@@ -53,52 +54,21 @@ class AccountModel(MongoModel):
             self.modificationtime = datetime.utcnow()
 
     @classmethod
-    def get_account(cls, username:str) -> "AccountModel":
+    def create_account(cls, accountdict: Dict[str, Any]) -> AccountModel:
         """
-        get account
-        """
-        rs = cls.coll().find_one({'_id': username})
-        if not rs:
-            raise NotFound(description='AccountNotFound')                
-        try:
-            return cls(**rs)
-        except Exception as e:
-            log.exception('Cannot encode account')
-            raise InternalServerError(description='CannotEncodeAccount')
-
-    @classmethod
-    def get_all_accounts(cls) -> List["AccountModel"]:
-        """
-        get all accounts
+        create a new account
         """
         try:
-            return [cls(**doc) for doc in cls.coll().find({})]
-        except:
-            log.exception('Cannot encode account')
-            raise InternalServerError(description='CannotEncodeAccount')
-
-    @classmethod
-    def update_account(
-        cls, 
-        username: str, 
-        userdict: Dict[str, Any],       # dict with updated parameters
-    ) -> "AccountModel":
-        """
-        update a User
-        """
-        # do not update fields below
-        userdict.pop('username', None)
-        userdict.pop('password', None)
-        userdict.pop('tokensalt', None)
-        rs = cls.coll().find_one_and_update(
-            {'_id': username},
-            {'$set': userdict},
-            return_document=ReturnDocument.AFTER
-        )
-        if not rs:
-            raise NotFound(description='AccountNotFound')                
-        try:
-            return cls(**rs)
+            accountdict['_id'] = accountdict.pop('username')
+            n = datetime.utcnow()
+            accountdict['modificationtime'] = accountdict['creationtime'] = n
+            pwd = accountdict.pop('password')
+            accountdict['tokensalt'] = uuidstr()
+            cls.coll().insert_one(accountdict)
+            acc = cls(**accountdict)
+            if pwd: 
+                acc.set_password(pwd)
+            return acc
         except:
             log.exception('Cannot encode account')
             raise InternalServerError(description='CannotEncodeAccount')
@@ -113,47 +83,56 @@ class AccountModel(MongoModel):
             raise NotFound(description='AccountNotFound')
 
     @classmethod
-    def create_account(
-        cls, 
-        accountdict: Dict[str, Any]
-    ) -> "AccountModel":
+    def get_account(cls, username:str) -> AccountModel:
         """
-        create a new account
+        get account
+        """
+        rs = cls.coll().find_one({'_id': username})
+        if not rs:
+            raise NotFound(description='AccountNotFound')                
+        try:
+            return cls(**rs)
+        except Exception as e:
+            log.exception('Cannot encode account')
+            raise InternalServerError(description='CannotEncodeAccount')
+
+    @classmethod
+    def get_all_accounts(cls) -> List[AccountModel]:
+        """
+        get all accounts
         """
         try:
-            accountdict['_id'] = accountdict.pop('username')
-            pwd = accountdict.pop('password')
-            accountdict['tokensalt'] = uuidstr()
-            cls.coll().insert_one(accountdict)
-            acc = cls(**accountdict)
-            if pwd: 
-                acc.set_password(pwd)
-            return acc
+            return [cls(**doc) for doc in cls.coll().find({})]
         except:
             log.exception('Cannot encode account')
             raise InternalServerError(description='CannotEncodeAccount')
 
-    def get_token(self, days=30, refresh=False) -> bytes:
+    @classmethod
+    def update_account(cls, username: str, accountdict: Dict[str, Any]) -> AccountModel:
         """
-        gets a new authorization token for an account
+        update a User
         """
-        if refresh or not self.tokensalt:
-            self.tokensalt = uuidstr()
-            rs = self.coll().find_one_and_update(
-                { '_id': self._id},
-                {'$set': {'tokensalt': self.tokensalt}}
-            )
-            if not rs:
-                raise NotFound(description='AccountNotFound')
-        payload = {
-            'username': self._id,
-            'exp': datetime.utcnow() + timedelta(days=days)
-        }
-        return jwt.encode(payload, extrasalt + self.tokensalt, 
-            algorithm='HS256')
+        # do not update fields below
+        accountdict.pop('username', None)
+        accountdict.pop('password', None)
+        accountdict.pop('tokensalt', None)
+        accountdict.pop('accessrights', None)
+        accountdict['modificationtime'] = datetime.utcnow()
+        rs = cls.coll().find_one_and_update(
+            {'_id': username},
+            {'$set': accountdict},
+            return_document=ReturnDocument.AFTER
+        )
+        if not rs:
+            raise NotFound(description='AccountNotFound')                
+        try:
+            return cls(**rs)
+        except:
+            log.exception('Cannot encode account')
+            raise InternalServerError(description='CannotEncodeAccount')
 
     @classmethod
-    def check_token(cls: Type["AccountModel"], token: str) -> "AccountModel":
+    def check_token(cls: Type[AccountModel], token: str) -> AccountModel:
         """
         checks an authorization token and returns account
         raises NotFound or Unauthorized
@@ -178,11 +157,65 @@ class AccountModel(MongoModel):
         except jwt.InvalidTokenError:
             raise Unauthorized(description='InvalidToken')
 
-    def set_password(self, pwd: str):
+    def check_right(self, right: str) -> bool:
+        """
+        check if account has right 
+        """
+        if 'superuser' in self.accessrights:
+            return True
+        return self.accessrights.get(right, False)
+
+    def get_token(self, days=30, refresh=False) -> bytes:
+        """
+        gets a new authorization token for an account
+        """
+        if refresh or not self.tokensalt:
+            self.tokensalt = uuidstr()
+            rs = self.coll().find_one_and_update(
+                { '_id': self._id},
+                {'$set': {'tokensalt': self.tokensalt}}
+            )
+            if not rs:
+                raise NotFound(description='AccountNotFound')
+        payload = {
+            'username': self._id,
+            'exp': datetime.utcnow() + timedelta(days=days)
+        }
+        return jwt.encode(payload, extrasalt + self.tokensalt, 
+            algorithm='HS256')
+
+    def remove_right(self, right: str) -> None:
+        """
+        remove right of qn account
+        """
+        self.coll().find_one_and_update({'_id': self._id}, {
+            '$unset': { f'accessrights.{right}': ""}
+        })
+
+    def set_password(self, pwd: str) -> None:
         """
         sets and persists the password
         """
-        self.coll().find_one_and_update(
-            { '_id': self._id},
-            {'$set': {'password': pwd_context.encrypt(pwd)}}
-        )
+        self.coll().find_one_and_update( { '_id': self._id}, {'$set': {
+            'password': pwd_context.encrypt(pwd),
+            'modificationtime': datetime.utcnow()
+        }})
+    
+    def update_right(self, right: str, value:Any = True) -> None:
+        """
+        update/add right of an account
+        """
+        self.coll().find_one_and_update({'_id': self._id}, { '$set': { 
+            f'accessrights.{right}': value,
+            'modificationtime': datetime.utcnow()
+        } })
+
+    def update_username(self, username: str) -> None:
+        """
+        updates the username of an account
+        """
+        self.coll().find_one_and_update({'_id': self._id}, { '$set': { 
+            'username': username,
+            'modificationtime': datetime.utcnow()
+        } })
+    
