@@ -25,14 +25,6 @@ from bycco.service.mail import backends
 log = logging.getLogger('bycco')
 mailcc = 'confirmation@bycco.be'
 
-def getSubscriptions() -> List[BasicSubscription]:
-    """
-    get all subscriptions
-    """
-    log.info('get subsriptions')
-    subs = SubscriptionModel.find_subscriptions()
-    return subs
-
 def addSubscription(ss: dict):
     """
     add a new subscription
@@ -105,17 +97,20 @@ def getPhoto(id: str):
     sub = SubscriptionModel.find_by_id(id)
     return Response(sub.badgeimage, content_type=sub.badgemimetype)     
 
-def updatePhoto(id: str, photo: str) -> None:
-    try:
-        header, data = photo.split(',')
-        upd = {
-            'badgemimetype': header.split(':')[1].split(';')[0],
-            'badgeimage': a2b_base64(data)
-        }
-        upd['badgelength'] = len(upd['badgeimage'])
-    except:
-        raise BadRequest(description='BadPhotoData')
-    SubscriptionModel.updateSubscription(id, upd)
+def getSubscriptions() -> List[BasicSubscription]:
+    """
+    get all subscriptions
+    """
+    log.info('get subsriptions')
+    subs = SubscriptionModel.find_subscriptions()
+    return subs
+
+def getSubscription(id: str) -> SubscriptionModel:
+    """
+    get one subscription
+    """
+    log.info('get subsription')
+    return SubscriptionModel.find_by_id(id)
 
 def sendconfirmationmail(s: SubscriptionModel):
     """
@@ -162,8 +157,20 @@ def sendconfirmationmail(s: SubscriptionModel):
     msg.add_alternative(msgcss+msghtml, subtype='html')
     maintype, subtype = s.badgemimetype.split('/')
     parts = cast(List[EmailMessage], msg.get_payload())
-    parts[1].add_related(s.badgeimage, maintype, subtype, 
-        cid='1')
+    if s.badgeimage:
+        parts[1].add_related(s.badgeimage, maintype, subtype, cid='1')
     mailbackend = backends[app.config["EMAIL_BACKEND"]]()
     mailbackend.send_message(msg)
+
+def updatePhoto(id: str, photo: str) -> None:
+    try:
+        header, data = photo.split(',')
+        upd = {
+            'badgemimetype': header.split(':')[1].split(';')[0],
+            'badgeimage': a2b_base64(data)
+        }
+        upd['badgelength'] = len(upd['badgeimage'])
+    except:
+        raise BadRequest(description='BadPhotoData')
+    SubscriptionModel.updateSubscription(id, upd)
 

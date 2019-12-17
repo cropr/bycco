@@ -6,13 +6,16 @@ from werkzeug.exceptions import BadRequest
 from bycco.service import (
     addSubscription, 
     confirmSubscription,
-    getSubscriptions, 
+    getSubscriptions,
+    getSubscription, 
     updatePhoto,
 )
 
 class SubscriptionsResource(Resource):
+    
     def get(self) -> dict:
         return {'subscriptions': getSubscriptions()}
+
     def post(self) -> dict:
         data = request.get_json(silent=True)
         if not data:
@@ -31,6 +34,11 @@ class SubscriptionsResource(Resource):
             raise BadRequest(description='MissingSubscriptionParameter')
         # return {'subscription': updateSubscription(subdict)}
         return {}
+
+class SubscriptionResource(Resource):
+    
+    def get(self, id:str) -> dict:
+        return {'subscription': getSubscription(id)}
 
 
 class SubscriptionConfirmResource(Resource):

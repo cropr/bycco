@@ -63,7 +63,7 @@ def read_zipfile_bel(fszip, period):
             continue
         bel_id = str(line['MATRICULE'])
         try:
-            p = BelplayerModel.find_by_id({'_id': bel_id})
+            p = BelplayerModel.find_by_id(bel_id)
         except NotFound:
             p = BelplayerModel.blank(bel_id)
         if ',' in line['NOM_PRENOM']:  # new format as of 2015
@@ -137,7 +137,7 @@ def read_zipfile_fide(fszip, period):
         line = row.decode('utf-8')
         fide_id = line[0:15].strip()
         try: 
-            p = FideplayerModel.find_by_id({'_id': fide_id})
+            p = FideplayerModel.find_by_id(fide_id)
         except NotFound:
             p = FideplayerModel.blank(fide_id)
         nfn = line[15:76].split(',')

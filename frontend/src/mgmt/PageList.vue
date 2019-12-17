@@ -37,6 +37,8 @@
 <script>
 
 import api from '@/util/api'
+import { mapState } from 'vuex'
+
 
 export default {
 
@@ -60,6 +62,11 @@ export default {
     pages: [],
   }},
 
+  computed: {
+    ...mapState(['token'])
+  },
+
+
   methods: {
     editPage (item) {
       this.$router.push('/mgmt/page/edit/'  + item.id)
@@ -67,7 +74,9 @@ export default {
   },
 
   mounted () {
-    api('getPages', {}).then(
+    api('getPages', {
+      Authorization: 'Bearer ' + this.token
+    }).then(
       function(data) {
         this.pages = data.pages;
         this.pages.forEach(function(p){
@@ -76,8 +85,13 @@ export default {
         }.bind(this));
       }.bind(this),
       function(data){
-        console.error('getting get pages', data);
-      }
+        if (data.status == 401) {
+          this.$router.push('/mgmt/login')
+        }
+        else {
+          console.error('getting getPages', data);
+        }
+      }.bind(this)
     );
   },  
 

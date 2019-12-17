@@ -5,14 +5,15 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    account: {},
+    token: '',
     page: {},
     routebeforelogin: '',
   },
 
   mutations: {
-    updateAccount (state, payload) {
-      state.account = payload;
+    updateToken (state, payload) {
+      console.log('storing token', payload)
+      state.token = payload;
     },
     updatePage (state, payload) {
       state.page = payload;

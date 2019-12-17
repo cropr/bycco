@@ -245,6 +245,7 @@ export default {
   getPages: {
     method: 'GET',
     url: '/page',
+    headers: ['Authorization']
   },
 
   // account

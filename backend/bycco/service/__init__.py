@@ -24,9 +24,10 @@ from .sv_page import (
 )
 from .sv_playerlist import getBelplayer, getFideplayer
 from .sv_subscription import (
-    getSubscriptions, 
     addSubscription, 
     confirmSubscription,
     getPhoto,
+    getSubscriptions,
+    getSubscription,
     updatePhoto,
 )

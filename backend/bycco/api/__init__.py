@@ -27,11 +27,13 @@ apimgr.add_resource(BelplayerResource, '/api/belplayer/<id>')
 apimgr.add_resource(FideplayerResource, '/api/fideplayer/<id>')
 
 from .api_subscription import (
-    SubscriptionsResource, 
+    SubscriptionsResource,
+    SubscriptionResource,
     SubscriptionConfirmResource,
     SubscriptionPhotoResource,
 )
 apimgr.add_resource(SubscriptionsResource, '/api/subscriptions')
+apimgr.add_resource(SubscriptionResource, '/api/subscriptions/<id>')
 apimgr.add_resource(SubscriptionConfirmResource, 
     '/api/subscriptions/<id>/confirm')
 apimgr.add_resource(SubscriptionPhotoResource, 
@@ -45,5 +47,5 @@ from .api_account import (
 
 apimgr.add_resource(AccountsResource, '/api/account')
 apimgr.add_resource(AccountResource, '/api/account/<username>')
-apimgr.add_resource(LoginResource, '/api/login/<username>')
+apimgr.add_resource(LoginResource, '/api/login')
 

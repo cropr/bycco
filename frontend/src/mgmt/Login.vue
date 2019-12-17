@@ -12,10 +12,10 @@
         <v-card-text>
           <v-col cols="12">
             <v-text-field xs="12" lg="4" v-model="login.username" 
-              :label="Username">
+              label="Username">
             </v-text-field>
             <v-text-field xs="12" lg="6" v-model="login.password" 
-              :label="Password" type="password">
+              label="Password" type="password">
             </v-text-field>
           </v-col>
           <v-card-actions>
@@ -35,7 +35,7 @@ import api from "@/util/api"
 // import {mapState} from 'vuex'
 
 export default {
-  name: "LoginBoard",
+  name: "Login",
 
   data(){
     return{
@@ -46,18 +46,13 @@ export default {
   methods: {
     dologin() {
       api('login', {
-        "command": "getToken",
+        "command": "login",
         "username": this.login.username,
         "password": this.login.password
       }).then(
         function (data) {
           this.$store.commit('updateToken', data.token);
-          if (this.electionEvent && this.electionEvent.id) {
-            this.$router.push('/event/' + this.electionEvent.id);
-          }
-          else {
-            this.$router.push('/events');
-          }
+          this.$router.push('/mgmt/page/list');
         }.bind(this),
         function (data) {
           if(data.code == 401) {

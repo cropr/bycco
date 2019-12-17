@@ -10,7 +10,7 @@ def createsuperuser():
         'first_name': 'Admin',
         'last_name': '',
         'mobilephone': '',
-        'password': 'admin'
+        'password': 'Bycco2020'
     }
     acc = AccountModel.create_account(ik)
     acc.update_right('superuser')

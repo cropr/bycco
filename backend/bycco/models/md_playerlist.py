@@ -39,15 +39,12 @@ class BelplayerModel(MongoModel):
 
 
     @classmethod
-    def find_by_id(
-            cls: Type["BelplayerModel"], 
-            id: str, 
-        ) -> "BelplayerModel":
+    def find_by_id(cls, id: str) -> BelplayerModel:
         """
         find a player by his Beligan id
         returns None if nothing is found
         """
-        beldoc = cls.coll().find_one({'_id':id})
+        beldoc = cls.coll().find_one({'_id': id})
         if not beldoc:
             raise NotFound(description="BelplayerNotFound")
         try:
@@ -62,7 +59,7 @@ class BelplayerModel(MongoModel):
             id: str, 
         ) -> "BelplayerModel":
         """
-        cretae a blank Belplyaer with a given id
+        create a blank Belplyaer with a given id
         """
         beldict = {
             '_id': id,
