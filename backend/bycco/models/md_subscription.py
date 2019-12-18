@@ -6,7 +6,7 @@ from __future__ import annotations
 import logging
 
 from dataclasses import dataclass, field, asdict
-from typing import Dict, Any, List, Optional, Type
+from typing import Dict, Any, List, Optional, Type, Union
 from datetime import datetime, timedelta, date
 from pymongo import ReturnDocument
 from bson import ObjectId
@@ -77,20 +77,32 @@ class SubscriptionModel(MongoModel):
         self.id = str(self._id)
 
     @classmethod
-    def find_subscriptions( 
-        cls: Type["SubscriptionModel"] 
-    ) -> List[BasicSubscription]:
+    def csv_subscriptions(cls) -> List[dict]:
+        """
+        find all subscription for csv output
+        """
+        coll = dbconfig['db'][cls._collection]
+        subs = []
+        cursor = coll.find({}, {'badgeimage': 0})
+        for doc in cursor:
+            doc['id'] = str(doc.pop('_id'))
+            subs.append(doc)
+        return subs
+    
+    @classmethod
+    def find_subscriptions(cls, format=None) -> List[BasicSubscription]:
         """
         find all subscription
         """
         coll = dbconfig['db'][cls._collection]
         subs = []
-        cursor = coll.find({}, {
+        fields = {
             "category": 1,
             "first_name": 1,
             "last_name": 1,
             "registrationdate": 1,
-        })
+        }
+        cursor = coll.find({}, fields)
         for doc in cursor:
             doc['id'] = str(doc.pop('_id'))
             try:
@@ -100,10 +112,7 @@ class SubscriptionModel(MongoModel):
         return subs
 
     @classmethod
-    def find_by_idbel( 
-        cls: Type["SubscriptionModel"],
-        idbel: str, 
-    ) -> "SubscriptionModel":
+    def find_by_idbel(cls, idbel: str) -> "SubscriptionModel":
         """
         find a subscription by idbel
         """
@@ -117,10 +126,7 @@ class SubscriptionModel(MongoModel):
             raise InternalServerError(description="CannotEncodeSubscription")
 
     @classmethod
-    def find_by_id( 
-        cls: Type["SubscriptionModel"],
-        id: str, 
-    ) -> "SubscriptionModel":
+    def find_by_id(cls, id: str) -> "SubscriptionModel":
         """
         find a subscription by id
         """
@@ -137,22 +143,10 @@ class SubscriptionModel(MongoModel):
             log.exception('Cannot encode Subscription')
             raise InternalServerError(description="CannotEncodeSubscription")
 
-
     @classmethod
-    def add_subscription( 
-        cls: Type["SubscriptionModel"],
-        subdict: Dict, 
-    ) -> "SubscriptionModel":
+    def blank(cls) -> SubscriptionModel:
         """
-        find all subscription
-        """
-
-    @classmethod
-    def blank( 
-        cls: Type["SubscriptionModel"],
-    ) -> "SubscriptionModel":
-        """
-        find all subscription
+        create a blank subscription
         """
         coll = dbconfig['db'][cls._collection]
         id = ObjectId()
@@ -182,13 +176,9 @@ class SubscriptionModel(MongoModel):
             raise InternalServerError(description="CannotEncodeSubscription")
 
     @classmethod
-    def updateSubscription(
-        cls: Type["SubscriptionModel"],
-        id: str,
-        subdict: Dict[str, Any]
-    ) -> "SubscriptionModel":
+    def updateSubscription(cls, id: str, subdict: Dict[str, Any]) -> "SubscriptionModel":
         """
-        update subscription 
+        update a subscription 
         """
         try:
             oid = ObjectId(id)
@@ -205,7 +195,7 @@ class SubscriptionModel(MongoModel):
             log.exception('error encoding subdict')
             raise InternalServerError(description="ErrorEncodingSubscription")
 
-    def save(self: "SubscriptionModel") -> None:
+    def save(self) -> None:
         """
         save changes of Subscription instance
         """

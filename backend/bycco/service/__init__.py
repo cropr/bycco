@@ -26,6 +26,7 @@ from .sv_playerlist import getBelplayer, getFideplayer
 from .sv_subscription import (
     addSubscription, 
     confirmSubscription,
+    csvSubscriptions,
     getPhoto,
     getSubscriptions,
     getSubscription,

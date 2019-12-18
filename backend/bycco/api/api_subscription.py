@@ -6,6 +6,7 @@ from werkzeug.exceptions import BadRequest
 from bycco.service import (
     addSubscription, 
     confirmSubscription,
+    csvSubscriptions,
     getSubscriptions,
     getSubscription, 
     updatePhoto,
@@ -14,7 +15,11 @@ from bycco.service import (
 class SubscriptionsResource(Resource):
     
     def get(self) -> dict:
-        return {'subscriptions': getSubscriptions()}
+        format = request.args.get('format', 'json')
+        if format == 'csv':
+            return {'subscriptions': csvSubscriptions()}
+        else:
+            return {'subscriptions': getSubscriptions()}
 
     def post(self) -> dict:
         data = request.get_json(silent=True)
@@ -42,13 +47,17 @@ class SubscriptionResource(Resource):
 
 
 class SubscriptionConfirmResource(Resource):
+
     def post(self, id:str) -> tuple:
         pm = confirmSubscription(id)
         return {'paymessage': pm}
 
+
 class SubscriptionPhotoResource(Resource):
+
     def get(self, id:str) -> dict:
         pass
+
     def post(self, id:str) -> dict:
         data = request.get_json(silent=True)
         if not data:

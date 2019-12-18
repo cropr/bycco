@@ -93,6 +93,12 @@ def confirmSubscription(id: str) -> str:
     sendconfirmationmail(sub)
     return paymessage
 
+def csvSubscriptions() -> List[SubscriptionModel]:
+    """
+    get all subscriptions in csv format
+    """
+    return SubscriptionModel.csv_subscriptions()
+
 def getPhoto(id: str):
     sub = SubscriptionModel.find_by_id(id)
     return Response(sub.badgeimage, content_type=sub.badgemimetype)     
