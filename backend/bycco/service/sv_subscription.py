@@ -79,11 +79,11 @@ def confirmSubscription(id: str) -> str:
     except:
         log.info('Cannot find sub')
         invoicenumber = CounterModel.nextValue('invoice')
-    nr = int(202010000 + invoicenumber)
+    nr = int(2020010000 + invoicenumber)
     rm1 = invoicenumber // 1000
     rm2 = invoicenumber % 1000
     rm3 = nr % 97 or 97
-    paymessage = f"+++020/201{rm1:01d}/{rm2:03d}{rm3:02d}+++"
+    paymessage = f"+++202/001{rm1:01d}/{rm2:03d}{rm3:02d}+++"
     sub = SubscriptionModel.updateSubscription(id, {
         'confirmed': True,
         'invoicenumber': invoicenumber,
@@ -93,7 +93,7 @@ def confirmSubscription(id: str) -> str:
     sendconfirmationmail(sub)
     return paymessage
 
-def csvSubscriptions() -> List[SubscriptionModel]:
+def csvSubscriptions() -> List[dict]:
     """
     get all subscriptions in csv format
     """
@@ -116,7 +116,15 @@ def getSubscription(id: str) -> SubscriptionModel:
     get one subscription
     """
     log.info('get subsription')
-    return SubscriptionModel.find_by_id(id)
+    s = SubscriptionModel.find_by_id(id)
+    return 
+
+def getSubscriptionByIdbel(idbel: str) -> SubscriptionModel:
+    """
+    get one subscription
+    """
+    log.info('get subsription by idbel')
+    return SubscriptionModel.find_by_idbel(idbel)
 
 def sendconfirmationmail(s: SubscriptionModel):
     """

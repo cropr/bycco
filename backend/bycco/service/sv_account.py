@@ -37,7 +37,7 @@ def getAccount(username: str) -> AccountModel:
 
 def updateAccount(username: str, accountdict: dict) -> AccountModel:
     """
-    update an account
+    update an account 
     """
     return AccountModel.update_account(username, accountdict)
 

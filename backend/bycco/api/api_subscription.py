@@ -8,7 +8,8 @@ from bycco.service import (
     confirmSubscription,
     csvSubscriptions,
     getSubscriptions,
-    getSubscription, 
+    getSubscription,
+    getSubscriptionByIdbel, 
     updatePhoto,
 )
 
@@ -43,7 +44,12 @@ class SubscriptionsResource(Resource):
 class SubscriptionResource(Resource):
     
     def get(self, id:str) -> dict:
-        return {'subscription': getSubscription(id)}
+        idtype = request.args.get('idtype', 'db')
+        if idtype == 'db':
+            s = {'subscription': getSubscription(id)}
+        if idtype == 'bel':
+            s = {'subscription': getSubscriptionByIdbel(id)}
+        return s
 
 
 class SubscriptionConfirmResource(Resource):

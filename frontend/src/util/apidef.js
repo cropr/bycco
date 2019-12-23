@@ -67,17 +67,24 @@ export default {
     body: ['subscription'],
     required: ['subscription']
   },
-  updateSubscription: {
-    method: 'PUT',
-    url: '/subscriptions',
-    body: ['subscription'],
-    required: ['subscription']
-  },
   getPhoto: {
     method: 'GET',
     url: '/subscriptions/{idsub}/photo',
     path: ['idsub'],
     required: ['idsub']
+  },
+  getSubscription: {
+    method: 'GET',
+    url: '/subscriptions/{id}',
+    path: ['id'],
+    query: ['idtype'],
+    required: ['id']
+  },
+  updateSubscription: {
+    method: 'PUT',
+    url: '/subscriptions',
+    body: ['subscription'],
+    required: ['subscription']
   },
   uploadPhoto: {
     method: 'POST',

@@ -55,13 +55,34 @@ export default {
 
     lookup() {
       this.errorcode = false;
+      api('getSubscription', {
+        id: this.flow.idnumber,
+        idtype: 'bel',
+      }).then(
+        function(data){
+          if (data.subscription.confirmed) {
+            this.errorcode = 'alreadyregistered';
+          }
+          else  {
+            this.$store.commit('updateFlow', {isPlayerFound: true})
+            this.$store.commit('setSubscription', data.subscription)
+          }
+        }.bind(this),
+        function(data){
+          if (data.status == 404) {
+            this.fetchPlayer();
+          }
+          else {
+            this.errorcode = 'unknown';
+          }
+        }.bind(this)
+      );
+    },
+    
+    fetchPlayer(){
       api('searchIdNational', {idbel: this.flow.idnumber}).then(
         function(data) {
           let player = data.belplayer;
-          if (data.alreadyregistered) {
-            this.errorcode = 'alreadyregistered';
-            return;
-          }
           let db = new Date(player.birthdate);
           if (db.getFullYear() < this.maxyear) {
             this.errorcode = 'playeradult';
@@ -69,17 +90,17 @@ export default {
           }
           this.$store.commit('updateFlow', {isPlayerFound: true})
           this.$store.commit('setSubscription', {
+            birthdate: new Date(player.birthdate),
             last_name: player.last_name,
             first_name: player.first_name,
             gender: player.gender,
             ratingsbel: player.ratingsbel,
             currentratingbel: player.currentratingbel,
             nationalitybel: player.nationalitybel,
-            birthdate: new Date(player.birthdate),
             idbel: player._id,
             idfide: player.idfide,
             idclub: player.idclub,
-            natstatus: 'maybe',
+            natstatus: 'maybe',            
           });
           if (player.idfide && player.idfide.length) {
             api('searchIdFide', {idfide:player.idfide}).then(

@@ -112,11 +112,14 @@ class SubscriptionModel(MongoModel):
         return subs
 
     @classmethod
-    def find_by_idbel(cls, idbel: str) -> "SubscriptionModel":
+    def find_by_idbel(cls, idbel: str, withimage=False) -> "SubscriptionModel":
         """
         find a subscription by idbel
         """
-        subdoc = cls.coll().find_one({'idbel': idbel})
+        if withimage:
+            subdoc = cls.coll().find_one({'idbel': idbel})
+        else:
+            subdoc = cls.coll().find_one({'idbel': idbel}, {'badgeimage':0})
         if not subdoc:
             raise NotFound(description="SubscriptionNotFound")
         try:
@@ -126,7 +129,7 @@ class SubscriptionModel(MongoModel):
             raise InternalServerError(description="CannotEncodeSubscription")
 
     @classmethod
-    def find_by_id(cls, id: str) -> "SubscriptionModel":
+    def find_by_id(cls, id: str, withimage=False) -> "SubscriptionModel":
         """
         find a subscription by id
         """
@@ -134,7 +137,10 @@ class SubscriptionModel(MongoModel):
             oid = ObjectId(id)
         except:
             raise BadRequest(description="InvalidSubscriptionId")
-        subdoc = cls.coll().find_one(oid)
+        if withimage:
+            subdoc = cls.coll().find_one(oid)
+        else:
+            subdoc = cls.coll().find_one(oid, {'badgeimage':0})
         if not subdoc:
             raise NotFound(description="SubscriptionNotFound")
         try:

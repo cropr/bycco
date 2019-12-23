@@ -27,5 +27,5 @@ class DataclassEncoder(json.JSONEncoder):
                 for h in obj._hidden:
                     objd.pop(h, None)
             return objd
-        return super(DateclassEncoder, self).default(obj)
+        return super(DataclassEncoder, self).default(obj)
 

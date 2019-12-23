@@ -159,7 +159,7 @@ export default {
       return this.subscription.birthdate < this.adultdate
     },
     cats () {
-      let bdate = this.subscription.birthdate;
+      let bdate = new Date(this.subscription.birthdate);
       if (!bdate) {
         return categories
       }
