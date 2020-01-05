@@ -10,6 +10,7 @@ import asyncio
 from werkzeug.exceptions import NotFound, InternalServerError, Unauthorized
 from passlib.apps import custom_app_context as pwd_context
 from dataclasses import dataclass, field, asdict
+from dacite import from_dict
 from typing import Dict, Any, Optional, Type, List
 from datetime import datetime, timedelta
 from pymongo import ReturnDocument
@@ -65,7 +66,7 @@ class AccountModel(MongoModel):
             pwd = accountdict.pop('password')
             accountdict['tokensalt'] = uuidstr()
             cls.coll().insert_one(accountdict)
-            acc = cls(**accountdict)
+            acc = from_dict(data_class=cls, data=accountdict)
             if pwd: 
                 acc.set_password(pwd)
             return acc
@@ -91,7 +92,7 @@ class AccountModel(MongoModel):
         if not rs:
             raise NotFound(description='AccountNotFound')                
         try:
-            return cls(**rs)
+            return from_dict(data_class=cls, data=rs)
         except Exception as e:
             log.exception('Cannot encode account')
             raise InternalServerError(description='CannotEncodeAccount')
@@ -102,7 +103,8 @@ class AccountModel(MongoModel):
         get all accounts
         """
         try:
-            return [cls(**doc) for doc in cls.coll().find({})]
+            return [from_dict(data_class=cls, data=doc) for doc 
+                in cls.coll().find({})]
         except:
             log.exception('Cannot encode account')
             raise InternalServerError(description='CannotEncodeAccount')
@@ -126,7 +128,7 @@ class AccountModel(MongoModel):
         if not rs:
             raise NotFound(description='AccountNotFound')                
         try:
-            return cls(**rs)
+            returnfrom_dict(data_class=cls, data=rs)
         except:
             log.exception('Cannot encode account')
             raise InternalServerError(description='CannotEncodeAccount')

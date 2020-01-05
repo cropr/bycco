@@ -7,16 +7,23 @@ const store = new Vuex.Store({
   state: {
     token: '',
     page: {},
+    participant: {},
+    printselection: [],
     routebeforelogin: '',
   },
 
   mutations: {
     updateToken (state, payload) {
-      console.log('storing token', payload)
       state.token = payload;
     },
     updatePage (state, payload) {
       state.page = payload;
+    },
+    updateParticipant (state, payload) {
+      state.participant = payload;
+    },
+    updatePrintSelection(state, payload) {
+      state.printselection = payload;
     },
     updateRouteBeforeLogin (state, payload) {
       state.routebeforelogin = payload;

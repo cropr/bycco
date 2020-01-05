@@ -117,7 +117,7 @@ def getSubscription(id: str) -> SubscriptionModel:
     """
     log.info('get subsription')
     s = SubscriptionModel.find_by_id(id)
-    return 
+    return s
 
 def getSubscriptionByIdbel(idbel: str) -> SubscriptionModel:
     """
@@ -183,7 +183,7 @@ def updatePhoto(id: str, photo: str) -> None:
             'badgemimetype': header.split(':')[1].split(';')[0],
             'badgeimage': a2b_base64(data)
         }
-        upd['badgelength'] = len(upd['badgeimage'])
+        upd['badgelength'] = len(cast(str, upd['badgeimage']))
     except:
         raise BadRequest(description='BadPhotoData')
     SubscriptionModel.updateSubscription(id, upd)

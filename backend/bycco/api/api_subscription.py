@@ -54,7 +54,7 @@ class SubscriptionResource(Resource):
 
 class SubscriptionConfirmResource(Resource):
 
-    def post(self, id:str) -> tuple:
+    def post(self, id:str) -> dict:
         pm = confirmSubscription(id)
         return {'paymessage': pm}
 
@@ -64,7 +64,7 @@ class SubscriptionPhotoResource(Resource):
     def get(self, id:str) -> dict:
         pass
 
-    def post(self, id:str) -> dict:
+    def post(self, id:str) -> tuple:
         data = request.get_json(silent=True)
         if not data:
             raise BadRequest(description='JsonDecodingError')

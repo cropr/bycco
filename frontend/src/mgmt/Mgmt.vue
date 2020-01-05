@@ -8,7 +8,10 @@
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items >
-      <v-btn text large to="/pages">Pages</v-btn>
+      <v-btn text large to="/mgmt/page/list">Pages</v-btn>
+    </v-toolbar-items>
+    <v-toolbar-items >
+      <v-btn text large to="/mgmt/participant/list">Participants</v-btn>
     </v-toolbar-items>
   </v-app-bar>
 
@@ -19,7 +22,9 @@
   <v-footer color="blue-grey lighten-1" dark class="mt-2 pa-2">
     Website by <a target="_blank" href="https://www.chessdevil.net">
     Chessdevil Consulting</a>. &copy; 2018 - 2020.  All rights reserved
-  </v-footer>  
+  </v-footer>
+  <v-snackbar bottom v-model="snackbar" :timeout="5000" color="info">
+  </v-snackbar>  
 
 </v-app>
 
@@ -27,7 +32,20 @@
 
 <script>
 export default {
+
   name: 'Mgmt',
+
+  data () { return {
+    snackbar: false,
+    text: '',
+  }},
+
+  methods: {
+    showSnackbar (t) {
+      this.text = t;
+      this.snackbar = true;
+    }
+  }
 
 }
 </script>

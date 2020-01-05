@@ -8,6 +8,7 @@ import logging
 from datetime import datetime, date
 from werkzeug.exceptions import BadRequest, NotFound, InternalServerError
 from dataclasses import dataclass, field, asdict
+from dacite import from_dict
 from typing import Dict, Any, List, Optional, Type
 from pymongo import ReturnDocument
 from bson import ObjectId
@@ -52,6 +53,14 @@ class LocalizedPage:
     slug: str
     template: str
 
+def fixcreationtime(pagedoc: dict):
+    if isinstance(pagedoc.get('creationtime'), str):
+        try:
+            pagedoc['creationtime'] = datetime.fromisoformat(
+                pagedoc['creationtime'])
+        except Exception:
+            pagedoc['creationtime'] = pagedoc['modificationtime']  
+
 @dataclass
 class PageModel(MongoModel):
     """
@@ -79,6 +88,10 @@ class PageModel(MongoModel):
     # attribute id is created automatically as stringified version of _id
     def __post_init__(self):
         self.id = str(self._id)
+        if not self.creationtime:
+            self.creationtime = datetime.utcnow()
+        if not self.modificationtime:
+            self.modificationtime = datetime.utcnow()
         if not self.languages:
             self.languages = list(self.localpages.keys()) or ['en']
 
@@ -89,11 +102,13 @@ class PageModel(MongoModel):
         create a new page
         """
         pagedict['_id'] = pagedict.get('_id', ObjectId())
-        pagedict['creationtime'] = datetime.utcnow()
-        pagedict['modificationtime'] = datetime.utcnow()
+        pagedict['creationtime'] = pagedict.get('creationtime', 
+            datetime.utcnow())
+        pagedict['modificationtime'] = pagedict.get('modificationtime', 
+            datetime.utcnow())
         try:
             cls.coll().insert_one(pagedict)
-            page = cls(**pagedict)
+            page = from_dict(data_class=cls, data=pagedict)
             return page
         except:
             log.exception('error encoding pagedict')
@@ -114,8 +129,9 @@ class PageModel(MongoModel):
         })
         for doc in cursor:
             doc['id'] = str(doc.pop('_id'))
+            fixcreationtime(doc)
             try:
-                page = BasicPage(**doc)
+                page = from_dict(data_class=BasicPage, data=doc)
                 pages.append(page)
             except:
                 log.exception('error encoding BasicPage')
@@ -135,8 +151,9 @@ class PageModel(MongoModel):
         pagedoc = cls.coll().find_one(oid)
         if not pagedoc:
             raise NotFound(description="PageNotFound")
+        fixcreationtime(pagedoc)            
         try:
-            page = cls(**pagedoc)
+            page = from_dict(data_class=cls, data=pagedoc)
             return page
         except:
             log.exception('error encoding pagedoc')
@@ -151,8 +168,9 @@ class PageModel(MongoModel):
         pagedoc = cls.coll().find_one({'slug': slug})
         if not pagedoc:
             raise NotFound(description="PageNotFound")
+        fixcreationtime(pagedoc)
         try:
-            page = cls(**pagedoc)
+            page = from_dict(data_class=cls, data=pagedoc)
             return page
         except:
             log.exception('error encoding pagedoc')
@@ -168,12 +186,13 @@ class PageModel(MongoModel):
             {'pagetype': 0, 'subpages': 0, 'languages': 0})
         if not pagedoc:
             raise NotFound(description="PageNotFound")
+        fixcreationtime(pagedoc)
         try:
             pagedoc['id'] = str(pagedoc.pop('_id'))
             pagedoc['locale'] = lang
             pagedoc['i18n_fields'] = pagedoc.pop('i18n_fieldset', {}).get(lang, 
                 I18nPageFields())
-            page = LocalizedPage(**pagedoc)
+            page = from_dict(data_class=LocalizedPage, data=pagedoc)
             return page
         except:
             log.exception('error encoding pagedict')
@@ -195,12 +214,14 @@ class PageModel(MongoModel):
             oid = ObjectId(id)
         except:
             raise BadRequest(description="InvalidPageId")
+        pagedict['modificationtime'] = datetime.utcnow()
+        fixcreationtime(pagedict)
         pagedoc = cls.coll().find_one_and_update({'_id': oid}, 
             {'$set': pagedict}, return_document=ReturnDocument.AFTER)
         if not pagedoc:
             raise NotFound(description="PageNotFound")
         try:
-            page = cls(**pagedoc)
+            page = from_dict(data_class=cls, data=pagedoc)
             return page
         except:
             log.exception('error encoding pagedict')

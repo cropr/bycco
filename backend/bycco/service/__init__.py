@@ -33,3 +33,11 @@ from .sv_subscription import (
     getSubscriptionByIdbel,
     updatePhoto,
 )
+from .sv_attendee import (
+    addAttendee,
+    deleteAttendee,
+    getAttendee,
+    getAttendees,
+    getAttendeesCsv,
+    updateAttendee,
+)

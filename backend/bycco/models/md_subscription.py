@@ -6,12 +6,14 @@ from __future__ import annotations
 import logging
 
 from dataclasses import dataclass, field, asdict
+from dacite import from_dict
 from typing import Dict, Any, List, Optional, Type, Union
 from datetime import datetime, timedelta, date
 from pymongo import ReturnDocument
 from bson import ObjectId
 from werkzeug.exceptions import BadRequest, NotFound, InternalServerError
 from . import MongoModel, dbconfig, CounterModel
+
 
 log = logging.getLogger('bycco')
 
@@ -25,6 +27,27 @@ class BasicSubscription:
     id: str
     last_name: str
     registrationdate: datetime
+
+@dataclass
+class Attendee:
+    """
+    A readonly view used in overview of all attendees
+    """
+    category: str
+    confirmed: bool
+    first_name: str
+    id: str
+    idbel: str
+    idclub: str
+    last_name: str
+    registrationdate: datetime
+    subscriptionnumber: int
+
+    nationalityfide: str = ''
+    meals: str = ''
+    present: Optional[datetime] = None
+    payamount: int = 0 
+    rating: int = 0
 
 @dataclass
 class SubscriptionModel(MongoModel):
@@ -54,20 +77,21 @@ class SubscriptionModel(MongoModel):
     fullnameparent: Optional[str] = None
     id: str = field(init=False, default="")    
     _id: ObjectId = field(default_factory=ObjectId)
-    idfide: Optional[str] = None
+    idfide: str = ''
     invoicenumber: int = 0
-    mobileattendant: Optional[str] = None
-    mobileparent: Optional[str] = None
-    mobileplayer: Optional[str] = None
-    nationalityfide: Optional[str] = None
+    meals: str = ''
+    mobileattendant: str = ''
+    mobileparent: str = ''
+    mobileplayer: str = ''
+    nationalityfide: str = ''
     payamount: int = 0
     paydate: Optional[datetime] = None
-    paymessage: Optional[str] = None
+    paymessage: str = ''
     present: Optional[datetime] = None
     rating: int = 0
     ratingbel: int = 0
     ratingfide: int = 0
-    remarks: Optional[str] = None
+    remarks: str = ''
     subscriptionnumber: int = 0
 
     _collection = 'subscription'
@@ -86,6 +110,7 @@ class SubscriptionModel(MongoModel):
         cursor = coll.find({}, {'badgeimage': 0})
         for doc in cursor:
             doc['id'] = str(doc.pop('_id'))
+            doc['badgeimage'] = ''
             subs.append(doc)
         return subs
     
@@ -148,6 +173,42 @@ class SubscriptionModel(MongoModel):
         except:
             log.exception('Cannot encode Subscription')
             raise InternalServerError(description="CannotEncodeSubscription")
+
+    @classmethod
+    def get_attendees(cls, ss: Optional[str], cat: Optional[str]) -> List[Attendee]:
+        """
+        find all subscriptions for attendee
+        """
+        coll = dbconfig['db'][cls._collection]
+        subs = []
+        fields = {
+            'category': 1,
+            'confirmed': 1,
+            'first_name': 1,
+            'idbel': 1,
+            'idclub': 1,
+            'last_name': 1,
+            'registrationdate': 1,
+            'subscriptionnumber': 1,
+            'nationalityfide': 1,
+            'meals': 1,
+            'present': 1,
+            'payamount': 1,
+            'rating': 1,
+        }
+        filter = {}
+        if cat:
+            filter['category'] = cat
+        if ss:
+            filter['last_name'] = { '$regex': ss, '$options': 'i' } 
+        cursor = coll.find(filter, fields)
+        for doc in cursor:
+            doc['id'] = str(doc.pop('_id'))
+            try:
+                subs.append(from_dict(data_class=Attendee, data=doc))
+            except:
+                raise InternalServerError(description="CannotEncodeAttendee")
+        return subs
 
     @classmethod
     def blank(cls) -> SubscriptionModel:
