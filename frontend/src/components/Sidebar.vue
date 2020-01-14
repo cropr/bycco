@@ -36,6 +36,9 @@
           <v-list-item @click="updateSlug('toernooireglement')" >
             <v-list-item-content>{{$t('Tournament Rules')}}</v-list-item-content>
           </v-list-item>
+          <v-list-item @click="updateSlug('agenda')" >
+            <v-list-item-content>{{$t('Calendar')}}</v-list-item-content>
+          </v-list-item>
           <v-list-item @click="updateSlug('huisreglement')" >
             <v-list-item-content>{{$t('Internal Regulations')}}</v-list-item-content>
           </v-list-item>

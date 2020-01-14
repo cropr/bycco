@@ -31,12 +31,22 @@ def renderPage(slug: str, lang: str, template: str = 'page'):
         window.config.slugtemplates = JSON.parse('{stjson}');
       """)
 
+def createPage(pagedict: dict) -> PageModel:
+    """
+    add a page  
+    """
+    log.info(f'adding a page')
+    # clean up
+    page = PageModel.create_page(pagedict)
+    return page.id
+
+
 def getPage(id: str) -> PageModel:
     """
     get the page by id 
     """
-    log.info(f'getting page by id {id}')
     page = PageModel.find_by_id(id)
+    log.info(f'getting page by id {id} pageid {page.id}')
     return page
 
 def updatePage(id: str, pagedict: dict) -> PageModel:
@@ -56,8 +66,8 @@ def getPageBySlug(slug: str) -> PageModel:
     """
     get the page by slug 
     """
-    log.info(f'getting page by slug {slug}')
     page = PageModel.find_by_slug(slug)
+    log.info(f'getting page by slug {slug} {page.id}')
     return page
 
 def getPageBySlugLocale(slug: str, lang: str) -> LocalizedPage:

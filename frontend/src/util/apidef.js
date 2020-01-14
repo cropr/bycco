@@ -254,6 +254,13 @@ export default {
     url: '/page',
     headers: ['Authorization']
   },
+  addPage: {
+    method: 'POST',
+    url: '/page',
+    headers: ['Authorization'],
+    body: ['page'],
+    required: ['page'],
+  },
 
   // account
   login: {

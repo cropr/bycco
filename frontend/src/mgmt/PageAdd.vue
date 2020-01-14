@@ -1,32 +1,36 @@
 <template>
 <v-container fluid grid-list-md class="elevation-1">
-  <v-layout row wrap>
-    <v-flex>
-        <h1>New Article</h1>
-    </v-flex>
-    <v-flex>
+  <v-row>
+    <v-col cols=9>
+      <h1>New Article</h1>
+    </v-col>
+    <v-col cols=3>
       <v-tooltip bottom>
-        <v-btn outline fab color="green" @click="back()" slot="activator">
-          <v-icon>arrow_back</v-icon>
-        </v-btn>
-        <span>Go Back</span>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" @click="back()" fab outlined 
+                  color="deep-purple">
+              <v-icon>add</v-icon>
+            </v-btn>
+          </template>
+          <span>Go Back</span>
       </v-tooltip>
       <v-tooltip bottom>
-        <v-btn outline fab color="green" @click="save()" slot="activator">
-          <v-icon>save</v-icon>
-        </v-btn>
-        <span>Save changes</span>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" @click="save()" fab outlined 
+                  color="deep-purple">
+              <v-icon>save</v-icon>
+            </v-btn>
+          </template>
+          <span>Save changes</span>
       </v-tooltip>
-    </v-flex>
-  </v-layout>
-  <v-layout row wrap>
-    <v-flex sm6 xs12>
-      <v-text-field label="Author" v-model="p.author" />
-      <v-text-field label="title" v-model="p.maintitle" />
-    </v-flex>
-
-  </v-layout>
-
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols=12 sm=6>
+      <v-text-field label="Author" v-model="author" />
+      <v-text-field label="Name" v-model="name" />
+    </v-col>
+  </v-row>
 </v-container>
 </template>
 
@@ -39,28 +43,27 @@ export default {
   name: "PageAdd",
 
   data () {return {
-    p: { mainlocale: window.config.lang},
+    name: '',
+    author: '',
   }},
 
   methods: {
 
     back () {
-      this.$emit('update', {section: 'list', params:{}})
     },
 
     save () {
       
-      api('addArticle', {
-        article: this.p,
+      api('addPage', {
+        page: {
+          'name': this.name,
+          'owner': this.author,
+          'slug': this.name,
+        }
       }).then(
         function(data){
-          console.log('id received', data)
-          this.$emit('update', {
-            section: 'edit', 
-            article: {id: data.id}, 
-            reload: true,
-            text: 'Article created.'
-          })
+          console.log('page created', data)
+          this.$router.push('/mgmt/page/edit/'  + data.id)
         }.bind(this),
         function(data){
           console.error('failed to save', data);

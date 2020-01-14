@@ -56,7 +56,6 @@
     <v-col cols=12 sm=6>
       <v-text-field label="name" v-model="p.name" />
       <v-text-field label="Owner" v-model="p.owner" />
-      <v-text-field label="Template" v-model="p.template" />
     </v-col>
     <v-col cols=12 sm=6>
       <v-text-field label="Slug" v-model="p.slug" />

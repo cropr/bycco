@@ -7,6 +7,7 @@ from flask import request
 from werkzeug.exceptions import BadRequest
 from flask_restful import Resource
 from bycco.service import (
+    createPage,
     getPage, 
     getPages, 
     getPageBySlug, 
@@ -19,6 +20,15 @@ log = logging.getLogger('bycco')
 class PagesResource(Resource):
     def get(self):
         return {'pages': getPages()}
+
+    def post(self):
+        data = request.get_json(silent=True)
+        if not data:
+            raise BadRequest(description='JsonDecodingError')
+        pagedict = data.get('page')
+        if not pagedict:
+            raise BadRequest(description='MissingAccountParameter')
+        return {'id': createPage(pagedict)}
 
 class PageResource(Resource):
     def get(self, id: str):

@@ -68,6 +68,9 @@ export default {
 
 
   methods: {
+    addPage () {
+      this.$router.push('/mgmt/page/add')
+    },
     editPage (item) {
       this.$router.push('/mgmt/page/edit/'  + item.id)
     }

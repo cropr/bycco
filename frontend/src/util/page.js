@@ -22,7 +22,7 @@ export function getPageContent () {
 }
 
 export function changeSlug(s) {
-  console.log('changing slug', s)
+  console.log('changing slug:', s)
   if (s == store.state.slug) return;
   store.commit('updatePageUrl', {slug:s});
   router.push('/page/' + store.state.slug + '/' + store.state.locale)      

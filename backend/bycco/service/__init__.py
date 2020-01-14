@@ -15,7 +15,8 @@ from .sv_account import (
 )
 from .sv_lang import getLanguageFile
 from .sv_page import (
-    renderPage, 
+    renderPage,
+    createPage, 
     getPage, 
     getPages,
     getPageBySlug,
