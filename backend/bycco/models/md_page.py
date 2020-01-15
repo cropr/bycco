@@ -198,12 +198,6 @@ class PageModel(MongoModel):
             log.exception('error encoding pagedict')
             raise InternalServerError(description="ErrorEncodingPage")
 
-    def get_slug_templates(self):
-        """
-        returns a dict of slug:template for all pages 
-        """
-        return {a['slug']:a['template']  for a in self.coll().find(
-            projection={'slug':1, 'template':1, '_id':0})}
 
     @classmethod
     def update_page(cls, id: str, pagedict: Dict[str, Any] ) -> PageModel:
