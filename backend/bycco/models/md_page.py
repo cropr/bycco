@@ -26,6 +26,7 @@ class BasicPage:
     id: str
     modificationtime: datetime
     name: str
+    pagetype: str
     slug: str
 
 @dataclass
@@ -123,6 +124,7 @@ class PageModel(MongoModel):
             "creationtime": 1,
             "modificationtime": 1,
             "name": 1,
+            "pagetype": 1,
             "slug": 1,
         })
         for doc in cursor:

@@ -22,7 +22,6 @@ def renderPage(slug: str, lang: str, template: str = 'page'):
         page = PageModel.find_by_slug(slug)
     except NotFound:
         abort(404)
-    assert page.template is not None
     slugtemplates = page.get_slug_templates()
     stjson = json.dumps(slugtemplates)
     return render_template(f'{template}.html', configstub= f"""
