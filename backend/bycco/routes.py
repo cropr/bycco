@@ -20,6 +20,11 @@ def mgmt(path=''):
 def subscription(path=''):
     return render_template('subscription.html', configstub="")    
 
+@app.route('/participants')
+@app.route('/participants/<path:path>')
+def participants(path=''):
+    return render_template('participants.html', configstub="")    
+
 
 @app.route('/vertaal')
 def vertaal(path=''):

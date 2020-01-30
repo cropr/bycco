@@ -15,13 +15,15 @@ from bycco.service import (
 class AttendeesResource(Resource):
     
     def get(self):
-        ss = request.args.get('ss', None)
-        cat = request.args.get('cat', None)
         format = request.args.get('format', 'json')
         if format == 'json':        
-            return {'attendees': getAttendees(ss, cat)}
+            options = {}
+            options['ss'] = request.args.get('ss', None)
+            options['cat'] = request.args.get('cat', None)
+            options['confirmed'] = request.args.get('confirmed', None)
+            return {'attendees': getAttendees(options)}
         elif format == 'csv':
-            return {'attendees':getAttendeesCsv(ss, cat)}
+            return {'attendees':getAttendeesCsv()}
         else:
             return {'attendeees': []}
 

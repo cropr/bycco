@@ -36,6 +36,7 @@ class Attendee:
     category: str
     confirmed: bool
     first_name: str
+    gender: str                 # M, F
     id: str
     idbel: str
     idclub: str
@@ -48,6 +49,8 @@ class Attendee:
     present: Optional[datetime] = None
     payamount: int = 0 
     rating: int = 0
+    ratingbel: int = 0
+    ratingfide: int = 0
 
 @dataclass
 class SubscriptionModel(MongoModel):
@@ -175,7 +178,7 @@ class SubscriptionModel(MongoModel):
             raise InternalServerError(description="CannotEncodeSubscription")
 
     @classmethod
-    def get_attendees(cls, ss: Optional[str], cat: Optional[str]) -> List[Attendee]:
+    def get_attendees(cls, options: dict) -> List[Attendee]:
         """
         find all subscriptions for attendee
         """
@@ -185,22 +188,27 @@ class SubscriptionModel(MongoModel):
             'category': 1,
             'confirmed': 1,
             'first_name': 1,
+            'gender': 1,
             'idbel': 1,
             'idclub': 1,
             'last_name': 1,
-            'registrationdate': 1,
-            'subscriptionnumber': 1,
             'nationalityfide': 1,
             'meals': 1,
             'present': 1,
             'payamount': 1,
             'rating': 1,
+            'ratingbel': 1,
+            'ratingfide': 1,
+            'registrationdate': 1,
+            'subscriptionnumber': 1,
         }
         filter = {}
-        if cat:
+        if options['cat']:
             filter['category'] = cat
-        if ss:
+        if options['ss']:
             filter['last_name'] = { '$regex': ss, '$options': 'i' } 
+        if options['confirmed']:
+            filter['confirmed'] = True
         cursor = coll.find(filter, fields)
         for doc in cursor:
             doc['id'] = str(doc.pop('_id'))

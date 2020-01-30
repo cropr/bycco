@@ -5,7 +5,7 @@ export default {
   getAttendees: {
     method: 'GET',
     url: '/attendee',
-    query: ['ss', 'cat', 'format'],
+    query: ['ss', 'cat', 'format', 'confirmed'],
     required: [],
   },
   addAttendee: {

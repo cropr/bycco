@@ -73,13 +73,13 @@ def addAttendee(ss: dict) -> str:
 def deleteAttendee(id: str) -> None:
     pass
 
-def getAttendees(ss: Optional[str], cat: Optional[str]) ->  List[Attendee]:
+def getAttendees(options: dict) ->  List[Attendee]:
     """
     get all attendees
     """
-    return SubscriptionModel.get_attendees(ss, cat)
+    return SubscriptionModel.get_attendees(options)
 
-def getAttendeesCsv(ss: Optional[str], cat: Optional[str]) ->  str:
+def getAttendeesCsv() ->  str:
     """
     get all attendees
     """

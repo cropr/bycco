@@ -25,40 +25,51 @@
         <v-list-item-content>{{$t('Home')}}</v-list-item-content>
       </v-list-item>
       <v-list-group no-action>
-          <template v-slot:activator>
-            <v-list-item-icon>
-              <v-icon>info</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Info</v-list-item-title>
-            </v-list-item-content>
-          </template>
-          <v-list-item @click="updateSlug('toernooireglement')" >
-            <v-list-item-content>{{$t('Tournament Rules')}}</v-list-item-content>
-          </v-list-item>
-          <v-list-item @click="updateSlug('agenda')" >
-            <v-list-item-content>{{$t('Calendar')}}</v-list-item-content>
-          </v-list-item>
-          <v-list-item @click="updateSlug('huisreglement')" >
-            <v-list-item-content>{{$t('Internal Regulations')}}</v-list-item-content>
-          </v-list-item>
-          <v-list-item @click="updateSlug('verblijf')" >
-            <v-list-item-content>{{$t('Lodging')}}</v-list-item-content>
-          </v-list-item>
-          <v-list-item @click="updateSlug('toewijzingverblijf')" >
-            <v-list-item-content>{{$t('Lodging Allocation')}}</v-list-item-content>
-          </v-list-item>
-          <v-list-item @click="updateSlug('restaurant')" >
-            <v-list-item-content>{{$t('Catering')}}</v-list-item-content>
-          </v-list-item>
+        <template v-slot:activator>
+          <v-list-item-icon>
+            <v-icon>info</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Info</v-list-item-title>
+          </v-list-item-content>
+        </template>
+        <v-list-item @click="updateSlug('toernooireglement')" >
+          <v-list-item-content>{{$t('Tournament Rules')}}</v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="updateSlug('agenda')" >
+          <v-list-item-content>{{$t('Calendar')}}</v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="updateSlug('huisreglement')" >
+          <v-list-item-content>{{$t('Internal Regulations')}}</v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="updateSlug('verblijf')" >
+          <v-list-item-content>{{$t('Lodging')}}</v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="updateSlug('toewijzingverblijf')" >
+          <v-list-item-content>{{$t('Lodging Allocation')}}</v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="updateSlug('restaurant')" >
+          <v-list-item-content>{{$t('Catering')}}</v-list-item-content>
+        </v-list-item>
       </v-list-group>
 
-      <v-list-item href="/subscription">
+      <v-list-group no-action>
+        <template v-slot:activator>
           <v-list-item-icon>
-            <v-icon>subscriptions</v-icon>
-          </v-list-item-icon>      
-        <v-list-item-content>{{ $t('Register') }}</v-list-item-content>
-      </v-list-item>
+            <v-icon>sports</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>{{ $t('Tournament') }}</v-list-item-title>
+          </v-list-item-content>
+        </template>
+        <v-list-item href="/subscription">
+          <v-list-item-content>{{ $t('Register') }}</v-list-item-content>
+        </v-list-item>
+        <v-list-item href="/participants">
+          <v-list-item-content>{{ $t('Participants') }}</v-list-item-content>
+        </v-list-item>
+      </v-list-group>
+
     </v-list>
   </v-navigation-drawer>
 </template>
