@@ -87,7 +87,6 @@ class PageModel(MongoModel):
 
     # attribute id is created automatically as stringified version of _id
     def __post_init__(self):
-        log.info(f'runninh post init {self}')
         self.id = str(self._id)
         if not self.creationtime:
             self.creationtime = datetime.utcnow()
