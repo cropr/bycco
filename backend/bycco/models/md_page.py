@@ -189,7 +189,7 @@ class PageModel(MongoModel):
         try:
             pagedoc['id'] = str(pagedoc.pop('_id'))
             pagedoc['locale'] = lang
-            pagedoc['i18n_fields'] = pagedoc.pop('i18n_fieldset', {}).get(lang, 
+            pagedoc['i18n_fieldset'] = pagedoc.pop('i18n_fieldset', {}).get(lang, 
                 I18nPageFields())
             page = from_dict(data_class=LocalizedPage, data=pagedoc)
             return page

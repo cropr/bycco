@@ -49,4 +49,5 @@ class SlugResource(Resource):
 
 class SlugLocaleResource(Resource):
     def get(self, slug: str, locale: str):
+        log.info('SlugLocaleREsource {slug} {locale}')
         return {'page': getPageBySlugLocale(slug, locale)}
