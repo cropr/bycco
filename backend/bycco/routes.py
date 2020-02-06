@@ -10,6 +10,10 @@ def index():
 def page(slug, lang):
     return renderPage(slug, lang, 'page')
 
+@app.route('/doc/<slug>/<lang>')
+def doc(slug, lang):
+    return renderDoc(slug, lang, 'page')
+
 @app.route('/mgmt')
 @app.route('/mgmt/<path:path>')
 def mgmt(path=''):

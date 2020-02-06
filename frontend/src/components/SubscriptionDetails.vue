@@ -135,7 +135,8 @@ import { mapState } from 'vuex'
 import _ from 'lodash'
 
 import api from '@/util/api'
-import {categories, formatDate} from "@/util/utils";
+import {formatDate} from "@/util/utils"
+import {categories} from "@/util/const"
 import * as moment from 'moment'
 
 

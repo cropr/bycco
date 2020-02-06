@@ -19,6 +19,13 @@ apimgr.add_resource(PageResource, '/api/page/<id>')
 apimgr.add_resource(SlugResource, '/api/slug/<slug>')
 apimgr.add_resource(SlugLocaleResource, '/api/slug/<slug>/locale/<locale>')
 
+from .api_document import (
+    DocumentResource, 
+    DocumentsResource,
+)
+apimgr.add_resource(DocumentsResource, '/api/document')
+apimgr.add_resource(DocumentResource, '/api/document/<id>')
+
 from .api_playerlist import (
     BelplayerResource, 
     FideplayerResource,

@@ -16,6 +16,8 @@ flask-cors = "*"
 beautifulsoup4 = "*"
 dacite = "*"
 requests = "*"
+python-slugify = "*"
+python-dateutil = "*"
 
 [requires]
 python_version = "3.7"

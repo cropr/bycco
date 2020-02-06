@@ -15,10 +15,14 @@ class MongoModel:
 
 from .md_counters import CounterModel
 from .md_page import PageModel, BasicPage, LocalizedPage
+from .md_document import DocumentModel, BasicDocument, I18nView
 from .md_account import AccountModel
 from .md_subscription import SubscriptionModel, BasicSubscription, Attendee
 from .md_playerlist import BelplayerModel, FideplayerModel
 from .md_account import AccountModel
+
+def setup_indexes():
+    DocumentModel.coll().create_index('slug', unique=True)    
 
 def setup_db_connection(config: Dict[str, Any]):
     """
@@ -29,5 +33,6 @@ def setup_db_connection(config: Dict[str, Any]):
     dbconfig['dbname'] = config.get('database')
     dbconfig['client'] = MongoClient(
         f'mongodb://{dbconfig["host"]}:{dbconfig["port"]}')
-    dbconfig['db'] = dbconfig['client'][dbconfig['dbname']] 
+    dbconfig['db'] = dbconfig['client'][dbconfig['dbname']]
+    setup_indexes()
     return dbconfig['db']

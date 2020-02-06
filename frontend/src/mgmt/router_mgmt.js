@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import DocAdd from '@/mgmt/DocAdd.vue'
+import DocEdit from '@/mgmt/DocEdit.vue'
+import DocList from '@/mgmt/DocList.vue'
 import PageAdd from '@/mgmt/PageAdd.vue'
 import PageEdit from '@/mgmt/PageEdit.vue'
 import PageList from '@/mgmt/PageList.vue'
@@ -18,6 +21,9 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: [
+    {path: '/mgmt/doc/list', component: DocList},
+    {path: '/mgmt/doc/add', component: DocAdd},
+    {path: '/mgmt/doc/edit/:id', component: DocEdit},
     {path: '/mgmt/page/list', component: PageList},
     {path: '/mgmt/page/add', component: PageAdd},
     {path: '/mgmt/page/edit/:id', component: PageEdit},

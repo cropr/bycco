@@ -5,6 +5,8 @@ flask-cors
 flask-restful
 gunicorn
 pymongo
+python-slugify
+python-dateutil
 pyjwt
 passlib
 requests

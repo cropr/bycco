@@ -11,6 +11,9 @@
       <v-btn text large to="/mgmt/page/list">Pages</v-btn>
     </v-toolbar-items>
     <v-toolbar-items >
+      <v-btn text large to="/mgmt/doc/list">Docs</v-btn>
+    </v-toolbar-items>
+    <v-toolbar-items >
       <v-btn text large to="/mgmt/participant/list">Participants</v-btn>
     </v-toolbar-items>
   </v-app-bar>

@@ -26,7 +26,7 @@
 
 <script>
 import api from '@/util/api'
-import {categories} from '@/util/utils'
+import {categories} from '@/util/const'
 import { mapState } from 'vuex'
 
 export default {
