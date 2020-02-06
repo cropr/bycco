@@ -262,6 +262,34 @@ export default {
     required: ['page'],
   },
 
+  // docs and slugs
+  getDoc: {
+    method: 'GET',
+    url: '/document/{id}',
+    path: ['id'],
+    required: ['id'],
+  },
+  updateDoc: {
+    method: 'PUT',
+    url: '/document/{id}',
+    path: ['id'],
+    body: ['document'],
+    required: ['id', 'document'],
+  },
+  getDocs: {
+    method: 'GET',
+    query: ['active', 'start', 'count', 'ss', 'doctype'],
+    url: '/document',
+    headers: ['Authorization']
+  },
+  addDoc: {
+    method: 'POST',
+    url: '/document',
+    headers: ['Authorization'],
+    body: ['document'],
+    required: ['document'],
+  },
+
   // account
   login: {
     method: 'POST',

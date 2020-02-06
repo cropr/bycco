@@ -23,6 +23,15 @@ from .sv_page import (
     getPageBySlugLocale,
     updatePage,
 )
+from .sv_doc import (
+    renderDoc,
+    createDoc, 
+    getDoc, 
+    getDocBySlug,
+    getDocs,
+    getLocalizedDoc,
+    updateDoc,
+)
 from .sv_playerlist import getBelplayer, getFideplayer
 from .sv_subscription import (
     addSubscription, 

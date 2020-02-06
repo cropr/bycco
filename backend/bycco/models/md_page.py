@@ -45,7 +45,7 @@ class LocalizedPage:
     """
     active: bool
     creationtime: datetime
-    i18n_fields: I18nPageFields
+    i18n_fieldset: I18nPageFields
     id: str
     locale: str
     name: str              
