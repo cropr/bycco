@@ -19,24 +19,6 @@
 
   <v-container class="mt-3 mb-2">
 
-    <!-- <h2>{{ $t('News items')}}</h2>
-    <v-row>
-      <v-col cols=12 sm=6 md=4 v-for="a in articles" :key="a.id">
-        <v-card tile>
-          <v-card-title class="blue-grey lighten-2 subtitle-2">
-            {{a.title}}
-          </v-card-title>
-          <v-card-text class="mt-2">
-            <div>{{a.intro}}</div>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer/>
-            <v-btn text class="blue-grey--text">{{ $t('Read More') }}</v-btn>
-          </v-card-actions>  
-        </v-card>
-      </v-col>
-    </v-row> -->
-
   </v-container>
 
 </div>
@@ -60,13 +42,13 @@ export default {
     ...mapState(['page']),
     title () {
       if (!this.page) return '';
-      if (!this.page.i18n_fields) return '';
-      return marked(this.page.i18n_fields.title || '')
+      if (!this.page.i18n_fieldset) return '';
+      return marked(this.page.i18n_fieldset.title || '')
     },
     content () {
       if (!this.page) return '';
-      if (!this.page.i18n_fields) return '';
-      return marked(this.page.i18n_fields.content || '')
+      if (!this.page.i18n_fieldset) return '';
+      return marked(this.page.i18n_fieldset.content || '')
     },
   },
 

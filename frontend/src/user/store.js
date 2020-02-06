@@ -63,6 +63,7 @@ const store = new Vuex.Store({
       getPageContent();
     },
     updatePage (state, payload) {
+      console.log('check 203')    
       state.page = payload;
     },
 
