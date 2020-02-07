@@ -1,7 +1,7 @@
 <template>
 
   <v-container class="mt-1 markedcontent">
-    <h1>{{ page.i18n_fields.title }}</h1>
+    <h1>{{ page.i18n_fieldset.title }}</h1>
     <v-row>
       <v-col cols="12" sm="6" md="4" v-for="(slug,ix) in subpages" :key="ix">
         <v-card>
@@ -38,8 +38,8 @@ export default {
 
   watch: {
     page () {
-      console.log('split content', this.page.i18n_fields.content.split('\n'));
-      this.subpages = this.page.i18n_fields.content.split('\n');
+      console.log('split content', this.page.i18n_fieldset.content.split('\n'));
+      this.subpages = this.page.i18n_fieldset.content.split('\n');
       this.subpages.forEach(function(slug) {
         Vue.set(this.titles, slug, '');
         Vue.set(this.content, slug, '');
@@ -47,8 +47,8 @@ export default {
           slug: slug,
           locale: this.locale,
         }).then(function(data) {
-          this.titles[slug] = data.page.i18n_fields.title;
-          this.content[slug] = marked(data.page.i18n_fields.content || '');
+          this.titles[slug] = data.page.i18n_fieldset.title;
+          this.content[slug] = marked(data.page.i18n_fieldset.content || '');
         }.bind(this), function(data) {
           console.error('error loading page', data);
         })
