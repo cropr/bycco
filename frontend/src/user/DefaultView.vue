@@ -21,8 +21,8 @@ export default {
     ...mapState(['page']),
     content () {
       if (!this.page) return '';
-      if (!this.page.i18n_fields) return '';
-      return marked(this.page.i18n_fields.content || '')
+      if (!this.page.i18n_fieldset) return '';
+      return marked(this.page.i18n_fieldset.content || '')
     },
   },
 
