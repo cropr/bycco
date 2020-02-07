@@ -78,7 +78,7 @@ class SubscriptionModel(MongoModel):
     emailplayer: Optional[str] = None
     fullnameattendant: Optional[str] = None
     fullnameparent: Optional[str] = None
-    id: str = field(init=False, default="")    
+    id: str = ""    
     _id: ObjectId = field(default_factory=ObjectId)
     idfide: str = ''
     invoicenumber: int = 0
@@ -172,7 +172,7 @@ class SubscriptionModel(MongoModel):
         if not subdoc:
             raise NotFound(description="SubscriptionNotFound")
         try:
-            return cls(**subdoc)
+            return from_dict(data_class=SubscriptionModel, data=subdoc)
         except:
             log.exception('Cannot encode Subscription')
             raise InternalServerError(description="CannotEncodeSubscription")
@@ -204,9 +204,9 @@ class SubscriptionModel(MongoModel):
         }
         filter = {}
         if options['cat']:
-            filter['category'] = cat
+            filter['category'] = options['cat']
         if options['ss']:
-            filter['last_name'] = { '$regex': ss, '$options': 'i' } 
+            filter['last_name'] = { '$regex': options['ss'], '$options': 'i' } 
         if options['confirmed']:
             filter['confirmed'] = True
         cursor = coll.find(filter, fields)
@@ -251,7 +251,7 @@ class SubscriptionModel(MongoModel):
             raise InternalServerError(description="CannotEncodeSubscription")
 
     @classmethod
-    def updateSubscription(cls, id: str, subdict: Dict[str, Any]) -> "SubscriptionModel":
+    def updateSubscription(cls, id: str, subdict: Dict[str, Any]) -> SubscriptionModel:
         """
         update a subscription 
         """
@@ -264,8 +264,7 @@ class SubscriptionModel(MongoModel):
         if not subdoc:
             raise NotFound(description="SubscriptionNotFound")
         try:
-            sub = cls(**subdoc)
-            return sub
+            return from_dict(data_class=SubscriptionModel, data=subdoc)
         except:
             log.exception('error encoding subdict')
             raise InternalServerError(description="ErrorEncodingSubscription")
@@ -277,4 +276,18 @@ class SubscriptionModel(MongoModel):
         subdict = asdict(self)
         subdict.pop('id', None)
         self.coll().find_one_and_replace({'_id': self._id}, subdict)
+
+    @classmethod
+    def removeSubscription(cls, id: str) -> None:
+        """
+        delete a subscription 
+        """
+        try:
+            oid = ObjectId(id)
+        except:
+            raise BadRequest(description="InvalidSubscriptionId")
+        rs = cls.coll().delete_one({'_id': oid})
+        if rs.deleted_count != 1:
+            raise NotFound(description="SubscriptionNotFound")
+
 

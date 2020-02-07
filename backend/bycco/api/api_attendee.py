@@ -27,20 +27,5 @@ class AttendeesResource(Resource):
         else:
             return {'attendeees': []}
 
-    def post(self):
-        data = request.get_json(silent=True)
-        if not data:
-            raise BadRequest(description='JsonDecodingError')
-
-class AttendeeResource(Resource):
-    
-    def delete(self, id:str):
-        pass
-
-    def get(self, id:str):
-        pass
-
-    def put(self, id:str):
-        pass
 
 

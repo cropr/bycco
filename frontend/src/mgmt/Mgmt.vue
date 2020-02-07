@@ -26,8 +26,13 @@
     Website by <a target="_blank" href="https://www.chessdevil.net">
     Chessdevil Consulting</a>. &copy; 2018 - 2020.  All rights reserved
   </v-footer>
-  <v-snackbar bottom v-model="snackbar" :timeout="5000" color="info">
-  </v-snackbar>  
+    <v-snackbar v-model="snackbar" bottom>
+      {{ snacktext }} 
+      <span v-show="reason">&nbsp;&nbsp; reason: {{ reason }}</span>
+      <v-btn text @click="snackbar = false">
+        <v-icon>cancel</v-icon>
+      </v-btn>
+    </v-snackbar> 
 
 </v-app>
 
@@ -40,15 +45,22 @@ export default {
 
   data () { return {
     snackbar: false,
+    snacktext: '',
+    reason: null,
     text: '',
   }},
 
-  methods: {
-    showSnackbar (t) {
-      this.text = t;
-      this.snackbar = true;
-    }
+  mounted () {
+    this.$root.$on('snackbar', function(ev) {
+      console.log('received snackbar event', ev.text)
+      if (ev.text) {
+        this.snacktext = ev.text;
+        this.reason = ev.reason;
+        this.snackbar = true;
+      }
+    }.bind(this));
   }
+
 
 }
 </script>

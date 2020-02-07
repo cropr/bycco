@@ -8,37 +8,7 @@ export default {
     query: ['ss', 'cat', 'format', 'confirmed'],
     required: [],
   },
-  addAttendee: {
-    method: 'POST',
-    url: '/attendee',
-    body: ['attendee'],
-    required: ['attendee'],
-  },
-  getAttendee: {
-    method: 'GET',
-    url: '/attendee/{id}',
-    path: ['id'],
-    required: ['id'],
-  },
-  deleteAttendee: {
-    method: 'DELETE',
-    url: '/attendee/{id}',
-    path: ['id'],
-    required: ['id'],
-  },
-  updateAttendee: {
-    method: 'PUT',
-    url: '/attendee/{id}',
-    path: ['id'],
-    body: ['attendee'],
-    required: ['attendee', 'id'],
-  },
-  resendConfirmation: {
-    method: 'POST',
-    url: '/attendee/{id}/resend',
-    path: ['id'],
-    required: ['id'],
-  },
+
 
   // chess members
   searchIdNational: {
@@ -67,6 +37,12 @@ export default {
     body: ['subscription'],
     required: ['subscription']
   },
+  deleteSubscription: {
+    method: 'DELETE',
+    url: '/subscriptions/{id}',
+    path: ['id'],
+    required: ['id']
+  },
   getPhoto: {
     method: 'GET',
     url: '/subscriptions/{idsub}/photo',
@@ -82,9 +58,10 @@ export default {
   },
   updateSubscription: {
     method: 'PUT',
-    url: '/subscriptions',
+    url: '/subscriptions/{id}',
+    path: ['id'],
     body: ['subscription'],
-    required: ['subscription']
+    required: ['id', 'subscription']
   },
   uploadPhoto: {
     method: 'POST',

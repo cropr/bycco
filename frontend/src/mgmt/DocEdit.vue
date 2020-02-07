@@ -138,10 +138,10 @@ export default {
         api('deleteAttendee', {
           id: this.participant.id
         }).then(function(){
-          this.$emit('update', {section: 'list', params:{}, reload: true,
-            text: this.fullname + ' deleted.'})
+          this.$emit('snackbar', {text: 'Document deleted.'})
+          this.$router.push('/mgmt/doc/list')
         }.bind(this), function(data){
-          console.error('failed to delete', data);
+          this.$emit('snackbar', {text: ' failed to delete.' + data})
         })
       }
     },
@@ -162,10 +162,10 @@ export default {
       }).then(
         function(data){
           this.readDoc(data.document)
-          // this.$router.push('/mgmt/doc/list')
+          this.$emit('snackbar', {text: 'Document saved.'})
         }.bind(this),
         function(data){
-          console.error('failed to save', data);
+          this.$emit('snackbar', {text: ' failed to save.' + data})
         }
       );
     },

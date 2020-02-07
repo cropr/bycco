@@ -37,11 +37,13 @@ from .sv_subscription import (
     addSubscription, 
     confirmSubscription,
     csvSubscriptions,
+    deleteSubscription,
     getPhoto,
     getSubscriptions,
     getSubscription,
     getSubscriptionByIdbel,
     updatePhoto,
+    updateSubscription,
 )
 from .sv_attendee import (
     addAttendee,

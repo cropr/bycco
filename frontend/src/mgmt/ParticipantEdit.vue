@@ -6,40 +6,31 @@
     </v-flex>
     <v-flex>
       <v-tooltip bottom>
-        <v-btn outline fab color="blue-grey" @click="back()" slot="activator">
-          <v-icon>arrow_back</v-icon>
-        </v-btn>
-        <span>Go Back</span>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" outlined fab color="blue-grey" @click="back()" 
+            slot="activator">
+            <v-icon>arrow_back</v-icon>
+          </v-btn>
+        </template>
+        <span>Go back</span>        
       </v-tooltip>
       <v-tooltip bottom>
-        <v-btn outline fab color="blue-grey" @click="remove()" slot="activator">
-          <v-icon>delete</v-icon>
-        </v-btn>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" outlined fab color="blue-grey" 
+            @click="removeSubscription()" slot="activator">
+            <v-icon>delete</v-icon>
+          </v-btn>
+        </template>
         <span>Delete participant</span>
       </v-tooltip>
       <v-tooltip bottom>
-        <v-btn outline fab color="blue-grey" @click="save()" slot="activator">
-          <v-icon>save</v-icon>
-        </v-btn>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" outlined fab color="blue-grey" 
+            @click="saveSubscription()" slot="activator">
+            <v-icon>save</v-icon>
+          </v-btn>
+        </template>
         <span>Save changes</span>
-      </v-tooltip>
-      <v-tooltip bottom>
-        <v-btn outline fab color="blue-grey" @click="sendConfirmationEmail()" slot="activator">
-          <v-icon>email</v-icon>
-        </v-btn>
-        <span>Send confirmation email</span>
-      </v-tooltip>
-      <v-tooltip bottom>
-        <v-btn outline fab color="blue-grey" @click="gotoPhoto()" slot="activator">
-          <v-icon>face</v-icon>
-        </v-btn>
-        <span>Edit photo</span>
-      </v-tooltip>
-      <v-tooltip bottom>
-        <v-btn outline fab color="blue-grey" @click="gotoInvoice()" slot="activator">
-          <v-icon>euro_symbol</v-icon>
-        </v-btn>
-        <span>Invoice</span>
       </v-tooltip>
     </v-flex>
   </v-layout>
@@ -51,11 +42,11 @@
                 :items="['', 'GM', 'IM', 'FM', 'WGM', 'WIM', 'WFM', 'IA', 'FA']"
       />
       <v-menu :close-on-content-click="false" v-model="menu_birthdate"
-        :nudge-right="40" lazy transition="scale-transition" offset-y
-        full-width min-width="290px">
-        <v-text-field slot="activator" v-model="p.birthdate"
-          label="Birthdate" prepend-icon="event" readonly
-        ></v-text-field>
+        :nudge-right="40" transition="scale-transition" offset-y min-width="290px">
+        <template v-slot:activator="{ on }">
+          <v-text-field v-on="on" slot="activator" v-model="p.birthdate"
+            label="Birthdate" prepend-icon="event" readonly />
+        </template>
         <v-date-picker v-model="p.birthdate" @input="menu_birthdate = false"
                        color="blue-grey" />
       </v-menu>
@@ -104,8 +95,6 @@ export default {
   components: {
     DateFormatted,
   },
-
-  props: ['participant'],
 
   computed :  {
     fullname () {
@@ -158,69 +147,80 @@ export default {
   methods: {
 
     back () {
-      this.$emit('update', {section: 'list', params:{}})
-    },
-
-    gotoInvoice () {
-      this.$emit('update', {section: 'invoice', params: this.participant})
+      this.$router.back();
     },
 
     gotoPhoto () {
-      this.$emit('update', {section: 'photo', params: this.participant})
+      this.$router.push('/mgmt/participant/photo/' + this.p.id)      
     },
 
-    remove () {
+    removeSubscription () {
       if (window.confirm('Are you sure to delete ' + this.fullname)) {
-        api('deleteAttendee', {
-          id: this.participant.id
-        }).then(function(){
-          this.$emit('update', {section: 'list', params:{}, reload: true,
-            text: this.fullname + ' deleted.'})
-        }.bind(this), function(data){
-          console.error('failed to delete', data);
-        })
+        api('deleteSubscription', {
+          id: this.p.id
+        }).then(
+          function(){
+            this.$root.$emit('snackbar', {text: this.fullname + ' deleted.'})
+            this.$router.push('/mgmt/participant/list')
+          }.bind(this), 
+          function(data){
+            console.log('amai', data)
+            this.$root.$emit('snackbar', { 
+              text: 'Failed to delete: ' + data.statusText,
+              reason: (data.data ? data.data.message : null)
+            })
+          }.bind(this)
+        );
       }
     },
 
-    save () {
-      api('updateAttendee', {
-        id: this.participant.id,
-        attendee: this.p,
+    saveSubscription () {
+      api('updateSubscription', {
+        id: this.p.id,
+        subscription: this.p,
       }).then(
         function(){
-          this.$emit('update', {section: 'list', params:{}, reload: true,
-            text: this.fullname + ' saved.'})
+          this.$root.$emit('snackbar', { text: this.fullname + ' saved.'})
         }.bind(this),
         function(data){
-          console.error('failed to save', data);
-        }
+          this.$root.$emit('snackbar', { text: 'Failed to save: ' + data.statusText, 
+            reason: (data.data ? data.data.message : null) })
+        }.bind(this)
       );
     },
 
     sendConfirmationEmail () {
       api('resendConfirmation', {
-        id: this.participant.id,
+        id: this.p.id,
       }).then(
         function(){
-          this.$emit('update', {section: 'edit', params:this.participant,
-            reload: false, text: this.fullname + ' confirmation sent.'})
+          this.$root.$emit('snackbar', {text: 'Confirmation mail for ' + this.fullname 
+            + ' sent.'})
         }.bind(this),
         function(data){
-          console.error('failed to save', data);
-        }
+          this.$root.$emit('snackbar', { 
+            text: 'Failed to send confirmation: ' + data.statusText,
+            reason: (data.data ? data.data.message : null)
+          })
+        }.bind(this)
       );
 
     },
   },
 
   mounted () {
-    console.log('received participant', this.participant.id)
-    api('getAttendee', {
-      id: this.participant.id
+    api('getSubscription', {
+      id: this.$route.params.id,
+      idtype: 'db',
     }).then(
      function(data) {
-        console.log('participant data', data);
-        this.p = data.attendee;
+        this.p = data.subscription;
+      }.bind(this),
+      function(data) {
+          this.$root.$emit('snackbar', { 
+            text: 'Failed to get participant: ' + data.statusText, 
+            reason: (data.data ? data.data.message : null) 
+          })
       }.bind(this)
     )
   }

@@ -46,9 +46,8 @@ apimgr.add_resource(SubscriptionConfirmResource,
 apimgr.add_resource(SubscriptionPhotoResource, 
     '/api/subscriptions/<id>/photo')
 
-from .api_attendee import AttendeeResource, AttendeesResource
+from .api_attendee import  AttendeesResource
 apimgr.add_resource(AttendeesResource, '/api/attendee')
-apimgr.add_resource(AttendeeResource, '/api/attendee/<id>')
 
 
 from .api_account import (

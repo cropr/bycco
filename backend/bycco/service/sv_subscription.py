@@ -5,7 +5,7 @@ import logging
 
 import json, os.path
 from typing import List, Optional, Dict, Any, cast
-from datetime import date
+from datetime import date, datetime, timezone
 from flask import render_template, Response
 from binascii import a2b_base64
 from werkzeug.exceptions import NotFound, BadRequest
@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 from email.message import EmailMessage, Message
 from email.utils import make_msgid
 from bycco import app
+from bycco.util.dates import iso2date
 from bycco.models import (
     SubscriptionModel, 
     BasicSubscription, 
@@ -98,6 +99,9 @@ def csvSubscriptions() -> List[dict]:
     get all subscriptions in csv format
     """
     return SubscriptionModel.csv_subscriptions()
+
+def deleteSubscription(id: str) -> None:
+    SubscriptionModel.removeSubscription(id)
 
 def getPhoto(id: str):
     sub = SubscriptionModel.find_by_id(id)
@@ -188,3 +192,23 @@ def updatePhoto(id: str, photo: str) -> None:
         raise BadRequest(description='BadPhotoData')
     SubscriptionModel.updateSubscription(id, upd)
 
+def updateSubscription(id: str, updatedict: dict) -> SubscriptionModel:
+    updatedict.pop('_id', None)
+    updatedict.pop('id', None)
+    try:
+        updatedict['registrationdate'] = iso2date(updatedict.get(
+            'registrationdate', None))
+    except ValueError:
+        log.exception('invalid registrationdate')
+        raise BadRequest(description='InvalidRegistrationdate')
+    try:
+        updatedict['paydate'] = iso2date(updatedict.get('paydate', None))
+    except ValueError:
+        log.exception('invalid paydate')
+        raise BadRequest(description='InvalidPaydate')
+    try:
+        updatedict['present'] = iso2date(updatedict.get('present', None))
+    except ValueError:
+        log.exception('invalid present')
+        raise BadRequest(description='InvalidPresent')
+    return SubscriptionModel.updateSubscription(id, updatedict)

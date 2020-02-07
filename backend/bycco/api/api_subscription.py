@@ -7,10 +7,12 @@ from bycco.service import (
     addSubscription, 
     confirmSubscription,
     csvSubscriptions,
+    deleteSubscription,
     getSubscriptions,
     getSubscription,
     getSubscriptionByIdbel, 
     updatePhoto,
+    updateSubscription,
 )
 
 class SubscriptionsResource(Resource):
@@ -31,16 +33,6 @@ class SubscriptionsResource(Resource):
             raise BadRequest(description='MissingSubscriptionParameter')
         return addSubscription(subdict)
 
-    def put(self) -> dict:
-        data = request.get_json(silent=True)
-        if not data:
-            raise BadRequest(description='JsonDecodingError')
-        subdict = data.get('subscription')
-        if not subdict:
-            raise BadRequest(description='MissingSubscriptionParameter')
-        # return {'subscription': updateSubscription(subdict)}
-        return {}
-
 class SubscriptionResource(Resource):
     
     def get(self, id:str) -> dict:
@@ -50,6 +42,19 @@ class SubscriptionResource(Resource):
         if idtype == 'bel':
             s = {'subscription': getSubscriptionByIdbel(id)}
         return s
+
+    def put(self, id:str) -> dict:
+        data = request.get_json(silent=True)
+        if not data:
+            raise BadRequest(description='JsonDecodingError')
+        subdict = data.get('subscription')
+        if not subdict:
+            raise BadRequest(description='MissingSubscriptionParameter')
+        return {'subscription': updateSubscription(id, subdict)}
+
+    def delete(self, id:str) -> tuple:
+        deleteSubscription(id)
+        return '', 204
 
 
 class SubscriptionConfirmResource(Resource):

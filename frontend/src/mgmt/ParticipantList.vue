@@ -184,7 +184,7 @@ export default {
     },
 
     editParticipant(p) {
-      this.$router.push('/mgmt/participant/photo/' + p.id)
+      this.$router.push('/mgmt/participant/edit/' + p.id)
     },
 
     csvAttendees () {
