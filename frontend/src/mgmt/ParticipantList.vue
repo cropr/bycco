@@ -37,17 +37,6 @@
           <span>CSV Download</span>
          </v-tooltip>
       </v-toolbar>
-      <v-row row wrap>
-        <v-col>
-          <v-text-field append-icon="search" @click:append="search" v-model="ss" />
-        </v-col>
-        <v-col>
-          <v-select :items="catitems" v-model="catselected" @change="changeCat()" />
-        </v-col>
-        <v-col>
-          <v-checkbox label="Not confirmed" v-model="isNotConfirmed" />
-        </v-col>
-      </v-row>
     </template>
     <template v-slot:item.action="{ item }">
       <v-icon small class="mr-2"  @click="editParticipant(item)" >
