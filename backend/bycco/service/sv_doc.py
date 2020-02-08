@@ -16,19 +16,6 @@ from bycco.util.dates import iso2date
 
 log = logging.getLogger('bycco')
 
-def renderDoc(slug: str, lang: str):
-    """
-    renders a document
-    """
-    try:
-        doc = DocumentModel.find_byslug(slug)
-        return render_template('document.html', configstub= f"""
-            window.config.locale = '{lang}';
-            window.config.slug = '{slug}';
-        """)
-    except NotFound:
-        abort(404)
-
 def createDoc(docdict: dict) -> str:
     """
     add a document
@@ -41,11 +28,45 @@ def createDoc(docdict: dict) -> str:
         docdict['slug'] = slugify(name)
     return DocumentModel.create_doc(docdict).id
 
+def deleteDoc(id: str) -> None:
+    DocumentModel.remove_doc(id)
+
 def getDoc(id: str) -> DocumentModel:
     """
     get the document 
     """
     return DocumentModel.get_byid(id)
+
+def getDocBySlug(slug: str) -> DocumentModel:
+    """
+    get the docuemnt by slug 
+    """
+    return DocumentModel.find_byslug(slug)
+
+def getDocs(options: dict = {}) -> List[BasicDocument]:
+    """
+    get all docs
+    """
+    return DocumentModel.find(options)
+
+def getLocalizedDoc(slug: str, lang: str) -> I18nView:
+    """
+    get the localized content of a document
+    """
+    return DocumentModel.find_localized(slug, lang)
+
+def renderDoc(slug: str, lang: str):
+    """
+    renders a document
+    """
+    try:
+        doc = DocumentModel.find_byslug(slug)
+        return render_template('document.html', configstub= f"""
+            window.config.locale = '{lang}';
+            window.config.slug = '{slug}';
+        """)
+    except NotFound:
+        abort(404)
 
 def updateDoc(id: str, updatedict: dict) -> DocumentModel:
     """
@@ -68,21 +89,3 @@ def updateDoc(id: str, updatedict: dict) -> DocumentModel:
         raise BadRequest(description='InvalidExpirytime')
     updatedict['modificationtime'] = datetime.utcnow()
     return DocumentModel.update_doc(id, updatedict)
-
-def getDocBySlug(slug: str) -> DocumentModel:
-    """
-    get the docuemnt by slug 
-    """
-    return DocumentModel.find_byslug(slug)
-
-def getLocalizedDoc(slug: str, lang: str) -> I18nView:
-    """
-    get the localized content of a document
-    """
-    return DocumentModel.find_localized(slug, lang)
-
-def getDocs(options: dict = {}) -> List[BasicDocument]:
-    """
-    get all docs
-    """
-    return DocumentModel.find(options)

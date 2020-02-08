@@ -243,6 +243,7 @@ export default {
   getDoc: {
     method: 'GET',
     url: '/document/{id}',
+    query: ['idtype', 'locale'],    
     path: ['id'],
     required: ['id'],
   },

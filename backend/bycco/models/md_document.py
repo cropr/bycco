@@ -163,23 +163,23 @@ class DocumentModel(MongoModel):
     @classmethod
     def find_localized(cls, slug: str, lang: str) -> I18nView:        
         """
-        find a page by slug and locale.  Filters out the correct language
+        find a doc by slug and locale.  Filters out the correct language
         raises NotFound if nothing is found
         """
         pagedoc = cls.coll().find_one({'slug': slug}, 
-            {'pagetype': 0, 'subpages': 0, 'languages': 0})
+            {'doctype': 0, 'expirytime': 0, 'languages': 0, 'publishedtime': 0})
         if not pagedoc:
             raise NotFound(description="PageNotFound")
         try:
             pagedoc['id'] = str(pagedoc.pop('_id'))
             pagedoc['locale'] = lang
-            pagedoc['i18n_fields'] = pagedoc.pop('i18n_fieldset', {}).get(lang, 
+            pagedoc['i18n_fields'] = pagedoc.pop('i18n_fields', {}).get(lang, 
                 I18nFields())
-            page = from_dict(data_class=I18nView, data=pagedoc)
-            return page
+            i18nview = from_dict(data_class=I18nView, data=pagedoc)
+            return i18nview
         except:
             log.exception('error encoding docdict')
-            raise InternalServerError(description="ErrorEncodingPage")
+            raise InternalServerError(description="ErrorEncodingI18nView")
 
     @classmethod
     def get_byid(cls, id: str) -> DocumentModel:
@@ -220,3 +220,16 @@ class DocumentModel(MongoModel):
         except:
             log.exception('error encoding doc')
             raise InternalServerError(description="ErrorEncodingDoc")
+
+    @classmethod
+    def remove_doc(cls, id: str) -> None:
+        """
+        delete a document 
+        """
+        try:
+            oid = ObjectId(id)
+        except:
+            raise BadRequest(description="InvalidDocumentId")
+        rs = cls.coll().delete_one({'_id': oid})
+        if rs.deleted_count != 1:
+            raise NotFound(description="DocumentNotFound")

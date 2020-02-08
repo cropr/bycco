@@ -20,6 +20,10 @@ module.exports = {
       entry: 'src/mgmt/mgmt.js',
       filename: process.env.VUE_APP_FILENAMEDIR + 'mgmt.html',
     },
+    doc:  {
+      entry: 'src/user/document.js',
+      filename: process.env.VUE_APP_FILENAMEDIR + 'document.html',
+    },
     page:  {
       entry: 'src/user/page.js',
       filename: process.env.VUE_APP_FILENAMEDIR + 'page.html',

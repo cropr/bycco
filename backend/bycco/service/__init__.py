@@ -24,12 +24,13 @@ from .sv_page import (
     updatePage,
 )
 from .sv_doc import (
-    renderDoc,
-    createDoc, 
+    createDoc,
+    deleteDoc,
     getDoc, 
     getDocBySlug,
     getDocs,
     getLocalizedDoc,
+    renderDoc,
     updateDoc,
 )
 from .sv_playerlist import getBelplayer, getFideplayer

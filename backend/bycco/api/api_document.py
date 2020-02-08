@@ -7,16 +7,20 @@ from flask import request
 from werkzeug.exceptions import BadRequest
 from flask_restful import Resource
 from bycco.service import (
+    createDoc,
+    deleteDoc,
     getDocs,
     getDoc,
-    createDoc,
+    getDocBySlug,
+    getLocalizedDoc,
     updateDoc,
 )
 
 log = logging.getLogger('bycco')
 
 class DocumentsResource(Resource):
-    def get(self):
+
+    def get(self) -> dict:
         options = request.args.to_dict()
         return {'documents': getDocs(options)}
 
@@ -30,10 +34,19 @@ class DocumentsResource(Resource):
         return {'id': createDoc(docdict)}
 
 class DocumentResource(Resource):
-    def get(self, id: str):
-        return {'document': getDoc(id)}
-
-    def put(self, id:str):
+    
+    def get(self, id: str) -> dict:
+        idtype = request.args.get('idtype', 'db')
+        locale = request.args.get('locale', None)
+        if idtype == 'db':
+            return {'document': getDoc(id)}
+        if idtype == 'slug':
+            if locale:
+                return {'document': getLocalizedDoc(id, locale)}
+            else:
+                return {'document': getDocBySlug(id)}
+     
+    def put(self, id:str)-> dict:
         data = request.get_json(silent=True)
         if not data:
             raise BadRequest(description='JsonDecodingError')
@@ -41,3 +54,7 @@ class DocumentResource(Resource):
         if not docdict:
             raise BadRequest(description='MissingDocParameters')
         return {'document': updateDoc(id, docdict)}
+
+    def put(self, id:str) -> tuple:
+        deleteDoc(id)
+        return '', 204

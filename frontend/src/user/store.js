@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { setLanguage } from '@/util/lang'
 import { getPageContent } from '@/util/page'
+import { getDocContent } from '@/util/docpage'
 
 Vue.use(Vuex);
 
@@ -37,6 +38,7 @@ const initflow = {
 
 const store = new Vuex.Store({
   state: {
+    doc: {},
     drawer: false,
     flow: initflow,
     locale: defaultlanguage(),
@@ -63,9 +65,23 @@ const store = new Vuex.Store({
       getPageContent();
     },
     updatePage (state, payload) {
-      console.log('check 203')    
       state.page = payload;
     },
+
+    // doc
+    updateDocUrl (state, payload) {
+      state.locale = payload.locale || state.locale;
+      state.slug = payload.slug || state.slug;
+      window.localStorage.setItem('locale', state.locale);
+      console.log('check 204')    
+      setLanguage(state.locale);
+      getDocContent();
+    },
+    updateDoc (state, payload) {
+      console.log('check 203')    
+      state.doc = payload;
+    },
+
 
     // locale
     updateLocale (state, payload) {
