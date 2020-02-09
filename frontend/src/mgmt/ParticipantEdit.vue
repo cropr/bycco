@@ -57,9 +57,9 @@
       <v-text-field label="ID Fide" v-model="p.idfide" />
       <p>Nationality Bel: {{p.nationalitybel}}</p>
       <v-text-field label="Nationality FIDE" v-model="p.nationalityfide" />
-      <v-text-field label="Rating FIDE" v-model="p.ratingfide" />
-      <v-text-field label="Rating Bel" v-model="p.ratingbel" />
-      <v-text-field label="Rating used" v-model="p.rating" />
+      <v-text-field label="Rating FIDE" v-model.number="p.ratingfide" type="number" />
+      <v-text-field label="Rating Bel" v-model.number="p.ratingbel" type="number" />
+      <v-text-field label="Rating used" v-model.number="p.rating" type="number" />
       <v-select label="Confirmed" v-model="p.confirmed" :items="yesno" />
     </v-flex>
     <v-flex sm6 xs12>
@@ -72,7 +72,7 @@
       <v-text-field label="Mobile local representative" v-model="p.mobileattendant" />
       <v-select label="Meals" v-model="p.meals" :items="meals" />
       <v-select label="Locale" v-model="p.locale" :items="locales" />
-      <v-text-field label="Payment amount" v-model="p.payamount" />
+      <v-text-field label="Payment amount" v-model.number="p.payamount" type="number"/>
       <v-text-field label="Payment message" v-model="p.paymessage" />
       <p>Invoice created: <date-formatted :date="p.invoicecreated"/></p>
       <p>Invoice sent: <date-formatted :date="p.invoicesent" /></p>

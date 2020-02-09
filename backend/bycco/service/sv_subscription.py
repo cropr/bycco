@@ -211,4 +211,16 @@ def updateSubscription(id: str, updatedict: dict) -> SubscriptionModel:
     except ValueError:
         log.exception('invalid present')
         raise BadRequest(description='InvalidPresent')
+    if 'rating' in updatedict and not isinstance(updatedict['rating'], int):
+        log.exception('rating not a number')
+        raise BadRequest(description='RatingNotNumber')
+    if 'ratingbel' in updatedict and not isinstance(updatedict['ratingbel'], int):
+        log.exception('rating not a number')
+        raise BadRequest(description='RatingBelNotNumber')
+    if 'ratingfide' in updatedict and not isinstance(updatedict['ratingfide'], int):
+        log.exception('rating not a number')
+        raise BadRequest(description='RatingFideNotNumber')
+    if 'payamount' in updatedict and not isinstance(updatedict['payamount'], int):
+        log.exception('rating not a number')
+        raise BadRequest(description='PayamountNotNumber')
     return SubscriptionModel.updateSubscription(id, updatedict)
