@@ -2,13 +2,16 @@
 <v-container>
   <h1>Management Participants</h1>
   <v-data-table :items="filteredParticipants" class="elevation-1" 
-      :headers="headers" >
+      :headers="headers" :footer-props="footerprops"  :items-per-page="-1">
     <template v-slot:top>
       <v-toolbar flat color="white">
         <v-toolbar-title>
           Particpiants
         </v-toolbar-title>
-        <v-spacer></v-spacer>
+        <v-spacer />
+        <v-checkbox v-model="isNotConfirmed" label="Not confirmed" hide-details 
+          class="check"/>
+        <v-spacer />
         <v-tooltip bottom >
           <template v-slot:activator="{ on }">
             <v-btn v-on="on" @click="addParticipant()" fab outlined 
@@ -66,17 +69,8 @@ export default {
   computed: {
     ...mapState(['token', 'participant', 'printselection']),
     filteredParticipants () {
-      let result = this.participants,
-          noplayers = ['All', 'Player', 'ORG', 'ARB', 'SPO', 'EAT'];
-      if (this.catselected == 'Players')
-         result =  _.filter(result, function(p) {
-            return noplayers.indexOf(p.category) == -1;
-         });
-      if (this.isNotConfirmed)
-        result = _.filter(result, ['confirmed', false]);
-      // if (this.hasNoInvoice)
-      //   retult = _.filter(result, ['invoiced', false])
-      return result
+      return this.participants.filter(
+        i => this.isNotConfirmed ? !i.confirmed : 1)
     },
     headers () { return [
       {
@@ -140,6 +134,9 @@ export default {
     ],
     catselected: 'All',
     catselectedOld: 'All',
+    footerprops: {
+      "items-per-page-options": [15,60,150,-1],
+    },
     isNotConfirmed: false,
     participants: [],
     selected: [],
@@ -259,5 +256,7 @@ export default {
 </script>
 
 <style scoped>
-
+.check {
+  margin: 0;
+}
 </style>

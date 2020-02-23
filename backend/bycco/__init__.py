@@ -23,7 +23,6 @@ log.info(f'Starting bycco')
 from bycco.models import setup_db_connection
 db = setup_db_connection(app.config['MONGODB'])
 
-
 # load api definitions
 import bycco.api
 import bycco.routes
