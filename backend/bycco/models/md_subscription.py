@@ -74,6 +74,7 @@ class SubscriptionModel(MongoModel):
     badgemimetype: str = 'image/jpeg'
     catering: Optional[str] = None
     custom: Optional[str] = None
+    emailattendant: str = ''
     emailparent: Optional[str] = None
     emailplayer: Optional[str] = None
     fullnameattendant: Optional[str] = None

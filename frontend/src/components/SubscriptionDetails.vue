@@ -66,6 +66,8 @@
           <div>{{$t('SubDetail2')}}</div>
           <v-text-field :label="$t('Full name respresentative')" v-model="flow.fullnameattendant">
           </v-text-field>
+          <v-text-field :label="$t('Email respresentative')" v-model="flow.emailattendant">
+          </v-text-field>
           <v-text-field :label="$t('GSM number representative')" v-model="flow.mobileattendant">
           </v-text-field>
         </v-flex>
@@ -94,6 +96,8 @@
         <div v-show="!flow.isParentPresent">
           <h4>{{$t('Info about adult representative at site')}}</h4>
           <v-text-field :label="$t('Full name')" v-model="flow.fullnameattendant" required>
+          </v-text-field>
+          <v-text-field :label="$t('Email')" v-model="flow.emailattendant" required>
           </v-text-field>
           <v-text-field :label="$t('GSM number')" v-model="flow.mobileattendant" required>
           </v-text-field>
@@ -207,12 +211,14 @@ export default {
         category: (this.subscription.gender == 'M' ? 'B' : 'G') + this.flow.category,
         emailparent: this.flow.emailparent || '',
         emailplayer: this.flow.emailplayer || '',
+        emailattendant: this.flow.emailattendant || '',
         fullnameattendant: this.flow.fullnameattendant || '',
         fullnameparent: this.flow.fullnameparent || '',
         idbel: this.subscription.idbel,
         locale: this.locale,
         mobileattendant: this.flow.mobileattendant || '',
         mobileparent: this.flow.mobileparent || '',
+        mobileplayer: this.flow.mobileplayer || '',
       };
       api('createSubscription', {subscription: subparam}).then(
         function(data) {

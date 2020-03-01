@@ -20,6 +20,7 @@ function defaultlanguage(){
 
 const initflow = {
   category: '',
+  emailattendant: '',
   emailplayer: '',
   emailparent: '',
   fullnameattendant: '',
@@ -96,6 +97,7 @@ const store = new Vuex.Store({
     },
     setSubscription(state, player) {
       state.subscription = player;
+      state.subscription.birthdate = new Date(state.subscription.birthdate)
     },
     updateSubscription(state, player){
       state.subscription = Object.assign({}, state.subscription, player)
@@ -104,11 +106,9 @@ const store = new Vuex.Store({
       state.photo = payload
     },
     init (state) {
-      console.log('calling init', state)
       state.flow = initflow;
       state.subscription = {};
       state.photo = '';
-      console.log('after init', state)
     },
     updateFlow(state, payload){
       state.flow = Object.assign({}, state.flow, payload)

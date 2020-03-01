@@ -37,20 +37,25 @@ def addSubscription(ss: dict):
     if not bp:
         raise NotFound(description="BelplayerNotfound")
     idfide = bp.idfide
+    fp = None
     if idfide:
-        fp = FideplayerModel.find_by_id(idfide)
+        try:
+            fp = FideplayerModel.find_by_id(idfide)
+        except:
+            # ignoring if belplayer contains an invalid idfide
+            pass
     try:
         cs = SubscriptionModel.find_by_idbel(idbel)
-        # raise BadRequest(description="AlreadySubscribed")
     except NotFound:
         cs = SubscriptionModel.blank()
     cs.birthdate = bp.birthdate
     cs.category = ss.get('category') or '#NA'
     cs.chesstitle = fp.chesstitle if idfide else ''
+    cs.emailattendant = ss.get('emailattendant') or ''
     cs.emailparent = ss.get('emailparent') or ''
     cs.emailplayer = ss.get('emailplayer') or ''
     cs.federation = bp.federation
-    cs.nationalityfide = fp.nationalityfide if idfide else ''
+    cs.nationalityfide = fp.nationalityfide if fp else ''
     cs.first_name = bp.first_name
     cs.fullnameattendant = ss.get('fullnameattendant') or ''
     cs.fullnameparent = ss.get('fullnameparent') or ''
@@ -64,7 +69,7 @@ def addSubscription(ss: dict):
     cs.mobileparent = ss.get('mobileparent') or ''
     cs.mobileplayer = ss.get('mobileplayer') or ''
     cs.ratingbel = bp.currentrating()
-    cs.ratingfide = fp.currentrating() if idfide else 0
+    cs.ratingfide = fp.currentrating() if fp else 0
     cs.rating = max(cs.ratingbel, cs.ratingfide)
     cs.nationalitybel = bp.nationalitybel
     cs.payamount = 0

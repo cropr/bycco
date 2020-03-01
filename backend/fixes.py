@@ -30,5 +30,5 @@ def fix_ints_subsubscription():
             }})
     
 if __name__ == '__main__':
-    # fix_remarks()
+    fix_remarks()
     fix_ints_subsubscription()

@@ -53,9 +53,11 @@
     </v-flex>
   </v-layout>
   <h3>{{$t('Payment')}}</h3>
-  <div>{{$t('SubConf1')}}</div>
-  <div>
-    <v-btn @click="confirm" color="primary">{{$t('Confirm')}}</v-btn>
+  <div v-show="!flow.isConfirmed">
+    <div>{{$t('SubConf1')}}</div>
+    <div>
+      <v-btn @click="confirm" color="primary">{{$t('Confirm')}}</v-btn>
+    </div>
   </div>
   <div class="mt-2" v-show="flow.isConfirmed">
     <div>{{$t('Your subscription is confirmed')}}</div>
