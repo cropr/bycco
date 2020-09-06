@@ -1,0 +1,15 @@
+# boardroles
+- active: yes
+  email: ruben@decrop.net
+  first_name: Ruben
+  last_name: Decrop
+  mobile: "04775713131"
+  priority: 5
+
+- active: yes
+  email: mj.deschepper@gmail.com
+  first_name: Martin
+  last_name: Deschepper
+  mobile: "123"
+  priority: 6
+

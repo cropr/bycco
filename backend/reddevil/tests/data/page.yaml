@@ -1,0 +1,46 @@
+# documents 
+- enable: yes
+  doctype: article
+  expirydelta: 10
+  page_i18n_fields: 
+    nl:
+      body: Een beetje body
+      intro: Een kleine intro
+      title: Een eerste titel
+  languages: 
+    - nl
+  name: Een eerste titel
+  created_by: ik
+  publisheddelta: -1
+  slug: Een-eerste-titel
+ 
+- enabled: yes
+  doctype: article
+  page_i18n_fields: 
+    nl:
+      body: content2
+      intro: intro2
+      title: titel2
+    fr:
+      body: contenu2
+      intro: intro2
+      title: titre2
+  languages: 
+    - nl
+    - fr
+  name: doc2
+  created_by: ik
+  slug: titel2
+
+- enabled: yes
+  doctype: article
+  page_i18n_fields: 
+    nl:
+      body: content3
+      intro: intro3
+      title: titel3
+  languages: 
+    - nl
+  name: doc3
+  created_by: ik
+  slug: titel3

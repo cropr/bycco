@@ -1,0 +1,14 @@
+# accessright
+- name: editor
+  i18n:
+    nl: redacteur
+    fr: redacteur
+    en: editor
+
+- name: reader
+  i18n:
+    nl: lezer
+    fr: lecteur
+    de: reader
+
+    

@@ -1,0 +1,23 @@
+# boardroles
+- name: president
+  i18n:
+    nl: Voorzitter
+    fr: Président
+    de: Präsident
+    en: President
+
+- name: webmaster
+  i18n:
+    nl: Webmaster
+    fr: Webmaster
+    de: Webmaster
+    en: Webmaster
+
+- name: secretary
+  i18n:
+    nl: Secretaris
+    fr: Secrétaire
+    de: Sekretär
+    en: Secretary
+
+    

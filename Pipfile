@@ -5,22 +5,28 @@ verify_ssl = true
 
 [dev-packages]
 mypy = "*"
+pytest = "*"
+asyncio = "*"
+pytest-asyncio = "*"
 
 [packages]
-flask = "*"
-flask-restful = "*"
-pymongo = "*"
-pyjwt = "*"
-passlib = "*"
-flask-cors = "*"
-beautifulsoup4 = "*"
-dacite = "*"
-requests = "*"
-python-slugify = "*"
+fastapi = "*"
+uvicorn = "*"
 python-dateutil = "*"
+python-slugify = "*"
+passlib = "*"
+motor = "*"
+requests = "*"
+google-auth = "*"
+aiofiles = "*"
+colorlog = "*"
+python-jose = {extras = ["cryptography"],version = "*"}
+bcrypt = "*"
+markdown2 = "*"
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
 
 [requires]
 python_version = "3.7"
 
-[packages.5d75972]
-path = "./setupdata/dbf-1.0-py3-none-any.whl"
