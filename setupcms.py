@@ -4,7 +4,7 @@ from datetime import date, datetime, timedelta, timezone
 from bycco import settings
 from bycco.crud import get_db
 
-from reddevil.page.sv_page import (
+from reddevil.service.sv_page import (
     createPage,
     getPage,
     getRoutingTable,
@@ -43,6 +43,14 @@ async def main():
     # update page
     pu = PageUpdate(
         publicationdate='2020-08-20',
+        body= {
+            'default': I18nField(id=page_id, name='body', value=''),
+            'nl': I18nField(id=page_id, name='body', value=''),
+        },
+        intro= {
+            'default': I18nField(id=page_id, name='intro', value=''),
+            'nl': I18nField(id=page_id, name='intro', value=''),
+        },
         title= {
             'default': I18nField(id=page_id, name='title', value='Home'),
             'nl': I18nField(id=page_id, name='title', value='Homepagina'),

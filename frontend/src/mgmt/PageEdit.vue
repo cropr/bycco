@@ -1,10 +1,10 @@
 <template>
-<v-container class="elevation-1">
-  <v-row>
-    <v-col cols=12 sm=6>
-        <h1>Edit Page: {{ name }} </h1>
-    </v-col>
-    <v-col col=12 sm=6>
+<v-container>
+  <h1>Edit Page </h1>
+  <v-card>
+    <v-card-title color="grey lighten-4">
+      {{ p.name }}
+      <v-spacer />
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn v-on="on" outlined fab color="deep-purple" @click="back()" 
@@ -32,82 +32,56 @@
         </template>
         <span>Delete page</span>
       </v-tooltip>
-
-      <!-- <v-tooltip bottom >
-        <template v-slot:activator="{ on }">
-          <v-btn v-on="on" outlined fab color="deep-purple" @click="publish()" 
-              slot="activator">
-            <v-icon>mdi-publish</v-icon>
-          </v-btn>
-        </template>
-        <span>Publish now</span>
-      </v-tooltip>
-      <v-tooltip bottom >
-        <template v-slot:activator="{ on }">
-          <v-btn v-on="on" outlined fab color="deep-purple" @click="preview()" 
-              slot="activator">
-            <v-icon>mdi-eye</v-icon>
-          </v-btn>
-        </template>
-        <span>Preview page</span>
-      </v-tooltip> -->
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col cols=12 sm=6>
-      <v-text-field label="Name" v-model="p.name" />
-      <v-text-field label="Owner" v-model="p.created_by" />
-      <v-text-field label="Slug" v-model="p.slug" />
-      <v-select :items="doctypes" label="Document type" v-model="p.doctype" />      
-      <v-select :items="pagecomponents" label="Frontend Component" v-model="p.component" /> 
-    </v-col>
-    <v-col cols=12 sm=6>
-      <v-checkbox v-model="p.enabled" label='Enabled' />
-      <p>Page created: <date-formatted :date="p.created_ts"/></p>
-      <p>Page modified: <date-formatted :date="p.modified_ts"/></p>
-      <v-menu v-model="menu_published" :close-on-content-click="false"
-        :nudge-right="40" transition="scale-transition"
-        offset-y min-width="290px"
-      >
-        <template v-slot:activator="{ on }">
-          <v-text-field v-model="p.published_ts" label="Publication date" prepend-icon="mdi-calendar-range"
-            readonly v-on="on" />
-        </template>
-        <v-date-picker v-model="p.published_ts" @input="menu_published = false" color="deep-purple" />
-      </v-menu>
-      <v-menu v-model="menu_expired" :close-on-content-click="false"
-        :nudge-right="40" transition="scale-transition"
-        offset-y min-width="290px"
-      >
-        <template v-slot:activator="{ on }">
-          <v-text-field v-model="p.expired_ts" label="Expiry date" prepend-icon="mdi-calendar-range"
-            readonly v-on="on" />
-        </template>
-        <v-date-picker v-model="p.expired_ts" @input="menu_expired = false" color="deep-purple" />
-      </v-menu>
-    </v-col>
-  </v-row>
-  <v-row >
-    <v-col cols=2 v-for="l in lang.available" :key="l">
-      <v-switch v-model="lang.enabled[l]" :label="l" @change="toggleLang(l)" />
-    </v-col>
-  </v-row>
-  <v-tabs light slider-color="deep-purple" v-model="lang.current" >
-    <v-tab class="mx-2"  v-for="l in enabledLang" :key="l">
-      <span>{{l}}</span>
-    </v-tab>
-  </v-tabs>
-  <v-tabs-items v-model="lang.current">
-    <v-tab-item  v-for="l in enabledLang" :key="l">
-      <div class='elevation-1 mt-2 pa-2'>
-        <v-text-field label="Title" v-model="p.page_i18n_fields[l].title" />
-        <v-textarea auto-grow rows=3 label="Intro" 
-                    v-model="p.page_i18n_fields[l].intro" /> 
-        <v-textarea auto-grow rows=8 label="Body" v-model="p.page_i18n_fields[l].body" /> 
-      </div>
-    </v-tab-item>
-  </v-tabs-items>
-
+    </v-card-title>
+    <v-card-text>
+      <v-row>
+        <v-col cols=12 sm=6>
+          <v-text-field label="Name" v-model="p.name" />
+          <v-text-field label="Owner" v-model="p.created_by" />
+          <v-text-field label="Slug" v-model="p.slug" />
+          <v-select :items="doctypes" label="Document type" v-model="p.doctype" />      
+          <v-select :items="pagecomponents" label="Frontend Component" v-model="p.component" /> 
+        </v-col>
+        <v-col cols=12 sm=6>
+          <v-checkbox v-model="p.enabled" label='Enabled' />
+          <p>Page created: <date-formatted :date="p.creationtime"/></p>
+          <p>Page modified: <date-formatted :date="p.modificationtime"/></p>
+          <v-menu v-model="menu_published" :close-on-content-click="false"
+            :nudge-right="40" transition="scale-transition"
+            offset-y min-width="290px"
+          >
+            <template v-slot:activator="{ on }">
+              <v-text-field v-model="p.publicationdate" label="Publication date" prepend-icon="mdi-calendar-range"
+                readonly v-on="on" />
+            </template>
+            <v-date-picker v-model="p.publicationdate" @input="menu_published = false" color="deep-purple" />
+          </v-menu>
+          <v-menu v-model="menu_expired" :close-on-content-click="false"
+            :nudge-right="40" transition="scale-transition"
+            offset-y min-width="290px"
+          >
+            <template v-slot:activator="{ on }">
+              <v-text-field v-model="p.expirationdate" label="Expiry date" prepend-icon="mdi-calendar-range"
+                readonly v-on="on" />
+            </template>
+            <v-date-picker v-model="p.expirationdate" @input="menu_expired = false" color="deep-purple" />
+          </v-menu>
+        </v-col>
+      </v-row>
+      <h4>Translations</h4>
+      <v-tabs class="elevation-2" >
+        <v-tab v-for="l in languages" :key="l">
+          {{ l }}
+        </v-tab>
+        <v-tab-item v-for="l in languages" :key="l">
+          <v-checkbox v-model="enabled[l]" :label="l" class='pl-5' />
+          <v-text-field class="mx-3" v-model='titles[l]' label="Title" />
+          <v-text-field class="mx-3" v-model='intros[l]' label="Intro" />
+          <v-textarea class="mx-3" solo v-model='bodys[l]' label="Body" />
+        </v-tab-item>
+      </v-tabs>   
+    </v-card-text>
+  </v-card>
 </v-container>
 </template>
 
@@ -140,21 +114,19 @@ export default {
   },
 
   data () {return {
+    activetab: '',
+    dialogDelete : false,
     doctypes: doctypes,    
-    lang: {
-      available: languages,
-      current: 0,
-      enabled: {},
-    },
+    enabled: {en: false, nl: false, fr: false, de: false},
+    languages: ['en', 'nl', 'fr', 'de'],
+    idpage: this.$route.params.id,
     menu_published: false,
     menu_expired: false,
-    name: '', 
     p: {},
     pagecomponents: pagecomponents,
-    yesno: [
-      {value:true, text: 'Yes'},
-      {value:false ,text:'No'}
-    ],
+    intros: {en: '', nl: '',  fr: '', de: ''},
+    titles: {en: '', nl: '',  fr: '', de: '', default: ''},
+    bodys: {en: '', nl: '',  fr: '', de: ''},
   }},
 
   methods: {
@@ -170,7 +142,7 @@ export default {
         {securities: bearertoken(this.token)},
       ).then(
         function(data) {
-          self.readPage(data.obj.page);
+          self.readPage(data.obj);
         },
         function(data){
           console.error('failed get page', data)
@@ -179,27 +151,33 @@ export default {
       );
     },
 
-    preview () { },
-
     publish() { },
 
-    readPage (page) {
-      let self=this;
-      this.p = page;
-      this.p.languages.forEach(function(l){
-        if (l in self.p.page_i18n_fields === false) {
-          self.p.page_i18n_fields[l] = {
-            body: '',
-            intro: '',
-            title: '',
-          };
-        }
-        self.$set(self.lang.enabled, l, true);
+    readPage(page) {
+      let self=this, ls;
+      this.p = {...page};
+      this.enabled = {'en': false, 'nl': false, 'fr': false, 'de': false};
+      ls = this.p.languages;
+      this.activetab = ls[0];
+      this.titles.default = this.p.title.default.value;
+      this.languages.forEach(function(l){
+          self.bodys[l] = self.p.body.default.value;
+          self.titles[l] = self.p.title.default.value;
+          self.intros[l] = self.p.intro.default.value;
       })
-      this.name = this.p.name + '';
+      ls.forEach(function(l){
+          console.log('enabling', l)
+          self.enabled[l] = true;
+          self.bodys[l] = self.p.body[l] ? self.p.body[l].value: 
+            self.p.bodys.default.value;
+          self.titles[l] = self.p.title[l] ? self.p.title[l].value: 
+            self.p.title.default.value;
+          self.intros[l] = self.p.intro[l] ? self.p.intro[l].value: 
+            self.p.intro.default.value;
+      })
     },
 
-    remove () {
+    remove() {
       let self=this;
       if (window.confirm('Are you sure to delete page "' + this.name + '"?')) {
         this.api.delete_page(
@@ -214,29 +192,62 @@ export default {
           function(data){
             // TODO show error message
             console.error('failed to delete', data);
-            self.$root.$emit('snackbar', {text: 'Delete page failed', reason: data})            
+            self.$root.$emit('snackbar', {text: 'Delete page failed', reason: data})
           }
         );
       }
     },
 
     save () {
-      let self=this;
-      const {id, ...page} = this.p;
-      console.log('saving', page);
-      this.api.update_page({id},{
-        requestBody: page,
-        securities: bearertoken(this.token),        
-      }).then(
-        function(){
-          console.log('successfully saved page')
-          self.$root.$emit('snackbar', {text: 'Page successfully saved'})
-        },
-        function(data){
-          console.error('failed to save', data);
-          self.$root.$emit('snackbar', {text: 'Page not saved', reason: data})
+      var self = this, ls = [];
+      this.languages.forEach(function(l){
+        if (self.enabled[l]) {
+          ls.push(l);
+          if (!self.p.body[l]) {
+            self.p.body[l] =  {...self.p.body.default}; 
+          }
+          self.p.body[l].value = self.bodys[l];
+          if (!self.p.intro[l]) {
+            self.p.intro[l] =  {...self.p.intro.default}; 
+          }
+          self.p.intro[l].value = self.intros[l];
+          if (!self.p.title[l]) {
+            self.p.title[l] =  {...self.p.title.default}; 
+          }
+          self.p.title[l].value = self.titles[l];
         }
-      );
+        else {
+          delete self.p.body[l]
+          delete self.p.intro[l]
+          delete self.p.title[l]
+        }
+      })
+      this.api.update_page({id: this.idpage}, {
+        requestBody: {
+          body: this.p.body,
+          component: this.p.component,
+          doctype: this.p.doctype,
+          enabled: this.p.enabled,
+          expirationdate: this.p.expirationdate,
+          intro: this.p.intro,
+          languages: ls,
+          name: this.p.name,
+          owner: this.p.owner,
+          publicationdate: this.p.publicationsdate,
+          slug: this.p.slug,
+          title: this.p.title,
+        },
+        securities: bearertoken(this.token),
+      }).then(
+        function () {
+          self.$root.$emit('snackbar', {text: 'Page saved'})
+          self.back();
+        },
+        function (data) {
+          console.error('failed to delete', data);
+          self.$root.$emit('snackbar', {text: 'Delete page failed', reason: data})
+        }
+      )      
     },
 
     toggleLang(l){

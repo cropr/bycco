@@ -10,7 +10,6 @@ from ..common import app, url, RdException, bearer_schema
 from reddevil.service.sv_page import (
     createPage,
     deletePage,
-    getLocalizedPage,
     getPage,
     getPages,
     getPageBySlug,
@@ -24,7 +23,6 @@ from reddevil.models.md_page import (
     PageListOut,
     PageUpdate,
     PageSingleOut,
-    PageI18nSingleOut,
     RoutingTableListOut,
 )
 
@@ -35,7 +33,7 @@ async def api_get_pages(
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
     try:
-        return await getPages(options)
+        return await getPages()
     except RdException as e:
         raise HTTPException(status_code=e.status_code, detail=e.description)
     except:
@@ -43,10 +41,10 @@ async def api_get_pages(
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 @app.get(url + '/a/page', response_model=PageListOut)
-async def api_anon_get_pages(**options):
+async def api_anon_get_pages():
     log.info(f'options {options}')
     try:
-        return await getPages(options)
+        return await getPages()
     except RdException as e:
         raise HTTPException(status_code=e.status_code, detail=e.description)
     except:
@@ -70,7 +68,7 @@ async def api_get_page(id: str,
              auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
     try:
-        return await getPage(id, auth.credentials)
+        return await getPage(id)
     except RdException as e:
         raise HTTPException(status_code=e.status_code, detail=e.description)
     except:
@@ -80,7 +78,7 @@ async def api_get_page(id: str,
 @app.get(url + '/a/page/{id}')
 async def api_anon_get_page(id: str):
     try:
-        return await getPage(id, auth.credentials)
+        return await getPage(id)
     except RdException as e:
         raise HTTPException(status_code=e.status_code, detail=e.description)
     except:
@@ -104,7 +102,7 @@ async def api_update_page(id: str, p: PageUpdate,
                 auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
     try:
-        await updatePage(id, p, auth.credentials)
+        await updatePage(id, p)
     except RdException as e:
         raise HTTPException(status_code=e.status_code, detail=e.description)
     except:

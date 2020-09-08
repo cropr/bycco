@@ -32,5 +32,5 @@ class DbPage(DbBase):
     DOCUMENTTYPE = 'Page'
     SIMPLEFIELDS = [ 'body', 'creationtime', 'doctype', 'enabled', 
         'expirationdate', 'intro', 'name',  'modificationtime', 'publicationdate',
-        'slug']
+        'slug', 'title']
     VERSION = 2

@@ -5,36 +5,30 @@
   <v-data-table :headers="headers" :items="filteredpages" :footer-props="footerProps"
       class="elevation-1" :sort-by="['name','modified']">
     <template v-slot:top>
-      <v-toolbar flat color="white">
-        <v-toolbar-title>
-          Pages
-        </v-toolbar-title>
-        <v-spacer />
-        <v-row>
-          <v-col cols=3>
+      <v-card color="grey lighten-4">
+        <v-card-title>
+          <v-row class="px-2">
             <v-checkbox v-model="filter.normal" label='page' />
-          </v-col>
-          <v-col cols=3>
-            <v-checkbox v-model="filter.article" label='article' />&nbsp;&nbsp;
-          </v-col>
-          <v-col cols=3>
+            <v-spacer />
+            <v-checkbox v-model="filter.article" label='article' />
+            <v-spacer />
             <v-checkbox v-model="filter.app" label='app' />
-          </v-col>
-        </v-row>
-        <v-spacer />
-        <v-tooltip bottom >
-          <template v-slot:activator="{ on }">
-            <v-btn v-on="on" @click="addPage()" fab outlined 
-                  color="deep-purple">
-              <v-icon>mdi-plus</v-icon>
-            </v-btn>
-          </template>
-          <span>Add Page</span>
-         </v-tooltip>
-      </v-toolbar>
+            <v-spacer />
+            <v-tooltip bottom >
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" @click="addPage()" fab outlined 
+                      color="deep-purple">
+                  <v-icon>mdi-plus</v-icon>
+                </v-btn>
+              </template>,class="py-3"
+              <span>Add Page</span>
+            </v-tooltip>
+          </v-row>
+        </v-card-title>
+      </v-card>
     </template>
-    <template v-slot:item.modified_ts="{ item }">
-      <date-formatted :date="item.modified_ts"/>
+    <template v-slot:item.modificationtime="{ item }">
+      <date-formatted :date="item.modificationtime"/>
     </template>
     <template v-slot:item.action="{ item }">
       <v-icon small class="mr-2"  @click="editPage(item)" >
@@ -77,7 +71,7 @@ export default {
         text: "Enabled", value: 'enabled'
       },
       {
-        text: "Modified", value: 'modified_ts'
+        text: "Modified", value: 'modificationtime'
       },
       {
         text: 'Actions', value: 'action', sortable: false
@@ -133,10 +127,6 @@ export default {
       ).then(
         function(data) {
           self.pages = data.obj.pages;
-          self.pages.forEach(function(p){
-            p.created_ts = (new Date(p.created_ts)).toLocaleString();
-            p.modified_ts = (new Date(p.modified_ts)).toLocaleString();
-          })
         },
         function(data){
           if (data.status == 401) {

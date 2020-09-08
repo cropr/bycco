@@ -68,12 +68,14 @@ class PageDetailedOut(BaseModel):
     An detailed view of a page 
     """
     active: bool
+    body: Dict[str, I18nField]  
     component: PageComponent
     creationtime: datetime
     doctype: str 
     enabled: bool
     expirationdate: str
     id: str   
+    intro: Dict[str, I18nField]  
     languages: List[str]
     name: str
     modificationtime: datetime
@@ -95,28 +97,12 @@ class PageUpdate(BaseModel):
     enabled: Optional[bool]
     expirationdate: Optional[str]             # format yyyy-mm-dd
     intro: Optional[Dict[str, I18nField]]
+    languages: Optional[List[str]]
     name: Optional[str]
     owner: Optional[str] 
     publicationdate: Optional[str]            # format yyyy-mm-dd
     slug: Optional[str]
     title: Optional[Dict[str, I18nField]]
-
-class PageI18nOut(BaseModel):
-    """
-    A localized readonly view of a page
-    """
-    active: bool
-    body: str = ''
-    component: PageComponent
-    created_by: str = ' webmaster'
-    created_ts: datetime
-    id: str
-    intro: str = ''
-    locale: str
-    name: str         
-    modified_ts: datetime
-    slug: str
-    title: str = ''
 
 
 class ArticleOut(BaseModel):
@@ -141,9 +127,6 @@ class ArticleListOut(BaseModel):
 
 class PageSingleOut(BaseModel):
     page: PageDetailedOut
-
-class PageI18nSingleOut(BaseModel):
-    page: PageI18nOut
 
 class RoutingTableItem(BaseModel):
     component: str

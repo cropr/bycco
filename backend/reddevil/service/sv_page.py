@@ -22,7 +22,7 @@ from reddevil.models.md_page import (
     ArticleListOut,
     PageDetailedOut,
     PageIn,
-    PageI18nOut,
+    PageOut,
     PageListOut,
     PageUpdate,
     RoutingTableListOut,
@@ -85,7 +85,7 @@ async def getPageBySlug(slug: str, options: dict= {}):
     log.info(f'pdict {pdict}')
     return encode_page(pdict, _class)
 
-async def getPages(options: dict) -> PageListOut:
+async def getPages(options: dict={}) -> PageListOut:
     """
     get all the pages
     """
@@ -93,17 +93,8 @@ async def getPages(options: dict) -> PageListOut:
     docs = await DbPage.find_multiple(options)
     for d in docs:
         d['active'] = isactive(d)
-    pages = [encode_page(e, _class) for e in evs]
+    pages = [encode_page(d, _class) for e in docs]
     return PageListOut(pages=pages)    
-
-async def getLocalizedPage(slug: str, locale: str) -> PageI18nOut:
-    """
-    get the localized content of a page
-    """
-    _class = options.pop('_class', PageI18nOut)
-    filter = dict(slug=slug, locale=locale, **options)
-    pdict = await DbPage.find_single(filter)
-    return encode_page(pdict, _class)
 
 async def updatePage(id: str, d: PageUpdate) -> PageDetailedOut:
     """

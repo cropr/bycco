@@ -5,7 +5,7 @@
   <v-app-bar v-cloak dark app class="deep-purple darken-2" >
     <v-app-bar-nav-icon @click.stop="toggleDrawer()" />
     <v-toolbar-items>
-      <v-btn text large href="/">FRBE-KBSB-KSB</v-btn>
+      <v-btn text large href="/">Bycco</v-btn>
     </v-toolbar-items>
     <v-spacer/>
     <v-toolbar-title>Admin Interface</v-toolbar-title>
