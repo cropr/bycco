@@ -2,7 +2,8 @@
 # copyright Chessdevil Consulting BVBA 2015 - 2020
 
 from motor.motor_asyncio import AsyncIOMotorClient
-from .. import settings
+import asyncio 
+from bycco import settings
 
 def date2datetime(d, f):
     """
@@ -18,6 +19,7 @@ def get_db():
     a singleton
     """
     if not hasattr(get_db, 'database'):
-        client = AsyncIOMotorClient(settings.MONGO_URL)
+        loop = asyncio.get_event_loop()
+        client = AsyncIOMotorClient(settings.MONGO_URL, io_loop=loop)
         setattr(get_db,'database', client[settings.MONGO_DB])
     return get_db.database

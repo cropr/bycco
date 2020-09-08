@@ -5,22 +5,22 @@ import logging
 log = logging.getLogger('reddevil')
 
 from fastapi import FastAPI
-from typing import Optional, Any
+from typing import Optional, Any, Callable
 from motor.motor_asyncio import AsyncIOMotorClient
 
 # variables common for all reddevil modules
 
 cfg: Any = None                                     # the configuration object
 app: Optional[FastAPI] = None                       # the FastAPI app instance
-conn: Optional[AsyncIOMotorClient] = None           # the database connection
+get_db: Callable = None                             # the database connection
 url: str = ''                                       # the base url for all endpoints
 
-def register_app(my_cfg: Any, my_app: FastAPI, my_conn: AsyncIOMotorClient, 
+def register_app(my_cfg: Any, my_app: FastAPI, my_get_db: Callable, 
         my_url: str):
-    global cfg, app, conn, url
+    global cfg, app, get_db, url
     cfg = my_cfg
     app = my_app
-    conn = my_conn
+    get_db = my_get_db
     url = my_url
 
 from .errors import (

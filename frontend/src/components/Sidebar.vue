@@ -26,9 +26,6 @@
       </v-list-item>
       <v-list-group no-action>
         <template v-slot:activator>
-          <v-list-item-icon>
-            <v-icon>info</v-icon>
-          </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>Info</v-list-item-title>
           </v-list-item-content>
@@ -39,25 +36,9 @@
         <v-list-item @click="updateSlug('agenda')" >
           <v-list-item-content>{{$t('Calendar')}}</v-list-item-content>
         </v-list-item>
-        <v-list-item @click="updateSlug('huisreglement')" >
-          <v-list-item-content>{{$t('Internal Regulations')}}</v-list-item-content>
-        </v-list-item>
-        <v-list-item @click="updateSlug('verblijf')" >
-          <v-list-item-content>{{$t('Lodging')}}</v-list-item-content>
-        </v-list-item>
-        <v-list-item @click="updateSlug('toewijzingverblijf')" >
-          <v-list-item-content>{{$t('Lodging Allocation')}}</v-list-item-content>
-        </v-list-item>
-        <v-list-item @click="updateSlug('restaurant')" >
-          <v-list-item-content>{{$t('Catering')}}</v-list-item-content>
-        </v-list-item>
       </v-list-group>
-
       <v-list-group no-action>
         <template v-slot:activator>
-          <v-list-item-icon>
-            <v-icon>sports</v-icon>
-          </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>{{ $t('Tournament') }}</v-list-item-title>
           </v-list-item-content>
@@ -69,50 +50,53 @@
           <v-list-item-content>{{ $t('Participants') }}</v-list-item-content>
         </v-list-item>
       </v-list-group>
-
+      <v-list-item @click="updateSlug('covid19')" >
+        <v-list-item-content>Covid-19</v-list-item-content>
+      </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
 
-import { navigation } from '@/util/utils'
+import {mapState} from "vuex"
 
 export default {
 
-  name: "Sidebar",
+name: "Sidebar",
 
-  data () {return {
+data () {
+  return {
     sections: {
       participants: false, // window.config.participants_enabled,
       subscription: false, // window.config.subscriptions_enabled,
-      tournament: false, //window.config.tournament_enabled,
+      tournament: false,   //window.config.tournament_enabled,
     },
+}},
 
-  }},
-
-  computed: {
-    drawer: {
-      get () {
-        return this.$store.state.drawer
-      },
-      set (value) {
-        this.$store.commit('updateDrawer', value)
-      }
+computed: {
+  drawer: {
+    get () {
+      return this.$store.state.drawer
     },
+    set (value) {
+      this.$store.commit('updateDrawer', value)
+    }
   },
+  ...mapState(['slug', 'locale']),     
+},
 
-  mounted() {
+mounted() {
+},
+
+methods: {
+  updateLocale: function(l){
+    this.$router.push('/page/'+ this.slug + '/' + l)
   },
-
-  methods: {
-    updateLocale: function(l){
-      navigation.changeLocale(l)
-    },
-    updateSlug: function(l){
-      navigation.changeSlug(l)
-    },
-  }
+  updateSlug: function(s){
+    this.$router.push('/page/'+ s + '/' + this.locale)
+  },
+}
 
 }
 

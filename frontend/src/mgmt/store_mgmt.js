@@ -5,7 +5,9 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    token: '',
+    api: null,
+    drawer: false, 
+    token: window.localStorage.getItem('websitetoken'),
     page: {},
     participant: {},
     printselection: [],
@@ -13,8 +15,15 @@ const store = new Vuex.Store({
   },
 
   mutations: {
+    updateApi(state, payload) {
+      state.api = payload;
+    },
+    updateDrawer (state, payload) {
+      state.drawer = payload;
+    },
     updateToken (state, payload) {
       state.token = payload;
+      window.localStorage.setItem('websitetoken', payload)
     },
     updatePage (state, payload) {
       state.page = payload;

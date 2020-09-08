@@ -1,15 +1,15 @@
 <template>
-<v-container fluid grid-list-md class="elevation-1">
+<v-container grid-list-md class="elevation-1">
   <v-row>
     <v-col cols=9>
-      <h1>New Article</h1>
+      <h1>New Page</h1>
     </v-col>
     <v-col cols=3>
       <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <v-btn v-on="on" @click="back()" fab outlined 
                   color="deep-purple">
-              <v-icon>add</v-icon>
+              <v-icon>mdi-plus</v-icon>
             </v-btn>
           </template>
           <span>Go Back</span>
@@ -18,7 +18,7 @@
           <template v-slot:activator="{ on }">
             <v-btn v-on="on" @click="save()" fab outlined 
                   color="deep-purple">
-              <v-icon>save</v-icon>
+              <v-icon>mdi-content-save</v-icon>
             </v-btn>
           </template>
           <span>Save changes</span>
@@ -27,8 +27,8 @@
   </v-row>
   <v-row>
     <v-col cols=12 sm=6>
-      <v-text-field label="Author" v-model="author" />
       <v-text-field label="Name" v-model="name" />
+      <v-select :items="doctypes" label="Document type" v-model="doctype" />      
     </v-col>
   </v-row>
 </v-container>
@@ -36,7 +36,9 @@
 
 <script>
 
-import api from '../util/api'
+import { mapState } from 'vuex'
+import { bearertoken } from "@/util/token"
+import { doctypes } from '@/util/cms'
 
 export default {
   
@@ -44,27 +46,33 @@ export default {
 
   data () {return {
     name: '',
-    author: '',
+    doctype: null,
+    doctypes: doctypes,
   }},
+
+  computed: {
+    ...mapState(['token', 'api'])
+  },
 
   methods: {
 
     back () {
+      this.$router.back();
     },
 
     save () {
-      
-      api('addPage', {
-        page: {
+      let self=this;
+      this.api.create_page({}, {
+        requestBody: {
           'name': this.name,
-          'owner': this.author,
-          'slug': this.name,
-        }
+          'doctype': this.doctype,
+        },
+        securities: bearertoken(this.token),
       }).then(
         function(data){
-          console.log('page created', data)
-          this.$router.push('/mgmt/page/edit/'  + data.id)
-        }.bind(this),
+          self.$root.$emit('snackbar', {text: 'Page created'})
+          self.$router.push('/mgmt/page/edit/'  + data.body)
+        },
         function(data){
           console.error('failed to save', data);
         }

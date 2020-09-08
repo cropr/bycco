@@ -40,6 +40,11 @@ LOG_CONFIG = {
             'level': 'INFO',
             'propagate': False,
         },
+        'reddevil': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
         'fastapi': {
             'handlers': ['console'],
             'level': 'INFO',

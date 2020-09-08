@@ -39,7 +39,7 @@ app = FastAPI(
 
 from bycco.crud import get_db
 from reddevil.common import register_app
-register_app(settings, app, get_db(), '/api')
+register_app(settings, app, get_db, '/api')
 
 # import service layer 
 import bycco.service
@@ -54,9 +54,6 @@ log.info(f'Api layer loaded')
 
 for route in app.routes:
     if isinstance(route, APIRoute):
-        route.operation_id = route.name 
+        route.operation_id = route.name[4:] 
 
-# import static html endpoints
-import bycco.static
-log.info(f'static html endpoints loaded')
 

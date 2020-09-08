@@ -1,6 +1,4 @@
 
-console.log('filenamedir', process.env.VUE_APP_FILENAMEDIR)
-
 module.exports = {
   "transpileDependencies": [
     "vuetify"
@@ -8,35 +6,27 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'http://localhost:8000',
       },   
-      '/static': {
-        target: 'http://localhost:5000',
-      }     
+      "/openapi.json": {
+        "target": "http://localhost:8000"
+      }   
     }
   },
   pages: {
     mgmt:  {
-      entry: 'src/mgmt/mgmt.js',
-      filename: process.env.VUE_APP_FILENAMEDIR + 'mgmt.html',
-    },
-    doc:  {
-      entry: 'src/user/document.js',
-      filename: process.env.VUE_APP_FILENAMEDIR + 'document.html',
+      entry: 'src/mgmt/index.js',
     },
     page:  {
-      entry: 'src/user/page.js',
-      filename: process.env.VUE_APP_FILENAMEDIR + 'page.html',
+      entry: 'src/page/index.js',
     },
-    participants:  {
-      entry: 'src/user/participants.js',
-      filename: process.env.VUE_APP_FILENAMEDIR + 'participants.html',
-    },
-    subscription:  {
-      entry: 'src/user/subscription.js',
-      filename: process.env.VUE_APP_FILENAMEDIR + 'subscription.html',
-    },
+    // participants:  {
+    //   entry: 'src/user/participants.js',
+    //   filename: process.env.VUE_APP_FILENAMEDIR + 'participants.html',
+    // },
+    // subscription:  {
+    //   entry: 'src/user/subscription.js',
+    //   filename: process.env.VUE_APP_FILENAMEDIR + 'subscription.html',
+    // },
   },
-  outputDir: '../backend/bycco/static/fe',
-  publicPath: '/static/fe'
 }

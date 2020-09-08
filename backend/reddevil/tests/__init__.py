@@ -53,8 +53,8 @@ def readyaml(name):
 
 def dbtestsetup():
    
-    from reddevil.common import db_conn
-    db = db_conn[1]
+    from reddevil.common import conn
+    db = conn[1]
     db.command('dropDatabase')
     return db
 
