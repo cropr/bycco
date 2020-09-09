@@ -166,7 +166,6 @@ export default {
           self.intros[l] = self.p.intro.default.value;
       })
       ls.forEach(function(l){
-          console.log('enabling', l)
           self.enabled[l] = true;
           self.bodys[l] = self.p.body[l] ? self.p.body[l].value: 
             self.p.bodys.default.value;
@@ -185,7 +184,6 @@ export default {
           {securities: bearertoken(this.token)}, 
         ).then(
           function(){
-            console.log('successfully deleted page')
             self.$root.$emit('snackbar', {text: 'Page deleted'})
             self.back();
           }, 

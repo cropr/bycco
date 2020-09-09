@@ -6,10 +6,10 @@
   <topbar />
   
   <v-content>
-    <v-container v-show="!apiloaded">
+    <v-container v-show="!routingtableloaded">
       Just a moment. <v-progress-circular indeterminate />
     </v-container>
-    <router-view :key="force" :ts="ts" v-if="apiloaded"/>
+    <router-view :key="$route.fullPath" v-if="routingtableloaded" />
   </v-content>
 
   <bycco-footer />
@@ -49,13 +49,11 @@ export default {
 
   data() {
     return {
-      apiloaded: false,
+      routingtableloaded: false,
       color: '',
-      force: 0,
       locales: locales,
       snackbar: false,
-      snacktext: '',
-      ts: new Date(),            
+      snacktext: '',            
     };
   },
 
@@ -69,7 +67,6 @@ export default {
       let self = this;
       Swagger('/openapi.json').then(
         function(client){
-          self.apiloaded = true;
           self.$store.commit('updateApi', client.apis.default);
           self.getRoutingTable()
         },
@@ -81,9 +78,7 @@ export default {
     },
 
     getRoutingTable() {
-      let self=this;
-      let rt;
-      console.log('api', this.api)
+      let self=this, rt;
       this.api.anon_routingtable().then(
         function(data){
           self.routingtableloaded = true;
@@ -91,14 +86,10 @@ export default {
           rt = processRoutes(data.obj.routes)
           self.$router.addRoutes(rt);
           let newroute = '/page/' + self.slug + '/' + self.locale;
-          console.log('rt added', rt)
-          console.log('going to', newroute)
           if (self.$route.path == newroute) {
-            self.force++; 
+            self.$router.replace('/dummy')
           }
-          else {
-            self.$router.push(newroute)
-          }
+          self.$router.push(newroute)
         },
         function(data){
           console.error('could not fetch routingtable', data).
@@ -123,9 +114,7 @@ export default {
     this.getOpenApi();
     this.$root.$on('snackbar', this.showSnackbar);
     this.$router.beforeEach(function(to, from, next){
-      console.log('processing url')
       let pparts = to.path.split('/');
-      console.log('pparts', pparts)
       if (pparts.length == 4) {
         if (pparts[2] != self.slug) {
           self.$store.commit('updateSlug', pparts[2]);

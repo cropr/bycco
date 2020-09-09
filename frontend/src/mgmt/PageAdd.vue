@@ -1,15 +1,15 @@
 <template>
-<v-container grid-list-md class="elevation-1">
-  <v-row>
-    <v-col cols=9>
-      <h1>New Page</h1>
-    </v-col>
-    <v-col cols=3>
+<v-container>
+  <h1>New Page</h1>
+  <v-card>
+    <v-card-title color="grey lighten-4">
+      &nbsp;
+      <v-spacer />
       <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <v-btn v-on="on" @click="back()" fab outlined 
                   color="deep-purple">
-              <v-icon>mdi-plus</v-icon>
+              <v-icon>mdi-arrow-left</v-icon>
             </v-btn>
           </template>
           <span>Go Back</span>
@@ -23,14 +23,12 @@
           </template>
           <span>Save changes</span>
       </v-tooltip>
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col cols=12 sm=6>
+    </v-card-title>
+    <v-card-text>
       <v-text-field label="Name" v-model="name" />
       <v-select :items="doctypes" label="Document type" v-model="doctype" />      
-    </v-col>
-  </v-row>
+    </v-card-text>
+  </v-card>
 </v-container>
 </template>
 
@@ -51,7 +49,7 @@ export default {
   }},
 
   computed: {
-    ...mapState(['token', 'api'])
+    ...mapState(['token', 'api', 'locale'])
   },
 
   methods: {
@@ -62,10 +60,11 @@ export default {
 
     save () {
       let self=this;
-      this.api.create_page({}, {
+      this.api.add_page({}, {
         requestBody: {
           'name': this.name,
           'doctype': this.doctype,
+          'locale': 'nl',
         },
         securities: bearertoken(this.token),
       }).then(

@@ -25,6 +25,7 @@ from reddevil.models.md_page import (
     PageOut,
     PageListOut,
     PageUpdate,
+    PageComponent,
     RoutingTableListOut,
     RoutingTableItem,
 )
@@ -44,21 +45,58 @@ async def createPage(d: PageIn) -> str:
     """
     create a new Page returning its id
     """
+    id = str(uuid.uuid4())
+    title = {
+        'default': I18nField(
+            id=id,
+            name='title',
+            value=d.name,
+        ).dict(),
+        d.locale: I18nField(
+            id=id,
+            name='title',
+            value=d.name,
+        ).dict(),
+    }
+    body = {
+        'default': I18nField(
+            id=id,
+            name='body',
+            value='',
+        ).dict(),
+        d.locale: I18nField(
+            id=id,
+            name='body',
+            value='',
+        ).dict(),    
+    }
+    intro = {
+        'default': I18nField(
+            id=id,
+            name='intro',
+            value='',
+        ).dict(),
+        d.locale: I18nField(
+            id=id,
+            name='intro',
+            value='',
+        ).dict(),
+    }
     tsnow = datetime.now(tz=timezone.utc)
     dd = d.dict()
-    dd['id'] = str(uuid.uuid4())
-    dd['body'] = {}
-    dd['component'] = ''
+    dd['id'] = id
+    dd['body'] = body
+    dd['component'] = PageComponent.CmsSimplePage
     dd['creationtime'] = tsnow
     dd['enabled'] = False
     dd['expirationdate'] = ''
-    dd['intro'] = {}
+    dd['intro'] = intro
     dd['languages'] = [d.locale]
     dd['modificationtime'] = tsnow
     dd['owner'] = ''
     dd['publicationdate'] = ''
     dd['slug'] = slugify(d.name)
-    dd['title'] = {}
+    dd['title'] = title
     return await DbPage.add(dd)
 
 async def deletePage(id: str) -> None:
@@ -93,7 +131,7 @@ async def getPages(options: dict={}) -> PageListOut:
     docs = await DbPage.find_multiple(options)
     for d in docs:
         d['active'] = isactive(d)
-    pages = [encode_page(d, _class) for e in docs]
+    pages = [encode_page(d, _class) for d in docs]
     return PageListOut(pages=pages)    
 
 async def updatePage(id: str, d: PageUpdate) -> PageDetailedOut:
