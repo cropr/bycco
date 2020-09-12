@@ -1,294 +1,161 @@
 # copyright Ruben Decrop 2012 - 2015
 # copyright Chessdevil Consulting BVBA 2015 - 2019
 
-from __future__ import annotations
-
-import logging
-
-from dataclasses import dataclass, field, asdict
-from dacite import from_dict
+from datetime import datetime
 from typing import Dict, Any, List, Optional, Type, Union
-from datetime import datetime, timedelta, date
-from pymongo import ReturnDocument
-from bson import ObjectId
-from werkzeug.exceptions import BadRequest, NotFound, InternalServerError
-from . import MongoModel, dbconfig, CounterModel
+from enum import Enum
+from pydantic import BaseModel
 
+class SubscriptionCategory(str, Enum):
+    B8 = 'B8'
+    B10 = 'B10'
+    B12 = 'B12'
+    B14 = 'B14'
+    B16 = 'B16'
+    B18 = 'B18'
+    B20 = 'B20'
+    G8 = 'G8'
+    G10 = 'G10'
+    G12 = 'G12'
+    G14 = 'G14'
+    G16 = 'G16'
+    G18 = 'G18'
+    G20 = 'G20'
+    ARB = 'ARB'
+    ORG = 'ORG'
 
-log = logging.getLogger('bycco')
+class Gender(str, Enum):
+    M = 'M'
+    F = 'F'
 
-@dataclass
-class BasicSubscription:
+class Subscription(BaseModel):
+    """
+    the subscription model as used in the database
+    is normally not exposed
+    """
+    birthdate: str
+    category: SubscriptionCategory
+    chesstitle: str
+    confirmed: bool
+    custom: Optional[str] 
+    emailattendant: str 
+    emailplayer: Optional[str] 
+    federation: str
+    first_name: str
+    gender: Gender
+    idbel: str
+    idclub: str
+    idfide: str 
+    invoicenumber: Optional[int] 
+    locale: str
+    last_name: str
+    mobileattendant: str 
+    mobileplayer: str 
+    nameattendant: str
+    nationality: str 
+    payamount: int 
+    paydate: Optional[datetime]
+    paymessage: str 
+    present: Optional[datetime]
+    ratingbel: int 
+    ratingfide: int 
+    remarks: str
+    subscriptiontime: datetime
+    subscriptionnumber: int
+    _id: str 
+    _version: int
+    _documenttype: str
+
+class SubscriptionIn(BaseModel):
+    """
+    the model to create a subscription
+    """
+    category: SubscriptionCategory 
+    idbel: str
+    locale: str
+
+class SubscriptionOptional(BaseModel):
+    """
+    the generic model used to encode results from the DB
+    Normally more fine grained models are used
+    """
+    birthdate: Optional[str]
+    category: Optional[SubscriptionCategory]
+    chesstitle: Optional[str]
+    confirmed: Optional[bool]
+    custom: Optional[str] 
+    emailattendant: Optional[str ]
+    emailplayer: Optional[str] 
+    federation: Optional[str]
+    first_name: Optional[str]
+    gender: Optional[str]
+    id: Optional[str] 
+    idbel: Optional[str]
+    idclub: Optional[str]
+    idfide: Optional[str]
+    invoicenumber: Optional[int] 
+    locale: Optional[str]
+    last_name: Optional[str]
+    mobileattendant: Optional[str]
+    mobileplayer: Optional[str]
+    nameattendant: Optional[str]
+    nationality: Optional[str]
+    payamount: Optional[int]
+    paydate: Optional[datetime]
+    paymessage: Optional[str]
+    present: Optional[datetime]
+    ratingbel: Optional[int] 
+    ratingfide: Optional[int]
+    remarks: Optional[str]
+    subscriptiontime: Optional[datetime]
+    subscriptionnumber: Optional[int]
+
+class SubscriptionOut(BaseModel):
     """
     A readonly view used in overview of all subscriptions
     """
-    category: str
-    first_name: str
-    id: str
-    last_name: str
-    registrationdate: datetime
-
-@dataclass
-class Attendee:
-    """
-    A readonly view used in overview of all attendees
-    """
-    category: str
+    category: SubscriptionCategory
     confirmed: bool
     first_name: str
-    gender: str                 # M, F
     id: str
     idbel: str
-    idclub: str
     last_name: str
-    registrationdate: datetime
+    subscriptiontime: datetime
     subscriptionnumber: int
 
-    nationalityfide: str = ''
-    meals: str = ''
-    present: Optional[datetime] = None
-    payamount: int = 0 
-    rating: int = 0
-    ratingbel: int = 0
-    ratingfide: int = 0
+class SubscriptionList(BaseModel):
+    """
+    a list view of subscriptions
+    """
+    subscriptions: List[Any]
 
-@dataclass
-class SubscriptionModel(MongoModel):
-
+class SubscriptionDetailedOut(SubscriptionOptional):
+    """
+    a readonly view to get a detailed view on a single subscription
+    """
     birthdate: str
-    category: str               # ARB, ORG, Bxx, Gxx, BGxx, SPO, EAT
-    confirmed: bool
+    category: SubscriptionCategory
     chesstitle: str
+    confirmed: bool
+    emailattendant: str 
     federation: str
     first_name: str
-    gender: str                 # M, F
-    idclub: str
+    gender: str                
+    id: str 
     idbel: str
+    idclub: str
+    idfide: str 
     locale: str
     last_name: str
-    nationalitybel: str
-    registrationdate: datetime
+    mobileattendant: str 
+    mobileplayer: str 
+    nameattendant: str
+    nationality: str 
+    payamount: int 
+    ratingbel: int 
+    ratingfide: int 
+    remarks: str
+    subscriptiontime: datetime
+    subscriptionnumber: int 
 
-    badgeimage: Optional[bytes] = None
-    badgelength: int = 0
-    badgemimetype: str = 'image/jpeg'
-    catering: Optional[str] = None
-    custom: Optional[str] = None
-    emailattendant: str = ''
-    emailparent: Optional[str] = None
-    emailplayer: Optional[str] = None
-    fullnameattendant: Optional[str] = None
-    fullnameparent: Optional[str] = None
-    id: str = ""    
-    _id: ObjectId = field(default_factory=ObjectId)
-    idfide: str = ''
-    invoicenumber: int = 0
-    meals: str = ''
-    mobileattendant: str = ''
-    mobileparent: str = ''
-    mobileplayer: str = ''
-    nationalityfide: str = ''
-    payamount: int = 0
-    paydate: Optional[datetime] = None
-    paymessage: str = ''
-    present: Optional[datetime] = None
-    rating: int = 0
-    ratingbel: int = 0
-    ratingfide: int = 0
-    remarks: str = ''
-    subscriptionnumber: int = 0
-
-    _collection = 'subscription'
-
-    # attribute id is created automatically as stringified version of _id
-    def __post_init__(self):
-        self.id = str(self._id)
-
-    @classmethod
-    def csv_subscriptions(cls) -> List[dict]:
-        """
-        find all subscription for csv output
-        """
-        coll = dbconfig['db'][cls._collection]
-        subs = []
-        cursor = coll.find({}, {'badgeimage': 0})
-        for doc in cursor:
-            doc['id'] = str(doc.pop('_id'))
-            doc['badgeimage'] = ''
-            subs.append(doc)
-        return subs
-    
-    @classmethod
-    def find_subscriptions(cls, format=None) -> List[BasicSubscription]:
-        """
-        find all subscription
-        """
-        coll = dbconfig['db'][cls._collection]
-        subs = []
-        fields = {
-            "category": 1,
-            "first_name": 1,
-            "last_name": 1,
-            "registrationdate": 1,
-        }
-        cursor = coll.find({}, fields)
-        for doc in cursor:
-            doc['id'] = str(doc.pop('_id'))
-            try:
-                subs.append(BasicSubscription(**doc))
-            except:
-                raise InternalServerError(description="CannotEncodeBasicSubscription")
-        return subs
-
-    @classmethod
-    def find_by_idbel(cls, idbel: str, withimage=False) -> "SubscriptionModel":
-        """
-        find a subscription by idbel
-        """
-        if withimage:
-            subdoc = cls.coll().find_one({'idbel': idbel})
-        else:
-            subdoc = cls.coll().find_one({'idbel': idbel}, {'badgeimage':0})
-        if not subdoc:
-            raise NotFound(description="SubscriptionNotFound")
-        try:
-            return cls(**subdoc)
-        except:
-            log.exception('Cannot encode Subscription')
-            raise InternalServerError(description="CannotEncodeSubscription")
-
-    @classmethod
-    def find_by_id(cls, id: str, withimage=False) -> "SubscriptionModel":
-        """
-        find a subscription by id
-        """
-        try:
-            oid = ObjectId(id)
-        except:
-            raise BadRequest(description="InvalidSubscriptionId")
-        if withimage:
-            subdoc = cls.coll().find_one(oid)
-        else:
-            subdoc = cls.coll().find_one(oid, {'badgeimage':0})
-        if not subdoc:
-            raise NotFound(description="SubscriptionNotFound")
-        try:
-            return from_dict(data_class=SubscriptionModel, data=subdoc)
-        except:
-            log.exception('Cannot encode Subscription')
-            raise InternalServerError(description="CannotEncodeSubscription")
-
-    @classmethod
-    def get_attendees(cls, options: dict) -> List[Attendee]:
-        """
-        find all subscriptions for attendee
-        """
-        coll = dbconfig['db'][cls._collection]
-        subs = []
-        fields = {
-            'category': 1,
-            'confirmed': 1,
-            'first_name': 1,
-            'gender': 1,
-            'idbel': 1,
-            'idclub': 1,
-            'last_name': 1,
-            'nationalityfide': 1,
-            'meals': 1,
-            'present': 1,
-            'payamount': 1,
-            'rating': 1,
-            'ratingbel': 1,
-            'ratingfide': 1,
-            'registrationdate': 1,
-            'subscriptionnumber': 1,
-        }
-        filter = {}
-        if options['cat']:
-            filter['category'] = options['cat']
-        if options['ss']:
-            filter['last_name'] = { '$regex': options['ss'], '$options': 'i' } 
-        if options['confirmed']:
-            filter['confirmed'] = True
-        cursor = coll.find(filter, fields)
-        for doc in cursor:
-            doc['id'] = str(doc.pop('_id'))
-            try:
-                subs.append(from_dict(data_class=Attendee, data=doc))
-            except:
-                raise InternalServerError(description="CannotEncodeAttendee")
-        return subs
-
-    @classmethod
-    def blank(cls) -> SubscriptionModel:
-        """
-        create a blank subscription
-        """
-        coll = dbconfig['db'][cls._collection]
-        id = ObjectId()
-        coll.insert_one({
-            '_id': id,
-            'birthdate': "1900-01-01",
-            'category': '#NA',               # ARB, ORG, Bxx, Gxx, BGxx, SPO, EAT
-            'confirmed': False,
-            'chesstitle': '',
-            'federation': '#NA',
-            'first_name': '#NA',
-            'gender': '#NA',                 # M, F
-            'idclub': '#NA',
-            'idbel': '#NA',
-            'locale': '#NA',
-            'last_name': '#NA',
-            'nationalitybel': '#NA',
-            'registrationdate': datetime.utcnow(),
-            'subscriptionnumber': CounterModel.nextValue('subscription')
-        })
-        subdict = coll.find_one(id)
-        try:
-            sub = cls(**subdict)
-            return sub
-        except:
-            log.exception('Cannot encode Subscription')
-            raise InternalServerError(description="CannotEncodeSubscription")
-
-    @classmethod
-    def updateSubscription(cls, id: str, subdict: Dict[str, Any]) -> SubscriptionModel:
-        """
-        update a subscription 
-        """
-        try:
-            oid = ObjectId(id)
-        except:
-            raise BadRequest(description="InvalidSubscriptionId")
-        subdoc = cls.coll().find_one_and_update({'_id': oid}, 
-            {'$set': subdict}, return_document=ReturnDocument.AFTER)
-        if not subdoc:
-            raise NotFound(description="SubscriptionNotFound")
-        try:
-            return from_dict(data_class=SubscriptionModel, data=subdoc)
-        except:
-            log.exception('error encoding subdict')
-            raise InternalServerError(description="ErrorEncodingSubscription")
-
-    def save(self) -> None:
-        """
-        save changes of Subscription instance
-        """
-        subdict = asdict(self)
-        subdict.pop('id', None)
-        self.coll().find_one_and_replace({'_id': self._id}, subdict)
-
-    @classmethod
-    def removeSubscription(cls, id: str) -> None:
-        """
-        delete a subscription 
-        """
-        try:
-            oid = ObjectId(id)
-        except:
-            raise BadRequest(description="InvalidSubscriptionId")
-        rs = cls.coll().delete_one({'_id': oid})
-        if rs.deleted_count != 1:
-            raise NotFound(description="SubscriptionNotFound")
-
-
+   

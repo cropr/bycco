@@ -58,6 +58,8 @@ LOG_CONFIG = {
     }
 }
 
+INVOICENUMBERSTART = 12
+
 try:
     from local_settings import *
     print('local settings loaded')

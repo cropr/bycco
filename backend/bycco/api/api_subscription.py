@@ -1,80 +1,116 @@
 # copyright Ruben Decrop 2012 - 2015
-# copyright Chessdevil Consulting BVBA 2015 - 2019
+# copyright Chessdevil Consulting BVBA 2015 - 2020
 
-from flask_restful import Resource, request
-from werkzeug.exceptions import BadRequest
-from bycco.service import (
-    addSubscription, 
+from fastapi import HTTPException, Depends
+from fastapi.security import HTTPAuthorizationCredentials
+from pydantic import BaseModel
+from typing import List
+from reddevil.common import RdException, bearer_schema
+from bycco import app
+from bycco.service.sv_subscription import (
+    addSubscription,
     confirmSubscription,
-    csvSubscriptions,
     deleteSubscription,
-    getSubscriptions,
     getSubscription,
-    getSubscriptionByIdbel, 
-    updatePhoto,
+    getSubscriptions,
     updateSubscription,
+    checkId,
+)
+from bycco.models.md_subscription import (
+    SubscriptionIn,
+    SubscriptionCategory,
+    SubscriptionList,
+    SubscriptionDetailedOut,
+    SubscriptionOut,
+    SubscriptionOptional,
 )
 
-class SubscriptionsResource(Resource):
-    
-    def get(self) -> dict:
-        format = request.args.get('format', 'json')
-        if format == 'csv':
-            return {'subscriptions': csvSubscriptions()}
-        else:
-            return {'subscriptions': getSubscriptions()}
+@app.get('/api/subscription', response_model=SubscriptionList)
+async def api_get_subscriptions( 
+        auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
+    token = auth.credentials if auth else None
+    try:
+        return await getSubscriptions()
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_subscriptions')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
-    def post(self) -> dict:
-        data = request.get_json(silent=True)
-        if not data:
-            raise BadRequest(description='JsonDecodingError')
-        subdict = data.get('subscription')
-        if not subdict:
-            raise BadRequest(description='MissingSubscriptionParameter')
-        return addSubscription(subdict)
+@app.get('/api/a/subscription', response_model=SubscriptionList)
+async def api_anon_get_subscriptions():
+    try:
+        return await getSubscriptions()
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_subscriptions')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
-class SubscriptionResource(Resource):
-    
-    def get(self, id:str) -> dict:
-        idtype = request.args.get('idtype', 'db')
-        if idtype == 'db':
-            s = {'subscription': getSubscription(id)}
-        if idtype == 'bel':
-            s = {'subscription': getSubscriptionByIdbel(id)}
-        return s
+@app.post('/api/a/subscription', response_model=str)
+async def api_add_subscriptiob(s: SubscriptionIn):
+    try:
+        return await addSubscription(s)
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call create_subscription')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
-    def put(self, id:str) -> dict:
-        data = request.get_json(silent=True)
-        if not data:
-            raise BadRequest(description='JsonDecodingError')
-        subdict = data.get('subscription')
-        if not subdict:
-            raise BadRequest(description='MissingSubscriptionParameter')
-        return {'subscription': updateSubscription(id, subdict)}
+@app.get('/api/subscription/{id}')
+async def api_get_subscription(id: str, 
+             auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
+    token = auth.credentials if auth else None
+    try:
+        return await getSubscription(id)
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_subscription')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
-    def delete(self, id:str) -> tuple:
-        deleteSubscription(id)
-        return '', 204
+@app.get('/api/a/subscription/{id}')
+async def api_anon_get_subscription(id: str):
+    try:
+        return await getSubscription(id)
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_subscription')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
+@app.delete('/api/subscription/{id}')
+async def api_delete_subscription(id: str,  
+        auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
+    token = auth.credentials if auth else None
+    try:
+        await deleteSubscription(id)
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call delete_subscription')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
-class SubscriptionConfirmResource(Resource):
+@app.put('/api/subscrconfirmSubscription
+        log.exception('failed api call update_subscription')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
-    def post(self, id:str) -> dict:
-        pm = confirmSubscription(id)
-        return {'paymessage': pm}
+@app.get('/api/a/subscription/{id}/confirm')
+async def api_anon_confirm_subscription(id: str):
+    try:
+        return await confirmSubscription(id)
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_subscription')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
-
-class SubscriptionPhotoResource(Resource):
-
-    def get(self, id:str) -> dict:
-        pass
-
-    def post(self, id:str) -> tuple:
-        data = request.get_json(silent=True)
-        if not data:
-            raise BadRequest(description='JsonDecodingError')
-        photo = data.get('photo')
-        if not photo:
-            raise BadRequest(description='MissingPhotoParameter')
-        updatePhoto(id, photo)
-        return '', 204
+@app.get('/api/a/subscription/{idbel}/check')
+async def api_anon_confirm_subscription(idbel: str):
+    try:
+        return await checkId(idbel)
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_subscription')
+        raise HTTPException(status_code=500, detail="Internal Server Error")

@@ -1,15 +1,10 @@
 # Copyright 2017 Ruben Decrop
 
 import datetime, urllib.request, io
-from bycco.service.sv_playerlist import read_zipfile_fide
+from bycco.service.sv_playerlist import process_zipsqlite_fide
 
-def fetchplayerdbf():
-    now = datetime.datetime.now()
-    year = now.year
-    month = now.month
-    period = '{0:4d}{1:02d}'.format(year, month)
-    print('period', period)
-    url = 'http://ratings.fide.com/download/players_list.zip'
+def fetch_fide_sqlite():
+    url = f'https://www.frbe-kbsb.be/sites/manager/ELO/fide.sqlite.zip'
     try:
         f = urllib.request.urlopen(url)
     except urllib.request.URLError:
@@ -17,11 +12,9 @@ def fetchplayerdbf():
         return False
     fdata = f.read()
     f.close()
-    return read_zipfile_fide(io.BytesIO(fdata), period)
+    return process_zipsqlite_fide(io.BytesIO(fdata))
 
 if __name__ == '__main__':
     print('fetching fide standard rating list zipfile')
-    if fetchplayerdbf():
+    if fetch_fide_sqlite():
         print('success')
-
-

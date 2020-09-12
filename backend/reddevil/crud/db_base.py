@@ -40,7 +40,7 @@ class DbBase:
             await coll.insert_one(doc_in)
         except:
             log.exception(f'error inserting {cls.COLLECTION} record')
-            raise RdBadRequest(detail=f"CannotCreate{cls.COLLECTION}")
+            raise RdBadRequest(description=f"CannotCreate{cls.COLLECTION}")
         return doc_in['_id']
 
     @classmethod
@@ -72,7 +72,7 @@ class DbBase:
             k:0 for k in cls.HIDDENFIELDS} or None
         doc = await coll.find_one(options, projection=projfields)
         if not doc:
-            raise RdNotFound(detail=f"CannotFindSingle{cls.COLLECTION}")
+            raise RdNotFound(description=f"CannotFindSingle{cls.COLLECTION}")
         doc['id'] = doc.pop('_id')
         return doc
 
@@ -91,7 +91,7 @@ class DbBase:
             projection={k:0 for k in cls.HIDDENFIELDS},
             return_document=ReturnDocument.AFTER)
         if not doc:
-            raise RdNotFound(detail=f"CannotFind{cls.COLLECTION}")
+            raise RdNotFound(description=f"CannotFind{cls.COLLECTION}")
         doc['id'] = doc.pop('_id')
         return doc
 
@@ -103,7 +103,7 @@ class DbBase:
         coll = get_db()[cls.COLLECTION]
         rs = await coll.delete_one({'_id': id})
         if rs.deleted_count != 1:
-            raise RdNotFound(detail=f"CannotFind{cls.COLLECTION}")
+            raise RdNotFound(description=f"CannotFind{cls.COLLECTION}")
 
     @classmethod
     async def upgrade(cls, version: int) -> None:
