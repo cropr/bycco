@@ -4,9 +4,10 @@
 import reddevil.api.api_page
 # import reddevil.file.api_file
 
+import bycco.api.api_subscription
+
 from bycco import app
 
 @app.get('/api')
 def api_root():
     return {'hello': 'world'}
-

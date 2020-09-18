@@ -158,4 +158,17 @@ class SubscriptionDetailedOut(SubscriptionOptional):
     subscriptiontime: datetime
     subscriptionnumber: int 
 
-   
+class CheckIdReply(BaseModel):
+    belfound: bool
+    birthyear: Optional[str] = None
+    first_name: Optional[str] = ''
+    fidefound: bool = False
+    idfide: Optional[str] = None
+    gender: Optional[Gender] = None
+    last_name: Optional[str] = ''
+    nationality: str = 'BEL'
+    ratingbel: int = 0
+    ratingfide: int = 0
+    subfound: bool = False
+    subconfirmed: bool = False
+    subid: Optional[str] = None

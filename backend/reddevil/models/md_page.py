@@ -17,6 +17,7 @@ class PageComponent(str, Enum):
     LandingPage = 'LandingPage'
     MulitLocalePage = 'MultiLocalePage'
     Agenda = 'Agenda'
+    Subscription = 'Subscription'
 
 
 class Page(BaseModel):

@@ -29,24 +29,43 @@ function defaultslug() {
   return pparts.length > 2 ? pparts[2] : 'home';
 }
 
+const initflow = {
+  birthyear: '',
+  idbel: '',
+  idSubscription: null,
+  isConfirmed: false,
+  step: 1,
+};
 
 const store = new Vuex.Store({
   state: {
+    age: 0,
     api: null,
     drawer: false,
+    flow: initflow,
     locale: defaultlanguage(),
     slug: defaultslug(),
+    subscription: {},
   },
 
   mutations: {
+
+    init(state) {
+      state.flow = initflow;
+      state.subscription = {};
+      state.age = 0;
+    },
 
     updateApi(state, payload) {
       state.api = payload;
     },
 
     updateDrawer (state, payload) {
-      console.log('update drawer', payload)
       state.drawer = payload;
+    },
+
+    updateFlow(state, payload){
+      state.flow = Object.assign({}, state.flow, payload)
     },
 
     updateLocale (state, payload) {
@@ -57,6 +76,12 @@ const store = new Vuex.Store({
 
     updateSlug (state, payload) {
       state.slug = payload || state.slug;
+    },
+
+    updateSubscription(state, sub){
+      state.subscription = Object.assign({}, state.subscription, sub);
+      state.age = state.subscription.category ? 
+        parseInt(state.subscription.category.substr(1,3)) : 0;
     },
 
   }

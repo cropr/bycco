@@ -17,6 +17,7 @@ from bycco.models.md_subscription import (
     SubscriptionOut,
     SubscriptionOptional,
     SubscriptionCategory,
+    CheckIdReply
 )
 from bycco.crud.db_subscription import DbSubscription
 from reddevil.common import RdNotFound, RdBadRequest
@@ -39,10 +40,9 @@ async def addSubscription(si: SubscriptionIn) -> str:
     fp = getFideplayer(bp.idfide) if bp.idfide else None
     try:
         subdict = await DbSubscription.find_single({'idbel': bp.id})
+        raise RdBadRequest(description="Alreadysubscribed")        
     except RdNotFound:
-        subdict = None
-    if subdict:
-        raise RdBadRequest(description="Alreadysubscribed")
+        pass
     maxsubnr = await DbSubscription.maxSubsciptionNumber()
     s = {
         'birthdate': bp.birthdate,
@@ -87,7 +87,7 @@ async def confirmSubscription(id: str):
     rm2 = invoicenumber % 1000
     rm3 = nr % 97 or 97
     paymessage = f"+++202/001{rm1:01d}/{rm2:03d}{rm3:02d}+++"
-    s = await updateSubscription(s.id, SubscriptionOptional(
+    s = await updateSubscription(id, SubscriptionOptional(
         confirmed = True,
         invoicenumber = invoicenumber,
         paymessage = paymessage,
@@ -124,36 +124,31 @@ async def updateSubscription(id: str, su: SubscriptionOptional):
     udd = await DbSubscription.update(id, sd)
     return encode_subscription(udd, SubscriptionDetailedOut)
     
-async def checkId(idbel: str) -> dict:
+async def checkId(idbel: str) -> CheckIdReply:
     """
     fill in
     """
-    reply = dict()
     bp = getBelplayer(idbel)
     if not bp:
-        return dict(belfound=False)
-    reply['belfound'] = True
-    reply['ratingbel'] = bp.ratingbel
-    reply['idfide'] = bp.idfide
-    reply['birthyear'] = bp.birthdate[0:4]
-    reply['nationality'] = bp.nationality
+        return CheckIdReply(belfound=False)
     fp = getFideplayer(bp.idfide) if bp.idfide else None
-    if fp:
-        reply['fidefound'] = True
-        reply['ratingfide'] = fp.ratingfide
-    else:
-        reply['fidefound'] = False
-        reply['ratingfide'] = 0
     try:
         sdict = await DbSubscription.find_single({'idbel': idbel})
     except RdNotFound:
-        sdict = None
-    if sdict:
-        reply['subfound'] = True
-        reply['subconfirmed'] = sdict['confirmed']
-    else:
-        reply['subfound'] = False
-    return reply
+        sdict = {}
+    return CheckIdReply(
+        belfound = True,
+        birthyear = bp.birthdate[0:4],
+        fidefound = bool(fp),
+        first_name = bp.first_name,
+        gender = bp.gender,
+        last_name = bp.last_name,
+        ratingbel = bp.ratingbel,
+        ratingfide = fp.ratingfide if fp else 0,
+        subconfirmed = sdict.get('confirmed', False),
+        subfound = bool(sdict),
+        subid =  sdict.get('id', False),
+    )
 
 
 # def csvSubscriptions() -> List[dict]:
@@ -171,7 +166,7 @@ async def checkId(idbel: str) -> dict:
 
 # # def sendconfirmationmail(s: SubscriptionModel):
 #     """
-#     send confirmation email
+#     send confirmation email0
 #     :param s: the Subscription object
 #     :return: None
 #     """
