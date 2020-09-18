@@ -41,11 +41,16 @@
         <v-list-item @click="updateSlug('agenda')" >
           <v-list-item-content>{{$t('Calendar')}}</v-list-item-content>
         </v-list-item>
+        <v-list-item @click="updateSlug('toernoooinfo')" >
+          <v-list-item-content>
+          {{ $t('Belangrijke info')}}
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item @click="updateSlug('covid19')" >
           <v-list-item-content>Covid-19</v-list-item-content>
         </v-list-item>        
       </v-list-group>
-      <v-list-group no-action>
+      <!-- <v-list-group no-action>
         <template v-slot:activator>
           <v-list-item-content>
             <v-list-item-title>{{ $t('Tournament') }}</v-list-item-title>
@@ -57,7 +62,7 @@
         <v-list-item href="/participants">
           <v-list-item-content>{{ $t('Participants') }}</v-list-item-content>
         </v-list-item>
-      </v-list-group>
+      </v-list-group> -->
 
     </v-list>
   </v-navigation-drawer>
