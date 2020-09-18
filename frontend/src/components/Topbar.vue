@@ -10,9 +10,9 @@
     <!-- <v-btn text large href="/participants">
       {{ $t('Participants')}}
     </v-btn> -->
-    <v-btn text large href="/subscription" v-if="sections.subscription">
+    <!-- <v-btn text large href="/subscription" v-if="sections.subscription">
       {{ $t('Register')}}
-    </v-btn>
+    </v-btn> -->
     <!-- <v-btn text large href="/trn" >
       {{ $t('Tournament')}}
     </v-btn> -->
