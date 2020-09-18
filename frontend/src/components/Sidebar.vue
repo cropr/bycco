@@ -41,9 +41,9 @@
         <v-list-item @click="updateSlug('agenda')" >
           <v-list-item-content>{{$t('Calendar')}}</v-list-item-content>
         </v-list-item>
-        <v-list-item @click="updateSlug('toernoooinfo')" >
+        <v-list-item @click="updateSlug('toernooiinfo')" >
           <v-list-item-content>
-          {{ $t('Belangrijke info')}}
+          {{ $t('Important information')}}
           </v-list-item-content>
         </v-list-item>
         <v-list-item @click="updateSlug('covid19')" >

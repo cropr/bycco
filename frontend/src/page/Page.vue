@@ -32,7 +32,7 @@ import { mapState } from "vuex"
 import Swagger from "swagger-client"
 
 import { processRoutes } from './router_page'
-import { locales } from '@/util/lang'
+import { locales, setLanguage } from '@/util/lang'
 import Sidebar from '@/components/Sidebar'
 import Topbar from '@/components/Topbar'
 import ByccoFooter from '@/components/ByccoFooter'
@@ -110,22 +110,37 @@ export default {
   },
 
   mounted() {
-    let self=this;    
+    let self=this, routeparts;    
     this.getOpenApi();
     this.$root.$on('snackbar', this.showSnackbar);
+    console.log('mounted', this.$route);
+    routeparts = this.$route.path.split('/');
+    if (routeparts.length > 2) {
+      if (routeparts[2] != self.slug) {
+        self.$store.commit('updateSlug', routeparts[2]);
+      }
+    }
+    if (routeparts.length > 3) {
+          if (routeparts[3] != self.locale) {
+        self.$store.commit('updateLocale', routeparts[3]);
+      }
+    }
+    setLanguage(this.locale)    
     this.$router.beforeEach(function(to, from, next){
-      let pparts = to.path.split('/');
-      if (pparts.length == 4) {
-        if (pparts[2] != self.slug) {
-          self.$store.commit('updateSlug', pparts[2]);
+      routeparts = to.path.split('/');
+      if (routeparts[1] == 'page') {
+        if (routeparts[2] != self.slug) {
+          self.$store.commit('updateSlug', routeparts[2]);
         }
-        if (pparts[3] != self.locale) {
-          self.$store.commit('updateLocale', pparts[3]);
+        if (routeparts[3] != self.locale) {
+          self.$store.commit('updateLocale', routeparts[3]);
         }
       }
-      next();
-    })
+      next()
+    });
   },  
 
 }
 </script>
+
+
