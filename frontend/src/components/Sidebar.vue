@@ -34,7 +34,9 @@
           <v-list-item-content>{{$t('Tournament Rules')}}</v-list-item-content>
         </v-list-item>
         <v-list-item @click="updateSlug('huishoudreglement')" >
-          <v-list-item-content>Covid-19</v-list-item-content>
+          <v-list-item-content>
+          {{ $t('Internal Regulations')}}
+          </v-list-item-content>
         </v-list-item>
         <v-list-item @click="updateSlug('agenda')" >
           <v-list-item-content>{{$t('Calendar')}}</v-list-item-content>
