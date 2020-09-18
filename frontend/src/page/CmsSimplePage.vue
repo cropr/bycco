@@ -23,13 +23,31 @@ export default {
 
   computed: {
     body () { 
-      return marked(this.page.body || '' )
+      let pt = '';
+      if (this.page.body) {
+        pt = this.page.body.default.value;
+        if (this.page.body[this.locale]) 
+          pt = this.page.body[this.locale].value;
+      }
+      return marked(pt);
     },
     intro () { 
-      return marked(this.page.intro || '' )
+      let pt = '';
+      if (this.page.intro) {
+        pt = this.page.intro.default.value;
+        if (this.page.intro[this.locale]) 
+          pt = this.page.intro[this.locale].value;
+      }
+      return marked(pt);
     },
-    title () { 
-      return this.page.title || '' 
+    title () {
+      let pt = '';
+      if (this.page.title) {
+        pt = this.page.title.default.value;
+        if (this.page.title[this.locale]) 
+          pt = this.page.title[this.locale].value;
+      }
+      return pt;
     },
     ...mapState(['api', 'locale', 'slug']),
 
@@ -38,18 +56,17 @@ export default {
   methods: {
     
     getContent () {
-      let self=this;
-      this.api.get_localized_page({
-        slug: this.slug,
-        locale: this.locale,
-      }).then(
-        function(data){
-          self.page =  data.obj.page;
-        },
-        function(data){
-          console.error('could not fetch localized page', data)
-        }
-      );
+    let self=this;
+    this.api.anon_slug_page({
+      slug: this.slug,
+    }).then(
+      function(data){
+        self.page =  data.obj;
+      },
+      function(data){
+        console.error('could not fetch localized page', data)
+      }
+    )
     },
 
   },

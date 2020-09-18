@@ -56,7 +56,6 @@ for route in app.routes:
     if isinstance(route, APIRoute):
         route.operation_id = route.name[4:] 
 
-
 # import static html endpoints
 import bycco.static
 log.info(f'static html endpoints loaded')

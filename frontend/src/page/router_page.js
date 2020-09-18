@@ -23,7 +23,7 @@ let dynroutes = {
   CmsSimplePage: CmsSimplePage,
   LandingPage: LandingPage,
   MultiLocalePage: MultiLocalePage,
-  Subscription, Subscription,
+  Subscription: Subscription,
 }
 
 
