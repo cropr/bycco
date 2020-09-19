@@ -1,6 +1,6 @@
 <template>
  <div>
-  <v-parallax   v-if="$vuetify.breakpoint.mdAndUp" src="/img/pier_big.jpg" 
+  <v-parallax  v-if="$vuetify.breakpoint.mdAndUp" src="/img/pier_big.jpg" 
     height="400" />
   <v-parallax v-if="$vuetify.breakpoint.sm"
               src="/img/pier_medium.jpg" height="300" />
@@ -8,9 +8,9 @@
               src="/img/pier_small.jpg" height="200" /> 
   <v-container class="mt-1">
     <h1 v-html="title" />
-    <div v-html="intro" class="mt-1"/>
+    <div v-html="intro" class="mt-1 markdown-body"/>
     <hr/>
-    <div v-html="body" class="mt-1" />
+    <div v-html="body" class="mt-1 markdown-body" />
     <v-row class="mt-2">
       <v-col cols=12 sm=6 md=4 v-for="art in articles" :key="art.id">
         <v-card>
@@ -37,6 +37,7 @@
 import { mapState } from "vuex"
 import marked from 'marked'
 import { notitle, nointro } from "@/util/cms"
+
 
 export default {
 
@@ -150,33 +151,6 @@ mounted () {
 </script>
 
 
-<style scoped>
-
-.markedcontent table {
-  border-collapse: collapse;
-  min-width: 30em;
-}
-
-.markedcontent table {
-  border: 1px solid black;
-}
-
-.markedcontent td {
-  border: 1px solid black;
-  padding: 6px;
-}
-
-.markedcontent  th {
-  border: 1px solid black;
-  padding: 6px;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  font-weight: bold;
-}
+<style>
 
 </style>

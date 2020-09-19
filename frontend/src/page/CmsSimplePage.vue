@@ -2,9 +2,9 @@
 
   <v-container class="mt-1 markedcontent">
     <h1 v-html="title" />
-    <div v-html="intro" class="mt-1"/>
+    <div v-html="intro" class="mt-1 markdown-body"/>
     <hr/>
-    <div v-html="body" class="mt-1" />
+    <div v-html="body" class="mt-1 markdown-body" />
   </v-container>
 
 </template>
@@ -81,24 +81,5 @@ export default {
 
 
 <style scoped>
-
-.markedcontent table {
-  border-collapse: collapse;
-  min-width: 30em;
-}
-
-.markedcontent table {
-  border: 1px solid black;
-}
-
-.markedcontent td {
-  border: 1px solid black;
-  padding: 6px;
-}
-
-.markedcontent  th {
-  border: 1px solid black;
-  padding: 6px;
-}
 
 </style>
