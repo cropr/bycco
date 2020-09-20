@@ -80,7 +80,6 @@ def sendconfirmationmail(s: SubscriptionDetailedOut):
     with open(os.path.join(tpath,f'mailsubscription_{s.locale}.md')) as tmpl:
         plaintext = tmpl.read()
     plaintext = plaintext.format(**sub)
-    log.info(f'plaintext {plaintext}')
 
     # fetch the subject from the first line
     subject = plaintext.split('\n')[0][3:]
@@ -103,5 +102,6 @@ def sendconfirmationmail(s: SubscriptionDetailedOut):
         msg.attach(msgAlternative)
         backend = backends[settings.EMAIL['backend']]()
         backend.send_message(msg)
+        log.info(f'confirmation mail sent for {s.first_name} {s.last_name}')
     except:
-        log.exception('sending subscription email failed')
+        log.exception(f'confirmation mail failed {s.first_name} {s.last_name}')
