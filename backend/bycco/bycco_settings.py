@@ -10,8 +10,8 @@ EMAIL= {
   'backend': 'SMTP',
   'host': 'localhost',
   'port': '1025',
-  'sender': 'noreply@bycco.com',
-  'bcc': 'ruben.kbsb@gmail.com',
+  'sender': 'ruben.decrop@bycco.be',
+  'bcc': 'registration@bycco.be',
 }
 
 LOG_CONFIG = {
@@ -58,7 +58,7 @@ LOG_CONFIG = {
     }
 }
 
-INVOICENUMBERSTART = 12
+INVOICENUMBERSTART = 1
 
 try:
     from local_settings import *

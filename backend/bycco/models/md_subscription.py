@@ -38,10 +38,13 @@ class Subscription(BaseModel):
     chesstitle: str
     confirmed: bool
     custom: Optional[str] 
-    emailattendant: str 
+    emailattendant: Optional[str] 
+    emailparent: Optional[str] 
     emailplayer: Optional[str] 
     federation: str
     first_name: str
+    fullnameattendant: str
+    fullnameparent: str
     gender: Gender
     idbel: str
     idclub: str
@@ -50,8 +53,8 @@ class Subscription(BaseModel):
     locale: str
     last_name: str
     mobileattendant: str 
+    mobileparent: str 
     mobileplayer: str 
-    nameattendant: str
     nationality: str 
     payamount: int 
     paydate: Optional[datetime]
@@ -84,10 +87,13 @@ class SubscriptionOptional(BaseModel):
     chesstitle: Optional[str]
     confirmed: Optional[bool]
     custom: Optional[str] 
-    emailattendant: Optional[str ]
+    emailattendant: Optional[str]
+    emailparent: Optional[str] 
     emailplayer: Optional[str] 
     federation: Optional[str]
     first_name: Optional[str]
+    fullnameattendant: Optional[str]
+    fullnameparent: Optional[str]
     gender: Optional[str]
     id: Optional[str] 
     idbel: Optional[str]
@@ -97,8 +103,8 @@ class SubscriptionOptional(BaseModel):
     locale: Optional[str]
     last_name: Optional[str]
     mobileattendant: Optional[str]
+    mobileparent: Optional[str]
     mobileplayer: Optional[str]
-    nameattendant: Optional[str]
     nationality: Optional[str]
     payamount: Optional[int]
     paydate: Optional[datetime]
@@ -137,9 +143,13 @@ class SubscriptionDetailedOut(SubscriptionOptional):
     category: SubscriptionCategory
     chesstitle: str
     confirmed: bool
-    emailattendant: str 
+    emailattendant: str
+    emailparent: str
+    emailplayer: str
     federation: str
     first_name: str
+    fullnameattendant: str
+    fullnameparent: str
     gender: str                
     id: str 
     idbel: str
@@ -148,8 +158,8 @@ class SubscriptionDetailedOut(SubscriptionOptional):
     locale: str
     last_name: str
     mobileattendant: str 
+    mobileparent: str
     mobileplayer: str 
-    nameattendant: str
     nationality: str 
     payamount: int 
     ratingbel: int 

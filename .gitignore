@@ -9,3 +9,4 @@
 /backend/local_settings.py
 /frontend/dist
 /frontend/node_modules
+credentials-gmail.json

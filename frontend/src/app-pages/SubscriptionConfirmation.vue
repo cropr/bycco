@@ -47,16 +47,27 @@
   </v-row>
   <h2>{{$t('Payment')}}</h2>
   <div v-show="!flow.isConfirmed">
-    <div>{{$t('SubConf1')}}</div>
     <div>
-      <v-btn @click="confirm" color="primary">{{$t('Confirm')}}</v-btn>
+      {{ $t('The registration fee is 35 Euro.') }}
+    </div>
+    <div>
+      <v-btn @click="confirm" color="primary">
+        {{ $t('Confirm') }}
+      </v-btn>
     </div>
   </div>
   <div class="mt-2" v-show="flow.isConfirmed">
-    <div>{{$t('Your subscription is confirmed')}}</div>
-    <div><span>{{$t('SubConf2')}}</span> {{ subscriptiob.paymessage }}</div>
+    <div>
+      {{ $t('Your subscription is confirmed') }}
+    </div>
+    <div>
+      {{ $t('Pay the amount to account BE33 0017 5924 5146 before the 25th of October with the structured message:') }}
+      {{ subscription.paymessage }}
+    </div>
     <div class="mt-2">
-      <v-btn @click="restart()">{{$t('New subscription')}}</v-btn>
+      <v-btn @click="restart()">
+        {{ $t('New subscription') }}
+      </v-btn>
     </div>
   </div>
 </div>
@@ -91,10 +102,9 @@ export default {
         }
       );
     },
-
     restart () {
       console.log('trying to reinit');
-      this.$store.commit('init')
+      window.location.reload();
     }
 
   },

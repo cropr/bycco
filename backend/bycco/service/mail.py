@@ -2,66 +2,106 @@
 # copyright Chessdevil Consulting BVBA 2015 - 2019
 
 import logging
-log = logging.getLogger('talistro_election')
-
-import requests
-import smtplib
-import dataclasses
+from markdown2 import Markdown
 from io import BytesIO
 from typing import List, Any
-
+import os.path
 from email.message import EmailMessage
 from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
-from bycco import app
+from email import encoders
+from bycco import settings
+from bycco.models.md_subscription import SubscriptionDetailedOut
+from bycco.i18n import locale_msg
+from .mailbackend import backends
 
-bcc = 'ruben.bycco@gmail.com'
+log = logging.getLogger('bycco')
+md = Markdown()
 
-class BaseEmailBackend:
-    def send_message(self, message: EmailMessage):
-        return (400, 'NotImplemented')
+def test_mail():
+    """
+    send a test mail
+    """
+    try:
+        sender = settings.EMAIL['sender']
+        receiver = 'ruben.decrop@gmail.com'
+        msg = MIMEMultipart('related')
+        msg['Subject'] = 'Testmail 2'
+        msg['From'] = sender
+        msg['To'] = receiver
+        if settings.EMAIL.get('bcc'):
+            msg['Bcc'] = settings.EMAIL['bcc']
+        msg.preamble = 'This is a multi-part message in MIME format.'
+        msgAlternative = MIMEMultipart('alternative')
+        msgText = MIMEText("Hi it is I Leclercq, I am in disguise")
+        msgAlternative.attach(msgText)
+        msgText = MIMEText("Hi, It is I <b>Leclercq</b> I am in disguise", 'html')
+        msgAlternative.attach(msgText)
+        msg.attach(msgAlternative)
+        backend = backends[settings.EMAIL['backend']]()
+        backend.send_message(msg)
+        log.info(f'testmail sent for {receiver}')
+    except Exception:
+        log.exception('failed')    
 
-class SmtpSslBackend(BaseEmailBackend):
 
-    def send_message(self, msg: EmailMessage):
-        with smtplib.SMTP_SSL(app.config['EMAIL_HOST'], app.config['EMAIL_PORT']) as s:
-            if "EMAIL_USER" in app.config:
-                s.login(app.config['EMAIL_USER'], app.config['EMAIL_PASSWORD'])
-            s.send_message(msg)
+def sendconfirmationmail(s: SubscriptionDetailedOut):
+    """
+    send confirmation email
+    :param s: the Subscription
+    :return: None
+    """
+    sub = {
+        'fullname': f"{s.first_name} {s.last_name}",
+        'birthdate': s.birthdate,
+        'idclub': s.idclub,
+        'nationality': s.nationality,
+        'ratingbel': s.ratingbel,
+        'ratingfide': s.ratingfide,
+        'category': s.category,
+        'paymessage': s.paymessage,
+    }
+    i18n = locale_msg[s.locale]
+    tolist = []
+    if s.emailattendant:
+        tolist.append(s.emailattendant)
+    if s.emailparent:
+        tolist.append(s.emailparent)
+    if s.emailplayer:
+        tolist.append(s.emailplayer)
+    sub['champ'] = i18n['To be confirmed']
+    if s.nationality == 'BEL':
+        sub['champ'] = i18n['Yes']
+    elif s.nationality :
+        sub['champ'] = i18n['No']
+    tpath = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates')
+    with open(os.path.join(tpath,f'mailsubscription_{s.locale}.md')) as tmpl:
+        plaintext = tmpl.read()
+    plaintext = plaintext.format(**sub)
+    log.info(f'plaintext {plaintext}')
 
-class SmtpBackend(BaseEmailBackend):
+    # fetch the subject from the first line
+    subject = plaintext.split('\n')[0][3:]
+    htmltext = md.convert(plaintext)
 
-    def send_message(self, msg: EmailMessage):
-        with smtplib.SMTP(app.config['EMAIL_HOST'], app.config['EMAIL_PORT']) as s:
-            if "EMAIL_USER" in app.config:
-                s.login(app.config['EMAIL_USER'], app.config['EMAIL_PASSWORD'])
-            s.send_message(msg)
-    
-class MailgunEmailBackend(BaseEmailBackend):
-
-    def send_message(self, msg: EmailMessage):
-        """
-        sends a list of  email messages
-        :param messages:
-        :return: number of successfully sent messages
-        """
-        # TODO multiple TO, CC and BCC
-        from email.generator import BytesGenerator
-        url = app.config['EMAIL_URL']
-        apikey = app.config['EMAIL_APIKEY']
-        fp = BytesIO()
-        g = BytesGenerator(fp)
-        g.flatten(msg)
-        rc = requests.post(url, auth=("api", apikey),
-            data={'to': msg['To']},
-            files={'message': fp}
-        )
-        return (rc.status_code, str(rc))
-
-backends = {
-    'SMTP': SmtpBackend,
-    'SMTP_SSL': SmtpSslBackend,
-    'MAILGUN': MailgunEmailBackend,
-}
-
+    # create message and send it
+    try:
+        msg = MIMEMultipart('related')
+        msg['Subject'] = subject
+        msg['From'] = settings.EMAIL['sender']
+        msg['To'] = ','.join(tolist)
+        if settings.EMAIL.get('bcc'):
+            msg['Bcc'] = settings.EMAIL['bcc']
+        msg.preamble = 'This is a multi-part message in MIME format.'
+        msgAlternative = MIMEMultipart('alternative')
+        msgText = MIMEText(plaintext)
+        msgAlternative.attach(msgText)
+        msgHtml = MIMEText(htmltext, 'html')
+        msgAlternative.attach(msgHtml)
+        msg.attach(msgAlternative)
+        backend = backends[settings.EMAIL['backend']]()
+        backend.send_message(msg)
+    except:
+        log.exception('sending subscription email failed')

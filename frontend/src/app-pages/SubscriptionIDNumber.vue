@@ -148,6 +148,7 @@ export default {
       }
       else {
         self.$store.commit('updateFlow', { step: self.flow.step + 1 })        
+        self.get_subscription(self.flow.idsubscription)
       }
     },
 

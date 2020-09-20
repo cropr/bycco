@@ -8,6 +8,7 @@ from typing import List, Optional, Dict, Any, cast
 from datetime import date, datetime, timezone
 from bycco.service.sv_playerlist import getBelplayer, getFideplayer
 from reddevil.common import RdInternalServerError
+from bycco.service.mail import sendconfirmationmail
 
 from bycco.models.md_subscription import (
     Subscription,
@@ -51,9 +52,12 @@ async def addSubscription(si: SubscriptionIn) -> str:
         'confirmed': False,
         'custom': '', 
         'emailattendant': '',
+        'emailparent': '',
         'emailplayer': '',
         'federation': bp.federation,
         'first_name': bp.first_name,
+        'fullnameattendant': '',
+        'fullnameparent': '',
         'gender': bp.gender,
         'idbel': si.idbel,
         'idclub': bp.idclub,
@@ -62,8 +66,8 @@ async def addSubscription(si: SubscriptionIn) -> str:
         'locale': si.locale,
         'last_name': bp.last_name,
         'mobileattendant': '',
+        'mobileparent': '',
         'mobileplayer': '',
-        'nameattendant': '',
         'nationality': bp.nationality,
         'payamount': 35,
         'paydate': None,
@@ -93,7 +97,7 @@ async def confirmSubscription(id: str):
         paymessage = paymessage,
         payamount = 35
     ))
-    # sendconfirmationmail(sub)
+    sendconfirmationmail(s)
     return s
 
 async def deleteSubscription(id: str) -> None:

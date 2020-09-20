@@ -46,13 +46,13 @@
   <div v-show="adult" class="mt-3">
 
       <h3 class="mt-3">{{$t('Required information')}}</h3>
-      <div > {{ p1() }}</div>
+      <div > {{ p1 }}</div>
 
       <v-row >
         <v-col cols=12 sm=6>
-          <v-text-field :label="$t('Email address player')" v-model="emailplayer" required>
+          <v-text-field :label="$t('Email player')" v-model="emailplayer" required>
           </v-text-field>
-          <v-text-field :label="$t('GSM number player')" v-model="mobileplayer" required>
+          <v-text-field :label="$t('GSM player')" v-model="mobileplayer" required>
           </v-text-field>
         </v-col>
       </v-row>
@@ -63,11 +63,11 @@
           <div>
             {{ $t('Although optional it is recommended to provide the details of a club or league representative that is at site during the tournament') }}
           </div>
-          <v-text-field :label="$t('Full name respresentative')" v-model="fullnameattendant">
+          <v-text-field :label="$t('Full name representative')" v-model="fullnameattendant">
           </v-text-field>
-          <v-text-field :label="$t('Email respresentative')" v-model="emailattendant">
+          <v-text-field :label="$t('Email representative')" v-model="emailattendant">
           </v-text-field>
-          <v-text-field :label="$t('GSM number representative')" v-model="mobileattendant">
+          <v-text-field :label="$t('GSM representative')" v-model="mobileattendant">
           </v-text-field>
         </v-col>
       </v-row>
@@ -76,28 +76,28 @@
   <div v-show="!adult">
 
     <h3 class="mt-3">{{$t('Required information')}}</h3>
-    <div > {{ p3() }}</div>
+    <div > {{ p3 }}</div>
 
     <v-row>
       <v-col cols=12 sm=6>
         <h4>{{$t('Info about parent')}}</h4>
-        <v-text-field :label="$t('Full name')" v-model="fullnameparent" required>
+        <v-text-field :label="$t('Full name parent')" v-model="fullnameparent" required>
         </v-text-field>
-        <v-text-field :label="$t('Email address')" v-model="emailparent" required>
+        <v-text-field :label="$t('Email parent')" v-model="emailparent" required>
         </v-text-field>
-        <v-text-field :label="$t('GSM number')" v-model="mobileparent" required>
+        <v-text-field :label="$t('GSM parent')" v-model="mobileparent" required>
         </v-text-field>
       </v-col>
       <v-col cols=12 sm=6>
-        <h4>{{$t('Person picking up the player after the game')}}</h4>
-        <v-checkbox :label="$t('The parent is picking up the player')"  v-model="isParentPresent">
+        <h4>{{ $t('Person picking up the player after the game') }}</h4>
+        <v-checkbox :label="$t('After the game the parent is picking up the player')"  v-model="isParentPresent">
         </v-checkbox>
         <div v-show="!isParentPresent">
-          <v-text-field :label="$t('Full name')" v-model="fullnameattendant" required>
+          <v-text-field :label="$t('Full name representative')" v-model="fullnameattendant" required>
           </v-text-field>
-          <v-text-field :label="$t('Email')" v-model="emailattendant" required>
+          <v-text-field :label="$t('Email representative')" v-model="emailattendant" required>
           </v-text-field>
-          <v-text-field :label="$t('GSM number')" v-model="mobileattendant" required>
+          <v-text-field :label="$t('GSM representative')" v-model="mobileattendant" required>
           </v-text-field>
         </div>
       </v-col>
@@ -109,9 +109,9 @@
         <div>
           {{$t('The information requested below, is optional but it is highly recommended to provide it') }}
         </div>
-        <v-text-field :label="$t('Email address player')" v-model="emailplayer" required>
+        <v-text-field :label="$t('Email player')" v-model="emailplayer" required>
         </v-text-field>
-        <v-text-field :label="$t('GSM number player')" v-model="mobileplayer" required>
+        <v-text-field :label="$t('GSM player')" v-model="mobileplayer" required>
         </v-text-field>
       </v-col>
     </v-row>
@@ -169,6 +169,18 @@ export default {
         });
       },
     },
+    p1 () {
+      return this.subsub(
+        this.$t('{{first_name}} {{last_name}} is an adult at the start of the tournament. For adults we need following information.'),
+        this.subscription
+      )
+    },
+    p3 () {
+      return this.subsub(
+        this.$t('{{first_name}} is a minor at the start of a tournament. For minors we need following information.'),
+        this.subscription
+      )
+    },    
     ...mapState(['subscription', 'flow', 'api', 'locale', 'age'])
   },
 
@@ -192,22 +204,12 @@ export default {
       this.$store.commit('updateFlow', {step: this.flow.step-1})
     },
 
-    p1 () {
-      return this.subsub(
-        this.$t('')
-      )
-    },
 
-    p3 () {
-      return this.subsub(
-        this.$t('{{first_name}} is a minor at the start of a tournament. For minors we need following information.')
-      )
-    },
 
-    subsub (str) {
+    subsub (str, subscription) {
       let self=this;
       return str.replace(mustache, function(dummy, param) {
-        return self.subscription[param] || '***'
+        return subscription[param] || '***'
       });
     },
 
@@ -238,7 +240,7 @@ export default {
       if (this.fullnameparent.length) update.fullnameparent = this.fullnameparent;
       if (this.mobileattendant.length) update.mobileattendant = this.mobileattendant;
       if (this.mobileparent.length) update.mobileparent = this.mobileparent;
-      if (this.mobileparent.length) update.mobileparent = this.mobileparent;      
+      if (this.mobileplayer.length) update.mobileplayer = this.mobileplayer;      
       this.api.anon_update_subscription({id: this.subscription.id}, 
           {requestBody: update}).then(
         function(data){

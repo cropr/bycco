@@ -18,14 +18,7 @@ from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email import encoders
-
-from talistro_election import settings
-from talistro_election.models.md_electionevent import ElectionEventOptional
-from talistro_election.models.md_member import (
-    MemberOut, 
-    MemberOptional,
-    Proxy,
-)
+from bycco import settings
 
 log = logging.getLogger('bycco')
 
@@ -88,7 +81,7 @@ def get_gmail_service():
             credentials = service_account.Credentials.from_service_account_file(
                 'credentials-gmail.json', 
                 scopes=['https://www.googleapis.com/auth/gmail.send'])
-            delegated_credentials = credentials.with_subject('ruben@chessdevil.net') 
+            delegated_credentials = credentials.with_subject(settings.EMAIL['account']) 
             service = build('gmail', 'v1', credentials=delegated_credentials)        
             get_gmail_service.service = service
         except Exception:
