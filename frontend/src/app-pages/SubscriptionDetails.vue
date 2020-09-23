@@ -207,7 +207,6 @@ export default {
 
 
     subsub (str, subscription) {
-      let self=this;
       return str.replace(mustache, function(dummy, param) {
         return subscription[param] || '***'
       });

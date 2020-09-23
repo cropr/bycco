@@ -65,10 +65,8 @@
 
 <script>
 
-import api from '@/util/api'
-
 export default {
-  name: "ParticipantAdd",
+  name: "EnrollmentAdd",
 
   data () {return {
     participant: {},
@@ -115,43 +113,23 @@ export default {
   methods: {
 
     back () {
-      this.$emit('update', {section: 'list', params:{}})
+      this.$router.push('/mgmt/enrollment/list')
     },
 
-    gotoInvoice () {
-      this.$emit('update', {section: 'invoice', params: this.participant})
-    },
-
-    gotoPhoto () {
-      this.$emit('update', {section: 'photo', params: this.participant})
-    },
-
-    remove () {
-      if (window.confirm('Are you sure to delete ' + this.fullname)) {
-        api('deleteAttendee', {
-          id: this.participant.id
-        }).then(function(){
-          this.$emit('update', {section: 'list', params:{}, reload: true,
-            text: this.fullname + ' deleted.'})
-        }.bind(this), function(data){
-          console.error('failed to delete', data);
-        })
-      }
-    },
-
-    save () {
-      api('addAttendee', {
-        attendee: this.p,
+    add () {
+      let self=this;
+      this.api.add_subscription({
+        subcription: this.p,
       }).then(
         function(data){
           console.log('id received', data.id)
-          this.$emit('update', {
+          self.$emit('update', {
             section: 'edit', 
             params:{id: data.id}, 
             reload: true,
             text: 'Attendee saved.'})
           console.log('data', data)
-        }.bind(this),
+        },
         function(data){
           console.error('failed to save', data);
         }

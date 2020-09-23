@@ -6,6 +6,9 @@ import BMemberList from '@/mgmt/BMemberList.vue'
 import BRoleAdd from '@/mgmt/BRoleAdd.vue'
 import BRoleEdit from '@/mgmt/BRoleEdit.vue'
 import BRoleList from '@/mgmt/BRoleList.vue'
+import EnrollmentAdd from '@/mgmt/EnrollmentAdd'
+import EnrollmentEdit from '@/mgmt/EnrollmentEdit'
+import EnrollmentList from '@/mgmt/EnrollmentList'
 import FileAdd from '@/mgmt/FileAdd.vue'
 import FileEdit from '@/mgmt/FileEdit.vue'
 import FileList from '@/mgmt/FileList.vue'
@@ -25,6 +28,9 @@ const router = new VueRouter({
     {path: '/mgmt/bmember/list', component: BMemberList},
     {path: '/mgmt/bmember/add', component: BMemberAdd},
     {path: '/mgmt/bmember/edit/:id', component: BMemberEdit},
+    {path: '/mgmt/enrollment/list', component: EnrollmentList},
+    {path: '/mgmt/enrollment/add', component: EnrollmentAdd},
+    {path: '/mgmt/enrollment/edit/:id', component: EnrollmentEdit},
     {path: '/mgmt/file/add', component: FileAdd},
     {path: '/mgmt/file/edit/:id', component: FileEdit},
     {path: '/mgmt/file/list', component: FileList},

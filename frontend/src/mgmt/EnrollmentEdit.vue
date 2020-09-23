@@ -17,7 +17,7 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn v-on="on" outlined fab color="blue-grey" 
-            @click="removeSubscription()" slot="activator">
+            @click="deleteEnrollment()" slot="activator">
             <v-icon>delete</v-icon>
           </v-btn>
         </template>
@@ -26,7 +26,7 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn v-on="on" outlined fab color="blue-grey" 
-            @click="saveSubscription()" slot="activator">
+            @click="saveEnrollment()" slot="activator">
             <v-icon>save</v-icon>
           </v-btn>
         </template>
@@ -36,6 +36,7 @@
   </v-layout>
   <v-layout row wrap>
     <v-flex sm6 xs12>
+      <p>Enrollment number: {{p.subscriptionnumber}}</p>
       <v-text-field label="Last name" v-model="p.last_name" />
       <v-text-field label="First name" v-model="p.first_name" />
       <v-select label="Chess title" v-model="p.chesstitle"
@@ -55,14 +56,13 @@
       <p>ID club: {{p.idclub}}</p>
       <v-text-field label="ID Bel" v-model="p.idbel" />
       <v-text-field label="ID Fide" v-model="p.idfide" />
-      <p>Nationality Bel: {{p.nationalitybel}}</p>
-      <v-text-field label="Nationality FIDE" v-model="p.nationalityfide" />
+      <v-text-field label="Nationality" v-model="p.nationality" />
       <v-text-field label="Rating FIDE" v-model.number="p.ratingfide" type="number" />
       <v-text-field label="Rating Bel" v-model.number="p.ratingbel" type="number" />
-      <v-text-field label="Rating used" v-model.number="p.rating" type="number" />
-      <v-select label="Confirmed" v-model="p.confirmed" :items="yesno" />
+      <p>Enrollment confirmed: {{p.confirmed ? "Yes": 'No'}}</p>
     </v-flex>
     <v-flex sm6 xs12>
+      <p>Invoice number: {{p.invoicenumber}}</p>
       <v-text-field label="Email player" v-model="p.emailplayer" />
       <v-text-field label="Mobile player" v-model="p.mobileplayer" />
       <v-text-field label="Fullname parent" v-model="p.fullnameparent" />
@@ -70,12 +70,8 @@
       <v-text-field label="Email parent" v-model="p.emailparent" />
       <v-text-field label="Fullname local representative" v-model="p.fullnameattendant" />
       <v-text-field label="Mobile local representative" v-model="p.mobileattendant" />
-      <v-select label="Meals" v-model="p.meals" :items="meals" />
       <v-select label="Locale" v-model="p.locale" :items="locales" />
-      <v-text-field label="Payment amount" v-model.number="p.payamount" type="number"/>
       <v-text-field label="Payment message" v-model="p.paymessage" />
-      <p>Invoice created: <date-formatted :date="p.invoicecreated"/></p>
-      <p>Invoice sent: <date-formatted :date="p.invoicesent" /></p>
       <v-text-field label="Custom1" v-model="p.custom1" />
       <v-textarea label="Remarks" v-model="p.remarks" />
     </v-flex>
@@ -85,18 +81,14 @@
 </template>
 
 <script>
-
-import api from '../util/api'
-import DateFormatted from "@/components/DateFormatted";
+import { mapState } from 'vuex'
+import { bearertoken } from "@/util/token"
 
 export default {
-  name: "ParticipantEdit",
-
-  components: {
-    DateFormatted,
-  },
+  name: "EnrollmentEdit",
 
   computed :  {
+    ...mapState(['token', 'api']),
     fullname () {
       return this.p.first_name + ' ' + this.p.last_name;
     }
@@ -136,6 +128,7 @@ export default {
       {value:'BO', text: 'Breakfast only'},
     ],
     menu_birthdate: false,
+    id: this.$route.params.id,
     p: {},
     snacktext: '',
     yesno: [
@@ -150,78 +143,80 @@ export default {
       this.$router.back();
     },
 
-    gotoPhoto () {
-      this.$router.push('/mgmt/participant/photo/' + this.p.id)      
-    },
-
-    removeSubscription () {
+    deleteEnrollment () {
+      let self=this;
       if (window.confirm('Are you sure to delete ' + this.fullname)) {
-        api('deleteSubscription', {
-          id: this.p.id
+        console.log('deleting')
+        this.api.delete_subscription({ id: this.id }, {
+          securities: bearertoken(this.token),
         }).then(
           function(){
-            this.$root.$emit('snackbar', {text: this.fullname + ' deleted.'})
-            this.$router.push('/mgmt/participant/list')
-          }.bind(this), 
+            self.$root.$emit('snackbar', {text: self.fullname + ' deleted.'})
+            self.$router.push('/mgmt/enrollment/list')
+          }, 
           function(data){
-            console.log('amai', data)
-            this.$root.$emit('snackbar', { 
+            self.$root.$emit('snackbar', { 
               text: 'Failed to delete: ' + data.statusText,
               reason: (data.data ? data.data.message : null)
             })
-          }.bind(this)
+          }
         );
+      }
+      else {
+        console.log('not deleting')
       }
     },
 
-    saveSubscription () {
-      api('updateSubscription', {
-        id: this.p.id,
-        subscription: this.p,
-      }).then(
+    saveEnrollment () {
+      let self=this;
+      this.api.update_subscription({ id: this.p.id },{
+        requestBody: this.p,
+        securities: bearertoken(this.token),
+      } ).then(
         function(){
-          this.$root.$emit('snackbar', { text: this.fullname + ' saved.'})
-        }.bind(this),
+          self.$root.$emit('snackbar', { text: self.fullname + ' saved.'})
+        },
         function(data){
-          this.$root.$emit('snackbar', { text: 'Failed to save: ' + data.statusText, 
+          self.$root.$emit('snackbar', { text: 'Failed to save: ' + data.statusText, 
             reason: (data.data ? data.data.message : null) })
-        }.bind(this)
+        }
       );
     },
 
-    sendConfirmationEmail () {
-      api('resendConfirmation', {
-        id: this.p.id,
+    confirmationEnrollment () {
+      let self=this;
+      this.api.confirm_subscription({id: this.id,},{
+        securities: bearertoken(this.token),
       }).then(
         function(){
-          this.$root.$emit('snackbar', {text: 'Confirmation mail for ' + this.fullname 
+          self.$root.$emit('snackbar', {text: 'Confirmation mail for ' + self.fullname 
             + ' sent.'})
-        }.bind(this),
+        },
         function(data){
-          this.$root.$emit('snackbar', { 
+          self.$root.$emit('snackbar', { 
             text: 'Failed to send confirmation: ' + data.statusText,
             reason: (data.data ? data.data.message : null)
           })
-        }.bind(this)
+        }
       );
 
     },
   },
 
   mounted () {
-    api('getSubscription', {
-      id: this.$route.params.id,
-      idtype: 'db',
-    }).then(
-     function(data) {
-        this.p = data.subscription;
-      }.bind(this),
+    let self=this;
+    this.api.get_subscription({ id: this.$route.params.id},
+        {securities: bearertoken(this.token)},
+    ).then(
       function(data) {
-          this.$root.$emit('snackbar', { 
+        self.p = data.obj;
+      },
+      function(data) {
+          self.$root.$emit('snackbar', { 
             text: 'Failed to get participant: ' + data.statusText, 
             reason: (data.data ? data.data.message : null) 
           })
-      }.bind(this)
+      }
     )
   }
 

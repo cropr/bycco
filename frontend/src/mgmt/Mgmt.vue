@@ -34,7 +34,13 @@
           </v-list-item-icon>
         <v-list-item-content>Files</v-list-item-content>
       </v-list-item>
-      <v-list-item @click="goto('bmember/list')" >
+      <v-list-item @click="goto('enrollment/list')" >
+          <v-list-item-icon>
+            <v-icon>mdi-account-multiple</v-icon>
+          </v-list-item-icon>
+        <v-list-item-content>Participants</v-list-item-content>
+      </v-list-item>
+      <!-- <v-list-item @click="goto('bmember/list')" >
           <v-list-item-icon>
             <v-icon>mdi-account-multiple</v-icon>
           </v-list-item-icon>
@@ -45,7 +51,7 @@
             <v-icon>mdi-account-tie</v-icon>
           </v-list-item-icon>
         <v-list-item-content>Board Roles</v-list-item-content>
-      </v-list-item>
+      </v-list-item> -->
     </v-list>
   </v-navigation-drawer>
 
