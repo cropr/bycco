@@ -39,6 +39,7 @@ Details player,Spieler Details,Details player,Spelerdetails,Détails du joueur
 Email address,E-Mail-Addresse,Email address,E-mailadres,Adresse e-mail
 Email parent,E-Mail-Adresse Elternteil,Email respresentative,E-mail ouder,Adresse e-mail du parent
 Email player,E-Mail-Adresse Spieler,Email parent,E-mail speler,Adresse e-mail du joueur
+Email representative,E-Mail-Adresse Vertreter,Email representative,E-mail verantwoordelijke,Adresse e-mail du responsable
 Enrollment,Anmeldung,Enrollment,Inschrijving,Enregistrement
 Error,Fehler,Error,Fout,Erreur
 Federation,Föderation,Federation,Federation,Féderation
@@ -108,7 +109,7 @@ Page,Seite,Page,Pagina,Page
 Page not found,Seite nicht gefunden,Page not found,Pagina niet gevonden,Page non trouvée
 Pairings,Paarungen,Pairings,Paringen,Appariements
 Participants,Teilnehmer,Participants,Deelnemers,Participants
-Pay the amount to account BE33 0017 5924 5146 of Bycco vzw. before the 25th of October with the structured message:,Zahlen Sie bitte den Betrag vor dem 25. Oktober  auf das Konto BE33 0017 5924 5146 von Bycco vzw. mit der strukturierten Nachricht:,Pay the amount to account BE33 0017 5924 5146 of Bycco vzw. before the 25th of October with the structured message: ,Betaal het bedrag vóór 25 oktober op rekening BE33 0017 5924 5146 van Bucco vzw. met de gestructureerde mededeling:,Veuillez payer le montant au compte BE33 0017 5924 5146 de Bycco vzw. avant le 25 octobre avec le message structuré:
+Pay the amount to account BE33 0017 5924 5146 of Bycco vzw. before the 25th of October with the structured message:,Zahlen Sie bitte den Betrag vor dem 25. Oktober  auf das Konto BE33 0017 5924 5146 von Bycco vzw. mit der strukturierten Nachricht:,Pay the amount to account BE33 0017 5924 5146 of Bycco vzw. before the 25th of October with the structured message: ,Betaal het bedrag vóór 25 oktober op rekening BE33 0017 5924 5146 van Bycco vzw. met de gestructureerde mededeling:,Veuillez payer le montant au compte BE33 0017 5924 5146 de Bycco vzw. avant le 25 octobre avec le message structuré:
 Payment,Zahlung,Payment,Betaling,Paiement
 Payment date,Zahlungsdatum,Payment date,Betalingsdatum,Date de paiement
 Payment message,Zahlungsmitteilung,Payment message,Betalingsmededeling,Message de paiement
@@ -132,8 +133,6 @@ Round,Runde,Round,Ronde,Ronde
 Rows per page,Zeilen pro Seite,Rijen per pagina,Rijen per pagina,Lignes per page
 Select photo,Foto wählen,Select photo,Foto kiezen,Selectionner Photo
 Standings,Rangliste,Standings,Klassement,Classement
-SubConf1,"Die Einschreibungsgebühr beträgt 35 Euro, wenn Sie vor dem 1. März 2020 anmelden. Danach erhöht sich diese auf 45 Euro.",The subscription fee is 35 Euro if you register before the 1st of March 2020. After that date you will have to pay 45 Euro.,Het inschrijvingsgeld bedraagt 35 Euro indien je je voor 1 maart 2020 inschrijft. Nadien bedraagt het 45 Euro,Le droit d’inscription est de 35 Euro si vous êtes enregistrés au 1 Mars 2020. Après cette date le montant est de 45 Euro.
-SubConf2,Überweisen Sie den Betrag auf das Konto BE33 0017 5924 5146 von Bycco \nmit der strukturierten Mitteilung:,Pay the amount on account BE33 0017 5924 5146 with the structered message:,Betaal het bedrag op rekening BE33 0017 5924 5146 van Bycco met de volgende gestructureerde mededeling:,Veuillez payer le montant au compte BE33 0017 5924 5146 avec le message structuré: 
 Subcription for,Einschreibung für,Subscription for,Inschrijving voor,Inscription pour
 SubId5,Betrag zu zahlen,Amount to pay,Te betalen bedrag,Montant à payer
 SubIntro2,Ihre ID-Nummer beim KSB,Your id number of the Royal Belgian Chess Federation,Je stamnummer bij de KBSB,Le matricule de la FRBE

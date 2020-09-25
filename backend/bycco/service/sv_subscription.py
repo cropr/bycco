@@ -38,7 +38,12 @@ async def addSubscription(si: SubscriptionIn) -> str:
     add a new subscription
     """
     bp = getBelplayer(si.idbel)
-    fp = getFideplayer(bp.idfide) if bp.idfide else None
+    log.info(f'bp.idfide {bp.idfide}')
+    try:
+        fp = getFideplayer(bp.idfide) if bp.idfide else None
+    except Exception:
+        log.warning(f'Fide id {bp.idfide} unknown in fide.sqlite')
+        fp = None
     try:
         subdict = await DbSubscription.find_single({'idbel': bp.id})
         raise RdBadRequest(description="Alreadysubscribed")        
@@ -135,7 +140,11 @@ async def checkId(idbel: str) -> CheckIdReply:
     bp = getBelplayer(idbel)
     if not bp:
         return CheckIdReply(belfound=False)
-    fp = getFideplayer(bp.idfide) if bp.idfide else None
+    try:
+        fp = getFideplayer(bp.idfide) if bp.idfide else None
+    except:
+        log.warning(f'Fide id {bp.idfide} unknown in fide.sqlite')
+        fp = None
     try:
         sdict = await DbSubscription.find_single({'idbel': idbel})
     except RdNotFound:

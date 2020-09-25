@@ -61,7 +61,7 @@
       {{ $t('Your subscription is confirmed') }}
     </div>
     <div>
-      {{ $t('Pay the amount to account BE33 0017 5924 5146 before the 25th of October with the structured message:') }}
+      {{ $t('Pay the amount to account BE33 0017 5924 5146 of Bycco vzw. before the 25th of October with the structured message:') }}
       {{ subscription.paymessage }}
     </div>
     <div class="mt-2">

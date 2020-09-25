@@ -120,7 +120,6 @@ async def getPageBySlug(slug: str, options: dict= {}):
     filter = dict(slug=slug, **options)
     pdict = await DbPage.find_single(filter)
     pdict['active'] = isactive(pdict)
-    log.info(f'pdict {pdict}')
     return encode_page(pdict, _class)
 
 async def getPages(options: dict={}) -> PageListOut:

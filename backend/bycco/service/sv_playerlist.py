@@ -51,7 +51,7 @@ def process_zipsqlite_bel(fszip, period):
     """
 
     # read the first file in zipfile  and convert it to a byte stream
-    with zipfile.ZipFile(fszip, mod) as zf:
+    with zipfile.ZipFile(fszip, mode='r') as zf:
         zfd = zf.open(zf.namelist()[0])
         pldata = zfd.read()
         zfd.close()
@@ -64,6 +64,8 @@ def getFideplayer(id: str) -> Fideplayer:
     get the page by id 
     """
     log.info(f'getting fideplayer by id {id}')
+    if not id:
+        return None
     try:
         i = int(id)
     except:
@@ -86,12 +88,11 @@ def getFideplayer(id: str) -> Fideplayer:
         ratingfide = rec["SRtng"]
     )
 
-def process_zipsqlite_fide(fszip, period):
+def process_zipsqlite_fide(fszip):
     """
     reads the ratinglist zipfile, decrompress it and store all active
     players in the fideranking collection
     :param fszip: byte stream of the zipfile
-    :param period: the period in yyyymm format of the ranking file
     :return: None
     """
     with zipfile.ZipFile(fszip, mode='r') as zf:
