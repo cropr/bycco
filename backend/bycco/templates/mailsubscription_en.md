@@ -14,6 +14,6 @@
 ### Payment
 
  - The registration fee is ​​35 euro.
- - Pay the amount before the 25th of October on account BE33 0017 5924 5146 with the structured message: {paymessage}
+ - Pay the amount before the 25th of October on account BE33 0017 5924 5146 of Bycco with the structured message: {paymessage}
 
 The Bycco team

@@ -14,6 +14,6 @@
 ### Betaling
 
  - Het inschrijvingsgeld bedraagt ​​35 euro.
- - Betaal het bedrag vóór 25 oktober op rekening BE33 0017 5924 5146 met de gestructureerde mededeling: {paymessage}
+ - Betaal het bedrag vóór 25 oktober op rekening BE33 0017 5924 5146 van Bycco met de gestructureerde mededeling: {paymessage}
 
 Hrt Bycco team

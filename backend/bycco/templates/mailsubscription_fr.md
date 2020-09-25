@@ -14,6 +14,6 @@
 ### Paiement
 
  - Le droit d'inscription est de ​​35 euro.
- - Veuillez payer le montant au compte BE33 0017 5924 5146 avant le 25 octobre avec le message structuré:: {paymessage}
+ - Veuillez payer le montant au compte BE33 0017 5924 5146 de Bycco avant le 25 octobre avec le message structuré:: {paymessage}
 
 L'équipe Bycco

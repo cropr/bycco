@@ -14,6 +14,6 @@
 ### Zahlung
 
  - Die Anmeldegebühr beträgt 35 Euro.
- - Zahlen Sie bitte den Betrag vor dem 25. Oktober auf das Konto BE33 0017 5924 5146 mit der strukturierten Nachricht: {paymessage}
+ - Zahlen Sie bitte den Betrag vor dem 25. Oktober auf das Konto BE33 0017 5924 5146 von Bycco mit der strukturierten Nachricht: {paymessage}
 
 Das Bycco Team
