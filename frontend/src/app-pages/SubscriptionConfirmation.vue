@@ -21,9 +21,9 @@
       </div>
       <div class="mt-2">
         <span>{{$t('Can become Belgian champion')}}</span>:
-        <span v-if="subscription.natstatus == 'fidebelg'">{{$t('Yes')}}</span>
-        <span v-if="subscription.natstatus == 'nobelg'">{{$t('No')}}</span>
-        <span v-if="subscription.natstatus == 'maybe'">{{$t('To be confirmed')}}</span>
+        <span v-if="natstatus == 'fidebelg'">{{$t('Yes')}}</span>
+        <span v-if="natstatus == 'nobelg'">{{$t('No')}}</span>
+        <span v-if="natstatus == 'maybe'">{{$t('To be confirmed')}}</span>
       </div>
     </v-col>
     <v-col cols=12 sm=6>
@@ -87,6 +87,24 @@ export default {
 
   computed: {
     ...mapState(['subscription','api', 'flow']),
+    natstatus () {
+      if (this.subscription.nationality == 'BEL') {
+        if (this.subscription.idfide) {
+          return 'fidebelg'
+        }
+        else {
+          return 'maybe'
+        }
+      }
+      else {
+        if (this.subscription.idfide) {
+          return 'nobelg'
+        }
+        else {
+          return 'maybe'
+        }
+      }
+    },     
   },
 
   methods: {
