@@ -46,11 +46,11 @@
     </v-col>
   </v-row>
   <h2>{{$t('Payment')}}</h2>
-  <div v-show="!flow.isConfirmed">
+  <div>
     <div>
       {{ $t('The registration fee is 35 Euro.') }}
     </div>
-    <div>
+    <div v-show="!flow.isConfirmed">
       <v-btn @click="confirm" color="primary">
         {{ $t('Confirm') }}
       </v-btn>

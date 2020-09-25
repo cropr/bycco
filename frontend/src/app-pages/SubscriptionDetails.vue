@@ -157,7 +157,7 @@ export default {
       return catselect(parseInt(this.subscription.birthdate.substr(0,4)));
     },
     adult () {
-      return this.subscription.birthdate < this.adultdate
+      return moment(this.subscription.birthdate) < this.adultdate
     },
     age: {
       get() {

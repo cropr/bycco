@@ -39,7 +39,7 @@ const de = {
 "Email address": "E-Mail-Addresse",
 "Email parent": "E-Mail-Adresse Elternteil",
 "Email player": "E-Mail-Adresse Spieler",
-"Email representative": "E-Mail-Adresse verantwortlich Person",
+"Enrollment": "Anmeldung",
 "Error": "Fehler",
 "Federation": "Föderation",
 "Female": "Weiblich",
@@ -108,7 +108,7 @@ const de = {
 "Page not found": "Seite nicht gefunden",
 "Pairings": "Paarungen",
 "Participants": "Teilnehmer",
-"Pay the amount to account BE33 0017 5924 5146 before the 25th of October with the structured message:": "Zahlen Sie bitte den Betrag vor dem 25. Oktober  auf das Konto BE33 0017 5924 5146: mit der strukturierten Nachricht:",
+"Pay the amount to account BE33 0017 5924 5146 of Bycco vzw. before the 25th of October with the structured message:": "Zahlen Sie bitte den Betrag vor dem 25. Oktober  auf das Konto BE33 0017 5924 5146 von Bycco vzw. mit der strukturierten Nachricht:",
 "Payment": "Zahlung",
 "Payment date": "Zahlungsdatum",
 "Payment message": "Zahlungsmitteilung",
@@ -171,7 +171,7 @@ const de = {
 "You are not affiliated to the FIDE. Unless you <a href=mailto:info@bycco.be>contact us</a> before the 15th of March and instruct us to explicitely do otherwise, we will affiliate you as a Belgian to the FIDE, so you can win the Belgian title and you can participate to the European and World Championships as part of the Belgian team.": "Sie sind nicht an die FIDE angeschlossen. Sofern Sie sich nicht <a href=“mailto:info@bycco.be”>mit uns in Verbindung</a> setzen vor dem 15. März und uns ausdrücklich anders unterrichten, werden wir Sie als Belgier an die FIDE anschließen, damit Sie den belgischen Titel gewinnen können und an der EM / WM teilnehmen können.",
 "You give Bycco the right to use the personal data collected in this subscription form.": "Sie geben Bycco das Recht, die gesammelten personenbezogenen Daten des Anmeldeformulars zu verwenden.",
 "You need 2 items in order to subscribe to the Belgian Chess Championships:": "Sie benötigen 2 Dinge für die Einschreibung zur Belgischen Jugend-Schachmeisterschaft: ",
-"You need your id number of the Royal Belgian Chess Federation in order to subscribe to the Belgian Chess Championships.": "Sie benötigen Ihre ID-Nummer beim KSBe für die Einschreibung zur Belgischen Jugend-Schachmeisterschaft.",
+"You need your id number of the Royal Belgian Chess Federation in order to subscribe to the Belgian Chess Championships.": "Sie benötigen Ihre ID-Nummer beim KSB für die Einschreibung zur Belgischen Jugend-Schachmeisterschaft.",
 "Your subscription is confirmed": "Ihr Einschreibung ist bestätigt",
 }
 export default de

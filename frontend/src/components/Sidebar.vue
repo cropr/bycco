@@ -50,19 +50,19 @@
           <v-list-item-content>Covid-19</v-list-item-content>
         </v-list-item>        
       </v-list-group>
-      <!-- <v-list-group no-action>
+      <v-list-group no-action>
         <template v-slot:activator>
           <v-list-item-content>
             <v-list-item-title>{{ $t('Tournament') }}</v-list-item-title>
           </v-list-item-content>
         </template>
-        <v-list-item href="/subscription">
-          <v-list-item-content>{{ $t('Register') }}</v-list-item-content>
+        <v-list-item @click="updateSlug('subscription')">
+          <v-list-item-content>{{ $t('Enrollment') }}</v-list-item-content>
         </v-list-item>
-        <v-list-item href="/participants">
+        <!-- <v-list-item href="/participants">
           <v-list-item-content>{{ $t('Participants') }}</v-list-item-content>
-        </v-list-item>
-      </v-list-group> -->
+        </v-list-item> -->
+      </v-list-group>
 
     </v-list>
   </v-navigation-drawer>

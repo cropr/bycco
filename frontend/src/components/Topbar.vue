@@ -10,9 +10,9 @@
     <!-- <v-btn text large href="/participants">
       {{ $t('Participants')}}
     </v-btn> -->
-    <!-- <v-btn text large href="/subscription" v-if="sections.subscription">
-      {{ $t('Register')}}
-    </v-btn> -->
+    <v-btn text large @click="updateSlug('subscription')" >
+      {{ $t('Enrollment')}}
+    </v-btn>
     <!-- <v-btn text large href="/trn" >
       {{ $t('Tournament')}}
     </v-btn> -->
@@ -28,7 +28,7 @@ export default {
   name: "Topbar",
 
   computed: {
-    ...mapState(['drawer']),
+    ...mapState(['drawer', 'locale']),
   },
 
 data () {return {
@@ -36,19 +36,25 @@ data () {return {
     landing: true, //window.config.landing,
     sections: {
       participants: false, //window.config.participants_enabled,
-      subscription: true, //window.config.subscriptions_enabled,
       tournament: false, //window.config.tournament_enabled,
     },
   }},
 
 
   methods:   {
+
     toggleDrawer () {
       this.$store.commit('updateDrawer', !this.drawer)
     },
+    
+    updateSlug: function(s){
+      this.$router.push('/page/'+ s + '/' + this.locale)
+    },
+
     url_i18n (lang) {
       return '/' + lang // window.config.url_i18n[lang];
-    }
+    },
+
   },
 }
 </script>
