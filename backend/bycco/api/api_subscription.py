@@ -16,6 +16,7 @@ from bycco.service.sv_subscription import (
     getSubscriptions,
     updateSubscription,
     checkId,
+    csvSubscriptions,
 )
 from bycco.models.md_subscription import (
     SubscriptionIn,
@@ -136,4 +137,16 @@ async def api_anon_check_id(idbel: str):
         raise HTTPException(status_code=e.status_code, detail=e.description)
     except:
         log.exception('failed api call get_subscription')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@app.get('/api/csv/subscription', response_model=str)
+async def api_csv_subscriptions( 
+        auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
+    token = auth.credentials if auth else None
+    try:
+        return await csvSubscriptions()
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_subscriptions')
         raise HTTPException(status_code=500, detail="Internal Server Error")

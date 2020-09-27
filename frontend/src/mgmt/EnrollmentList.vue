@@ -12,16 +12,25 @@
             <v-spacer />
             <v-tooltip bottom >
               <template v-slot:activator="{ on }">
-                <v-btn v-on="on" @click="addEnrollment()" fab outlined 
+                <v-btn v-on="on" @click="addEnrollment" fab outlined 
                       color="deep-purple">
                   <v-icon>mdi-plus</v-icon>
                 </v-btn>
               </template>
-              <span>Add Enrollment</span>
+              <span>Add enrollment</span>
             </v-tooltip>
             <v-tooltip bottom >
               <template v-slot:activator="{ on }">
-                <v-btn v-on="on" @click="csvAttendees()" fab outlined 
+                <v-btn v-on="on" @click="getEnrollments" fab outlined 
+                      color="deep-purple">
+                  <v-icon>mdi-reload</v-icon>
+                </v-btn>
+              </template>
+              <span>Reload</span>
+            </v-tooltip>
+            <v-tooltip bottom >
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" @click="csvDownload" fab outlined 
                       color="deep-purple">
                   <v-icon>cloud_download</v-icon>
                 </v-btn>
@@ -101,26 +110,31 @@ export default {
       this.$router.push('/mgmt/enrollment/edit/' + p.id)
     },
 
-    csvAttendees () {
-      // api('getAttendees', {
-      //   cat: this.catsearch,
-      //   ss: this.ss.length ? this.ss : null,
-      //   format: 'csv'
-      // }).then(
-      //   function(data) {
-      //     console.log('csv attendees', data);
-      //     let link = document.createElement("a");
-      //     link.download = 'subscription.csv';
-      //     link.href = 'data:text/csv;base64,' + btoa(data.attendees);
-      //     document.body.appendChild(link);
-      //     link.click();
-      //     document.body.removeChild(link);
-      //   }.bind(this)
-      // );
+    csvDownload() {
+      let self=this;
+      this.api.csv_subscriptions({},
+        {securities: bearertoken(this.token)},
+      ).then(
+        function(data) {
+          console.log('csv subscriptions', data.obj);
+          let link = document.createElement("a");
+          link.download = 'enrollments.csv';
+          link.href = 'data:text/csv;base64,' + btoa(data.obj);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        },
+        function(data) {
+          console.error('error gettting csv', data);
+          self.$root.$emit('snackbar', { 
+            text: 'Failed to download csv file: ' + data.statusText,
+            reason: (data.data ? data.data.message : null)
+          })
+        }
+      );
     },
 
-
-    getEnrollments () {
+    getEnrollments() {
       let self=this;
       this.api.get_subscriptions({},
         {securities: bearertoken(this.token)},

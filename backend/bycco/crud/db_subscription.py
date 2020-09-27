@@ -36,18 +36,6 @@ class DbSubscription(DbBase):
         return docs[0]['subscriptionnumber'] if len(docs) == 1 else 0
         
     @classmethod
-    async def maxSubsciptionNumber(cls) -> int :
-        coll = get_db()[cls.COLLECTION]
-        cursor = coll.find(
-            {}, 
-            {'subscriptionnumber': 1}, 
-            sort=[('subscriptionnumber', pymongo.DESCENDING)],
-            limit=1,
-        )
-        docs = await cursor.to_list(1)
-        return docs[0]['subscriptionnumber'] if len(docs) == 1 else 0
-        
-    @classmethod
     async def maxInvoiceNumber(cls) -> int:
         coll = get_db()[cls.COLLECTION]
         cursor = coll.find(

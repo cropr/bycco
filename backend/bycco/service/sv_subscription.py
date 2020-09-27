@@ -3,7 +3,7 @@
 
 import logging
 
-import json, os.path
+import json, os.path, io, csv
 from typing import List, Optional, Dict, Any, cast
 from datetime import date, datetime, timezone
 from bycco.service.sv_playerlist import getBelplayer, getFideplayer
@@ -151,24 +151,31 @@ async def checkId(idbel: str) -> CheckIdReply:
         sdict = {}
     return CheckIdReply(
         belfound = True,
-        birthyear = bp.birthdate[0:4],
-        fidefound = bool(fp),
-        first_name = bp.first_name,
-        gender = bp.gender,
-        last_name = bp.last_name,
-        ratingbel = bp.ratingbel,
-        ratingfide = fp.ratingfide if fp else 0,
-        subconfirmed = sdict.get('confirmed', False),
         subfound = bool(sdict),
         subid =  sdict.get('id', False),
     )
 
-
-# def csvSubscriptions() -> List[dict]:
-#     """
-#     get all subscriptions in csv format
-#     """
-#     return SubscriptionModel.csv_subscriptions()
+async def csvSubscriptions() -> str:
+    """
+    get all subscriptions in csv format
+    """
+    fieldnames = list(SubscriptionOptional.__fields__.keys())
+    csvstr = io.StringIO()
+    csvf = csv.DictWriter(csvstr, fieldnames)
+    csvf.writeheader()
+    subs = (await getSubscriptions({'_fieldlist': [
+        'birthdate', 'category', 'chesstitle', 'confirmed', 'custom',
+        'emailattendant', 'emailparent', 'emailplayer', 'federation', 
+        'first_name', 'fullnameattendant', 'fullnameparent', 'gender', 
+        'id', 'idbel', 'idclub', 'idfide', 'invoicenumber', 'locale',
+        'last_name', 'mobileattendant', 'mobileparent', 'mobileplayer', 
+        'nationality', 'payamount', 'paydate', 'paymessage', 'present',
+        'ratingbel', 'ratingfide', 'remarks', 'subscriptiontime', 
+        'subscriptionnumber',
+    ]}, cls=SubscriptionOptional)).subscriptions
+    for sub in subs:
+        csvf.writerow(sub.dict())
+    return csvstr.getvalue()    
 
 
 # def getPhoto(id: str):
