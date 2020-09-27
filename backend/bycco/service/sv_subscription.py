@@ -151,6 +151,14 @@ async def checkId(idbel: str) -> CheckIdReply:
         sdict = {}
     return CheckIdReply(
         belfound = True,
+        birthyear = bp.birthdate[0:4],
+        fidefound = bool(fp),
+        first_name = bp.first_name,
+        gender = bp.gender,
+        last_name = bp.last_name,
+        ratingbel = bp.ratingbel,
+        ratingfide = fp.ratingfide if fp else 0,
+        subconfirmed = sdict.get('confirmed', False),        
         subfound = bool(sdict),
         subid =  sdict.get('id', False),
     )
