@@ -16,8 +16,7 @@
       <v-list>
         <v-list-item>
           <v-list-item-title class="title">
-            Menuwz1knbg
-            
+            Menu
           </v-list-item-title>
         </v-list-item>
       </v-list>

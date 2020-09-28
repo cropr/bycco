@@ -4,7 +4,7 @@
     <v-card-title>Gold Sponsor:</v-card-title>
     <v-card-text>
       <a href="http://www.cronos.be" target="_blank">
-      <img src='/static/img/frame_chronos.png'>
+      <img src='/img/frame_chronos.png'>
       </a>
     </v-card-text>
   </v-card>
@@ -23,11 +23,11 @@ export default {
       current: 0,
       interval: 6, // number of seconds before switching
       items: [
-        {src:'/static/img/frame_archery.png', name: 'archery' },
-        {src:'/static/img/frame_blankenberge.png', name: 'blankenberge' },
-        {src:'/static/img/frame_chessconsult.png', name: 'chessconsult' },
-        {src:'/static/img/frame_cvwarehouse.png', name: 'cvwarehouse' },
-        {src:'/static/img/frame_talistro.png', name: 'talistro' },
+        {src:'/img/frame_archery.png', name: 'archery' },
+        // {src:'/img/frame_blankenberge.png', name: 'blankenberge' },
+        {src:'/img/frame_chessconsult.png', name: 'chessconsult' },
+        {src:'/img/frame_cvwarehouse.png', name: 'cvwarehouse' },
+        {src:'/img/frame_talistro.png', name: 'talistro' },
       ]
     }
   },

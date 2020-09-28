@@ -12,6 +12,8 @@
     <router-view :key="$route.fullPath" v-if="routingtableloaded" />
   </v-content>
 
+  <ad-carousel />
+
   <bycco-footer />
 
   <v-snackbar v-model="snackbar" :color="color" bottom>
@@ -35,6 +37,7 @@ import { processRoutes } from './router_page'
 import { locales, setLanguage } from '@/util/lang'
 import Sidebar from '@/components/Sidebar'
 import Topbar from '@/components/Topbar'
+import AdCarousel from '@/components/AdCarousel'
 import ByccoFooter from '@/components/ByccoFooter'
 
 export default {
@@ -45,6 +48,7 @@ export default {
     Sidebar,
     Topbar,
     ByccoFooter,
+    AdCarousel
   },
 
   data() {

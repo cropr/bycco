@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div class="mb-2">
   <v-parallax  v-if="$vuetify.breakpoint.mdAndUp" src="/img/pier_big.jpg" 
     height="400" />
   <v-parallax v-if="$vuetify.breakpoint.sm"
@@ -30,6 +30,10 @@
       </v-col>
     </v-row>
   </v-container>
+  <v-parallax  v-if="$vuetify.breakpoint.smAndUp"
+    src="/img/winnaars_big.jpg" height="400" />
+  <v-parallax v-if="$vuetify.breakpoint.xs"
+    src="/img/winnaars_small.jpg" height="200" />  
  </div>
 </template>
 
