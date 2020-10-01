@@ -13,7 +13,10 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email import encoders
 from bycco import settings
-from bycco.models.md_subscription import SubscriptionDetailedOut
+from bycco.models.md_subscription import (
+    SubscriptionDetailedOut,
+    SubscriptionOptional,
+)
 from bycco.i18n import locale_msg
 from .mailbackend import backends
 
@@ -47,7 +50,7 @@ def test_mail():
         log.exception('failed')    
 
 
-def sendconfirmationmail(s: SubscriptionDetailedOut):
+def sendconfirmationmail(s: SubscriptionOptional):
     """
     send confirmation email
     :param s: the Subscription
@@ -63,6 +66,7 @@ def sendconfirmationmail(s: SubscriptionDetailedOut):
         'category': s.category,
         'paymessage': s.paymessage,
     }
+    assert s.locale
     i18n = locale_msg[s.locale]
     tolist = []
     if s.emailattendant:

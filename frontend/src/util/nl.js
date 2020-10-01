@@ -154,6 +154,7 @@ const nl = {
 "The team": "Het team",
 "This player is already registered": "Deze speler is reeds geregistreerd",
 "This player is already registered.": "Deze speler is al geregistreerd.",
+"This player is not affiliated. Please contact your club to take the necessary action.": "Deze speler is niet aangesloten. Neem contact op met uw club om de nodige maatregelen te nemen.",
 "To": "Naar",
 "To be confirmed": "Te bevestigen",
 "Tournament": "Toernooi",

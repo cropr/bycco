@@ -113,6 +113,7 @@ async def getSubscriptions(options: dict={}, cls=SubscriptionOut) -> Subscriptio
     get all subscriptions
     """
     sdict = await DbSubscription.find_multiple(options)
+    log.info(f'sdict {sdict}')
     return SubscriptionList(subscriptions=
         [encode_subscription(s, cls) for s in sdict])
 
@@ -150,6 +151,7 @@ async def checkId(idbel: str) -> CheckIdReply:
     except RdNotFound:
         sdict = {}
     return CheckIdReply(
+        affiliated = bp.affiliated,
         belfound = True,
         birthyear = bp.birthdate[0:4],
         fidefound = bool(fp),

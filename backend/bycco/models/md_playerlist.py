@@ -11,6 +11,7 @@ class Belplayer(BaseModel):
     """
     A player in the Belgian playerlist
     """
+    affiliated: Optional[bool] = True
     birthdate: str       # YYYY-MM-DD format
     federation: str
     first_name: str

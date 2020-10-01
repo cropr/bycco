@@ -55,9 +55,9 @@
     </v-list>
   </v-navigation-drawer>
 
-  <v-content>
+  <v-main>
     <router-view v-if="apiloaded"></router-view>
-  </v-content>
+  </v-main>
   
   <v-snackbar v-model="snackbar" bottom>
     {{ snacktext }} 

@@ -60,6 +60,16 @@ LOG_CONFIG = {
 
 INVOICENUMBERSTART = 1
 
+GOOGLE_CLIENT_ID = '138759213444-sitmoe4qtoh3o2ust5vg5mtqe147spn6.apps.googleusercontent.com'
+GOOGLE_LOGIN_DOMAINS = ['bycco.be']
+
+TOKEN = {
+    "timeout":  180,    # timeout in minutes
+    "secret": "Ramskappelle",
+    "algorithm": "HS256",
+    "nocheck": True,
+}
+
 try:
     from local_settings import *
     print('local settings loaded')

@@ -11,8 +11,9 @@
         <v-divider></v-divider>
         <v-card-text>
           <v-col cols="12">
-              <g-signin-button :params="googleSignInParams" @success="onSignInSuccess" @error="onSignInError">
-              </g-signin-button>
+              <g-signin-button :params="googleSignInParams" 
+                @success="onSignInSuccess" 
+                @error="onSignInError" />
           </v-col>
           <!-- <v-col cols="12">
             <v-text-field xs="12" lg="4" v-model="login.username" 
@@ -43,7 +44,7 @@ export default {
     return{
       login: {},
       googleSignInParams: {
-        client_id: "767432590119-itkr36suu2qn41irsf5ie3mekfqdgt1q.apps.googleusercontent.com"
+        client_id: "138759213444-sitmoe4qtoh3o2ust5vg5mtqe147spn6.apps.googleusercontent.com"
       }      
     }
   },

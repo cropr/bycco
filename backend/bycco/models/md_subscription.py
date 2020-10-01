@@ -68,6 +68,8 @@ class Subscription(BaseModel):
     _id: str 
     _version: int
     _documenttype: str
+    _creationtime: datetime
+    _modificationtime: datetime    
 
 class SubscriptionIn(BaseModel):
     """
@@ -169,6 +171,7 @@ class SubscriptionDetailedOut(SubscriptionOptional):
     subscriptionnumber: int 
 
 class CheckIdReply(BaseModel):
+    affiliated: Optional[bool] = None
     belfound: bool
     birthyear: Optional[str] = None
     first_name: Optional[str] = ''

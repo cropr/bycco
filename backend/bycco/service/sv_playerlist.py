@@ -30,6 +30,7 @@ def getBelplayer(id: str) -> Belplayer:
     else:
         last_name, first_name = names[0], ''
     return Belplayer(
+        affiliated = rec['Affiliated'] == 1,
         birthdate = rec['Birthday'],
         federation = rec['Fed'],
         first_name = first_name,
@@ -59,7 +60,7 @@ def process_zipsqlite_bel(fszip, period):
         fs.write(pldata)
 
 
-def getFideplayer(id: str) -> Fideplayer:
+def getFideplayer(id: str) -> Optional[Fideplayer]:
     """
     get the page by id 
     """

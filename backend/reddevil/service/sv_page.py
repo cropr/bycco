@@ -10,7 +10,7 @@ from datetime import datetime, timezone, date
 from slugify import slugify
 from typing import List, Optional, Union
 
-from ..common import (
+from reddevil.common import (
     cfg,
     iso2date,
     check_token,
@@ -34,11 +34,15 @@ from reddevil.models.md_i18nfield import I18nField
 from reddevil.crud.db_page import DbPage
 
 def encode_page(e: dict, _class=PageDetailedOut):
+    if '_creationtime' in e:
+        e['creationtime'] = e.pop('_creationtime', None)
+    if '_modificationtime' in e:
+        e['modificationtime'] = e.pop('_modificationtime', None)
     try:
         eo = _class(**e)
     except Exception:
         log.exception('cannot encode Page')
-        raise RdInternalServerError(detail='CannotEncodePage')
+        raise RdInternalServerError(description='CannotEncodePage')
     return eo
 
 async def createPage(d: PageIn) -> str:

@@ -106,6 +106,10 @@ export default {
 
   methods: {
 
+    addEnrollment() {
+      // toDO
+    },
+
     editEnrollment(p) {
       this.$router.push('/mgmt/enrollment/edit/' + p.id)
     },
@@ -141,6 +145,15 @@ export default {
       ).then(
         function(data) {
           self.enrollments = data.obj.subscriptions;
+        },
+        function(data){
+          if (data.status == 401) {
+            self.$router.push('/mgmt/login')
+          }
+          else {
+            console.error('getting getPages', data);
+            self.$root.$emit('snackbar', {text: 'Getting pages failed', reason: data})            
+          }          
         }
       );
     },

@@ -28,6 +28,7 @@ from bycco.models.md_subscription import (
     SubscriptionOptional,
     CheckIdReply,
 )
+from reddevil.service.sv_account import validate_token
 
 log = logging.getLogger('bycco')
 
@@ -35,6 +36,9 @@ log = logging.getLogger('bycco')
 async def api_get_subscriptions( 
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         return await getSubscriptions()
     except RdException as e:
@@ -67,6 +71,9 @@ async def api_anon_add_subscription(s: SubscriptionIn):
 async def api_get_subscription(id: str, 
              auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         return await getSubscription(id)
     except RdException as e:
@@ -89,6 +96,9 @@ async def api_anon_get_subscription(id: str):
 async def api_delete_subscription(id: str,  
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         await deleteSubscription(id)
     except RdException as e:
@@ -101,6 +111,9 @@ async def api_delete_subscription(id: str,
 async def api_update_subscription(id: str, s: SubscriptionOptional,  
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         await updateSubscription(id, s)
     except RdException as e:
@@ -143,6 +156,9 @@ async def api_anon_check_id(idbel: str):
 async def api_csv_subscriptions( 
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         return await csvSubscriptions()
     except RdException as e:

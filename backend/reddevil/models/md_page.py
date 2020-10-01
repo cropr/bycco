@@ -22,7 +22,7 @@ class PageComponent(str, Enum):
 
 class Page(BaseModel):
     """
-    a Page
+    a Page as written in database
     """
     body: Dict[str, I18nField]
     component: PageComponent
@@ -31,13 +31,17 @@ class Page(BaseModel):
     enabled: bool
     expirationdate: str             # format yyyy-mm-dd
     intro: Dict[str, I18nField]
-    id: str
     name: str
     modificationtime: datetime
     owner: str 
     publicationdate: str            # format yyyy-mm-dd
     slug: str
     title: Dict[str, I18nField]  
+    _id: str
+    _version: int
+    _documenttype: str
+    _creationtime: datetime
+    _modificationtime: datetime
 
 
 class PageIn(BaseModel):

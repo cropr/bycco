@@ -5,7 +5,7 @@ from fastapi import HTTPException, Depends
 from fastapi.security import HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from typing import List
-from ..common import app, url, RdException, bearer_schema
+from reddevil.common import app, url, RdException, bearer_schema
 
 from reddevil.service.sv_page import (
     createPage,
@@ -17,6 +17,7 @@ from reddevil.service.sv_page import (
     updatePage,
     getActiveArticles,
 )
+from reddevil.service.sv_account import validate_token
 from reddevil.models.md_page import (
     ArticleListOut,
     PageIn,
@@ -32,6 +33,9 @@ assert app is not None
 async def api_get_pages( 
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         return await getPages()
     except RdException as e:
@@ -55,6 +59,9 @@ async def api_anon_get_pages():
 async def api_add_page(p: PageIn, 
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         return await createPage(p)
     except RdException as e:
@@ -67,6 +74,9 @@ async def api_add_page(p: PageIn,
 async def api_get_page(id: str, 
              auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         return await getPage(id)
     except RdException as e:
@@ -89,6 +99,9 @@ async def api_anon_get_page(id: str):
 async def api_delete_page(id: str,  
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         await deletePage(id)
     except RdException as e:
@@ -101,6 +114,9 @@ async def api_delete_page(id: str,
 async def api_update_page(id: str, p: PageUpdate,  
                 auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         await updatePage(id, p)
     except RdException as e:

@@ -5,12 +5,12 @@
   <sidebar />
   <topbar />
   
-  <v-content>
+  <v-main>
     <v-container v-show="!routingtableloaded">
       Just a moment. <v-progress-circular indeterminate />
     </v-container>
     <router-view :key="$route.fullPath" v-if="routingtableloaded" />
-  </v-content>
+  </v-main>
 
   <ad-carousel />
 

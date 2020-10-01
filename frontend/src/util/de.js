@@ -154,6 +154,7 @@ const de = {
 "The team": "Das Team",
 "This player is already registered": "Dieser Spieler ist bereits registriert",
 "This player is already registered.": "Dieser Spieler ist bereits registriert.",
+"This player is not affiliated. Please contact your club to take the necessary action.": "Dieser Spieler ist nicht verbunden. Bitte wenden Sie sich an Ihren Club, um die erforderlichen Maßnahmen zu ergreifen.",
 "To": "An",
 "To be confirmed": "Zu bestätigen",
 "Tournament": "Turnier",

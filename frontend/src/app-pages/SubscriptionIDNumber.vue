@@ -17,6 +17,9 @@
     <div v-show="errorcode == 'alreadyregistered'">
       {{ $t('This player is already registered.') }}
     </div>
+    <div v-show="errorcode == 'notaffiliated'">
+      {{ $t('This player is not affiliated. Please contact your club to take the necessary action.') }}
+    </div>
     <div v-show="errorcode == 'unknown'">
       {{ $t('UnknownError') }}
     </div>
@@ -85,6 +88,10 @@ export default {
           }
           if (self.reply.subconfirmed) {
             self.errorcode = 'alreadyregistered';
+            return
+          }
+          if (!self.reply.affiliated) {
+            self.errorcode = 'notaffiliated';
             return
           }
           self.first_name = self.reply.first_name;

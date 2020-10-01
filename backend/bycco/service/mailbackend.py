@@ -25,12 +25,12 @@ log = logging.getLogger('bycco')
 bcc = 'ruben.decrop@bycco.be,luc.cornet@bycco.be'
 
 class BaseEmailBackend:
-    def send_message(self, message: EmailMessage):
+    def send_message(self, message: MIMEBase):
         raise HTTPException(503, detail='EmailBackendNotImplemented')
 
 class SmtpSslBackend(BaseEmailBackend):
 
-    def send_message(self, msg: EmailMessage):
+    def send_message(self, msg: MIMEBase):
         with smtplib.SMTP_SSL(settings.EMAIL['host'], settings.EMAIL['port']) as s:
             if settings.EMAIL.get('user'):
                 s.login(settings.EMAIL['user'], settings.EMAIL['password'])
@@ -38,7 +38,7 @@ class SmtpSslBackend(BaseEmailBackend):
 
 class SmtpBackend(BaseEmailBackend):
 
-    def send_message(self, msg: EmailMessage):
+    def send_message(self, msg: MIMEBase):
         with smtplib.SMTP(settings.EMAIL['host'], settings.EMAIL['port']) as s:
             if settings.EMAIL.get('user'):
                 s.login(settings.EMAIL['user'], settings.EMAIL['password'])
@@ -46,7 +46,7 @@ class SmtpBackend(BaseEmailBackend):
 
 class MailgunEmailBackend(BaseEmailBackend):
 
-    def send_message(self, msg: EmailMessage):
+    def send_message(self, msg: MIMEBase):
         """
         sends a list of  email messages
         :param messages:
@@ -66,7 +66,7 @@ class MailgunEmailBackend(BaseEmailBackend):
         return (rc.status_code, str(rc))
 
 class GmailBackend(BaseEmailBackend):
-    def send_message(self, msg):
+    def send_message(self, msg: MIMEBase):
         service = get_gmail_service()
         rmsg = {'raw': base64.urlsafe_b64encode(msg.as_bytes()).decode('ascii')}
         try:
