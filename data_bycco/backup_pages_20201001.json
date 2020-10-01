@@ -1,0 +1,703 @@
+[
+  {
+    "_id": "45f5e489-8726-41e6-ae78-269a19a77835",
+    "doctype": "normal-page",
+    "locale": "nl",
+    "name": "agenda",
+    "body": {
+      "default": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "body",
+        "value": ""
+      },
+      "nl": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "body",
+        "value": "|        | U8 U10                                                       | U12 U14 U16 U18 U20                |\n| ------ | ------------------------------------------------------------ | ---------------------------------- |\n| 5 Nov. |                                                              | 9u30:  Ronde 1<br />15u00: Ronde 2 |\n| 6 Nov. |                                                              | 9u30:  Ronde 3<br />15u00: Ronde 4 |\n| 7 Nov. | 9u30: Ronde 1<br />12u30: Ronde 2<br />15u00: Ronde 3<br />17u30: Ronde 4 | 9u30:  Ronde 5<br />15u00: Ronde 6 |\n| 8 Nov  | 9u30: Ronde 5<br />12u00: Ronde 6<br />14u30: Ronde 7        | 9u30:  Ronde 7                     |\n\nEr is geen prijsuitreiking. De trofeeën en prijzen worden na het toernooi verdeeld.\n\n"
+      },
+      "en": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "body",
+        "value": "|        | U8 U10                                                       | U12 U14 U16 U18 U20                     |\n| ------ | ------------------------------------------------------------ | --------------------------------------- |\n| 5 Nov. |                                                              | 9:30 am:  Round 1<br />3:00 pm: Round 2 |\n| 6 Nov. |                                                              | 9:30 am:  Round 3<br />3:00 pm: Round 4 |\n| 7 Nov. | 9:30 am: Round 1<br />12:30 pm: Round 2<br />3:00 pm: Round 3<br />5:30 pm: Round 4 | 9:30 am:  Round 5<br />3:00 pm: Round 6 |\n| 8 Nov  | 9:30 am: Round 5<br />12:00 pm: Round 6<br />2:30 pm: Round 7 | 9:30 am:  Round 7                       |\n\nThere is no prizegiving.  Trophees and prizes are distributed after the tournament"
+      },
+      "fr": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "body",
+        "value": "|        | U8 U10                                                       | U12 U14 U16 U18 U20                |\n| ------ | ------------------------------------------------------------ | ---------------------------------- |\n| 5 Nov. |                                                              | 9h30:  Ronde 1<br />15h00: Ronde 2 |\n| 6 Nov. |                                                              | 9h30:  Ronde 3<br />15h00: Ronde 4 |\n| 7 Nov. | 9h30: Ronde 1<br />12h30: Ronde 2<br />15h00: Ronde 3<br />17h30: Ronde 4 | 9h30:  Ronde 5<br />15h00: Ronde 6 |\n| 8 Nov  | 9h30: Ronde 5<br />12h00: Ronde 6<br />14h30: Ronde 7        | 9h30:  Ronde 7                     |\n\nIl n’y aura pas de remise de prix. Les trophées et les prix seront distribués après le tournoi. "
+      },
+      "de": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "body",
+        "value": "|        | U8 U10                                                       | U12 U14 U16 U18 U20                        |\n| ------ | ------------------------------------------------------------ | ------------------------------------------ |\n| 5 Nov. |                                                              | 9:30 Uhr:  Runde 1<br />15:00 Uhr: Runde 2 |\n| 6 Nov. |                                                              | 9:30 Uhr:  Runde 3<br />15:00 Uhr: Runde 4 |\n| 7 Nov. | 9:30 Uhr: Runde 1<br />12:30 Uhr: Runde 2<br />15:00 Uhr: Runde 3<br />17:30 Uhr: Runde 4 | 9:30 Uhr:  Runde 5<br />15:00 Uhr: Runde 6 |\n| 8 Nov  | 9:30 Uhr: Runde 5<br />12:00 Uhr: Runde 6<br />14:30 Uhr: Runde 7 | 9:30 Uhr:  Runde 7                         |\n\nEs gibt keine Preisverleihung. Die Trophäen und Preise werden nach dem Turnier verteilt."
+      }
+    },
+    "component": "CmsSimplePage",
+    "creationtime": {
+      "$date": "2020-09-18T14:10:25.149Z"
+    },
+    "enabled": true,
+    "expirationdate": "",
+    "intro": {
+      "default": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "intro",
+        "value": ""
+      },
+      "nl": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "intro",
+        "value": ""
+      },
+      "en": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "intro",
+        "value": ""
+      },
+      "fr": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "intro",
+        "value": ""
+      },
+      "de": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "intro",
+        "value": ""
+      }
+    },
+    "languages": [
+      "en",
+      "nl",
+      "fr",
+      "de"
+    ],
+    "modificationtime": {
+      "$date": "2020-09-19T11:27:56.333Z"
+    },
+    "owner": "",
+    "publicationdate": "",
+    "slug": "agenda",
+    "title": {
+      "default": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "title",
+        "value": "agenda"
+      },
+      "nl": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "title",
+        "value": "Agenda"
+      },
+      "en": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "title",
+        "value": "Agenda"
+      },
+      "fr": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "title",
+        "value": "Calendrier"
+      },
+      "de": {
+        "id": "45f5e489-8726-41e6-ae78-269a19a77835",
+        "name": "title",
+        "value": "Tagesordnung"
+      }
+    },
+    "_documenttype": "Page",
+    "_version": 1
+  },
+  {
+    "_id": "cfb3f456-3098-4fb5-8926-05168461986a",
+    "doctype": "normal-page",
+    "locale": "nl",
+    "name": "covid19",
+    "body": {
+      "default": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "body",
+        "value": ""
+      },
+      "nl": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "body",
+        "value": " - Wie ziek is geweest of symptomen gehad heeft binnen de 7 dagen voor het toernooi of tijdens het toernooi, mag niet binnen.\n - Het dragen van een mondmasker is verplicht voor organisatoren, arbiters en deelnemers binnen in de gebouwen, zowel tijdens de partijen als tijdens de verplaatsingen.\n - Regelmatig handen ontsmetten.\n - De schaaksets, stoelen en tafels worden ontsmet na elke partij.\n - De deelnemers moeten blijven zitten tijdens de partij. Enkel naar het toilet gaan is toegestaan.\n - Social distancing wordt gerespecteerd op elk moment, ook in de wachtruimtes.\n - Er wordt geen drank of eten verkocht. Voorzie zelf alles. Vergeet niet om een pen mee te brengen.\n - De algemene regel is: na het einde van een partij verlaat iedere deelnemer de gebouwen. Er zijn wel wachtruimtes voor de deelnemers waar deze kunnen wachten totdat hun ouders of begeleiders hen komen ophalen. Er is daar geen plaats voor ouders en begeleiders. Bereid dit als deelnemer en ouder goed voor, zeker voor de uren tussen de rondes op dezelfde dag!\n - Voor de U8 en U10 wordt op zaterdag en zondag een wachtruimte voorzien voor 1 begeleider per speler. Deze wachtruimte is enkel voor die begeleiders en voor de spelers van U8 en U10. De organisatie vraagt met aandrang dat begeleiders van dezelfde club zich zo organiseren dat er een minimum aan begeleiders zou zijn. \n - Wie zich niet houdt aan deze voorschriften, zal de toegang tot de gebouwen ontzegd worden.\n"
+      },
+      "en": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "body",
+        "value": "- Anyone who has been ill or has had symptoms within 7 days before the tournament or during the tournament is not allowed in.\n - Wearing a mouth mask is mandatory for organizers, arbitrators and participants inside the buildings, both during the games and during the movements.\n - Disinfect hands regularly.\n - Chess sets, chairs and tables are sanitized after each game.\n - The participants must remain seated during the game. Only going to the toilet is allowed.\n - Social distancing is respected at all times, including in the waiting areas.\n - No drinks or food are sold. Provide everything yourself. Don't forget to bring a pen.\n - The general rule is: after the end of a game, every competitor leaves the buildings. There are waiting areas for the participants where they can wait for their parents or supervisors to pick them up. There is no place there for parents and supervisors. As a participant and parent, prepare this well, especially for the hours between rounds on the same day!\n - For the U8 and U10, a waiting area is provided for 1 companion per player on Saturday and Sunday. This waiting area is only for those supervisors and for the players of U8 and U10. The organization urges that supervisors from the same club organize themselves in such a way that there would be a minimum of supervisors.\n - Anyone who does not comply with these regulations will be denied access to the buildings."
+      },
+      "fr": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "body",
+        "value": " - Chaque joueur ayant été malade ou ayant eu les symptômes dans les 7 jours avant le tournoi ou pendant le tournoi, se verra refusé l’accès au tournoi.\n - Le port du masque est obligatoire pour les organisateurs, les arbitres et les participants à l’intérieur des bâtiments, aussi bien pendant les parties que pendant les déplacements.\n - La désinfection des mains se fait de façon régulière.\n - Les sets échiquéens, les chaises et les tables sont désinfectés après chaque partie.\n - Les participants restent assis pendant leur partie. Ils sont seulement autorisés à aller aux toilettes.\n - La distanciation sociale est respectée à chaque moment, également dans les espaces d’attente.\n - Il n’y aura pas moyen d’acheter ni nourriture, ni boissons. Prévoyez donc tout vous-mêmes. N’oubliez pas d’apporter un stylo.\n - La règle générale est : après la fin de la partie, chaque participant quitte les bâtiments. Il y a des espaces d’attente pour les participants où ils pourront attendre leurs parents ou leurs accompagnateurs. Ces espaces d’attente ne sont donc pas réservés aux parents ou aux accompagnateurs. C’est pourquoi nous prions aux parents et aux participants de bien préparer ces moments-là, car il ne sera pas possible de rester sur place entre les rondes qui auront lieu le même jour !\n - Pour les U8 et les U10, un espace d’attente sera prévu le samedi et le dimanche pour un seul accompagnateur par enfant. Cet espace d’attente ne sera réservé qu’aux accompagnateurs et aux joueurs des U8 et des U10. L’organisation demande avec insistance aux accompagnateurs d’un même club de s’organiser de sorte à réduire le plus possible le nombre d’accompagnateurs. \n - Celui qui ne respecte pas ces consignes, se verra refusé l’accès aux bâtiments.\n"
+      },
+      "de": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "body",
+        "value": " - Wer innerhalb von 7 Tagen vor dem Turnier oder während des Turniers erkrankt ist oder Symptome hat, darf nicht teilnehmen.\n - Das Tragen einer Mundmaske ist für Organisatoren, Schiedsrichter und Teilnehmer innerhalb der Räumlichkeiten sowohl während der Partien als auch während der Bewegungen obligatorisch.\n - Die Hände müssen regelmäßig desinfiziert werden.\n - Die Schachsets, Stühle und Tische werden nach jeder Partie desinfiziert.\n - Die Teilnehmer müssen während der Partie auf ihren Plätzen bleiben. Nur der Besuch zur Toilette ist erlaubt..\n - Soziale Distanzierung wird zu jeder Zeit respektiert, auch in den Warteräumen.\n - Es werden keine Getränke oder Lebensmittel verkauft. Stellen Sie alles selbst bereit. Vergessen Sie nicht, einen Kugelschreiber mitzubringen.\n - Die allgemeine Regel lautet: Nach dem Ende einer Partie verlässt jeder Teilnehmer die Gebäude. Es gibt jedoch Warteräume für die Teilnehmer, in denen sie darauf warten können, dass ihre Eltern oder Betreuer sie abholen. Es gibt keine Warteräume für Eltern oder Aufsichtspersonen. Bereiten Sie sich als  - Teilnehmer und Elternteil gut darauf vor, insbesondere auf die Stunden zwischen den Runden am selben Tag!\n - Für die U8 und U10 wird es am Samstag und Sonntag einen Warteraum für 1 Begleiter pro Spieler geben. Dieser Warteraum ist nur für die Begleitpersonen der U8- und U10-Spieler. Die Organisation besteht darauf, dass sich die Begleiter desselben Clubs so organisieren, dass es eine Mindestanzahl von Begleitern gibt. \n - Denjenigen, die sich nicht an diese Vorschriften halten, wird der Zugang zu den Gebäuden verweigert.\n"
+      }
+    },
+    "component": "CmsSimplePage",
+    "creationtime": {
+      "$date": "2020-09-18T14:03:51.530Z"
+    },
+    "enabled": true,
+    "expirationdate": "",
+    "intro": {
+      "default": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "intro",
+        "value": ""
+      },
+      "nl": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "intro",
+        "value": ""
+      },
+      "en": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "intro",
+        "value": ""
+      },
+      "fr": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "intro",
+        "value": ""
+      },
+      "de": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "intro",
+        "value": ""
+      }
+    },
+    "languages": [
+      "en",
+      "nl",
+      "fr",
+      "de"
+    ],
+    "modificationtime": {
+      "$date": "2020-09-18T14:28:41.040Z"
+    },
+    "owner": "",
+    "publicationdate": "",
+    "slug": "covid19",
+    "title": {
+      "default": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "title",
+        "value": "covid19"
+      },
+      "nl": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "title",
+        "value": "Covid19 maatregelen"
+      },
+      "en": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "title",
+        "value": "Covid19 measures"
+      },
+      "fr": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "title",
+        "value": "Mesures Covid19"
+      },
+      "de": {
+        "id": "cfb3f456-3098-4fb5-8926-05168461986a",
+        "name": "title",
+        "value": "Covid19 Maßnahmen"
+      }
+    },
+    "_documenttype": "Page",
+    "_version": 1
+  },
+  {
+    "_id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+    "doctype": "normal-page",
+    "locale": "nl",
+    "name": "home",
+    "body": {
+      "default": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "body",
+        "value": ""
+      },
+      "nl": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "body",
+        "value": "Het Belgisch jeugdkampioenschap vindt plaats in het Sint-Pieterscollege in Turnhout, Jubileumlaan 1\n\n - voor de categorieën U8 en U10: van 7 november tot 8 november 2020\n - voor de categorieën U12, U14, U16, U18 en U20: van 5 november tot 8 november 2020\n\n\nAlle toernooinformatie vindt u [hier](/page/toernooiinfo)\n\nGelieve de geldende [Covid 19 maatregelen](/page/covid19) goed te lezen.  \n"
+      },
+      "en": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "body",
+        "value": "The Belgian Youth Championship takes place in the Sint-Pieterscollege in Turnhout, Jubileumlaan 1.\n\n  - for categories U8 and -U0: from November 7 to November 8, 2020\n  - for categories U12, U14, U16, U18 and U20: from November 5 to November 8, 2020.\n\nAll tournament information can be found [here](/page/toernooiinfo)\n\nPlease read the applicable [Covid 19 measures](/page/covid19) carefully."
+      },
+      "de": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "body",
+        "value": "Die belgische Jugendmeisterschaft findet im Sint-Pieterscollege in Turnhout, Jubileumlaan 1 statt.\n\n  - für die Kategorien U8 und U10: vom 7. bis 8. November 2020\n  - für die Kategorien U12, U14, U16, U18  und U20: vom 5. bis 8. November 2020\n\nAlle Turnierinformationen finden Sie [hier](/page/toernooiinfo)\n\nBitte lesen Sie die entsprechenden [Covid 19-Maßnahmen](/page/covid19) sorgfältig durch."
+      },
+      "fr": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "body",
+        "value": "Le Championnat de Belgique de la jeunesse aura lieu au Sint-Pieterscollege à Turnhout, Jubileumlaan 1.\n\n  - pour les catégories U8 et U10: du 7 novembre au 8 novembre 2020\n  - pour les catégories U12, U14, U16, U18 et U20: du 5 novembre au 8 novembre 2020\n\nToutes les informations du tournoi peuvent être trouvées [ici](/page/toernooiinfo)\n\nVeuillez lire attentivement les [mesures Covid 19](/page/covid19) applicables."
+      }
+    },
+    "component": "LandingPage",
+    "creationtime": {
+      "$date": "2020-09-18T13:22:44.214Z"
+    },
+    "enabled": true,
+    "expirationdate": "",
+    "intro": {
+      "default": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "intro",
+        "value": ""
+      },
+      "nl": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "intro",
+        "value": ""
+      },
+      "en": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "intro",
+        "value": ""
+      },
+      "de": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "intro",
+        "value": ""
+      },
+      "fr": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "intro",
+        "value": ""
+      }
+    },
+    "languages": [
+      "en",
+      "nl",
+      "fr",
+      "de"
+    ],
+    "modificationtime": {
+      "$date": "2020-09-25T11:19:31.791Z"
+    },
+    "owner": "",
+    "publicationdate": "",
+    "slug": "home",
+    "title": {
+      "default": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "title",
+        "value": "home"
+      },
+      "nl": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "title",
+        "value": "Belgisch jeugdkampioenschap Schaken 2020"
+      },
+      "en": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "title",
+        "value": "Belgian Youth Chess Championships 2020"
+      },
+      "de": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "title",
+        "value": "Belgische Schach-Jugend-Landesmeisterschaft 2020"
+      },
+      "fr": {
+        "id": "e9fb984c-68e8-43c1-85a7-3dc7a10ba49b",
+        "name": "title",
+        "value": "Championnats de Belgique d'échecs de la jeunesse 2020"
+      }
+    },
+    "_documenttype": "Page",
+    "_version": 1
+  },
+  {
+    "_id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+    "doctype": "normal-page",
+    "locale": "nl",
+    "name": "huishoudreglement",
+    "body": {
+      "default": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "body",
+        "value": ""
+      },
+      "nl": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "body",
+        "value": "**versie: 18 september 2020**\n\n### EEN SCHAKER DRAAGT ZELF ZIJN VERANTWOORDELIJKHEID!\n\n1. Dit reglement is van toepassing op het Belgisch Jeugdkampioenschap Schaken.\n\n2. In het algemeen geldt dat iedere speler – zoals in een schaakpartij – zelf verantwoordelijk is voor zijn handelingen; ingeval van een minderjarige is/zijn de ouders of zijn wettelijke vertegenwoordiger te allen tijde verantwoordelijk; zij dragen elke burgerlijke verantwoordelijkheid.\n\n3. Indien de ouders of wettelijke vertegenwoordiger die verantwoordelijkheid willen overdragen/delen aan een begeleider (van een club) betreft dit een overeenkomst tussen deze.\n\n4. Zoals het in een echte schaaktraditie past, wordt in geen enkel geval enige verantwoordelijkheid afgewenteld; zij wordt zeker niet overgedragen aan de organisator of één van diens vrijwilligers.\n\n5. Er wordt niet aanvaard dat een minderjarige zonder ouder, wettelijke vertegenwoordiger of begeleider aanwezig is.\n\n6. De ouder(s), wettelijke vertegenwoordiger die in strijd met het bovenvermelde onder 5, de minderjarige achterlaat op dit kampioenschap, blijft verantwoordelijk.\n\n7. Er wordt door de organisatoren op voorhand te kennen gegeven dat er door hen op geen enkele manier toezicht uitgeoefend wordt op de minderjarigen uitgezonderd tijdens de duur van de effectief gespeelde schaakpartijen.\n\n8. Iedere ouder of wettelijke vertegenwoordiger wordt aangeraden duidelijke afspraken te maken met de (club)begeleider van het kind, indien hij/zij zelf niet aanwezig blijft om toezicht uit te oefenen op het kind.\n\n9. De begeleider van een speler wordt geacht actief het betrokken kind te begeleiden en preventief op te treden teneinde elk mogelijk schadegeval te vermijden; hij zal al het mogelijke doen om het kind nauwgezet te volgen en toezicht uit te oefenen.\n"
+      },
+      "en": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "body",
+        "value": "\nThis text is not available in English.  Please select another language"
+      },
+      "fr": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "body",
+        "value": "**version: 18 septembre 2020**\n\n### UN JOUEUR EST LUI-MÊME RESPONSABLE!\n\n1. Ce règlement est d'application lors du championnat de Belgique d'échecs de la jeunesse.\n\n2. En général, il prévaut que chaque joueur – comme dans sa partie d' échecs – est responsable de ses actes ; lorsqu' il est mineur, ses parents ou son représentant légal est à tout moment responsable du mineur ; ils portent  chaque responsabilité civile.\n\n3. Si les parents ou le représentant légal veulent transférer ou partager cette responsabilité avec l' accompagnateur (d'un club), cet arrangement ne concerne qu' eux.\n\n4. Comme il est d'application dans une véritable tradition échiquéenne, aucune responsabilité ne peut être trnasférée ; elle n'est certainement pas transférée à l'organisation ou à un des volontaires de l'organisation.\n\n5. Il n' est pas accepté qu' un mineur soit présent ou réside sans parent, représentant ou accompagnateur légal.\n\n6. Le(s) parent(s), le représentant légal qui, en contradiction avec l' article 5 ci-dessus, abandonnent le mineur lors de ce championnat, restent responsables de lui.\n\n7. L' organisation fait savoir à l' avance qu' elle ne peut en aucun cas exercer une surveillance vis-à-vis des mineurs d' âge en dehors la durée effective des parties d’échecs.\n\n8. Il est conseillé à chaque parent ou représentant légal de prendre des dispositions claires avec l' accompagnateur (du club) de l' enfant, s' il ne peut être présent lui-même pour assurer la surveillance de l' enfant.\n\n9. L' accompagnateur d' un joueur est prié d' exercer une surveillance active sur l' enfant concerné et de prendre les actions préventives pour éviter tout dommage; il fera tout ce qui est en son pouvoir pour suivre l' enfant de près et exercer sa surveillance.\n"
+      },
+      "de": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "body",
+        "value": "**Version: 18 September 2020**\n\n### EIN SCHACHSPIELER IST FÜR SICH SELBST VERANTWORTLICH!\n\n1. Dieses Regelwerk gilt für die Belgische Schach-Jugend-Landesmeisterschaft.\n\n2. Im allgemeinen gilt, das ein Spieler - wie auch während seiner Schachpartie – selbst für sein handeln verantwortlich ist; bei Minderjährige sind die Eltern bzw. der gesetzliche Vormund zu jeder Zeit zivilrechtlich Verantwortlich.\n\n3. Wenn die Eltern oder der gesetzliche Vormund diese Verantwortung dem Begleiter (eines Vereins) übertragen oder diese mit ihm teilen möchten, betrifft diese Abmachung nur diese beide Parteien.\n\n4. Wie üblich in der Schach-Tradition, kann keinesfalls irgendwelche Verantwortung übertragen werden, weder an den Veranstalter noch an einen seiner freiwilligen Mitarbeiter.\n\n5. Es ist nicht zugelassen daß ein Minderjährige ohne Begleitung von Eltern, gesetzlichen Vormund oder Begleiter am Turnier teilnimmt oder verbleibt.\n\n6. Eltern oder gesetzlicher Vormund welche, in Widerspruch mit Artikel 5, einen Minderjährigen auf dieser Landesmeisterschaft zurücklassen, bleiben voll Verantwortlich.\n\n7. Es wird seitens des Veranstalters vorab darauf hingewiesen, dass durch ihn in keiner Weise eine Aufsicht der Jugendlichen gewährleistet wird außerhalb der Schachpartien .\n\n8. Es wird jedem Elternteil oder gesetzlichen Vormund angeraten eindeutige Vereinbarungen mit dem Begleiter (des Vereins) zu treffen, wenn Sie/Er selbst nicht anwesend ist, um die Aufsicht des Kindes zu gewährleisten.\n\n9. Der Begleiter eines Spielers ist angehalten das Kind aktiv zu beaufsichtigen um eventuellen Schaden zu vermeiden, er wird sein möglichstes tun seine Aufsichtspflicht auszuüben."
+      }
+    },
+    "component": "CmsSimplePage",
+    "creationtime": {
+      "$date": "2020-09-18T18:46:57.893Z"
+    },
+    "enabled": true,
+    "expirationdate": "",
+    "intro": {
+      "default": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "intro",
+        "value": ""
+      },
+      "nl": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "intro",
+        "value": ""
+      },
+      "en": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "intro",
+        "value": ""
+      },
+      "fr": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "intro",
+        "value": ""
+      },
+      "de": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "intro",
+        "value": ""
+      }
+    },
+    "languages": [
+      "en",
+      "nl",
+      "fr",
+      "de"
+    ],
+    "modificationtime": {
+      "$date": "2020-09-18T18:52:16.382Z"
+    },
+    "owner": "",
+    "publicationdate": "",
+    "slug": "huishoudreglement",
+    "title": {
+      "default": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "title",
+        "value": "huishoudreglement"
+      },
+      "nl": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "title",
+        "value": "Huishoudelijk reglement"
+      },
+      "en": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "title",
+        "value": "Internal rules"
+      },
+      "fr": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "title",
+        "value": "Règlement de l‘ordre intérieur"
+      },
+      "de": {
+        "id": "bf207462-25ee-492e-8a43-0619bd449c6c",
+        "name": "title",
+        "value": "Hausinterne Satzung"
+      }
+    },
+    "_documenttype": "Page",
+    "_version": 1
+  },
+  {
+    "_id": "aca9c445-c080-4c65-970e-6ec38013a286",
+    "doctype": "app-page",
+    "locale": "nl",
+    "name": "subscription",
+    "body": {
+      "default": {
+        "id": "aca9c445-c080-4c65-970e-6ec38013a286",
+        "name": "body",
+        "value": ""
+      },
+      "nl": {
+        "id": "aca9c445-c080-4c65-970e-6ec38013a286",
+        "name": "body",
+        "value": ""
+      }
+    },
+    "component": "Subscription",
+    "creationtime": {
+      "$date": "2020-09-20T15:15:12.804Z"
+    },
+    "enabled": true,
+    "expirationdate": "",
+    "intro": {
+      "default": {
+        "id": "aca9c445-c080-4c65-970e-6ec38013a286",
+        "name": "intro",
+        "value": ""
+      },
+      "nl": {
+        "id": "aca9c445-c080-4c65-970e-6ec38013a286",
+        "name": "intro",
+        "value": ""
+      }
+    },
+    "languages": [
+      "nl"
+    ],
+    "modificationtime": {
+      "$date": "2020-09-20T15:15:21.237Z"
+    },
+    "owner": "",
+    "publicationdate": "",
+    "slug": "subscription",
+    "title": {
+      "default": {
+        "id": "aca9c445-c080-4c65-970e-6ec38013a286",
+        "name": "title",
+        "value": "subscription"
+      },
+      "nl": {
+        "id": "aca9c445-c080-4c65-970e-6ec38013a286",
+        "name": "title",
+        "value": "subscription"
+      }
+    },
+    "_documenttype": "Page",
+    "_version": 1
+  },
+  {
+    "_id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+    "doctype": "normal-page",
+    "locale": "nl",
+    "name": "toernooiinfo",
+    "body": {
+      "default": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "body",
+        "value": ""
+      },
+      "nl": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "body",
+        "value": "### Plaats\n\nSint-Pieters Turnhout\nJubileumlaan 1\n2300 Turnhout\n\n### Prijsuitreiking\n\nEr is geen prijsuitreiking. De trofeeën en prijzen worden na het toernooi verdeeld.\n\n### Inschrijven\n\nInschrijven op www.bycco.be vanaf 25/9/2020 tot en met 25/10/2020.\nDeelname: 35 euro, te betalen tegen 1/11/2020.\n\n### Tempo\n\nHet tempo is vastgelegd:\n\n - voor de categorieën -12 tot -20: 90 minuten voor de gehele partij + 30 seconden toevoeging per zet vanaf zet 1. Dit tempo heeft als gevolg dat alle spelers verplicht zijn alle zetten te noteren, dus ook wanneer hun klok minder dan 5 minuten aanwijst!\n \n - voor de categorieën -8 en -10: 45 minuetn voor de gehele partij + 15. seconden toevoeging per zet vanaf zet 1. Indien een speler minder dan 5 minuten op de klok heeft, is hij niet langetr verplicht te noteren\n\n\n### Paringen en uitlsagen\n\n - De paringen zullen enkel gepubliceerd worden op internet. De deelnemers dienen zelf de paringen op voorhand te raadplegen en daarna het bord waar ze dienen te spelen, te onthouden.\n\n - De scheidsrechters zullen de uitslagen zoveel mogelijk live bijhouden met de app ChessOut. Deze app is gratis te downloaden op de Google Play Store. U kunt aanduiden welke spelers u wilt volgen en u krijgt dan een melding op uw smartphone wanneer hun uitslag bekend is. Alle info rond het gebruik van de app vindt u op de Facebook-pagina van ChessOut.\n"
+      },
+      "en": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "body",
+        "value": "### Venue\n\nSint-Pieters Turnhout\nJubilee Avenue 1\n2300 Turnhout\n\n### Prizegiving\n\nThere is no prizegiving ceremony. The trophies and prizes will be distributed after the tournament.\n\n### Enrollment\n\nEnrollment on this site from 25/9/2020 to 25/10/2020.\nParticipation: 35 euros, to be paid by 1/11/2020.\n\n### Time controls\n\nThe pace is set:\n\n  - for the categories -12 to -20: 90 minutes for the entire game + 30 seconds addition per move from move 1. This tempo means that all players are obliged to record all moves, even if their clock is less than 5 minutes points!\n \n  - for the categories -8 and -10: 45 minutes for the whole game + 15 seconds addition per move from move 1. If a player has less than 5 minutes left on the clock, he is not obliged to score any longer.\n\n### Pairing and results\n\n  - The pairings will only be published on the internet. The participants themselves must consult the pairings in advance and then remember the board where they are to play.\n\n  - The arbiters will keep the results live as much as possible with the ChessOut app. This app can be downloaded for free from the Google Play Store. You can indicate which players you want to follow and you will receive a notification on your smartphone when their results are known. All information about using the app can be found on the ChessOut Facebook page."
+      },
+      "fr": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "body",
+        "value": "### Lieu\nSint-Pieters Turnhout\nJubileumlaan 1\n2300 Turnhout\n\n### Remise des prix\n\nIl n’y aura pas de remise de prix. Les trophées et les prix seront distribués après le tournoi. \n\n### Enregistrement\n\nEnregistrement sur ce site à partir du 25/9/2020 jusqu’au 25/10/2020.\nParticipation: 35 euros, à payer avant le 1/11/2020.\n\n### Cadence\n\nLa cadence est fixée:\n\n - pour les catégories -12 à -20: 90 minutes pour toute la partie + 30 secondes incrément par coup à partir du premier coup. Cette cadence a comme conséquence que tous les joueurs doivent noter tous les coups, et ce même si leur pendule indique moins de 5 minutes!\n    \n - pour les catégories -8 et -10: 45 minutes pour toute la partie + 15 secondes incrément par coup à partir du premier coup. Si le pendule indique moins de 5 minutes, le joueur ne doit plus noter.\n\n\n### Appariements et résultats\n\n - Les appariements ne seront publiés que sur le site. Les participants devront consulter les appariements à l’avance et retenir ensuite l’échiquier auquel ils devront jouer.\n\n - Les arbitres mettront les résultats à jour le mieux que possible sur l’application ChessOut. Cette application est à télécharger gratuitement sur Google Play Store. Vous pouvez indiquer quels joueurs vous souhaitez suivre et dès que le résultat du joueur est connu, vous recevrez ensuite un message sur votre smartphone. Toutes les informations sur l’emploi de cette application peuvent être consultées sur la page Facebook de ChessOut.\n"
+      },
+      "de": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "body",
+        "value": "### Ort\n\nSint-Pieters Turnhout\nJubilee Avenue 1\n2300 Turnhout\n\n### Preisverleihung\n\nEs gibt keine Preisverleihung. Die Trophäen und Preise werden nach dem Turnier verteilt.\n\n### Registrieren\n\nRegistrierung auf www.bycco.be vom 25.9.2020 bis 25.10.2020.\nTeilnahme: 35 Euro, bis zum 11.01.2020 zu zahlen.\n\n### Tempo\n\n - für die Kategorien U12, U14, U16, U18, U20: 90 Minuten für das ganze Spiel + 30 Sekunden Zusatz pro Zug ab dem 1. Zug festgelegt. Dieses Spieltempo hat zur Folge, dass alle Spieler alle Züge aufschreiben müssen, auch wenn die Restzeit unter 5 Minuten liegt!\n\n - für die Kategorien U8, U10: 45 Minuten für das ganze Spiel + 15 Sekunden Zusatz pro Zug ab dem 1. Zug festgelegt. Wenn ein Spieler weniger als 5 Minuten auf der Uhr hat, muss er nicht mehr aufschreiben\n\n\n### Paarung und Verriegelung\n\n  - Die Paarungen werden nur im Internet veröffentlicht. Die Teilnehmer selbst müssen die Paarungen im Voraus konsultieren und sich dann an das Brett erinnern, auf dem sie spielen sollen.\n\n  - Die Schiedsrichter werden die Ergebnisse mit der ChessOut-App so weit wie möglich am Leben erhalten. Diese App kann kostenlos im Google Play Store heruntergeladen werden. Sie können angeben, welchen Spielern Sie folgen möchten, und Sie erhalten auf Ihrem Smartphone eine Benachrichtigung, wenn deren Ergebnisse bekannt sind. Alle Informationen zur Verwendung der App finden Sie auf der ChessOut-Facebook-Seite."
+      }
+    },
+    "component": "CmsSimplePage",
+    "creationtime": {
+      "$date": "2020-09-18T18:58:02.104Z"
+    },
+    "enabled": true,
+    "expirationdate": "",
+    "intro": {
+      "default": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "intro",
+        "value": ""
+      },
+      "nl": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "intro",
+        "value": ""
+      },
+      "en": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "intro",
+        "value": ""
+      },
+      "fr": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "intro",
+        "value": ""
+      },
+      "de": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "intro",
+        "value": ""
+      }
+    },
+    "languages": [
+      "en",
+      "nl",
+      "fr",
+      "de"
+    ],
+    "modificationtime": {
+      "$date": "2020-09-19T11:40:53.026Z"
+    },
+    "owner": "",
+    "publicationdate": "",
+    "slug": "toernooiinfo",
+    "title": {
+      "default": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "title",
+        "value": "toernooiinfo"
+      },
+      "nl": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "title",
+        "value": "Belangrijke informatie"
+      },
+      "en": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "title",
+        "value": ""
+      },
+      "fr": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "title",
+        "value": "Information importante"
+      },
+      "de": {
+        "id": "c6cfd78b-6258-4559-bb3d-ffb9aa2f5a6b",
+        "name": "title",
+        "value": "Wichtige Informationen"
+      }
+    },
+    "_documenttype": "Page",
+    "_version": 1
+  },
+  {
+    "_id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+    "doctype": "normal-page",
+    "locale": "nl",
+    "name": "toernooireglement",
+    "body": {
+      "default": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "body",
+        "value": ""
+      },
+      "nl": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "body",
+        "value": "**versie: 18 september 2020**\n\nWaar in de tekst  gerefereerd wordt naar \"hij\", \"hem\" of \"zijn\", wordt eveneens \"zij\" of \"haar\" bedoeld.\n\n## Algemeen\n\n1. Voor het Belgisch Jeugdkampioenschap zijn de reglementen van KBSB, op datum van aanvang van de inschrijving, van toepassing. Dit reglement geldt op aanvullende wijze.\n\n2. Er zijn 7 leeftijdsreeksen (-8, -10, -12, -14, -16, -18 en -20). De leeftijdsreeksen zijn onderverdeeld in een reeks voor jongens en een reeks voor meisjes.\n\n3. Voor aanvang van het toernooi zal de toernooileiding in samenspraak met de wedstrijdleiding beslissen over de indeling van de reeksen. Bijvoorbeeld door de -18 en -20, of door jongens en meisjes, samen in te delen.\n\n4. Er zijn prijzen voor elke reeks waarvoor men zich inschrijft. De volgorde wordt bepaald volgens de reeks waarin men is ingedeeld. Dus, indien meerdere reeksen werden samengevoegd, wordt enkel rekening gehouden met de volgorde van het klassement van de samengestelde reeks.\n\n5. Een speler kan zich inschrijven in de leeftijdsreeks op basis van zijn of haar geslacht en leeftijd op 31 december 2019. Een speler kan zich inschrijven in een hogere leeftijdsreeks.\n\n## Notatie\n\n6. Notatie is verplicht voor iedere speler in alle reeksen (minimum vereiste notatie = 5 tekens voor de stukken: K/D/T/P/L). Elke speler (ook bij de -8) dient de zetten te kunnen opschrijven. Foutloos hoeft niet, maar dient wel nagestreefd te worden.\n\n## Spelersgebied\ndéc\n7. Het spelersgebied bestaat uit alle toernooizalen, de dichtstbijzijnde toiletten en de doorgang ernaar. De spelers mogen tijdens de partij het spelersgebied niet verlaten tenzij na uitdrukkelijke goedkeuring van een arbiter. In dat geval zal de spelers altijd vergezeld worden door een arbiter of een lid van de organisatie.\n\n8. Mobiele telefoons of andere elektronische toestellen van toeschouwers dienen in het spelersgebied altijd uitgeschakeld te zijn. Enig gebruik ervan of geluid erdoor zal bestraft worden.\n\n9. Een speler mag zijn mobiele telefoon in de speelzaal binnenbrengen maar moet deze voor de aanvang van de partij uitschakelen. De mobiele telefoon moet opgeborgen worden, of naast het bord gelegd worden. Een speler die zich tijdens de partij van zijn mobiele telefoon bedient, of waarvan zijn telefoon enige geluid maakt verliest de partij. De arbiter bepaalt het resultaat van de tegenstander.\n\n10. Spelers en toeschouwers mogen geen schaaktechnische hulpmiddelen binnenbrengen in het spelersgebied (schaakboeken, schaakcomputer, enz...). Toeschouwers mogen ook geen partijen analyseren in het spelersgebied als zij aan het wachten zijn.\n\n11. Zowel spelers als toeschouwers dienen de stilte in het spelersgebied te respecteren. Elke onnodige vorm van communicatie, verbaal of niet, is verboden.\n\n12. Spelers zullen in geval van overtreding gesanctioneerd worden conform het FIDE reglement. Toeschouwers worden als volgt gesanctioneerd:\n\n    - Deelnemende jeugdspelers of toeschouwers krijgen toegangsverbod tot aan de eerst volgende ronde in alle toernooizalen.\n    - Niet-deelnemende toeschouwers krijgen toegangsverbod voor 24 uur in alle toernooizalen.\n    - Het toegangsverbod is ook van kracht voor de nevenactiviteiten.\n \n## Toernooizalen\n \n13. Enkel de eerste 10 minuten van een partij zijn toegankelijk voor het publiek op de door de toernooileiding voorziene ruimte in de speelzalen.\n\nTe allen tijde heeft de toernooileiding en arbitrage het recht om strengere of soepelere regelingen te treffen in functie van het speelcomfort of hinder van de jeugdspelers.\n\n14. Een speler, die zijn partij beëindigd heeft, wordt aanzien als toeschouwer.\n\n## Voedsel en drank\n\n15. In de toernooizalen is alcohol verboden.\n\n16. Aangezien er geen drank zal aangeboden worden door de organisatie, kunnen spelers eigen drank meenemen in de toernooizaal.\n\n17. Spelers mogen in het spelersgebied een kleine snack eten maar niet achter het bord.\n\n18. Bij het verlaten van de speelzaal na hun partij dienen de spelers hun tafel volledig afvalvrij achter te laten.\n\n## Mededelingen\n\n19. Alle officiële mededelingen van de organisatoren (bijv. samenstelling van de commissies, paringen en klassementen, speelschema, enz...) worden tijdens het toernooi uitgehangen op de voorziene valven (meestal aan de ingang van het spelersgebied). Op aanvullende, niet bindende wijze, kunnen de organisatoren gebruik maken van andere media zoals bulletin, website, e-mail, sms, enz...\n\n## Scheidingssysteem\n\n20. De volgende door de FIDE erkende scheidingssystemen worden gehanteerd\n\n    - Voor de groepen met round robin: onderling resultaat, Koya, Sonneborn-Berger, aantal gewonnen partijen.\n    - Voor de groepen met Zwitsers systeem: progressieve score, Buchholz, Sonneborn-Berger, aantal gewonnen partijen, aantal partijen met zwart\n \n## Paringen\n \n21. De paringen gebeuren met de laatste beschikbare versie van Swar.\n \n## ELO verwerking\n \n22. De resultaten van alle partijen van de -20, -18, -16 , -14, -12 en -10 (jongens) worden doorgegeven voor FIDE-ELO-verwerking. De resultaten van alle partijen van alle groepen worden tevens doorgegeven voor Belgische ELO verwerking.\n \n## Tempo\n \n23. Het tempo is vastgelegd:\n \n- voor de categorieën -12 tot -20:   90 minuten voor de gehele partij + 30 seconden toevoeging per zet vanaf zet 1. Dit tempo heeft als gevolg dat alle spelers verplicht zijn alle zetten te noteren, dus ook wanneer hun klok minder dan 5 minuten aanwijst!\n - voor de categorieën -8 en -10:  45 minuten voor de gehele partij + 15 seconden toevoeging per zet vanaf zet 1.  Indien een speler minder dan 5 minuten op de klok heeft, is hij niet langer verplicht te noteren\n \n## Afwezigheid van spelers\n \n24. Indien een speler 60 minuten of meer te laat komt aan het bord ten opzichte van het vooraf aangekondigd aanvangsuur, dan verliest deze de partij. Wanneer hij/zij afwezig is zonder een gegronde reden of indien hij de organisatie hierover niet informeert voordat de volgende ronde gepaard wordt, dan wordt hij vanaf die volgende ronde uit het toernooi genomen. Wanneer een speler weet dat hij een volgende ronde afwezig zal zijn met een gegronde reden en de wedstrijdleider hierover informeert, dan wordt hij niet gepaard voor de volgende ronde(s). Indien de paring reeds bekend is, dan wordt er een forfait toegekend, maar de speler in kwestie wordt wel opnieuw gepaard voor de volgende ronde(s).\n \n25. Om een afwezigheid te melden moet men contact opnemen met de toernooileiding (gsm 0497/16.63.18). Laat altijd een bericht na en vermeld duidelijk naam, het probleem en telefoonnummer waarop men terug kan bellen.\n \n## Klachten\n \n26. Elke groep heeft één of meerdere arbiters. Bij een probleem aan het bord kan de speler de klok stoppen en een arbiter roepen. Deze neemt een beslissing.\n \n27. Indien een speler hier niet akkoord mee gaat, kan hij onmiddellijk mondeling klacht indienen bij de hoofdarbiter die dan de versies van zowel de speler als de arbiter aanhoort. Daarna bevestigt de hoofdarbiter de beslissing van de arbiter of annuleert hij die. De partij wordt vervolgens hervat (indien nodig).\n \n28. Indien een speler ook niet met de beslissing van de hoofdarbiter akkoord gaat, dan kan hij tot uiterlijk een uur na zijn partij beroep aantekenen. Hij dient zijn klacht schriftelijk te motiveren en aan de hoofdarbiter te overhandigen, samen met een waarborg van 50 EUR. Op zijn beurt roept de hoofdarbiter de beroepscommissie samen die dan een definitieve beslissing neemt.\n\nTegen de beslissing van de beroepscommissie is er geen beroep meer mogelijk. De commissie beslist ook – op basis van de juistheid van de motivering van de klacht - of de waarborg geheel of gedeeltelijk aan de klager dient te worden terugbetaald.\n \n## Selectie\n \n29. De KBSB zal, zoals bepaald in zijn reglementen, het resultaat behaald door een speler in het Belgisch jeugdkampioenschap gebruiken als selectiecriterium voor Europese – en wereldkampioenschappen.\n \n30. De kampioen(e) met de hoogste elo uit alle leeftijdreeksen is automatisch geselecteerd bij de expertenreeks van het Belgisch Kampioenschap 2020.\n\n31. Art 14 van het Wedstrijdreglement van de KBSB en Art 14 van de statuten van de KBSB zijn altijd van toepassing.\n"
+      },
+      "en": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "body",
+        "value": "This text is not available in English.  Please select another language"
+      },
+      "fr": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "body",
+        "value": "**version: 18 septembre 2020**\n\nPartout dans le texte où on fait une référence à \"il\" ou \"lui\", ça fait également référer à \"elle'\n\n## Généralités\n\n1. Les règlements de la FRBE en vigueur au moment du début des inscriptions sont applicables pour le championnat de Belgique de la jeunesse. Le présent règlement s'applique en complément.\n\n2. Il y a 7 catégories d'âge (-8, -10, -12, -14, -16, -18 et -20). Chacune des catégories d’âge est à son tour répartie en une catégorie garçons et une catégorie filles.\n\n3. Avant le début du tournoi, la direction du tournoi se concertera avec la direction d' arbitrage de la compétition afin de décider de la répartition des groupes de joueurs. Par exemple, de réunir les -18 et les -20, ou les garçons et les filles en une seule compétition.\n\n4. Des prix sont prévus pour chacune des catégories dans laquelle le joueur peut s’inscrire. Le classement est déterminé par le classement de la catégorie dans laquelle le joueur a joué. Donc, si plusieurs catégories ont été réunies, on tiendra seulement compte de l'ordre du classement obtenu du classement de la catégorie réunie.\n\n5. Un joueur peut s’inscrire dans une catégorie d'âge sur base de son sexe et de son âge au 31 décembre 2019. Un joueur peut choisir de jouer dans une catégorie d’âge supérieure.\n\n## Notation\n\n6. La notation est obligatoire pour tous les joueurs dans toutes les catégories (obligation minimale = les lettres des 5 pièces : R/D/T/C/F). Tous les joueurs (même les -8) doivent savoir noter les coups. Le sans-faute n’est pas requis, mais il faudra malgré tout tenter d’y arriver.\n\n## Zone de jeu\n\n7. La zone de jeu comprend toutes les salles de tournoi, les toilettes les plus proches et leur accès. Le lobby de l'hôtel ne fait pas partie de la zone de jeu. Les joueurs ne peuvent pas quitter la zone de jeu pendant la partie, sauf accord explicite d’un arbitre. Dans ce cas le joueur sera toujours accompagné d’un arbitre ou d’un membre de l’organisation\n\n8. Les téléphones mobiles ou autres appareils électroniques des spectateurs doivent à tout moment être éteints dans la zone de jeu. Leur utilisation ou l'émission d'un son sera sanctionné.\n\n9. Un joueur peut apporter son téléphone mobile dans la salle de jeu, mais il devra l’éteindre avant le début de la partie. Le téléphone mobile doit être rangé ou il doit être déposé à côté de l’échiquier. Un joueur qui se sert de son téléphone mobile pendant la partie ou dont le téléphone émet le moindre bruit, perd la partie. L’arbitre détermine le résultat de l’adversaire.\n\n10. Les joueurs et les spectateurs ne peuvent pas emmener de moyens d'aide échiquéens (livres d'échecs, ordinateur d'échecs, ...) dans la zone de jeu. Il est également interdit aux spectateurs qui attendent dans la zone de jeu d’analyser des parties.\n\n11. Tant les joueurs que les spectateurs doivent respecter le silence dans la zone de jeu. Toute forme de communication non nécessaire, verbale ou non, est interdite.\n\n12. En cas d'infraction, les joueurs seront sanctionnés conformément au règlement de la FIDE. Les spectateurs seront sanctionnés comme suit:\n\n    - Les jeunes joueurs ou les spectateurs participants seront interdits d'accès à toutes les salles de tournoi jusqu'à la ronde suivante.\n    - Les spectateurs non-participants seront interdits d'accès à toutes les salles de tournoi pour 24h.\n    - L'interdiction d'accès est aussi d'application pour les activités annexes.\n    \n## Salles de tournoi\n\n13. Dans les salles de jeux, l'espace prévu pour le public par la direction du tournoi n’est accessible aux spectateurs que pendant les 10 premières minutes de la partie\n\nA tout moment, la direction du tournoi et l'arbitrage se réserve le droit d'imposer des dispositions plus strictes ou plus souples selon le confort ou l'inconfort de jeu pour les jeunes joueurs.\n\n14. Un joueur, qui a terminé sa partie est considéré comme un spectateur.\n\n## Nourriture et boissons\n\n15. L'alcool est interdit dans les salles de tournoi.\n\n16. Puisqu’aucune boisson ne sera offerte par l'organisation, les joueurs peuvent amener leur propre boisson dans la salle de jeu.\n\n17. Les joueurs peuvent manger un petit snack dans la zone de jeu, mais pas devant l'échiquier.\n\n18. En quittant la salle de jeu après leur partie, les joueurs veilleront à nettoyer complètement leur table et donc à les laisser débarrassées de tout déchet.\n\n## Communications\n\n19. Pendant le tournoi, toutes les communications officielles des organisateurs (par ex. la composition des commissions, les appariements et les classements, le calendrier, ...) sont affichés aux valves destinés à cet effet (souvant à l'entrée de la zone de jeu). En complément, sans obligation, les organisateurs peuvent faire usage d'autres moyens tels que le site web, l'e-mail, les sms, etc.\n\n## Système de départage\n\n20. Les systèmes de départage suivants approuvés par la FIDE sont utilisés:\n\n    - Pour les groupes fermés : résultat mutuel Koya, Sonneborn-Berger, nombre de parties gagnées.\n    - Pour les groupes avec le système Suisse : les scores progressifs, Buchholz, Sonneborn-Berger, nombre de parties gagnées, nombre de parties jouées avec les noirs.\n    \n## Appariements\n\n21. Les appariements sont réalisés avec la dernière version disponible de Swar.\n\n## Traitement Elo\n\n22. Les résultats de toutes les parties des -20, -18, -16, -14, -12 et -10 (garçons) sont transmis pour le classement Elo FIDE. Les résultats de toutes les parties de tous les groupes sont également transmis pour le classement Elo belge.\n\n## Cadence\n\n23. La cadence est fixée:\n\n - pour les catégories -12 à -20: 90 minutes pour toute la partie + 30 secondes incrément par coup à partir du premier coup. Cette cadence a comme conséquence que tous les joueurs doivent noter tous les coups, et ce même si leur pendule indique moins de 5 minutes!\n - pour les catégories -8 et -10: 45 minutes pour toute la partie + 15 secondes incrément par coup à partir du premier coup. Si le pendule indique moins de 5 minutes, le joueur ne doit plus noter.\n\n\n## Absence des joueurs\n\n24. Si un joueur arrive devant l’échiquier avec un retard de 60 minutes ou plus par rapport à l’heure annoncée, il perd la partie par forfait. Si un joueur est absent sans raison légitime ou s’il n’informe pas l’organisation avant que les appariements pour la ronde suivante ne soient faits, il est retiré du tournoi à partir de la ronde suivante. Si un joueur sait qu'il sera absent à la ronde suivante pour une raison légitime et qu'il en informe l'arbitre, il n’est pas apparié pour la (les) ronde(s) suivante(s). Si l’appariement est déjà publié, le joueur perd la partie par forfait mais le joueur en question restera inclus dans les appariements des rondes suivantes.\n\n25. Pour annoncer une absence, il faut contacter le directeur du tournoi (gsm 0497/16.63.18). Laissez toujours un message, en mentionnant clairement votre nom, le problème et le numéro de téléphone auquel on peut vous joindre.\n\n## Plaintes\n\n26. Chaque groupe dispose d’un ou plusieurs arbitres. En cas de problème à l’échiquier, le joueur peut arrêter la pendule et appeler un arbitre. Celui-ci prend une décision.\n\n27. Si un joueur n’accepte pas cette décision, il peut immédiatement porter plainte auprès de l’arbitre principal, qui entendra alors les versions aussi bien du joueur que de l’arbitre. Ensuite, l’arbitre principal confirme ou révoque la décision de l’arbitre. Ensuite, la partie continue (si nécessaire).\n\n28. Si un joueur rejette également la décision de l’arbitre principal, il peut alors interjeter appel au plus tard une heure après la fin de sa partie. Il devra motiver sa plainte par écrit et la remettre à l’arbitre principal, avec une caution de 50 EUR. A son tour, l’arbitre principal réunira la commission d’appel, qui statuera alors de façon définitive.\n\nAucun recours n’est possible contre une décision de la commission d’appel. La commission décide également – sur la base de la justesse de la motivation de la plainte – s’il y a lieu de rembourser la caution intégralement ou partiellement.\n\n## Sélection\n\n29. La FRBE utilisera, comme établi dans ses règlements, le résultat obtenu au championnat de Belgique des jeunes comme critère de sélection pour les championnats d'Europe et du monde.\n\n30. Le(la) champion(ne) avec le plus d' Elo de toutes les catégories est automatiquement sélectionné(e) pour le groupe expert du championnat de Belgique 2019.\n\n## Sanctions et mesures disciplinaires\n\n31. Art. 14 du Règlement des Tournois de la FRBE et art. 15 des statuts de la FRBE sont applicables en tout temps."
+      },
+      "de": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "body",
+        "value": "**Version: 18 September 2020**\n\nWo sich der Text auf \"er\", \"ihn\" oder \"sein\" verwiesen wird, ist auch \"sie\" der \"ihr\" gemeint.\n\n## Allgemein\n\n1. Es gelten die Spielregeln des Belgischen Schachbundes, die zu Beginn der Einschreibungen zur Schach-Jugend-Landesmeisterschaft veröffentlicht sind. Das folgende Regelwerk gilt als Zusatz.\n\n2. Gespielt wird in 7 Altersgruppen (U8, U10, U12, U14, U16, U18 und U20). Jede Altersgruppe ist unterteilt in einer Jungen- und Mädchengruppe.\n\n3. Vor Beginn des Turniers entscheidet die Turnierleitung gemeinsam mit der Wettstreitleitung über die Aufteilung der Spielgruppen. Zum Beispiel, ob die U18 und U20 oder Mädchen und Jungen gemeinsam oder getrennt spielen.\n\n4. Preise sind vorgesehen in jeder Gruppe in welche sich ein(e) Teilnehmer einschreiben kann. Der Platz wird bestimmt in der Gruppe in welcher der/die Teilnehmer eingeteilt ist.\n\n5. Ein(e) Teilnehmer kann sich in einer Gruppe Anmelden auf Grund seines/ihres Alters am 31. Dezember 2019. Jede(r) Teilnehmer darf sich in eine höhere Altersgruppe einschreiben.\n\n## Notation\n\n6. Die Notation ist obligatorisch für alle Spieler und in jeder Altersgruppe (minimale Anforderung = die Buchstaben der 5 Figuren: K/D/T/S/L). Alle Spieler (auch die -8) müssen die Züge schreiben können. Ein fehlerfreies Schreiben ist nicht gefordert, aber erstrebenswert.\n\n## Turnierräume\n\n7. Die Turnierräume umfassen die Spielsäle, die nächstgelegenen Toiletten und deren Zugang. Die Hotel-Lobby ist nicht mehr Teil der Turnierräume. Die Spieler dürfen während ihrer Partie die Turnierräume nicht verlassen, außer mit der ausdrücklichen Erlaubnis eines Schiedsrichters. In diesem Fall wird der Spieler immer von einem Schiedsrichter oder einem Mitglied der Organisation begleitet.\n\n8. Mobil-Telefone und andere elektronische Geräte der Zuschauer müssen in den Spielräumen ausgeschaltet bleiben. Die Verwendung oder das läuten eines solches Gerätes werden geahndet.\n\n9. Ein Spieler darf sein Mobil-Telefon mit in die Spielräume nehmen, er muss dieses jedoch vor Spielbeginn aus schalten. Der Spieler kann das Gerät neben dem Schachbrett legen oder es wegräumen. Wenn ein Spieler während seiner Partie sein Mobil-Telefon verwendet oder sollte von diesem ein Geräusch ausgehen, verliert der Spieler die Partie, der Schiedsrichter entscheidet über das Resultat des Gegners.\n\n10. Spieler und Zuschauer dürfen keine schachbezogene Hilfsmittel mit in die Turnierräume nehmen. Es ist ebenfalls jedem untersagt, in den Turnierräumen, Partien zu analysieren.\n\n11. Die Teilnehmer und die Zuschauer sind angehalten stille zu wahren, unnötige Gespräche oder Zeichen sind untersagt.\n\n12. Bei Zuwiderhandlung werden Teilnehmer nach den FIDE Regeln geahndet Für Zuschauer und Begleiter gilt:\n\n - Turnierteilnehmern sind der Turnierräume bis zur nächsten Runde verwiesen.\n - Nicht teilnehmende Personen erhalten ein 24 stündiges Zutritt-Verbot zu den Turnierräumen.\n - Das Zutritt-Verbot gilt ebenfalls für die Nebenaktivitäten.\n\n\n## Spielsäle\n\n13. Nur die ersten 10 Minuten einer Partie sind dem Publikum zugänglich, in dem von der Turnierleitung bestimmten Areal.\n\nZu jeder Zeit behalten sich die Turnierleitung und die Schiedsrichter das Recht vor die Regelungen zu beschränken oder zu erweitern unter Berücksichtigung der Spielbedingungen für die jungen Spieler.\n\n14. Ein Teilnehmer der seine Partie beendet hat wird als Zuschauer angesehen.\n\n## Essen und Trinken\n\n15. Alkohol, in jeglicher Form, ist in den Turnierräumen verboten.\n\n16. Da seitens der Veranstalter keine Getränke angeboten werden, dürfen Spieler ihre eigenen Getränke in den Spielsaal mitbringen.\n\n17. Spieler dürfen im Spielsaal einen Snack zu sich nehmen, jedoch nicht am Spielbrett.\n\n18. Nach beenden der Partie sind die Spieler angehalten ihren Spieltisch abfallfrei und sauber zu hinterlassen.\n\n## Mitteilungen\n\n19. Alle offizielle Mitteilungen der Veranstalter (z.B. Zusammenstellung der Kommissionen, Spielplan, Paarungen, Tabellen, …) werden an den hierfür vorgesehenen Tafeln veröffentlicht (hauptsachlich am Eingang der Turnierräume). Zusätzlich und unverbindlich, kann der Veranstalter auch andere Medien nutzen wie Bulletin, Web-Site, SMS, … .\n\n## Aufteilungssystem\n\n20. Die folgenden von der FIDE zugelassenen Aufteilungssysteme werden verwendet:\n\n\n - In geschlossene Gruppen: gegenseitiges Resultat, Koya, Sonnenborn-Berger, Anzahl gewonnene Partien.\n - In den Gruppen mit Schweizer System: Anzahl Punkte, progressive Punkte, Buchholz, Sonnenborn-Berger, Anzahl gewonnene Partien, Anzahl Partien mit Schwarz.\n\n## Paarungen\n\n21. Die Paarungen werden mit der neusten Version von Swar festgelegt.\n\n## Elo-Auswertungen\n\n22. Die Ergebnisse aller Partien der U20, U18, U16, U14, U12 und U10 (Jungs) werden für die Wertung der FIDE Elo eingereicht. Die Ergebnisse aller Partien aller Gruppen werden ebenfalls für die Wertung der belgischen Elo-Wertung weitergeleitet.\n\n## Tempo\n\n23. Das Spieltempo ist \n\n - für die Kategorien U12, U14, U16, U18, U20:  90 Minuten für das ganze Spiel + 30 Sekunden Zusatz pro Zug ab dem 1. Zug festgelegt. Dieses Spieltempo hat zur Folge, dass alle Spieler alle Züge aufschreiben müssen, auch wenn die Restzeit unter 5 Minuten liegt!\n - für die Kategorien U8, U10:  45 Minuten für das ganze Spiel + 15 Sekunden Zusatz pro Zug ab dem 1. Zug festgelegt. Wenn ein Spieler weniger als 5 Minuten auf der Uhr hat, muss er nicht mehr aufschreiben\n\n\n## Abwesenheit der Spieler\n\n24. Erscheint ein Spieler mit mehr als 60 Minuten Verspätung am Schachbrett, verliert er die Partie. Ist ein Spieler ohne berechtigten Grund abwesend oder benachrichtigt er den Veranstalter nicht rechtzeitig vor der nächsten Paarung wird er vom Turnier ausgeschlossen. Falls ein Spieler aus einem berechtigten Grund abwesend ist und die Turnierleitung informiert, wird er für die nächste(n) Runde(n) nicht gepaart. Falls die nächsten Paarungen schon veröffentlicht wurden ist das Spiel durch Forfait verloren, der Spieler wird aber bei der nächsten Paarung wieder aufgenommen.\n\n25. Um eine Abwesenheit zu melden, ist der Turnierleiter unter der Rufnummer 0497/16.63.18 zu benachrichtigen. Hinterlassen sie immer eine Nachricht mit Ihrer Rufnummer.\n\n## Klagen\n\n26. Jede Gruppe hat einen oder mehrere Schiedsrichter. Bei einem Problem am Brett, kann der Spieler die Uhr stoppen und einen Schiedsrichter rufen. Dieser trifft dann eine Entscheidung.\n\n27. Wenn ein Spieler nicht mit dieser Entscheidung einverstanden ist, dann kann er dagegen sofort mündlich beim Hauptschiedsrichter Klage erheben. Der Hauptschiedsrichter wird sich dann die Darstellung des Spielers und des Schiedsrichters anhören und danach die Entscheidung des Schiedsrichters bestätigen oder annullieren. Anschließend wird die Partie fortgesetzt (wenn nötig).\n\n28. Wenn ein Spieler auch mit der Entscheidung des Hauptschiedsrichters nicht einverstanden ist, kann er spätestens eine Stunde nach Ende seiner Partie in die Berufung gehen. Er muss seine Klage schriftlich motivieren und sie dem Hauptschiedsrichter übergeben, mit einer Kaution von 50 EUR. Der Hauptschiedsrichter wird dann die Berufungskommission zusammenrufen, diesee wird eine endgültige Entscheidung treffen.\n\nGegen die Entscheidung der Berufungskommission ist es nicht möglich, Beschwerde einzureichen. Die Kommission entscheidet auch – auf Grundlage der Korrektheit der Motivierung der Klage – ob die Kaution dem Kläger völlständig oder teilweise erstattet wird.\n\n## Selektionen\n\n29. Der KBSB wird, wie im Regelwerk festgehalten, die Resultate der Belgischen Schach-Jugendlandesmeisterschaft berücksichtigen bei der Auswahl der Teilnehmer für die Europa- und die Weltmeisterschaften.\n\n30. Aus allen Altersgruppen ist der Meister oder die Meisterin mit der höchsten ELO-Wertung automatisch für die Teilnahme in der Expertengruppe der belgischen Landesmeisterschaft 2020 nominiert.\n\n## Sanktionen und Disziplinarmaßnahmen\n\n31. Artikel 14 der Wettbewerbsordnung der KSB und Artikel 14 der Statuten der KSB sind jederzeit anwendbar.\n"
+      }
+    },
+    "component": "CmsSimplePage",
+    "creationtime": {
+      "$date": "2020-09-18T13:39:42.351Z"
+    },
+    "enabled": false,
+    "expirationdate": "",
+    "intro": {
+      "default": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "intro",
+        "value": ""
+      },
+      "nl": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "intro",
+        "value": ""
+      },
+      "en": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "intro",
+        "value": ""
+      },
+      "fr": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "intro",
+        "value": ""
+      },
+      "de": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "intro",
+        "value": ""
+      }
+    },
+    "languages": [
+      "en",
+      "nl",
+      "fr",
+      "de"
+    ],
+    "modificationtime": {
+      "$date": "2020-09-25T11:21:42.593Z"
+    },
+    "owner": "",
+    "publicationdate": "",
+    "slug": "toernooireglement",
+    "title": {
+      "default": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "title",
+        "value": "toernooireglement"
+      },
+      "nl": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "title",
+        "value": "Toernooireglement"
+      },
+      "en": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "title",
+        "value": "Tournament rules"
+      },
+      "fr": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "title",
+        "value": "Règlement du tournoi"
+      },
+      "de": {
+        "id": "9dbcfe89-dfb4-4f12-9f2f-3e50b265f744",
+        "name": "title",
+        "value": "Turnierregeln"
+      }
+    },
+    "_documenttype": "Page",
+    "_version": 1
+  }
+]
