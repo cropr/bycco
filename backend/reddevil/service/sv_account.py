@@ -212,7 +212,7 @@ async def login_account(li: LoginIn) -> str:
                     'logintype': LoginType.google,
                 }
                 id = await DbAccount.add(accdict)
-                acc = DbAccount.find_single(idinfo['sub'],{
+                acc = await getAccount(idinfo['sub'],{
                     '_class': AccountOptional,
                     '_fieldlist': ['id', 'tokensalt'],
                 })
