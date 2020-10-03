@@ -117,6 +117,25 @@ async def getSubscriptions(options: dict={}, cls=SubscriptionOut) -> Subscriptio
     return SubscriptionList(subscriptions=
         [encode_subscription(s, cls) for s in sdict])
 
+async def getSubscriptionsPerCategory(cat: str) -> SubscriptionList:
+    """
+    get all subscriptions
+    """
+    options: dict = {
+        'confirmed':  True,
+        '_fieldlist': [
+            'category', 'chesstitle', 'confirmed', 'first_name', 'gender', 
+            'id', 'idbel', 'idclub', 'last_name', 'ratingbel', 'ratingfide', 
+        ]
+    }
+    if cat != 'all':
+        cats = cat.split(',')
+        if len(cats) == 1:
+            options['category'] = cats[0]
+        else:
+            options['category'] = { '$in': cats}
+    return await getSubscriptions(options, cls=SubscriptionOptional) 
+
 async def getSubscription(id: str, options: dict= {}, 
         cls=SubscriptionDetailedOut) -> SubscriptionOptional:
     """

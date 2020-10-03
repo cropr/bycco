@@ -18,12 +18,14 @@ import CmsSimplePage from './CmsSimplePage.vue'
 import LandingPage from './LandingPage.vue'
 import MultiLocalePage from './MultiLocalePage.vue'
 import Subscription from '@/app-pages/Subscription.vue'
+import Participants from '@/app-pages/Participants.vue'
 
 let dynroutes = {
   CmsSimplePage: CmsSimplePage,
   LandingPage: LandingPage,
   MultiLocalePage: MultiLocalePage,
   Subscription: Subscription,
+  Participants, Participants
 }
 
 

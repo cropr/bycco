@@ -16,12 +16,14 @@ from reddevil.service.sv_page import (
     getRoutingTable,
     updatePage,
     getActiveArticles,
+    backupPages,
 )
 from reddevil.service.sv_account import validate_token
 from reddevil.models.md_page import (
     ArticleListOut,
     PageIn,
     PageListOut,
+    PageOptional,
     PageUpdate,
     PageSingleOut,
     RoutingTableListOut,
@@ -29,7 +31,7 @@ from reddevil.models.md_page import (
 
 assert app is not None
 
-@app.get(url + '/page', response_model=PageListOut)
+@app.get(url + '/pages', response_model=PageListOut)
 async def api_get_pages( 
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
@@ -44,9 +46,39 @@ async def api_get_pages(
         log.exception('failed api call get_pages')
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@app.get(url + '/a/page', response_model=PageListOut)
+@app.get(url + '/a/pages', response_model=PageListOut)
 async def api_anon_get_pages():
     log.info(f'options {options}')
+    try:
+        return await getPages()
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_pages')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@app.post(url + '/pages/backup', response_model=List[PageOptional])
+async def api_backup_pages( 
+        auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
+    token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
+    try:
+        return await backupPages()
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_pages')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@app.post(url + '/pages/restore', response_model=PageListOut)
+async def api_restore_pages( 
+        auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
+    token = auth.credentials if auth else None
+    if not token:
+        raise HTTPException(status_code=401, detail='MissingToken')
+    await validate_token(token)
     try:
         return await getPages()
     except RdException as e:

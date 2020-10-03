@@ -20,9 +20,18 @@
                       color="deep-purple">
                   <v-icon>mdi-plus</v-icon>
                 </v-btn>
-              </template>,class="py-3"
-              <span>Add Page</span>
+              </template>
+              Add Page
             </v-tooltip>
+            <v-tooltip bottom >
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" @click="backupPages()" fab outlined 
+                      color="deep-purple">
+                  <v-icon>mdi-download-multiple</v-icon>
+                </v-btn>
+              </template>
+              Backup Pages
+            </v-tooltip>          
           </v-row>
         </v-card-title>
       </v-card>
@@ -31,9 +40,14 @@
       <date-formatted :date="item.modificationtime"/>
     </template>
     <template v-slot:item.action="{ item }">
-      <v-icon small class="mr-2"  @click="editPage(item)" >
-        mdi-pencil
-      </v-icon>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-icon v-on="on" small class="mr-2"  @click="editPage(item)" >
+            mdi-pencil
+          </v-icon>
+        </template>
+        Edit Page
+      </v-tooltip>
     </template>
     <template v-slot:no-data>
       No pages found.
@@ -114,13 +128,41 @@ export default {
       this.$router.push('/mgmt/page/add')
     },
 
+    backupPages () {
+      let self=this;
+      this.api.backup_pages(
+        {},
+        {securities: bearertoken(this.token)},
+      ).then(
+        function(data) {
+          let link = document.createElement("a");
+          let today= (new Date()).toISOString().substr(0,10);
+          link.download = `pages_${today}.json`;
+          link.href = 'data:,' + encodeURIComponent(data.text);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        },
+        function(data){
+          if (data.status == 401) {
+            self.$router.push('/mgmt/login')
+          }
+          else {
+            console.error('getting getPages', data);
+            self.$root.$emit('snackbar', {text: 'Getting pages failed', reason: data})            
+          }
+        }
+      );
+
+    },
+
+
     editPage (item) {
       this.$router.push('/mgmt/page/edit/'  + item.id)
     },
     
     getPages() {
       let self=this;
-      console.log('getPages bearer', bearertoken(this.token))
       this.api.get_pages(
         {},
         {securities: bearertoken(this.token)},

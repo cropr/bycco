@@ -25,6 +25,7 @@ from reddevil.models.md_page import (
     PageOut,
     PageListOut,
     PageUpdate,
+    PageOptional,
     PageComponent,
     RoutingTableListOut,
     RoutingTableItem,
@@ -181,3 +182,18 @@ def isactive(dd: dict) -> bool:
     published = p and (date.fromisoformat(p) <= date.today())
     expired = e and (date.fromisoformat(e) < date.today())
     return bool( published and not expired)
+
+async def backupPages() -> List[PageOptional]:
+    """
+    dumps all pages records with full details
+    """
+    docs =  await DbPage.find_multiple({
+        '_fieldlist': {}
+    })
+    return [encode_page(d, PageOptional) for d in docs]
+
+async def restorePages(docs: List[dict]) -> None:
+    """
+    dumps all pages records with full details
+    """
+    await DbPage.restore(docs)    

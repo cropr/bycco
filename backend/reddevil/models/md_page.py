@@ -18,6 +18,7 @@ class PageComponent(str, Enum):
     MulitLocalePage = 'MultiLocalePage'
     Agenda = 'Agenda'
     Subscription = 'Subscription'
+    Participants = 'Participants'
 
 
 class Page(BaseModel):
@@ -26,13 +27,11 @@ class Page(BaseModel):
     """
     body: Dict[str, I18nField]
     component: PageComponent
-    creationtime: datetime
     doctype: str
     enabled: bool
     expirationdate: str             # format yyyy-mm-dd
     intro: Dict[str, I18nField]
     name: str
-    modificationtime: datetime
     owner: str 
     publicationdate: str            # format yyyy-mm-dd
     slug: str
@@ -42,6 +41,38 @@ class Page(BaseModel):
     _documenttype: str
     _creationtime: datetime
     _modificationtime: datetime
+
+    # deprecated fields bo longer in use since version 2
+    creationtime: datetime
+    modificationtime: datetime
+
+
+class PageOptional(BaseModel):
+    """
+    a Page with all fields Optional so we can work on raw database documents
+    id and _id are boith provided for maximum flexibility
+    """
+    body: Optional[Dict[str, I18nField]] = None
+    component: Optional[PageComponent] = None
+    doctype: Optional[str] = None
+    enabled: Optional[bool] = None
+    expirationdate: Optional[str] = None          # format yyyy-mm-dd
+    intro: Optional[Dict[str, I18nField]] = None
+    name: Optional[str] = None
+    owner: Optional[str] = None 
+    publicationdate: Optional[str] = None         # format yyyy-mm-dd
+    slug: Optional[str] = None
+    title: Optional[Dict[str, I18nField]] = None
+    _id: Optional[str] = None
+    _version: Optional[int] = None
+    _documenttype: Optional[str] = None
+    _creationtime: Optional[datetime] = None
+    _modificationtime: Optional[datetime] = None
+
+    # fields not in the database but used at service level
+    creationtime: Optional[datetime] = None
+    id : Optional[str] = None
+    modificationtime: Optional[datetime] = None
 
 
 class PageIn(BaseModel):

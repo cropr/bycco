@@ -243,7 +243,7 @@ export default {
         },
         function (data) {
           console.error('failed to delete', data);
-          self.$root.$emit('snackbar', {text: 'Delete page failed', reason: data})
+          self.$root.$emit('snackbar', {text: 'Update page failed', reason: data})
         }
       )      
     },

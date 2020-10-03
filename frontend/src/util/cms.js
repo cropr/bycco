@@ -9,7 +9,8 @@ export const pagecomponents = [
     'LandingPage',
     'MultiLocalePage',
     'Agenda',
-    'Subscription'    
+    'Subscription',
+    'Participants',    
 ]
 
 export const languages = ['nl', 'fr', 'de', 'en']

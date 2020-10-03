@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"bycco.rd_account"}],"uuid":"c15169eb65b2410eafcaa0afaaaa142b"}

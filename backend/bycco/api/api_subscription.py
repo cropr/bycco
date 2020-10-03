@@ -10,13 +10,14 @@ from reddevil.common import RdException, bearer_schema
 from bycco import app
 from bycco.service.sv_subscription import (
     addSubscription,
+    checkId,
     confirmSubscription,
+    csvSubscriptions,
     deleteSubscription,
     getSubscription,
     getSubscriptions,
+    getSubscriptionsPerCategory,
     updateSubscription,
-    checkId,
-    csvSubscriptions,
 )
 from bycco.models.md_subscription import (
     SubscriptionIn,
@@ -32,7 +33,7 @@ from reddevil.service.sv_account import validate_token
 
 log = logging.getLogger('bycco')
 
-@app.get('/api/subscription', response_model=SubscriptionList)
+@app.get('/api/subscriptions', response_model=SubscriptionList)
 async def api_get_subscriptions( 
         auth: HTTPAuthorizationCredentials=Depends(bearer_schema)):
     token = auth.credentials if auth else None
@@ -47,7 +48,7 @@ async def api_get_subscriptions(
         log.exception('failed api call get_subscriptions')
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@app.get('/api/a/subscription', response_model=SubscriptionList)
+@app.get('/api/a/subscriptions', response_model=SubscriptionList)
 async def api_anon_get_subscriptions():
     try:
         return await getSubscriptions()
@@ -57,7 +58,17 @@ async def api_anon_get_subscriptions():
         log.exception('failed api call get_subscriptions')
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@app.post('/api/a/subscription', response_model=str)
+@app.get('/api/a/subscriptions/category/{cat}', response_model=SubscriptionList)
+async def api_anon_get_participants(cat):
+    try:
+        return await getSubscriptionsPerCategory(cat)
+    except RdException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.description)
+    except:
+        log.exception('failed api call get_subscriptions_category')
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@app.post('/api/a/subscriptions/add', response_model=str)
 async def api_anon_add_subscription(s: SubscriptionIn):
     try:
         return await addSubscription(s)

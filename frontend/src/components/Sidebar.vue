@@ -59,9 +59,9 @@
         <v-list-item @click="updateSlug('subscription')">
           <v-list-item-content>{{ $t('Enrollment') }}</v-list-item-content>
         </v-list-item>
-        <!-- <v-list-item href="/participants">
+        <v-list-item @click="updateSlug('participants')">
           <v-list-item-content>{{ $t('Participants') }}</v-list-item-content>
-        </v-list-item> -->
+        </v-list-item>
       </v-list-group>
 
     </v-list>

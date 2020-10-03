@@ -171,3 +171,11 @@ class DbBase:
         """
         return doc
                 
+    @classmethod
+    async def restore(cls, docs: List[dict]) -> None:
+        """
+        delete an doc
+        """
+        coll = get_db()[cls.COLLECTION]
+        await coll.delete_many({})
+        await coll.insert_may(docs)
