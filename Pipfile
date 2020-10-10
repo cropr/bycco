@@ -6,27 +6,27 @@ verify_ssl = true
 [dev-packages]
 mypy = "*"
 pytest = "*"
-asyncio = "*"
 pytest-asyncio = "*"
 
 [packages]
-fastapi = "*"
-uvicorn = "*"
-python-dateutil = "*"
-python-slugify = "*"
-passlib = "*"
-motor = "*"
-pymongo = "*"
-requests = "*"
 aiofiles = "*"
-colorlog = "*"
-python-jose = {extras = ["cryptography"],version = "*"}
+asyncio = "*"
 bcrypt = "*"
-markdown2 = "*"
+colorlog = "*"
+fastapi = "*"
 google-api-python-client = "*"
 google-auth = "*"
 google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
+markdown2 = "*"
+motor = "*"
+passlib = "*"
+python-dateutil = "*"
+python-jose = {extras = ["cryptography"],version = "*"}
+python-slugify = "*"
+pymongo = "*"
+requests = "*"
+uvicorn = "*"
 
 [requires]
 python_version = "3.7"
