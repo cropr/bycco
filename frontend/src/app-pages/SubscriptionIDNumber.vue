@@ -78,6 +78,10 @@ export default {
       this.api.anon_check_id({idbel: this.flow.idnumber}).then(
         function(data){
           self.reply = data.obj
+          if (!self.reply.belfound) {
+            self.errorcode = 'notfound';
+            return
+          }
           if (self.reply.birthyear < 2000) {
             self.errorcode = 'playeradult';
             return

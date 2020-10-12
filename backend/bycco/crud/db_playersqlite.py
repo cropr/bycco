@@ -6,6 +6,9 @@
 # every record is returned as a dict
 
 import sqlite3
+import logging
+
+log = logging.getLogger('bycco')
 
 belconn = sqlite3.connect('data_bycco/players.sqlite')
 fideconn = sqlite3.connect('data_bycco/fide.sqlite')
@@ -20,7 +23,9 @@ belfields = [
 def get_belplayer(id: int):
     c = belconn.cursor()
     c.execute('SELECT * FROM players WHERE idNumber=?', (id,))
-    return {i[0]:i[1] for i in zip(belfields, c.fetchone())}
+    rs = c.fetchone()
+    # log.info(f'rs {rs}')
+    return {i[0]:i[1] for i in zip(belfields, rs)}
 
 fidefields = [
     "IdNumber", "Name", "Fed", "Sex", "Tit", "WTit", "OTit", "FOA", "SRtng", 

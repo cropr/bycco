@@ -157,8 +157,11 @@ async def checkId(idbel: str) -> CheckIdReply:
     """
     fill in
     """
-    bp = getBelplayer(idbel)
-    if not bp:
+    try:
+        bp = getBelplayer(idbel)
+        if not bp:
+            return CheckIdReply(belfound=False)
+    except Exception:
         return CheckIdReply(belfound=False)
     try:
         fp = getFideplayer(bp.idfide) if bp.idfide else None
