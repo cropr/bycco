@@ -3,7 +3,7 @@
 
 import os
 
-MONGO_URL = 'mongodb://mongodb:27017/'
+MONGO_URL = 'mongodb://localhost:27017/'
 MONGO_DB = 'bycco'
 
 EMAIL= {

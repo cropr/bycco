@@ -4,7 +4,7 @@
 import logging
 
 import json, os.path, io, csv
-from typing import List, Optional, Dict, Any, cast
+from typing import List, Optional, Dict, Any, Tuple, cast
 from datetime import date, datetime, timezone
 from bycco.service.sv_playerlist import getBelplayer, getFideplayer
 from reddevil.common import RdInternalServerError
@@ -48,12 +48,12 @@ async def addSwarJsonFile(si: SwarJsonIn) -> None:
     sj = {
         'jsontext': si.jsontext,
         'pairings': pairings,
-        'standings': standings
+        'standings': standings,
         'status': RoundPublication.Unpublished
     }
     await DbSwar.update({'id': si.idswar}, {
         'swarname': si.swarname,
-        f'swarjsons.{si,round}' = sj
+        f'swarjsons.{si,round}': sj
     })
 
 async def deleteSwarTrn(id: str) -> None:
@@ -81,7 +81,7 @@ def processSwarJsontext(swarjsontext: str) -> Tuple[Dict[int, str], Dict[int, st
     for all rounds found 
     return a tuple(parings, s)
     """
-    pairings: Dict[int, dict = {}
+    pairings: Dict[int, dict] = {}
     standings: Dict[int, dict] = {}
     absences: dict = {}
     bye: dict = {}

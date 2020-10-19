@@ -6,6 +6,7 @@ import reddevil.api.api_account
 # import reddevil.file.api_file
 
 import bycco.api.api_subscription
+import bycco.api.api_swar
 
 from bycco import app
 

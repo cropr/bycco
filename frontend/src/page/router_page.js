@@ -25,7 +25,7 @@ let dynroutes = {
   LandingPage: LandingPage,
   MultiLocalePage: MultiLocalePage,
   Subscription: Subscription,
-  Participants, Participants
+  Participants: Participants,
 }
 
 

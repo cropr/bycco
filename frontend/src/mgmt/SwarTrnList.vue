@@ -2,8 +2,7 @@
 
 <v-container>
   <h1>Management Swar tournaments</h1>
-  <v-data-table :headers="headers" :items="filteredpages" :footer-props="footerProps"
-      class="elevation-1" :sort-by="['name','modified']">
+  <v-data-table :headers="headers" :items="trns" class="elevation-1">
     <template v-slot:top>
       <v-card color="grey lighten-4">
         <v-card-title>
@@ -48,7 +47,6 @@ export default {
   name: 'SwarTrnList',
 
   data () {return {
-    filter: {},
     headers: [
       {
         text: "Name", value: 'name'
