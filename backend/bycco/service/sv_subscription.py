@@ -113,7 +113,6 @@ async def getSubscriptions(options: dict={}, cls=SubscriptionOut) -> Subscriptio
     get all subscriptions
     """
     sdict = await DbSubscription.find_multiple(options)
-    log.info(f'sdict {sdict}')
     return SubscriptionList(subscriptions=
         [encode_subscription(s, cls) for s in sdict])
 
@@ -205,6 +204,9 @@ async def csvSubscriptions() -> str:
         'ratingbel', 'ratingfide', 'remarks', 'subscriptiontime', 
         'subscriptionnumber',
     ]}, cls=SubscriptionOptional)).subscriptions
+    # start,limit = 184,1
+    # log.info(f'csv {start} {limit}')
+    # for sub in subs[start:start+limit]:
     for sub in subs:
         csvf.writerow(sub.dict())
     return csvstr.getvalue()    
