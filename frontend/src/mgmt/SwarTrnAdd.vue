@@ -1,10 +1,10 @@
 <template>
-<v-container class="elevation-2">
-  <v-row>
-    <v-col cols=9>
-      <h1>New boardrole</h1>
-    </v-col>
-    <v-col cols=3>
+<v-container>
+  <h1>New Swar Tournament</h1>
+  <v-card>
+    <v-card-title color="grey lighten-4">
+      &nbsp;
+      <v-spacer />
       <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <v-btn v-on="on" @click="back()" fab outlined 
@@ -23,13 +23,13 @@
           </template>
           <span>Save changes</span>
       </v-tooltip>
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col col=12 sm=6>
-      <v-text-field label="Name role" v-model="name" />
-    </v-col>
-  </v-row>
+    </v-card-title>
+    <v-card-text>
+      <v-text-field label="Name" v-model="name" />
+      <v-text-field label="Cat" v-model="shortname" />
+      <v-text-field label="Rounds" v-model="rounds" type="number" />
+    </v-card-text>
+  </v-card>
 </v-container>
 </template>
 
@@ -38,13 +38,14 @@
 import { mapState } from 'vuex'
 import { bearertoken } from "@/util/token"
 
-
 export default {
   
-  name: "BRoleAdd",
+  name: "SwarTrnAdd",
 
   data () {return {
     name: '',
+    rounds: 9,
+    shortname: ''
   }},
 
   computed: {
@@ -59,26 +60,34 @@ export default {
 
     save () {
       let self=this;
-      this.api.create_board_role({}, {
+      this.api.addSwarTrn({}, {
         requestBody: {
-          name: this.name
+          'name': this.name,
+          'shortname': this.shortname,
+          'rounds': this.rounds
         },
         securities: bearertoken(this.token),
       }).then(
-        function(rc){
-          self.$root.$emit('snackbar', {text: 'Boardrole created'})
-          self.$router.push('/mgmt/brole/edit/' + rc.obj)
+        function(data){
+          self.$root.$emit('snackbar', {text: 'Page created'})
+          self.$router.push('/mgmt/page/edit/'  + data.body)
         },
-        function(rc){
-          console.error('failed to save', rc);
-          // TODO snackbar added
-        });
+        function(data){
+          console.error('failed to save', data);
+        }
+      );
     },
   },
+
 
 }
 </script>
 
 <style scoped>
+
+.dropbox {
+  width: 100%;
+  height: 100px;
+}
 
 </style>

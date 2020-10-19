@@ -130,6 +130,13 @@ class SubscriptionOut(BaseModel):
     last_name: str
     subscriptiontime: datetime
     subscriptionnumber: int
+# copyright Ruben Decrop 2012 - 2015
+# copyright Chessdevil Consulting BVBA 2015 - 2019
+
+from datetime import datetime
+from typing import Dict, Any, List, Optional, Type
+from enum import Enum
+from pydantic import BaseModel
 
 class SubscriptionList(BaseModel):
     """
