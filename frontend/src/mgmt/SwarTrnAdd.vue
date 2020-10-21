@@ -69,8 +69,8 @@ export default {
         securities: bearertoken(this.token),
       }).then(
         function(data){
-          self.$root.$emit('snackbar', {text: 'Page created'})
-          self.$router.push('/mgmt/page/edit/'  + data.body)
+          self.$root.$emit('snackbar', {text: 'Swar Trn created'})
+          self.$router.push('/mgmt/swar/edit/'  + data.body)
         },
         function(data){
           console.error('failed to save', data);

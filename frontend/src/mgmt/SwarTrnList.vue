@@ -9,7 +9,7 @@
           <v-spacer />
           <v-tooltip bottom >
             <template v-slot:activator="{ on }">
-              <v-btn v-on="on" @click="addPage()" fab outlined 
+              <v-btn v-on="on" @click="addTrn()" fab outlined 
                     color="deep-purple">
                 <v-icon>mdi-plus</v-icon>
               </v-btn>

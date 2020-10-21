@@ -1,9 +1,9 @@
 <template>
 <v-container>
-  <h1>Edit Swar Torunament </h1>
+  <h1>Edit Swar Tournament </h1>
   <v-card>
     <v-card-title color="grey lighten-4">
-      {{ r.name }}
+      {{ t.name }}
       <v-spacer />
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
@@ -34,7 +34,7 @@
       </v-tooltip>
     </v-card-title>
     <v-card-text>
-      <v-text-field label="Name" v-model="p.name" />
+      <v-text-field label="Name" v-model="t.name" />
     </v-card-text>
   </v-card>
 </v-container>
@@ -47,7 +47,7 @@ import { bearertoken } from "@/util/token"
 
 export default {
 
-  name: "PageEdit",
+  name: "SwarTrnEdit",
 
 
   computed: {
@@ -68,12 +68,14 @@ export default {
 
     getSwarTrn() {
       let self=this;
+      console.log('getting swartrn')
       this.api.getSwarTrn(
         {id: this.$route.params.id},
         {securities: bearertoken(this.token)},
       ).then(
         function(data) {
-          self.t = data.obj.trns;
+          console.log('got trn', data.obj)
+          self.t = data.obj;
         },
         function(data){
           console.error('failed get swartrn', data)
