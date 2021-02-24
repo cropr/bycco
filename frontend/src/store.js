@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { setLanguage } from '@/util/lang'
+import { setLanguage, locales } from '@/util/server_injected'
 
 Vue.use(Vuex);
 
 function defaultlanguage() {
-  let supportedLocales = ['en', 'fr', 'de', 'nl'];
   let pparts = window.location.pathname.split('/');
   let locale = window.localStorage.getItem('locale');
   if (!locale) {
@@ -15,7 +14,7 @@ function defaultlanguage() {
     else {
       locale = navigator.language.split('-')[0];
     }
-    if (!supportedLocales.includes(locale)) {
+    if (!locales.includes(locale)) {
       locale = 'en'
     }
   }

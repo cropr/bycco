@@ -6,10 +6,7 @@
   <topbar />
   
   <v-main>
-    <v-container v-show="!routingtableloaded">
-      Just a moment. <v-progress-circular indeterminate />
-    </v-container>
-    <router-view :key="$route.fullPath" v-if="routingtableloaded" />
+    <router-view :key="$route.fullPath"  v-if="apiloaded" />
   </v-main>
 
   <ad-carousel />
@@ -30,11 +27,10 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
 import Swagger from "swagger-client"
+import { mapState } from "vuex"
+import { api, locales, setLanguage } from '@/util/server_injected'
 
-import { processRoutes } from './router_page'
-import { locales, setLanguage } from '@/util/lang'
 import Sidebar from '@/components/Sidebar'
 import Topbar from '@/components/Topbar'
 import AdCarousel from '@/components/AdCarousel'
@@ -53,7 +49,7 @@ export default {
 
   data() {
     return {
-      routingtableloaded: false,
+      apiloaded: false,
       color: '',
       locales: locales,
       snackbar: false,
@@ -69,37 +65,16 @@ export default {
 
     getOpenApi() {
       let self = this;
-      Swagger('/openapi.json').then(
+      Swagger({spec: api}).then(
         function(client){
           self.$store.commit('updateApi', client.apis.default);
-          self.getRoutingTable()
+          self.apiloaded = true;
         },
         function(data){
           console.error('could not fetch openapi.json', data)
           alert('Cannot load API');
         }
       );
-    },
-
-    getRoutingTable() {
-      let self=this, rt;
-      this.api.anon_routingtable().then(
-        function(data){
-          self.routingtableloaded = true;
-          console.log('got Routes', data.obj.routes)
-          rt = processRoutes(data.obj.routes)
-          self.$router.addRoutes(rt);
-          let newroute = '/page/' + self.slug + '/' + self.locale;
-          if (self.$route.path == newroute) {
-            self.$router.replace('/dummy')
-          }
-          self.$router.push(newroute)
-        },
-        function(data){
-          console.error('could not fetch routingtable', data).
-          alert('Cannot load API');
-        }
-      )
     },
 
     showSnackbar(ev) {
@@ -114,24 +89,14 @@ export default {
   },
 
   mounted() {
-    let self=this, routeparts;    
+    let self=this, 
+        routeparts = this.$route.path.split('/');
+    console.log('mounting', routeparts, api)
     this.getOpenApi();
     this.$root.$on('snackbar', this.showSnackbar);
-    console.log('mounted', this.$route);
-    routeparts = this.$route.path.split('/');
-    if (routeparts.length > 2) {
-      if (routeparts[2] != self.slug) {
-        self.$store.commit('updateSlug', routeparts[2]);
-      }
-    }
-    if (routeparts.length > 3) {
-          if (routeparts[3] != self.locale) {
-        self.$store.commit('updateLocale', routeparts[3]);
-      }
-    }
-    setLanguage(this.locale)    
     this.$router.beforeEach(function(to, from, next){
       routeparts = to.path.split('/');
+      console.log('before ', routeparts)
       if (routeparts[1] == 'page') {
         if (routeparts[2] != self.slug) {
           self.$store.commit('updateSlug', routeparts[2]);
@@ -142,6 +107,22 @@ export default {
       }
       next()
     });
+    if (routeparts[0] == "") {
+      this.$router.push('/page/home/en');
+      return
+    }
+    console.log('mounted', routeparts);
+    if (routeparts.length > 2) {
+      if (routeparts[2] != self.slug) {
+        self.$store.commit('updateSlug', routeparts[2]);
+      }
+    }
+    if (routeparts.length > 3) {
+          if (routeparts[3] != self.locale) {
+        self.$store.commit('updateLocale', routeparts[3]);
+      }
+    }
+    // setLanguage(this.locale)
   },  
 
 }

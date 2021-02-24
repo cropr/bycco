@@ -5,8 +5,8 @@
       <v-col class="mt-2">
         <h4 class="mb-2">{{ $t('About Bycco')}}</h4>
         <div>Belgian Youth Chess Championship Organizers. {{ $t('npo.')}}</div>
-        <div>Museumstraat 67<br>
-            9881 Bellem<br>
+        <div>Nieuwenhovelaan 2, 02-02, <br />
+            8020 Oostkamp.<be />
             e-mail: <a href="mailto:info@bycco.be">info@bycco.be</a>
         </div>
         <div>{{ $t('VAT')}}: BE 0630.723.395</div>

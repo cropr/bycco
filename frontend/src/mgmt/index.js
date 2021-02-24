@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import vuetify from '@/plugins/vuetify';
+import vuetify from '@/util/vuetify';
 
 window.config = window.config || {};
 window.config.api_url =  process.env.VUE_APP_API_URL;

@@ -70,7 +70,7 @@
 
 import { mapState } from 'vuex'
 import { bearertoken } from "@/util/token"
-import { boardmembertype } from '@/util/cms'
+import { boardmembertype } from '@/util/server_injected'
 
 export default {
 

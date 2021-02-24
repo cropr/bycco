@@ -36,7 +36,7 @@
 
 import { mapState } from 'vuex'
 import { bearertoken } from "@/util/token"
-import { doctypes } from '@/util/cms'
+import { doctypes } from '@/util/server_injected'
 
 export default {
   

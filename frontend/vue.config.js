@@ -17,8 +17,8 @@ module.exports = {
     mgmt:  {
       entry: 'src/mgmt/index.js',
     },
-    page:  {
-      entry: 'src/page/index.js',
+    index:  {
+      entry: 'src/index.js',
     },
     // participants:  {
     //   entry: 'src/user/participants.js',

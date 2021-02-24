@@ -90,7 +90,7 @@
 import DateFormatted from "@/components/DateFormatted"
 import { mapState } from 'vuex'
 import { bearertoken } from "@/util/token"
-import { doctypes, pagecomponents } from '@/util/cms'
+import { doctypes, pagecomponents } from '@/util/server_injected'
 
 export default {
 

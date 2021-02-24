@@ -4,7 +4,7 @@ import enum
 
 
 def csv2lang():
-    with open("backend/bycco/scripts/lang_all.csv", newline='') as csvfile:
+    with open("share/data/i18n.csv", newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         allrows = []
         for r in reader:

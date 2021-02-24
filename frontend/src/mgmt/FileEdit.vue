@@ -67,7 +67,7 @@
 import { mapState } from 'vuex'
 import { bearertoken } from "@/util/token"
 import DateFormatted from '@/components/DateFormatted.vue'
-import { topictypes } from '@/util/cms'
+import { topictypes } from '@/util/server_injected'
 
 
 // const FilePond = vueFilePond();
