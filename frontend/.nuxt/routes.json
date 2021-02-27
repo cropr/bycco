@@ -1,0 +1,16 @@
+[
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_59663052"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_41e2770f"
+  }
+]
