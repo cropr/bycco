@@ -4,8 +4,8 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _59663052 = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
 const _41e2770f = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _277ed345 = () => interopDefault(import('../pages/toernooireglement.vue' /* webpackChunkName: "pages/toernooireglement" */))
 
 const emptyFn = () => {}
 
@@ -19,9 +19,41 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/inspire",
-    component: _59663052,
-    name: "inspire"
+    path: "/de",
+    component: _41e2770f,
+    name: "index___de"
+  }, {
+    path: "/en",
+    component: _41e2770f,
+    name: "index___en"
+  }, {
+    path: "/fr",
+    component: _41e2770f,
+    name: "index___fr"
+  }, {
+    path: "/nl",
+    component: _41e2770f,
+    name: "index___nl"
+  }, {
+    path: "/toernooireglement",
+    component: _277ed345,
+    name: "toernooireglement"
+  }, {
+    path: "/de/toernooireglement",
+    component: _277ed345,
+    name: "toernooireglement___de"
+  }, {
+    path: "/en/toernooireglement",
+    component: _277ed345,
+    name: "toernooireglement___en"
+  }, {
+    path: "/fr/toernooireglement",
+    component: _277ed345,
+    name: "toernooireglement___fr"
+  }, {
+    path: "/nl/toernooireglement",
+    component: _277ed345,
+    name: "toernooireglement___nl"
   }, {
     path: "/",
     component: _41e2770f,

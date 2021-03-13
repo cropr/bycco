@@ -15,7 +15,9 @@
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.8.3",
-    "nuxt": "^2.14.12"
+    "markdown-it-vue": "^1.1.6",
+    "nuxt": "^2.14.12",
+    "nuxt-i18n": "^6.20.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^5.0.0",

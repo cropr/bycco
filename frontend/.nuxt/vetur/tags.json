@@ -1,5 +1,14 @@
 {
+  "AdCarousel": {
+    "description": "Auto imported from components/AdCarousel.vue"
+  },
+  "ByccoFooter": {
+    "description": "Auto imported from components/ByccoFooter.vue"
+  },
   "Sidebar": {
     "description": "Auto imported from components/Sidebar.vue"
+  },
+  "Topbar": {
+    "description": "Auto imported from components/Topbar.vue"
   }
 }
