@@ -13,3 +13,5 @@
 credentials-gmail.json
 .env
 *.code_workspace
+.gitsecret/keys/random_seed
+!*.secret
