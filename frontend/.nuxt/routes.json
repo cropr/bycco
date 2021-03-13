@@ -1,0 +1,72 @@
+[
+  {
+    "name": "index___de",
+    "path": "/de",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_41e2770f"
+  },
+  {
+    "name": "index___en",
+    "path": "/en",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_41e2770f"
+  },
+  {
+    "name": "index___fr",
+    "path": "/fr",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_41e2770f"
+  },
+  {
+    "name": "index___nl",
+    "path": "/nl",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_41e2770f"
+  },
+  {
+    "name": "toernooireglement",
+    "path": "/toernooireglement",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/toernooireglement.vue",
+    "chunkName": "pages/toernooireglement",
+    "_name": "_277ed345"
+  },
+  {
+    "name": "toernooireglement___de",
+    "path": "/de/toernooireglement",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/toernooireglement.vue",
+    "chunkName": "pages/toernooireglement",
+    "_name": "_277ed345"
+  },
+  {
+    "name": "toernooireglement___en",
+    "path": "/en/toernooireglement",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/toernooireglement.vue",
+    "chunkName": "pages/toernooireglement",
+    "_name": "_277ed345"
+  },
+  {
+    "name": "toernooireglement___fr",
+    "path": "/fr/toernooireglement",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/toernooireglement.vue",
+    "chunkName": "pages/toernooireglement",
+    "_name": "_277ed345"
+  },
+  {
+    "name": "toernooireglement___nl",
+    "path": "/nl/toernooireglement",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/toernooireglement.vue",
+    "chunkName": "pages/toernooireglement",
+    "_name": "_277ed345"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/ruben/develop/cms/bycco/frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_41e2770f"
+  }
+]

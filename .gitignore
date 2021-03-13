@@ -11,3 +11,5 @@
 /frontend/dist
 /frontend/node_modules
 credentials-gmail.json
+.env
+*.code_workspace
