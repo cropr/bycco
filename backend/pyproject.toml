@@ -31,6 +31,13 @@ build-backend = "poetry.core.masonry.api"
 cmd = "uvicorn bycco.main:app --reload"
 help = "Run the backend uvicorn server"
 
+[tool.poe.tasks.initgcp]
+shell = """
+  gcloud config configurations activate byccoprod
+  gcloud auth application-default login
+"""
+help = "setup gcloud for bycco"
+
 [tool.poe.tasks.yarndev]
 shell = """
     pushd frontend
